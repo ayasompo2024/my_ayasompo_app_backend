@@ -1,0 +1,126 @@
+ body {
+     background: red;
+     font-family: 'Open Sans', sans-serif;
+     font-weight: 400;
+ }
+.material-icons-format{
+	position : relative;
+	top : 5px;
+}
+
+ :root {
+     --primary: {
+             {
+             get_setting('base_color', '#e62d04')
+         }
+     }
+
+     ;
+
+     --hov-primary: {
+             {
+             get_setting('base_hov_color', '#c52907')
+         }
+     }
+
+     ;
+
+     --soft-primary: {
+             {
+             hex2rgba(get_setting('base_color', '#e62d04'), .15)
+         }
+     }
+
+     ;
+ }
+
+ #map {
+     width: 100%;
+     height: 250px;
+ }
+
+ #edit_map {
+     width: 100%;
+     height: 250px;
+ }
+
+ .pac-container {
+     z-index: 100000;
+ }
+
+
+ /*box-shadows*/
+ .box-shadow-1 {
+     box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.55), 0px 5px 40px rgba(255, 255, 255, 0.4), -20px 5px 40px rgba(244, 244, 244, 0.08);
+ }
+
+ .box-shadow-2 {
+     box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+ }
+
+ .box-shadow-3 {
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+ }
+
+ .box-shadow-4 {
+     box-shadow: 3px 2px 6px rgba(244, 244, 244, 0.3), 0px 5px 40px rgba(244, 244, 244, 0.51), -20px 5px 40px rgba(64, 64, 64, 0.3);
+ }
+
+ .box-shadow-5 {
+     box-shadow: 3px 2px 6px rgba(255, 255, 255, 0.3), 0px 5px 40px rgba(0, 0, 0, 0.71), -20px 5px 40px rgba(64, 64, 64, 0.3);
+ }
+
+ .box-shadow-6 {
+     box-shadow: 0 20px 30px -16px rgba(9, 9, 16, .2)
+ }
+
+ .box-shadow-7 {
+     box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.3), 0px 5px 40px rgba(0, 0, 0, 0.51), -20px 5px 40px rgba(64, 64, 64, 0.3);
+ }
+
+ .box-shadow-8 {
+     box-shadow: 3px 2px 6px rgb(255, 255, 255), 0px 5px 40px rgba(244, 244, 244, 0.51), -20px 5px 40px rgba(244, 244, 244, 0.3);
+ }
+
+ /*end Box Shadows*/
+
+ .transparent_bg {
+     background-color: rgba(255, 255, 255, 0.2);
+ }
+
+ .round {
+     -webkit-animation: spin 4s linear infinite;
+     -moz-animation: spin 4s linear infinite;
+     animation: spin 4s linear infinite;
+ }
+
+ @-moz-keyframes spin {
+     100% {
+         -moz-transform: rotate(360deg);
+     }
+ }
+
+ @-webkit-keyframes spin {
+     100% {
+         -webkit-transform: rotate(360deg);
+     }
+ }
+
+ @keyframes spin {
+     100% {
+         -webkit-transform: rotate(360deg);
+         transform: rotate(360deg);
+     }
+ }
+
+ @media only screen and (min-width: 600px) {
+     .hide-on-pc {
+         display: none;
+     }
+ }
+
+ @media only screen and (max-width: 600px) {
+     .hide-one-moblie {
+         display: none;
+     }
+ }

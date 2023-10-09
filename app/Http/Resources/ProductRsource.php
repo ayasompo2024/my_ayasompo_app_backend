@@ -11,17 +11,22 @@ class ProductRsource extends JsonResource
     {
         $groupedProperties = $this->properties->groupBy(function ($property) {
             return $property->type->name;
-        })->map(function ($properties) {
-            return $properties->map(function ($property) {
-                return [
-                    'title' => $property->title,
-                    'desc' => $property->desc,
-                ];
-            });
         });
+
+        $propertiesArray = $groupedProperties->map(function ($properties, $type) {
+            return [
+                'name' => $type,
+                'detail' => $properties->map(function ($property) {
+                    return [
+                        'title' => $property->title,
+                        'desc' => $property->desc,
+                    ];
+                }),
+            ];
+        });
+
         $faqs = $this->faqs->map(function ($faq) {
             return [
-                // 'id' => $faq->id,
                 'title' => $faq->title,
                 'desc' => $faq->desc,
             ];
@@ -35,7 +40,7 @@ class ProductRsource extends JsonResource
             'thumbnail' => $this->thumbnail,
             'brief_description' => $this->brief_description,
             'faqs' => $faqs,
-            'properties' => $groupedProperties,
+            'properties' => $propertiesArray->values()->all(),
         ];
     }
 }

@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
 
     use ApiResponser;
-    function getAll()
+    function getActive()
     {
         $products = ProductRepository::getWithPropertyAndFAQ();
         return $this->successResponse("Products", ProductRsource::collection($products), 200);

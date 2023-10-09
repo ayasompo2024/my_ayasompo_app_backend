@@ -24,7 +24,7 @@
                                     <image src="{{ $product->thumbnail }}" height="30px" />
                                 </dvi>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pb-3">
                                 <p class="card-text">
                                     {{ $product->brief_description }}
                                 </p>
@@ -44,16 +44,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="{{ route('admin.product.show', $product->id) }}" class="btn btn-sm btn-info">
-                                    <i title="Delete" class="bi bi-pencil-square"></i>
-                                </a>
-                                <form class="d-inline" action="{{ route('admin.product.show', $product->id) }}"
-                                    method="post">
-                                    @method('delete') @csrf
-                                    <button class="btn btn-sm bg-secondary p-1">
-                                        <i title="Delete" class="bi bi-trash mx-2"></i>
-                                    </button>
-                                </form>
+                                <div class="border-top mt-1">
+                                    
+                                    <form class="d-inline" action="{{ route('admin.product.change-status', $product->id) }}"
+                                        method="post">
+                                        @method('put') @csrf
+                                        <button class="btn btn-sm p-0">
+                                            @if ($product->status)
+                                                <i title="Close" class="bi bi-check-circle mx-2"></i>
+                                            @else
+                                                <i title="Open" class="bi bi-x-circle text-warning mx-2"></i>
+                                            @endif
+                                        </button>
+                                    </form>
+                                    <a href="{{ route('admin.product.show', $product->id) }}" class="btn btn-sm p-0">
+                                        <i title="Delete" class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <form class="d-inline" action="{{ route('admin.product.show', $product->id) }}"
+                                        method="post">
+                                        @method('delete') @csrf
+                                        <button class="btn btn-sm p-0">
+                                            <i title="Delete" class="bi bi-trash mx-2"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

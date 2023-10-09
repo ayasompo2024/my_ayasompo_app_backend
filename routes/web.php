@@ -17,8 +17,12 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.'], fun
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('product', ProductController::class);
-    Route::get('product/{product_id}/property-type/{property_type_id}', [ProductController::class, 'getPropertyByPropertyTypeIdAndProductId'])->name('product.property');
-    Route::get('product/faq/{product_id}/', [ProductController::class, 'getFAQByProductId'])->name('product.faq');
+    Route::controller(ProductController::class)->prefix('product')->group(function () {
+        Route::get('{product_id}/property-type/{property_type_id}', 'getPropertyByPropertyTypeIdAndProductId')->name('product.property');
+        Route::get('faq/{product_id}', 'getFAQByProductId')->name('product.faq');
+        Route::put('change-status/{product_id}', 'changeStatus')->name('product.change-status');
+    });
+    
 
     Route::resource('property', PropertyController::class);
     Route::get('property/new/{product_id}/{property_type_id}', [PropertyController::class, 'new'])->name('property.new');

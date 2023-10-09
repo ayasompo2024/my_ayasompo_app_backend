@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::middleware('auth:api')->prefix('v1')->group(function () {
 Route::prefix('v1')->group(function () {
-    Route::get('products', [ProductController::class, 'getAll']);
-    Route::get('banner/active', [BannerController::class, 'getActive']);
+    Route::get('products', [ProductController::class, 'getActive']);
+    Route::get('banners', [BannerController::class, 'getActive']);
 });
 
 
@@ -23,4 +23,3 @@ Route::prefix('v1')->group(function () {
 //name
 //password
 //password comfirm
-

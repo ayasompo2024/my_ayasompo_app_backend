@@ -78,4 +78,11 @@ class ProductController extends Controller
         $faqs = FAQRepository::getByProductId($product_id);
         return view('admin.faq.index', compact('faqs', 'product_id'));
     }
+
+    function changeStatus($id)
+    {
+        return ProductRepository::changeStatus($id) ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
 }

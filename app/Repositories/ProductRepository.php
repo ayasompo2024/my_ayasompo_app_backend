@@ -33,5 +33,15 @@ class ProductRepository
     {
         return Product::with('properties.type')->with('faqs')->get();
     }
-
+    
+    static function changeStatus($product_id)
+    {
+        $product = Product::where('id', $product_id)->first();
+        if (!$product)
+            return false;
+        
+        return $product->update(['status' => !$product->status]);
+    }
+    
+    
 }

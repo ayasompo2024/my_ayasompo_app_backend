@@ -32,12 +32,15 @@ class ProductRsource extends JsonResource
             ];
         });
 
+        $imagePath = public_path($this->thumbnail);
+        $image = "data:image/png;base64,".base64_encode(file_get_contents($imagePath));
+
         return [
             'id' => $this->id,
             'name' => $this->name,
             'title' => $this->title,
             'product_type' => $this->product_type,
-            'thumbnail' => $this->thumbnail,
+            'thumbnail' => $image,
             'brief_description' => $this->brief_description,
             'faqs' => $faqs,
             'properties' => $propertiesArray->values()->all(),

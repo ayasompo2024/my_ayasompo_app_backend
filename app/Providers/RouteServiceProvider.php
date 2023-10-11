@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\doc\DocController;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -42,22 +43,28 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api/api.php'));
-
-            Route::prefix('api/v1')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api/customer.php'));
-            // Backup Module                
             Route::prefix('admin/backup')
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/backup.php'));
+            Route::prefix('doc')->group(function () {
+                Route::get('index', [DocController::class, 'index']);
+                Route::get('index/{file}', [DocController::class, 'getContent'])->name("doc.index.file");
+            });
 
+            Route::prefix('api/app')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/app/api.php'));
+            Route::prefix('api/app')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/app/customer.php'));
+
+            Route::prefix('api/internal')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/internal/api.php'));
         });
     }
 

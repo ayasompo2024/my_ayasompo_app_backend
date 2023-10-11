@@ -1,4 +1,3 @@
-<!-- Name -->
 <div class="row">
     <div class="col-lg-4">
         <label for="name"> Product Name </label>
@@ -14,8 +13,6 @@
         @enderror
     </div>
 </div>
-
-<!-- title -->
 <div class="row mt-3">
     <div class="col-lg-4">
         <label for="title"> Title </label>
@@ -31,7 +28,6 @@
         @enderror
     </div>
 </div>
-
 <div class="row mt-3">
     <div class="col-lg-4">
         <label for="product_type">Product Type</label>
@@ -39,8 +35,9 @@
     <div class="col-lg-8">
         <select id="product_type" name="product_type" 
             class="form-control form-control-sm @error('product_type') is-invalid @enderror">
-            <option>{{ \App\Enums\ProductType::INDIVIDUAL->value }} </option>
-            <option>{{ \App\Enums\ProductType::COMMERCIAL->value }} </option>
+            @forEach(\App\Enums\ProductType::cases() as $enumValue)
+                <option>{{ $enumValue->value }} </option>
+            @endforEach
         </select>
         @error('product_type')
         <span class="invalid-feedback" role="alert">
@@ -49,10 +46,6 @@
         @enderror
     </div>
 </div>
-
-
-
-{{-- Description --}}
 <div class="row mt-3">
     <div class="col-lg-4">
         <label for="description">Brief Description</label>

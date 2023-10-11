@@ -9,6 +9,9 @@ use App\Repositories\ProductRepository;
 use App\Repositories\PropertyTypeRepository;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
 
 class ProductController extends Controller
 {
@@ -16,6 +19,8 @@ class ProductController extends Controller
 
     public function index()
     {
+        // $token = Cache::get('token');
+        // return $token;
         $products = ProductRepository::getAll();
         $property = PropertyTypeRepository::getAll();
         return view('admin.product.index', compact("products", "property"));
@@ -48,12 +53,11 @@ class ProductController extends Controller
     {
         $product = ProductRepository::getById($id);
         return view('admin.product.show', compact('product'));
-
     }
 
     public function edit($id)
     {
-        return $id;
+        return view('admin.product.edit')->with(['product'=>ProductRepository::getById($id)]);
     }
 
     public function update(Request $request, $id)

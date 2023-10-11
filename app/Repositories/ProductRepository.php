@@ -2,10 +2,10 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 
 class ProductRepository
 {
-
     static function getAll()
     {
         return Product::all();
@@ -22,7 +22,7 @@ class ProductRepository
     {
         return Product::find($id);
     }
-    static function destroyWithRelateTable($id)
+    static function destroyWithRelateTable($id): array
     {
         return [
             Product::destroy($id),
@@ -31,17 +31,19 @@ class ProductRepository
     }
     static function getWithPropertyAndFAQ()
     {
-        return Product::with('properties.type')->with('faqs')->get();
+        $value = Cache::remember('getWithPropertyAndFAQ', null, function () {
+            return Product::with('properties.type')->with('faqs')->get();
+        });
+        return $value;
     }
-    
+
     static function changeStatus($product_id)
     {
         $product = Product::where('id', $product_id)->first();
         if (!$product)
             return false;
-        
         return $product->update(['status' => !$product->status]);
     }
-    
-    
+
+
 }

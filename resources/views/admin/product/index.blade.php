@@ -57,7 +57,7 @@
                                             @endif
                                         </button>
                                     </form>
-                                    <a href="{{ route('admin.product.show', $product->id) }}" class="btn btn-sm p-0">
+                                    <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm p-0">
                                         <i title="Delete" class="bi bi-pencil-square"></i>
                                     </a>
                                     <form class="d-inline" action="{{ route('admin.product.show', $product->id) }}"

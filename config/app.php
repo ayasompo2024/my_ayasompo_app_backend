@@ -2,6 +2,10 @@
 
 return [
 
+    'auth_route' => env('AUTH_ROUTE'),
+    'user_name' => env('USER_NAME'),
+    'password' => env('PASSWORD'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -174,7 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\TokenProvider::class,
     ],
 
     /*

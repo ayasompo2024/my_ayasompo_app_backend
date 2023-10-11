@@ -19,9 +19,7 @@
     </div>
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
-
     @include('admin.layout.script')
     @stack('child-scripts')
 </body>
-
 </html>

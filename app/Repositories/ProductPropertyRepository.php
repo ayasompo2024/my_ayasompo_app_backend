@@ -28,7 +28,7 @@ class ProductPropertyRepository
     }
     static function destroyById(int $id)
     {
-        return Property::sdestroy($id);
+        return Property::destroy($id);
     }
 
 }

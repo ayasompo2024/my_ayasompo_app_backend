@@ -17,12 +17,9 @@ class CustomerRepository
     {
         return Customer::create($input);
     }
-    public function firstOrNewBaseOnEmail($email, $name, $oauth_provider, $avatar)
+    public function getTokesByid($id)
     {
-        return Customer::firstOrNew(['email' => $email], [
-            'name' => $name,
-            'oauth_provider' => $oauth_provider,
-            'avatar' => $avatar
-        ]);
+        
     }
+
 }

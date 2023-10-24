@@ -37,8 +37,11 @@
                 </nav>
             </div>
         </aside>
-        <div class="content-wrapper">
-            <textarea id="my-text-area">{{ $content }}</textarea>
+        <div class="content-wrapper px-2">
+            <a class="btn href="{{ url()->previous() }}">
+                <i class="bi bi-arrow-left-square"></i>
+            </a>
+            <div class="px-2"><textarea id="my-text-area">{{ $content }}</textarea></div>
         </div>
     </div>
     @include('admin.layout.script')
@@ -48,7 +51,6 @@
                 "preview",
             ],
         });
-        
     </script>
 </body>
 

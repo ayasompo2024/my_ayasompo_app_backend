@@ -22,12 +22,12 @@ class ProductRepository
     {
         return Product::find($id);
     }
-    static function destroyWithRelateTable($id): array
+    static function destroyWithRelateTable($id)
     {
-        return [
-            Product::destroy($id),
-            ProductPropertyRepository::destroyByProductId($id)
-        ];
+        $product = Product::find($id);
+        $product->properties()->delete();
+        $product->faqs()->delete();
+        return $product->delete();
     }
     static function getWithPropertyAndFAQ()
     {

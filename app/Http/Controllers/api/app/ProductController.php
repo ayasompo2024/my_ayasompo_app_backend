@@ -18,7 +18,7 @@ class ProductController extends Controller
     function getActive()
     {
         $products = ProductRepository::getWithPropertyAndFAQ();
-        return $this->successResponse("Products", ProductRsource::collection($products), 200);
+        return $this->successResponse2("Products", ProductRsource::collection($products), 200);
     }
     function getPropertyByPropertyTypeIdAndProductId($product_id, $property_type_id)
     {

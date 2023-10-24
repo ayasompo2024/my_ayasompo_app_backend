@@ -15,7 +15,6 @@ class FAQController extends Controller
         return view("admin.faq.create", compact('product_id'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([

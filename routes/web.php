@@ -7,12 +7,15 @@ use App\Http\Controllers\admin\FAQController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\PropertyController;
 use App\Http\Controllers\admin\PropertyTypeController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes(['register' => true]);
+// Auth::routes( );
+Route::get('ays-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
+Route::post('login', [LoginController::class, 'login'])->name("login");
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.'], function () {
-    // Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -22,7 +25,6 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.'], fun
         Route::get('faq/{product_id}', 'getFAQByProductId')->name('product.faq');
         Route::put('change-status/{product_id}', 'changeStatus')->name('product.change-status');
     });
-    
 
     Route::resource('property', PropertyController::class);
     Route::get('property/new/{product_id}/{property_type_id}', [PropertyController::class, 'new'])->name('property.new');
@@ -33,9 +35,34 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.'], fun
     Route::resource('property-type', PropertyTypeController::class, ['names' => 'property.type',]);
 
     Route::resource('banner', BannerController::class);
+    Route::put('banner/change-status/{id}', [BannerController::class, 'changeStatus'])->name('banner.change-status');
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
     });
+    
+});
 
+
+// Route::get('/pass', function () {
+//     // return $token = (string) Str::uuida();
+//     return Hash::make("server1@7912");
+// });
+
+Route::get('/noti', function () {
+    $title = "ghis";
+    $message = "ghis";
+    $url = config('app.fcm_url');
+    $serverKey = config('app.fcm_key');
+    $data = [
+        "title" => $title,
+        "message" => $message
+    ];
+    return Http::withHeaders([
+        'Authorization' => "key={$serverKey}",
+        'Content-Type' => 'application/json'
+    ])->post($url, [
+                'to' => "fQjQD8J-T7mMubjnOGS-iD:APA91bETeHlHmqv4s1SgKhahVlTc5xrAzCTtaT2HEcCT8cV6MH1QYb_f6Iv71f5lfsnY4g5mjczQ_qXDaQ9WDC0ur89irUj9LrFUXLByrsl1K7Q19Hp20c9m9VC13Hy08bPd_uNrsMTc",
+                "data" => $data
+            ]);
 });

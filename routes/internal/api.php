@@ -1,14 +1,12 @@
 <?php
 
+use App\Http\Controllers\api\internal\AuthController;
 use App\Http\Controllers\api\internal\CustomerController;
-use App\Http\Controllers\api\ProductController;
-use App\Http\Controllers\api\BannerController;
+
 use Illuminate\Support\Facades\Route;
 
-// Route::middleware('auth:api')->prefix('v1')->group(function () {
-Route::prefix('v1')->group(function () {
+Route::post('v1/get-token', [AuthController::class, 'generateInterAccessToken']);
+
+Route::middleware('auth:api_internal')->prefix('v1')->group(function () {
     Route::post('send-message', [CustomerController::class, 'sendMessage']);
 });
-
-
-

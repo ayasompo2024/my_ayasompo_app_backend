@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\api\app;
 
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
@@ -13,6 +13,8 @@ trait Auth
     use ApiResponser;
     public function register(Request $request)
     {
+
+        dd("a");
         $validator = $this->registerValidation($request);
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
@@ -38,6 +40,7 @@ trait Auth
         if ($validator->fails())
             return response()->json(['error' => $validator->errors()], 400);
 
+        return $request->all();
         // Attempt to authenticate
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
             $customer = auth()->user();
@@ -65,6 +68,31 @@ trait Auth
         ]);
     }
 
-
 }
 
+
+/** coure_customer
+ *  policy_holder_name
+ *  phone_number
+ *  nrc_number
+ *  emial
+ *  address
+ */
+
+/** customer
+ *  pnone
+ *  password
+ *  coure_customer_id
+ */
+
+
+ /** Register
+ *  policy_holder_name
+ *  user_name
+ *  password
+ *  phone
+ *  coure_customer_id
+ *  otp
+ */
+
+ 

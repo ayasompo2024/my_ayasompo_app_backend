@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use App\Traits\SendPushNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SendPushNotification;
     protected $fillable = [
         "name",
         "title",
@@ -30,13 +32,21 @@ class Product extends Model
     {
         parent::boot();
         static::creating(function ($product) {
-            Cache::forget('getWithPropertyAndFAQ');
+            Log::info('product creating : ' . $product);
+            $product->sendFcmNoti();
         });
         static::updating(function ($product) {
-            Cache::forget('getWithPropertyAndFAQ');
+            Log::info('product  event: ' . $product);
+            $product->sendFcmNoti();
         });
         static::deleting(function ($product) {
-            Cache::forget('getWithPropertyAndFAQ');
+            Log::info('product deleting : ' . $product);
+            $product->sendFcmNoti();
         });
+    }
+    private function sendFcmNoti()
+    {
+       // $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
+        Cache::forget('getWithPropertyAndFAQ');
     }
 }

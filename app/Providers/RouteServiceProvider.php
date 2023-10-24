@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin/dashboard';
 
     /**
      * The controller namespace for the application.
@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
 
+            // Web Admn
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
@@ -52,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('index/{file}', [DocController::class, 'getContent'])->name("doc.index.file");
             });
 
+            // App Api
             Route::prefix('api/app')
                 ->middleware('api')
                 ->namespace($this->namespace)
@@ -61,10 +63,17 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/app/customer.php'));
 
+            // Internal Api
             Route::prefix('api/internal')
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/internal/api.php'));
+
+            // Admin Api
+            Route::prefix('api/admin')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin/api.php'));
         });
     }
 

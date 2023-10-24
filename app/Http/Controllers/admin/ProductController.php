@@ -3,36 +3,30 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\FAQRepository;
-use App\Repositories\ProductPropertyRepository;
-use App\Repositories\ProductRepository;
-use App\Repositories\PropertyTypeRepository;
+
+use App\Services\ProductService;
+use App\Services\PropertyTypService;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
+
 
 class ProductController extends Controller
 {
     use FileUpload;
 
-    public function index()
+    function index(ProductService $productService, PropertyTypService $propertyTypService)
     {
-        // $token = Cache::get('token');
-        // return $token;
-        $products = ProductRepository::getAll();
-        $property = PropertyTypeRepository::getAll();
+        $products = $productService->getAll();
+        $property = $propertyTypService->getAll();
         return view('admin.product.index', compact("products", "property"));
     }
 
-    public function create()
+    function create()
     {
         return view('admin.product.create');
     }
 
-
-    public function store(Request $request)
+    function store(Request $request, ProductService $productService)
     {
         $request->validate([
             "name" => "required",
@@ -41,52 +35,46 @@ class ProductController extends Controller
             "brief_description" => "nullable",
             "thumbnail" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128'],
         ]);
-        $input = $request->only("name", "title", "product_type", "brief_description");
-        $upload_path = $this->uploadFile($request->thumbnail, '/uploads/thumbnail/', 'aya_sompo');
-        $input["thumbnail"] = $upload_path;
-        $status = ProductRepository::store($input);
-        return $status ? redirect("admin/product")->with('sucess', 'Success') : redirect('admin/product')->with('fail', 'fail');
+        return $productService->store($request) ?
+            redirect("admin/product")->with('success', 'Success') :
+            redirect('admin/product')->with('fail', 'fail');
     }
 
-
-    public function show($id)
+    public function show($id, ProductService $productService)
     {
-        $product = ProductRepository::getById($id);
-        return view('admin.product.show', compact('product'));
+        return view('admin.product.show')->with(['product' => $productService->getById($id)]);
     }
 
-    public function edit($id)
+    function edit($id, ProductService $productService)
     {
-        return view('admin.product.edit')->with(['product'=>ProductRepository::getById($id)]);
+        return view('admin.product.edit')->with(['product' => $productService->getById($id)]);
     }
-
-    public function update(Request $request, $id)
+    public function destroy($id, ProductService $productService)
+    {
+        return $productService->destroyById($id) ?
+            redirect()->back()->with('success', 'Success') :
+            redirect()->back()->with('fail', 'Fail');
+    }
+    function update(Request $request, $id)
     {
         return $id;
     }
 
-    public function destroy($id)
+    function changeStatus($id, ProductService $productService)
     {
-        ProductRepository::destroyWithRelateTable($id);
-        return redirect()->back()->with('success', 'Success');
+        return $productService->changeStatus($id) ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
     }
-
-    function getPropertyByPropertyTypeIdAndProductId($product_id, $property_type_id)
+    function getPropertyByPropertyTypeIdAndProductId($product_id, $property_type_id, ProductService $productService)
     {
-        $properties = ProductPropertyRepository::getByProductIdAndPropertyTypeId($product_id, $property_type_id);
+        $properties = $productService->getPropertyWithPropertyTypeIdAndProductId($product_id, $property_type_id);
         return view('admin.product_property.index', compact('properties', 'product_id', 'property_type_id'));
     }
 
-    function getFaqByProductId($product_id)
+    function getFaqByProductId($product_id, ProductService $productService)
     {
-        $faqs = FAQRepository::getByProductId($product_id);
+        $faqs = $productService->getFaqByProductId($product_id);
         return view('admin.faq.index', compact('faqs', 'product_id'));
-    }
-
-    function changeStatus($id)
-    {
-        return ProductRepository::changeStatus($id) ?
-            back()->with(['success' => 'Successfully!']) :
-            back()->with(['fail' => 'Fail']);
     }
 }

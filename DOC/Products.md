@@ -8,7 +8,7 @@
 - Response Code :   
   - 200 : `Success`
   - 500 : `Error`
-```jsons
+```json
   //Response
   {
     "isSuccess": true,

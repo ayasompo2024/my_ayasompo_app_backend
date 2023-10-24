@@ -12,13 +12,14 @@
         </a>
         <div class="bg-light mt-3 mb-5">
             <div class="row">
-                <div class="col-md-3">
-                    @foreach ($banners as $product)
-                        @include('admin.banner._photo_card')
-                    @endforeach
-                </div>
+                @foreach ($banners as $banner)
+                    <div class="col-md-3">
+                        <div class="card pb-0 pt-3 px-3">
+                            @include('admin.banner._photo_card')
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-
     </div>
 @endsection

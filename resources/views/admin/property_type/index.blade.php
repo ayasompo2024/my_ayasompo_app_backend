@@ -17,35 +17,14 @@
                     <div>
                         <div class="btn btn border mt-1" style="font-weight: 600">
                             {{ $item->name }}
-                            <form class="d-inline" action="{{ route('admin.property.type.update', $item->id) }}"
-                                method="post">
-                                @method('put') @csrf
-                                <button class="btn btn-sm">
-                                    @if ($item->status == 1)
-                                        <i title="Close" class="bi bi-check-circle mx-2"></i>
-                                    @else
-                                        <i title="Open" class="bi bi-x-circle text-warning mx-2"></i>
-                                    @endif
-                                </button>
-                            </form>
-                            |
-                            <button class="btn btn-sm">
+                            <a href="{{ route('admin.property.type.edit', $item->id) }}" class="btn btn-sm">
                                 <i title="Edit" class="bi bi-pencil-square"></i>
-                            </button>
-                            |
-                            <form class="d-inline" action="{{ route('admin.property.type.destroy', $item->id) }}"
-                                method="post">
-                                @method('delete') @csrf
-                                <button class="btn btn-sm">
-                                    <i title="Delete" class="bi bi-trash mx-2"></i>
-                                </button>
-                            </form>
+                            </a>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
-
         <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="newShopType"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

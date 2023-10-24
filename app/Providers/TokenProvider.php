@@ -11,8 +11,8 @@ class TokenProvider extends ServiceProvider
     public function boot()
     {
         try {
-            if (!Cache::has('token')) {
-                // if (false) {
+            // if (!Cache::has('token')) {
+            if (false) {
                 $auth_route = config('app.auth_route');
                 $user_name = config('app.user_name');
                 $password = config('app.password');
@@ -29,7 +29,7 @@ class TokenProvider extends ServiceProvider
                 }
             }
         } catch (\Exception $e) {
-            \Log::error($e->getMessage());
+            // \Log::error($e->getMessage());
             throw $e;
         }
     }

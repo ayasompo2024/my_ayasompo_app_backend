@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\api\app;
 
 use App\Http\Controllers\Controller;
 use App\Traits\CURL;

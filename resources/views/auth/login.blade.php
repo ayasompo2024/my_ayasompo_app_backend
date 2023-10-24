@@ -1,15 +1,13 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="container">
-        <br><br><br>
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <img src="{{ asset('logo.svg') }}" alt="AdminLTE Logo"
-                            style="height: 40px;border: 2px solid green;border-radius: 20px">
-                        <span>AYA SanTharDar</span>
+                        <img src="{{ asset('admin/images/logo.svg') }}" alt="AdminLTE Logo"
+                            style="height: 34px">
                     </div>
 
                     <div class="card-body">

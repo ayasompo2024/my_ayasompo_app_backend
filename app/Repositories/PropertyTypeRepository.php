@@ -21,4 +21,15 @@ class PropertyTypeRepository
         return PropertyType::destroy($id);
     }
 
+    static function getById(int $id)
+    {
+        return PropertyType::query()->find($id);
+    }
+
+    static function updateById($id, $input)
+    {
+        return PropertyType::query()->find($id)->update($input);
+    }
+
+
 }

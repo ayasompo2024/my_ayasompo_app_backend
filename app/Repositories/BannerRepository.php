@@ -20,10 +20,23 @@ class BannerRepository
     }
     static function getById($id)
     {
-        // return Product::find($id);
+        return Banner::find($id);
     }
-    static function destroy($id)
+    static function destroyById($id)
     {
         return Banner::destroy($id);
     }
+
+    static function changeStatus($product_id)
+    {
+        $banner = Banner::where('id', $product_id)->first();
+        if (!$banner)
+            return false;
+        return $banner->update(['status' => !$banner->status]);
+    }
+    static function update($id, $input)
+    {
+        return Banner::find($id)->update($input);
+    }
+
 }

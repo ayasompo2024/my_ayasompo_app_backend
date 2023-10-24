@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api\internal;
 
 use App\Http\Controllers\Controller;
 
-use App\Services\internal\CustomerService;
+use App\Services\api\internal\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 

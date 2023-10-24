@@ -16,13 +16,13 @@
                     <div class="col-md-6">
                         <div class="card px-4 pt-3">
                             <div class="card-title d-flex justify-content-between px-3 pt-3">
-                                <dvi>
+                                <div>
                                     <h5 class="card-title">{{ $product->name }}</h5> <br>
                                     <h6 class="mb-2 text-muted">{{ $product->title }}</h6>
-                                </dvi>
-                                <dvi class="float-right">
-                                    <image src="{{ $product->thumbnail }}" height="30px" />
-                                </dvi>
+                                </div>
+                                <div class="float-right">
+                                    <img src="{{ $product->thumbnail }}" height="30px" />
+                                </div>
                             </div>
                             <div class="card-body pb-3">
                                 <p class="card-text">
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="border-top mt-1">
-                                    
+
                                     <form class="d-inline" action="{{ route('admin.product.change-status', $product->id) }}"
                                         method="post">
                                         @method('put') @csrf
@@ -60,7 +60,7 @@
                                     <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm p-0">
                                         <i title="Delete" class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form class="d-inline" action="{{ route('admin.product.show', $product->id) }}"
+                                    <form class="d-inline" action="{{ route('admin.product.destroy', $product->id) }}"
                                         method="post">
                                         @method('delete') @csrf
                                         <button class="btn btn-sm p-0">

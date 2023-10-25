@@ -44,4 +44,14 @@ class ProductService
         return ProductPropertyRepository::getByProductIdAndPropertyTypeId($product_id, $property_type_id);
     }
 
+    public function update($id, $request)
+    {
+        $input = $request->only("name", "title", "product_type", "brief_description");
+        if ($request->thumbnail != null) {
+            $upload_path = $this->uploadFile($request->thumbnail, '/uploads/banner/', 'aya_sompo');
+            $input["thumbnail"] = $upload_path;
+        }
+        return ProductRepository::update($id, $input);
+    }
+
 }

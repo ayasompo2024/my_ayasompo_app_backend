@@ -41,7 +41,7 @@ class FAQ extends Model
     }
     private function sendFcmNoti()
     {
-        $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
+        $this->sendFcmPushNotification("User id", "title", "message");
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

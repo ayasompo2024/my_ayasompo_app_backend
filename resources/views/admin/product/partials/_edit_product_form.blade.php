@@ -57,29 +57,44 @@
 
 <div class="row mt-3">
     <div class="col-lg-4"><label for="description">Thumbnail</label></div>
-    <div class="col-lg-8">
-
-        <div>
-            <div class="card"
-                style="width: 200px;height: 200px;background-size: cover; background-image: url({{ $product->thumbnail }})">
+    <div class="col-lg-8" style="position: relative">
+        <div class="card old-photo"
+            style="width: 200px;height: 200px;background-size: cover; background-image: url({{ $product->thumbnail }})">
+        </div>
+        <div class="preview-container" style="display: none">
+            <div id="imagePreview" style="width: 200px;height: 200px;background-size: cover;">
+                <button type="button" onclick="removeNewphoto()" class="float-right btn btn-sm bg-warning mt-1 mr-1"><i
+                        class="bi bi-x-circle-fill"></i></button>
             </div>
-            <div class="tw-absolute">
-                <div style="position: relative;top:-50px;left:3px">
-                    <button onclick="getTragetGalleryID({{ $product->id }})" class="btn btn-secondary btn-sm"
-                        data-toggle="modal" data-target="#addUpdatePhotoToGallery">
-                        <i class="bi bi-cloud-arrow-up"></i>
-                    </button>
-                    <button class="btn btn-sm">
-                        {{-- <form action="{{ route('admin.gallery.destroy', $product->id) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-sm bg-secondary">
-                            <i class="bi bi-trash"></i> Delete
-                        </button>
-                    </form> --}}
-                    </button>
-                </div>
-            </div>
+        </div>
+        <div style="position: absolute;top:165px;left:12px;">
+            <label class="btn btn-sm btn-info" for="thumbnail">
+                <i class="bi bi-cloud-arrow-up"></i>
+                <input type="file" hidden name="thumbnail" accept="image/*" id="thumbnail">
+            </label>
         </div>
     </div>
 </div>
+
+@push('child-scripts')
+    <script>
+        $(document).ready(function() {
+            $('#thumbnail').on('change', function() {
+                var selectedFiles = this.files;
+                if (selectedFiles.length > 0) {
+                    $('.old-photo').hide();
+                    $('.preview-container').show();
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    };
+                    reader.readAsDataURL(selectedFiles[0]);
+                }
+            });
+        });
+        const removeNewphoto = () => {
+            $('.preview-container').hide();
+            $('.old-photo').show();
+        }
+    </script>
+@endpush

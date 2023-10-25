@@ -35,6 +35,13 @@
         'sub_menus' => null,
     ],
     [
+        'display' => 'REST API',
+        'route' => 'doc.index',
+        'imag_path' => null,
+        'icon' => 'bi bi-code-slash',
+        'sub_menus' => null,
+    ],
+    [
         'display' => 'Backup',
         'route' => 'admin.backup.database.show_backup_file',
         'imag_path' => null,

@@ -32,7 +32,7 @@ class ProductController extends Controller
             "name" => "required",
             "title" => "required",
             "product_type" => "required",
-            "brief_description" => "nullable",
+            "brief_description" => "required",
             "thumbnail" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128'],
         ]);
         return $productService->store($request) ?
@@ -40,7 +40,7 @@ class ProductController extends Controller
             redirect('admin/product')->with('fail', 'fail');
     }
 
-    public function show($id, ProductService $productService)
+    function show($id, ProductService $productService)
     {
         return view('admin.product.show')->with(['product' => $productService->getById($id)]);
     }
@@ -55,9 +55,19 @@ class ProductController extends Controller
             redirect()->back()->with('success', 'Success') :
             redirect()->back()->with('fail', 'Fail');
     }
-    function update(Request $request, $id)
+    function update(Request $request, $id, ProductService $productService)
     {
-        return $id;
+        $request->validate([
+            "name" => "required",
+            "title" => "required",
+            "product_type" => "required",
+            "brief_description" => "required",
+            // "thumbnail" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128'],
+        ]);
+
+        return $productService->update($id, $request) ?
+            redirect()->back()->with('success', 'Success') :
+            redirect()->back()->with('fail', 'Fail');
     }
 
     function changeStatus($id, ProductService $productService)

@@ -49,11 +49,14 @@ class BannerController extends Controller
     }
     function edit($id, BannerService $bannerService)
     {
-        return $bannerService->getById($id);
+        return view('admin.banner.edit')->with('banner', $bannerService->getById($id));
     }
 
-    function update(Request $request, $id)
+    function update(Request $request, $id, BannerService $bannerService)
     {
-
+        $request->validate(["image" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128']]);
+        return $bannerService->update($id, $request) ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
     }
 }

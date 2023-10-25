@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\FAQRepository;
+use App\Services\FAQService;
 use Illuminate\Http\Request;
 
 class FAQController extends Controller
@@ -44,9 +45,10 @@ class FAQController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, FAQService $fAQService)
     {
-        //
+
+        return view("admin.faq.edit")->with('faq', $fAQService->getById($id));
     }
 
     /**
@@ -56,9 +58,14 @@ class FAQController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, FAQService $fAQService)
     {
-        //
+        $request->validate([
+            "title" => "nullable",
+            "desc" => "required",
+        ]);
+        $status = $fAQService->update($id, $request);
+        return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }
 
     /**
@@ -67,8 +74,9 @@ class FAQController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, FAQService $fAQService)
     {
-        //
+        $status = $fAQService->destroyById($id);
+        return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }
 }

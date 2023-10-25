@@ -25,7 +25,7 @@ class PropertyTypeController extends Controller
     public function edit($id, PropertyTypService $propertyTypService)
     {
         $property_type = $propertyTypService->getById($id);
-        return view("admin.product_property.edit", compact('property_type'));
+        return view("admin.property_type.edit", compact('property_type'));
     }
 
     public function update(Request $request, $id, PropertyTypService $propertyTypService)

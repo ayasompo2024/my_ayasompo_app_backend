@@ -29,7 +29,7 @@
                                 @markdown{{ $property->desc }}@endmarkdown
                             </div>
                             <div class="card-body pt-0 pl-0">
-                                <a href="#" class="card-link btn p-0">
+                                <a href="{{ route('admin.property.edit', $property->id) }}" class="card-link btn p-0">
                                     <i title="Delete" class="bi bi-pencil-square"></i>
                                 </a>
                                 <form class="d-inline" action="{{ route('admin.property.destroy', $property->id) }}"

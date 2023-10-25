@@ -8,6 +8,8 @@ use App\Repositories\CustomerRepository;
 
 class CustomerService
 {
-
+    function getAll(){
+        return "nodata";
+    }
 
 }

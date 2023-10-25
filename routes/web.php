@@ -10,10 +10,10 @@ use App\Http\Controllers\admin\PropertyTypeController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-// Auth::routes( );
-Route::get('ays-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
-Route::post('login', [LoginController::class, 'login'])->name("login");
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Auth::routes();
+// Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
+// Route::post('login', [LoginController::class, 'login'])->name("login");
+// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
     });
-    
+
 });
 
 

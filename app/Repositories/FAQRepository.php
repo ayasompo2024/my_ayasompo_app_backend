@@ -25,5 +25,15 @@ class FAQRepository
         return FAQ::query()->where("product_id", $product_id)->get();
     }
 
+    static function getById(int $id)
+    {
+        return FAQ::find($id);
+    }
+
+    static function update(int $id, $input)
+    {
+        return FAQ::find($id)->update($input);
+    }
+
 
 }

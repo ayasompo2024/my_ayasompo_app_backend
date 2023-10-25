@@ -11,6 +11,7 @@ class CustomerController extends Controller
 
     public function index(CustomerService $customer_service)
     {
+        return 'no data';
         return view('admin.customers.index')->with('customers', $customer_service->getAll(10));
     }
 

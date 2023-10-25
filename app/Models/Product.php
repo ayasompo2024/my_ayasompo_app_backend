@@ -36,7 +36,7 @@ class Product extends Model
             $product->sendFcmNoti();
         });
         static::updating(function ($product) {
-            Log::info('product  event: ' . $product);
+            Log::info('product  updating: ' . $product);
             $product->sendFcmNoti();
         });
         static::deleting(function ($product) {
@@ -46,7 +46,7 @@ class Product extends Model
     }
     private function sendFcmNoti()
     {
-       // $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
+        // $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

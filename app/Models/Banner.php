@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class Banner extends Model
 {
@@ -21,14 +22,22 @@ class Banner extends Model
     protected static function boot()
     {
         parent::boot();
-        static::creating(function ($product) {
-            // Cache::forget('getWithPropertyAndFAQ');
+        static::creating(function ($banner) {
+            Log::info('banner creating : ' . $banner);
+            $banner->sendFcmNoti();
         });
-        static::updating(function ($product) {
-            // Cache::forget('getWithPropertyAndFAQ');
+        static::updating(function ($banner) {
+            Log::info('banner  updating: ' . $banner);
+            $banner->sendFcmNoti();
         });
-        static::deleting(function ($product) {
-            // Cache::forget('getWithPropertyAndFAQ');
+        static::deleting(function ($banner) {
+            Log::info('banner deleting : ' . $banner);
+            $banner->sendFcmNoti();
         });
+    }
+    private function sendFcmNoti()
+    {
+        // $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
+        Cache::forget('getWithPropertyAndFAQ');
     }
 }

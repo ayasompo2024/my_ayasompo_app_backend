@@ -44,6 +44,10 @@ class ProductRepository
             return false;
         return $product->update(['status' => !$product->status]);
     }
+    static function update($product_id, $input)
+    {
+        return Product::find($product_id)->update($input);
+    }
 
 
 }

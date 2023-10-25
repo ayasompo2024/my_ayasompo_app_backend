@@ -30,5 +30,14 @@ class ProductPropertyRepository
     {
         return Property::destroy($id);
     }
+    static function getById($id)
+    {
+        return Property::find($id);
+    }
+
+    static function update($id, $input)
+    {
+        return Property::find($id)->update($input);
+    }
 
 }

@@ -27,16 +27,17 @@
                                 @markdown{{ $faq->desc }}@endmarkdown
                             </div>
                             <div class="card-body pt-0 pl-0">
-                                <a href="#" class="card-link btn p-0">
-                                    <i title="Delete" class="bi bi-pencil-square"></i>
+                                
+                                <a href="{{ route('admin.faq.edit', $faq->id) }}" class="card-link btn p-0">
+                                    <i title="edit" class="bi bi-pencil-square"></i>
                                 </a>
-                                {{-- <form class="d-inline" action="{{ route('admin.property.destroy', $property->id) }}"
-                                    method="post">
+
+                                <form class="d-inline" action="{{ route('admin.faq.destroy', $faq->id) }}" method="post">
                                     @method('delete') @csrf
                                     <button class="btn p-0">
                                         <i title="Delete" class="bi bi-trash mx-2"></i>
                                     </button>
-                                </form> --}}
+                                </form>
                             </div>
                         </div>
                     </div>

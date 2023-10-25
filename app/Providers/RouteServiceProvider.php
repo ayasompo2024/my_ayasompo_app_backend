@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/backup.php'));
             Route::prefix('doc')->group(function () {
-                Route::get('index', [DocController::class, 'index']);
+                Route::get('index', [DocController::class, 'index'])->name("doc.index");
                 Route::get('index/{file}', [DocController::class, 'getContent'])->name("doc.index.file");
             });
 
@@ -84,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting()
     {
-        RateLimiter::for ('api', function (Request $request) {
+        RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }

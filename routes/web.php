@@ -4,12 +4,20 @@ use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FAQController;
+use App\Http\Controllers\admin\ProductCodeListController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\PropertyController;
 use App\Http\Controllers\admin\PropertyTypeController;
+use App\Http\Controllers\admin\RequestFormController;
+use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\Auth\LoginController;
+
 use Illuminate\Support\Facades\Route;
 
+
+Route::get("/", function () {
+    return view("home");
+});
 Auth::routes();
 // Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
 // Route::post('login', [LoginController::class, 'login'])->name("login");
@@ -26,6 +34,13 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
         Route::put('change-status/{product_id}', 'changeStatus')->name('product.change-status');
     });
 
+    Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
+    Route::resource('product-code-list', ProductCodeListController::class);
+
+    Route::get('product-code-list/{id}/show-request-form-type', [ProductCodeListController::class, 'showRequestFormType'])->name('product-code-list.show-request-form-type');
+    Route::post('product-code-list/bind-with-request-form-type', [ProductCodeListController::class, 'bindWithRequestFormType'])->name('product-code-list.bind-with-request-form-type');
+    Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
+
     Route::resource('property', PropertyController::class);
     Route::get('property/new/{product_id}/{property_type_id}', [PropertyController::class, 'new'])->name('property.new');
 
@@ -40,14 +55,9 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
     });
-
 });
 
-
-// Route::get('/pass', function () {
-//     // return $token = (string) Str::uuida();
-//     return Hash::make("server1@7912");
-// });
+// Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
 Route::get('/noti', function () {
     $title = "ghis";

@@ -67,6 +67,10 @@
                                             <i title="Delete" class="bi bi-trash mx-2"></i>
                                         </button>
                                     </form>
+                                    <a href="{{ route('admin.product.edit', $product->id) }}"
+                                        class="btn btn-sm bg-info mt-1 float-right">
+                                        Bind With Request Form
+                                    </a>
                                 </div>
                             </div>
                         </div>

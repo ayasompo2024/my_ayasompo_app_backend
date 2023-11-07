@@ -28,6 +28,28 @@
         'sub_menus' => null,
     ],
     [
+        'display' => 'Product Code Lists',
+        'route' => 'admin.product-code-list.index',
+        'imag_path' => null,
+        'icon' => 'bi bi-boxes',
+        'sub_menus' => null,
+    ],
+    [
+        'display' => 'Request Form',
+        'route' => 'admin.request-form.lists',
+        'imag_path' => null,
+        'icon' => 'bi-person-vcard',
+        'sub_menus' => [
+            [
+                'display' => 'Request Form Type',
+                'route' => 'admin.request-form.type.index',
+                'imag_path' => null,
+                'icon' => 'bi-person-vcard',
+                'sub_menus' => null,
+            ],
+        ],
+    ],
+    [
         'display' => 'Customers',
         'route' => 'admin.customer.index',
         'imag_path' => null,

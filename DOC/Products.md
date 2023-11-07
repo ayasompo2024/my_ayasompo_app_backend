@@ -1,13 +1,13 @@
 
 ### Get All Products(Active)
-- End Point   :  `api/app/v1/products`
-- Method      : `get`
-- Headers  Value  
-  -  Authorization   :  `Bearer YOUR_TOKEN_HERE`
-  -  Content-Type :  `application/json`
-- Response Code :   
-  - 200 : `Success`
-  - 500 : `Error`
+- `End Point   :  api/app/v1/products`
+- `Method      : get`
+- `Headers  Value  `
+  -  `Authorization   :  Bearer YOUR_TOKEN_HERE`
+  -  `Content-Type :  application/json`
+- `Response Code :   `
+  - `200 : Success`
+  - `500 : Error`
 ```json
   //Response
   {

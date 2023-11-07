@@ -1,0 +1,22 @@
+CRM ထဲက Inquiry Case Creation နဲ့ ပါတ်သတ်ပီးchanges  လေးတွေ share ပေးလိုက်ပါတယ်အကိုတို့
+
+ customer_id က individual နဲ့ corporate မတူတာကြောင့် ထည့်ရမယ့် parameter name ကွဲပါမယ်နော်
+  - "customerid_contact@odata.bind" : "/contacts(5613c951-7ac8-eb11-bacc-000d3a807513 )" (Individual Customer)
+  - "customerid_account@odata.bind" : "/accounts(5613c951-7ac8-eb11-bacc-000d3a807513)" (Corporate Customer)
+  
+  
+
+------------------------------------------------------------------------------------------------
+Enquiry Product Type,  Enquiry Type နဲ့ Account Handler က  App အတွက် CRM မှာ  static create လုပ်ပေးထားတာမလို့ အခု ပေးတဲ့ value အတိုင်း ထည့်ပေးပါနော်
+
+*Enquiry Product Type*
+-"ayasompo_enquiryproducttype@odata.bind" : "/ayasompo_enquiryproducttypes(874a2abe-9878-ee11-8179-000d3a85e8c0)" ------ UAT
+-"ayasompo_enquiryproducttype@odata.bind" : "/ayasompo_enquiryproducttypes(f4cf675a-9978-ee11-8179-6045bd57c6bd)" ------ LIVE
+
+*Enquiry Type*
+-"ayasompo_enquirytypes@odata.bind" : "/ayasompo_enquirytypes(78e88f81-9878-ee11-8179-000d3a85e8c0)" ------ UAT
+-"ayasompo_enquirytypes@odata.bind" : "/ayasompo_enquirytypes(37a26960-9978-ee11-8179-6045bd57c6bd)" ------ LIVE
+
+*Account Handler*
+-"ayasompo_accounthandlerlookup@odata.bind":"/ayasompo_accounthandlers(860d2aa6-9878-ee11-8179-000d3a85e8c0)"------- UAT
+-"ayasompo_accounthandlerlookup@odata.bind":"/ayasompo_accounthandlers(afe42d48-9978-ee11-8179-6045bd57c6bd)" ------- LIVE

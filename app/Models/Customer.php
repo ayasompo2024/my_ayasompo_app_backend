@@ -12,10 +12,10 @@ class Customer extends Authenticatable
     use HasFactory, HasApiTokens;
 
     protected $fillable = [
-        'name',
-        'phone',
-        "email",
+        'customer_code',
+        'customer_phoneno',
+        'user_name',
         'password',
     ];
-
 }
+

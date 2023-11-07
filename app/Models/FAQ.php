@@ -41,7 +41,7 @@ class FAQ extends Model
     }
     private function sendFcmNoti()
     {
-        $this->sendFcmPushNotification("User id", "title", "message");
+        // $this->sendFcmPushNotification("Source From Product ", "sendFcmNoti tete");
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

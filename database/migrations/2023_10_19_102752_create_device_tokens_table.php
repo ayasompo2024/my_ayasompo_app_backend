@@ -15,7 +15,7 @@ class CreateDeviceTokensTable extends Migration
     {
         Schema::create('device_tokens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained();
+            $table->string('customer_id');
             $table->string('token');
             $table->timestamps();
         });

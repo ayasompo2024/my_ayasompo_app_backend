@@ -5,21 +5,18 @@ use App\Models\Customer;
 
 class CustomerRepository
 {
-    public function getById(int $id)
-    {
-        return Customer::find($id);
-    }
-    public function getByEmail(string $email)
-    {
-        return Customer::whereEmail($email)->first();
-    }
-    public function store(array $input)
+    static function store(array $input)
     {
         return Customer::create($input);
     }
-    public function getTokesByid($id)
+    static function getById(int $id)
     {
-        
+        return Customer::find($id);
+    }
+    static function getByPhone($phone)
+    {
+        return Customer::query()->whereCustomer_phoneno($phone)->first();
     }
 
 }
+

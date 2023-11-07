@@ -7,7 +7,11 @@ return [
     'password' => env('PASSWORD'),
     'fcm_key' => env('FCM_SERVER_KEY'),
     'fcm_url' => env('FCM_URL'),
-    // 
+
+    // Create Enquiry Case
+    'enquiry_product_type' => env('EnquiryProductType'),
+    'enquiry_type' => env('EnquiryType'),
+    'account_handler' => env('AccountHandler'),
 
     /*
     |--------------------------------------------------------------------------

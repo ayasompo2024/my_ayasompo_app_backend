@@ -44,7 +44,7 @@ class Property extends Model
     }
     private function sendFcmNoti()
     {
-        // $this->sendFcmPushNotification("1", "sendFcmNoti ddd", "sendFcmNoti tete");
+        // $this->sendFcmPushNotification("Source From Product ", "sendFcmNoti tete");
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

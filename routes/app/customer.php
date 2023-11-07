@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\api\app\CustomerController;
+use App\Http\Controllers\api\app\InsuranceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['prefix' => 'auth/customer'], function () {
+Route::group(['prefix' => 'v1/auth/customer'], function () {
     Route::post('register', [CustomerController::class, 'register']);
     Route::post('login', [CustomerController::class, 'login']);
 });
@@ -16,3 +17,5 @@ Route::middleware('auth:api')->prefix('customer')->group(function () {
     // Route::put('update', 'CustomerController@update');
     // Route::post('logout', 'AuthController@logout');
 });
+
+

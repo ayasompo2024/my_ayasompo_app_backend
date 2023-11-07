@@ -22,6 +22,6 @@ class AuthController extends Controller
 
         $info = $authService->generateInterAccessToken($request);
         return $info ? $this->successResponse("Your Access Token", $info, 200) :
-            $this->errorResponse('access_id Do Not Match', 403);
+            $this->errorResponse('access_id Do Not Match', 401);
     }
 }

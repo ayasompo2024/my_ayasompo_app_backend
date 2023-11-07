@@ -21,16 +21,16 @@ class CustomerController extends Controller
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
-        $status = $customerService->sendMessage($request->only("phone", "customer_code", "message"));
+        $status = $customerService->sendMessage($request->only("customer_phoneno", "customer_code", "message"));
         return $status ?
-            $this->successResponse("Your request has been processed", $request->only("phone", "customer_code", "message"), 200) :
+            $this->successResponse("Your request has been processed", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
 
     private function validationForSendMessage($request)
     {
         return Validator::make($request->all(), [
-            "phone" => ["required", "min:6", "max:12"],
+            "customer_phoneno" => ["required", "min:6", "max:13"],
             "customer_code" => ["required", "min:6", "max:15"],
             "message" => "required",
         ]);

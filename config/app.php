@@ -13,6 +13,13 @@ return [
     'enquiry_type' => env('EnquiryType'),
     'account_handler' => env('AccountHandler'),
 
+    //MSD CRM Token
+    'client_id' => env('ClientID'),
+    'client_secret' => env('ClientSecret'),
+    'tenant_id' => env('TenantID'),
+    'resource_url' => env('ResourceURL'),
+    'service_root' => env('ServiceRoot'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

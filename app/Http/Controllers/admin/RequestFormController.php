@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\RequestFormService;
 use Illuminate\Http\Request;
 
 class RequestFormController extends Controller
 {
 
-    public function index()
+    public function index(RequestFormService $requestFormService)
     {
-        $requestForms = [];
-        return view("admin.request-form.lists")->with('requestForms', $requestForms);
+        return view("admin.request-form.lists")->with('requestForms', $requestFormService->getWithPaginate(30));
     }
 
 

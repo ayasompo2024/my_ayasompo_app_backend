@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\LogRepository;
 
 
 
@@ -13,5 +14,9 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard.dashboard', compact([]));
         // return view('backend.dashboard', compact([]));
+    }
+    function logs()
+    {
+        return LogRepository::getWithPaginate(30);
     }
 }

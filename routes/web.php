@@ -14,7 +14,6 @@ use App\Http\Controllers\Auth\LoginController;
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::get("/", function () {
     return view("home");
 });
@@ -26,6 +25,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');
 
     Route::resource('product', ProductController::class);
     Route::controller(ProductController::class)->prefix('product')->group(function () {
@@ -55,9 +55,10 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
     });
+
 });
 
-// Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
+Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
 Route::get('/noti', function () {
     $title = "ghis";

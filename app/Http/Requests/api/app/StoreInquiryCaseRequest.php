@@ -29,6 +29,7 @@ class StoreInquiryCaseRequest extends FormRequest
     {
         return [
 
+
             'reason' => ['nullable'],
             "effective_date" => ['nullable'],
             "bank_account_number" => ['nullable'],
@@ -36,6 +37,7 @@ class StoreInquiryCaseRequest extends FormRequest
             "other_bank_name" => ['nullable'],
             "other_bank_address" => ['nullable'],
 
+            "inquiry_type" => ['required'],
             "customer_type" => ['required'],
             'title' => ['required'],
             'ayasompo_vehicleno' => ['nullable'],

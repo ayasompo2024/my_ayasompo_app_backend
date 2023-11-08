@@ -57,6 +57,13 @@
         'sub_menus' => null,
     ],
     [
+        'display' => 'Logs',
+        'route' => 'admin.dashboard.logs',
+        'imag_path' => null,
+        'icon' => 'bi bi-file-earmark-medical-fill',
+        'sub_menus' => null,
+    ],
+    [
         'display' => 'REST API',
         'route' => 'doc.index',
         'imag_path' => null,

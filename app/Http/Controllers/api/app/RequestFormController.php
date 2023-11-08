@@ -13,11 +13,18 @@ class RequestFormController extends Controller
     use ApiResponser;
     public function storeInquiryCase(StoreInquiryCaseRequest $request, RequestFormService $requestFormService)
     {
-        return $requestFormService->storeInquiryCase($request);
         $status = $requestFormService->storeInquiryCase($request);
-        return $status ? $this->successResponse("Request", $status, 201) :
-            $this->errorResponse("Fail", 500);
+        if ($status == 1)
+            return $this->issueResponse("Can not receive Customer ID from upstream server", 1, 502);
+        if ($status == 2)
+            return $this->issueResponse("Can not create InquiryCase to upstream server", 2, 502);
+        if ($status == 3)
+            return $this->issueResponse("Can not receive CaseNumber from CRM from upstream server", 3, 502);
+        if (!$status)
+            return $this->errorResponse("Fail", 500);
+        return $this->successResponse("Success InquiryCase", $status, 201);
     }
+
     public function getEndorsementForm(Request $request, RequestFormService $requestFormService)
     {
         $validator = $this->isIncludeFields($request, "product_code");

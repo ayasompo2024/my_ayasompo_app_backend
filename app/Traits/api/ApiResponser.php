@@ -29,6 +29,17 @@ trait ApiResponser
 		], $status_code);
 	}
 
+	protected function issueResponse($message, $code, $status_code)
+	{
+		return response()->json([
+			"meatadata" => [
+				'message' => $message,
+				'code' => $code,
+				'statusCode' => $status_code,
+			]
+		], $status_code);
+	}
+
 	protected function successResponse2($message = "Success", $data, $status_code = 201)
 	{
 		return response()->json([

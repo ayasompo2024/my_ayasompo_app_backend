@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\app\ClaimcaseController;
 use App\Http\Controllers\api\app\ProductController;
 use App\Http\Controllers\api\app\BannerController;
 use App\Http\Controllers\api\app\RequestFormController;
@@ -13,6 +14,10 @@ Route::prefix('v1')->group(function () {
     Route::post('request-form/get-endorsement-form', [RequestFormController::class, 'getEndorsementForm']);
     Route::post('request-form/store-inquiry-case', [RequestFormController::class, 'storeInquiryCase']);
 
+    Route::post('claim-case/motor', [ClaimcaseController::class, 'motorCase']);
+    Route::post('claim-case/non-motor', [ClaimcaseController::class, 'nonMotorCase']);
+
+    // 
     // });
 
 });

@@ -5,6 +5,7 @@ return [
     'auth_route' => env('AUTH_ROUTE'),
     'user_name' => env('USER_NAME'),
     'password' => env('PASSWORD'),
+
     'fcm_key' => env('FCM_SERVER_KEY'),
     'fcm_url' => env('FCM_URL'),
 
@@ -20,6 +21,12 @@ return [
     'resource_url' => env('ResourceURL'),
     'service_root' => env('ServiceRoot'),
 
+    //upload file url
+    'file_upload_base_url' => env("FileUploadBaseURL"),
+
+    //Create Motor Case Base URL
+    'create_motor_case_base_url' => env("CreateMotorCaseBaseURL"),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -31,7 +38,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'AYA-Sompo'),
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +92,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Yangon',
 
     /*
     |--------------------------------------------------------------------------

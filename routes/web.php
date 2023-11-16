@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\PropertyTypeController;
 use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\admin\ClaimcaseController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -34,14 +35,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
         Route::put('change-status/{product_id}', 'changeStatus')->name('product.change-status');
     });
 
-    Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
-
-    Route::resource('product-code-list', ProductCodeListController::class);
-    Route::get('product-code-list/search/by-product-code', [ProductCodeListController::class, 'searchByProductCode'])->name('product-code-list.search.by-product-code');
-    Route::get('product-code-list/{id}/show-request-form-type', [ProductCodeListController::class, 'showRequestFormType'])->name('product-code-list.show-request-form-type');
-    Route::post('product-code-list/bind-with-request-form-type', [ProductCodeListController::class, 'bindWithRequestFormType'])->name('product-code-list.bind-with-request-form-type');
-
-    Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
+    Route::resource('banner', BannerController::class);
+    Route::put('banner/change-status/{id}', [BannerController::class, 'changeStatus'])->name('banner.change-status');
 
     Route::resource('property', PropertyController::class);
     Route::get('property/new/{product_id}/{property_type_id}', [PropertyController::class, 'new'])->name('property.new');
@@ -51,20 +46,32 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
     Route::resource('property-type', PropertyTypeController::class, ['names' => 'property.type',]);
 
-    Route::resource('banner', BannerController::class);
-    Route::put('banner/change-status/{id}', [BannerController::class, 'changeStatus'])->name('banner.change-status');
+    Route::resource('product-code-list', ProductCodeListController::class);
+    Route::controller(ProductCodeListController::class)->group(function () {
+        Route::get('product-code-list/search/by-product-code', 'searchByProductCode')->name('product-code-list.search.by-product-code');
+        Route::get('product-code-list/{id}/show-request-form-type', 'showRequestFormType')->name('product-code-list.show-request-form-type');
+        Route::post('product-code-list/bind-with-request-form-type', 'bindWithRequestFormType')->name('product-code-list.bind-with-request-form-type');
+    });
+
+    Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
+    Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
+
+    Route::controller(ClaimcaseController::class)->group(function () {
+        Route::get('claim-case/index', 'index')->name('claim-case.index');
+        Route::get('claim-case/motor', 'motorCase')->name('claim-case.motor');
+        Route::get('claim-case/non-motor', 'nonMotorCase')->name('claim-case.non-motor');
+    });
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
         Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
-        
-        //Ajax
+        //Ajax Call
         Route::post('customer/register/group-customer', [CustomerController::class, 'registerGroupCustomer']);
     });
 
 });
 
-Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
+//Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
 Route::get('/noti', function () {
     $title = "ghis";

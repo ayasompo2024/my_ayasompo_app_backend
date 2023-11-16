@@ -51,20 +51,20 @@
     ],
     [
         'display' => 'Claim Case',
-        'route' => 'admin.request-form.lists',
+        'route' => 'admin.claim-case.index',
         'imag_path' => null,
         'icon' => 'bi bi-coin',
         'sub_menus' => [
             [
                 'display' => 'Motor',
-                'route' => 'admin.request-form.type.index',
+                'route' => 'admin.claim-case.motor',
                 'imag_path' => null,
                 'icon' => 'bi bi-car-front-fill',
                 'sub_menus' => null,
             ],
             [
                 'display' => 'Non Motor',
-                'route' => 'admin.request-form.type.index',
+                'route' => 'admin.claim-case.non-motor',
                 'imag_path' => null,
                 'icon' => 'bi bi-collection',
                 'sub_menus' => null,

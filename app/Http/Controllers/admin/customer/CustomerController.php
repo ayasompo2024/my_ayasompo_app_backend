@@ -32,7 +32,6 @@ class CustomerController extends Controller
         );
     }
 
-
     //Ajax Response
     public function registerGroupCustomer(Request $request, CustomerService $customerService)
     {

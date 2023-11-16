@@ -35,10 +35,12 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
     });
 
     Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
-    Route::resource('product-code-list', ProductCodeListController::class);
 
+    Route::resource('product-code-list', ProductCodeListController::class);
+    Route::get('product-code-list/search/by-product-code', [ProductCodeListController::class, 'searchByProductCode'])->name('product-code-list.search.by-product-code');
     Route::get('product-code-list/{id}/show-request-form-type', [ProductCodeListController::class, 'showRequestFormType'])->name('product-code-list.show-request-form-type');
     Route::post('product-code-list/bind-with-request-form-type', [ProductCodeListController::class, 'bindWithRequestFormType'])->name('product-code-list.bind-with-request-form-type');
+
     Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
 
     Route::resource('property', PropertyController::class);
@@ -54,6 +56,10 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
+        Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
+        
+        //Ajax
+        Route::post('customer/register/group-customer', [CustomerController::class, 'registerGroupCustomer']);
     });
 
 });

@@ -8,4 +8,55 @@
     * {
         font-family: serif;
     }
+
+    .loader {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: block;
+        margin: 15px auto;
+        position: relative;
+        color: rgb(158, 151, 171);
+        left: -100px;
+        box-sizing: border-box;
+        animation: shadowRolling 2s linear infinite;
+    }
+
+    @keyframes shadowRolling {
+        0% {
+            box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        12% {
+            box-shadow: 100px 0 blueviolet, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        25% {
+            box-shadow: 110px 0 blueviolet, 100px 0 blueviolet, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        36% {
+            box-shadow: 120px 0 blueviolet, 110px 0 blueviolet, 100px 0 blueviolet, 0px 0 rgba(255, 255, 255, 0);
+        }
+
+        50% {
+            box-shadow: 130px 0 blueviolet, 120px 0 blueviolet, 110px 0 blueviolet, 100px 0 blueviolet;
+        }
+
+        62% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 blueviolet, 120px 0 blueviolet, 110px 0 blueviolet;
+        }
+
+        75% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 blueviolet, 120px 0 blueviolet;
+        }
+
+        87% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 blueviolet;
+        }
+
+        100% {
+            box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+        }
+    }
 </style>

@@ -5,13 +5,25 @@
         <nav class="pt-3">
             Product Code List / All
             <a class="float-left" href="{{ url()->previous() }}"><i class="m-3 bi bi-arrow-left-square"></i></a>
-            <span class="float-right badge bg-info mr-4">
+            <span class="badge bg-info mr-4">
                 {{ $product_code_lists->total() }}
             </span>
+            <div class="float-right">
+                <form action="{{ route('admin.product-code-list.search.by-product-code') }}" method="get">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <input type="text" name="product_code" required class="form-control" placeholder="P Code">
+                        <div class="input-group-prepend bg-secondary">
+                            <button type="submit" class="btn btn-sm text-white"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </nav>
 
-        <div class="bg-light px-md-3 mt-2 mb-5">
-            <table class="table table-responsive">
+        @include('admin.validation-error-alert')
+
+        <div class="bg-light px-md-3 mt-4 mb-5">
+            <table class="table table-responsive-sm">
                 <thead>
                     <tr>
                         <th style="min-width: 100px">Class Code</th>

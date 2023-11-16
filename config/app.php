@@ -27,6 +27,9 @@ return [
     //Create Motor Case Base URL
     'create_motor_case_base_url' => env("CreateMotorCaseBaseURL"),
 
+    'ayasompo_base_url' => env("AyasompoBaseURL"),
+    
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

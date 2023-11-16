@@ -5,22 +5,40 @@ namespace App\Http\Controllers\admin\customer;
 use App\Http\Controllers\Controller;
 
 
+use App\Services\customer\CustomerService;
+use App\Traits\api\ApiResponser;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Log;
+
 
 class CustomerController extends Controller
 {
 
-    public function index()
+    use ApiResponser;
+    public function index(CustomerService $customerService)
     {
-        return 'no data';
-        // return view('admin.customers.index')->with('customers', $customer_service->getAll(10));
+        return view('admin.customers.index')->with('customers', $customerService->index(10));
     }
 
-    public function shopOwners()
+    public function getCustomersListByPolicy(Request $request, CustomerService $customerService)
     {
-       // return $customer_service->shopOwners();
+        $request->validate(['policy_no' => "required"]);
+        return view('admin.customers.group_customer.customers_List_by_policy')->with(
+            [
+                'customers' => $customerService->getCustomersListByPolicy($request->policy_no),
+                'tokens' => 'Bearer ' . Cache::get('token_for_internal'),
+            ]
+        );
     }
-    public function show($id)
+
+
+    //Ajax Response
+    public function registerGroupCustomer(Request $request, CustomerService $customerService)
     {
-        // return view('admin.customers.show')->with('customer', $customer_service->getById($id));
+        Log::info($request->all());
+        return $this->successResponse("Request Success", $request->all(), 200);
+        //return $customerService->registerGroupCustomer($request);
     }
 }
+

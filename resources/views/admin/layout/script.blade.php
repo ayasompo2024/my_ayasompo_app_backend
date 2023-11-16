@@ -5,8 +5,34 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
-<script src="{{asset('admin/js/adminlte.min.js')}}"></script>
-<script src="{{asset('admin/js/dashboard3.js')}}"></script>
+
+<script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('admin/js/dashboard3.js') }}"></script>
+<script src="{{ asset('admin/js/scrollreveal.js') }}"></script>
+
+<script>
+    window.sr = new ScrollReveal();
+    sr.reveal('.toright', {
+        origin: 'left',
+        duration: 900,
+        distance: '90px'
+    });
+    sr.reveal('.toleft', {
+        origin: 'right',
+        duration: 900,
+        distance: '90px'
+    });
+    sr.reveal('.toup', {
+        origin: 'top',
+        duration: 900,
+        distance: '-90px'
+    });
+    sr.reveal('.todown', {
+        origin: 'top',
+        duration: 900,
+        distance: '90px'
+    });
+</script>
 <script type="text/javascript">
     $("img").lazyload({
         effect: "fadeIn"
@@ -61,4 +87,3 @@
         ]
     });
 </script>
-

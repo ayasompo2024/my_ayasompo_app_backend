@@ -17,5 +17,9 @@ class Customer extends Authenticatable
         'user_name',
         'password',
     ];
+    function core()
+    {
+        return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');
+    }
 }
 

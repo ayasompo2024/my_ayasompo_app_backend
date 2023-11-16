@@ -4,7 +4,6 @@
 
         <div class="bg-light px-md-3 mt-md-3 mt-2 mb-5">
 
-            {{-- Validation Error Alert --}}
             @include('admin.validation-error-alert')
 
             <div class="row mt-2">

@@ -16,7 +16,19 @@ class ProductCodeListController extends Controller
         return view('admin.product_code_list.index')->with([
             'product_code_lists' => ProductCodeList::paginate(20)
         ]);
+
     }
+    public function searchByProductCode(Request $request)
+    {
+        $request->validate([
+            'product_code' => "required"
+        ]);
+        return view('admin.product_code_list.index')->with([
+            'product_code_lists' => ProductCodeList::query()->where('product_code', $request->product_code)->paginate(50)
+        ]);
+    }
+
+
 
     public function showRequestFormType($productCodeListId, RequestFormTypeService $requestFormTypeService)
     {
@@ -94,7 +106,7 @@ class ProductCodeListController extends Controller
             echo var_dump(ProductCodeList::create($code_list));
         }
     }
-    
+
     private function prodcutCodeListArray()
     {
         return [

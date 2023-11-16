@@ -50,6 +50,28 @@
         ],
     ],
     [
+        'display' => 'Claim Case',
+        'route' => 'admin.request-form.lists',
+        'imag_path' => null,
+        'icon' => 'bi bi-coin',
+        'sub_menus' => [
+            [
+                'display' => 'Motor',
+                'route' => 'admin.request-form.type.index',
+                'imag_path' => null,
+                'icon' => 'bi bi-car-front-fill',
+                'sub_menus' => null,
+            ],
+            [
+                'display' => 'Non Motor',
+                'route' => 'admin.request-form.type.index',
+                'imag_path' => null,
+                'icon' => 'bi bi-collection',
+                'sub_menus' => null,
+            ],
+        ],
+    ],
+    [
         'display' => 'Customers',
         'route' => 'admin.customer.index',
         'imag_path' => null,

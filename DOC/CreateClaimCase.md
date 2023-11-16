@@ -34,7 +34,7 @@
 
   - `risk_seq_no : required`
 
-  - `accident_damaged_photos : required, array, png,jpg,jpeg,PNG,JPG,JPG`
+  - `accident_damaged_photos : `**`required, array, png,jpg,jpeg,PNG,JPG,JPG`**
 
   - `signature_image : required, png,jpg,jpeg,PNG,JPG,JPG`
 
@@ -70,7 +70,7 @@
   	"class_code" : "MT",
   	"customer_type" : "I",
       
-      "accident_damaged_photos"  : FILE_HERE
+      "accident_damaged_photos"  : [ FILE_ONE_HERE, FILE_TWO_HERE ]
       "signature_image"  : FILE_HERE
   }
   
@@ -82,7 +82,7 @@
           "message": "Claimcase Success(All Step) "
       },
       "data": {
-          "dynamic365ClaimCaseNo": 27
+          "id": 27
       }
   }
   
@@ -118,11 +118,9 @@
 
   - `contact_telephone : required`
 
-  - `nrc_no : nullable`
+  - `nrc_no : required`
 
-  - `passport_no : nullable `
-
-    `required at least one (nrc_no or passport_no)`
+  - `passport_no : required `
 
   - `product_type : required`
 
@@ -149,7 +147,7 @@
   	"accident_time" : "12:00 am",
   	"accident_description": "Detailed explanation of the ac",
       
-      "accident_damaged_photos"  : FILE_HERE
+      "accident_damaged_photos"  :  [ FILE_ONE_HERE, FILE_TWO_HERE ]
       "signature_image"  : FILE_HERE
   }    
   

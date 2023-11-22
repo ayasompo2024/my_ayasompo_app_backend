@@ -35,9 +35,12 @@ class CustomerController extends Controller
     //Ajax Response
     public function registerGroupCustomer(Request $request, CustomerService $customerService)
     {
-        Log::info($request->all());
-        return $this->successResponse("Request Success", $request->all(), 200);
-        //return $customerService->registerGroupCustomer($request);
+        
+        $status = $customerService->registerGroupCustomer($request);
+        Log::info($status);
+        return $status ?
+            $this->successResponse("Request Success", $status, 200) :
+            $this->errorResponse("Fail", 500);
     }
 }
 

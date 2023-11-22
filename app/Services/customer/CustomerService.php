@@ -20,14 +20,26 @@ class CustomerService
         return $this->getCustomersListByPolicyAPICall($policy_no);
     }
 
-
-
     //Ajax Response
     function registerGroupCustomer($request)
     {
-        return $request->all();
+        $phoneNumberArray = $request->phone_number_array;
+        $selectCustomerObj = $request->select_customer_obj;
+        $isExistPhones = [];
+        foreach ($phoneNumberArray as $individualPhone) {
+            $customer = CustomerRepository::getAllByPhone($individualPhone);
+            $isExist = !empty($customer);
+            $customerData = $isExist ? $customer->toArray() : null;
+            array_push($isExistPhones, [
+                'phone' => $individualPhone,
+                'appUsers' => $customerData
+            ]);
+        }
+        return [
+            'selectCustomerObj' => $selectCustomerObj,
+            'phones' => $isExistPhones
+        ];
     }
-
 
     function unuse($request)
     {
@@ -55,6 +67,7 @@ class CustomerService
     //     ];
     //     DeviceTokenRepository::store($input);
     // }
+
 
 }
 

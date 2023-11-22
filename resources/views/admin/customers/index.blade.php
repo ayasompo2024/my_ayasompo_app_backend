@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label for="policy_no">Enter Policy Number</label>
                                 <input name="policy_no" type="text" class="form-control form-control-sm" required id="policy_no"
-                                    placeholder="Enter Policy Number">
+                                    placeholder="AYA/YGN/MCP/791289241">
                             </div>
                         </div>
                         <div class="modal-footer p-2">

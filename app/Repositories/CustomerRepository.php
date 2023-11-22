@@ -24,5 +24,10 @@ class CustomerRepository
         return Customer::query()->whereCustomer_phoneno($phone)->first();
     }
 
+    static function getAllByPhone($phone)
+    {
+        return Customer::query()->select('id', 'customer_code', 'customer_phoneno', 'user_name')->whereCustomer_phoneno($phone)->get();
+    }
+
 }
 

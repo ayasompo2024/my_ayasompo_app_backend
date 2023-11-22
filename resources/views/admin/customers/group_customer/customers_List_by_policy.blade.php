@@ -1,12 +1,30 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container" id="app">
+        <div v-if="isLoading">
+
+            <div style="position: fixed;right: -50px;top: -50px;z-index:10000">
+                <span class="loader"></span>
+            </div>
+        </div>
         <nav class="pt-3 pl-3">
             Customer / New Group User
         </nav>
 
-        <div v-if="getPolicyListPanddingStatus">
-            <span class="loader"></span>
+
+        <div v-if="checkExistPhones" class="row mt-3">
+            <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
+                <h4 class="border-bottom">Preview</h4>
+                <div style="display: flex;flex-wrap: wrap;gap: 10px;">
+                    <div v-for="(phone, key) in checkExistPhones">
+                        <div class="btn btn-sm btn border mt-1">
+                            @{{ phone.phone }}
+                            <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
+                        </div>
+                    </div>
+                </div>
+                <button @click="" class="btn btn-sm bg-info mt-2">Add Now</button>
+            </div>
         </div>
 
         <div v-if="getPolicyListErrorStatus">
@@ -26,7 +44,7 @@
 
         <div v-if="policyList" class="row mt-3">
             <div class="col-md-8 offset-md-2 p-2 bg-white">
-                <div class="card-body rounded hover-scale" style="background: #CDCDCD">
+                <div class="card-body rounded hover-scale bg-light">
                     <div class="d-flex">
                         <div style="width: 50%">
                             <i class="bi bi-person-circle mr-2"></i> Customer Code
@@ -90,7 +108,7 @@
                             <i class="bi bi-calendar-date mr-2"></i> Is Expiring
                         </div>
                         <div style="width: 50%">
-                            <input v-if="policyList.isExpiring == null" class="form-control form-control-sm" value="Nan"
+                            <input v-if="policyList.isExpiring == null" class="form-control form-control-sm" value="No"
                                 type="text" readonly>
                             <input v-else="policyList.isExpiring == null" class="form-control form-control-sm"
                                 :value="policyList.isExpiring" type="text" readonly>
@@ -128,10 +146,10 @@
 
                             </div>
                             <div style="width: 50%" class="d-flex">
-                                <input type="text" value="+959" style="width: 50px;"
+                                <input type="text" value="09" style="width: 50px;"
                                     class="form-control form-control-sm" />
-                                <input class="form-control form-control-sm" v-model="phone" type="tel" minlength="6"
-                                    maxlength="9" autofocus>
+                                <input class="form-control form-control-sm" v-model="phone" type="number"
+                                    minlength="6" maxlength="9" title="Please enter only numbers" autofocus>
                                 <button @click="addPhone" class="btn btn-info btn-sm ml-1">
                                     Add
                                 </button>
@@ -140,8 +158,8 @@
                         </div>
                     </div>
                     <div class="mt-3 float-right">
-                        <button @click="register()" class="btn btn-info btn-sm ml-2">
-                            Register
+                        <button @click="preview()" :disabled="!isRegButDisabled" class="btn btn-info btn-sm ml-2">
+                            Preview
                         </button>
                     </div>
                 </div>
@@ -155,7 +173,7 @@
                 <div class="col-md-6 hover-scale" @click="showMessage(customer.customer_code)"
                     v-for="(customer, key) in customers.customers">
                     <div class="card p-2">
-                        <div class="card-body rounded" style="background: #CDCDCD">
+                        <div class="card-body rounded bg-light">
                             <div class="d-flex">
                                 <div style="width: 50%">
                                     <i class="bi bi-person-circle mr-2"></i> Policy Holder Name
@@ -199,7 +217,6 @@
             </div>
         </div>
     </div>
-
     </div>
 @endsection
 @push('child-css')
@@ -221,6 +238,56 @@
         .hover-scale:hover {
             transform: scale(1.03);
         }
+
+        .loader {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f72020df;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            /* position: relative; */
+            animation: pulse 1s linear infinite;
+        }
+
+        .loader:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgb(217, 33, 33);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            /* left: 50%;
+                                                top: 50%; */
+            transform: translate(-50%, -50%);
+            animation: scaleUp 1s linear infinite;
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: translate(-50%, -50%) scale(0)
+            }
+
+            60%,
+            100% {
+                transform: translate(-50%, -50%) scale(1)
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            60%,
+            100% {
+                transform: scale(1)
+            }
+
+            80% {
+                transform: scale(1.2)
+            }
+        }
     </style>
 @endpush
 
@@ -230,18 +297,41 @@
         const app = Vue.createApp({
             data() {
                 const customers = @json($customers);
-                let getPolicyListPanddingStatus = false;
+                let isLoading = false;
                 let httpError = undefined;
                 let policyList = undefined;
                 let selectCustomerObj = null;
                 let phoneNumberArray = [];
-                let phone = null;
+                let phone = '';
+                let checkExistPhones = [{
+                        phone: "0979127912",
+                        appUsers: [{
+                                id: 27,
+                                customer_code: "C000051353",
+                                customer_phoneno: "0979127912",
+                                user_name: "Spider"
+                            },
+                            {
+                                id: 28,
+                                customer_code: "C000051353",
+                                customer_phoneno: "0979127912",
+                                user_name: "Spidey"
+                            }
+                        ]
+                    },
+                    {
+                        phone: "09787796698",
+                        appUsers: []
+                    }
+                ];
                 return {
                     customers,
-                    getPolicyListPanddingStatus,
+                    isLoading,
                     policyList,
                     selectCustomerObj,
-                    phoneNumberArray
+                    phoneNumberArray,
+                    phone,
+                    checkExistPhones
                 };
             },
             methods: {
@@ -263,12 +353,12 @@
                         }
                     });
                 },
+
                 getPolicyListByCustomerCode(customerCode) {
-                    alert(customerCode);
                     const headers = new Headers();
                     headers.append('Content-Type', 'application/json');
                     headers.append('Authorization', '{{ 'Bearer ' . Cache::get('token_for_internal') }}');
-                    this.getPolicyListPanddingStatus = true;
+                    this.isLoading = true;
                     fetch(`https://uatecom.ayasompo.com/PolicyManagement/getcustlistpolicies/${customerCode}`, {
                             method: 'GET',
                             headers: headers,
@@ -280,17 +370,10 @@
                                     icon: "warning",
                                     title: "Erro",
                                     text: responseJson.message,
-                                    showCancelButton: true,
-                                    confirmButtonColor: "#3085d6",
                                     confirmButtonText: " Try Again ",
-                                    cancelButtonText: "Cancel"
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        this.getPolicyListByCustomerCode(customerCode);
-                                    }
                                 })
                             }
-                            this.getPolicyListPanddingStatus = false;
+                            this.isLoading = false;
                             console.log(responseJson);
                             let filterData = responseJson.find(policyList => policyList.policyNumber ==
                                 this.customers.policyno);
@@ -303,10 +386,7 @@
                                 icon: "error",
                                 title: "Erro*",
                                 text: error.message,
-                                showCancelButton: true,
-                                confirmButtonColor: "#3085d6",
                                 confirmButtonText: " Try Again ",
-                                cancelButtonText: "Cancel"
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     this.getPolicyListByCustomerCode(customerCode);
@@ -314,23 +394,11 @@
                             });
                         });
                 },
-                addPhone() {
-                    alert(this.phone.length);
-                    if (this.phone.length < 6 || this.phone.length > 11)
-                        return false
-                    else {
-                        this.phoneNumberArray.push("959" + this.phone);
-                        this.phone = '';
-                    }
-                },
-                removePhone(index) {
-                    this.phoneNumberArray.splice(index, 1);
-                },
 
-                register() {
+                preview() {
+                    this.isLoading = true;
                     console.log(this.selectCustomerObj);
                     console.log(this.phoneNumberArray);
-
                     fetch('http://127.0.0.1:8000/admin/customer/register/group-customer', {
                             method: 'POST',
                             headers: {
@@ -339,8 +407,8 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                             },
                             body: JSON.stringify({
-                                "selectCustomerObj": this.selectCustomerObj,
-                                "phoneNumberArray": this.phoneNumberArray
+                                "select_customer_obj": this.selectCustomerObj,
+                                "phone_number_array": this.phoneNumberArray
                             }),
                         })
                         .then(async response => {
@@ -350,35 +418,45 @@
                                     icon: 'warning',
                                     title: 'Error',
                                     text: responseJson.message,
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    confirmButtonText: 'Try Again',
-                                    cancelButtonText: 'Cancel',
-                                }).then(result => {
-                                    if (result.isConfirmed) {
-                                        this.getPolicyListByCustomerCode(customerCode);
-                                    }
+                                    cancelButtonText: 'Try Again',
                                 });
                             }
+                            this.isLoading = false;
+                            this.checkExistPhones = responseJson.data;
                             console.log(responseJson);
                         })
                         .catch(error => {
-                            console.error('Error:', error);
                             return Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
                                 text: error.message || 'Something went wrong',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
                                 confirmButtonText: 'Try Again',
-                                cancelButtonText: 'Cancel',
-                            }).then(result => {
-                                if (result.isConfirmed) {
-                                    this.getPolicyListByCustomerCode(customerCode);
-                                }
                             });
                         });
-                }
+                },
+                addPhone() {
+                    if (this.phone < 100000 || this.phone.length > 999999999) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: "Phone Number min length 6 and max length 9 ",
+                            confirmButtonText: 'Try Again',
+                        });
+                        return false
+                    } else {
+                        this.phoneNumberArray.push("09" + this.phone);
+                        this.phone = '';
+                    }
+                },
+                removePhone(index) {
+                    this.phoneNumberArray.splice(index, 1);
+                },
+            },
+            computed: {
+                isRegButDisabled() {
+                    console.log(this.phoneNumberArray.length > 0);
+                    return this.phoneNumberArray.length > 0;
+                },
             }
         });
         app.mount('#app');

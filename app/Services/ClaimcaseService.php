@@ -16,14 +16,14 @@ class ClaimcaseService
             'nonMotor' => ClaimcaseRepository::getNonMotorCase($per_page),
         ];
     }
-    function motorCase($request)
+    function motorCase($per_page)
     {
-        return ClaimcaseRepository::getMotorCase(30);
+        return ClaimcaseRepository::getMotorCase($per_page);
     }
 
-    function nonMotorCase($request)
+    function nonMotorCase($per_page)
     {
-        return ClaimcaseRepository::getNonMotorCase(30);
+        return ClaimcaseRepository::getNonMotorCase($per_page);
     }
 }
 

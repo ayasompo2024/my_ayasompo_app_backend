@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
+use App\Repositories\CustomerRepository;
 
 use Illuminate\Support\Facades\Route;
 
@@ -90,3 +91,24 @@ Route::get('/noti', function () {
                 "data" => $data
             ]);
 });
+
+Route::get('/c', function () {
+    $phones = [
+        '0979127912',
+        '09787796698'
+    ];
+    $isExistPhones = [];
+    foreach ($phones as $individualPhone) {
+        $customer = CustomerRepository::getAllByPhone($individualPhone);
+        $isExist = !empty($customer);
+        $customerData = $isExist ? $customer->toArray() : null;
+        array_push($isExistPhones, [
+            'phone' => $individualPhone,
+            'isExist' => $customerData
+        ]);
+    }
+    return $isExistPhones;
+});
+
+
+

@@ -7,6 +7,7 @@ use App\Services\api\app\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 trait Auth
 {
@@ -41,7 +42,14 @@ trait Auth
             'customer_code' => 'required|string',
             'customer_type' => 'required|string',
             'customer_name' => 'required|string',
-            'customer_phoneno' => 'required|min:6|max:13|unique:customers,customer_phoneno',
+            'customer_phoneno' => [
+                'required',
+                'min:6',
+                'max:13',
+                Rule::unique('customers', 'customer_phoneno')->where(function ($query) {
+                    $query->where('app_customer_type', 'INDIVIDUAL');
+                }),
+            ],
             'customer_nrc' => 'required|string',
             'user_name' => 'required|max:255',
             'password' => 'required|string|min:6|confirmed',

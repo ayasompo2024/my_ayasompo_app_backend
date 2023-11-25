@@ -42,7 +42,7 @@ class RequestFormService
             $this->log("Can not create InquiryCase to upstream server", 0);
             return 2;
         }
-        
+
         $case_id = $dataForinternal["ayasompo_caseid"];
         $getCaseNumber = $this->getCaseNumberByAYASCaseID($case_id);
         if (!isset($getCaseNumber[0])) {
@@ -208,56 +208,3 @@ class RequestFormService
 
     }
 }
-
-
-    banners	
-	customers
-	failed_jobs	
-	faqs
-	internal_access_lists
-	logs
-	migrations
-	oauth_access_tokens
-	oauth_auth_codes
-	oauth_clients
-	oauth_personal_access_clients
-	oauth_refresh_tokens
-	password_resets
-	personal_access_tokens
-	products
-	product_code_lists
-	product_code_list_request_form_types
-	properties
-	property_types
-	request_forms
-	request_form_types
-	users
-
-
-
-    banners	 	
-	core_customers
-	customers
-	device_tokens
-	failed_jobs
-	faqs
-	internal_access_lists
-	logs
-	migrations
-	motor_claim_cases
-	non_motor_claim_cases
-	oauth_access_tokens
-	oauth_auth_codes
-	oauth_clients
-	oauth_personal_access_clients
-	oauth_refresh_tokens
-	password_resets
-	personal_access_tokens
-	products
-	product_code_lists	 	
-	product_code_list_request_form_types	 	
-	properties	 	
-	property_types	 	
-	request_forms	 	
-	request_form_types	 	
-	users

@@ -15,7 +15,9 @@ class Customer extends Authenticatable
         'customer_code',
         'customer_phoneno',
         'user_name',
+        'app_customer_type',
         'password',
+        'device_token'
     ];
     function core()
     {

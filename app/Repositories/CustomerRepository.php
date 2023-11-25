@@ -26,7 +26,7 @@ class CustomerRepository
 
     static function getAllByPhone($phone)
     {
-        return Customer::query()->select('id', 'customer_code', 'customer_phoneno', 'user_name')->whereCustomer_phoneno($phone)->get();
+        return Customer::query()->select('id', 'customer_code', 'customer_phoneno', 'user_name', 'app_customer_type')->whereCustomer_phoneno($phone)->get();
     }
 
 }

@@ -21,7 +21,7 @@ class ProductService
     }
     function store($request)
     {
-        $input = $request->only("name", "title", "product_type", "brief_description");
+        $input = $request->only("name", "title", "product_type", "brief_description", "sort");
         $upload_path = $this->uploadFile($request->thumbnail, '/uploads/thumbnail/', 'aya_sompo');
         $input["thumbnail"] = $upload_path;
         return ProductRepository::store($input);
@@ -46,7 +46,7 @@ class ProductService
 
     public function update($id, $request)
     {
-        $input = $request->only("name", "title", "product_type", "brief_description");
+        $input = $request->only("name", "title", "product_type", "brief_description", "sort");
         if ($request->thumbnail != null) {
             $upload_path = $this->uploadFile($request->thumbnail, '/uploads/banner/', 'aya_sompo');
             $input["thumbnail"] = $upload_path;

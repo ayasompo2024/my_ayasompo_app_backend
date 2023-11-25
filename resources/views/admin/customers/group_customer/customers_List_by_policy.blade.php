@@ -1,9 +1,12 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container" id="app">
+        <div v-if="isLoading"
+            style="position: fixed;right: -80px;top: -50px;z-index:10000;background:white;width:
+            300px;height:100px; ">
+        </div>
         <div v-if="isLoading">
-
-            <div style="position: fixed;right: -50px;top: -50px;z-index:10000">
+            <div style="position: fixed;right: -80px;top: -1px;z-index:10000">
                 <span class="loader"></span>
             </div>
         </div>
@@ -13,18 +16,19 @@
 
 
         <div v-if="checkExistPhones" class="row mt-3">
-            <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
-                <h4 class="border-bottom">Preview</h4>
-                <div style="display: flex;flex-wrap: wrap;gap: 10px;">
-                    <div v-for="(phone, key) in checkExistPhones">
-                        <div class="btn btn-sm btn border mt-1">
-                            @{{ phone.phone }}
-                            <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
-                        </div>
+        <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
+            <h4 class="border-bottom">Preview</h4>
+            <div style="display: flex;flex-wrap: wrap;gap: 10px;">
+                <div v-for="(phone, key) in checkExistPhones.phones">
+                    <div class="btn btn-sm btn border mt-1">
+                        @{{ phone.phone }}
+                        <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
                     </div>
                 </div>
-                <button @click="" class="btn btn-sm bg-info mt-2">Add Now</button>
             </div>
+            <button @click="register()" class="btn btn-sm bg-info mt-2">Add Now</button>
+            <a href="{{ route('admin.customer.index') }}" class="btn btn-sm text-info btn-outline-secondary mt-2  ml-3">Cancle</a>
+        </div>
         </div>
 
         <div v-if="getPolicyListErrorStatus">
@@ -240,13 +244,14 @@
         }
 
         .loader {
+            /* background-color: red; */
             width: 30px;
             height: 30px;
-            border: 3px solid #f72020df;
+            border: 3px solid #e80404df;
             border-radius: 50%;
             display: inline-block;
             box-sizing: border-box;
-            /* position: relative; */
+            position: relative;
             animation: pulse 1s linear infinite;
         }
 
@@ -255,12 +260,12 @@
             position: absolute;
             width: 30px;
             height: 30px;
-            border: 3px solid rgb(217, 33, 33);
+            border: 3px solid red;
             border-radius: 50%;
             display: inline-block;
             box-sizing: border-box;
-            /* left: 50%;
-                                                top: 50%; */
+            left: 50%;
+            top: 50%;
             transform: translate(-50%, -50%);
             animation: scaleUp 1s linear infinite;
         }
@@ -298,32 +303,16 @@
             data() {
                 const customers = @json($customers);
                 let isLoading = false;
-                let httpError = undefined;
                 let policyList = undefined;
                 let selectCustomerObj = null;
                 let phoneNumberArray = [];
                 let phone = '';
-                let checkExistPhones = [{
-                        phone: "0979127912",
-                        appUsers: [{
-                                id: 27,
-                                customer_code: "C000051353",
-                                customer_phoneno: "0979127912",
-                                user_name: "Spider"
-                            },
-                            {
-                                id: 28,
-                                customer_code: "C000051353",
-                                customer_phoneno: "0979127912",
-                                user_name: "Spidey"
-                            }
-                        ]
-                    },
-                    {
-                        phone: "09787796698",
-                        appUsers: []
-                    }
-                ];
+                let checkExistPhones = '';
+                const requestHeader = {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                };
                 return {
                     customers,
                     isLoading,
@@ -353,13 +342,12 @@
                         }
                     });
                 },
-
                 getPolicyListByCustomerCode(customerCode) {
                     const headers = new Headers();
                     headers.append('Content-Type', 'application/json');
                     headers.append('Authorization', '{{ 'Bearer ' . Cache::get('token_for_internal') }}');
                     this.isLoading = true;
-                    fetch(`https://uatecom.ayasompo.com/PolicyManagement/getcustlistpolicies/${customerCode}`, {
+                    fetch(`{{ config('app.ayasompo_base_url') }}PolicyManagement/getcustlistpolicies/${customerCode}`, {
                             method: 'GET',
                             headers: headers,
                         })
@@ -394,12 +382,11 @@
                             });
                         });
                 },
-
                 preview() {
                     this.isLoading = true;
                     console.log(this.selectCustomerObj);
                     console.log(this.phoneNumberArray);
-                    fetch('http://127.0.0.1:8000/admin/customer/register/group-customer', {
+                    fetch(`{{ url('/') }}/admin/customer/register/preview-customer`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -423,7 +410,50 @@
                             }
                             this.isLoading = false;
                             this.checkExistPhones = responseJson.data;
+                            console.log(responseJson.data);
+                        })
+                        .catch(error => {
+                            return Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: error.message || 'Something went wrong',
+                                confirmButtonText: 'Try Again',
+                            });
+                        });
+                },
+                register(index) {
+                    this.isLoading = true;
+                    fetch(`{{ url('/') }}/admin/customer/register`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            },
+                            body: JSON.stringify({
+                                "select_customer_obj": this.selectCustomerObj,
+                                "phone_number_array": this.phoneNumberArray
+                            }),
+                        })
+                        .then(async response => {
+                            const responseJson = await response.json();
+                            if (!response.ok) {
+                                return Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Error',
+                                    text: responseJson.message,
+                                    cancelButtonText: 'Try Again',
+                                });
+                            }
+                            this.isLoading = false;
                             console.log(responseJson);
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: responseJson.meatadata.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
                         })
                         .catch(error => {
                             return Swal.fire({

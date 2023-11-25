@@ -44,6 +44,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
             Route::prefix('admin/backup')
                 ->middleware('web')
                 ->namespace($this->namespace)
@@ -52,6 +53,10 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('index', [DocController::class, 'index'])->name("doc.index");
                 Route::get('index/{file}', [DocController::class, 'getContent'])->name("doc.index.file");
             });
+            Route::prefix('admin/messaging')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/messaging.php'));
 
             // App Api
             Route::prefix('api/app')

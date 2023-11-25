@@ -61,14 +61,14 @@
         'route' => 'admin.claim-case.index',
         'imag_path' => null,
         'target' => false,
-        'icon' => 'bi bi-coin',
+        'icon' => 'bi bi-piggy-bank-fill',
         'sub_menus' => [
             [
                 'display' => 'Motor',
                 'route' => 'admin.claim-case.motor',
                 'imag_path' => null,
                 'target' => false,
-                'icon' => 'bi bi-car-front-fill',
+                'icon' => 'bi bi-car-front',
                 'sub_menus' => null,
             ],
             [
@@ -86,7 +86,15 @@
         'route' => 'admin.customer.index',
         'imag_path' => null,
         'target' => false,
-        'icon' => 'bi bi-people',
+        'icon' => 'bi bi-people-fill',
+        'sub_menus' => null,
+    ],
+    [
+        'display' => 'Messaging',
+        'route' => 'admin.messaging.index',
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'bi bi-bell-fill',
         'sub_menus' => null,
     ],
     [

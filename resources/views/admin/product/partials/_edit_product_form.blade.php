@@ -54,6 +54,16 @@
         @enderror
     </div>
 </div>
+<div class="row mt-3">
+    <div class="col-lg-4">
+        <label for="link"> Sort(Order) </label>
+    </div>
+    <div class="col-lg-8">
+        <input id="desc" value="{{ $product->sort }}" type="number" name="sort" autocomplete="desc"
+            class="form-control form-control-sm" placeholder="Enter Sort Number">
+    </div>
+</div>
+
 
 <div class="row mt-3">
     <div class="col-lg-4"><label for="description">Thumbnail</label></div>

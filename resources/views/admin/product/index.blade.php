@@ -17,8 +17,11 @@
                         <div class="card px-4 pt-3">
                             <div class="card-title d-flex justify-content-between px-3 pt-3">
                                 <div>
-                                    <h5 class="card-title">{{ $product->name }}</h5> <br>
-                                    <h6 class="mb-2 text-muted">{{ $product->title }}</h6>
+                                    <h5 class="card-title">
+                                        <span class="badge bg-light mr-1">{{ $product->sort }}</span> {{ $product->name }}
+                                    </h5>
+                                    <br>
+                                    <h6 class="mb-2 text-muted mt-1">{{ $product->title }}</h6>
                                 </div>
                                 <div class="float-right">
                                     <img src="{{ $product->thumbnail }}" height="30px" />
@@ -45,7 +48,13 @@
                                     </div>
                                 </div>
                                 <div class="border-top mt-1">
-
+                                    <span class="float-right text-info pt-1">
+                                        @if ($product->status)
+                                            Active
+                                        @else
+                                            Disabled
+                                        @endif
+                                    </span>
                                     <form class="d-inline" action="{{ route('admin.product.change-status', $product->id) }}"
                                         method="post">
                                         @method('put') @csrf

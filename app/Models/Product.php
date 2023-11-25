@@ -18,6 +18,7 @@ class Product extends Model
         "product_type",
         "thumbnail",
         "brief_description",
+        "sort",
         "status"
     ];
     public function properties()

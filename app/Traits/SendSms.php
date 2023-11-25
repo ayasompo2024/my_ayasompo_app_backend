@@ -2,27 +2,23 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\Cache;
 use App\Repositories\SettingRepository;
 
 
 trait SendSms
 {
-    public function sendSms($to, $content)
+    public function sendSmsMessage($to, $content)
     {
-        $setting_repository = new SettingRepository();
-        $sms_setting = $setting_repository->getSmsApiInfo();
-
-        // if sms_setting dose not have
-        if (!$sms_setting)
-            return false;
-
-        $end_point = $sms_setting->api_url;
+        $end_point = config('app.ayasompo_base_url') . 'sms/sendsms';
+        $token = Cache::get('token_for_internal');
+        \Log::info($to);
+        \Log::info($content);
         $body = ["to" => $to, "message" => $content];
-        $auth_token = $sms_setting->auth_token;
         $header = [
             'Content-Type: application/json',
             'Accept: application/json',
-            'Authorization: Bearer ' . $auth_token
+            'Authorization: Bearer ' . $token
         ];
 
         $curl = curl_init();
@@ -47,5 +43,20 @@ trait SendSms
             return $response;
         else
             return false;
+    }
+    function generateOTPCode()
+    {
+        return substr(random_int(1234, 9999), 0, 4);
+    }
+    function getOTPContent($code)
+    {
+        return 'Your OTP for DOMAIN is ' . $code . '. It is valid for next 15 minutes. Please do not share it to anyone. Thanks for using Gegomm!';
+    }
+    function removeInitialZero($phone)
+    {
+        if ($phone[0] == '0') {
+            return '+95' . substr($phone, 1);
+        }
+        return '+95' . $phone;
     }
 }

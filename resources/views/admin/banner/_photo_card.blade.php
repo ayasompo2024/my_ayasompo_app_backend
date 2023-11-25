@@ -1,5 +1,6 @@
 <div class="card IMG_BG tw-relative hover:tw-scale-105 tw-duration-500 tw-group"
     style="background-image: url({{ $banner->image }});">
+    <span class="badge bg-info">{{$banner->sort}}</span>
 </div>
 <div class="border-top">
     <form class="d-inline" action="{{ route('admin.banner.change-status', $banner->id) }}" method="post">
@@ -21,6 +22,13 @@
             <i title="Delete" class="bi bi-trash mx-2"></i>
         </button>
     </form>
+    <span class="float-right text-info pt-1">
+        @if ($banner->status)
+            Active
+        @else
+            Disabled
+        @endif
+    </span>
 </div>
 @push('child-css')
     <style>

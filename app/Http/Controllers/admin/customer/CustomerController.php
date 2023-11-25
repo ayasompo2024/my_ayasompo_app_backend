@@ -27,20 +27,31 @@ class CustomerController extends Controller
         return view('admin.customers.group_customer.customers_List_by_policy')->with(
             [
                 'customers' => $customerService->getCustomersListByPolicy($request->policy_no),
-                'tokens' => 'Bearer ' . Cache::get('token_for_internal'),
+                'ayaSompoToken' => 'Bearer ' . Cache::get('token_for_internal'),
+                'laraBaseUrl' => url('/'),
+                'ayaSompoBaserUrl' => config('app.ayasompo_base_url'),
             ]
         );
     }
-
     //Ajax Response
-    public function registerGroupCustomer(Request $request, CustomerService $customerService)
+    public function previewBeforeResgister(Request $request, CustomerService $customerService)
     {
-        
-        $status = $customerService->registerGroupCustomer($request);
-        Log::info($status);
+        // \Log::info($request);
+        $status = $customerService->previewBeforeResgister($request);
         return $status ?
             $this->successResponse("Request Success", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
+    //Ajax Response
+    public function register(Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->register($request);
+        return $status ?
+            $this->successResponse("Request Success", $status, 200) :
+            $this->errorResponse("Fail", 500);
+
+    }
 }
+
+
 

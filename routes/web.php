@@ -20,6 +20,7 @@ Route::get("/", function () {
     return view("home");
 });
 Auth::routes();
+
 // Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
 // Route::post('login', [LoginController::class, 'login'])->name("login");
 // Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -67,7 +68,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
         Route::resource('customer', CustomerController::class);
         Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
         //Ajax Call
-        Route::post('customer/register/group-customer', [CustomerController::class, 'registerGroupCustomer']);
+        Route::post('customer/register/preview-customer', [CustomerController::class, 'previewBeforeResgister']);
+        Route::post('customer/register', [CustomerController::class, 'register']);
     });
 
 });

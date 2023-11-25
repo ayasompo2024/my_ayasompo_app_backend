@@ -1,11 +1,10 @@
 <?php
 namespace App\Services\customer;
 
-use App\Events\CustomerRegistered;
-use App\Http\Resources\api\app\RegisterCustomerRsource;
-use App\Repositories\DeviceTokenRepository;
-use Illuminate\Support\Facades\Hash;
+
+
 use App\Repositories\CustomerRepository;
+use Illuminate\Support\Facades\Cache;
 
 class CustomerService
 {
@@ -21,7 +20,7 @@ class CustomerService
     }
 
     //Ajax Response
-    function registerGroupCustomer($request)
+    function previewBeforeResgister($request)
     {
         $phoneNumberArray = $request->phone_number_array;
         $selectCustomerObj = $request->select_customer_obj;
@@ -41,34 +40,34 @@ class CustomerService
         ];
     }
 
-    function unuse($request)
+    //Ajax Response
+    function register($request)
     {
-        $input = $request->only("customer_code", "customer_phoneno", "user_name");
-        $input['password'] = Hash::make($request['password']);
-        $customer = CustomerRepository::store($input);
-        $token = $customer->createToken('app_api_token')->accessToken;
-
-        $coreCustomer = $request->only("customer_code", "customer_type", "customer_name", "customer_phoneno", "customer_nrc");
-        $coreCustomer["app_customer_id"] = $customer->id;
-        event(new CustomerRegistered($coreCustomer));
-
-        // $this->storeDeviceToken($customer->id, $request->device_token);
+        $phoneNumberArray = $request->phone_number_array;
+        $selectCustomerObj = $request->select_customer_obj;
+        foreach ($phoneNumberArray as $individualPhone) {
+            $customer = CustomerRepository::getAllByPhone($individualPhone);
+            \Log::info($customer);
+            if (count($customer) > 0) {
+                $this->callSMSAPI($individualPhone, $this->contentForExistingCustomer());
+            } else {
+                $this->callSMSAPI($individualPhone, $this->contentForNotExistingCustomer());
+            }
+        }
         return [
-            "token" => $token,
-            "customer" => new RegisterCustomerRsource($customer)
+            'phoneNumberArray' => $phoneNumberArray,
+            'selectCustomerObj' => $selectCustomerObj
         ];
     }
 
-    // private function storeDeviceToken($customer_id, $token)
-    // {
-    //     $input = [
-    //         "customer_id" => $customer_id,
-    //         "token" => $token
-    //     ];
-    //     DeviceTokenRepository::store($input);
-    // }
-
-
+    private function contentForExistingCustomer()
+    {
+        return "ExistingCustomer";
+    }
+    private function contentForNotExistingCustomer()
+    {
+        return "Not Exist Customer";
+    }
 }
 
 

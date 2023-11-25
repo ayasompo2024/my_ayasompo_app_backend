@@ -8,7 +8,7 @@ class BannerRepository
 
     static function getAll()
     {
-        return Banner::all();
+        return Banner::orderBy('sort')->get();
     }
     static function getOnlyActive()
     {

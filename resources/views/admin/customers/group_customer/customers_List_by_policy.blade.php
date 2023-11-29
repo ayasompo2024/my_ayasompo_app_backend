@@ -16,19 +16,20 @@
 
 
         <div v-if="checkExistPhones" class="row mt-3">
-        <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
-            <h4 class="border-bottom">Preview</h4>
-            <div style="display: flex;flex-wrap: wrap;gap: 10px;">
-                <div v-for="(phone, key) in checkExistPhones.phones">
-                    <div class="btn btn-sm btn border mt-1">
-                        @{{ phone.phone }}
-                        <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
+            <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
+                <h4 class="border-bottom">Preview</h4>
+                <div style="display: flex;flex-wrap: wrap;gap: 10px;">
+                    <div v-for="(phone, key) in checkExistPhones.phones">
+                        <div class="btn btn-sm btn border mt-1">
+                            @{{ phone.phone }}
+                            <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
+                        </div>
                     </div>
                 </div>
+                <button @click="register()" class="btn btn-sm bg-info mt-2">Add Now</button>
+                <a href="{{ route('admin.customer.index') }}"
+                    class="btn btn-sm text-info btn-outline-secondary mt-2  ml-3">Cancle</a>
             </div>
-            <button @click="register()" class="btn btn-sm bg-info mt-2">Add Now</button>
-            <a href="{{ route('admin.customer.index') }}" class="btn btn-sm text-info btn-outline-secondary mt-2  ml-3">Cancle</a>
-        </div>
         </div>
 
         <div v-if="getPolicyListErrorStatus">
@@ -384,8 +385,9 @@
                 },
                 preview() {
                     this.isLoading = true;
-                    console.log(this.selectCustomerObj);
-                    console.log(this.phoneNumberArray);
+                    console.log('selectCustomerObj');
+                    console.table(this.selectCustomerObj);
+                    console.table(this.phoneNumberArray);
                     fetch(`{{ url('/') }}/admin/customer/register/preview-customer`, {
                             method: 'POST',
                             headers: {

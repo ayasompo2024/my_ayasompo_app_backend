@@ -95,7 +95,16 @@
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-bell-fill',
-        'sub_menus' => null,
+        'sub_menus' => [
+            [
+                'display' => 'Recent Message',
+                'route' => 'admin.messaging.history',
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-clock-history',
+                'sub_menus' => null,
+            ],
+        ],
     ],
     [
         'display' => 'Logs',

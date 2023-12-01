@@ -27,21 +27,23 @@ class FAQ extends Model
     {
         parent::boot();
         static::creating(function ($faq) {
-            Log::info('FAQ creating : ' . $faq);
+            // Log::info('FAQ creating : ' . $faq);
             $faq->sendFcmNoti();
         });
         static::updating(function ($faq) {
-            Log::info('FAQ updating : ' . $faq);
+            // Log::info('FAQ updating : ' . $faq);
             $faq->sendFcmNoti();
         });
         static::deleting(function ($faq) {
-            Log::info('FAQ deleting : ' . $faq);
+            // Log::info('FAQ deleting : ' . $faq);
             $faq->sendFcmNoti();
         });
     }
     private function sendFcmNoti()
     {
-        // $this->sendFcmPushNotification("Source From Product ", "sendFcmNoti tete");
+        $notification = ["title" => "Product Announcement!", "body" => null];
+        $data = ["title" => "Product", "body" => null];
+        $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

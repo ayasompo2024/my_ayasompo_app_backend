@@ -10,7 +10,7 @@ class CustomerService
     use SendPushNotification;
     public function sendMessage($inputFromInternal)
     {
-        $this->sendFcmPushNotification('323', "dd");
+        
         return $inputFromInternal;
     }
 

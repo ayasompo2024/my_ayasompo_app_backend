@@ -15,4 +15,10 @@ class Messaging extends Model
         "customer_id",
         "image_url",
     ];
+
+    function customer()
+    {
+        return $this->belongsTo(Customer::class);
+
+    }
 }

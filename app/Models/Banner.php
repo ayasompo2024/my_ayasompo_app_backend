@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\SendPushNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class Banner extends Model
 {
-    use HasFactory;
+    use HasFactory, SendPushNotification;
     protected $fillable = [
         'title',
         'desc',
@@ -37,7 +38,9 @@ class Banner extends Model
     }
     private function sendFcmNoti()
     {
-        // $this->sendFcmPushNotification("sendFcmNoti ddd", "sendFcmNoti tete");
-        Cache::forget('getWithPropertyAndFAQ');
+        $notification = ["title" => "Banner Announcement!", "body" => null];
+        $data = ["title" => "Banner", "body" => null];
+        $this->sendAsbroadcast($notification, $data);
+        // Cache::forget('getWithPropertyAndFAQ');
     }
 }

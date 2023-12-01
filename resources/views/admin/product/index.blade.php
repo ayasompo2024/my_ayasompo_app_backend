@@ -34,14 +34,14 @@
                                 <div class="row">
                                     @foreach ($property as $item)
                                         <div class="col-6">
-                                            <div class="card p-3 shadow-none bg-light text-center">
+                                            <div class="card p-2 shadow-none bg-light text-center">
                                                 <a
                                                     href="{{ route('admin.product.property', ['product_id' => $product->id, 'property_type_id' => $item->id]) }}">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     @endforeach
                                     <div class="col-12">
-                                        <div class="card p-3 shadow-none bg-light text-center">
+                                        <div class="card p-2 shadow-none bg-light text-center">
                                             <a class="text-dark font-weight-bold"
                                                 href="{{ route('admin.product.faq', ['product_id' => $product->id]) }}">FAQ</a>
                                         </div>

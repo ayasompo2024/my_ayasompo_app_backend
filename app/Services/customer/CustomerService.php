@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\customer;
+
 use App\Repositories\CustomerRepository;
 use Illuminate\Support\Facades\Cache;
 use App\Enums\AppCustomerType;
@@ -12,6 +13,10 @@ class CustomerService
     function index($per_page)
     {
         return CustomerRepository::getWithPaginate($per_page);
+    }
+    function getAllCustomerByPhone($phone)
+    {
+        return CustomerRepository::getAllCustomerByPhone($phone);
     }
     function getCustomersListByPolicy($policy_no)
     {

@@ -51,6 +51,11 @@ class CustomerController extends Controller
             $this->errorResponse("Fail", 500);
 
     }
+
+    public function searchByPhone(Request $request, CustomerService $customerService)
+    {
+        return view('admin.customers.index')->with('customers', $customerService->getAllCustomerByPhone($request->phone));
+    }
 }
 
 

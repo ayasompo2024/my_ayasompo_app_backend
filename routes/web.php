@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
+        Route::get('customer/search/by-phone', [CustomerController::class,'searchByPhone'])->name('customer.search.by-phone');
         Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
         //Ajax Call
         Route::post('customer/register/preview-customer', [CustomerController::class, 'previewBeforeResgister']);

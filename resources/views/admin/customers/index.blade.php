@@ -6,10 +6,9 @@
             Customer / All
             <span class="badge bg-info ml-2">{{ $customers->total() }}</span>
             <div class="float-right">
-                <form action="" method="get">
+                <form action="{{ route('admin.customer.search.by-phone') }}" method="get">
                     <div class="input-group mb-2 mr-sm-2">
-                        <input type="text" name="product_code" required class="form-control form-control-sm"
-                            placeholder="Customer Code">
+                        <input type="number" name="phone" required class="form-control form-control-sm" placeholder="Phone">
                         <div class="input-group-prepend bg-secondary">
                             <button type="submit" class="btn btn-sm text-white"><i class="bi bi-search"></i></button>
                         </div>
@@ -30,13 +29,10 @@
                 <thead>
                     <tr>
                         <th style="min-width: 140px">Customer Code</th>
-                        {{-- <th style="min-width: 130px">Customer Type</th> --}}
                         <th style="min-width: 150px">Customer Name</th>
                         <th style="min-width: 200px">App User Name</th>
                         <th style="min-width: 140px">Customer Phone</th>
-                        <th style="min-width: 140px">NRC</th>
-                        {{-- <th>Email</th> --}}
-                        {{-- <th style="min-width: 150px">created_at</th> --}}
+                        <th style="min-width: 140px">App Customer Type</th>
                         <th style="min-width: 140px">Send Noti</th>
                     </tr>
                 </thead>
@@ -44,13 +40,10 @@
                     @foreach ($customers as $customer)
                         <tr style="font-size: 15px">
                             <td class="p-2"> {{ $customer->customer_code }} </td>
-                            {{-- <td class="p-2">{{ $customer->core->customer_type }}</td> --}}
                             <td class="p-2"> {{ $customer->core->customer_name }} </td>
                             <td class="p-2"> {{ $customer->user_name }} </td>
                             <td class="p-2"> {{ $customer->customer_phoneno }} </td>
-                            <td class="p-2"> {{ $customer->core->customer_nrc }} </td>
-                            {{-- <td class="p-2"> {{ $customer->core->email }} </td> --}}
-                            {{-- <td class="p-2"> {{ $customer->created_at->diffForHumans() }} </td> --}}
+                            <td class="p-2"> {{ $customer->app_customer_type }} </td>
                             <td class="p-2">
                                 <a href="{{ route('admin.messaging.unicast.show-form', $customer->id) }}"
                                     class="ml-2 btn btn-sm btn-outline-secondary">

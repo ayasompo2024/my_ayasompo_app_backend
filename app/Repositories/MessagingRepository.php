@@ -10,7 +10,7 @@ class MessagingRepository
 {
     static function getWithPaginate($perpage)
     {
-        // Log::query()->orderByDesc('id')->paginate($perpage);
+        return Messaging::query()->with('customer')->orderByDesc('id')->paginate($perpage);
     }
     static function store($input)
     {

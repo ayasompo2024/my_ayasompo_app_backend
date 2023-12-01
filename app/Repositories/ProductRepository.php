@@ -8,7 +8,7 @@ class ProductRepository
 {
     static function getAll()
     {
-        return Product::all();
+        return Product::query()->orderBy('sort')->get();
     }
     static function store(array $input)
     {
@@ -32,7 +32,7 @@ class ProductRepository
     static function getWithPropertyAndFAQ()
     {
         $value = Cache::remember('getWithPropertyAndFAQ', null, function () {
-            return Product::with('properties.type')->with('faqs')->get();
+            return Product::with('properties.type')->with('faqs')->where('status', 1)->orderBy('sort')->get();
         });
         return $value;
     }

@@ -9,5 +9,3 @@ enum MessagingType: string
     case UNICAST = "Unicast";
 }
 
-
-

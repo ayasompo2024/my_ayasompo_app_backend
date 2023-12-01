@@ -30,21 +30,23 @@ class Property extends Model
     {
         parent::boot();
         static::creating(function ($property) {
-            Log::info('property creating : ' . $property);
+            // Log::info('property creating : ' . $property);
             $property->sendFcmNoti();
         });
         static::updating(function ($property) {
-            Log::info('property updating : ' . $property);
+            // Log::info('property updating : ' . $property);
             $property->sendFcmNoti();
         });
         static::deleting(function ($property) {
-            Log::info('property deleting : ' . $property);
+            // Log::info('property deleting : ' . $property);
             $property->sendFcmNoti();
         });
     }
     private function sendFcmNoti()
     {
-        // $this->sendFcmPushNotification("Source From Product ", "sendFcmNoti tete");
+        $notification = ["title" => "Product Announcement!", "body" => null];
+        $data = ["title" => "Product", "body" => null];
+        $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

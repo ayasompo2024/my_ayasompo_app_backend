@@ -33,21 +33,23 @@ class Product extends Model
     {
         parent::boot();
         static::creating(function ($product) {
-            Log::info('product creating : ' . $product);
+            // Log::info('product creating : ' . $product);
             $product->sendFcmNoti();
         });
         static::updating(function ($product) {
-            Log::info('product  updating: ' . $product);
+            // Log::info('product  updating: ' . $product);
             $product->sendFcmNoti();
         });
         static::deleting(function ($product) {
-            Log::info('product deleting : ' . $product);
+            // Log::info('product deleting : ' . $product);
             $product->sendFcmNoti();
         });
     }
     private function sendFcmNoti()
     {
-        // $this->sendFcmPushNotification("Source From Product ", "sendFcmNoti tete");
+        $notification = ["title" => "Product Announcement!", "body" => null];
+        $data = ["title" => "Product", "body" => null];
+        $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');
     }
 }

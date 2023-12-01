@@ -7,9 +7,11 @@ use App\Repositories\DeviceTokenRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
+use App\Traits\FileUpload;
 
 class CustomerService
 {
+    use FileUpload;
     function register($request)
     {
         $input = $request->only("customer_code", "customer_phoneno", "user_name", "device_token");
@@ -34,11 +36,18 @@ class CustomerService
         $token = $customer->createToken('app_api_token')->accessToken;
         $customer->device_token = $request->device_token;
         $customer->save();
-        // $this->storeDeviceToken($customer->id, $request->device_token);
         return [
             "token" => $token,
             "customer" => new RegisterCustomerRsource($customer)
         ];
+    }
+
+    function updateProfilePhoto($request)
+    {
+        $upload_path = $this->uploadFile($request->photo, '/uploads/profile/', 'aya_sompo');
+        return CustomerRepository::update($request->user()->id, [
+            'profile_photo' => $upload_path
+        ]);
     }
     private function storeDeviceToken($customer_id, $token)
     {
@@ -48,6 +57,7 @@ class CustomerService
         ];
         DeviceTokenRepository::store($input);
     }
+
 
 }
 

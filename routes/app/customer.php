@@ -11,11 +11,12 @@ Route::group(['prefix' => 'v1/auth/customer'], function () {
     Route::post('login', [CustomerController::class, 'login']);
 });
 
-Route::middleware('auth:api')->prefix('customer')->group(function () {
-    Route::get('profile', [CustomerController::class, 'profile']);
-    Route::post('get/by-policy-no', [CustomerController::class, 'getCustomersByPolicyNumber']);
-    // Route::put('update', 'CustomerController@update');
+Route::middleware('auth:api')->prefix('v1/customer')->controller(CustomerController::class)->group(function () {
+    Route::get('profile', 'profile');
+    Route::post('update/profile-photo', 'updateProfilePhoto');
     // Route::post('logout', 'AuthController@logout');
 });
+
+
 
 

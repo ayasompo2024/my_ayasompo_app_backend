@@ -32,6 +32,9 @@ class CustomerRepository
     {
         return Customer::query()->where("customer_phoneno", $phone)->paginate(30);
     }
-
+    static function update($customer_id, $input)
+    {
+        return Customer::find($customer_id)->update($input);
+    }
 }
 

@@ -66,8 +66,9 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
-        Route::get('customer/search/by-phone', [CustomerController::class,'searchByPhone'])->name('customer.search.by-phone');
+        Route::get('customer/search/by-phone', [CustomerController::class, 'searchByPhone'])->name('customer.search.by-phone');
         Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
+        
         //Ajax Call
         Route::post('customer/register/preview-customer', [CustomerController::class, 'previewBeforeResgister']);
         Route::post('customer/register', [CustomerController::class, 'register']);
@@ -75,26 +76,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
 });
 
+
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
-
-Route::get('/noti', function () {
-    $title = "ghis";
-    $message = "ghis";
-    $url = config('app.fcm_url');
-    $serverKey = config('app.fcm_key');
-    $data = [
-        "title" => $title,
-        "message" => $message
-    ];
-    return Http::withHeaders([
-        'Authorization' => "key={$serverKey}",
-        'Content-Type' => 'application/json'
-    ])->post($url, [
-                'to' => "fQjQD8J-T7mMubjnOGS-iD:APA91bETeHlHmqv4s1SgKhahVlTc5xrAzCTtaT2HEcCT8cV6MH1QYb_f6Iv71f5lfsnY4g5mjczQ_qXDaQ9WDC0ur89irUj9LrFUXLByrsl1K7Q19Hp20c9m9VC13Hy08bPd_uNrsMTc",
-                "data" => $data
-            ]);
-});
-
 Route::get('/c', function () {
     $phones = [
         '0979127912',

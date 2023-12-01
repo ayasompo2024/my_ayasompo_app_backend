@@ -17,7 +17,8 @@ class Customer extends Authenticatable
         'user_name',
         'app_customer_type',
         'password',
-        'device_token'
+        'device_token',
+        'profile_photo'
     ];
     function core()
     {

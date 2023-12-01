@@ -2989,3 +2989,568 @@
 #55 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
 #56 {main}
 "} 
+[2023-12-01 15:09:38] local.ERROR: Target class [CustomerController] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [CustomerController] does not exist. at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php:879)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\\Container\\Container->build()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\\Container\\Container->resolve()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Foundation\\Application->resolve()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\\Container\\Container->make()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(276): Illuminate\\Foundation\\Application->make()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(1080): Illuminate\\Routing\\Route->getController()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(1023): Illuminate\\Routing\\Route->controllerMiddleware()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(734): Illuminate\\Routing\\Route->gatherMiddleware()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(714): Illuminate\\Routing\\Router->gatherRouteMiddleware()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#33 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"CustomerController\" does not exist at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php:877)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php(877): ReflectionClass->__construct()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php(758): Illuminate\\Container\\Container->build()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(851): Illuminate\\Container\\Container->resolve()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Container/Container.php(694): Illuminate\\Foundation\\Application->resolve()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(836): Illuminate\\Container\\Container->make()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(276): Illuminate\\Foundation\\Application->make()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(1080): Illuminate\\Routing\\Route->getController()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(1023): Illuminate\\Routing\\Route->controllerMiddleware()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(734): Illuminate\\Routing\\Route->gatherMiddleware()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(714): Illuminate\\Routing\\Router->gatherRouteMiddleware()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#34 {main}
+"} 
+[2023-12-01 15:15:47] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/Exception/OAuthServerException.php:243)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php(123): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(205): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(148): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(111): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/PassportServiceProvider.php(309): Laravel\\Passport\\Guards\\TokenGuard->user()
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/RequestGuard.php(57): call_user_func()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\RequestGuard->user()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(63): Illuminate\\Auth\\RequestGuard->check()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#38 {main}
+"} 
+[2023-12-01 15:16:44] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/Exception/OAuthServerException.php:243)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php(123): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(205): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(148): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(111): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/PassportServiceProvider.php(309): Laravel\\Passport\\Guards\\TokenGuard->user()
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/RequestGuard.php(57): call_user_func()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\RequestGuard->user()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(63): Illuminate\\Auth\\RequestGuard->check()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#38 {main}
+"} 
+[2023-12-01 15:16:48] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/Exception/OAuthServerException.php:243)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php(123): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(205): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(148): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(111): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/PassportServiceProvider.php(309): Laravel\\Passport\\Guards\\TokenGuard->user()
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/RequestGuard.php(57): call_user_func()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\RequestGuard->user()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(63): Illuminate\\Auth\\RequestGuard->check()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#38 {main}
+"} 
+[2023-12-01 15:19:06] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/Exception/OAuthServerException.php:243)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php(123): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/league/oauth2-server/src/ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(205): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(148): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/Guards/TokenGuard.php(111): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/passport/src/PassportServiceProvider.php(309): Laravel\\Passport\\Guards\\TokenGuard->user()
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/RequestGuard.php(57): call_user_func()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\RequestGuard->user()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(63): Illuminate\\Auth\\RequestGuard->check()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#38 {main}
+"} 
+[2023-12-01 21:52:15] local.ERROR: Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+Accept:          application/json
+Accept-Encoding: gzip, deflate, br
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+Connection:      keep-alive
+Content-Length:  58698
+Content-Type:    multipart/form-data; boundary=--------------------------217888065077930096796728
+Host:            127.0.0.1:8000
+User-Agent:      PostmanRuntime/7.29.4
+
+ {"userId":47,"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+
+Accept:          application/json
+
+Accept-Encoding: gzip, deflate, br
+
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+
+Connection:      keep-alive
+
+Content-Length:  58698
+
+Content-Type:    multipart/form-data; boundary=--------------------------217888065077930096796728
+
+Host:            127.0.0.1:8000
+
+User-Agent:      PostmanRuntime/7.29.4
+
+
+
+ at /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php:48)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php(48): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(27): App\\Services\\api\\app\\CustomerService->updateProfilePhoto()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhoto()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(261): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(721): Illuminate\\Routing\\Route->run()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(55): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#39 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#42 {main}
+"} 
+[2023-12-01 21:52:57] local.ERROR: Illuminate\Validation\Factory::make(): Argument #1 ($data) must be of type array, Illuminate\Http\Request given, called in /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 261 {"userId":47,"exception":"[object] (TypeError(code: 0): Illuminate\\Validation\\Factory::make(): Argument #1 ($data) must be of type array, Illuminate\\Http\\Request given, called in /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 261 at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Validation/Factory.php:105)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(261): Illuminate\\Validation\\Factory->make()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(23): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhotoValidation()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhoto()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(261): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(721): Illuminate\\Routing\\Route->run()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(55): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#38 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#40 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#41 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#42 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#43 {main}
+"} 
+[2023-12-01 21:54:01] local.ERROR: Illuminate\Validation\Factory::make(): Argument #1 ($data) must be of type array, Illuminate\Http\Request given, called in /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 261 {"userId":47,"exception":"[object] (TypeError(code: 0): Illuminate\\Validation\\Factory::make(): Argument #1 ($data) must be of type array, Illuminate\\Http\\Request given, called in /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 261 at /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Validation/Factory.php:105)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(261): Illuminate\\Validation\\Factory->make()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(23): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhotoValidation()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhoto()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(261): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(721): Illuminate\\Routing\\Route->run()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(55): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#38 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#39 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#40 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#41 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#42 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#43 {main}
+"} 
+[2023-12-01 21:54:26] local.ERROR: Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+Accept:          application/json
+Accept-Encoding: gzip, deflate, br
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+Connection:      keep-alive
+Content-Length:  58698
+Content-Type:    multipart/form-data; boundary=--------------------------201676640132614098756351
+Host:            127.0.0.1:8000
+User-Agent:      PostmanRuntime/7.29.4
+
+ {"userId":47,"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+
+Accept:          application/json
+
+Accept-Encoding: gzip, deflate, br
+
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+
+Connection:      keep-alive
+
+Content-Length:  58698
+
+Content-Type:    multipart/form-data; boundary=--------------------------201676640132614098756351
+
+Host:            127.0.0.1:8000
+
+User-Agent:      PostmanRuntime/7.29.4
+
+
+
+ at /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php:48)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php(48): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(27): App\\Services\\api\\app\\CustomerService->updateProfilePhoto()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhoto()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(261): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(721): Illuminate\\Routing\\Route->run()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(55): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#39 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#42 {main}
+"} 
+[2023-12-01 21:54:57] local.ERROR: Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+Accept:          application/json
+Accept-Encoding: gzip, deflate, br
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+Connection:      keep-alive
+Content-Length:  58698
+Content-Type:    multipart/form-data; boundary=--------------------------343885377586888195228184
+Host:            127.0.0.1:8000
+User-Agent:      PostmanRuntime/7.29.4
+
+ {"userId":47,"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/app/v1/customer/update/profile-photo HTTP/1.1
+
+Accept:          application/json
+
+Accept-Encoding: gzip, deflate, br
+
+Authorization:   Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYwNjNhMi03NTk2LTQ2ZDItYjQzZi1mZGYwN2QyMTcyNGUiLCJqdGkiOiIwMDE2MTY5MmQzMDQ0Yzk1MzNjZjM2YWJhY2Y1YWIyNWRlZmIwNDYwMmI4NTkwMzlmNWQxNjk5N2NmMDlkMDg1MmEwOWZiMmQxM2Q1MTM3NCIsImlhdCI6MTcwMTQyMDUzMC4wOTMxNzcsIm5iZiI6MTcwMTQyMDUzMC4wOTMyNDMsImV4cCI6MTcwMTU5MzMyOS45MTMxNTIsInN1YiI6IjQ3Iiwic2NvcGVzIjpbXX0.MHvQbCH-Z37ONOxxwQFjzYBPrQgsxz_zvOs58OA2Nq5rYKUEQFAZYcNAUpwQ91sKBJlgRlyu1Qx54iNYV8CUxZgaeQPoK2gfBsvI9ESEZkFodRqjbChsm1gdfrgshMS2kM-zU_JblAyL1T1V_PUfbC9ewCy6Fc8gtjkJDLg6BzPCeI1Z2N1Y16Aoax7pK2Jfrg7HHtNMyXGofC7NNtVa9tQRceScH4Bf2-wFotxzzfiWJSF0P5q8ftNNOgFE3LlrAUya6nMJ58Q3gIdwPKZoYcsVmMWTid_MdNCL7OLy38095jdF48FURiANAyJTctC3kon1qw7Xdxm5xBj1HGi9Cc72eyfaWRc1SP9k1IytiNMpHIm3s-E9ArONkb___M7fCZhFZL9VUWSUMBHMi6ktLkSH69k2s8uanB40UMODOaKKAbL4JQsiC_SatJzqjiO5sTHmqH3iI30UoVSJ9Nlsn-oMss8_B00bIvdvPKsHfH-CLOpRd5uXRjIexXZD4QLRgDeAO3RDqvVfNwJzE6VhUnltCo2M0ry97KZCOQhxVrmMrTfQRWQC54Qsr4JoaFJCuCz-er9tRS6ni-ci806-5UsdhezQIMTgs95MYa4aUwIqqyWwNoOJ17vR_5bB_t95IbNteHEtO0BEdd8UfgFc7CwAbpTeOLyDcNqdVViO7v4
+
+Connection:      keep-alive
+
+Content-Length:  58698
+
+Content-Type:    multipart/form-data; boundary=--------------------------343885377586888195228184
+
+Host:            127.0.0.1:8000
+
+User-Agent:      PostmanRuntime/7.29.4
+
+
+
+ at /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php:48)
+[stacktrace]
+#0 /media/spideyshine/Codetion/Microland/aya-sompo/app/Services/api/app/CustomerService.php(48): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /media/spideyshine/Codetion/Microland/aya-sompo/app/Http/Controllers/api/app/CustomerController.php(27): App\\Services\\api\\app\\CustomerService->updateProfilePhoto()
+#2 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\api\\app\\CustomerController->updateProfilePhoto()
+#3 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction()
+#4 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(261): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(721): Illuminate\\Routing\\Route->run()
+#7 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#10 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(127): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(93): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#12 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(55): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#13 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#14 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#15 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#16 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(719): Illuminate\\Pipeline\\Pipeline->then()
+#18 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(698): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRoute()
+#20 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Routing/Router.php(651): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(167): Illuminate\\Routing\\Router->dispatch()
+#22 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/fruitcake/laravel-cors/src/HandleCors.php(52): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle()
+#35 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(142): Illuminate\\Pipeline\\Pipeline->then()
+#39 /media/spideyshine/Codetion/Microland/aya-sompo/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /media/spideyshine/Codetion/Microland/aya-sompo/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /media/spideyshine/Codetion/Microland/aya-sompo/server.php(21): require_once('...')
+#42 {main}
+"} 

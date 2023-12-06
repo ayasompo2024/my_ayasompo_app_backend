@@ -2,6 +2,8 @@
 
 return [
 
+    'app_domain' => env('App_DOMAIN'),
+
     'auth_route' => env('AUTH_ROUTE'),
     'user_name' => env('USER_NAME'),
     'password' => env('PASSWORD'),

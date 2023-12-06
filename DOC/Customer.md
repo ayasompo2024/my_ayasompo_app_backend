@@ -105,3 +105,117 @@
 
 
 
+
+
+### Update Profile Photo
+
+- `End Point :  api/app/v1/customer/update/profile-photo`
+
+- `Method   : Post`
+
+- `Headers  Value  `
+
+  -  `Content-Type :  application/json`
+  -  `Accept : application/json`
+
+- `Body`
+
+  - `photo : required, mimes:png,jpg,jpeg,PNG,JPG,JPEG`
+
+- `Status Code & Message     `
+
+  - `400 : Validation Error`
+  - `200 : Success`
+
+  ```json
+  //Example
+  {
+      "photo": YOUR_FILE_HERE,
+  }
+  //Success Response
+  {
+      "meatadata": {
+          "isSuccess": true,
+          "statusCode": 201,
+          "message": "Profile Photo Update Success"
+      },
+      "data": true
+  }
+  ```
+
+  
+
+### Update Password
+
+- `End Point :  api/app/v1/customer/update/password`
+- `Method   : Post`
+- `Headers  Value  `
+  -  `Content-Type :  application/json`
+  -  `Accept : application/json`
+- `Body`
+  - `password : required`
+  - `password_confirmation : required  `
+- `Status Code & Message     `
+  - `400 : Validation Error`
+  - `200 : Success`
+
+```json
+//Example
+{
+    "password" : "123442",
+    "password_confirmation" : "123442"
+}
+
+//Respone
+{
+    "meatadata": {
+        "isSuccess": true,
+        "statusCode": 201,
+        "message": "Password  Update Success"
+    },
+    "data": true
+}
+
+```
+
+
+
+### Get Profiles List(By Phone)
+
+- `End Point :  api/app/v1/customer/profile/list`
+- `Method   : Post`
+- `Headers  Value  `
+  -  `Content-Type :  application/json`
+  -  `Accept : application/json`
+
+```json
+//Respone
+{
+    "meatadata": {
+        "isSuccess": true,
+        "statusCode": 201,
+        "message": "Get Profile List By Phone"
+    },
+    "data": [
+        {
+            "id": 46,
+            "customer_code": "C000051354",
+            "customer_phoneno": "0979127919",
+            "user_name": "Spidey Ss",
+            "app_customer_type": "GROUP",
+            "profile_photo": "https://uatecom.ayasompo.com:5007"
+        },
+        {
+            "id": 47,
+            "customer_code": "C000051353",
+            "customer_phoneno": "0979127919",
+            "user_name": "Spidey Shine",
+            "app_customer_type": "INDIVIDUAL",
+            "profile_photo": "https://uatecom.ayasompo.com:5007/uploads/profile/aya_sompo656ee6b652e61.png"
+        }
+    ]
+}
+```
+
+
+

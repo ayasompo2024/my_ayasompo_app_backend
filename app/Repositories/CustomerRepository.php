@@ -36,5 +36,10 @@ class CustomerRepository
     {
         return Customer::find($customer_id)->update($input);
     }
+
+    static function getAllByProvidedPhone($phone)
+    {
+        return Customer::where('customer_phoneno', $phone)->get();
+    }
 }
 

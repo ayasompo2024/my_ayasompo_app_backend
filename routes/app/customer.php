@@ -12,9 +12,9 @@ Route::group(['prefix' => 'v1/auth/customer'], function () {
 });
 
 Route::middleware('auth:api')->prefix('v1/customer')->controller(CustomerController::class)->group(function () {
-    Route::get('profile', 'profile');
+    Route::get('profile/list', 'getProfileList');
     Route::post('update/profile-photo', 'updateProfilePhoto');
-    // Route::post('logout', 'AuthController@logout');
+    Route::post('update/password', 'updatePassword');
 });
 
 

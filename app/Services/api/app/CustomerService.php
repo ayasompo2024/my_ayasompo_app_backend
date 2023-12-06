@@ -49,6 +49,20 @@ class CustomerService
             'profile_photo' => $upload_path
         ]);
     }
+    function updatePassword($request)
+    {
+        return CustomerRepository::update(
+            $request->user()->id,
+            [
+                'password' => Hash::make($request['password'])
+            ]
+        );
+    }
+
+    function getProfileListByPhone($phone){
+        return CustomerRepository::getAllByProvidedPhone($phone);
+    }
+
     private function storeDeviceToken($customer_id, $token)
     {
         $input = [

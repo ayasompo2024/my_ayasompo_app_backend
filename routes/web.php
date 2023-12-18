@@ -12,6 +12,8 @@ use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
+use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
+use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Repositories\CustomerRepository;
 
 use Illuminate\Support\Facades\Route;
@@ -64,11 +66,14 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
         Route::get('claim-case/non-motor', 'nonMotorCase')->name('claim-case.non-motor');
     });
 
+    Route::resource('location-map', LocationMapController::class);
+    Route::resource('location-map-category', LocationMapCategoryController::class);
+
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
         Route::get('customer/search/by-phone', [CustomerController::class, 'searchByPhone'])->name('customer.search.by-phone');
         Route::post('customer/get-customers-list-by-policy', [CustomerController::class, 'getCustomersListByPolicy'])->name('customer.get-customers-list-by-policy');
-        
+
         //Ajax Call
         Route::post('customer/register/preview-customer', [CustomerController::class, 'previewBeforeResgister']);
         Route::post('customer/register', [CustomerController::class, 'register']);
@@ -95,6 +100,3 @@ Route::get('/c', function () {
     }
     return $isExistPhones;
 });
-
-
-

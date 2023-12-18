@@ -54,7 +54,7 @@ class BannerController extends Controller
 
     function update(Request $request, $id, BannerService $bannerService)
     {
-        $request->validate(["image" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128']]);
+        $request->validate(["image" => ['nullable', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG', 'max:5128']]);
         return $bannerService->update($id, $request) ?
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);

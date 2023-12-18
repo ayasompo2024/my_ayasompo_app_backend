@@ -39,10 +39,7 @@
                             <input type="text" name="type" required class="form-control my-3 price"
                                 placeholder="Enter Type " />
                         </div>
-                        <div class="modal-body">
-                            <input type="text" name="type" required class="form-control my-3 price"
-                                placeholder="Enter Type " />
-                        </div>
+
                         <div class="modal-footer p-1 border-0">
                             <input type="submit" class="btn btn-sm bg-info" value="submit">
                             <button type="button" class="btn btn-sm bg-secondary" data-dismiss="modal">Close</button>

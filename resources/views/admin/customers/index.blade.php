@@ -21,10 +21,8 @@
                 </a>
             </div>
         </nav>
-
         @include('admin.validation-error-alert')
-
-        <div class="bg-light px-md-3 mt-2 mb-5 pt-3">
+        <div class="bg-light px-md-3 mt-2 mb-5 pt-3 mt-2">
             <table class="table table-responsive-sm">
                 <thead>
                     <tr>
@@ -47,7 +45,7 @@
                             <td class="p-2">
                                 <a href="{{ route('admin.messaging.unicast.show-form', $customer->id) }}"
                                     class="ml-2 btn btn-sm btn-outline-secondary">
-                                    Unicast &nbsp; <i class="bi bi-arrow-right-circle"></i>
+                                    <i class="bi bi-bell "></i> &nbsp; <i class="bi bi-arrow-right-circle"></i>
                                 </a>
                             </td>
                         </tr>

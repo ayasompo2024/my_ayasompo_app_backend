@@ -16,6 +16,7 @@
 
 
         <div v-if="checkExistPhones" class="row mt-3">
+
             <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
                 <h4 class="border-bottom">Preview</h4>
                 <div style="display: flex;flex-wrap: wrap;gap: 10px;">
@@ -48,59 +49,59 @@
         </div>
 
         <div v-if="policyList" class="row mt-3">
-            <div class="col-md-8 offset-md-2 p-2 bg-white">
+            <div class="col-md-10 offset-md-1 p-2 bg-white">
                 <div class="card-body rounded hover-scale bg-light">
                     <div class="d-flex">
-                        <div style="width: 50%">
+                        <div style="width: 40%">
                             <i class="bi bi-person-circle mr-2"></i> Customer Code
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="selectCustomerObj.customer_code"
                                 type="text" readonly>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div style="width: 50%">
+                    <div class="d-flex mt-1">
+                        <div style="width: 40%">
                             <i class="bi bi-front mr-2"></i> Customer Type
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="selectCustomerObj.customer_type"
                                 type="text" readonly>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div style="width: 50%">
+                    <div class="d-flex mt-1">
+                        <div style="width: 40%">
                             <i class="bi bi-credit-card-2-front mr-2"></i> Customer NRC
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="selectCustomerObj.customer_nrc"
                                 type="text" readonly>
                         </div>
                     </div>
 
-                    <div class="d-flex">
-                        <div style="width: 50%">
+                    <div class="d-flex mt-1">
+                        <div style="width: 40%">
                             <i class="bi bi-telephone mr-2"></i> Customer Phone No
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="selectCustomerObj.customer_phoneno"
                                 type="text" readonly>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div style="width: 50%">
+                    <div class="d-flex mt-1">
+                        <div style="width: 40%">
                             <i class="bi bi-123 mr-2"></i> Policy Number
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="policyList.policyNumber" type="text"
                                 readonly>
                         </div>
                     </div>
                     <div class="d-flex mt-1">
-                        <div style="width: 50%">
+                        <div style="width: 40%">
                             <i class="bi bi-calendar-date mr-2"></i> Policy Date (Start - End)
                         </div>
-                        <div style="width: 50%" class="d-flex">
+                        <div style="width: 60%" class="d-flex">
                             <input class="form-control form-control-sm" :value="policyList.policyStartDate" type="text"
                                 readonly>
                             <span class="mx-2"> - </span>
@@ -109,10 +110,10 @@
                         </div>
                     </div>
                     <div class="d-flex mt-1">
-                        <div style="width: 50%">
+                        <div style="width: 40%">
                             <i class="bi bi-calendar-date mr-2"></i> Is Expiring
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input v-if="policyList.isExpiring == null" class="form-control form-control-sm" value="No"
                                 type="text" readonly>
                             <input v-else="policyList.isExpiring == null" class="form-control form-control-sm"
@@ -120,32 +121,49 @@
                         </div>
                     </div>
                     <div class="d-flex mt-1">
-                        <div style="width: 50%">
+                        <div style="width: 40%">
                             <i class="bi bi-activity mr-2"></i> Policy Status
                         </div>
-                        <div style="width: 50%">
+                        <div style="width: 60%">
                             <input class="form-control form-control-sm" :value="policyList.policyStatus" type="text"
                                 readonly>
                         </div>
                     </div>
                     <div class="mt-1">
                         <div class="d-flex">
-                            <div style="width: 50%">
-                                <i class="bi bi-telephone mr-2"></i> Enter Phones to Register
+                            <div style="width: 40%">
+                                <i class="bi bi-telephone mr-2"></i> Chose Risk
                             </div>
-                            <div style="width: 50%">
-                                <ul class="list-group list-group-flush">
+                            <div style="width: 60%">
+                                @{{ riskOfpolicyList }}
+                                <div v-for="(risk, key) in riskOfpolicyList">
+                                    <div class="card p-1 px-2 bg-light mt-1">
+                                        <div><strong style="font-size: 13px;"> Risk SeqNo : @{{ risk.risk_seqNo }}, Risk
+                                                Name :
+                                                @{{ risk.risk_name }}</strong>
+                                        </div>
+                                        <div class="d-flex">
+                                            <input type="text" value="09" style="width: 50px;"
+                                                class="form-control form-control-sm" />
+                                            <input class="form-control form-control-sm p-0" type="number" minlength="6"
+                                                maxlength="9" :value="risk.phone" @mouseout="addPhone($event,key)"
+                                                @keyup.enter="addPhone($event,key)" title="Please enter only numbers"
+                                                autofocus>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <ul class="list-group list-group-flush">
                                     <li v-for="(phone, key) in phoneNumberArray"
                                         class="list-group-item p-0 m-0 bg-light rounded mt-1">
                                         <span class="ml-1">@{{ phone }}</span>
                                         <button @click="removePhone(key)" class="btn btn-sm  float-right"><i
                                                 class="bi bi-x-circle-fill text-danger"></i></button>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="mt-1">
+                    {{-- <div class="mt-1">
                         <div class="d-flex">
                             <div style="width: 50%">
 
@@ -158,10 +176,9 @@
                                 <button @click="addPhone" class="btn btn-info btn-sm ml-1">
                                     Add
                                 </button>
-
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="mt-3 float-right">
                         <button @click="preview()" :disabled="!isRegButDisabled" class="btn btn-info btn-sm ml-2">
                             Preview
@@ -175,7 +192,7 @@
         <div v-if="!policyList" class="mt-3 px-2 px-md-3 py-3">
             <h6> Policy No : @{{ customers.policyno }} </h6>
             <div class="row mt-4">
-                <div class="col-md-6 hover-scale" @click="showMessage(customer.customer_code)"
+                <div class="col-md-6 hover-scale" @click="selectCustomer(customer.customer_code)"
                     v-for="(customer, key) in customers.customers">
                     <div class="card p-2">
                         <div class="card-body rounded bg-light">
@@ -305,19 +322,16 @@
                 const customers = @json($customers);
                 let isLoading = false;
                 let policyList = undefined;
+                let riskOfpolicyList = [];
                 let selectCustomerObj = null;
                 let phoneNumberArray = [];
                 let phone = '';
                 let checkExistPhones = '';
-                const requestHeader = {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                };
                 return {
                     customers,
                     isLoading,
                     policyList,
+                    riskOfpolicyList,
                     selectCustomerObj,
                     phoneNumberArray,
                     phone,
@@ -325,7 +339,7 @@
                 };
             },
             methods: {
-                showMessage(customer_code) {
+                selectCustomer(customer_code) {
                     this.selectCustomerObj = this.customers.customers.find(customer => customer
                         .customer_code === customer_code);
                     console.table(this.selectCustomerObj);
@@ -368,6 +382,15 @@
                                 this.customers.policyno);
                             console.log(filterData);
                             this.policyList = filterData
+                            for (risk of filterData.risk) {
+                                this.riskOfpolicyList.push({
+                                    'risk_seqNo': risk.seqNo,
+                                    'risk_name': risk.name,
+                                    'phone': null
+                                });
+                                console.log(risk.seqNo);
+                                console.log(risk.name);
+                            }
                         })
                         .catch(error => {
                             console.error('Error:', error);
@@ -397,7 +420,7 @@
                             },
                             body: JSON.stringify({
                                 "select_customer_obj": this.selectCustomerObj,
-                                "phone_number_array": this.phoneNumberArray
+                                "risk_of_policy_list": this.riskOfpolicyList
                             }),
                         })
                         .then(async response => {
@@ -434,7 +457,8 @@
                             },
                             body: JSON.stringify({
                                 "select_customer_obj": this.selectCustomerObj,
-                                "phone_number_array": this.phoneNumberArray
+                                "risk_of_policy_list": this.riskOfpolicyList,
+                                "policy_number": this.policyList.policyNumber
                             }),
                         })
                         .then(async response => {
@@ -466,8 +490,10 @@
                             });
                         });
                 },
-                addPhone() {
-                    if (this.phone < 100000 || this.phone.length > 999999999) {
+                addPhone(target, index) {
+                    console.log("index", index);
+                    console.log("Input value:", event.target.value);
+                    if (event.target.value < 100000 || event.target.value > 999999999) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
@@ -476,8 +502,8 @@
                         });
                         return false
                     } else {
-                        this.phoneNumberArray.push("09" + this.phone);
-                        this.phone = '';
+                        this.riskOfpolicyList[index].phone = event.target.value;
+                        console.table(this.riskOfpolicyList);
                     }
                 },
                 removePhone(index) {
@@ -486,8 +512,9 @@
             },
             computed: {
                 isRegButDisabled() {
-                    console.log(this.phoneNumberArray.length > 0);
-                    return this.phoneNumberArray.length > 0;
+                    // console.log(this.riskOfpolicyList.length > 0);
+                    // return this.phoneNumberArray.length > 0;
+                    return true
                 },
             }
         });

@@ -3,46 +3,32 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Cache;
-use App\Repositories\SettingRepository;
-
+use Illuminate\Support\Facades\Http;
 
 trait SendSms
 {
-    public function sendSmsMessage($to, $content)
+    public function callSMSAPI($to, $content, $username = "Spidey Shine", $claimNo = "")
     {
         $end_point = config('app.ayasompo_base_url') . 'sms/sendsms';
         $token = Cache::get('token_for_internal');
-        \Log::info($to);
-        \Log::info($content);
-        $body = ["to" => $to, "message" => $content];
-        $header = [
-            'Content-Type: application/json',
-            'Accept: application/json',
-            'Authorization: Bearer ' . $token
+        $requestBody = [
+            'phoneNumber' => $to,
+            'message' => $content,
+            "username" => $username,
+            "claimNo" => $claimNo
         ];
+        $headers = [
+            'Authorization' => 'Bearer ' . $token,
+            'Accept' => 'application/json',
+        ];
+        $response = Http::withHeaders($headers)->post($end_point, $requestBody);
+        if ($response->successful()) {
+            return $response->json();
+        } else {
+            $statusCode = $response->status();
+            $errorMessage = $response->body();
+        }
 
-        $curl = curl_init();
-        curl_setopt_array(
-            $curl,
-            [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-
-                CURLOPT_URL => $end_point,
-                CURLOPT_HTTPHEADER => $header,
-                CURLOPT_POSTFIELDS => json_encode($body),
-            ]
-        );
-
-        $response = curl_exec($curl);
-        $response = json_decode($response);
-        if ($response->status)
-            return $response;
-        else
-            return false;
     }
     function generateOTPCode()
     {

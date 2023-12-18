@@ -45,6 +45,7 @@ class CustomerController extends Controller
     //Ajax Response
     public function register(Request $request, CustomerService $customerService)
     {
+        // \Log::info($request);
         $status = $customerService->register($request);
         return $status ?
             $this->successResponse("Request Success", $status, 200) :

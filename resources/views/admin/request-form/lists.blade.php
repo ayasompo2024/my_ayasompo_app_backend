@@ -14,8 +14,7 @@
             <table class="table table-responsive">
                 <thead>
                     <tr>
-                        {{-- <th style="min-width: 200px">App Customer Phone</th>
-                        <th style="min-width: 200px">App User Name</th> --}}
+                        <th style="min-width: 200px">App User Name</th>
                         <th style="min-width: 130px">Inquiry Type</th>
                         <th style="min-width: 200px">Title</th>
                         <th style="min-width: 100px">Case ID *</th>
@@ -31,12 +30,19 @@
                         <th style="min-width: 200px">Inquiry Date time</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     @foreach ($requestForms as $requestForm)
                         <tr>
-                            {{-- <td> c name </td> --}}
-                            {{-- <td> c phone </td> --}}
+                            <td title="{{ $requestForm->customer->customer_phoneno ?? '' }}" class="p-1"
+                                style="font-size: 15px">
+                                {{ $requestForm->customer->user_name ?? '' }}
+                                {{-- <small>{{ $requestForm->customer->id ?? '' }}</small> --}}
+                                @if (!is_null($requestForm->customer))
+                                    <a href="{{ route('admin.messaging.unicast.show-form', $requestForm->customer->id) }}"
+                                        class="ml-1" style="font-size: 15px"><i
+                                            class="bi bi-bell bg-info rounded p-1"></i></a>
+                                @endif
+                            </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->inquiry_type }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->title }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_caseid }} </td>

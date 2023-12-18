@@ -41,6 +41,11 @@ class RequestForm extends Model
 
         "ayasompo_inquirydatetime",
     ];
+
+    function customer()
+    {
+        return $this->belongsTo(Customer::class, 'app_customer_id');
+    }
 }
 
 

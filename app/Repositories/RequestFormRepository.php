@@ -12,7 +12,7 @@ class RequestFormRepository
     }
     static function getWithPaginate(int $perPage)
     {
-        return RequestForm::query()->orderByDesc("id")->paginate($perPage);
+        return RequestForm::query()->with('customer')->orderByDesc("id")->paginate($perPage);
     }
 
 }

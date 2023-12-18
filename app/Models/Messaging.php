@@ -19,6 +19,5 @@ class Messaging extends Model
     function customer()
     {
         return $this->belongsTo(Customer::class);
-
     }
 }

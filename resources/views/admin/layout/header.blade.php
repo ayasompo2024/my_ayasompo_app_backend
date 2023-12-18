@@ -1,6 +1,7 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item d-flex">
+            <a class="nav-link"  data-widget="pushmenu" id="burger" style="font-size: 20px" href="#" role="button"><i class="bi bi-filter-left"></i></a>
             <a class="nav-link"  data-widget="pushmenu" id="burger" style="font-size: 20px" href="#" role="button"><i class="bi bi-filter-left"></i></a>
         </li>
     </ul>

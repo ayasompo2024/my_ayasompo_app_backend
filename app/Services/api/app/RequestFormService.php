@@ -141,7 +141,7 @@ class RequestFormService
     private function appDataForLara($request)
     {
         return [
-            "app_customer_id" => '0',
+            "app_customer_id" => $request->user()->id,
             "inquiry_type" => $request->inquiry_type,
 
             "title" => $request->title,
@@ -181,6 +181,7 @@ class RequestFormService
             "ayasompo_productcode" => $request->ayasompo_productcode,
             "ayasompo_classcode" => $request->ayasompo_classcode,
             "ayasompo_risksequenceno" => $request->ayasompo_risksequenceno,
+            "ayasompo_phonenotonotifycustomer" => $request->user()->customer_phoneno
         ];
     }
     private function prepareDateForInquiryCase($customerid_contact, $request)

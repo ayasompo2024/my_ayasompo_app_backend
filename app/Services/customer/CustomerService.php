@@ -26,15 +26,15 @@ class CustomerService
     //Ajax Response
     function previewBeforeResgister($request)
     {
-        $phoneNumberArray = $request->phone_number_array;
+        $risk_of_policy_lists = $request->risk_of_policy_list;
         $selectCustomerObj = $request->select_customer_obj;
         $isExistPhones = [];
-        foreach ($phoneNumberArray as $individualPhone) {
-            $customer = CustomerRepository::getAllByPhone($individualPhone);
+        foreach ($risk_of_policy_lists as $risk_of_policy_list) {
+            $customer = CustomerRepository::getAllByPhone($risk_of_policy_list["phone"]);
             $isExist = !empty($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
-                'phone' => $individualPhone,
+                'phone' => $risk_of_policy_list["phone"],
                 'appUsers' => $customerData
             ]);
         }
@@ -48,22 +48,25 @@ class CustomerService
     function register($request)
     {
         $recordedCustomer = [];
-        foreach ($request->phone_number_array as $individualPhone) {
-            $customer = CustomerRepository::getAllByPhone($individualPhone);
+        foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
+            $customer = CustomerRepository::getAllByPhone($risk_of_policy_list["phone"]);
             if (count($customer) > 0)
-                $this->callSMSAPI($individualPhone, $this->contentForExistingCustomer());
+                $this->callSMSAPI("09" . $risk_of_policy_list["phone"], $this->contentForExistingCustomer($request->policy_number));
             else
-                $this->callSMSAPI($individualPhone, $this->contentForNotExistingCustomer());
-            array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $individualPhone));
+                $this->callSMSAPI("09" . $risk_of_policy_list["phone"], $this->contentForNotExistingCustomer($request->policy_number));
+            array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number));
         }
         return $recordedCustomer;
     }
-    private function saveCustomerToDB($select_customer_obj, $phone)
+    private function saveCustomerToDB($select_customer_obj, $risk_of_policy_list, $policy_number)
     {
         $inputForAppCustomer = [
             "customer_code" => $select_customer_obj["customer_code"],
-            "customer_phoneno" => $phone,
-            "app_customer_type" => AppCustomerType::GROUP->value
+            "customer_phoneno" => $risk_of_policy_list["phone"],
+            "risk_seqNo" => $risk_of_policy_list["risk_seqNo"],
+            "risk_name" => $risk_of_policy_list["risk_name"],
+            "app_customer_type" => AppCustomerType::GROUP->value,
+            "policy_number" => $policy_number
         ];
         $appCustomer = CustomerRepository::store($inputForAppCustomer);
         $inputForCoreCustomer = [
@@ -78,13 +81,30 @@ class CustomerService
         return $appCustomer;
     }
 
-    private function contentForExistingCustomer()
+
+
+    private function contentForExistingCustomer($policy_number)
     {
-        return "ExistingCustomer";
+        return <<<EOT
+Hello, It is from My AYA SOMPO. You have been invited to subscribe the AYA SOMPO policy and the number is $policy_number.
+
+Please visit our app for your new policy benefits.
+
+For any assistant, please reach out to our call center. +959777100555
+EOT;
+
     }
-    private function contentForNotExistingCustomer()
+    private function contentForNotExistingCustomer($policy_number)
     {
-        return "Not Exist Customer";
+        return <<<EOT
+Hello, It is from My AYA SOMPO. You have been invited to subscribe the AYA SOMPO policy and the number is $policy_number.
+
+Please verify yourself by the link.
+http://
+            
+For any assistant, please reach out to our call center. +959777100555
+EOT;
+
     }
 }
 

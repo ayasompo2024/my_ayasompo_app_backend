@@ -47,7 +47,7 @@ class Product extends Model
     }
     private function sendFcmNoti()
     {
-        $notification = ["title" => "Product Announcement!", "body" => null];
+        $notification = ["title" => "Content Update Delivered!", "body" => null];
         $data = ["title" => "Product", "body" => null];
         $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');

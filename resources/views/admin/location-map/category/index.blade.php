@@ -14,12 +14,18 @@
             <div style="display: flex;flex-wrap: wrap;gap: 10px;">
                 @foreach ($categories as $item)
                     <div>
-                        <div class="btn btn border mt-1 p-2" style="font-weight: 600">
-                            <img src="{{ $item->image }}" width="50px">
-                            <span class="ml-1">{{ $item->name }}</span>
-                            <a href="{{ route('admin.location-map-category.edit', $item->id) }}" class="btn btn-sm">
-                                <i title="Edit" class="bi bi-pencil-square"></i>
-                            </a>
+                        <div class="border mt-1 p-2  d-flex ">
+                            <div class="bg-info"
+                                style=
+                                "background-image: url('{{ $item->image }}'); background-repeat: no-repeat;
+                                background-position: center; background-size: cover;width:50px; height:50px;">
+                            </div>
+                            <div class="pt-2">
+                                <span class="mx-2 ">{{ $item->name }}</span>
+                                <a href="{{ route('admin.location-map-category.edit', $item->id) }}" class="btn btn-sm">
+                                    <i title="Edit" class="bi bi-pencil-square"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

@@ -31,17 +31,21 @@ class CustomerService
     function login($request)
     {
         $customer = CustomerRepository::getByPhone($request->customer_phoneno);
+
         if (empty($customer) || !Hash::check($request->password, $customer->password))
             return false;
         $token = $customer->createToken('app_api_token')->accessToken;
         $customer->device_token = $request->device_token;
         $customer->save();
         return [
-            "token" => $token,
-            "customer" => new RegisterCustomerRsource($customer)
+            "token" => $customer->is_disabled ? null : $token,
+            "customer" => $customer->is_disabled ? null : new RegisterCustomerRsource($customer)
         ];
     }
-
+    function disabledProfile($user_id)
+    {
+        return CustomerRepository::disabledProfile($user_id);
+    }
     function updateProfilePhoto($request)
     {
         $upload_path = $this->uploadFile($request->photo, '/uploads/profile/', 'aya_sompo');
@@ -59,7 +63,8 @@ class CustomerService
         );
     }
 
-    function getProfileListByPhone($phone){
+    function getProfileListByPhone($phone)
+    {
         return CustomerRepository::getAllByProvidedPhone($phone);
     }
 

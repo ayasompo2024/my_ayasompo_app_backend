@@ -13,35 +13,40 @@
         <div class="mt-3 mb-5">
             <div class="row">
                 @foreach ($location_maps as $item)
-                    <div class="col-md-6">
-                        <div class="card p-2">
+                    <div class="col-md-4">
+                        <div class="card p-3 shadow-sm border">
                             {{ $item->name }}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{ $item->image }}" width="100%" />
-                                </div>
-                                <div class="col-md-6">
-                                    <div>
-                                        <i class="bi bi-telephone mr-2"></i> {{ $item->phone }}
-                                    </div>
-                                    <div class="mt-2">
-                                        <i class="bi bi-clock mr-2"></i>
-                                        {{ $item->open_hour }} - {{ $item->close_hour }}
-                                    </div>
-                                    <div class="mt-2">
-                                        <i class="bi bi-calendar mr-2"></i>
-                                        <small>{{ $item->open_days }}</small>
-                                    </div>
-                                    <div class="mt-2">
-                                        <i class="bi bi-geo-alt mr-2"></i>
-                                        <small class="card-text">{{ $item->address }} </small>
-                                    </div>
-                                </div>
+                            <div class="rounded border bg-info"
+                                style="width: 100; height: 150px;
+                                background-size: cover;
+                                 background-image: url({{ $item->image }})">
                             </div>
-                            <div>
-                                <a href="{{ route('admin.location-map-category.edit', $item->id) }}" class="btn btn-sm">
-                                    <i title="Edit" class="bi bi-pencil-square"></i>
+                            <div class="mt-2">
+                                <small> <i class="bi bi-telephone mr-2"></i> {{ $item->phone }}</small>
+                            </div>
+                            <div class="mt-2">
+                                <i class="bi bi-clock mr-2"></i>
+                                <small> {{ $item->open_hour }} - {{ $item->close_hour }}</small>
+                            </div>
+                            <div class="mt-2">
+                                <i class="bi bi-calendar mr-2"></i>
+                                <small>{{ $item->open_days }}</small>
+                            </div>
+                            <div class="mt-2">
+                                <i class="bi bi-geo-alt mr-2"></i>
+                                <small class="card-text m">{{ $item->address }} </small>
+                            </div>
+                            <div class="border-top mt-2">
+                                <a href="{{ route('admin.location-map.edit', $item->id) }}" class="btn btn-sm p-0">
+                                    <i title="Delete" class="bi bi-pencil-square"></i>
                                 </a>
+                                <form class="d-inline" action="{{ route('admin.location-map.destroy', $item->id) }}"
+                                    method="post">
+                                    @method('delete') @csrf
+                                    <button class="btn btn-sm p-0">
+                                        <i title="Delete" class="bi bi-trash mx-2"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

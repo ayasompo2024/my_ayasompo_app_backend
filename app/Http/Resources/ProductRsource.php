@@ -36,6 +36,7 @@ class ProductRsource extends JsonResource
         $image = "data:image/png;base64,".base64_encode(file_get_contents($imagePath));
 
         return [
+            'order' => $this->sort,
             'id' => $this->id,
             'name' => $this->name,
             'title' => $this->title,

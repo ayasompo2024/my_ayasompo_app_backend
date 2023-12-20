@@ -9,28 +9,28 @@
                         <span class="float-right"> Add Location Map Category</span>
                         <a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-square"></i></a>
                     </h5>
-                    <form class="mt-4" method="POST" action="{{ route('admin.location-map.store') }}"
+                    <form class="mt-4" method="POST" action="{{ route('admin.location-map.update', $location_map->id) }}"
                         enctype="multipart/form-data" onkeydown="return event.key != 'Enter'">
+                        @method('PUT')
                         @csrf
                         <div class="row mt-3">
-                            <div class="col-lg-4">
-                                <label for="image">Image</label>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="upload__box">
-                                    <div class="upload__img-wrap"></div>
-                                    <div class="upload__btn-box">
-                                        <label class="btn btn-sm shadow-sm bg-secondary">
-                                            <i class="bi bi-image"></i> Add Photo
-                                            <input type="file" required name="image" data-max_length="20"
-                                                id="image" accept="image/*" class="upload__inputfile">
-                                            @error('image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </label>
+                            <div class="col-lg-4"><label for="description">Image</label></div>
+                            <div class="col-lg-8" style="position: relative">
+                                <div class="card old-photo bg-info"
+                                    style="width: 200px;height: 200px;background-size: cover; background-image: url({{ $location_map->image }})">
+                                </div>
+                                <div class="preview-container" style="display: none">
+                                    <div id="imagePreview" style="width: 200px;height: 200px;background-size: cover;">
+                                        <button type="button" onclick="removeNewphoto()"
+                                            class="float-right btn btn-sm bg-warning mt-1 mr-1"><i
+                                                class="bi bi-x-circle-fill"></i></button>
                                     </div>
+                                </div>
+                                <div style="position: absolute;top:165px;left:12px;">
+                                    <label class="btn btn-sm btn-info" for="thumbnail">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <input type="file" hidden name="image" accept="image/*" id="thumbnail">
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -39,12 +39,13 @@
                                 <label for="location_map_category_id"> Category </label>
                             </div>
                             <div class="col-lg-8">
-                                <select id="location_map_category_id" name="location_map_category_id" required
-                                    class="form-control form-control-sm">
-                                    <option></option>
+                                <select id="product_type" name="location_map_category_id" required
+                                    class="form-control form-control-sm @error('product_type') is-invalid @enderror">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
+                                        <option @if ($location_map->location_map_category_id == $category->id) selected @endif
+                                            value="{{ $category->id }}"> {{ $category->name }}
+                                        </option>
+                                    @endforEach
                                 </select>
                                 @error('location_map_category_id')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +59,7 @@
                                 <label for="name"> Name </label>
                             </div>
                             <div class="col-lg-8">
-                                <input id="name" value="{{ old('name') }}" type="text" name="name"
+                                <input id="name" value="{{ $location_map->name }}" type="text" name="name"
                                     autocomplete="location" required class="form-control form-control-sm"
                                     placeholder="Enter Name">
                                 @error('name')
@@ -73,7 +74,7 @@
                                 <label for="phone"> Phone </label>
                             </div>
                             <div class="col-lg-8">
-                                <input id="name" value="{{ old('phone') }}" type="number" name="phone"
+                                <input id="name" value="{{ $location_map->phone }}" type="number" name="phone"
                                     autocomplete="phone" required class="form-control form-control-sm"
                                     placeholder="Enter Phone">
                                 @error('phone')
@@ -89,12 +90,12 @@
                             </div>
                             <div class="col-lg-8 row no-gutters">
                                 <div class="col-lg-6 col-6">
-                                    Open Hour <input type="time" value="09:00" required name="open_hour"
-                                        class="form-control form-control-sm" id="open_hour">
+                                    Open Hour <input type="time" value="{{ $location_map->open_hour }}" required
+                                        name="open_hour" class="form-control form-control-sm" id="open_hour">
                                 </div>
                                 <div class="col-lg-6 col-6 pl-2">
-                                    Close Hour <input type="time" value="17:00" required name="close_hour"
-                                        class="form-control form-control-sm">
+                                    Close Hour <input type="time" value="{{ $location_map->close_hour }}" required
+                                        name="close_hour" class="form-control form-control-sm">
                                 </div>
                             </div>
                         </div>
@@ -103,8 +104,10 @@
                                 <label for="time_limit">Open Days</label>
                             </div>
                             <div class="col-lg-8">
+                                {{ $location_map->open_days }}
                                 <label for="monday" class="mr-2">
-                                    <input type="checkbox" checked id="monday" name="open_days[]" value="Monday"> Monday
+                                    <input type="checkbox" checked id="monday" name="open_days[]" value="Monday">
+                                    Monday
                                 </label>
                                 <label for="tuesday" class="mr-2">
                                     <input type="checkbox" checked id="tuesday" name="open_days[]" value="Tuesday">
@@ -136,7 +139,7 @@
                             </div>
                             <div class="col-lg-8">
                                 <textarea id="address" name="address" required placeholder="Enter Address"
-                                    class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
+                                    class="form-control @error('address') is-invalid @enderror">{{ $location_map->address }}</textarea>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -147,7 +150,8 @@
                         <div class="row mt-1">
                             <label class="col-sm-4 col-form-label">Latitude & Longitude</label>
                             <div class="col-sm-8">
-                                <input type="text" name="latitude_longitude" required
+                                <input type="text" name="latitude_longitude"
+                                    value="{{ $location_map->latitude }},{{ $location_map->longitude }}," required
                                     placeholder="20.659193, 94.991140"
                                     class="form-control
                                 form-control-sm">
@@ -161,8 +165,8 @@
                                 <label for="google_map">Google Map URL</label>
                             </div>
                             <div class="col-lg-8">
-                                <textarea name="google_map" id="google_map" value="{{ old('google_map') }}" class="form-control form-control-sm"
-                                    placeholder="Enter Google Map"></textarea>
+                                <textarea name="google_map" id="google_map" value="{{ $location_map->google_map }}"
+                                    class="form-control form-control-sm" placeholder="Enter Google Map"></textarea>
                             </div>
                         </div>
 
@@ -233,6 +237,29 @@
             padding-bottom: 100%;
         }
     </style>
+@endpush
+
+@push('child-scripts')
+    <script>
+        $(document).ready(function() {
+            $('#thumbnail').on('change', function() {
+                var selectedFiles = this.files;
+                if (selectedFiles.length > 0) {
+                    $('.old-photo').hide();
+                    $('.preview-container').show();
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    };
+                    reader.readAsDataURL(selectedFiles[0]);
+                }
+            });
+        });
+        const removeNewphoto = () => {
+            $('.preview-container').hide();
+            $('.old-photo').show();
+        }
+    </script>
 @endpush
 
 @push('child-scripts')

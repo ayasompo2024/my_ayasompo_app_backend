@@ -1,7 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container">
-
         <nav class="pt-3 pl-3">
             Customer / All
             <span class="badge bg-info ml-2">{{ $customers->total() }}</span>
@@ -23,15 +22,16 @@
         </nav>
         @include('admin.validation-error-alert')
         <div class="bg-light px-md-3 mt-2 mb-5 pt-3 mt-2">
-            <table class="table table-responsive-sm">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th style="min-width: 140px">Customer Code</th>
                         <th style="min-width: 150px">Customer Name</th>
                         <th style="min-width: 200px">App User Name</th>
                         <th style="min-width: 140px">Customer Phone</th>
-                        <th style="min-width: 140px">App Customer Type</th>
-                        <th style="min-width: 140px">Send Noti</th>
+                        <th style="min-width: 200px">App Customer Type</th>
+                        <th style="min-width:200px">Noti</th>
+                        <th style="min-width: 220px">Disabled Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +47,19 @@
                                     class="ml-2 btn btn-sm btn-outline-secondary">
                                     <i class="bi bi-bell "></i> &nbsp; <i class="bi bi-arrow-right-circle"></i>
                                 </a>
+                                <a href="{{ route('admin.messaging.unicast.show-form', $customer->id) }}"
+                                    class="ml-2 btn btn-sm btn-outline-secondary">
+                                    Histroy &nbsp; <i class="bi bi-arrow-right-circle"></i>
+                                </a>
+                            </td>
+                            <td class="p-2">
+                                @if ($customer->is_disabled == 1)
+                                    <button class="btn btn-sm bg-light border">Disabled</button> |
+                                    <button class="btn btn-sm bg-info">Make Active</button>
+                                @else
+                                    <button class="btn btn-sm bg-light border px-3">Active</button> |
+                                    <button class="btn btn-sm bg-warning">Make Disabled </button>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -88,6 +101,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

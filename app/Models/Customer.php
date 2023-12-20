@@ -20,7 +20,8 @@ class Customer extends Authenticatable {
         'profile_photo',
         "risk_seqNo",
         "risk_name",
-        "policy_number"
+        "policy_number",
+        "is_disabled"
     ];
     function core() {
         return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');

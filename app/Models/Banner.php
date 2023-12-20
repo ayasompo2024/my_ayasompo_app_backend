@@ -38,7 +38,7 @@ class Banner extends Model
     }
     private function sendFcmNoti()
     {
-        $notification = ["title" => "Banner Announcement!", "body" => null];
+        $notification = ["title" => "Content Update Delivered", "body" => null];
         $data = ["title" => "Banner", "body" => null];
         $this->sendAsbroadcast($notification, $data);
         // Cache::forget('getWithPropertyAndFAQ');

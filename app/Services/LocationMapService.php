@@ -22,6 +22,16 @@ class LocationMapService
             return false;
         return LocationMapRepository::store($input);
     }
+
+    function getById($id)
+    {
+        return LocationMapRepository::getById($id);
+    }
+
+    function destroy($id)
+    {
+        return LocationMapRepository::destroyById($id);
+    }
     private function prepareDataForStore($request)
     {
         $input = $request->only("location_map_category_id", "name", "phone", "open_hour", "close_hour", "address", "google_map");

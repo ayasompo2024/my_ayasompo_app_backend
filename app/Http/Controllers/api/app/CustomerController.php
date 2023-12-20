@@ -11,14 +11,17 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
-
     use Auth;
     public function profile(Request $request)
     {
-        $user = $request->user();
-        return response()->json(['user' => $user]);
+        return $this->successResponse("Here are Profile", new CustomerRsource($request->user()), 201);
     }
-
+    public function disabledProfile(Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->disabledProfile($request->user()->id);
+        return $status ? $this->successResponse("Disabled Profile Success", $status, 201) :
+            $this->errorResponse("Disabled Profile  Fail");
+    }
     function updateProfilePhoto(Request $request, CustomerService $customerService)
     {
         $validator = $this->updateProfilePhotoValidation($request);
@@ -43,8 +46,9 @@ class CustomerController extends Controller
     function getProfileList(Request $request, CustomerService $customerService)
     {
         $targetPhone = $request->user()->customer_phoneno;
-        return $this->successResponse("Get Profile List By Phone",  CustomerRsource::collection($customerService->getProfileListByPhone($targetPhone)) , 201);
+        return $this->successResponse("Get Profile List By Phone", CustomerRsource::collection($customerService->getProfileListByPhone($targetPhone)), 201);
     }
+
     private function updatePasswordValidation($request)
     {
         return Validator::make($request->all(), [
@@ -58,4 +62,6 @@ class CustomerController extends Controller
             'photo' => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
         ]);
     }
+
+
 }

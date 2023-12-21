@@ -18,6 +18,7 @@ class RegisterCustomerRsource extends JsonResource
             'id' => $this->id,
             "customer_code" => $this->customer_code,
             "customer_phoneno" => $this->customer_phoneno,
+            "customer_nrc" => $this->customer_nrc,
             "user_name" => $this->user_name,
             "app_customer_type" => $this->app_customer_type,
             "policy_number" => $this->policy_number,

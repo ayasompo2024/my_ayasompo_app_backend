@@ -6,7 +6,6 @@ use App\Services\api\app\CustomerService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\api\app\CustomerRsource;
-
 use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
@@ -29,7 +28,7 @@ class CustomerController extends Controller
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
         $status = $customerService->updateProfilePhoto($request);
-        return $status ? $this->successResponse("Profile Photo Update Success", $status, 201) :
+        return $status ? $this->successResponse("Profile Photo Update Success", new CustomerRsource($status), 201) :
             $this->errorResponse("Profile Update Fail");
     }
 
@@ -39,7 +38,7 @@ class CustomerController extends Controller
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
         $status = $customerService->updatePassword($request);
-        return $status ? $this->successResponse("Password  Update Success", $status, 201) :
+        return $status ? $this->successResponse("Password  Update Success", new CustomerRsource($status), 201) :
             $this->errorResponse("Password Update Fail");
     }
 

@@ -45,23 +45,26 @@ class CustomerService
     }
     function disabledProfile($user_id)
     {
-        return CustomerRepository::disabledProfile($user_id);
+        $status = CustomerRepository::disabledProfile($user_id);
+        return $status ? ["messasge" => "Please Connect Admin to recover your account"] : false;
     }
     function updateProfilePhoto($request)
     {
         $upload_path = $this->uploadFile($request->photo, '/uploads/profile/', 'aya_sompo');
-        return CustomerRepository::update($request->user()->id, [
+        CustomerRepository::update($request->user()->id, [
             'profile_photo' => $upload_path
         ]);
+        return $request->user();
     }
     function updatePassword($request)
     {
-        return CustomerRepository::update(
+        CustomerRepository::update(
             $request->user()->id,
             [
                 'password' => Hash::make($request['password'])
             ]
         );
+        return $request->user();
     }
 
     function getProfileListByPhone($phone)

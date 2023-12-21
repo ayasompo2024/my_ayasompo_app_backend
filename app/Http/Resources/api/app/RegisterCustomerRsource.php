@@ -19,11 +19,15 @@ class RegisterCustomerRsource extends JsonResource
             "customer_code" => $this->customer_code,
             "customer_phoneno" => $this->customer_phoneno,
             "user_name" => $this->user_name,
+            "app_customer_type" => $this->app_customer_type,
+            "policy_number" => $this->policy_number,
+            "profile_photo" => $this->profile_photo,
+            "risk_seqNo" => $this->risk_seqNo,
+            "risk_name" => $this->risk_name,
+            "is_disabled" => 0
         ];
     }
 }
-
-
 
 
 

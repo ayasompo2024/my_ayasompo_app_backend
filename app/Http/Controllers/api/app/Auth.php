@@ -36,14 +36,17 @@ trait Auth
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
         $status = $customerService->login($request);
-
-        if ($status["customer"] == null)
-            return $this->errorResponse("Account Has been disabled ", 400);
-
-        $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);
-        if ($status)
+        if ($status) {
+            if ($status["customer"] == null)
+                return $this->errorResponse("Account Has been disabled ", 400);
+        }
+        if ($status) {  
+            $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);
             return $this->successResponse("Login Success", $status, 200);
-        return $this->respondUnAuthorized("Credentials Not Found");
+        } else {
+            return $this->respondUnAuthorized("Credentials Not Found");
+        }
+
     }
 
     private function registerValidation($request)
@@ -63,6 +66,7 @@ trait Auth
             'customer_nrc' => 'required|string',
             'user_name' => 'required|max:255',
             'password' => 'required|string|min:6|confirmed',
+            "policy_number" => 'required|max:255',
             "device_token" => 'required'
         ]);
     }

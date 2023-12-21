@@ -23,6 +23,15 @@ class CustomerService
         return $this->getCustomersListByPolicyAPICall($policy_no);
     }
 
+    function toggleDisabledById($id)
+    {
+        return CustomerRepository::toggleDisabledById($id);
+    }
+    function destroy($id)
+    {
+        return CustomerRepository::destroy($id);
+    }
+
     //Ajax Response
     function previewBeforeResgister($request)
     {

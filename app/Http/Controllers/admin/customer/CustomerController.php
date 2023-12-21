@@ -57,7 +57,24 @@ class CustomerController extends Controller
     {
         return view('admin.customers.index')->with('customers', $customerService->getAllCustomerByPhone($request->phone));
     }
+
+    public function toggleDisabled($id, CustomerService $customerService)
+    {
+        $status = $customerService->toggleDisabledById($id);
+        return $status ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
+    public function destroy($id, CustomerService $customerService)
+    {
+        $status = $customerService->destroy($id);
+        return $status ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
 }
+
+
 
 
 

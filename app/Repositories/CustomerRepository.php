@@ -10,6 +10,19 @@ class CustomerRepository
     {
         return Customer::query()->with('core')->orderByDesc('id')->paginate($per_page);
     }
+
+    static function toggleDisabledById($id)
+    {
+        $customer = Customer::where('id', $id)->first();
+        if (!$customer)
+            return false;
+        return $customer->update(['is_disabled' => !$customer->is_disabled]);
+    }
+
+    static function destroy($id)
+    {
+        return Customer::destroy($id);
+    }
     static function store(array $input)
     {
         return Customer::create($input);

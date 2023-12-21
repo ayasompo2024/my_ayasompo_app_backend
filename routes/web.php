@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
         Route::controller(CustomerController::class)->group(function () {
+            Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
             Route::get('customer/search/by-phone', 'searchByPhone')->name('customer.search.by-phone');
             Route::post('customer/get-customers-list-by-policy', 'getCustomersListByPolicy')->name('customer.get-customers-list-by-policy');
             //Ajax Call

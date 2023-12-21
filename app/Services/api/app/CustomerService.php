@@ -14,7 +14,7 @@ class CustomerService
     use FileUpload;
     function register($request)
     {
-        $input = $request->only("customer_code", "customer_phoneno", "user_name", "device_token");
+        $input = $request->only("customer_code", "customer_phoneno", "user_name", "device_token", "policy_number");
         $input['password'] = Hash::make($request['password']);
         $input['app_customer_type'] = AppCustomerType::INDIVIDUAL->value;
         $customer = CustomerRepository::store($input);
@@ -25,7 +25,8 @@ class CustomerService
         event(new CustomerRegistered($coreCustomer));
         return [
             "token" => $token,
-            "customer" => new RegisterCustomerRsource($customer)
+            "customer" => new RegisterCustomerRsource($customer),
+            "message" => null,
         ];
     }
     function login($request)

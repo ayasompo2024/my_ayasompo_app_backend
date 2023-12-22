@@ -35,11 +35,11 @@ class CustomerRepository
     }
     static function getById(int $id)
     {
-        return Customer::find($id);
+        return Customer::with('core')->find($id);
     }
     static function getByPhone($phone)
     {
-        return Customer::query()->whereCustomer_phoneno($phone)->first();
+        return Customer::query()->with('core')->whereCustomer_phoneno($phone)->first();
     }
     static function getAllByPhone($phone)
     {

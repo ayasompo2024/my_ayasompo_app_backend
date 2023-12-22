@@ -40,7 +40,7 @@ trait Auth
             if ($status["customer"] == null)
                 return $this->errorResponse("Account Has been disabled ", 400);
         }
-        if ($status) {  
+        if ($status) {
             $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);
             return $this->successResponse("Login Success", $status, 200);
         } else {
@@ -63,10 +63,13 @@ trait Auth
                     $query->where('app_customer_type', 'INDIVIDUAL');
                 }),
             ],
+            "policy_number" => 'required|max:255',
+            "email" => 'nullable|string',
+            'address' => 'nullable|string',
             'customer_nrc' => 'required|string',
+
             'user_name' => 'required|max:255',
             'password' => 'required|string|min:6|confirmed',
-            "policy_number" => 'required|max:255',
             "device_token" => 'required'
         ]);
     }

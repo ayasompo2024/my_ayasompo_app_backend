@@ -16,7 +16,7 @@ class CoreCustomer extends Model
         "customer_phoneno",
         "customer_nrc",
         "email",
-        "adddress"
+        "address"
     ];
 }
 

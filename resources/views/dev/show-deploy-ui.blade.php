@@ -45,36 +45,39 @@
                 let results = [];
                 let password = "7912"
                 return {
-                    results
+                    results,
+                    password
                 };
             },
             methods: {
                 deploy() {
                     var userInput = prompt('Enter Password To Deploy:');
+                    alert(userInput);
+                    alert(this.password);
                     if (userInput != this.password) {
                         alert("Permission Denied")
-                        return '';
-                    }
-                    this.isLoading = true;
-                    fetch(`{{ url('/dev/code/deploy') }}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json',
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                            },
-                        })
-                        .then(async response => {
-                            const responseJson = await response.json();
-                            if (!response.ok) {}
-                            this.isLoading = false;
-                            console.log(responseJson);
-                            this.results = responseJson;
-                        })
-                        .catch(error => {
+                    } else {
+                        this.isLoading = true;
+                        fetch(`{{ url('/dev/code/deploy') }}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                },
+                            })
+                            .then(async response => {
+                                const responseJson = await response.json();
+                                if (!response.ok) {}
+                                this.isLoading = false;
+                                console.log(responseJson);
+                                this.results = responseJson;
+                            })
+                            .catch(error => {
 
-                        });
-                    this.command = '';
+                            });
+                        this.command = '';
+                    }
                 },
             },
         });

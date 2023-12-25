@@ -139,11 +139,11 @@
         'icon' => 'bi bi-code-slash',
         'sub_menus' => [
             [
-                'display' => 'Deploy',
-                'route' => 'dev.code.show-deploy-ui',
+                'display' => 'Terminal',
+                'route' => 'dev.terminal',
                 'imag_path' => null,
                 'target' => true,
-                'icon' => 'bi bi-doc',
+                'icon' => 'bi bi-terminal',
                 'sub_menus' => null,
             ],
             [
@@ -151,7 +151,7 @@
                 'route' => 'dev.doc.index',
                 'imag_path' => null,
                 'target' => true,
-                'icon' => 'bi bi-doc',
+                'icon' => 'bi-filetype-doc',
                 'sub_menus' => null,
             ],
             [

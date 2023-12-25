@@ -7,6 +7,7 @@ use DirectoryIterator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class DevOperationController extends Controller
 {
@@ -26,61 +27,53 @@ class DevOperationController extends Controller
         return view('dev.doc.content', compact(['files', 'content']));
     }
 
-    public function showDeployUi()
+    public function terminal()
     {
-        $results = $this->gitOperations();
-        foreach ($results as $result) {
-            echo "<pre>" . $result . "</pre>";
-        }
+        return view('dev.terminal');
     }
 
-    function gitOperations()
+    //AJAX
+    public function command(Request $req)
     {
-        $consoleResult = [];
-
-        // Attempt to change the directory
+        $validator = Validator::make($req->all(), [
+            "command" => "required",
+        ]);
+        if ($validator->fails())
+            return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
+        $output = '';
         if (!chdir('..')) {
             $consoleResult[] = "Error changing directory";
             return $consoleResult;
         }
+        getcwd();
+        exec($req->command, $output, $returnCode);
+        return $output;
+    }
 
-        // Get the new current working directory
-        if (!($appRootFolder = getcwd())) {
-            $consoleResult[] = "Error getting current working directory";
+    function OneClickDeploy()
+    {
+        $output = '';
+        $consoleResult = [];
+        if (!chdir('..')) {
+            $consoleResult[] = "Error changing directory";
             return $consoleResult;
         }
+        getcwd();
 
-        $appRootFolderSafe = escapeshellarg($appRootFolder);
-
-        // Git add
         $gitAddResult = shell_exec("git add . ");
-        $consoleResult[] = $gitAddResult;
+        $consoleResult[] = "add ..." . $gitAddResult;
 
-        // Git commit
         $commitMessage = "auto commit message on " . date('Y-m-d H:i:s');
         $escapedCommitMessage = escapeshellarg($commitMessage);
         $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
-        $consoleResult[] = $gitCommitResult;
-        // Git fetch
+        $consoleResult[] = "commit ..." . $gitCommitResult;
+
         $gitFetchResult = shell_exec("git fetch");
-        $consoleResult[] = $gitFetchResult;
+        $consoleResult[] = "fetch .." . $gitFetchResult;
 
-        // Git pull
-        $gitPullResult = shell_exec("git -C $appRootFolderSafe pull --force");
-        $consoleResult[] = $gitPullResult;
-
-        return $consoleResult;
+        exec("tree", $output, $returnCode);
+        return $output;
     }
-
-    public function deploy()
-    {
-        $repositoryURL = 'https://github.com/ShineShineDev/';
-        $output = '';
-        $localRepoPath = getcwd();
-        return $localRepoPath;
-    }
-
-
 
 }
 

@@ -16,7 +16,7 @@
         ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="" class="brand-link tw-flex">
-                <h6 class=" font-weight-bold d-inline mt-1 ml-1">REST API DOC</h6>
+                <h6 class=" font-weight-bold d-inline mt-1 ml-1">DOC</h6>
             </a>
             <div class="sidebar ">
                 <nav class="mt-3">
@@ -25,7 +25,7 @@
                         @foreach ($files as $key => $file)
                             <li class="nav-item ">
                                 <div class="nav-link m-0 py-1 d-flex justify-content-between">
-                                    <a href="{{ route('doc.index.file', $file->getFilename()) }}">
+                                    <a href="{{ route('dev.doc.index.file', $file->getFilename()) }}">
                                         <p class="ml-2 p-0">
                                             {{ $file->getFilename() }}
                                         </p>
@@ -37,28 +37,23 @@
                 </nav>
             </div>
         </aside>
-        <div class="content-wrapper p-2">
-            <div>
-                <p>Internal
-                <p>
-                    <a class="btn btn-sm bg-secondary" href="{{ route('doc.index.file', 'Internal.md') }}">
-                        Internal.md
-                    </a>
+        <div class="content-wrapper px-2">
+            <a class="btn href="{{ url()->previous() }}">
+                <i class="bi bi-arrow-left-square"></i>
+            </a>
+            <div class="px-2">
+                <textarea id="my-text-area">{{ $content }}</textarea>
             </div>
-            <div class="mt-3">
-                <p>App
-                <p>
-                    <a class="btn btn-sm bg-secondary"
-                        href="{{ route('doc.index.file', 'Products.md') }}">Products.md</a>
-            </div>
-            {{-- @foreach ($files as $key => $file)
-                <a class="btn btn-sm bg-secondary" href="{{ route('doc.index.file', $file->getFilename()) }}">
-                    {{ $file->getFilename() }}
-                </a>
-            @endforeach --}}
         </div>
     </div>
     @include('admin.layout.script')
+    <script>
+        const easyMDE = new EasyMDE({
+            toolbar: [
+                "preview",
+            ],
+        });
+    </script>
 </body>
 
 </html>

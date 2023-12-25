@@ -6,8 +6,6 @@ use App\Repositories\ProductPropertyRepository;
 use App\Repositories\ProductRepository;
 use App\Traits\FileUpload;
 
-
-
 class ProductService
 {
     use FileUpload;

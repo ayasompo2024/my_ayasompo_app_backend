@@ -5,14 +5,14 @@ use App\Repositories\CustomerRepository;
 
 use App\Enums\MessagingType;
 use App\Repositories\MessagingRepository;
-
 use App\Traits\SendPushNotification;
+
+use App\Traits\FileUpload;
 
 class MessagingService
 {
     use SendPushNotification;
-
-
+    use FileUpload;
     function unicast($request)
     {
         $customer = CustomerRepository::getById($request->customer_id);
@@ -25,10 +25,14 @@ class MessagingService
     }
     function broadcast($request)
     {
+        dd($request->file("image"));
         $data = ["title" => $request->title, "body" => $request->message];
         $notification = ["title" => $request->title, "body" => $request->message];
-        $this->sendAsbroadcast($notification, $data);
-        $input = $request->only('title', 'message', 'type', 'customer_id');
+
+        // $this->sendAsbroadcast($notification, $data);
+        $input = $request->only('noti_for', 'title', 'message', 'description');
+        if ($request->image)
+            $input['image_url'] = $this->uploadFile($request->image, '/uploads/noti/', 'ayasompo');
         $input['type'] = MessagingType::BROADCAST->value;
         return MessagingRepository::store($input);
     }
@@ -38,6 +42,3 @@ class MessagingService
         return MessagingRepository::getWithPaginate($per_page);
     }
 }
-
-
-

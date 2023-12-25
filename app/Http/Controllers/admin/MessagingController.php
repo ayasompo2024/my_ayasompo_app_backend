@@ -30,10 +30,7 @@ class MessagingController extends Controller
 
     public function sendAsBroadcast(Request $request, MessagingService $messagingService)
     {
-        $request->validate([
-            'title' => 'required',
-            'message' => 'required',
-        ]);
+        $request->validate(['title' => 'required']);
         return $messagingService->broadcast($request) ?
             back()->with('success', 'Success') :
             back()->with('fail', 'fail');

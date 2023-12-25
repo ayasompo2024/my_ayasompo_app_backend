@@ -14,6 +14,9 @@ class Messaging extends Model
         "type",
         "customer_id",
         "image_url",
+        "description",
+        "noti_for",
+        "is_read"
     ];
 
     function customer()
@@ -21,3 +24,5 @@ class Messaging extends Model
         return $this->belongsTo(Customer::class);
     }
 }
+
+

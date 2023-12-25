@@ -7,10 +7,10 @@
             <li class="breadcrumb-item active p-0" aria-current="page">BackUp Database</li>
         </ol>
     </nav>
-    <a href="{{ route('admin.backup.database.all')}}" class="btn btn-info btn-sm ml-3">
+    <a href="{{ route('dev.backup.database.all')}}" class="btn btn-info btn-sm ml-3">
         Backup Now
     </a>
-    <a href="{{ route('admin.backup.database.show_backup_file')}}" class="btn btn-info btn-sm ml-3 float-right">
+    <a href="{{ route('dev.backup.database.show_backup_file')}}" class="btn btn-info btn-sm ml-3 float-right">
         <i class="bi bi-arrow-clockwise"></i>
     </a>
     <div class="bg-light px-md-3  mt-2 mb-5">

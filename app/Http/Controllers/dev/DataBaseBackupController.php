@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backup;
+namespace App\Http\Controllers\dev;
 
 use App\Http\Controllers\Controller;
 use DirectoryIterator;
@@ -18,7 +18,7 @@ class DataBaseBackupController extends Controller
 
         $sql_file = File::files('./../backup');
         rsort($sql_file);
-        return view('backup.database_backup', compact(['sql_file']));
+        return view('dev.backup.database_backup', compact(['sql_file']));
         //return Storage::download('folder/file');
     }
 

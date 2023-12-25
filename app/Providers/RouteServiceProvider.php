@@ -7,7 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\doc\DocController;
+
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -45,14 +45,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::prefix('admin/backup')
+            // Route::prefix('admin/backup')
+            //     ->middleware('web')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/backup.php'));
+
+            Route::prefix('dev')
                 ->middleware('web')
                 ->namespace($this->namespace)
-                ->group(base_path('routes/backup.php'));
-            Route::prefix('doc')->group(function () {
-                Route::get('index', [DocController::class, 'index'])->name("doc.index");
-                Route::get('index/{file}', [DocController::class, 'getContent'])->name("doc.index.file");
-            });
+                ->group(base_path('routes/dev.php'));
+
             Route::prefix('admin/messaging')
                 ->middleware('web')
                 ->namespace($this->namespace)

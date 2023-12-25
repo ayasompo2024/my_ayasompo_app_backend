@@ -1,0 +1,8 @@
+name: api_test
+
+dependencies:
+  http: ^0.13.3
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+

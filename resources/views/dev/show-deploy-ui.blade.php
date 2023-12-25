@@ -74,7 +74,7 @@
                                 const responseJson = await response.json();
                                 this.isLoading = false;
                                 console.log(responseJson);
-                                this.results.push("ok");
+                                this.results = ["hello"];
                             })
                             .catch(error => {
 

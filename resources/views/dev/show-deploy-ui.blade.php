@@ -80,7 +80,6 @@
                             })
                             .catch(error => {});
                     }
-                    this.results = ["hello"];
                 },
             },
         });

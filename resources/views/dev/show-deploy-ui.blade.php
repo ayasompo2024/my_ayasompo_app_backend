@@ -39,7 +39,6 @@
 
 @push('child-scripts')
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const app = Vue.createApp({
             data() {
@@ -50,22 +49,8 @@
             },
             methods: {
                 deploy() {
-                    const {
-                        value: password
-                    } = Swal.fire({
-                        
-                        input: "password",
-                        inputLabel: "Password",
-                        inputPlaceholder: "Enter your password",
-                        inputAttributes: {
-                            maxlength: "10",
-                            autocapitalize: "off",
-                            autocorrect: "off"
-                        }
-                    });
-                    if (password) {
-                        Swal.fire(`Entered password: ${password}`);
-                    }
+                    var userInput = prompt('Enter Password To Deploy:');
+                    alert('You entered: ' + userInput);
                     // if (!this.hasPermission) {
 
                     // }

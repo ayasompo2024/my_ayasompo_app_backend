@@ -28,9 +28,7 @@
                         <a @click="deploy" class="btn btn-secondary btn-sm">
                             <i class="bi bi-rocket"></i> Deploy Now
                         </a>
-                        <span v-if="isLoading">
-                            <span class="loader"></span>
-                        </span>
+                        <span v-if="isLoading">Pulling...</span>
                         <small v-else="isLoading" class="text-warning"> ! Change Visibility</small>
                     </div>
                 </div>
@@ -99,73 +97,6 @@
 
 @push('child-css')
     <style>
-        .swal2-confirm {
-            padding: 5px 10px 5px 10px;
-            color: green
-        }
 
-        .swal2-cancel {
-            padding: 5px 10px 5px 10px;
-            color: red;
-        }
-
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.03);
-        }
-
-        .loader {
-            /* background-color: red; */
-            width: 30px;
-            height: 30px;
-            border: 3px solid #e80404df;
-            border-radius: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            position: relative;
-            animation: pulse 1s linear infinite;
-        }
-
-        .loader:after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 3px solid red;
-            border-radius: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            animation: scaleUp 1s linear infinite;
-        }
-
-        @keyframes scaleUp {
-            0% {
-                transform: translate(-50%, -50%) scale(0)
-            }
-
-            60%,
-            100% {
-                transform: translate(-50%, -50%) scale(1)
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            60%,
-            100% {
-                transform: scale(1)
-            }
-
-            80% {
-                transform: scale(1.2)
-            }
-        }
     </style>
 @endpush

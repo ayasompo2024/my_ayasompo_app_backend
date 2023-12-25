@@ -7,8 +7,8 @@
                 <li class="breadcrumb-item active p-0" aria-current="page">One Click Deployment</li>
             </ol>
         </nav>
-        <div class="bg-light px-md-3  mt-2 mb-5">
-            <div class="card p-3">
+        <div class="px-md-3  mt-2 mb-5">
+            <div class="bg-dark rounded p-3">
                 <div class="row">
                     <div class="col-md-6">
                         Repo
@@ -30,7 +30,14 @@
                         </a>
                         <small class="text-warning">! Change Visibility</small>
                     </div>
-                    {{-- @{{ results }} --}}
+                </div>
+            </div>
+            <div v-if="results.length > 0" class="p-3 rounded bg-dark mt-1">
+                Console
+                <div class="mt-2">
+                    <div v-for="result in results">
+                        <span style="font-size:15px" class="text-info" v-text="result"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,15 +72,13 @@
                             })
                             .then(async response => {
                                 const responseJson = await response.json();
-                                if (!response.ok) {}
                                 this.isLoading = false;
                                 console.log(responseJson);
-                                this.results = responseJson;
+                                this.results.push("ok");
                             })
                             .catch(error => {
 
                             });
-                        this.command = '';
                     }
                 },
             },

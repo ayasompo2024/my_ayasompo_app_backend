@@ -42,7 +42,7 @@ class DevOperationController extends Controller
         }
 
         if ($returnCode === 0) {
-            echo "Git pull successful!";
+            echo "Git pull successful!s";
         } else {
             echo "Error executing git pull. Output:\n";
             echo "<pre>" . implode("\n", $output) . "</pre>";

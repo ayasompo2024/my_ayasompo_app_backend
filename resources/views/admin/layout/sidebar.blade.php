@@ -40,7 +40,7 @@
         'sub_menus' => null,
     ],
     [
-        'display' => 'Request Form',
+        'display' => 'Request Form(Inquery)',
         'route' => 'admin.request-form.lists',
         'imag_path' => null,
         'target' => false,
@@ -57,7 +57,7 @@
         ],
     ],
     [
-        'display' => 'Claim Case',
+        'display' => 'E-Claim',
         'route' => 'admin.claim-case.index',
         'imag_path' => null,
         'target' => false,
@@ -123,14 +123,6 @@
             ],
         ],
     ],
-    // [
-    //     'display' => 'Logs',
-    //     'route' => 'admin.dashboard.logs',
-    //     'imag_path' => null,
-    //     'target' => false,
-    //     'icon' => 'bi bi-file-earmark-medical-fill',
-    //     'sub_menus' => null,
-    // ],
     [
         'display' => 'Dev Operation',
         'route' => 'dev.doc.index',
@@ -138,6 +130,14 @@
         'target' => true,
         'icon' => 'bi bi-code-slash',
         'sub_menus' => [
+            [
+                'display' => 'One Click Deployment',
+                'route' => 'dev.code.one-click-deploy',
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-rocket',
+                'sub_menus' => null,
+            ],
             [
                 'display' => 'Terminal',
                 'route' => 'dev.terminal',
@@ -162,6 +162,14 @@
                 'icon' => 'bi bi-database-fill-down',
                 'sub_menus' => null,
             ],
+            // [
+            //     'display' => 'Logs',
+            //     'route' => 'admin.dashboard.logs',
+            //     'imag_path' => null,
+            //     'target' => false,
+            //     'icon' => 'bi bi-file-earmark-medical-fill',
+            //     'sub_menus' => null,
+            // ],
         ],
     ],
 
@@ -197,13 +205,13 @@
     <!-- Sidebar -->
     <div class="sidebar ">
         <nav class="mt-3">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" data-accordion="false">
                 @foreach ($sidebar_menus as $key => $menu)
                     <li class="nav-item">
                         <div
-                            class="nav-link m-0 py-1 d-flex justify-content-between menu-open {{ Request::routeIs($menu['route']) ? 'bg-light' : '' }}">
+                            class="nav-link m-0 py-1 d-flex justify-content-between   menu-open {{ Request::routeIs($menu['route']) ? 'bg-secondary' : '' }}">
 
-                            <a @if ($menu['target'] == true) target="_blank" @endif
+                            <a @if ($menu['target'] == true) target="_blank" @endif class="text-info"
                                 href="{{ route($menu['route']) }}">
                                 @if ($menu['imag_path'])
                                     <img src="{{ asset($menu['imag_path']) }}" alt="AYA Logo" style="height: 30px">
@@ -218,10 +226,9 @@
                                     <i class="bi bi-caret-down-fill text-info p-0"></i></button>
                             @endif
                         </div>
-
                         {{-- sub-menu --}}
                         @if ($menu['sub_menus'])
-                            <ul class="nav p-0" id="{{ $key }}_menu">
+                            <ul class="nav p-0 d-none" id="{{ $key }}_menu">
                                 @foreach ($menu['sub_menus'] as $sub_menu)
                                     <li
                                         class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-light' : '' }}">
@@ -236,7 +243,6 @@
                     </li>
                 @endforeach
 
-                <!-- Logout link -->
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -247,7 +253,6 @@
                         @csrf
                     </form>
                 </li>
-
             </ul>
         </nav>
     </div>

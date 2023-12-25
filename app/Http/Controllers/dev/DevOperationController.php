@@ -27,6 +27,36 @@ class DevOperationController extends Controller
         return view('dev.doc.content', compact(['files', 'content']));
     }
 
+    public function showDeploymentUI()
+    {
+        return view('dev.show-deploy-ui');
+    }
+
+    function OneClickDeploy()
+    {
+        $output = '';
+        $consoleResult = [];
+        if (!chdir('..')) {
+            $consoleResult[] = "Error changing directory";
+            return $consoleResult;
+        }
+        getcwd();
+
+        $gitAddResult = shell_exec("git add . ");
+        // $consoleResult[] = "add ..." . $gitAddResult;
+
+        $commitMessage = "Auto commit message on " . date('Y-m-d H:i:s');
+        $escapedCommitMessage = escapeshellarg($commitMessage);
+        $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
+        // $consoleResult[] = "Commit ..." . $gitCommitResult;
+
+        $gitFetchResult = shell_exec("git fetch");
+        // $consoleResult[] = "Fetch .." . $gitFetchResult;
+
+        // exec("git pull --force", $output, $returnCode);
+        // return $output;
+    }
+
     public function terminal()
     {
         return view('dev.terminal');
@@ -47,31 +77,6 @@ class DevOperationController extends Controller
         }
         getcwd();
         exec($req->command, $output, $returnCode);
-        return $output;
-    }
-
-    function OneClickDeploy()
-    {
-        $output = '';
-        $consoleResult = [];
-        if (!chdir('..')) {
-            $consoleResult[] = "Error changing directory";
-            return $consoleResult;
-        }
-        getcwd();
-
-        $gitAddResult = shell_exec("git add . ");
-        $consoleResult[] = "add ..." . $gitAddResult;
-
-        $commitMessage = "auto commit message on " . date('Y-m-d H:i:s');
-        $escapedCommitMessage = escapeshellarg($commitMessage);
-        $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
-        $consoleResult[] = "commit ..." . $gitCommitResult;
-
-        $gitFetchResult = shell_exec("git fetch");
-        $consoleResult[] = "fetch .." . $gitFetchResult;
-
-        exec("tree", $output, $returnCode);
         return $output;
     }
 

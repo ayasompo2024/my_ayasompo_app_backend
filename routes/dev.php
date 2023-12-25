@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::get('index', [DevOperationController::class, 'index'])->name("dev.doc.index");
     Route::get('index/{file}', [DevOperationController::class, 'getContent'])->name("dev.doc.index.file");
 
@@ -14,5 +15,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/show-terminal', [DevOperationController::class, 'terminal'])->name('dev.terminal');
     Route::post('/command', [DevOperationController::class, 'command']);
-    Route::get('/code/deploy', [DevOperationController::class, 'deploy'])->name('dev.code.deploy');
+    Route::get('/code/one-click-deploy', [DevOperationController::class, 'showDeploymentUI'])->name('dev.code.one-click-deploy');
+    Route::post('/code/deploy', [DevOperationController::class, 'OneClickDeploy']);
 });

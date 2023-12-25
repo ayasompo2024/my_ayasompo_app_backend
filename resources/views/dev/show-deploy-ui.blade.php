@@ -39,6 +39,7 @@
 
 @push('child-scripts')
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const app = Vue.createApp({
             data() {
@@ -51,7 +52,7 @@
                 deploy() {
                     const {
                         value: password
-                    } = await Swal.fire({
+                    } = Swal.fire({
                         title: "Enter your password",
                         input: "password",
                         inputLabel: "Password",

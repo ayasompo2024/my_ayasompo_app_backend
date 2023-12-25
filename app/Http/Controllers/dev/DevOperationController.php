@@ -42,8 +42,10 @@ class DevOperationController extends Controller
         }
         getcwd();
 
-        $gitAddResult = shell_exec("git add . ");
-        // $consoleResult[] = "add ..." . $gitAddResult;
+        exec("git add . ", $output, $returnCode);
+
+        exec("git remote -v", $output, $returnCode);
+        array_push($consoleResult, $output);
 
         $commitMessage = "Auto commit message on " . date('Y-m-d H:i:s');
         $escapedCommitMessage = escapeshellarg($commitMessage);
@@ -51,9 +53,6 @@ class DevOperationController extends Controller
         array_push($consoleResult, $output);
 
         exec("git fetch", $output, $returnCode);
-        array_push($consoleResult, $output);
-
-        exec("git remote -v", $output, $returnCode);
         array_push($consoleResult, $output);
 
         // exec("git pull --force", $output, $returnCode);

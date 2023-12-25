@@ -42,21 +42,18 @@
     <script>
         const app = Vue.createApp({
             data() {
+                let results = [];
+                let password = "7912"
                 return {
-                    hasPermission: false,
-                    results: [],
+                    results
                 };
             },
             methods: {
                 deploy() {
                     var userInput = prompt('Enter Password To Deploy:');
-                    alert('You entered: ' + userInput);
-                    // if (!this.hasPermission) {
-
-                    // }
-                    // if (!this.hasPermission) {
-                    //     return this.results.push("Permission Denied ! Enter Password ")
-                    // }
+                    if (userInput != this.password) {
+                        alert("Permission Denied")
+                    }
                     this.isLoading = true;
                     fetch(`{{ url('/dev/code/deploy') }}`, {
                             method: 'POST',

@@ -4,7 +4,7 @@
     <div class="container" id="app">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent m-0">
-                <li class="breadcrumb-item active p-0" aria-current="page">TerminaL</li>
+                <li class="breadcrumb-item active p-0" aria-current="page">Commands</li>
             </ol>
         </nav>
         <div class="bg-light px-md-3 mb-5">

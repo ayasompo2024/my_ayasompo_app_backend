@@ -29,7 +29,7 @@
                             <i class="bi bi-rocket"></i> Deploy Now
                         </a>
                         <span v-if="isLoading">
-                            Loading....
+                            Pulling....
                         </span>
                         <small class="text-warning"> ! Change Visibility</small>
                     </div>

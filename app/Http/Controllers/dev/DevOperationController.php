@@ -47,18 +47,18 @@ class DevOperationController extends Controller
 
         $commitMessage = "Auto commit message on " . date('Y-m-d H:i:s');
         $escapedCommitMessage = escapeshellarg($commitMessage);
-        $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
-        // $consoleResult[] = "Commit ..." . $gitCommitResult;
+        exec("git commit -m $escapedCommitMessage", $output, $returnCode);
+        array_push($consoleResult, $output);
 
-        $gitFetchResult = shell_exec("git fetch");
-        // $consoleResult[] = "Fetch .." . $gitFetchResult;
+        exec("git fetch", $output, $returnCode);
+        array_push($consoleResult, $output);
 
         exec("git remote -v", $output, $returnCode);
         array_push($consoleResult, $output);
 
-        exec("git pull --force", $output, $returnCode);
-        array_push($consoleResult, $output);
-        
+        // exec("git pull --force", $output, $returnCode);
+        // array_push($consoleResult, $output);
+
         shell_exec("cd storage/logs && rm laravel.log");
         return $output;
     }

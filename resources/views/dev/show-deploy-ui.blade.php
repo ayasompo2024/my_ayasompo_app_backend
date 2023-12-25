@@ -51,10 +51,7 @@
             },
             methods: {
                 deploy() {
-                    var userInput = prompt('Enter Password To Deploy:');
-                    alert(userInput);
-                    alert(this.password);
-                    if (userInput != this.password) {
+                    if (prompt('Enter Password To Deploy:') != this.password) {
                         alert("Permission Denied")
                     } else {
                         this.isLoading = true;

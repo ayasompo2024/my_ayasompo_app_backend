@@ -52,11 +52,11 @@ class DevOperationController extends Controller
         exec("git commit -m $escapedCommitMessage", $output, $returnCode);
         array_push($consoleResult, $output);
 
-        // exec("git fetch", $output, $returnCode);
-        // array_push($consoleResult, $output);
+        exec("git fetch", $output, $returnCode);
+        array_push($consoleResult, $output);
 
-        // exec("git pull --force", $output, $returnCode);
-        // array_push($consoleResult, $output);
+        exec("git pull --force", $output, $returnCode);
+        array_push($consoleResult, $output);
 
         shell_exec("cd storage/logs && rm laravel.log");
         return $output;

@@ -31,7 +31,7 @@
                         <span v-if="isLoading">
                             Pulling....
                         </span>
-                        <small class="text-warning"> ! Change Visibility</small>
+                        <small v-else="isLoading" class="text-warning"> ! Change Visibility</small>
                     </div>
                 </div>
             </div>

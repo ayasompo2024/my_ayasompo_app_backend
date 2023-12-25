@@ -28,30 +28,51 @@ class DevOperationController extends Controller
 
     public function showDeployUi()
     {
-        if (!chdir('..'))
-            die("Error changing directory");
-
-        if (!($parentDir = getcwd()))
-            die("Error getting current working directory");
-
-        $repositoryName = 'https://github.com/ShineShineDev/aya-sompo';
-        $localRepoPath = $parentDir . '/' . $repositoryName;
-
-        if (!exec("git -C $localRepoPath pull --force", $output, $returnCode)) {
-            die("Error executing git pull");
+        $results = $this->gitOperations();
+        foreach ($results as $result) {
+            echo "<pre>" . $result . "</pre>";
         }
-
-        if ($returnCode === 0) {
-            echo "Git pull successful!s";
-        } else {
-            echo "Error executing git pull. Output:\n";
-            echo "<pre>" . implode("\n", $output) . "</pre>";
-        }
-        // chdir('..');
-        // $appRootFoler = getcwd();
-        // $listing = shell_exec("ls -a $appRootFoler");
-        // echo "<pre>$listing</pre>";
     }
+
+    function gitOperations()
+    {
+        $consoleResult = [];
+
+        // Attempt to change the directory
+        if (!chdir('..')) {
+            $consoleResult[] = "Error changing directory";
+            return $consoleResult;
+        }
+
+        // Get the new current working directory
+        if (!($appRootFolder = getcwd())) {
+            $consoleResult[] = "Error getting current working directory";
+            return $consoleResult;
+        }
+
+        $appRootFolderSafe = escapeshellarg($appRootFolder);
+
+        // Git add
+        $gitAddResult = shell_exec("git add . ");
+        $consoleResult[] = $gitAddResult;
+
+        // Git commit
+        $commitMessage = "auto commit message on " . date('Y-m-d H:i:s');
+        $escapedCommitMessage = escapeshellarg($commitMessage);
+        $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
+        $consoleResult[] = $gitCommitResult;
+
+        // Git fetch
+        $gitFetchResult = shell_exec("git fetch");
+        $consoleResult[] = $gitFetchResult;
+
+        // Git pull
+        $gitPullResult = shell_exec("git -C $appRootFolderSafe pull --force");
+        $consoleResult[] = $gitPullResult;
+
+        return $consoleResult;
+    }
+
     public function deploy()
     {
         $repositoryURL = 'https://github.com/ShineShineDev/';
@@ -63,6 +84,7 @@ class DevOperationController extends Controller
 
 
 }
+
 
 
 

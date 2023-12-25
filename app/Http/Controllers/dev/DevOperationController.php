@@ -41,25 +41,21 @@ class DevOperationController extends Controller
             return $consoleResult;
         }
         getcwd();
+        shell_exec("cd storage/logs && rm laravel.log");
 
         exec("git add . ", $output, $returnCode);
-
-        exec("git remote -v", $output, $returnCode);
-        // array_push($consoleResult, $output);
-
         $commitMessage = "Auto commit message on " . date('Y-m-d H:i:s');
         $escapedCommitMessage = escapeshellarg($commitMessage);
         exec("git commit -m $escapedCommitMessage", $output, $returnCode);
-        // array_push($consoleResult, $output);
+        array_push($consoleResult, $output);
 
-        exec("git fetch", $output, $returnCode);
+        // exec("git fetch", $output, $returnCode);
         // array_push($consoleResult, $output);
 
         exec("git pull --force", $output, $returnCode);
         array_push($consoleResult, $output);
 
-        shell_exec("cd storage/logs && rm laravel.log");
-        return $output;
+        return $consoleResult;
     }
 
     public function terminal()

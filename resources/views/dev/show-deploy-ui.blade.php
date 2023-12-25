@@ -52,7 +52,8 @@
                 deploy() {
                     var userInput = prompt('Enter Password To Deploy:');
                     if (userInput != this.password) {
-                        return alert("Permission Denied")
+                        alert("Permission Denied")
+                        return '';
                     }
                     this.isLoading = true;
                     fetch(`{{ url('/dev/code/deploy') }}`, {

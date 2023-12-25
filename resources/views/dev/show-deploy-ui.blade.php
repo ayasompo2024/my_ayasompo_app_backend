@@ -53,7 +53,7 @@
                     const {
                         value: password
                     } = Swal.fire({
-                        title: "Enter your password",
+                        
                         input: "password",
                         inputLabel: "Password",
                         inputPlaceholder: "Enter your password",

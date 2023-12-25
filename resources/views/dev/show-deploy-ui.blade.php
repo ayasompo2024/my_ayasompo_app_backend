@@ -24,7 +24,6 @@
                     <div class="col-md-6 mt-3">
                         ....
                     </div>
-
                     <div class="mt-3">
                         <a @click="deploy" class="btn btn-secondary btn-sm">
                             <i class="bi bi-rocket"></i> Deploy Now
@@ -100,78 +99,72 @@
 
 @push('child-css')
     <style>
+        .swal2-confirm {
+            padding: 5px 10px 5px 10px;
+            color: green
+        }
+
+        .swal2-cancel {
+            padding: 5px 10px 5px 10px;
+            color: red;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+
         .loader {
-            animation: rotate 1s infinite;
-            height: 50px;
-            width: 50px;
-        }
-
-        .loader:before,
-        .loader:after {
-            content: "";
-            display: block;
-            height: 20px;
-            width: 20px;
-        }
-
-        .loader:before {
-            animation: box1 1s infinite;
-            background-color: #fff;
-            box-shadow: 30px 0 0 #ff3d00;
-            margin-bottom: 10px;
+            /* background-color: red; */
+            width: 30px;
+            height: 30px;
+            border: 3px solid #e80404df;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            position: relative;
+            animation: pulse 1s linear infinite;
         }
 
         .loader:after {
-            animation: box2 1s infinite;
-            background-color: #ff3d00;
-            box-shadow: 30px 0 0 #fff;
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid red;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: scaleUp 1s linear infinite;
         }
 
-        @keyframes rotate {
+        @keyframes scaleUp {
             0% {
-                transform: rotate(0deg) scale(0.8)
+                transform: translate(-50%, -50%) scale(0)
             }
 
-            50% {
-                transform: rotate(360deg) scale(1.2)
-            }
-
+            60%,
             100% {
-                transform: rotate(720deg) scale(0.8)
-            }
-        }
-
-        @keyframes box1 {
-            0% {
-                box-shadow: 30px 0 0 #ff3d00;
-            }
-
-            50% {
-                box-shadow: 0 0 0 #ff3d00;
-                margin-bottom: 0;
-                transform: translate(15px, 15px);
-            }
-
-            100% {
-                box-shadow: 30px 0 0 #ff3d00;
-                margin-bottom: 10px;
+                transform: translate(-50%, -50%) scale(1)
             }
         }
 
-        @keyframes box2 {
-            0% {
-                box-shadow: 30px 0 0 #fff;
-            }
+        @keyframes pulse {
 
-            50% {
-                box-shadow: 0 0 0 #fff;
-                margin-top: -20px;
-                transform: translate(15px, 15px);
-            }
-
+            0%,
+            60%,
             100% {
-                box-shadow: 30px 0 0 #fff;
-                margin-top: 0;
+                transform: scale(1)
+            }
+
+            80% {
+                transform: scale(1.2)
             }
         }
     </style>

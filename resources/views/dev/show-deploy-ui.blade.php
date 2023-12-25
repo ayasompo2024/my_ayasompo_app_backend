@@ -8,7 +8,7 @@
             </ol>
         </nav>
         <div class="px-md-3  mt-2 mb-5">
-            <div class="bg-dark rounded p-3">
+            <div class="bg-light border rounded p-3">
                 <div class="row">
                     <div class="col-md-6">
                         Repo
@@ -28,12 +28,12 @@
                         <a @click="deploy" class="btn btn-secondary btn-sm">
                             <i class="bi bi-rocket"></i> Deploy Now
                         </a>
-                        <small class="text-warning">! Change Visibility</small>
+                        <small class="text-warning"> ! Change Visibility</small>
                     </div>
                 </div>
             </div>
-            <div v-if="results.length > 0" class="p-3 rounded bg-dark mt-1">
-                <h6 class="pb-1">
+            <div v-if="results.length > 0" class="p-3 rounded bg-light border mt-1">
+                <h6 class="pb-1 border-bottom">
                     Console
                 </h6>
                 <div class="mt-2">

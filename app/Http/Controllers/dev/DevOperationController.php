@@ -55,9 +55,9 @@ class DevOperationController extends Controller
 
         // exec("git pull --force", $output, $returnCode);
         exec("git remote -v", $output, $returnCode);
-        $$consoleResult[] = $output;
+        array_push($consoleResult,$output);
         exec("git remote -v", $output, $returnCode);
-        $$consoleResult[] = $output;
+        array_push($consoleResult,$output);
         shell_exec("cd storage/logs && rm laravel.log");
         return $output;
     }

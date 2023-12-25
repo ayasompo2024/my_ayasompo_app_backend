@@ -54,7 +54,7 @@ class DevOperationController extends Controller
         // $consoleResult[] = "Fetch .." . $gitFetchResult;
 
         // exec("git pull --force", $output, $returnCode);
-        // return $output;
+        return $output;
     }
 
     public function terminal()

@@ -61,7 +61,6 @@ class DevOperationController extends Controller
         $escapedCommitMessage = escapeshellarg($commitMessage);
         $gitCommitResult = shell_exec("git commit -m $escapedCommitMessage");
         $consoleResult[] = $gitCommitResult;
-
         // Git fetch
         $gitFetchResult = shell_exec("git fetch");
         $consoleResult[] = $gitFetchResult;

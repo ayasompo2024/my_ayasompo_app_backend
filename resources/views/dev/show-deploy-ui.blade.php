@@ -75,6 +75,7 @@
                                 this.isLoading = false;
                                 console.log(responseJson);
                                 this.results = ["hello"];
+                                console.log(this.results);
                             })
                             .catch(error => {
 

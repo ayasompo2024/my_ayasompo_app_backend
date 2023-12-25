@@ -52,8 +52,8 @@ class DevOperationController extends Controller
         exec("git commit -m $escapedCommitMessage", $output, $returnCode);
         array_push($consoleResult, $output);
 
-        exec("git fetch", $output, $returnCode);
-        array_push($consoleResult, $output);
+        // exec("git fetch", $output, $returnCode);
+        // array_push($consoleResult, $output);
 
         // exec("git pull --force", $output, $returnCode);
         // array_push($consoleResult, $output);

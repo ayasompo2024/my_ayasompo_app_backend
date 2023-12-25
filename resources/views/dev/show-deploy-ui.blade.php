@@ -28,6 +28,9 @@
                         <a @click="deploy" class="btn btn-secondary btn-sm">
                             <i class="bi bi-rocket"></i> Deploy Now
                         </a>
+                        <span v-if="isLoading">
+                            Loading....
+                        </span>
                         <small class="text-warning"> ! Change Visibility</small>
                     </div>
                 </div>
@@ -53,9 +56,11 @@
             data() {
                 let results = [];
                 let password = "7912"
+                let isLoading = false;
                 return {
                     results,
-                    password
+                    password,
+                    isLoading
                 };
             },
             methods: {

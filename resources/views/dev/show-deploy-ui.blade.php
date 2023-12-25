@@ -33,7 +33,9 @@
                 </div>
             </div>
             <div v-if="results.length > 0" class="p-3 rounded bg-dark mt-1">
-                Console
+                <h6 class="pb-1">
+                    Console
+                </h6>
                 <div class="mt-2">
                     <div v-for="result in results">
                         <span style="font-size:15px" class="text-info" v-text="result"></span>
@@ -72,14 +74,11 @@
                             })
                             .then(async response => {
                                 const responseJson = await response.json();
-                                this.isLoading = false;
                                 console.log(responseJson);
-                                this.results = ["hello"];
-                                console.log(this.results);
+                                this.isLoading = false;
+                                this.results = responseJson;
                             })
-                            .catch(error => {
-
-                            });
+                            .catch(error => {});
                     }
                     this.results = ["hello"];
                 },

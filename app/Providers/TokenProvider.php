@@ -25,7 +25,7 @@ class TokenProvider extends ServiceProvider
         $tenantID = config("app.tenant_id");
         try {
             // if (false) {
-            if (Cache::has('CRM_API_Token')) {
+            if (!Cache::has('CRM_API_Token')) {
                 $tokenURL = "https://login.microsoftonline.com/$tenantID/oauth2/token";
                 $client = new Client();
                 $response = $client->post($tokenURL, [

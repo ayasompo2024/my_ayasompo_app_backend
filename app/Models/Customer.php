@@ -21,7 +21,8 @@ class Customer extends Authenticatable {
         "risk_seqNo",
         "risk_name",
         "policy_number",
-        "is_disabled"
+        "is_disabled",
+        "disabled_from"
     ];
     function core() {
         return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');

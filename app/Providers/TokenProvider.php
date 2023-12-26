@@ -24,8 +24,8 @@ class TokenProvider extends ServiceProvider
     {
         $tenantID = config("app.tenant_id");
         try {
-            if (false) {
-            // if (Cache::has('CRM_API_Token')) {
+            // if (false) {
+            if (Cache::has('CRM_API_Token')) {
                 $tokenURL = "https://login.microsoftonline.com/$tenantID/oauth2/token";
                 $client = new Client();
                 $response = $client->post($tokenURL, [
@@ -49,8 +49,8 @@ class TokenProvider extends ServiceProvider
     private function getInternalToken()
     {
         try {
-            if (false) {
-            // if (!Cache::has('token_for_internal')) {
+            // if (false) {
+            if (!Cache::has('token_for_internal')) {
                 $auth_route = config('app.auth_route');
                 $user_name = config('app.user_name');
                 $password = config('app.password');

@@ -195,10 +195,7 @@ class RequestFormService
         ];
         return array_merge($staticData, $appData, $adiData);
     }
-    private function getCRMToken()
-    {
-
-    }
+    
     private function log($message, $customer_id = null)
     {
         LogRepository::store([

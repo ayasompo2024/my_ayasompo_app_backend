@@ -3,6 +3,7 @@ namespace App\Services\api\app;
 
 use App\Events\CustomerRegistered;
 use App\Http\Resources\api\app\RegisterCustomerRsource;
+use App\Http\Resources\api\app\CustomerRsource;
 use App\Repositories\DeviceTokenRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
@@ -40,7 +41,7 @@ class CustomerService
         $customer->save();
         return [
             "token" => $customer->is_disabled ? null : $token,
-            "customer" => $customer->is_disabled ? null : new RegisterCustomerRsource($customer)
+            "customer" => $customer->is_disabled ? null : new CustomerRsource($customer)
         ];
     }
     function disabledProfile($user_id)

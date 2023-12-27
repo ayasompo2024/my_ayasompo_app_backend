@@ -18,7 +18,7 @@ class RegisterCustomerRsource extends JsonResource
             'id' => $this->id,
             "user_name" => $this->user_name,
             "app_customer_type" => $this->app_customer_type,
-            "profile_photo" => $this->profile_photo,
+            "profile_photo" => config('app.app_domain') . $this->profile_photo,
             "is_disabled" => 0,
 
             "risk_seqNo" => $this->risk_seqNo,

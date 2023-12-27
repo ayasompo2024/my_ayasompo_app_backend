@@ -18,6 +18,7 @@ class CustomerService
         $input = $request->only("customer_code", "customer_phoneno", "policy_number", "user_name", "device_token");
         $input['password'] = Hash::make($request['password']);
         $input['app_customer_type'] = AppCustomerType::INDIVIDUAL->value;
+        $input['profile_photo'] = "uploads/profile/user.jpg";
         $customer = CustomerRepository::store($input);
         $token = $customer->createToken('app_api_token')->accessToken;
 

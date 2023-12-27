@@ -38,7 +38,7 @@ trait Auth
         $status = $customerService->login($request);
         if ($status) {
             if ($status["customer"] == null)
-                return $this->errorResponse("Account Has been disabled ", 400);
+                return $this->errorResponse("Account Has been disabled ", 204);
         }
         if ($status) {
             $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);

@@ -17,4 +17,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/command', [DevOperationController::class, 'command']);
     Route::get('/code/one-click-deploy', [DevOperationController::class, 'showDeploymentUI'])->name('dev.code.one-click-deploy');
     Route::post('/code/deploy', [DevOperationController::class, 'OneClickDeploy']);
+
+    Route::get('/show-env-value', [DevOperationController::class, 'showeEnvValue'])->name('dev.show-env-value');
 });

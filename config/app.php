@@ -33,6 +33,8 @@ return [
     'fcm_key' => env('FCM_SERVER_KEY'),
     'fcm_url' => env('FCM_URL'),
 
+    'stage' => env("STAGE"),
+
 
     /*
     |--------------------------------------------------------------------------

@@ -131,6 +131,14 @@
         'icon' => 'bi bi-code-slash',
         'sub_menus' => [
             [
+                'display' => 'ENV Value',
+                'route' => 'dev.show-env-value',
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-columns-gap',
+                'sub_menus' => null,
+            ],
+            [
                 'display' => 'One Click Deployment',
                 'route' => 'dev.code.one-click-deploy',
                 'imag_path' => null,

@@ -1,7 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container">
-
         <nav class="pt-3">
             Request Form (Enquiry) / All
             <a class="float-left" href="{{ url()->previous() }}"><i class="m-3 bi bi-arrow-left-square"></i></a>
@@ -9,11 +8,11 @@
                 {{ $requestForms->total() }}
             </span>
         </nav>
-
         <div class="bg-light px-md-3 mt-2 mb-5">
             <table class="table table-responsive">
                 <thead>
                     <tr>
+                        <th style="min-width: 200px">Inquiry Date time</th>
                         <th style="min-width: 200px">App User Name</th>
                         <th style="min-width: 130px">Inquiry Type</th>
                         <th style="min-width: 200px">Title</th>
@@ -27,12 +26,14 @@
                         <th style="min-width: 200px">Class Code</th>
                         <th style="min-width: 200px">Risk Sequence No</th>
                         <th style="min-width: 200px">Vehicle no</th>
-                        <th style="min-width: 200px">Inquiry Date time</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($requestForms as $requestForm)
                         <tr>
+                            <td class="p-1" style="font-size: 15px">
+                                {{ \Carbon\Carbon::parse($requestForm->ayasompo_inquirydatetime)->format('Y-m-d h:i:s A') }}
+                            </td>
                             <td title="{{ $requestForm->customer->customer_phoneno ?? '' }}" class="p-1"
                                 style="font-size: 15px">
                                 {{ $requestForm->customer->user_name ?? '' }}
@@ -55,7 +56,6 @@
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_classcode }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_risksequenceno }} </td>
                             <td class="p-1" style="font-size: 15px" <td> {{ $requestForm->ayasompo_vehicleno }} </td>
-                            <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_inquirydatetime }} </td>
                             {{--  <td> {{ $requestForm->reason }} </td>
                             <td style="font-size: 15px"> {{ $requestForm->effective_date }} </td>
                             <td style="font-size: 15px"> {{ $requestForm->bank_account_number }} </td>

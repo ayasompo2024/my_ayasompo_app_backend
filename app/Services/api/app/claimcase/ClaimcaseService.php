@@ -1,17 +1,7 @@
 <?php
 namespace App\Services\api\app\claimcase;
 
-use App\Models\RequestForm;
-use App\Repositories\LogRepository;
-use App\Repositories\ProductCodeListRequestFormTypeRepo;
 use App\Traits\UploadFileToAzurBlobStorage;
-use GuzzleHttp\Exception\RequestException;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-use GuzzleHttp\Client;
-use League\OAuth1\Client\Credentials\TokenCredentials;
-use Log;
-
 
 class ClaimcaseService
 {

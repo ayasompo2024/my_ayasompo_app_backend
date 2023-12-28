@@ -50,6 +50,7 @@ class ClaimcaseController extends Controller
                 "customer_type" => $data->customer_type,
                 "signature_image" => $data->signature_image,
                 "accident_damaged_photos" => unserialize($data->accident_damaged_photos),
+                "created_at" => $data->created_at
             ];
         });
     }

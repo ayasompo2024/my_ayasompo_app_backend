@@ -13,6 +13,7 @@
                 <table class="table table-responsive mt-2 table-striped table-hover">
                     <thead>
                         <tr>
+                            <th style="min-width: 200px">Created At</th>
                             {{-- <th style="min-width: 200px">App Customer Name</th> --}}
                             <th style="min-width: 100px;font-size:14px">Vehicle No</th>
                             <th style="min-width: 200px;font-size:14px">Driver Name</th>
@@ -31,6 +32,7 @@
                     </thead>
                     <tbody>
                         <tr @click="showDetail(key)" v-for="(item, key) in claimCases" style="cursor: pointer;">
+                            <td style="font-size: 15px">@{{ formatDateTime(item.created_at) }}</td>
                             {{-- <td style="font-size: 15px">@{{ item.id }}</td> --}}
                             <td style="font-size: 15px">@{{ item.vehicle_no }} </td>
                             <td style="font-size: 15px">@{{ item.driver_name }}</td>
@@ -149,8 +151,8 @@
                         <div class=" my-3 ">
                             <h6>Accident Damaged Photos</h6>
                             <div class="row">
-                                <div @click="showPhoto(item)" v-for="(item, key) in currentSelectObj.accident_damaged_photos"
-                                    class="col-md-4 mt-1">
+                                <div @click="showPhoto(item)"
+                                    v-for="(item, key) in currentSelectObj.accident_damaged_photos" class="col-md-4 mt-1">
                                     <div class="border"
                                         :style="{
                                             cursor: 'pointer',
@@ -184,7 +186,7 @@
                         <button @click="removePhoto()" class="float-right btn"><i
                                 class="bi bi-x-circle-fill text-danger"></i></button>
                     </div>
-                    <img :src="currentClickPhoto" class="border" >
+                    <img :src="currentClickPhoto" class="border">
                 </div>
             </div>
             <div class="float-right pb-3">
@@ -205,10 +207,12 @@
             justify-content: center;
             align-items: center;
         }
+
         .popup-content {
             max-width: 80%;
             max-height: 70%;
         }
+
         .popup-content img {
             width: 100%;
             height: 100%;
@@ -244,7 +248,21 @@
                 },
                 removePhoto() {
                     this.currentClickPhoto = '';
-                }
+                },
+                formatDateTime(dateTimeString) {
+                    const date = new Date(dateTimeString);
+                    const formattedDateTime = date.toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        second: 'numeric',
+                        hour12: true // Use 12-hour clock with am/pm
+                    });
+
+                    return formattedDateTime;
+                },
             }
         });
         app.mount('#app');

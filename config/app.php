@@ -8,9 +8,6 @@ return [
     'user_name' => env('USER_NAME'),
     'password' => env('PASSWORD'),
 
-    'fcm_key' => env('FCM_SERVER_KEY'),
-    'fcm_url' => env('FCM_URL'),
-
     // Create Enquiry Case
     'enquiry_product_type' => env('EnquiryProductType'),
     'enquiry_type' => env('EnquiryType'),
@@ -24,13 +21,18 @@ return [
     'service_root' => env('ServiceRoot'),
 
     //upload file url
-    'file_upload_base_url' => env("FileUploadBaseURL"),
+    'FILE_UPLOAD_BASE_URL' => env("FILE_UPLOAD_BASE_URL"),
 
     //Create Motor Case Base URL
-    'create_motor_case_base_url' => env("CreateMotorCaseBaseURL"),
+    'CREATE_CLAIM_CASE_BASE_URL' => env("CREATE_CLAIM_CASE_BASE_URL"),
 
     'ayasompo_base_url' => env("AyasompoBaseURL"),
-    
+
+    'CRM_BASE_URL' => env("CRM_BASE_URL"),
+
+    'fcm_key' => env('FCM_SERVER_KEY'),
+    'fcm_url' => env('FCM_URL'),
+
 
     /*
     |--------------------------------------------------------------------------

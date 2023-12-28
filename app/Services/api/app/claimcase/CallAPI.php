@@ -2,16 +2,14 @@
 namespace App\Services\api\app\claimcase;
 
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 use Log;
 
 trait CallAPI
 {
-
     private function CallMotorCaseAPI($data)
     {
-        $url = config("app.create_motor_case_base_url") . "external/claimprocess/claimcase/motor";
+        $url = config("app.CREATE_CLAIM_CASE_BASE_URL") . "api/external/claimprocess/claimcase/motor";
         try {
             $response = Http::post($url, $data);
             if ($response->successful()) {
@@ -28,7 +26,7 @@ trait CallAPI
     }
     private function CallNonMotorCaseAPI($data)
     {
-        $url = config("app.create_motor_case_base_url") . "external/claimprocess/claimcase/non-motor";
+        $url = config("app.CREATE_CLAIM_CASE_BASE_URL") . "api/external/claimprocess/claimcase/non-motor";
         try {
             $response = Http::post($url, $data);
             if ($response->successful()) {

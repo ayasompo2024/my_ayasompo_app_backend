@@ -100,17 +100,17 @@ class RequestFormService
     }
     private function createInquiryCase($data)
     {
-        $url = "https://ayascrmsit.crm5.dynamics.com/api/data/v9.1/incidents";
+        $create_inquiry_case_url = config("app.CRM_BASE_URL") . "api/data/v9.1/incidents";
         try {
             $crmClient = new Client([
-                'base_uri' => $url,
+                'base_uri' => $create_inquiry_case_url,
                 'headers' => [
                     'Authorization' => 'Bearer ' . Cache::get('CRM_API_Token'),
                     'Accept' => 'application/json',
                     'Content-Type' => 'application/json',
                 ],
             ]);
-            $response = $crmClient->post($url, [
+            $response = $crmClient->post($create_inquiry_case_url, [
                 'json' => $data
             ]);
             return json_decode($response->getBody(), true);
@@ -121,7 +121,7 @@ class RequestFormService
     }
     private function getCaseNumberByAYASCaseID($case_id)
     {
-        $url = "https://ayascrmsit.crm5.dynamics.com/api/data/v9.1/incidents?\$select=incidentid,ayasompo_casenumber&\$filter=ayasompo_caseid eq '" . $case_id . "'";
+        $url = config("app.CRM_BASE_URL") . "api/data/v9.1/incidents?\$select=incidentid,ayasompo_casenumber&\$filter=ayasompo_caseid eq '" . $case_id . "'";
         try {
             $crmClient = new Client([
                 'base_uri' => $url,
@@ -195,7 +195,7 @@ class RequestFormService
         ];
         return array_merge($staticData, $appData, $adiData);
     }
-    
+
     private function log($message, $customer_id = null)
     {
         LogRepository::store([

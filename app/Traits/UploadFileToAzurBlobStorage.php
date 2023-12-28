@@ -38,7 +38,7 @@ trait UploadFileToAzurBlobStorage
 
     function realUpload($httpClient, $file)
     {
-        $upload_file_url = config("app.file_upload_base_url") . "/external/files";
+        $upload_file_url = config("app.FILE_UPLOAD_BASE_URL") . "api/external/files";
         
         $response = $httpClient->post($upload_file_url, [
             'multipart' => [

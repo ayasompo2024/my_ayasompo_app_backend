@@ -16,20 +16,14 @@ class ProductCodeListController extends Controller
         return view('admin.product_code_list.index')->with([
             'product_code_lists' => ProductCodeList::paginate(20)
         ]);
-
     }
     public function searchByProductCode(Request $request)
     {
-        $request->validate([
-            'product_code' => "required"
-        ]);
+        $request->validate(['product_code' => "required"]);
         return view('admin.product_code_list.index')->with([
             'product_code_lists' => ProductCodeList::query()->where('product_code', $request->product_code)->paginate(50)
         ]);
     }
-
-
-
     public function showRequestFormType($productCodeListId, RequestFormTypeService $requestFormTypeService)
     {
         return view('admin.product_code_list.show-request-form-type')->with([
@@ -37,9 +31,7 @@ class ProductCodeListController extends Controller
             'productCodeListId' => $productCodeListId,
             'bindedRequestFormTypes' => ProductCodeListRequestFormType::query()->where('product_code_list_id', $productCodeListId)->get()
         ]);
-
     }
-
     public function bindWithRequestFormType(Request $request)
     {
         $request->validate([
@@ -64,37 +56,26 @@ class ProductCodeListController extends Controller
         return redirect()->back()->with('success', 'Success');
     }
 
-
     public function create()
     {
 
     }
-
-
     public function store(Request $request)
     {
 
     }
-
-
     public function show($id)
     {
         //
     }
-
-
     public function edit($id)
     {
         //
     }
-
-
     public function update(Request $request, $id)
     {
         //
     }
-
-
     public function destroy($id)
     {
         //
@@ -106,7 +87,6 @@ class ProductCodeListController extends Controller
             echo var_dump(ProductCodeList::create($code_list));
         }
     }
-
     private function prodcutCodeListArray()
     {
         return [

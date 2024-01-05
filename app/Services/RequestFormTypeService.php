@@ -11,12 +11,14 @@ class RequestFormTypeService
     {
         return RequestFormTypeRepository::store($request->only("type"));
     }
-
     function getAll()
     {
         return RequestFormTypeRepository::getAll();
     }
-
+    function getByID($id)
+    {
+        return RequestFormTypeRepository::getByID($id);
+    }
 }
 
 

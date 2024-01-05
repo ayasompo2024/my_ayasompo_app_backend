@@ -23,22 +23,23 @@ class MessagingService
         $input['type'] = MessagingType::UNICAST->value;
         return MessagingRepository::store($input);
     }
+
     function broadcast($request)
     {
-        dd($request->file("image"));
         $data = ["title" => $request->title, "body" => $request->message];
         $notification = ["title" => $request->title, "body" => $request->message];
-
-        // $this->sendAsbroadcast($notification, $data);
-        $input = $request->only('noti_for', 'title', 'message', 'description');
+        
+        $this->sendAsbroadcast($notification, $data);
+        $input = $request->only('title', 'message', 'noti_for', 'description');
         if ($request->image)
-            $input['image_url'] = $this->uploadFile($request->image, '/uploads/noti/', 'ayasompo');
+            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
         $input['type'] = MessagingType::BROADCAST->value;
         return MessagingRepository::store($input);
     }
-
+    
     function histories($per_page)
     {
         return MessagingRepository::getWithPaginate($per_page);
     }
 }
+

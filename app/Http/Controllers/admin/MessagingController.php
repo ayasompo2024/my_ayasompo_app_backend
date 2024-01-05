@@ -27,15 +27,13 @@ class MessagingController extends Controller
             back()->with('success', 'Success') :
             back()->with('fail', 'fail');
     }
-
     public function sendAsBroadcast(Request $request, MessagingService $messagingService)
     {
-        $request->validate(['title' => 'required']);
+        $request->validate(['title' => 'required', 'message' => 'required']);
         return $messagingService->broadcast($request) ?
             back()->with('success', 'Success') :
             back()->with('fail', 'fail');
     }
-
     public function history(MessagingService $messagingService)
     {
         return view("admin.messaging.history")->with(['histories' => $messagingService->histories(30)]);

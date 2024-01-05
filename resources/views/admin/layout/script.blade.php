@@ -9,6 +9,7 @@
 <script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('admin/js/dashboard3.js') }}"></script>
 <script src="{{ asset('admin/js/scrollreveal.js') }}"></script>
+<script src="{{ asset('admin/js/SpideyShine.js') }}"></script>
 
 <script>
     window.sr = new ScrollReveal();

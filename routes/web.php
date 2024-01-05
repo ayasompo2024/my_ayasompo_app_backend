@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", function () {
     return view("home");
 });
+
 Auth::routes();
 
 // Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
@@ -79,11 +80,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
             Route::post('customer/register/preview-customer', 'previewBeforeResgister');
             Route::post('customer/register', 'register');
         });
-
     });
-
 });
-
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 Route::get('/c', function () {

@@ -4,16 +4,15 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\LogRepository;
-
-
+use App\Services\UtilityService;
 
 class DashboardController extends Controller
 {
 
-    public function index()
+    public function index(UtilityService $utilityService)
     {
+        $count_customer = $utilityService->countTotalCustomer();
         return view('admin.dashboard.dashboard', compact([]));
-        // return view('backend.dashboard', compact([]));
     }
     function logs()
     {

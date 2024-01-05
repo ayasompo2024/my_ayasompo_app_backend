@@ -7,7 +7,7 @@
             </ol>
         </nav>
         <div class="card mx-md-4 px-3 py-4">
-            <form action="{{ route('admin.messaging.broadcast.send') }}" method="post">
+            <form action="{{ route('admin.messaging.broadcast.send') }}" enctype="multipart/form-data" method="post">
                 @csrf
                 <h6 class="border-bottom pb-2">
                     <b>Send Noti To All Customres</b>
@@ -38,7 +38,7 @@
                 <div class="row mt-3">
                     <label class="col-md-4" for="message">Message</label>
                     <div class="col-md-8">
-                        <textarea name="message" class="form-control"></textarea>
+                        <textarea name="message" required class="form-control"></textarea>
                         <small class="form-text text-muted">Option , Max Lenght 255</small>
                     </div>
                 </div>

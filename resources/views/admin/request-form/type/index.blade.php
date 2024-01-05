@@ -11,12 +11,12 @@
         </a>
         @include('admin.validation-error-alert')
         <div class="mt-3 mb-5">
-            <div style="display: flex;flex-wrap: wrap;gap: 10px;">
+            <div class="row">
                 @foreach ($requestFormType as $item)
-                    <div>
-                        <div class="btn btn border mt-1" style="font-weight: 600">
+                    <div class="col-md-4">
+                        <div class="btn btn border mt-2 w-100" style="font-weight: 600;text-align: left">
                             {{ $item->type }}
-                            <a href="{{ route('admin.request-form.type.edit', $item->id) }}" class="btn btn-sm">
+                            <a href="{{ route('admin.request-form.type.edit', $item->id) }}" class="btn btn-sm float-right">
                                 <i title="Edit" class="bi bi-pencil-square"></i>
                             </a>
                         </div>

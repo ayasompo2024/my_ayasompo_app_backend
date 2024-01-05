@@ -20,7 +20,11 @@ class CustomerController extends Controller
     {
         return view('admin.customers.index')->with('customers', $customerService->index(10));
     }
-
+    public function searchByPhone(Request $request, CustomerService $customerService)
+    {
+        $customers = $customerService->getAllCustomerByPhone($request->phone);
+        return view('admin.customers.index')->with('customers', $customers);
+    }
     public function getCustomersListByPolicy(Request $request, CustomerService $customerService)
     {
         $request->validate(['policy_no' => "required"]);
@@ -51,11 +55,6 @@ class CustomerController extends Controller
             $this->successResponse("Request Success", $status, 200) :
             $this->errorResponse("Fail", 500);
 
-    }
-
-    public function searchByPhone(Request $request, CustomerService $customerService)
-    {
-        return view('admin.customers.index')->with('customers', $customerService->getAllCustomerByPhone($request->phone));
     }
 
     public function toggleDisabled($id, CustomerService $customerService)

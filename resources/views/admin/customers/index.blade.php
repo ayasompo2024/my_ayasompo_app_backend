@@ -16,7 +16,8 @@
                 </form>
             </div>
             <div class="float-right mr-2">
-                <a v-if="showSelectBoxCondition" class="btn btn-sm btn-secondary mr-2">
+                <a v-if="showSelectBoxCondition" :href="'/admin/messaging/multicast/show-form/' + selectedCustomerId"
+                    class="btn btn-sm btn-secondary mr-2">
                     <i class="bi bi-bell-fill"></i> Send Now </span>
                 </a>
                 <a v-if="showSelectBoxCondition" @click="showSelectBox(false)"
@@ -83,7 +84,8 @@
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                            <a :href="'messaging/unicast/show-form/' + customer.id" class="btn btn-sm">
+                                            <a :href="'/admin/messaging/history/get-by-customer-id/' + customer.id"
+                                                class="btn btn-sm">
                                                 See Noti Histroy
                                             </a>
                                             <i class="bi bi-clock-history mr-2"></i>

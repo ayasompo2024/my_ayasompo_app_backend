@@ -7,15 +7,27 @@
             </ol>
         </nav>
         <div class="card mx-md-4 px-3 py-4">
-            <form method="post" action="{{ route('admin.messaging.unicast.send') }}" enctype="multipart/form-data"
-                method="post">
+            <form action="{{ route('admin.messaging.broadcast.send') }}" enctype="multipart/form-data" method="post">
                 @csrf
                 <h6 class="border-bottom pb-2">
-                    <b>Unicast</b>
+                    <b>Send Noti To All Customres</b>
                     <i class="float-right bi bi-bell-fill"></i>
                 </h6>
-                <input type="hidden" value="{{ $c_id }}" name="customer_id">
-
+                <div class="row mt-4">
+                    <label class="col-md-4" for="title">Noti For</label>
+                    <div class="col-md-8">
+                        <select id="product_type" name="noti_for" required
+                            class="form-control form-control-sm @error('product_type') is-invalid @enderror">
+                            <option>{{ \App\Enums\NotiFor::PROMOTION->value }} </option>
+                            <option>{{ \App\Enums\NotiFor::SYSTEM->value }} </option>
+                        </select>
+                        @error('product_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
                 <div class="row mt-4">
                     <label class="col-md-4" for="title">Title*</label>
                     <div class="col-md-8">
@@ -55,11 +67,11 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-8">
-                        <button type="submit" class="btn btn-sm btn-secondary">
-                            <i class="bi bi-send-fill"></i></i> Send
+                        <button type="submit" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
+                            <i class="bi bi-broadcast-pin"></i> &nbsp; Send 
                         </button>
-                        <a href="{{ route('admin.messaging.index') }}" class="float-right">
-                            <i class="bi bi-broadcast-pin"></i> &nbsp; Broadcast
+                        <a class="float-right border  btn btn-sm bg-light" href="{{ route('admin.customer.index') }}">
+                            Send Individual &nbsp; <i class="bi bi-arrow-right-circle"></i>
                         </a>
                     </div>
                 </div>
@@ -176,6 +188,7 @@
                     });
                 });
             });
+
             $('body').on('click', ".upload__img-close", function(e) {
                 var file = $(this).parent().data("file");
                 for (var i = 0; i < imgArray.length; i++) {

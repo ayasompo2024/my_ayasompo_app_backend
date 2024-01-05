@@ -12,6 +12,7 @@ class Messaging extends Model
         "title",
         "message",
         "type",
+        "multicast_uid",
         "customer_id",
         "image_url",
         "description",

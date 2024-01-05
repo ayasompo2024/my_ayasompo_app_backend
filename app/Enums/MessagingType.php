@@ -7,5 +7,6 @@ enum MessagingType: string
 {
     case BROADCAST = "Broadcast";
     case UNICAST = "Unicast";
+    case MULTICAST = "Multicast";
 }
 

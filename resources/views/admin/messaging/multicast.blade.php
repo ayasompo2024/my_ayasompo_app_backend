@@ -7,27 +7,14 @@
             </ol>
         </nav>
         <div class="card mx-md-4 px-3 py-4">
-            <form action="{{ route('admin.messaging.broadcast.send') }}" enctype="multipart/form-data" method="post">
+            <form action="{{ route('admin.messaging.multicast.send') }}" enctype="multipart/form-data" method="post">
                 @csrf
                 <h6 class="border-bottom pb-2">
-                    <b>Send Noti To All Customres</b>
+                    <b>Multicast</b>
                     <i class="float-right bi bi-bell-fill"></i>
                 </h6>
-                <div class="row mt-4">
-                    <label class="col-md-4" for="title">Noti For</label>
-                    <div class="col-md-8">
-                        <select id="product_type" name="noti_for" required
-                            class="form-control form-control-sm @error('product_type') is-invalid @enderror">
-                            <option>{{ \App\Enums\NotiFor::PROMOTION->value }} </option>
-                            <option>{{ \App\Enums\NotiFor::SYSTEM->value }} </option>
-                        </select>
-                        @error('product_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
+                <input type="hidden" value="{{ $c_ids }}" name="customer_ids">
+                <input type="hidden" value="{{ \App\Enums\NotiFor::TRANSACTION->value }}" name="noti_for"> 
                 <div class="row mt-4">
                     <label class="col-md-4" for="title">Title*</label>
                     <div class="col-md-8">
@@ -68,7 +55,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-8">
                         <button type="submit" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
-                            <i class="bi bi-broadcast-pin"></i> &nbsp; Send As Broadcast
+                            <i class="bi bi-broadcast-pin"></i> &nbsp; Send As Multicast
                         </button>
                         <a class="float-right border  btn btn-sm bg-light" href="{{ route('admin.customer.index') }}">
                             Send Individual &nbsp; <i class="bi bi-arrow-right-circle"></i>

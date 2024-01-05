@@ -24,7 +24,7 @@
                                     @if ($history->type == 'Unicast')
                                         {{ $history->customer->user_name ?? '' }}
                                     @elseif($history->type == 'Multicast')
-                                        <span class="badge bg-info">See Customer</span>
+                                        <span class="badge bg-info">Multicast (See Customer)</span>
                                     @else
                                         <span class="badge bg-secondary">{{ $history->type }}</span>
                                     @endif

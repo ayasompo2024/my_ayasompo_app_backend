@@ -26,17 +26,31 @@ class MessagingService
 
     function broadcast($request)
     {
-        $data = ["title" => $request->title, "body" => $request->message];
-        $notification = ["title" => $request->title, "body" => $request->message];
 
-        $this->sendAsbroadcast($notification, $data);
         $input = $request->only('title', 'message', 'noti_for', 'description');
         if ($request->image)
             $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
         $input['type'] = MessagingType::BROADCAST->value;
-        return MessagingRepository::store($input);
-    }
 
+        $messaging = MessagingRepository::store($input);
+
+        $data = [
+            "title" => "noti",
+            "body" => [
+                "id" => $messaging->id,
+                // "noti_for" => $messaging->noti_for,
+                // "title" => $messaging->title,
+                // "message" => $messaging->message,
+                // "customer_id" => $messaging->customer_id,
+                // "description" => $messaging->description,
+                // "image_url" => $messaging->image_url,
+                // "created_at" => $messaging->created_at
+            ]
+        ];
+        $notification = ["title" => $request->title, "body" => $request->message];
+        $this->sendAsbroadcast($notification, $data);
+        return $messaging;
+    }
     function multicast($request)
     {
         $data = ["title" => $request->title, "body" => $request->message];

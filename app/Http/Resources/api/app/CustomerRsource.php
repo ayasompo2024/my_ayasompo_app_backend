@@ -28,8 +28,8 @@ class CustomerRsource extends JsonResource
             "customer_phoneno" => $this->customer_phoneno,
             "customer_nrc" => $this->core->customer_nrc,
             "policy_number" => $this->policy_number,
-            'email' => "example@gmail.com",
-            'address' => "implementing..",
+            'email' => $this->core->email,
+            'address' => $this->core->address,
             'policy_holder_name' => $this->core->customer_name,
         ];
     }

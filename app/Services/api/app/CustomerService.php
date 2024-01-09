@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
 use App\Traits\FileUpload;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+
 
 class CustomerService
 {
@@ -22,9 +25,10 @@ class CustomerService
         $customer = CustomerRepository::store($input);
         $token = $customer->createToken('app_api_token')->accessToken;
 
-        $coreCustomer = $request->only("customer_code", "customer_type", "email", "address", "customer_name", "customer_phoneno", "customer_nrc");
-        $coreCustomer["app_customer_id"] = $customer->id;
-        event(new CustomerRegistered($coreCustomer));
+        $dataForCoreCustomer["app_customer_id"] = $customer->id;
+        $dataForCoreCustomer["request"] = $request;
+        event(new CustomerRegistered($dataForCoreCustomer));
+
         return [
             "token" => $token,
             "customer" => new RegisterCustomerRsource($customer),
@@ -68,12 +72,10 @@ class CustomerService
         );
         return $request->user();
     }
-
     function getProfileListByPhone($phone)
     {
         return CustomerRepository::getAllByProvidedPhone($phone);
     }
-
     private function storeDeviceToken($customer_id, $token)
     {
         $input = [
@@ -82,8 +84,6 @@ class CustomerService
         ];
         DeviceTokenRepository::store($input);
     }
-
-
 }
 
 

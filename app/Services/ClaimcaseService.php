@@ -1,14 +1,10 @@
 <?php
 namespace App\Services;
 
-
 use App\Repositories\ClaimcaseRepository;
-
-
 
 class ClaimcaseService
 {
-
     function index($per_page)
     {
         return [
@@ -18,10 +14,8 @@ class ClaimcaseService
     }
     function motorCase($per_page)
     {
-        
          ClaimcaseRepository::getMotorCase($per_page);
     }
-
     function nonMotorCase($per_page)
     {
         return ClaimcaseRepository::getNonMotorCase($per_page);

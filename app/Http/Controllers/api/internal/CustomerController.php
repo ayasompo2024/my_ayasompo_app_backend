@@ -18,12 +18,13 @@ class CustomerController extends Controller
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
         $status = $customerService->sendMessage($request);
-    
+
         return $status ?
             $this->successResponse("Your request has been processed", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
 
+    //For E-Claim
     private function validationForSendMessage($request)
     {
         return Validator::make($request->all(), [
@@ -34,3 +35,12 @@ class CustomerController extends Controller
         ]);
     }
 }
+
+
+// {
+//     "customer_phoneno" : "09787796698",   
+//     "customer_code" : "C000051097",
+//     "status" : "complete",
+//     "case_id": "654b40579039b", 
+//     "casee_number" : "AYA-EQ-23000119"
+// }

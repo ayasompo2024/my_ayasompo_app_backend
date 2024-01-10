@@ -5,12 +5,10 @@ use App\Models\RequestForm;
 use App\Repositories\LogRepository;
 use App\Repositories\ProductCodeListRequestFormTypeRepo;
 use GuzzleHttp\Exception\RequestException;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Client;
-use League\OAuth1\Client\Credentials\TokenCredentials;
-use Log;
 
+use Log;
 
 class RequestFormService
 {
@@ -49,6 +47,7 @@ class RequestFormService
             $this->log("Can not receive CaseNumber from upstream server with provided " . $case_id, 0);
             return 3;
         }
+        
         $input = array_merge($dataForinternal, $this->appDataForLara($request));
         $input["incidentid"] = $getCaseNumber[0]["incidentid"];
         $input["ayasompo_casenumber"] = $getCaseNumber[0]["ayasompo_casenumber"];

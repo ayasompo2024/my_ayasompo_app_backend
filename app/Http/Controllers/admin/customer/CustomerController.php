@@ -56,7 +56,6 @@ class CustomerController extends Controller
             $this->errorResponse("Fail", 500);
 
     }
-
     public function toggleDisabled($id, CustomerService $customerService)
     {
         $status = $customerService->toggleDisabledById($id);

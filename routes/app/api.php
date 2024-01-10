@@ -20,8 +20,10 @@ Route::prefix('v1')->group(function () {
 
         Route::post('claim-case/motor', [ClaimcaseController::class, 'motorCase']);
         Route::post('claim-case/non-motor', [ClaimcaseController::class, 'nonMotorCase']);
+        
+        Route::get('noti/get-promotion-and-system', [NotiCenterController::class, 'getPromotionAndSystem']);
     });
-    Route::get('noti/get-promotion-and-system', [NotiCenterController::class, 'getPromotionAndSystem']);
+    
     
 });
 

@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
 use App\Traits\FileUpload;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
+
 
 
 class CustomerService
@@ -76,6 +75,25 @@ class CustomerService
     {
         return CustomerRepository::getAllByProvidedPhone($phone);
     }
+
+    function isExistAccountByPhone($phone)
+    {
+        $isExistAnyAccount = CustomerRepository::getByPhone($phone);
+        return $isExistAnyAccount ? "Exist" : "Phone not registered in our App ,Please First Register ";
+    }
+
+    function resetPassword($phone, $password)
+    {
+        $customer = CustomerRepository::getByPhoneWhereINDIVIDUAL($phone);
+
+        if (empty($customer))
+            return false;
+
+        $customer->password = Hash::make($password);
+        $customer->save();
+        return $customer;
+    }
+
     private function storeDeviceToken($customer_id, $token)
     {
         $input = [

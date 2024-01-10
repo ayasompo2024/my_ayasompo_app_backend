@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Validator;
 class CustomerController extends Controller
 {
     use ApiResponser;
-    public function sendMessage(Request $request, CustomerService $customerService)
+    public function sendClaimNoti(Request $request, CustomerService $customerService)
     {
-        $validator = $this->validationForSendMessage($request);
+        $validator = $this->validationForSendClaimNoti($request);
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
-        $status = $customerService->sendMessage($request);
+        $status = $customerService->sendClaimNoti($request);
 
         return $status ?
             $this->successResponse("Your request has been processed", $status, 200) :
@@ -25,7 +25,7 @@ class CustomerController extends Controller
     }
 
     //For E-Claim
-    private function validationForSendMessage($request)
+    private function validationForSendClaimNoti($request)
     {
         return Validator::make($request->all(), [
             "customer_phoneno" => ["required", "min:6", "max:13"],
@@ -35,12 +35,3 @@ class CustomerController extends Controller
         ]);
     }
 }
-
-
-// {
-//     "customer_phoneno" : "09787796698",   
-//     "customer_code" : "C000051097",
-//     "status" : "complete",
-//     "case_id": "654b40579039b", 
-//     "casee_number" : "AYA-EQ-23000119"
-// }

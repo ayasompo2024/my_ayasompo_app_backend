@@ -31,7 +31,6 @@ class CustomerController extends Controller
         return $status ? $this->successResponse("Profile Photo Update Success", new CustomerRsource($status), 201) :
             $this->errorResponse("Profile Update Fail");
     }
-
     function updatePassword(Request $request, CustomerService $customerService)
     {
         $validator = $this->updatePasswordValidation($request);
@@ -41,26 +40,44 @@ class CustomerController extends Controller
         return $status ? $this->successResponse("Password  Update Success", new CustomerRsource($status), 201) :
             $this->errorResponse("Password Update Fail");
     }
-
     function getProfileList(Request $request, CustomerService $customerService)
     {
         $targetPhone = $request->user()->customer_phoneno;
         return $this->successResponse("Get Profile List By Phone", CustomerRsource::collection($customerService->getProfileListByPhone($targetPhone)), 201);
     }
-
     private function updatePasswordValidation($request)
     {
         return Validator::make($request->all(), [
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     private function updateProfilePhotoValidation($request)
     {
         return Validator::make($request->all(), [
             'photo' => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
         ]);
     }
+    function isExistAccountByPhone(Request $request, CustomerService $customerService)
+    {
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|min:6|max:15',
+        ]);
+        if ($validator->fails())
+            return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
+        return $customerService->isExistAccountByPhone($request->phone);
+    }
+    function resetPassword(Request $request, CustomerService $customerService)
+    {
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|min:6|max:15',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        if ($validator->fails())
+            return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
+        $status = $customerService->resetPassword($request->phone, $request->password);
 
+        return $status ? $this->successResponse("Password  Reset Success", [], 200) :
+            $this->errorResponse("Password Reset Fail");
+    }
 }

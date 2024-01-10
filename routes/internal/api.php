@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('v1/get-token', [AuthController::class, 'generateInterAccessToken']);
 Route::middleware('auth:api_internal')->prefix('v1')->group(function () {
-    Route::post('send-message', [CustomerController::class, 'sendMessage']);
+    Route::post('send-claim-noti', [CustomerController::class, 'sendClaimNoti']);
 });

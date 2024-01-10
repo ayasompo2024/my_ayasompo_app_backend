@@ -3,9 +3,6 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Http;
-
-
-
 trait SendPushNotification
 {
 
@@ -20,6 +17,7 @@ trait SendPushNotification
                 $url,
                 [
                     "to" => $token,
+                    "priority" => "high",
                     "notification" => $notification,
                     "data" => $data
                 ]

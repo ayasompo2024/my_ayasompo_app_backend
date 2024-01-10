@@ -1,14 +1,20 @@
 <?php
 namespace App\Services\api\internal;
 
+use App\Repositories\CustomerRepository;
 use App\Traits\SendPushNotification;
-use App\Traits\SendSms;
 
 class CustomerService
 {
-    use SendPushNotification, SendSms;
-    public function sendMessage($inputFromInternal)
+    use SendPushNotification;
+    public function sendClaimNoti($inputFromInternal)
     {
-        return $this->callSMSAPI($inputFromInternal->customer_phoneno, $inputFromInternal->message, "Spidey Shine", $inputFromInternal->claim_no);
+        $customers = CustomerRepository::getAllByProvidedPhone($inputFromInternal->customer_phoneno);
+        $notification = ["title" => $inputFromInternal->message, "body" => "Claim No : " . $inputFromInternal->claim_no . ", Customer Code : " . $inputFromInternal->customer_code];
+        foreach ($customers as $customer) {
+            $this->sendAsUnicast($customer->device_token, $notification, $notification);
+        }
+        return $inputFromInternal->all();
+        //return $this->callSMSAPI($inputFromInternal->customer_phoneno, $inputFromInternal->message, "Spidey Shine", $inputFromInternal->claim_no);
     }
 }

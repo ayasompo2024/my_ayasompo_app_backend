@@ -39,11 +39,11 @@ class CustomerService
         $selectCustomerObj = $request->select_customer_obj;
         $isExistPhones = [];
         foreach ($risk_of_policy_lists as $risk_of_policy_list) {
-            $customer = CustomerRepository::getAllByPhone($risk_of_policy_list["phone"]);
+            $customer = CustomerRepository::getAllByPhone("09" . $risk_of_policy_list["phone"]);
             $isExist = !empty($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
-                'phone' => $risk_of_policy_list["phone"],
+                'phone' => "09" . $risk_of_policy_list["phone"],
                 'appUsers' => $customerData
             ]);
         }
@@ -71,7 +71,7 @@ class CustomerService
     {
         $inputForAppCustomer = [
             "customer_code" => $select_customer_obj["customer_code"],
-            "customer_phoneno" => $risk_of_policy_list["phone"],
+            "customer_phoneno" => "09" . $risk_of_policy_list["phone"],
             "risk_seqNo" => $risk_of_policy_list["risk_seqNo"],
             "risk_name" => $risk_of_policy_list["risk_name"],
             "app_customer_type" => AppCustomerType::GROUP->value,

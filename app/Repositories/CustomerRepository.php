@@ -58,5 +58,10 @@ class CustomerRepository
     {
         return Customer::where('customer_phoneno', $phone)->get();
     }
+
+    static function getByPhoneWhereINDIVIDUAL($phone)
+    {
+        return Customer::query()->with('core')->where("app_customer_type", "INDIVIDUAL")->whereCustomer_phoneno($phone)->first();
+    }
 }
 

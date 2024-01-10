@@ -14,7 +14,7 @@ class ClaimcaseService
     }
     function motorCase($per_page)
     {
-         ClaimcaseRepository::getMotorCase($per_page);
+        return ClaimcaseRepository::getMotorCase($per_page);
     }
     function nonMotorCase($per_page)
     {

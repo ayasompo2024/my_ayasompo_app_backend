@@ -45,7 +45,7 @@ class storeCoreCustomer
             "numOfRecordsPerPage" => "100",
             "pageNumber" => "1",
         ];
-        if ($request->customer_type == "INDIVIDUAL") {
+        if ($request->customer_type == "INDIVIDUAL" || $request->customer_type == "I" ) {
             $requestBody["nicNumber"] = $request->customer_nrc;
             $requestBody["corpRegNo"] = null;
         } else {

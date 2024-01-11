@@ -20,10 +20,23 @@ class CustomerController extends Controller
         $status = $customerService->sendClaimNoti($request);
 
         return $status ?
-            $this->successResponse("Your request has been processed", $status, 200) :
+            $this->successResponse("Your request has been processed (Claim Noti)", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
 
+    public function sendInquiryNoti(Request $request, CustomerService $customerService)
+    {
+        $validator = $this->validationForSendInquiryNoti($request);
+        if ($validator->fails())
+            return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
+
+        $status = $customerService->sendInquiryNoti($request);
+
+        return $status ?
+            $this->successResponse("Your request has been processed (Inquiry Noti)", $status, 200) :
+            $this->errorResponse("Fail", 500);
+    }
+    
     //For E-Claim
     private function validationForSendClaimNoti($request)
     {
@@ -32,6 +45,18 @@ class CustomerController extends Controller
             "customer_code" => ["required", "min:6", "max:15"],
             "message" => "required",
             "claim_no" => "required",
+        ]);
+    }
+
+    //For E-Claim
+    private function validationForSendInquiryNoti($request)
+    {
+        return Validator::make($request->all(), [
+            "customer_phoneno" => ["required", "min:6", "max:13"],
+            "customer_code" => ["required", "min:6", "max:15"],
+            "message" => "required",
+            "case_id" => "required",
+            "status" => "required",
         ]);
     }
 }

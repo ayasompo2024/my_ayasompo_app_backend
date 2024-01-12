@@ -28,7 +28,7 @@ class CustomerService
         foreach ($customers as $customer) {
             $this->sendAsUnicast($customer->device_token, $notification, $notification);
         }
-        $this->updateRequestformStatus($request);
+        $this->updateRequestformStatus($inputFromInternal);
         return $inputFromInternal->all();
         //return $this->callSMSAPI($inputFromInternal->customer_phoneno, $inputFromInternal->message, "Spidey Shine", $inputFromInternal->claim_no);
     }

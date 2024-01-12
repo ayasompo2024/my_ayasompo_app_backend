@@ -23,7 +23,6 @@ class CustomerController extends Controller
             $this->successResponse("Your request has been processed (Claim Noti)", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
-
     public function sendInquiryNoti(Request $request, CustomerService $customerService)
     {
         $validator = $this->validationForSendInquiryNoti($request);
@@ -36,7 +35,6 @@ class CustomerController extends Controller
             $this->successResponse("Your request has been processed (Inquiry Noti)", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
-    
     //For E-Claim
     private function validationForSendClaimNoti($request)
     {
@@ -47,8 +45,7 @@ class CustomerController extends Controller
             "claim_no" => "required",
         ]);
     }
-
-    //For E-Claim
+    //For Inquiry
     private function validationForSendInquiryNoti($request)
     {
         return Validator::make($request->all(), [
@@ -56,7 +53,11 @@ class CustomerController extends Controller
             "customer_code" => ["required", "min:6", "max:15"],
             "message" => "required",
             "case_id" => "required",
-            "status" => "required",
+            'status' => [
+                'required',
+                Rule::in(['In Progress', 'On Hold', 'Waiting For Details', 'Researching'])
+            ],
         ]);
     }
 }
+

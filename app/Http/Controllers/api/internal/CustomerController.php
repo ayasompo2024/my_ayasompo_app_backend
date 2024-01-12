@@ -7,6 +7,7 @@ use App\Services\api\internal\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {

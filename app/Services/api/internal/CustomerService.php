@@ -22,13 +22,13 @@ class CustomerService
     {
         $customers = CustomerRepository::getAllByProvidedPhone($inputFromInternal->customer_phoneno);
         $notification = [
-            "title" => $inputFromInternal->message,
-            "body" => "Case ID : " . $inputFromInternal->case_id . "(Status : " . $inputFromInternal->status  . ") , Customer Code : " . $inputFromInternal->customer_code
+            "title" => $inputFromInternal->case_title,
+            "body" => $inputFromInternal->message,
         ];
         foreach ($customers as $customer) {
             $this->sendAsUnicast($customer->device_token, $notification, $notification);
         }
-        $this->updateRequestformStatus($inputFromInternal);
+        // $this->updateRequestformStatus($inputFromInternal);
         return $inputFromInternal->all();
         //return $this->callSMSAPI($inputFromInternal->customer_phoneno, $inputFromInternal->message, "Spidey Shine", $inputFromInternal->claim_no);
     }

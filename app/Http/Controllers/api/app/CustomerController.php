@@ -60,7 +60,7 @@ class CustomerController extends Controller
     function isExistAccountByPhone(Request $request, CustomerService $customerService)
     {
         $validator = Validator::make($request->all(), [
-            'phone' => 'required|min:6|max:15',
+            'phone' => 'required',
         ]);
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
@@ -69,7 +69,7 @@ class CustomerController extends Controller
     function resetPassword(Request $request, CustomerService $customerService)
     {
         $validator = Validator::make($request->all(), [
-            'phone' => 'required|min:6|max:15',
+            'phone' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
         if ($validator->fails())

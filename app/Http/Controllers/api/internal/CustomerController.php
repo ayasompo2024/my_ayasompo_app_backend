@@ -53,11 +53,12 @@ class CustomerController extends Controller
             "customer_phoneno" => ["required", "min:6", "max:13"],
             "customer_code" => ["required", "min:6", "max:15"],
             "message" => "required",
-            "case_id" => "required",
-            'status' => [
-                'required',
-                Rule::in(['In Progress', 'On Hold', 'Waiting For Details', 'Researching'])
-            ],
+            "case_title" => "required",
+            // "case_id" => "required",
+            // 'status' => [
+            //     'required',
+            //     Rule::in(['In Progress', 'On Hold', 'Waiting For Details', 'Researching'])
+            // ],
         ]);
     }
 }

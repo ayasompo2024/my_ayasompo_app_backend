@@ -49,8 +49,9 @@ class CustomerService
         ];
     }
     private function logOutOldDevice($token){
+        $notification = ["title" => "Security Alert", "body" => "You've been logged out !"];
         $data = ["title" => "LOG_OUT_NOW", "body" => null];
-        $this->sendAsUnicastDataOnly($token,$data);
+        $this->sendAsUnicast($token, $notification, $data);
     }
     function disabledProfile($user_id)
     {

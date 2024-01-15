@@ -30,6 +30,7 @@ class ServiceRequestNotiRsource extends JsonResource
             "ayasompo_casenumber" => $this->ayasompo_casenumber,
             "incidentid" => $this->incidentid,
             "inquiry_status" => $this->inquiry_status,
+            "is_read" => $this->is_read
         ];
     }
 }

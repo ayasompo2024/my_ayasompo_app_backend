@@ -8,6 +8,7 @@ use App\Services\api\app\RequestFormService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
+use App\Models\RequestForm;
 
 class RequestFormController extends Controller
 {
@@ -45,4 +46,9 @@ class RequestFormController extends Controller
         });
     }
 
+    public function read($id){
+        $requestForm = RequestForm::find($id);
+        $requestForm->update(['is_read' => 1]);
+        return $request->refresh();
+    }
 }

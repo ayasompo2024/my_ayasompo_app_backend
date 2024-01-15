@@ -41,7 +41,8 @@ class RequestForm extends Model
 
         "ayasompo_inquirydatetime",
 
-        "inquiry_status"
+        "inquiry_status",
+        "is_read"
     ];
 
     function customer()

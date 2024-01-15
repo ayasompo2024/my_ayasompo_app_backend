@@ -13,18 +13,18 @@ Route::prefix('v1')->group(function () {
     Route::get('products', [ProductController::class, 'getActive']);
     Route::get('banners', [BannerController::class, 'getActive']);
     Route::get('location-maps', [LocationMapController::class, 'getActive']);
-
+    
     Route::middleware('auth:api')->group(function () {
         Route::post('request-form/get-endorsement-form', [RequestFormController::class, 'getEndorsementForm']);
         Route::post('request-form/store-inquiry-case', [RequestFormController::class, 'storeInquiryCase']);
-
+        Route::put('request-form/read/{id}', [RequestFormController::class, 'read']);
+        
         Route::post('claim-case/motor', [ClaimcaseController::class, 'motorCase']);
         Route::post('claim-case/non-motor', [ClaimcaseController::class, 'nonMotorCase']);
-        
+
         Route::get('noti/get-promotion-and-system', [NotiCenterController::class, 'getPromotionAndSystem']);
     });
-    
-    
+
 });
 
 

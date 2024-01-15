@@ -49,6 +49,6 @@ class RequestFormController extends Controller
     public function read($id){
         $requestForm = RequestForm::find($id);
         $requestForm->update(['is_read' => 1]);
-        return $request->refresh();
+        return $requestForm->refresh();
     }
 }

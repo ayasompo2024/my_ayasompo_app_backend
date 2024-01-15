@@ -19,14 +19,14 @@ trait Auth
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
-        $this->sendWelcomeNoti($request->device_token, $request->user_name);
         $status = $customerService->register($request);
+        $status ? $this->sendWelcomeNoti($request->device_token, $request->user_name) : '';
         return $status ? $this->successResponse("Register Success", $status, 201) :
             $this->errorResponse("Register Fail");
     }
     private function sendWelcomeNoti($token, $user_name)
     {
-        $notification = ["title" => "Hello," . $user_name . ", let's connect here.", "body" => null];
+        $notification = ["title" => "Hello, " . $user_name . ", let's connect here.", "body" => null];
         $data = ["title" => "Register Success", "body" => null];
         $this->sendAsUnicast($token, $notification, $data);
     }
@@ -46,9 +46,8 @@ trait Auth
         } else {
             return $this->respondUnAuthorized("Credentials Not Found");
         }
-
     }
-
+    
     private function registerValidation($request)
     {
         return Validator::make($request->all(), [

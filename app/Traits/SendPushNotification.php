@@ -22,7 +22,22 @@ trait SendPushNotification
                     "data" => $data
                 ]
             );
-
+    }
+    protected function sendAsUnicastDataOnly($token, $data)
+    {
+        $url = config('app.fcm_url');
+        $serverKey = config('app.fcm_key');
+        Http::withHeaders([
+            'Authorization' => "key={$serverKey}",
+            'Content-Type' => 'application/json'
+        ])->post(
+                $url,
+                [
+                    "to" => $token,
+                    "priority" => "high",
+                    "data" => $data
+                ]
+            );
     }
     protected function sendAsbroadcast($notification, $data)
     {

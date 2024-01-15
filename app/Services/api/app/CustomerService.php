@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
 use App\Traits\FileUpload;
-
+use App\Traits\SendPushNotification;
 
 
 class CustomerService
 {
-    use FileUpload;
+    use FileUpload,SendPushNotification;
     function register($request)
     {
         $input = $request->only("customer_code", "customer_phoneno", "policy_number", "user_name", "device_token");
@@ -27,7 +27,6 @@ class CustomerService
         $dataForCoreCustomer["app_customer_id"] = $customer->id;
         $dataForCoreCustomer["request"] = $request;
         event(new CustomerRegistered($dataForCoreCustomer));
-
         return [
             "token" => $token,
             "customer" => new RegisterCustomerRsource($customer),
@@ -40,6 +39,7 @@ class CustomerService
 
         if (empty($customer) || !Hash::check($request->password, $customer->password))
             return false;
+        $this->logOutOldDevice($customer->device_token);
         $token = $customer->createToken('app_api_token')->accessToken;
         $customer->device_token = $request->device_token;
         $customer->save();
@@ -47,6 +47,10 @@ class CustomerService
             "token" => $customer->is_disabled ? null : $token,
             "customer" => $customer->is_disabled ? null : new CustomerRsource($customer)
         ];
+    }
+    private function logOutOldDevice($token){
+        $data = ["title" => "LOG_OUT_NOW", "body" => null];
+        $this->sendAsUnicastDataOnly($token,$data);
     }
     function disabledProfile($user_id)
     {

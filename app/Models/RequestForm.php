@@ -40,6 +40,8 @@ class RequestForm extends Model
         "ayasompo_risksequenceno",
 
         "ayasompo_inquirydatetime",
+
+        "inquiry_status"
     ];
 
     function customer()

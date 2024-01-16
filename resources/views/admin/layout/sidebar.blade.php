@@ -124,6 +124,14 @@
         ],
     ],
     [
+        'display' => 'Admin Acounts',
+        'route' => 'admin.account.index',
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'bi bi-person-circle',
+        'sub_menus' => null
+    ],
+    [
         'display' => 'Dev Operation',
         'route' => 'dev.doc.index',
         'imag_path' => null,

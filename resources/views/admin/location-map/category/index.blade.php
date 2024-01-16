@@ -21,7 +21,7 @@
                                 background-position: center; background-size: cover;width:50px; height:50px;">
                             </div>
                             <div class="pt-2">
-                                <span class="mx-2 ">{{ $item->name }}</span>
+                                <span class="badge bg-light mr-1">{{ $item->sort }}</span> {{ $item->name }}
                                 <a href="{{ route('admin.location-map-category.edit', $item->id) }}" class="btn btn-sm">
                                     <i title="Edit" class="bi bi-pencil-square"></i>
                                 </a>

@@ -19,7 +19,8 @@ class LocationMap extends Model
         "address",
         "latitude",
         "longitude",
-        "google_map"
+        "google_map",
+        "sort"
     ];
 
     function category()

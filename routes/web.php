@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\PropertyTypeController;
 use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\AdminAccountController;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
@@ -32,6 +33,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
+    Route::resource('account', AdminAccountController::class);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('settings', SettingController::class);
     Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');

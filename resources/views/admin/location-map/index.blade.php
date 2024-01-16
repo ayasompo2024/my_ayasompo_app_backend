@@ -15,7 +15,9 @@
                 @foreach ($location_maps as $item)
                     <div class="col-md-4">
                         <div class="card p-3 shadow-sm border">
-                            {{ $item->name }}
+                            <div>
+                                <span class="badge bg-info mr-2">{{ $item->sort }} </span> {{ $item->name }}
+                            </div>
                             <div class="rounded border bg-info"
                                 style="width: 100; height: 150px;
                                 background-size: cover;

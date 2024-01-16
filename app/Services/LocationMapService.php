@@ -34,7 +34,7 @@ class LocationMapService
     }
     private function prepareDataForStore($request)
     {
-        $input = $request->only("location_map_category_id", "name", "phone", "open_hour", "close_hour", "address", "google_map");
+        $input = $request->only("location_map_category_id", "name", "phone", "open_hour", "close_hour", "address", "google_map","sort");
         $latitude_longitude = explode(',', $request->latitude_longitude);
         if (!isset($latitude_longitude[0]))
             return false;

@@ -24,7 +24,7 @@ class LocationMap extends Model
 
     function category()
     {
-        return $this->belongsTo(LocationMapCategory::class, 'id');
+        return $this->belongsTo(LocationMapCategory::class, 'location_map_category_id');
     }
 }
 

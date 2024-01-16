@@ -131,6 +131,14 @@
         'icon' => 'bi bi-code-slash',
         'sub_menus' => [
             [
+                'display' => 'Setting',
+                'route' => 'admin.settings.index',
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-gear-fill',
+                'sub_menus' => null,
+            ],
+            [
                 'display' => 'ENV Value',
                 'route' => 'dev.show-env-value',
                 'imag_path' => null,

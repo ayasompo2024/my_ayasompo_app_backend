@@ -10,7 +10,7 @@ class ProductRsource extends JsonResource
     public function toArray($request)
     {
         $groupedProperties = $this->properties->groupBy(function ($property) {
-            return $property->type->name;
+            return optional($property->type)->name;
         });
 
         $propertiesArray = $groupedProperties->map(function ($properties, $type) {

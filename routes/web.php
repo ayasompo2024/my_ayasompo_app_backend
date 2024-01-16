@@ -10,6 +10,8 @@ use App\Http\Controllers\admin\PropertyController;
 use App\Http\Controllers\admin\PropertyTypeController;
 use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
+use App\Http\Controllers\admin\SettingController;
+
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
@@ -31,6 +33,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('settings', SettingController::class);
     Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');
 
     Route::resource('product', ProductController::class);

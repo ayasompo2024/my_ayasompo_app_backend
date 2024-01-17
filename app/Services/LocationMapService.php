@@ -14,7 +14,10 @@ class LocationMapService
     {
         return LocationMapRepository::getAll();
     }
-
+    function getAllWithSortByLatLong($request)
+    {
+        return LocationMapRepository::getAll($request->latitude,$request->longitude);
+    }
     function store($request)
     {
         $input = $this->prepareDataForStore($request);
@@ -22,12 +25,10 @@ class LocationMapService
             return false;
         return LocationMapRepository::store($input);
     }
-
     function getById($id)
     {
         return LocationMapRepository::getById($id);
     }
-
     function destroy($id)
     {
         return LocationMapRepository::destroyById($id);
@@ -38,7 +39,7 @@ class LocationMapService
         $latitude_longitude = explode(',', $request->latitude_longitude);
         if (!isset($latitude_longitude[0]))
             return false;
-
+        
         $input['latitude'] = $latitude_longitude[0];
         $input['longitude'] = $latitude_longitude[1];
         $input["image"] = $this->uploadFile($request->image, '/uploads/location-map/', 'aya_sompo');

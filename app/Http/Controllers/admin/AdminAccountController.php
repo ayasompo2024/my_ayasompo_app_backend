@@ -14,4 +14,13 @@ class AdminAccountController extends Controller
         $users =  User::paginate(30);
         return view('admin.admin-accounnt.index')->with('users', $users);
     }
+
+    function disabledToggle($id){
+        $user =  User::find($id);
+        $user->update([
+            'status' => !$user->status
+        ]);
+        return $user ? back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
 }

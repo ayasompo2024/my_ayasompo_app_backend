@@ -15,7 +15,10 @@
                         <th class="p-2" style="min-width: 140px">No</th>
                         <th class="p-2" style="min-width: 140px">Name</th>
                         <th class="p-2" style="min-width: 200px">Email</th>
+                        <th class="p-2" style="min-width: 200px">Role</th>
                         <th class="p-2" style="min-width: 140px">Created</th>
+                        <th class="p-2" style="min-width: 140px">Status</th>
+                        <th class="p-2" style="min-width: 140px">Section</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +34,29 @@
                             {{$item->email}}
                         </td>
                         <td class="p-1">
+                            {{ucfirst($item->role)}}
+                        </td>
+                        <td class="p-1">
                             {{$item->created_at}}
+                        </td>
+                        <td class="p-1">
+                            @if ($item->status == 1)
+                                <span class="badge bg-info">Active</span>
+                            @else
+                            <span class="badge bg-warning">Disabled</span>
+                            @endif
+                        </td>
+                        <td class="p-1">
+                            <form  action="{{ route('admin.account.disabled.toggle',$item->id) }}" method="post">
+                                @csrf
+                            <button type="submit" class="btn btn-sm bg-ligth border">
+                                @if ($item->status == 1)
+                                 Make Disabled
+                            @else
+                            Make Active
+                            @endif
+                            </button>
+                            </form>
                         </td>
                     </tr>    
                     @endforeach

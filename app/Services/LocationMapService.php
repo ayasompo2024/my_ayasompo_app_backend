@@ -7,9 +7,7 @@ use App\Traits\FileUpload;
 
 class LocationMapService
 {
-
     use FileUpload;
-
     function getAll()
     {
         return LocationMapRepository::getAll();
@@ -25,6 +23,13 @@ class LocationMapService
             return false;
         return LocationMapRepository::store($input);
     }
+    function update($id,$request){
+        $input = $this->prepareDataForStore($request);
+        if (!$input)
+            return false;
+        return LocationMapRepository::update($id,$input);
+    }
+
     function getById($id)
     {
         return LocationMapRepository::getById($id);
@@ -42,7 +47,9 @@ class LocationMapService
         
         $input['latitude'] = $latitude_longitude[0];
         $input['longitude'] = $latitude_longitude[1];
-        $input["image"] = $this->uploadFile($request->image, '/uploads/location-map/', 'aya_sompo');
+        if($request->image){
+            $input["image"] = $this->uploadFile($request->image, '/uploads/location-map/', 'aya_sompo');
+        }
         $input["open_days"] = implode(', ', $request->open_days);
         return $input;
     }

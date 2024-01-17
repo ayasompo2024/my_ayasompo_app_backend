@@ -21,11 +21,8 @@ use App\Repositories\CustomerRepository;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", function () {
-    return view("home");
-});
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
 // Route::post('login', [LoginController::class, 'login'])->name("login");
@@ -34,6 +31,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::resource('account', AdminAccountController::class);
+    Route::post('account/disabled/toggle/{id}', [AdminAccountController::class,'disabledToggle'])->name('account.disabled.toggle');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('settings', SettingController::class);
     Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');

@@ -41,9 +41,11 @@ class LocationMapController extends Controller
             'location_map' => $locationMapService->getById($id)
         ]));
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,LocationMapService $locationMapService)
     {
-        return $request->all();
+        return $locationMapService->update($id, $request) ?
+            back()->with('success', 'Success') :
+            back()->with('fail', 'Success');
     }
     public function destroy($id, LocationMapService $locationMapService)
     {

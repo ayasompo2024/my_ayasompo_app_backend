@@ -104,33 +104,18 @@
                                 <label for="time_limit">Open Days</label>
                             </div>
                             <div class="col-lg-8">
-                                {{ $location_map->open_days }}
-                                <label for="monday" class="mr-2">
-                                    <input type="checkbox" checked id="monday" name="open_days[]" value="Monday">
-                                    Monday
+                                <?php 
+                                   $open_days =  explode(',',$location_map->open_days);
+                                   $seven_days = [
+                                    "Monday", " Tuesday" ," Wednesday", " Thursday", " Friday"," Saturday"," Sunday"
+                                   ]
+                                ?>
+                                @foreach($seven_days as $day)
+                                <label for="{{ strtolower($day) }}" class="mr-2">
+                                    <input type="checkbox" id="{{ strtolower($day) }}" name="open_days[]" value="{{ $day }}" {{ in_array($day, $open_days) ? 'checked' : '' }}>
+                                    {{ $day }}
                                 </label>
-                                <label for="tuesday" class="mr-2">
-                                    <input type="checkbox" checked id="tuesday" name="open_days[]" value="Tuesday">
-                                    Tuesday
-                                </label>
-                                <label for="wednesday" class="mr-2">
-                                    <input type="checkbox" checked id="wednesday" name="open_days[]" value="Wednesday">
-                                    Wednesday
-                                </label>
-                                <label for="thursday" class="mr-2">
-                                    <input type="checkbox" checked id="thursday" name="open_days[]" value="Thursday">
-                                    Thursday
-                                </label>
-                                <label for="friday" class="mr-2">
-                                    <input type="checkbox" checked id="friday" name="open_days[]" value="Friday">
-                                    Friday
-                                </label>
-                                <label for="saturday" class="mr-2">
-                                    <input type="checkbox" id="saturday" name="open_days[]" value="Saturday"> Saturday
-                                </label>
-                                <label for="sunday">
-                                    <input type="checkbox" id="sunday" name="open_days[]" value="Sunday"> Sunday
-                                </label>
+                                @endforeach
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -165,13 +150,21 @@
                                 <label for="google_map">Google Map URL</label>
                             </div>
                             <div class="col-lg-8">
-                                <textarea name="google_map" id="google_map" value="{{ $location_map->google_map }}"
-                                    class="form-control form-control-sm" placeholder="Enter Google Map"></textarea>
+                                <textarea name="google_map" id="google_map" class="form-control form-control-sm" placeholder="Enter Google Map">{{ $location_map->google_map }}</textarea>
                             </div>
                         </div>
-
+                        <div class="row mt-3">
+                            <div class="col-lg-4">
+                                <label for="sort"> Sort(Order) </label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input id="sort"  value="{{ $location_map->sort }}" type="number" name="sort"
+                                     class="form-control form-control-sm"
+                                    placeholder="Enter Sort Number">
+                            </div>
+                        </div>
                         <div class="form-group my-3">
-                            <button type="submit" class="btn bg-info btn-sm px-4 float-right">Create </button>
+                            <button type="submit" class="btn bg-info btn-sm px-4 float-right">Update </button>
                         </div>
                         <br /><br />
                     </form>
@@ -180,11 +173,6 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
 @push('child-css')
     <style>
         .upload__inputfile {
@@ -195,20 +183,16 @@
             position: absolute;
             z-index: -1;
         }
-
-
         .upload__img-wrap {
             display: flex;
             flex-wrap: wrap;
             margin: 0 -10px;
         }
-
         .upload__img-box {
             width: 200px;
             padding: 0 10px;
             margin-bottom: 12px;
         }
-
         .upload__img-close {
             width: 24px;
             height: 24px;
@@ -222,7 +206,6 @@
             z-index: 1;
             cursor: pointer;
         }
-
         .upload__img-close:after {
             content: "✖";
             font-size: 14px;

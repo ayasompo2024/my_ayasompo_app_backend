@@ -31,7 +31,7 @@ Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::resource('account', AdminAccountController::class);
-    Route::post('account/disabled/toggle/{id}', [AdminAccountController::class,'disabledToggle'])->name('account.disabled.toggle');
+    Route::post('account/disabled/toggle/{id}', [AdminAccountController::class, 'disabledToggle'])->name('account.disabled.toggle');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('settings', SettingController::class);
     Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');
@@ -87,22 +87,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
-Route::get('/c', function () {
-    $phones = [
-        '0979127912',
-        '09787796698'
-    ];
-    $isExistPhones = [];
-    foreach ($phones as $individualPhone) {
-        $customer = CustomerRepository::getAllByPhone($individualPhone);
-        $isExist = !empty($customer);
-        $customerData = $isExist ? $customer->toArray() : null;
-        array_push($isExistPhones, [
-            'phone' => $individualPhone,
-            'isExist' => $customerData
-        ]);
-    }
-    return $isExistPhones;
-});
 
-
+Route::get('test', function () {
+    Cache::store('redis')->put('hello', '12324', 10);
+    return Cache::get('hello');
+})->name('claim-case.non-motor');

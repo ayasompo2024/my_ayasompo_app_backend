@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request; // Make sure to import the correct Request class
+
 
 class LoginController extends Controller
 {
@@ -19,7 +21,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        credentials as traitCredentials;
+    }
     protected $maxAttempts = 3;
     protected $decayMinutes = 10;
 
@@ -30,6 +34,15 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function credentials(Request $request)
+    {
+        $credentials = $this->traitCredentials($request);
+
+        // Add your custom where condition here
+        $credentials['status'] = 1;
+
+        return $credentials;
+    }
     /**
      * Create a new controller instance.
      *

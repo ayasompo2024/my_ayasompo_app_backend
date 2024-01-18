@@ -34,7 +34,7 @@
         </nav>
         @include('admin.validation-error-alert')
         <div class="bg-white px-md-3 mt-2 mb-5 pt-3 mt-2">
-            <table class="table table-responsive">
+            <table class="table table-responsive " style="min-height: 300px">
                 <thead>
                     <tr>
                         <th v-if="showSelectBoxCondition" class="p-2">Select</th>
@@ -99,14 +99,14 @@
                                                     <button type="submit" class="btn btn-sm px-0 ml-2">
                                                         Make Active
                                                     </button>
-                                                    <i class="bi bi-activity float-right"></i>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-activity float-right"></i>
                                                 </div>
                                                 <div v-if="customer.is_disabled == 0" class="d-flex">
                                                     @csrf
                                                     <button type="submit" class="btn btn-sm px-0 ml-2">
                                                         Make Disabled
                                                     </button>
-                                                    <i class="bi bi-x-circle-fill float-right"></i>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-x-circle-fill float-right"></i>
                                                 </div>
                                             </form>
                                         </li>
@@ -176,8 +176,9 @@
             data() {
                 const customers = @json($customers->items());
                 const storedOldSelectedCustomerId = localStorage.getItem("oldSelectedCustomerId");
-                const showSelectBoxCondition = storedOldSelectedCustomerId ? true : false;
                 let selectedCustomerId = storedOldSelectedCustomerId ? JSON.parse(storedOldSelectedCustomerId) : [];
+                const showSelectBoxCondition = selectedCustomerId.length > 0 ? true : false;
+
                 return {
                     customers,
                     showSelectBoxCondition,

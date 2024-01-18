@@ -39,6 +39,7 @@ class ProductCodeListController extends Controller
             'product_code_list_id' => "required"
         ]);
         $product_code_list = ProductCodeList::find($request->product_code_list_id);
+        ProductCodeListRequestFormType::where('product_code_list_id',$request->product_code_list_id)->delete();
         foreach ($request->requestFormTypes as $requestFormType) {
             $input = [
                 'request_form_type_id' => $requestFormType,

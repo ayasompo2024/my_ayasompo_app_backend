@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active p-0 pl-1" aria-current="page">Message / All</li>
             </ol>
         </nav>
-        <div class="bg-light px-md-3 mt-2 mb-5 pt-3 mt-2">
+        <div class="bg-light px-md-3  mb-5 pt-3">
             <table class="table table-responsive-sm">
                 <thead>
                     <tr>

@@ -74,26 +74,92 @@
             </p>
         </div>
     </div>
-    <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="newShopType"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form method="post" action="">
-                        @csrf
-                        <div class="modal-header p-3">
-                            <h6 class="modal-title" id="newShopType">Add New  </h6>
+    <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="newShopType" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="{{ route('admin.account.store') }}">
+                    @csrf
+                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-body">
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text"
+                                    class="form-control form-control-sm @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="modal-body mt-0">
-                            <label>Name</label>
-                            <input type="text" name="name" required class="form-control form-control-sm  price"
-                                placeholder="Name  " />
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email"
+                                    class="form-control form-control-sm @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="modal-footer p-1 border-0">
-                            <input type="submit" class="btn btn-sm bg-info" value="submit">
-                            <button type="button" class="btn btn-sm bg-secondary" data-dismiss="modal">Close</button>
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Role</label>
+
+                            <div class="col-md-6">
+                                <select class="form-select form-control form-control-sm" name="role">
+                                    <option selected>Admin</option>
+                                    <option>Root</option>
+                                </select>
+                            </div>
                         </div>
-                    </form>
-                </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control form-control-sm @error('password') is-invalid @enderror"
+                                    name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control form-control-sm"
+                                    name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-sm btn-info">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 @endsection

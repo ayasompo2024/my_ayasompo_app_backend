@@ -8,14 +8,6 @@
         'sub_menus' => null,
     ],
     [
-        'display' => 'Products',
-        'route' => 'admin.product.index',
-        'imag_path' => null,
-        'target' => false,
-        'icon' => 'bi bi-postcard-heart',
-        'sub_menus' => null,
-    ],
-    [
         'display' => 'Banner',
         'route' => 'admin.banner.index',
         'imag_path' => null,
@@ -24,28 +16,37 @@
         'sub_menus' => null,
     ],
     [
-        'display' => 'Property Type',
-        'route' => 'admin.property.type.index',
+        'display' => 'Products',
+        'route' => 'admin.product.index',
         'imag_path' => null,
         'target' => false,
-        'icon' => 'bi bi-boxes',
-        'sub_menus' => null,
-    ],
-    [
-        'display' => 'Product Code Lists',
-        'route' => 'admin.product-code-list.index',
-        'imag_path' => null,
-        'target' => false,
-        'icon' => 'bi bi-boxes',
-        'sub_menus' => null,
+        'icon' => 'bi bi-postcard-heart',
+        'sub_menus' => [
+            [
+                'display' => 'Property Type',
+                'route' => 'admin.property.type.index',
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-boxes',
+                'sub_menus' => null,
+            ],
+        ],
     ],
     [
         'display' => 'Request Form(Inquery)',
         'route' => 'admin.request-form.lists',
         'imag_path' => null,
         'target' => false,
-        'icon' => 'bi-person-vcard',
+        'icon' => 'bi bi-send-exclamation',
         'sub_menus' => [
+            [
+                'display' => 'Product Code Lists',
+                'route' => 'admin.product-code-list.index',
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-list-stars',
+                'sub_menus' => null,
+            ],
             [
                 'display' => 'Request Form Type',
                 'route' => 'admin.request-form.type.index',
@@ -129,7 +130,7 @@
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-person-circle',
-        'sub_menus' => null
+        'sub_menus' => null,
     ],
     [
         'display' => 'Dev Operation',
@@ -144,6 +145,14 @@
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-gear-fill',
+                'sub_menus' => null,
+            ],
+            [
+                'display' => 'Logs',
+                'route' => 'admin.dashboard.logs',
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-file-earmark-medical-fill',
                 'sub_menus' => null,
             ],
             [
@@ -186,47 +195,14 @@
                 'icon' => 'bi bi-database-fill-down',
                 'sub_menus' => null,
             ],
-            // [
-            //     'display' => 'Logs',
-            //     'route' => 'admin.dashboard.logs',
-            //     'imag_path' => null,
-            //     'target' => false,
-            //     'icon' => 'bi bi-file-earmark-medical-fill',
-            //     'sub_menus' => null,
-            // ],
         ],
     ],
-
-    // [
-    //     'display' => 'Setting',
-    //     'route' => 'admin.setting.index',
-    //     'imag_path' => null,
-    // 'target' => false,
-    //     'icon' => 'bi bi-database-fill-down',
-    //     'sub_menus' => [
-    //         [
-    //             'display' => 'SMS',
-    //             'route' => 'admin.setting.sms.info',
-    //             'imag_path' => null,
-    // 'target' => false,
-    //             'icon' => 'bi bi-chat-square-heart-fill',
-    //             'sub_menus' => null,
-    //         ],
-    //     ]
-    // ],
 ];
 ?>
-
-
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-    <!-- Brand Logo -->
     <a href="" class="brand-link tw-flex">
         <h6 class=" font-weight-bold d-inline mt-1 ml-1">{{ Auth::user()->name }}</h6>
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar ">
         <nav class="mt-3">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" data-accordion="false">
@@ -250,14 +226,13 @@
                                     <i class="bi bi-caret-down-fill text-info p-0"></i></button>
                             @endif
                         </div>
-                        {{-- sub-menu --}}
                         @if ($menu['sub_menus'])
-                            <ul class="nav p-0 d-none" id="{{ $key }}_menu">
+                            <ul class="nav p-0 d-none ml-3 mr-3" id="{{ $key }}_menu">
                                 @foreach ($menu['sub_menus'] as $sub_menu)
                                     <li
-                                        class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-light' : '' }}">
+                                        class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-secondary' : '' }}">
                                         <a href="{{ route($sub_menu['route']) }}" class="nav-link text-info pt-1 pb-0">
-                                            <i class="ml-4 {{ $sub_menu['icon'] }}"></i>
+                                            <i class="ml-3 {{ $sub_menu['icon'] }}"></i>
                                             <p class="ml-1">{{ $sub_menu['display'] }}</p>
                                         </a>
                                     </li>

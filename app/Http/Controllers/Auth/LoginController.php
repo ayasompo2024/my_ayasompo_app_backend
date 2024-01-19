@@ -25,7 +25,7 @@ class LoginController extends Controller
         credentials as traitCredentials;
     }
     protected $maxAttempts = 3;
-    protected $decayMinutes = 10;
+    protected $decayMinutes = 30;
 
     /**
      * Where to redirect users after login.

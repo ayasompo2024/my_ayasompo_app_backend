@@ -12,21 +12,15 @@ use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\AdminAccountController;
-
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
-use App\Repositories\CustomerRepository;
-
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-
-Auth::routes(['register' => false]);
-
-// Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
-// Route::post('login', [LoginController::class, 'login'])->name("login");
-// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
+Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
@@ -89,6 +83,7 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
 Route::get('test', function () {
-    Cache::store('redis')->put('hello', '12324', 10);
-    return Cache::get('hello');
+    return uniqid();
 })->name('claim-case.non-motor');
+
+

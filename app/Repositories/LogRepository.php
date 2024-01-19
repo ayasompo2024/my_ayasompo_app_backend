@@ -9,7 +9,7 @@ class LogRepository
 {
     static function getWithPaginate($perpage)
     {
-        Log::query()->orderByDesc('id')->paginate($perpage);
+        return Log::query()->orderByDesc('id')->paginate($perpage);
     }
 
     static function store(array $input)

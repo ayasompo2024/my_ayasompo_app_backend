@@ -43,7 +43,6 @@
                                     @else
                                         {{ $history->message }}
                                     @endif
-
                                 </span>
                             </td>
                             <td class="p-2">

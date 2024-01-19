@@ -1,15 +1,48 @@
 <?php
 
-use App\Http\Controllers\admin\BannerController;
-use App\Http\Controllers\admin\customer\CustomerController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\FAQController;
-use App\Http\Controllers\admin\ProductCodeListController;
-use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\PropertyController;
-use App\Http\Controllers\admin\PropertyTypeController;
-use App\Http\Controllers\admin\RequestFormController;
-use App\Http\Controllers\admin\RequestFormTypeController;
-use App\Http\Controllers\admin\SettingController;
-use App\Http\Controllers\admin\AdminAccountController;
-use App\Http\Controllers\admin\Clai
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class AdminAccountController extends Controller
+{
+    public function index()
+    {
+        $users = User::paginate(30);
+        return view('admin.admin-accounnt.index')->with('users', $users);
+    }
+
+    function disabledToggle($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'status' => !$user->status
+        ]);
+        return $user ? back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string', 'max:255'],
+        ]);
+        $user = $this->create($request);
+        return $user ? back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
+    }
+    private function create($request)
+    {
+        return User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ]);
+    }
+}

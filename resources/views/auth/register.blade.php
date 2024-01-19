@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('frontend.layouts.app')
+=======
+{{-- @extends('frontend.layouts.app')
+>>>>>>> 6cfb29035e627280ba75de6e343d9de2ea6ed8f7
 
 @section('content')
 <div class="container">
@@ -74,4 +78,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection --}}
+>>>>>>> 6cfb29035e627280ba75de6e343d9de2ea6ed8f7

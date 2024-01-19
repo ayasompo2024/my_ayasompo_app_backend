@@ -57,11 +57,7 @@ class CustomerController extends Controller
             "case_id" => "nullable",
             'status' => [
                 'nullable',
-<<<<<<< HEAD
-                Rule::in(['Success', 'Follow Up', 'Cancel', 'Reject'])
-=======
                 Rule::in(['In Progress', 'On Hold', 'Waiting For Details', 'Researching'])
->>>>>>> 6cfb29035e627280ba75de6e343d9de2ea6ed8f7
             ],
         ]);
     }

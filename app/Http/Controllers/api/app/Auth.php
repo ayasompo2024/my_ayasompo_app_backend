@@ -77,7 +77,7 @@ trait Auth
         return Validator::make($request->all(), [
             'customer_phoneno' => 'required',
             'password' => 'required',
-            "device_token" => 'required'
+            "device_token" => 'nullable'
         ]);
     }
 }

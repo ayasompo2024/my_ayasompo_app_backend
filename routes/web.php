@@ -12,20 +12,26 @@ use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\AdminAccountController;
+
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Repositories\CustomerRepository;
+
 use Illuminate\Support\Facades\Route;
 
-Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
-Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Auth::routes(['register' => false]);
+
+// Route::get('aya-sompo/login', [LoginController::class, 'showLoginForm'])->name('ays-sompo.login');
+// Route::post('login', [LoginController::class, 'login'])->name("login");
+// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
     Route::resource('account', AdminAccountController::class);
-    Route::post('account/disabled/toggle/{id}', [AdminAccountController::class, 'disabledToggle'])->name('account.disabled.toggle');
+    Route::post('account/disabled/toggle/{id}', [AdminAccountController::class,'disabledToggle'])->name('account.disabled.toggle');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('settings', SettingController::class);
     Route::get('logs', [DashboardController::class, 'logs'])->name('dashboard.logs');
@@ -81,9 +87,22 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
-
-Route::get('test', function () {
-    return uniqid();
-})->name('claim-case.non-motor');
+Route::get('/c', function () {
+    $phones = [
+        '0979127912',
+        '09787796698'
+    ];
+    $isExistPhones = [];
+    foreach ($phones as $individualPhone) {
+        $customer = CustomerRepository::getAllByPhone($individualPhone);
+        $isExist = !empty($customer);
+        $customerData = $isExist ? $customer->toArray() : null;
+        array_push($isExistPhones, [
+            'phone' => $individualPhone,
+            'isExist' => $customerData
+        ]);
+    }
+    return $isExistPhones;
+});
 
 

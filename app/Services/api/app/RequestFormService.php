@@ -7,7 +7,6 @@ use App\Repositories\ProductCodeListRequestFormTypeRepo;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Client;
-
 use Log;
 
 class RequestFormService
@@ -19,7 +18,6 @@ class RequestFormService
 
     function storeInquiryCase($request)
     {
-
         $customerid_contact = null;
         if ($request->customer_type == "I") {
             $individual = $this->getIndividualCustomerIDByCusCode($request->ayasompo_customercode);
@@ -47,7 +45,7 @@ class RequestFormService
             $this->log("Can not receive CaseNumber from upstream server with provided " . $case_id, 0);
             return 3;
         }
-        
+
         $input = array_merge($dataForinternal, $this->appDataForLara($request));
         $input["incidentid"] = $getCaseNumber[0]["incidentid"];
         $input["ayasompo_casenumber"] = $getCaseNumber[0]["ayasompo_casenumber"];
@@ -72,9 +70,10 @@ class RequestFormService
                 ],
             ]);
             $response = $crmClient->get($url);
+            $this->writeInquiryLog('getIndividualCustomerIDByCusCode (Upstream Server Respone)', json_decode($response->getBody(), true));
             return json_decode($response->getBody(), true)["value"];
         } catch (RequestException $e) {
-            Log::error($e->getMessage());
+            $this->writeInquiryLog('getIndividualCustomerIDByCusCode (Upstream Server Respone)', $e);
             throw $e;
         }
     }
@@ -91,9 +90,10 @@ class RequestFormService
                 ],
             ]);
             $response = $crmClient->get($url);
+            $this->writeInquiryLog('getCoorporateCustomerIDByCusCode (Upstream Server Respone)', json_decode($response->getBody(), true));
             return json_decode($response->getBody(), true)["value"];
         } catch (RequestException $e) {
-            Log::error($e->getMessage());
+            $this->writeInquiryLog('getIndividualCustomerIDByCusCode (Upstream Server Respone)', $e);
             throw $e;
         }
     }
@@ -112,9 +112,10 @@ class RequestFormService
             $response = $crmClient->post($create_inquiry_case_url, [
                 'json' => $data
             ]);
+            $this->writeInquiryLog('createInquiryCase (Upstream Server Respone)', json_decode($response->getBody(), true));
             return json_decode($response->getBody(), true);
         } catch (RequestException $e) {
-            Log::error($e->getMessage());
+            $this->writeInquiryLog('createInquiryCase (Upstream Server Respone)', $e);
             throw $e;
         }
     }
@@ -131,9 +132,10 @@ class RequestFormService
                 ],
             ]);
             $response = $crmClient->get($url);
+            $this->writeInquiryLog('getCaseNumberByAYASCaseID (Upstream Server Respone)', json_decode($response->getBody(), true));
             return json_decode($response->getBody(), true)["value"];
         } catch (RequestException $e) {
-            Log::error($e->getMessage());
+            $this->writeInquiryLog('getCaseNumberByAYASCaseID (Upstream Server Respone)', $e);
             throw $e;
         }
     }
@@ -202,6 +204,17 @@ class RequestFormService
             "customer_id" => $customer_id,
             "message" => $message,
         ]);
-
+    }
+    private function writeInquiryLog($key, $data)
+    {
+        if (config("app.WRITE_LOG")) {
+            Log::channel('inquiry')->info("    ");
+            Log::channel('inquiry')->debug("...............Start......................");
+            Log::channel('inquiry')->debug("Time : " . now());
+            $data = ['key' => $key, "data" => $data];
+            Log::channel('inquiry')->info($data);
+            Log::channel('inquiry')->info(".................End....................");
+            Log::channel('inquiry')->info("    ");
+        }
     }
 }

@@ -82,6 +82,3 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
-Route::get('test', function () {
-    return uniqid();
-})->name('claim-case.non-motor');

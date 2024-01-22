@@ -34,9 +34,9 @@ return [
     'fcm_url' => env('FCM_URL'),
 
     'stage' => env("STAGE"),
+    'WRITE_LOG' => env("WRITE_LOG"),
 
-    'CIRCE_SERVER_BASE_URL' => "http://127.0.0.1:8000",
-
+    'CIRCE_SERVER_BASE_URL' => "https://172.20.188.233/",
 
     /*
     |--------------------------------------------------------------------------

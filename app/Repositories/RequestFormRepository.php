@@ -21,7 +21,8 @@ class RequestFormRepository
     static function updateStatusByCaseID($case_id,$newData)
     {   
         $row = RequestForm::where("ayasompo_caseid", $case_id)->first();
-        $row->update($newData);
+        if($row)
+           return $row->update($newData);
     }
 }
 

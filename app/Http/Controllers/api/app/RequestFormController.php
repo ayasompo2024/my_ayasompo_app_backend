@@ -9,12 +9,16 @@ use App\Traits\api\ApiResponser;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use App\Models\RequestForm;
+use Log;
 
 class RequestFormController extends Controller
 {
     use ApiResponser;
     public function storeInquiryCase(StoreInquiryCaseRequest $request, RequestFormService $requestFormService)
     {
+        if(config("app.WRITE_LOG")){
+            $this->writeInquiryLog("store-inquiry-case : Request",$request->all());
+        }
         $status = $requestFormService->storeInquiryCase($request);
         if ($status == 1)
             return $this->issueResponse("Can not receive Customer ID from upstream server", 1, 502);
@@ -29,6 +33,9 @@ class RequestFormController extends Controller
 
     public function getEndorsementForm(Request $request, RequestFormService $requestFormService)
     {
+        if(config("app.WRITE_LOG")){
+            $this->writeInquiryLog("get-endorsement-form : Request",$request->all());
+        }
         $validator = $this->isIncludeFields($request, "product_code");
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
@@ -46,9 +53,25 @@ class RequestFormController extends Controller
         });
     }
 
-    public function read($id){
+    public function read($id)
+    {
         $requestForm = RequestForm::find($id);
         $requestForm->update(['is_read' => 1]);
         return $requestForm->refresh();
+    }
+    private function writeInquiryLog($key, $data)
+    {
+        $logChannel = 'inquiry';
+        $logFilePath = storage_path("logs/{$logChannel}.log");
+        if (file_exists($logFilePath)) {
+            unlink($logFilePath);
+        }
+        Log::channel('inquiry')->info("    ");
+        Log::channel('inquiry')->debug(".................START....................");
+        Log::channel('inquiry')->debug("Time : " . now());
+        $data = ['key' => $key, "data" => $data];
+        Log::channel('inquiry')->info($data);
+        Log::channel('inquiry')->info(".....................END................");
+        Log::channel('inquiry')->info("    ");
     }
 }

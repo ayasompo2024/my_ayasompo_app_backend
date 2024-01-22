@@ -129,6 +129,18 @@ class DevOperationController extends Controller
         ];
         return view('dev.show-env-value-ui')->with(['env_values' => $env_values]);
     }
+
+    function getLogFileList(){
+        $files = File::files('./../storage/logs');
+        rsort($files);
+        return view('dev.logs.index', compact(['files']));   
+    }
+    function getLogFileContent($file){
+        $files = File::files('./../storage/logs');
+        rsort($files);
+        $content = File::get('./../storage/logs/' . $file);
+        return view('dev.logs.content', compact(['files', 'content']));
+    }
 }
 
 // {

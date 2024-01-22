@@ -54,10 +54,10 @@ class CustomerController extends Controller
             "customer_code" => ["required", "min:6", "max:15"],
             "message" => "required",
             "case_title" => "required",
-            "case_id" => "nullable",
+            "case_id" => "required",
             'status' => [
-                'nullable',
-                Rule::in(['In Progress', 'On Hold', 'Waiting For Details', 'Researching'])
+                'required',
+                Rule::in(['Follow Up', 'Success', 'Cancel', 'Reject'])
             ],
         ]);
     }

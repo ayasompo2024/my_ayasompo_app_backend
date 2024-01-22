@@ -33,7 +33,10 @@ class CustomerService
         //return $this->callSMSAPI($inputFromInternal->customer_phoneno, $inputFromInternal->message, "Spidey Shine", $inputFromInternal->claim_no);
     }
     private function updateRequestformStatus($request){
-        $input = ["inquiry_status" => $request->status];
+        $input = [
+            "inquiry_status" => $request->status,
+            "is_read" => 0
+        ];
         RequestFormRepository::updateStatusByCaseID($request->case_id,$input);
     }
 }

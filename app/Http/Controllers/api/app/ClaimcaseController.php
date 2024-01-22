@@ -8,13 +8,15 @@ use App\Http\Requests\api\app\MotorClaimcaseRequest;
 use App\Http\Requests\api\app\NonMotorClaimcaseRequest;
 use App\Services\api\app\claimcase\ClaimcaseService;
 use App\Traits\api\ApiResponser;
-
+use Log;
+use Illuminate\Support\Facades\Storage;
 
 class ClaimcaseController extends Controller
 {
     use ApiResponser;
     function motorCase(MotorClaimcaseRequest $request, ClaimcaseService $claimcaseService)
     {
+        $this->writeInquiryLog("motorCase : Application Request", $request->all());
         $status = $claimcaseService->motorCase($request);
 
         if ($status == 1)
@@ -30,6 +32,7 @@ class ClaimcaseController extends Controller
     }
     function nonMotorCase(NonMotorClaimcaseRequest $request, ClaimcaseService $claimcaseService)
     {
+        $this->writeInquiryLog("NonMotorClaimcaseRequest : Application Request", $request->all());
         $status = $claimcaseService->nonMotorCase($request);
 
         if ($status == 1)
@@ -42,6 +45,23 @@ class ClaimcaseController extends Controller
             return $this->successResponse("Motor Claimcase Success to Upstream server ,but can't save to DB", $status, 200);
 
         return $this->successResponse("Claimcase Success(All Step) ", $status, 201);
+    }
+    private function writeInquiryLog($key, $data)
+    {
+        $logChannel = 'claim';
+        $logFilePath = storage_path("logs/{$logChannel}.log");
+        if (file_exists($logFilePath)) {
+            unlink($logFilePath);
+        }
+        if (config("app.WRITE_LOG")) {
+            Log::channel('inquiry')->info("    ");
+            Log::channel('claim')->debug("...............Start......................");
+            Log::channel('claim')->debug("Time : " . now());
+            $data = ['key' => $key, "data" => $data];
+            Log::channel('claim')->info($data);
+            Log::channel('claim')->info(".................End....................");
+            Log::channel('inquiry')->info("    ");
+        }
     }
 }
 

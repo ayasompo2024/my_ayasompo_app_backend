@@ -35,6 +35,7 @@ class storeCoreCustomer
         $coreCustomer["email"] = $customerFromCore["data"][0]["emailAddress"];
         $coreCustomer["address"] = $customerFromCore["data"][0]["customerAddresses"][0]["adLocationDescription"];
         CoreCustomerRepository::store($coreCustomer);
+        $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
     }
     private function getEmailAndAddressFromCoreSystem($request)
     {
@@ -67,6 +68,7 @@ class storeCoreCustomer
     private function sendPhoneNumberToTheCircleServer($request)
     {
         $end_point = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        
         $requestBody = [
             "phone" => $request->customer_phoneno
         ];
@@ -74,6 +76,7 @@ class storeCoreCustomer
             'Accept' => 'application/json',
         ];
         $response = Http::withHeaders($headers)->post($end_point, $requestBody);
+        
         if ($response->successful()) {
             return $response->json();
         } else {

@@ -133,6 +133,14 @@
         'sub_menus' => null,
     ],
     [
+        'display' => 'Logs',
+        'route' => 'dev.logs.file.all',
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'bi bi-file-earmark-medical-fill',
+        'sub_menus' => null,
+    ],
+    [
         'display' => 'Dev Operation',
         'route' => 'dev.doc.index',
         'imag_path' => null,
@@ -145,14 +153,6 @@
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-gear-fill',
-                'sub_menus' => null,
-            ],
-            [
-                'display' => 'Logs',
-                'route' => 'admin.dashboard.logs',
-                'imag_path' => null,
-                'target' => false,
-                'icon' => 'bi bi-file-earmark-medical-fill',
                 'sub_menus' => null,
             ],
             [

@@ -48,6 +48,16 @@ return [
     */
 
     'channels' => [
+        'inquiry' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/inquiry.log'),
+            'level' => 'info',
+        ],
+        'claim' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/claim.log'),
+            'level' => 'info',
+        ],
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],

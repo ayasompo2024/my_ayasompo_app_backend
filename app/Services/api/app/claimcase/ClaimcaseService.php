@@ -2,6 +2,7 @@
 namespace App\Services\api\app\claimcase;
 
 use App\Traits\UploadFileToAzurBlobStorage;
+use Log;
 
 class ClaimcaseService
 {
@@ -49,6 +50,8 @@ class ClaimcaseService
         $status = $this->storeNonMotorCase($input);
         return $status ? ['id' => $status->id] : false;
     }
+
+    
 }
 
 // {

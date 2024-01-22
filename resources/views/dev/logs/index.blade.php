@@ -25,7 +25,7 @@
                         @foreach ($files as $key => $file)
                             <li class="nav-item ">
                                 <div class="nav-link m-0 py-1 d-flex justify-content-between">
-                                    <a href="{{ route('dev.doc.index.file', $file->getFilename()) }}">
+                                    <a href="{{ route('dev.logs.file', $file->getFilename()) }}">
                                         <p class="ml-2 p-0">
                                             {{ $file->getFilename() }}
                                         </p>
@@ -39,7 +39,7 @@
         </aside>
         <div class="content-wrapper p-2">
             @foreach ($files as $key => $file)
-                <a class="btn btn-sm bg-light border" href="{{ route('dev.doc.index.file', $file->getFilename()) }}">
+                <a class="btn btn-sm bg-light border" href="{{ route('dev.logs.file', $file->getFilename()) }}">
                     {{ substr($file->getFilename(), 0, -3) }}
                 </a>
             @endforeach

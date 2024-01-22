@@ -5,6 +5,7 @@ use App\Events\CustomerRegistered;
 use App\Http\Resources\api\app\RegisterCustomerRsource;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Repositories\DeviceTokenRepository;
+use App\Traits\RemoveInitialPlusNineFiveNine;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
@@ -14,10 +15,11 @@ use App\Traits\SendPushNotification;
 
 class CustomerService
 {
-    use FileUpload,SendPushNotification;
+    use FileUpload, SendPushNotification, RemoveInitialPlusNineFiveNine;
     function register($request)
     {
-        $input = $request->only("customer_code", "customer_phoneno", "policy_number", "user_name", "device_token");
+        $input = $request->only("customer_code","policy_number", "user_name", "device_token");
+        $input['customer_phoneno'] = $this->removeInitialPlusNineFiveNine($request->customer_phoneno);
         $input['password'] = Hash::make($request['password']);
         $input['app_customer_type'] = AppCustomerType::INDIVIDUAL->value;
         $input['profile_photo'] = "/uploads/profile/user.jpg";
@@ -35,8 +37,8 @@ class CustomerService
     }
     function login($request)
     {
-        $customer = CustomerRepository::getByPhone($request->customer_phoneno);
-
+        $formatPhoneNumber = $this->removeInitialPlusNineFiveNine($request->customer_phoneno);
+        $customer = CustomerRepository::getByPhone($formatPhoneNumber);
         if (empty($customer) || !Hash::check($request->password, $customer->password))
             return false;
         $this->logOutOldDevice($customer->device_token);
@@ -48,7 +50,8 @@ class CustomerService
             "customer" => $customer->is_disabled ? null : new CustomerRsource($customer)
         ];
     }
-    private function logOutOldDevice($token){
+    private function logOutOldDevice($token)
+    {
         $notification = ["title" => "Security Alert", "body" => "You've been logged out !"];
         $data = ["title" => "LOG_OUT_NOW", "body" => null];
         $this->sendAsUnicast($token, $notification, $data);

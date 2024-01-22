@@ -35,7 +35,7 @@ class storeCoreCustomer
         $coreCustomer["email"] = $customerFromCore["data"][0]["emailAddress"];
         $coreCustomer["address"] = $customerFromCore["data"][0]["customerAddresses"][0]["adLocationDescription"];
         CoreCustomerRepository::store($coreCustomer);
-        $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
+        // $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
     }
     private function getEmailAndAddressFromCoreSystem($request)
     {

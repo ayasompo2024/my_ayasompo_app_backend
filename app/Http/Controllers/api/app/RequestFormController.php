@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api\app;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\app\StoreInquiryCaseRequest;
-use App\Services\api\app\RequestFormService;
+use App\Services\api\app\inquiry\RequestFormService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
@@ -66,12 +66,10 @@ class RequestFormController extends Controller
         if (file_exists($logFilePath)) {
             unlink($logFilePath);
         }
-        Log::channel('inquiry')->info("    ");
         Log::channel('inquiry')->debug(".................START....................");
         Log::channel('inquiry')->debug("Time : " . now());
         $data = ['key' => $key, "data" => $data];
         Log::channel('inquiry')->info($data);
         Log::channel('inquiry')->info(".....................END................");
-        Log::channel('inquiry')->info("    ");
     }
 }

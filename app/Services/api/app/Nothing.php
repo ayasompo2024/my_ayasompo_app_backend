@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Client;
 use Log;
 
-class RequestFormService
+class Nothing
 {
     function getEndorsementForm($product_code)
     {
@@ -208,13 +208,11 @@ class RequestFormService
     private function writeInquiryLog($key, $data)
     {
         if (config("app.WRITE_LOG")) {
-            Log::channel('inquiry')->info("    ");
             Log::channel('inquiry')->debug("...............Start......................");
             Log::channel('inquiry')->debug("Time : " . now());
             $data = ['key' => $key, "data" => $data];
             Log::channel('inquiry')->info($data);
             Log::channel('inquiry')->info(".................End....................");
-            Log::channel('inquiry')->info("    ");
         }
     }
 }

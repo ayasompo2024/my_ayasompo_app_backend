@@ -31,6 +31,7 @@ class RegisterCustomerRsource extends JsonResource
             'email' => $this->core->email,
             'address' => $this->core->address,
             'policy_holder_name' => $this->core->customer_name,
+            "original_phone" => $this->core->customer_phoneno
         ];
     }
 }

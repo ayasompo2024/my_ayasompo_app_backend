@@ -3,9 +3,6 @@ namespace App\Services\api\internal;
 
 use App\Models\InternalAccessList;
 
-
-
-
 class AuthService
 {
     public function generateInterAccessToken($request)

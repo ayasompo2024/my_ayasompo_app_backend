@@ -3,14 +3,15 @@ namespace App\Services\api\internal;
 
 use App\Repositories\CustomerRepository;
 use App\Repositories\RequestFormRepository;
+use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
 
 class CustomerService
 {
-    use SendPushNotification;
+    use SendPushNotification,RemoveInitialPlusNineFiveNine;
     public function sendClaimNoti($inputFromInternal)
     {
-        $customers = CustomerRepository::getAllByProvidedPhone($inputFromInternal->customer_phoneno);
+        $customers = CustomerRepository::getAllByProvidedPhone($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno));
         $notification = ["title" => $inputFromInternal->message, "body" => "Claim No : " . $inputFromInternal->claim_no . ", Customer Code : " . $inputFromInternal->customer_code];
         foreach ($customers as $customer) {
             $this->sendAsUnicast($customer->device_token, $notification, $notification);
@@ -20,7 +21,7 @@ class CustomerService
     }
     public function sendInquiryNoti($inputFromInternal)
     {
-        $customers = CustomerRepository::getAllByProvidedPhone($inputFromInternal->customer_phoneno);
+        $customers = CustomerRepository::getAllByProvidedPhone($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno));
         $notification = [
             "title" => $inputFromInternal->case_title,
             "body" => $inputFromInternal->message,

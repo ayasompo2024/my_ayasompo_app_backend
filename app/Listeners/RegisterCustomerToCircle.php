@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Traits\WriteLogger;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\CustomerRegistered;
@@ -12,7 +13,8 @@ use GuzzleHttp\Exception\RequestException;
 
 
 class RegisterCustomerToCircle
-{    
+{
+    use WriteLogger;
     public function __construct()
     {
     }
@@ -23,17 +25,24 @@ class RegisterCustomerToCircle
     }
     private function sendPhoneNumberToTheCircleServer($request)
     {
-        \Log::info("Sending Request to the circle server");
-        return true;
-        $end_point = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $requestBody = ["phone" => $request->customer_phoneno];
+        $this->writeLog("register", "Send Phone Number to Circle Server", $requestBody);
+        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
+        $data = $response->json();
+        return response()->json($data);
+    }
 
+    private function nothing($request)
+    {
         $requestBody = [
             "phone" => $request->customer_phoneno
         ];
-        \Log::info($request->customer_phoneno);
+        // \Log::info($request->customer_phoneno);
         $headers = [
             'Accept' => 'application/json',
         ];
+        $end_point = "";
 
         $client = new Client();
 

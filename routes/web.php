@@ -89,7 +89,8 @@ Route::get('/c', function () {
     $postData = [
         'phone' => '09950802341',
     ];
-    $response = Http::post($url, $postData);
+    // $response = Http::withOptions(['verify' => '/home/spideyshine/Downloads/cert/_.ayasompo.com.crt'])->post($url, $postData);
+    $response = Http::withOptions(['verify' => false])->post($url, $postData);
     $data = $response->json();
     return response()->json($data);
 });

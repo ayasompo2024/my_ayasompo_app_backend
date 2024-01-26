@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Http;
 
 class storeCoreCustomer
 {
-
+    
     public function __construct()
     {
     }
-
-
+    
     public function handle(CustomerRegistered $event)
     {
         $coreCustomer = $event->data["request"]->only("customer_code", "customer_type", "customer_name", "customer_phoneno", "customer_nrc");

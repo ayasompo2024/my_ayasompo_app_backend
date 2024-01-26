@@ -26,11 +26,11 @@ class RegisterCustomerToCircle
     private function sendPhoneNumberToTheCircleServer($request)
     {
         $requestBody = ["phone" => $request->customer_phoneno];
-        $this->writeLog("register", "Send Phone Number to Circle Server", $requestBody);
+        $this->writeLog("register", "Request to Circle Server", $requestBody);
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
         $data = $response->json();
-        return response()->json($data);
+        $this->writeLog("register", "Response from Circle Server", $data);
     }
 
     private function nothing($request)

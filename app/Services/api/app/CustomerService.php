@@ -2,6 +2,7 @@
 namespace App\Services\api\app;
 
 use App\Events\CustomerRegistered;
+
 use App\Http\Resources\api\app\RegisterCustomerRsource;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Repositories\DeviceTokenRepository;
@@ -27,8 +28,9 @@ class CustomerService
         $token = $customer->createToken('app_api_token')->accessToken;
 
         $dataForCoreCustomer["app_customer_id"] = $customer->id;
-        $dataForCoreCustomer["request"] = $request;
+        $dataForCoreCustomer["request"] = $request;        
         event(new CustomerRegistered($dataForCoreCustomer));
+        
         return [
             "token" => $token,
             "customer" => new RegisterCustomerRsource($customer),

@@ -133,7 +133,7 @@
         'sub_menus' => null,
     ],
     [
-        'display' => 'Logs',
+        'display' => 'LogsWatch',
         'route' => 'dev.logs.file.all',
         'imag_path' => null,
         'target' => false,

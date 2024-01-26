@@ -36,7 +36,7 @@ return [
     'stage' => env("STAGE"),
     'WRITE_LOG' => env("WRITE_LOG"),
 
-    'CIRCE_SERVER_BASE_URL' => "https://172.20.188.233/",
+    'CIRCE_SERVER_BASE_URL' => "https://mycircle.ayasompo.com/",
 
     /*
     |--------------------------------------------------------------------------

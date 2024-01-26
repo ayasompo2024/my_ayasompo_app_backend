@@ -65,24 +65,7 @@ class storeCoreCustomer
             $errorMessage = $response->body();
         }
     }
-    private function sendPhoneNumberToTheCircleServer($request)
-    {
-        $end_point = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
-        
-        $requestBody = [
-            "phone" => $request->customer_phoneno
-        ];
-        $headers = [
-            'Accept' => 'application/json',
-        ];
-        $response = Http::withHeaders($headers)->post($end_point, $requestBody);
-        
-        if ($response->successful()) {
-            return $response->json();
-        } else {
-            $statusCode = $response->status();
-            $errorMessage = $response->body();
-        }
-
-    }
 }
+
+
+

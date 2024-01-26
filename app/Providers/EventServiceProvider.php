@@ -20,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\CustomerRegistered' => [
             'App\Listeners\storeCoreCustomer',
+            'App\Listeners\RegisterCustomerToCircle'
         ],
     ];
 

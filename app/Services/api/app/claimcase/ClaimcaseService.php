@@ -50,8 +50,6 @@ class ClaimcaseService
         $status = $this->storeNonMotorCase($input);
         return $status ? ['id' => $status->id] : false;
     }
-
-    
 }
 
 // {

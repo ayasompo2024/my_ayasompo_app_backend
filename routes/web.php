@@ -82,16 +82,37 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
-Route::get('/c', function () {
+// Route::get('/c', function () {
 
-    $url = "https://mycircle.ayasompo.com/api/register";
+//     $url = "https://mycircle.ayasompo.com/api/register";
 
-    $postData = [
-        'phone' => '09950802341',
-    ];
-    // $response = Http::withOptions(['verify' => '/home/spideyshine/Downloads/cert/_.ayasompo.com.crt'])->post($url, $postData);
-    $response = Http::withOptions(['verify' => false])->post($url, $postData);
-    $data = $response->json();
-    return response()->json($data);
-});
+//     $postData = [
+//         'phone' => '09950802341',
+//     ];
+//     // $response = Http::withOptions(['verify' => '/home/spideyshine/Downloads/cert/_.ayasompo.com.crt'])->post($url, $postData);
+//     $response = Http::withOptions(['verify' => false])->post($url, $postData);
+//     $data = $response->json();
+//     return response()->json($data);
+// });
+
+
+// Route::get('/ocr', function () {
+//     // Specify the path to the image you want to perform OCR on
+//     $imagePath = '/home/spideyshine/Downloads/ocr/t.png';
+
+//     // Specify the path where you want to save the output text file
+//     $outputTextPath = '/home/spideyshine/Downloads/ocr/output.txt';
+
+//     // Run Tesseract OCR using the shell_exec function
+// // Adjust the command based on your Tesseract installation path
+//     $command = "tesseract $imagePath $outputTextPath";
+//     shell_exec($command);
+
+//     // Read the output text from the file
+//     $outputText = file_get_contents($outputTextPath);
+
+//     // Output the extracted text
+//     echo "Extracted Text: \n";
+//     echo $outputText;
+// });
 

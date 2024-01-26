@@ -21,6 +21,7 @@ class RegisterCustomerToCircle
 
     public function handle(CustomerRegistered $event)
     {
+        
         $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
     }
     private function sendPhoneNumberToTheCircleServer($request)
@@ -31,6 +32,10 @@ class RegisterCustomerToCircle
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
         $data = $response->json();
         $this->writeLog("register", "Response from Circle Server", $data);
+    }
+
+    private function getPolicyInquiry(){
+
     }
 
     private function nothing($request)

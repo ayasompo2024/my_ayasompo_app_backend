@@ -16,9 +16,7 @@ class RequestFormController extends Controller
     use ApiResponser;
     public function storeInquiryCase(StoreInquiryCaseRequest $request, RequestFormService $requestFormService)
     {
-        if(config("app.WRITE_LOG")){
-            $this->writeInquiryLog("store-inquiry-case : Request",$request->all());
-        }
+        $this->writeInquiryLog("store-inquiry-case : Request", $request->all());
         $status = $requestFormService->storeInquiryCase($request);
         if ($status == 1)
             return $this->issueResponse("Can not receive Customer ID from upstream server", 1, 502);
@@ -33,9 +31,7 @@ class RequestFormController extends Controller
 
     public function getEndorsementForm(Request $request, RequestFormService $requestFormService)
     {
-        if(config("app.WRITE_LOG")){
-            $this->writeInquiryLog("get-endorsement-form : Request",$request->all());
-        }
+        $this->writeInquiryLog("get-endorsement-form : Request", $request->all());
         $validator = $this->isIncludeFields($request, "product_code");
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
@@ -61,15 +57,14 @@ class RequestFormController extends Controller
     }
     private function writeInquiryLog($key, $data)
     {
-        $logChannel = 'inquiry';
-        $logFilePath = storage_path("logs/{$logChannel}.log");
-        if (file_exists($logFilePath)) {
-            unlink($logFilePath);
+        if (config("app.WRITE_LOG")) {
+            $logChannel = 'inquiry';
+            $logFilePath = storage_path("logs/{$logChannel}.log");
+            if (file_exists($logFilePath)) {
+                unlink($logFilePath);
+            }
+            $data = ['key' => $key, "data" => $data];
+            Log::channel('inquiry')->info($data);
         }
-        Log::channel('inquiry')->debug(".................START....................");
-        Log::channel('inquiry')->debug("Time : " . now());
-        $data = ['key' => $key, "data" => $data];
-        Log::channel('inquiry')->info($data);
-        Log::channel('inquiry')->info(".....................END................");
     }
 }

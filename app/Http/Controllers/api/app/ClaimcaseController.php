@@ -48,19 +48,14 @@ class ClaimcaseController extends Controller
     }
     private function writeInquiryLog($key, $data)
     {
-        $logChannel = 'claim';
-        $logFilePath = storage_path("logs/{$logChannel}.log");
-        if (file_exists($logFilePath)) {
-            unlink($logFilePath);
-        }
         if (config("app.WRITE_LOG")) {
-            Log::channel('inquiry')->info("    ");
-            Log::channel('claim')->debug("...............Start......................");
-            Log::channel('claim')->debug("Time : " . now());
+            $logChannel = 'claim';
+            $logFilePath = storage_path("logs/{$logChannel}.log");
+            if (file_exists($logFilePath)) {
+                unlink($logFilePath);
+            }
             $data = ['key' => $key, "data" => $data];
             Log::channel('claim')->info($data);
-            Log::channel('claim')->info(".................End....................");
-            Log::channel('inquiry')->info("    ");
         }
     }
 }

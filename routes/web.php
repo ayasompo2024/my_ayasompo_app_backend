@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
@@ -81,4 +82,15 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
+Route::get('/c', function () {
+
+    $url = "https://mycircle.ayasompo.com/api/register";
+
+    $postData = [
+        'phone' => '09950802341',
+    ];
+    $response = Http::post($url, $postData);
+    $data = $response->json();
+    return response()->json($data);
+});
 

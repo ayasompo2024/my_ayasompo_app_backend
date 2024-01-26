@@ -12,24 +12,11 @@ use GuzzleHttp\Exception\RequestException;
 
 
 class RegisterCustomerToCircle
-{
-
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
+{    
     public function __construct()
     {
-        //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
-     */
     public function handle(CustomerRegistered $event)
     {
         $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
@@ -37,7 +24,7 @@ class RegisterCustomerToCircle
     private function sendPhoneNumberToTheCircleServer($request)
     {
         \Log::info("Sending Request to the circle server");
-
+        return true;
         $end_point = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
 
         $requestBody = [

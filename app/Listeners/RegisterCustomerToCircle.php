@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\WriteLogger;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,19 +15,19 @@ use GuzzleHttp\Exception\RequestException;
 
 class RegisterCustomerToCircle
 {
-    use WriteLogger;
+    use WriteLogger, RemoveInitialPlusNineFiveNine;
     public function __construct()
     {
     }
 
     public function handle(CustomerRegistered $event)
     {
-        
+
         $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
     }
     private function sendPhoneNumberToTheCircleServer($request)
     {
-        $requestBody = ["phone" => $request->customer_phoneno];
+        $requestBody = ["phone" => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
         $this->writeLog("register", "Request to Circle Server", $requestBody);
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
@@ -34,7 +35,8 @@ class RegisterCustomerToCircle
         $this->writeLog("register", "Response from Circle Server", $data);
     }
 
-    private function getPolicyInquiry(){
+    private function getPolicyInquiry()
+    {
 
     }
 

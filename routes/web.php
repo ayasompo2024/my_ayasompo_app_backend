@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
 
@@ -24,6 +25,10 @@ Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->nam
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+
+    Route::get('get-acc-for-test',function(){
+        return Customer::all();
+    });
 
     Route::resource('account', AdminAccountController::class);
     Route::post('account/disabled/toggle/{id}', [AdminAccountController::class, 'disabledToggle'])->name('account.disabled.toggle');

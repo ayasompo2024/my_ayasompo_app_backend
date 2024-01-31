@@ -87,3 +87,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
+
+
+Route::get("php-info", function () {
+    return phpinfo();
+});

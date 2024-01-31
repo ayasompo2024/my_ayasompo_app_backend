@@ -7,6 +7,7 @@ use App\Http\Resources\api\app\RegisterCustomerRsource;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Repositories\DeviceTokenRepository;
 use App\Traits\RemoveInitialPlusNineFiveNine;
+use App\Traits\WriteLogger;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
 use App\Enums\AppCustomerType;
@@ -16,10 +17,11 @@ use App\Traits\SendPushNotification;
 
 class CustomerService
 {
-    use FileUpload, SendPushNotification, RemoveInitialPlusNineFiveNine;
+    use FileUpload, SendPushNotification, RemoveInitialPlusNineFiveNine, WriteLogger;
     function register($request)
     {
-        $input = $request->only("customer_code","policy_number", "user_name", "device_token");
+        $this->writeLog("registerdata", "Register Request Data", $request->all());
+        $input = $request->only("customer_code", "policy_number", "user_name", "device_token");
         $input['customer_phoneno'] = $this->removeInitialPlusNineFiveNine($request->customer_phoneno);
         $input['password'] = Hash::make($request['password']);
         $input['app_customer_type'] = AppCustomerType::INDIVIDUAL->value;
@@ -28,9 +30,9 @@ class CustomerService
         $token = $customer->createToken('app_api_token')->accessToken;
 
         $dataForCoreCustomer["app_customer_id"] = $customer->id;
-        $dataForCoreCustomer["request"] = $request;        
+        $dataForCoreCustomer["request"] = $request;
         event(new CustomerRegistered($dataForCoreCustomer));
-        
+
         return [
             "token" => $token,
             "customer" => new RegisterCustomerRsource($customer),
@@ -39,6 +41,7 @@ class CustomerService
     }
     function login($request)
     {
+        $this->writeLog("login", "Login Request Data", $request->all());
         $formatPhoneNumber = $this->removeInitialPlusNineFiveNine($request->customer_phoneno);
         $customer = CustomerRepository::getByPhone($formatPhoneNumber);
         if (empty($customer) || !Hash::check($request->password, $customer->password))

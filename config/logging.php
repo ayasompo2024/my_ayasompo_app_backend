@@ -48,9 +48,14 @@ return [
     */
 
     'channels' => [
-        'register' => [
+        'login' => [
             'driver' => 'single',
-            'path' => storage_path('logs/register.log'),
+            'path' => storage_path('logs/login.log'),
+            'level' => 'info',
+        ],
+        'registerdata' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/registerdata.log'),
             'level' => 'info',
         ],
         'inquiry' => [

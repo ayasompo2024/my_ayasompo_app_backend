@@ -97,11 +97,8 @@ trait CallAPI
     function writeInquiryLog($key, $data)
     {
         if (config("app.WRITE_LOG")) {
-            Log::channel('inquiry')->debug("...............Start......................");
-            Log::channel('inquiry')->debug("Time : " . now());
             $data = ['key' => $key, "data" => $data];
             Log::channel('inquiry')->info($data);
-            Log::channel('inquiry')->info(".................End....................");
         }
     }
 }

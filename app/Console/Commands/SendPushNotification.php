@@ -17,8 +17,6 @@ class SendPushNotification extends Command
         $teamId = 'BJA4J3WHA6';
         $bundleId = 'com.my.ayasompo';
         $privateKeyPath = __DIR__ . '/AuthKey_B4CRAJNUT5.p8';
-
-
         
         $now = time();
         $expiry = $now + 60 * 60; 
@@ -35,7 +33,7 @@ class SendPushNotification extends Command
         $jwt = $this->jwtEncode($header, $payload, $privateKey);
 
         // Replace with the actual device token
-        $deviceToken = 'E6513D0F0BDC361BBF209CC51953C9C6A6B8D84200265F2E14D02B07379F82F3';
+        $deviceToken = '36691896C559283835231BD8A8F7837AB28460890DCEFDE521A0BE5230088F87';
 
         // cURL command
         $curlCommand = sprintf(
@@ -46,7 +44,7 @@ class SendPushNotification extends Command
             --header "apns-priority: 5" \
             --header "apns-expiration: 0" \
             --data \'{"aps":{"alert":{"title":"title","subtitle":"subtitle","body":"body"}}}\' \
-            --http2 https://api.push.apple.com:443/3/device/E6513D0F0BDC361BBF209CC51953C9C6A6B8D84200265F2E14D02B07379F82F3',
+            --http2 https://api.push.apple.com:443/3/device/36691896C559283835231BD8A8F7837AB28460890DCEFDE521A0BE5230088F87',
             $jwt,
             $bundleId,
             $deviceToken

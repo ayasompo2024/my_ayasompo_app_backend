@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $logs =  LogRepository::getWithPaginate(30);
         return view('admin.dashboard.logs', compact(['logs']));
     }
+    
 }
 
 

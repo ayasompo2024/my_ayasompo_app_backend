@@ -23,3 +23,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logs/file/all', [DevOperationController::class, 'getLogFileList'])->name('dev.logs.file.all');
     Route::get('logs/{file}', [DevOperationController::class, 'getLogFileContent'])->name("dev.logs.file");
 });
+

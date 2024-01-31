@@ -33,7 +33,7 @@ class SendPushNotification extends Command
         $jwt = $this->jwtEncode($header, $payload, $privateKey);
 
         // Replace with the actual device token
-        $deviceToken = '36691896C559283835231BD8A8F7837AB28460890DCEFDE521A0BE5230088F87';
+        // $deviceToken = '36691896C559283835231BD8A8F7837AB28460890DCEFDE521A0BE5230088F87';
 
         // cURL command
         $curlCommand = sprintf(
@@ -44,10 +44,10 @@ class SendPushNotification extends Command
             --header "apns-priority: 5" \
             --header "apns-expiration: 0" \
             --data \'{"aps":{"alert":{"title":"title","subtitle":"subtitle","body":"body"}}}\' \
-            --http2 https://api.push.apple.com:443/3/device/36691896C559283835231BD8A8F7837AB28460890DCEFDE521A0BE5230088F87',
+            --http2 https://api.push.apple.com:443/3/device/9B64C7A05D0B43400AC8F2B5597114523D57633B6E1B9FA015F91F3F07D51671',
             $jwt,
             $bundleId,
-            $deviceToken
+            // $deviceToken
         );
 
         $this->info("Executing cURL command:\n\n$curlCommand\n");

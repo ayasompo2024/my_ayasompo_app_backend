@@ -64,21 +64,11 @@ trait SendPushNotification
 
     public function sendAsUnicastFroIOS($deviceToken, $notification, $data)
     {
-        \Log::info($deviceToken);
-        $keyId = 'B4CRAJNUT5';
-        $teamId = 'BJA4J3WHA6';
         $bundleId = 'com.my.ayasompo';
-        $privateKeyPath = __DIR__ . '/AuthKey_B4CRAJNUT5.p8';
-        $now = time();
-        $expiry = $now + 60 * 60;
-        $header = ['alg' => 'ES256', 'kid' => $keyId];
-        $payload = ['iss' => $teamId, 'iat' => $now, 'exp' => $expiry];
-
-        $privateKey = file_get_contents($privateKeyPath);
-        $jwt = $this->jwtEncode($header, $payload, $privateKey);
-
+        $jwt = $this->jwtEncode($this->getHeader(), $this->getPalyload(), $this->getPrivateKey());
+        
         $title = $notification["title"];
-        $subtitle = null;
+        $subtitle = $notification["title"];
         $body = $notification["body"];
 
         $curlCommand = sprintf(
@@ -92,9 +82,9 @@ trait SendPushNotification
             --http2 https://api.push.apple.com:443/3/device/%s',
             $jwt,
             $bundleId,
-            addslashes($title),
-            addslashes($subtitle),
-            addslashes($body),
+            $title,
+            $subtitle,
+            $body,
             $deviceToken
         );
         exec($curlCommand, $output, $statusCode);
@@ -102,6 +92,27 @@ trait SendPushNotification
         \Log::info($statusCode);
     }
 
+    private function getPalyload()
+    {
+        $teamId = 'BJA4J3WHA6';
+        $now = time();
+        $expiry = $now + 60 * 60;
+        return [
+            'iss' => $teamId,
+            'iat' => $now,
+            'exp' => $expiry,
+        ];
+    }
+    private function getHeader()
+    {
+        $keyId = 'B4CRAJNUT5';
+        return ['alg' => 'ES256', 'kid' => $keyId];
+    }
+    private function getPrivateKey()
+    {
+        $privateKeyPath = __DIR__ . '/AuthKey_B4CRAJNUT5.p8';
+        return file_get_contents($privateKeyPath);
+    }
     private function jwtEncode($header, $payload, $privateKey)
     {
         $encodedHeader = $this->base64urlEncode(json_encode($header));
@@ -113,7 +124,6 @@ trait SendPushNotification
 
         return "$encodedHeader.$encodedPayload.$encodedSignature";
     }
-
     private function base64urlEncode($data)
     {
         return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');

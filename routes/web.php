@@ -89,6 +89,23 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 
 
-Route::get("php-info", function () {
-    return phpinfo();
+Route::get("t", function () {
+
+
+ $str="2344353423234234asdf234"; 
+ 
+ $charCout= array_count_values(str_split($str));
+
+ $maxCount = 0;
+ $mostReChar = '';
+
+ foreach($charCout as $char => $count){
+    if($count  > $maxCount){
+        $maxCount = $count;
+        $mostReChar = $char;
+    }
+ }
+ echo $mostReChar;
+
+ 
 });

@@ -10,9 +10,11 @@ class BannerService
     use FileUpload;
     function getAll()
     {
-        return BannerRepository::getAll();
+        return [
+            "home" => BannerRepository::getHome(),
+            "splash" => BannerRepository::getSplash()            
+        ];
     }
-
     function getById($id)
     {
         return BannerRepository::getById($id);
@@ -20,7 +22,7 @@ class BannerService
 
     function store($request)
     {
-        $input = $request->only('title', 'desc', 'link', 'sort');
+        $input = $request->only('title', 'desc', 'link', 'sort','for');
         $upload_path = $this->uploadFile($request->image, '/uploads/banner/', 'aya_sompo');
         $input["image"] = $upload_path;
         return BannerRepository::store($input);

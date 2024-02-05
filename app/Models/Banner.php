@@ -17,7 +17,8 @@ class Banner extends Model
         'image',
         'link',
         'sort',
-        'status'
+        'status',
+        'for'
     ];
 
     protected static function boot()

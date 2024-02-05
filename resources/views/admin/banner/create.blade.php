@@ -18,7 +18,18 @@
                     <form class="mt-4" method="POST" action="{{ route('admin.banner.store') }}"
                         enctype="multipart/form-data" onkeydown="return event.key != 'Enter'">
                         @csrf
-                        <div class="row">
+                        <div class="row mt-3">
+                            <div class="col-lg-4">
+                                <label for="link"> For </label>
+                            </div>
+                            <div class="col-lg-8">
+                                <select name="for" class="form-control form-control-sm">
+                                    <option>Home</option>
+                                    <option>Splash</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-lg-4">
                                 <label for="images">Image</label>
                             </div>

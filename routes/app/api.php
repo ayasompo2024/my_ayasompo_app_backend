@@ -12,6 +12,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('products', [ProductController::class, 'getActive']);
     Route::get('banners', [BannerController::class, 'getActive']);
+    Route::get('banners/splash', [BannerController::class, 'getSplashActive']);
     Route::get('location-maps', [LocationMapController::class, 'getActive']);
     
     Route::middleware('auth:api')->group(function () {

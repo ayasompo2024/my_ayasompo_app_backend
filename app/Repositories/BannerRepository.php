@@ -6,6 +6,18 @@ use App\Models\Banner;
 class BannerRepository
 {
 
+    static function getHome()
+    {
+        return Banner::where("for", "Home")->orderBy('sort')->get();
+    }
+    static function getSplash()
+    {
+        return Banner::where("for", "Splash")->orderBy('sort')->get();
+    }
+    static function getSplashFirst()
+    {
+        return Banner::where("for", "Splash")->orderBy('sort')->first();
+    }
     static function getAll()
     {
         return Banner::orderBy('sort')->get();

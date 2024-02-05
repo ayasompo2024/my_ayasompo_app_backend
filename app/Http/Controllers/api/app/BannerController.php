@@ -27,4 +27,9 @@ class BannerController extends Controller
         $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
         return "data:image/" . $extension . ";base64," . base64_encode(file_get_contents($imagePath));
     }
+
+    function getSplashActive()
+    {
+        return BannerRepository::getSplashFirst();
+    }
 }

@@ -44,7 +44,7 @@ class SendPushNotification extends Command
             --header "apns-priority: 5" \
             --header "apns-expiration: 0" \
             --data \'{"aps":{"alert":{"title":"title","subtitle":"subtitle","body":"body"}}}\' \
-            --http2 https://api.push.apple.com:443/3/device/E6513D0F0BDC361BBF209CC51953C9C6A6B8D84200265F2E14D02B07379F82F3',
+            --http2 https://api.push.apple.com:443/3/device/F8C4206F8B34A232B8CC58DA3D4A3B7B092593DC8AD0B1AA2BE93527DF150B06',
             $jwt,
             $bundleId,
             // $deviceToken

@@ -4,14 +4,12 @@ namespace App\Http\Controllers\admin\customer;
 
 use App\Http\Controllers\Controller;
 
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\AddNewEmployeeImport;
 use App\Services\customer\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Log;
-
-
 class CustomerController extends Controller
 {
 
@@ -69,6 +67,12 @@ class CustomerController extends Controller
         return $status ?
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
+    }
+
+    public function addNewEmployeeUser(Request $request)
+    {
+        // dd();
+        Excel::import(new AddNewEmployeeImport, $request->add_employee_user_file);
     }
 }
 

@@ -75,6 +75,8 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 
     Route::group(['namepsace' => 'customer'], function () {
         Route::resource('customer', CustomerController::class);
+        Route::post('customer/new/employee',[ CustomerController::class,'addNewEmployeeUser'])->name('customer.new.employee');
+
         Route::controller(CustomerController::class)->group(function () {
             Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
             Route::get('customer/search/by-phone', 'searchByPhone')->name('customer.search.by-phone');
@@ -87,25 +89,3 @@ Route::group(['prefix' => 'admin', 'namspace' => 'admin', 'as' => 'admin.', 'mid
 });
 
 //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
-
-
-Route::get("t", function () {
-
-
- $str="2344353423234234asdf234"; 
- 
- $charCout= array_count_values(str_split($str));
-
- $maxCount = 0;
- $mostReChar = '';
-
- foreach($charCout as $char => $count){
-    if($count  > $maxCount){
-        $maxCount = $count;
-        $mostReChar = $char;
-    }
- }
- echo $mostReChar;
-
- 
-});

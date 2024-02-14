@@ -63,5 +63,17 @@ class CustomerRepository
     {
         return Customer::query()->with('core')->where("app_customer_type", "INDIVIDUAL")->whereCustomer_phoneno($phone)->first();
     }
+
+    static function isExistCustomerAsEmplyeeProfile($phone)
+    {
+        $isExist = Customer::where('customer_phoneno', $phone)->where('app_customer_type', 'EMPLOYEE')->first();
+
+        if ($isExist)
+            return true;
+        else
+            return false;
+
+    }
+
 }
 

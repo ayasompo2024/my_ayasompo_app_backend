@@ -58,7 +58,7 @@
                             </span>
                         </td>
                         <td class="p-1" v-text="customer.customer_code"></td>
-                        <td :title="customer.core.customer_name" v-text="customer.user_name" class="p-2">
+                        <td :title="customer.core ? customer.core.customer_name : ''" v-text="customer ? customer.user_name : ''" class="p-2">
                         </td>
                         <td class="p-1" v-text="customer.customer_phoneno + ' - ' + customer.id"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
@@ -170,11 +170,12 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="AddEmployeeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
+        <div class="modal fade" id="AddEmployeeUser" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form action="{{ route('admin.customer.new.employee') }}" method="post" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.customer.new.employee') }}" method="post" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header p-2">
                             <h5 class="modal-title" id="exampleModalLongTitle">Add Employee User</h5>
@@ -185,7 +186,8 @@
                         <div class="modal-body px-3 py-2">
                             <div class="form-group">
                                 <label>Select File </label>
-                                <input name="add_employee_user_file" type="file" class="form-control" accept=".xls, .xlsx" required>
+                                <input name="add_employee_user_file" type="file" class="form-control"
+                                    accept=".xls, .xlsx" required>
                             </div>
                         </div>
                         <div class="modal-footer p-2">

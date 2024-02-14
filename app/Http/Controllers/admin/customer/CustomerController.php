@@ -10,6 +10,7 @@ use App\Services\customer\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+
 class CustomerController extends Controller
 {
 
@@ -71,8 +72,10 @@ class CustomerController extends Controller
 
     public function addNewEmployeeUser(Request $request)
     {
-        // dd();
-        Excel::import(new AddNewEmployeeImport, $request->add_employee_user_file);
+        $status = Excel::import(new AddNewEmployeeImport, $request->add_employee_user_file);
+        return $status ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
     }
 }
 

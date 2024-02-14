@@ -20,18 +20,19 @@ class CustomerRsource extends JsonResource
             "app_customer_type" => $this->app_customer_type,
             "profile_photo" => config('app.app_domain') . $this->profile_photo,
             'is_disabled' => $this->is_disabled,
+            "policy_number" => $this->policy_number,
+
 
             "risk_seqNo" => $this->risk_seqNo,
             "risk_name" => $this->risk_name,
 
             "customer_code" => $this->customer_code,
             "customer_phoneno" => $this->customer_phoneno,
-            "customer_nrc" => $this->core->customer_nrc,
-            "policy_number" => $this->policy_number,
-            'email' => $this->core->email,
-            'address' => $this->core->address,
-            'policy_holder_name' => $this->core->customer_name,
-            "original_phone" => $this->core->customer_phoneno
+            "customer_nrc" => optional($this->core)->customer_nrc,
+            'email' => optional($this->core)->email,
+            'address' => optional($this->core)->address,
+            'policy_holder_name' => optional($this->core)->customer_name,
+            "original_phone" => optional($this->core)->customer_phoneno
         ];
     }
 }

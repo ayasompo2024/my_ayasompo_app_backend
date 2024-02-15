@@ -97,9 +97,15 @@ class CustomerService
 
     function resetPassword($phone, $password)
     {
-        $customer = CustomerRepository::getByPhoneWhereINDIVIDUAL($phone);
-
-        if (empty($customer))
+        $customer = null;
+        $isExistINDIVIDUAL = CustomerRepository::getByPhoneWhereINDIVIDUAL($this->removeInitialPlusNineFiveNine($phone));
+        if ($isExistINDIVIDUAL) {
+            $customer = $isExistINDIVIDUAL;
+        } else {
+            $customer = CustomerRepository::getByPhone($this->removeInitialPlusNineFiveNine($phone));
+        }
+        
+        if (empty($customer) || $customer == null)
             return false;
 
         $customer->password = Hash::make($password);

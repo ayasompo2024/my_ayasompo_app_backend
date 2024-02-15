@@ -23,7 +23,7 @@ class RegisterCustomerToCircle
     public function handle(CustomerRegistered $event)
     {
 
-        $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
+//        $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
     }
     private function sendPhoneNumberToTheCircleServer($request)
     {

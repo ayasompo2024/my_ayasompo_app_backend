@@ -61,7 +61,7 @@ class CustomerRepository
 
     static function getByPhoneWhereINDIVIDUAL($phone)
     {
-        return Customer::query()->with('core')->where("app_customer_type", "INDIVIDUAL")->whereCustomer_phoneno($phone)->first();
+        return Customer::query()->where("app_customer_type", "INDIVIDUAL")->whereCustomer_phoneno($phone)->first();
     }
 
     static function isExistCustomerAsEmplyeeProfile($phone)

@@ -18,7 +18,7 @@ class ProductPropertyService
 
     function update($id, $request)
     {
-        $input = $request->only("title", "desc");
+        $input = $request->only("title", "desc","title_mm","desc_mm");
         return ProductPropertyRepository::update($id,$input);
     }
 }

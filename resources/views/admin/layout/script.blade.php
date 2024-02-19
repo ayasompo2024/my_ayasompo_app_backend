@@ -87,4 +87,26 @@
             "guide"
         ]
     });
+    const easymde2 = new EasyMDE({
+        element: document.getElementById('editorForProperty2'),
+        toolbar: [
+            "undo",
+            "redo",
+            "bold",
+            "italic",
+            "heading",
+            "strikethrough",
+            "unordered-list",
+            "ordered-list",
+            "horizontal-rule",
+            "|",
+            "link",
+            "image",
+            // "quote",
+            // "code",
+            "side-by-side",
+            "preview",
+            "guide"
+        ]
+    });
 </script>

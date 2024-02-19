@@ -17,6 +17,8 @@ class Property extends Model
         "property_type_id",
         "title",
         "desc",
+        "title_mm",
+        "desc_mm"
     ];
     public function type()
     {

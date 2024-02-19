@@ -18,6 +18,9 @@ class Product extends Model
         "product_type",
         "thumbnail",
         "brief_description",
+        "name_mm",
+        "title_mm",
+        "brief_description_mm",
         "sort",
         "status"
     ];

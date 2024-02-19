@@ -1,87 +1,76 @@
-<div class="row">
-    <div class="col-lg-4"><label for="name"> Product Name </label></div>
-    <div class="col-lg-8">
-        <input id="name" value="{{ $product->name }}" type="text" name="name" autocomplete="name"
-            class="form-control form-control-sm @error('name') is-invalid @enderror" required placeholder="Product Name"
-            minlength="2" maxlength="50">
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-lg-4"><label for="title"> Title </label></div>
-    <div class="col-lg-8">
-        <input id="title" value="{{ $product->title }}" type="text" name="title" autocomplete="title" required
-            class="form-control form-control-sm @error('name') is-invalid @enderror" placeholder="Title" minlength="2"
-            maxlength="50">
-        @error('title')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-
-<div class="row mt-3">
-    <div class="col-lg-4"><label for="product_type">Product Type</label></div>
-    <div class="col-lg-8">
-        <select id="product_type" name="product_type" required
-            class="form-control form-control-sm @error('product_type') is-invalid @enderror">
-            @foreach (\App\Enums\ProductType::cases() as $enumValue)
-                <option @if ($product->product_type == $enumValue->value) selected @endif> {{ $enumValue->value }} </option>
-            @endforEach
-        </select>
-        @error('product_type')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-
-<div class="row mt-3">
-    <div class="col-lg-4"><label for="description">Brief Description</label></div>
-    <div class="col-lg-8">
-        <textarea id="description" rows="5" name="brief_description"
-            class="form-control @error('description') is-invalid @enderror">{{ $product->brief_description }}</textarea>
-        @error('description')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-lg-4">
-        <label for="link"> Sort(Order) </label>
-    </div>
-    <div class="col-lg-8">
-        <input id="desc" value="{{ $product->sort }}" type="number" name="sort" autocomplete="desc"
-            class="form-control form-control-sm" placeholder="Enter Sort Number">
-    </div>
-</div>
-
-
-<div class="row mt-3">
-    <div class="col-lg-4"><label for="description">Thumbnail</label></div>
-    <div class="col-lg-8" style="position: relative">
-        <div class="card old-photo"
-            style="width: 200px;height: 200px;background-size: cover; background-image: url({{ $product->thumbnail }})">
+<div id="app">
+    <div class="border rounded px-2 mt-2">
+        <h5 class="border-bottom mt-0 pt-2">
+            ENG
+            <button type="button" @click="showENGFromToggle()" class="badge badge-info  border float-right"
+                style="height: 28px">
+                <i class="bi bi-caret-down"></i>
+            </button>
+        </h5>
+        <div v-if="showENG">
+            @include('admin.product.partials._edit_eng_form')
         </div>
-        <div class="preview-container" style="display: none">
-            <div id="imagePreview" style="width: 200px;height: 200px;background-size: cover;">
-                <button type="button" onclick="removeNewphoto()" class="float-right btn btn-sm bg-warning mt-1 mr-1"><i
-                        class="bi bi-x-circle-fill"></i></button>
+        <br>
+    </div>
+    <div class="border rounded px-2 mt-2">
+        <h5 class="border-bottom mt-0 pt-2">
+            MM
+            <button type="button" @click="showENGFromToggle()" class="badge badge-info  border float-right"
+                style="height: 28px">
+                <i class="bi bi-caret-down"></i>
+            </button>
+        </h5>
+        <div v-if="showENG">
+            @include('admin.product.partials._edit_mm_form')
+        </div>
+        <br>
+    </div>
+    <div class="px-2 mt-4">
+        <div class="row mt-3">
+            <div class="col-lg-4"><label class="font-weight-normal" for="product_type">Product Type</label></div>
+            <div class="col-lg-8">
+                <select id="product_type" name="product_type" required
+                    class="form-control form-control-sm @error('product_type') is-invalid @enderror">
+                    @foreach (\App\Enums\ProductType::cases() as $enumValue)
+                        <option @if ($product->product_type == $enumValue->value) selected @endif> {{ $enumValue->value }} </option>
+                    @endforEach
+                </select>
+                @error('product_type')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
-        <div style="position: absolute;top:165px;left:12px;">
-            <label class="btn btn-sm btn-info" for="thumbnail">
-                <i class="bi bi-cloud-arrow-up"></i>
-                <input type="file" hidden name="thumbnail" accept="image/*" id="thumbnail">
-            </label>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label class="font-weight-normal" for="link"> Sort(Order) </label>
+            </div>
+            <div class="col-lg-8">
+                <input id="desc" value="{{ $product->sort }}" type="number" name="sort" autocomplete="desc"
+                    class="form-control form-control-sm" placeholder="Enter Sort Number">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4"><label class="font-weight-normal" for="description">Thumbnail</label></div>
+            <div class="col-lg-8" style="position: relative">
+                <div class="card old-photo"
+                    style="width: 200px;height: 200px;background-size: cover; background-image: url({{ $product->thumbnail }})">
+                </div>
+                <div class="preview-container" style="display: none">
+                    <div id="imagePreview" style="width: 200px;height: 200px;background-size: cover;">
+                        <button type="button" onclick="removeNewphoto()"
+                            class="float-right btn btn-sm bg-warning mt-1 mr-1"><i
+                                class="bi bi-x-circle-fill"></i></button>
+                    </div>
+                </div>
+                <div style="position: absolute;top:165px;left:12px;">
+                    <label class="btn btn-sm btn-info" for="thumbnail">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        <input type="file" hidden name="thumbnail" accept="image/*" id="thumbnail">
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -106,5 +95,27 @@
             $('.preview-container').hide();
             $('.old-photo').show();
         }
+    </script>
+
+    <script>
+        const app = SpideyShine.createApp({
+            data() {
+                let showENG = true
+                let showMM = false
+                return {
+                    showENG,
+                    showMM
+                };
+            },
+            methods: {
+                showENGFromToggle() {
+                    this.showENG = !this.showENG
+                },
+                showMMFromToggle() {
+                    this.showMM = !this.showMM
+                },
+            }
+        });
+        app.mount('#app');
     </script>
 @endpush

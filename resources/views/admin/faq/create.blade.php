@@ -18,19 +18,32 @@
                 </h5>
                 <form method="post" action="{{ route('admin.faq.store') }}">
                     @csrf
-
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" class="form-control form-control-sm"
-                                placeholder="Enter Name" id="title" />
+                        <div class="border rounded  p-3">
+                            <h5 class="border-bottom mt-0 pt-2">
+                                ENG
+                                <button type="button" onclick="showENGFromToggle()"
+                                    class="badge badge-info  border float-right" style="height: 28px">
+                                    <i class="bi bi-caret-down"></i>
+                                </button>
+                            </h5>
+                            <div id="showENG">
+                                @include('admin.faq.partials._create_eng_form')
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea type="text"  id="editorForProperty" rows="10" style="white-space: pre-wrap;" name="desc"
-                                class="form-control form-control-sm" placeholder="Enter Descriptione" id="description" /></textarea>
-                            <input type="hidden" name="product_id" value="{{ $product_id }}" />
+                        <div class="border rounded mt-3  p-3">
+                            <h5 class="border-bottom mt-0 pt-2">
+                                MM
+                                <button type="button" onclick="showMMFromToggle()"
+                                    class="badge badge-info  border float-right" style="height: 28px">
+                                    <i class="bi bi-caret-down"></i>
+                                </button>
+                            </h5>
+                            <div id="showMM">
+                                @include('admin.faq.partials._create_mm_form')
+                            </div>
                         </div>
+                        <input type="hidden" name="product_id" value="{{ $product_id }}" />
                     </div>
                     <div class="modal-footer p-1 border-0">
                         <input type="submit" class="btn btn-sm bg-info" value="submit">
@@ -41,3 +54,25 @@
         </div>
     </div>
 @endsection
+@push('child-scripts')
+    <script>
+        function showENGFromToggle() {
+            var element = document.getElementById("showENG");
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+        function showMMFromToggle() {
+            var element = document.getElementById("showMM");
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+@endpush

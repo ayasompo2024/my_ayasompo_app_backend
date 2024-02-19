@@ -210,6 +210,7 @@
             },
             data() {
                 const customers = @json($customers->items());
+                console.log(customers);
                 const storedOldSelectedCustomerId = localStorage.getItem("oldSelectedCustomerId");
                 let selectedCustomerId = storedOldSelectedCustomerId ? JSON.parse(storedOldSelectedCustomerId) : [];
                 const showSelectBoxCondition = selectedCustomerId.length > 0 ? true : false;

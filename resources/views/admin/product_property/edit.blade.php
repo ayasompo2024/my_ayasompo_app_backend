@@ -21,15 +21,29 @@
                     @csrf
 
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" value="{{ $product_property->title }}"
-                                class="form-control form-control-sm" placeholder="Enter Name" id="title" />
+                        <div class="border rounded  p-3">
+                            <h5 class="border-bottom mt-0 pt-2">
+                                EN
+                                <button type="button" onclick="showENGFromToggle()"
+                                    class="badge badge-info  border float-right" style="height: 28px">
+                                    <i class="bi bi-caret-down"></i>
+                                </button>
+                            </h5>
+                            <div id="showENG" style="display: none">
+                                @include('admin.product_property.partials._edit_eng_form')
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea type="text" id="editorForProperty" rows="10" style="white-space: pre-wrap;" name="desc"
-                                class="form-control form-control-sm" placeholder="Enter Descriptione" id="description" />{{$product_property->desc}}</textarea>
+                        <div class="border rounded  p-3 mt-3">
+                            <h5 class="border-bottom mt-0 pt-2">
+                                MM
+                                <button type="button" onclick="showMMFromToggle()"
+                                    class="badge badge-info  border float-right" style="height: 28px">
+                                    <i class="bi bi-caret-down"></i>
+                                </button>
+                            </h5>
+                            <div id="showMM" style="display: none">
+                                @include('admin.product_property.partials._edit_mm_form')
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer p-1 border-0">
@@ -41,3 +55,26 @@
         </div>
     </div>
 @endsection
+@push('child-scripts')
+    <script>
+        function showENGFromToggle() {
+            var element = document.getElementById("showENG");
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        function showMMFromToggle() {
+            var element = document.getElementById("showMM");
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+@endpush

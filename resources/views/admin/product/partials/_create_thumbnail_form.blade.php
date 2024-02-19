@@ -1,6 +1,6 @@
-<div class="row mt-3">
+<div class="row px-2 mt-3">
     <div class="col-lg-4">
-        <label for="thumbnail">Thumbnail</label>
+        <label for="thumbnail" style="font-weight: normal">Thumbnail</label>
     </div>
     <div class="col-lg-8">
         <div class="upload__box">

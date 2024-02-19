@@ -24,7 +24,7 @@ class PropertyController extends Controller
             "product_id" => "required|integer|min:1",
             "property_type_id" => "required|integer|min:1",
         ]);
-        $input = $request->only("title", "desc", "product_id", "property_type_id");
+        $input = $request->only("title", "desc", "title_mm", "desc_mm", "product_id", "property_type_id");
         $status = ProductPropertyRepository::store($input);
         return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }

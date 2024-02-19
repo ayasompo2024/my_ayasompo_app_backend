@@ -23,7 +23,7 @@ class FAQController extends Controller
             "desc" => "required",
             "product_id" => "required|integer|min:1",
         ]);
-        $input = $request->only("title", "desc", "product_id");
+        $input = $request->only("title", "desc", "title_mm", "desc_mm", "product_id");
         $status = FAQRepository::store($input);
         return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }

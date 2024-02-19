@@ -16,7 +16,7 @@ class CustomerService
     }
     function getAllCustomerByPhone($phone)
     {
-        return CustomerRepository::getAllCustomerByPhone($phone);
+        return CustomerRepository::searchCustomerByPhone($phone);
     }
     function getCustomersListByPolicy($policy_no)
     {

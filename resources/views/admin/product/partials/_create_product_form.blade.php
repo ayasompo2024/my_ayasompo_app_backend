@@ -1,70 +1,81 @@
-<div class="row">
-    <div class="col-lg-4">
-        <label for="name"> Product Name </label>
+<div id="app">
+
+    <div class="border rounded px-2 mt-2">
+        <h5 class="border-bottom mt-0 pt-2">
+            ENG
+            <button type="button" @click="showENGFromToggle()" class="badge badge-info  border float-right"
+                style="height: 28px">
+                <i class="bi bi-caret-down"></i>
+            </button>
+        </h5>
+        <div v-if='showENG'>
+            @include('admin.product.partials._eng_form')
+        </div>
+        <br>
     </div>
-    <div class="col-lg-8">
-        <input id="name" value="{{ old('name') }}" type="text" name="name" autocomplete="name"
-            class="form-control form-control-sm @error('name') is-invalid @enderror" placeholder="Product Name"
-            minlength="2" maxlength="50">
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+    <div class="border rounded py-2 px-2 mt-2">
+        <h5 class="border-bottom">
+            MM
+            <button type="button" @click="showMMFromToggle()" class="badge badge-info  border float-right"
+                style="height: 28px">
+                <i class="bi bi-caret-down"></i>
+            </button>
+        </h5>
+        <div v-if='showMM'>
+            @include('admin.product.partials._mm_form')
+        </div>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col-lg-4">
-        <label for="title"> Title </label>
-    </div>
-    <div class="col-lg-8">
-        <input id="title" value="{{ old('title') }}" type="text" name="title" autocomplete="name"
-            class="form-control form-control-sm @error('name') is-invalid @enderror" placeholder="Title" minlength="2"
-            maxlength="50">
-        @error('title')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-lg-4">
-        <label for="product_type">Product Type</label>
-    </div>
-    <div class="col-lg-8">
-        <select id="product_type" name="product_type"
-            class="form-control form-control-sm @error('product_type') is-invalid @enderror">
-            @foreach (\App\Enums\ProductType::cases() as $enumValue)
-                <option>{{ $enumValue->value }} </option>
-            @endforEach
-        </select>
-        @error('product_type')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-lg-4">
-        <label for="description">Brief Description</label>
-    </div>
-    <div class="col-lg-8">
-        <textarea id="description" name="brief_description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
-        @error('description')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+    <div class="px-2">
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="product_type" style="font-weight: normal">Product Type</label>
+            </div>
+            <div class="col-lg-8">
+                <select id="product_type" name="product_type"
+                    class="form-control form-control-sm @error('product_type') is-invalid @enderror">
+                    @foreach (\App\Enums\ProductType::cases() as $enumValue)
+                        <option>{{ $enumValue->value }} </option>
+                    @endforEach
+                </select>
+                @error('product_type')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="link" style="font-weight: normal"> Sort(Order) </label>
+            </div>
+            <div class="col-lg-8">
+                <input id="desc" value="{{ old('sort') }}" type="number" name="sort" autocomplete="desc"
+                    class="form-control form-control-sm" placeholder="Enter Sort Number">
+            </div>
+        </div>
     </div>
 </div>
-<div class="row mt-3">
-    <div class="col-lg-4">
-        <label for="link"> Sort(Order) </label>
-    </div>
-    <div class="col-lg-8">
-        <input id="desc" value="{{ old('sort') }}" type="number" name="sort" autocomplete="desc"
-            class="form-control form-control-sm" placeholder="Enter Sort Number">
-    </div>
-</div>
+
+@push('child-scripts')
+    <script>
+        const app = SpideyShine.createApp({
+            data() {
+                let showENG = true
+                let showMM = false
+                return {
+                    showENG,
+                    showMM
+                };
+            },
+            methods: {
+                showENGFromToggle() {
+                    this.showENG = !this.showENG
+                },
+                showMMFromToggle() {
+                    this.showMM = !this.showMM
+                },
+            }
+        });
+        app.mount('#app');
+    </script>
+@endpush

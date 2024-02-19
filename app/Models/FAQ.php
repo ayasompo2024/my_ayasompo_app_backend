@@ -16,6 +16,8 @@ class FAQ extends Model
     protected $fillable = [
         "title",
         "desc",
+        "title_mm",
+        "desc_mm",
         "product_id",
     ];
 

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="title_mm">Title</label>
-    <input type="text" name="title_mm" value="{{ $product_property->title }}"
+    <input type="text" name="title_mm" value="{{ $product_property->title_mm }}"
         class="form-control form-control-sm" placeholder="Enter Name" id="title_mm" />
 </div>
 <div class="form-group">

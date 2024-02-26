@@ -13,7 +13,7 @@
         </div>
         <br>
     </div>
-    <div class="border rounded py-2 px-2 mt-2">
+    <div class="border rounded py-2 px-2 mt-3">
         <h5 class="border-bottom">
             MM
             <button type="button" @click="showMMFromToggle()" class="badge badge-info  border float-right"
@@ -60,7 +60,7 @@
     <script>
         const app = SpideyShine.createApp({
             data() {
-                let showENG = true
+                let showENG = false
                 let showMM = false
                 return {
                     showENG,

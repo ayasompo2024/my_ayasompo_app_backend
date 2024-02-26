@@ -32,15 +32,12 @@ class Property extends Model
     {
         parent::boot();
         static::creating(function ($property) {
-            // Log::info('property creating : ' . $property);
             $property->sendFcmNoti();
         });
         static::updating(function ($property) {
-            // Log::info('property updating : ' . $property);
             $property->sendFcmNoti();
         });
         static::deleting(function ($property) {
-            // Log::info('property deleting : ' . $property);
             $property->sendFcmNoti();
         });
     }

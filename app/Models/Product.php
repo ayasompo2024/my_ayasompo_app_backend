@@ -36,15 +36,12 @@ class Product extends Model
     {
         parent::boot();
         static::creating(function ($product) {
-            // Log::info('product creating : ' . $product);
             $product->sendFcmNoti();
         });
         static::updating(function ($product) {
-            // Log::info('product  updating: ' . $product);
             $product->sendFcmNoti();
         });
         static::deleting(function ($product) {
-            // Log::info('product deleting : ' . $product);
             $product->sendFcmNoti();
         });
     }

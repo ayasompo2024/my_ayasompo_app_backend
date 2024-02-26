@@ -28,7 +28,7 @@
                                 <i class="bi bi-caret-down"></i>
                             </button>
                             </h5>
-                            <div id="showENG">
+                            <div id="showENG" style="display:none">
                                 @include('admin.faq.partials._edit_eng_form')
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <i class="bi bi-caret-down"></i>
                             </button>
                             </h5>
-                            <div id="showMM">
+                            <div id="showMM" style="display:none">
                                 @include('admin.faq.partials._edit_mm_form')
                             </div>
                         </div>

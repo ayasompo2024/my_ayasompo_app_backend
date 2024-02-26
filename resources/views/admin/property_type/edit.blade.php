@@ -16,8 +16,16 @@
                     <h6 class="modal-title">Update Property Type </h6>
                 </div>
                 <div class="modal-body mt-0 pt-0">
-                    <input type="text" name="name" value="{{ $property_type->name }}" required
-                        class="form-control " />
+                    <div class="form-group">
+                        <label>English</label>
+                        <input type="text" name="name" value="{{ $property_type->name }}" required
+                            class="form-control " />
+                    </div>
+                    <div class="form-group border-top pt-2">
+                        <label>Myanmar</label>
+                        <input type="text" name="name_mm" value="{{ $property_type->name_mm }}" required
+                            class="form-control " />
+                    </div>
                 </div>
                 <div class="modal-footer p-1 border-0 ">
                     <button type="submit" class="btn btn-sm btn-secondary" style="z-index: 1000;">

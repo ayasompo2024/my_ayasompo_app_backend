@@ -4,13 +4,13 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductRsource extends JsonResource
+class ProductRsourceForMM extends JsonResource
 {
 
     public function toArray($request)
     {
         $groupedProperties = $this->properties->groupBy(function ($property) {
-            return optional($property->type)->name;
+            return optional($property->type)->name_mm;
         });
 
         $propertiesArray = $groupedProperties->map(function ($properties, $type) {
@@ -18,8 +18,8 @@ class ProductRsource extends JsonResource
                 'name' => $type,
                 'detail' => $properties->map(function ($property) {
                     return [
-                        'title' => $property->title,
-                        'desc' => $property->desc,
+                        'title' => $property->title_mm,
+                        'desc' => $property->desc_mm,
                     ];
                 }),
             ];
@@ -27,24 +27,23 @@ class ProductRsource extends JsonResource
 
         $faqs = $this->faqs->map(function ($faq) {
             return [
-                'title' => $faq->title,
-                'desc' => $faq->desc,
+                'title' => $faq->title_mm,
+                'desc' => $faq->desc_mm,
             ];
         });
 
-        $imagePath = public_path($this->thumbnail);
-        $image = "data:image/png;base64,".base64_encode(file_get_contents($imagePath));
-
         return [
+            'language' => 'MM',
             'order' => $this->sort,
             'id' => $this->id,
-            'name' => $this->name,
-            'title' => $this->title,
             'product_type' => $this->product_type,
-            'thumbnail' => $image,
-            'brief_description' => $this->brief_description,
+            'thumbnail' => $this->thumbnail,
+
+            'name' => $this->name_mm,
+            'title' => $this->title_mm,
+            'brief_description' => $this->brief_description_mm,
             'faqs' => $faqs,
-            'properties' => $propertiesArray->values()->all(),
+            'properties' => $propertiesArray
         ];
     }
 }

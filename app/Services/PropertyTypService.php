@@ -15,7 +15,7 @@ class PropertyTypService
 
     public function store($request)
     {
-        $input = $request->only("name");
+        $input = $request->only("name",'name_mm');
         return PropertyTypeRepository::store($input);
     }
 
@@ -32,7 +32,8 @@ class PropertyTypService
     public function update($id, $request)
     {
         $input = [
-            "name" => $request->name
+            "name" => $request->name,
+            'name_mm' => $request->name_mm
         ];
         return PropertyTypeRepository::updateById($id, $input);
 

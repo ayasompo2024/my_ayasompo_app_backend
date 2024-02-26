@@ -35,8 +35,16 @@
                             <h6 class="modal-title" id="newShopType">Add New Attribute Type </h6>
                         </div>
                         <div class="modal-body">
-                            <input type="text" name="name" required class="form-control my-3 price"
-                                placeholder="Attribute  Name  " />
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">EN</label>
+                                <input type="text" name="name" required class="form-control form-control-sm  price"
+                                    placeholder="Attribute  Name For English  " />
+                            </div>
+                            <div class="form-group border-top pt-2">
+                                <label for="exampleInputEmail1">MM</label>
+                                <input type="text" name="name_mm"  class="form-control form-control-sm  price"
+                                    placeholder="Attribute  Name  For Burmese " />
+                            </div>
                         </div>
                         <div class="modal-footer p-1 border-0">
                             <input type="submit" class="btn btn-sm bg-info" value="submit">

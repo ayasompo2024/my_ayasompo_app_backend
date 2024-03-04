@@ -43,7 +43,7 @@ class ProductRsourceForMM extends JsonResource
             'title' => $this->title_mm,
             'brief_description' => $this->brief_description_mm,
             'faqs' => $faqs,
-            'properties' => $propertiesArray
+            'properties' => $propertiesArray->values()->all(),
         ];
     }
 }

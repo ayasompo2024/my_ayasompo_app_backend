@@ -97,20 +97,14 @@ class CustomerService
 
     function resetPassword($phone, $password)
     {
-        $customer = null;
-        $isExistINDIVIDUAL = CustomerRepository::getByPhoneWhereINDIVIDUAL($this->removeInitialPlusNineFiveNine($phone));
-        if ($isExistINDIVIDUAL) {
-            $customer = $isExistINDIVIDUAL;
-        } else {
-            $customer = CustomerRepository::getByPhone($this->removeInitialPlusNineFiveNine($phone));
-        }
-        
-        if (empty($customer) || $customer == null)
+        $customers = CustomerRepository::getAllByPhone($this->removeInitialPlusNineFiveNine($phone));
+        if (!$customers)
             return false;
-
-        $customer->password = Hash::make($password);
-        $customer->save();
-        return $customer;
+        foreach ($customers as $customer) {
+            $customer->password = Hash::make($password);
+            $customer->save();
+        }
+        return true;
     }
 
     private function storeDeviceToken($customer_id, $token)

@@ -49,19 +49,6 @@ class CustomerController extends Controller
         $targetPhone = $request->user()->customer_phoneno;
         return $this->successResponse("Get Profile List By Phone", CustomerRsource::collection($customerService->getProfileListByPhone($targetPhone)), 201);
     }
-    
-    private function updatePasswordValidation($request)
-    {
-        return Validator::make($request->all(), [
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-    private function updateProfilePhotoValidation($request)
-    {
-        return Validator::make($request->all(), [
-            'photo' => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
-        ]);
-    }
     function isExistAccountByPhone(Request $request, CustomerService $customerService)
     {
         $validator = Validator::make($request->all(), [
@@ -79,10 +66,20 @@ class CustomerController extends Controller
         ]);
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
-
         $status = $customerService->resetPassword($request->phone, $request->password);
-
         return $status ? $this->successResponse("Password  Reset Success", [], 200) :
-            $this->errorResponse("Password Reset Fail");
+            $this->errorResponse("Password Reset Fail", 500);
+    }
+    private function updatePasswordValidation($request)
+    {
+        return Validator::make($request->all(), [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+    private function updateProfilePhotoValidation($request)
+    {
+        return Validator::make($request->all(), [
+            'photo' => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
+        ]);
     }
 }

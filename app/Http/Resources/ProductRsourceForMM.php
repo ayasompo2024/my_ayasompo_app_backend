@@ -18,8 +18,8 @@ class ProductRsourceForMM extends JsonResource
                 'name' => $type,
                 'detail' => $properties->map(function ($property) {
                     return [
-                        'title' => $property->title_mm,
-                        'desc' => $property->desc_mm,
+                        'title' => $property->title_mm ?? '',
+                        'desc' => $property->desc_mm ?? '',
                     ];
                 }),
             ];
@@ -27,8 +27,8 @@ class ProductRsourceForMM extends JsonResource
 
         $faqs = $this->faqs->map(function ($faq) {
             return [
-                'title' => $faq->title_mm,
-                'desc' => $faq->desc_mm,
+                'title' => $faq->title_mm ?? '',
+                'desc' => $faq->desc_mm ?? '',
             ];
         });
 
@@ -39,9 +39,9 @@ class ProductRsourceForMM extends JsonResource
             'product_type' => $this->product_type,
             'thumbnail' => config('app.app_domain') . $this->thumbnail,
 
-            'name' => $this->name_mm,
-            'title' => $this->title_mm,
-            'brief_description' => $this->brief_description_mm,
+            'name' => $this->name_mm ?? '',
+            'title' => $this->title_mm ?? '',
+            'brief_description' => $this->brief_description_mm ?? '',
             'faqs' => $faqs,
             'properties' => $propertiesArray->values()->all(),
         ];

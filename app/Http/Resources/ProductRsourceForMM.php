@@ -37,7 +37,7 @@ class ProductRsourceForMM extends JsonResource
             'order' => $this->sort,
             'id' => $this->id,
             'product_type' => $this->product_type,
-            'thumbnail' => $this->thumbnail,
+            'thumbnail' => config('app.app_domain') . $this->thumbnail,
 
             'name' => $this->name_mm,
             'title' => $this->title_mm,

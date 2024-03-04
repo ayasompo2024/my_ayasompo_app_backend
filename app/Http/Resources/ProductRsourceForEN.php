@@ -40,7 +40,7 @@ class ProductRsourceForEN extends JsonResource
             'order' => $this->sort,
             'id' => $this->id,
             'product_type' => $this->product_type,
-            'thumbnail' => $this->thumbnail,
+            'thumbnail' => config('app.app_domain') . $this->thumbnail,
 
             'name' => $this->name,
             'title' => $this->title,
@@ -50,3 +50,4 @@ class ProductRsourceForEN extends JsonResource
         ];
     }
 }
+

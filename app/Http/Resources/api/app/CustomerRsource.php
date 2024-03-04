@@ -28,6 +28,7 @@ class CustomerRsource extends JsonResource
 
             "customer_code" => $this->customer_code,
             "customer_phoneno" => $this->customer_phoneno,
+            
             "customer_nrc" => optional($this->core)->customer_nrc,
             'email' => optional($this->core)->email,
             'address' => optional($this->core)->address,

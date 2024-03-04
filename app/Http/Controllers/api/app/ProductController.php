@@ -21,7 +21,7 @@ class ProductController extends Controller
         $products = ProductRepository::getWithPropertyAndFAQ();
         $eng = ProductRsourceForEN::collection($products);
         $mm = ProductRsourceForMM::collection($products);
-        return $this->successResponse2("Products", array_merge($eng->collection->toArray()), 200);
+        return $this->successResponse2("Products", array_merge($eng->collection->toArray(),$mm->collection->toArray()), 200);
     }
     function getPropertyByPropertyTypeIdAndProductId($product_id, $property_type_id)
     {

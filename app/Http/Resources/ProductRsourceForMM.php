@@ -10,7 +10,7 @@ class ProductRsourceForMM extends JsonResource
     public function toArray($request)
     {
         $groupedProperties = $this->properties->groupBy(function ($property) {
-            return optional($property->type)->name_mm;
+            return optional($property->type)->name;
         });
 
         $propertiesArray = $groupedProperties->map(function ($properties, $type) {

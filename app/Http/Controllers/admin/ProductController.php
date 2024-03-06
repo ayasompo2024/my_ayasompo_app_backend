@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Services\ProductService;
 use App\Services\PropertyTypService;
 use App\Traits\FileUpload;
+use App\Traits\SendPushNotification;
 use Illuminate\Http\Request;
-
 
 class ProductController extends Controller
 {
-    use FileUpload;
+    use FileUpload,SendPushNotification;
 
     function index(ProductService $productService, PropertyTypService $propertyTypService)
     {
@@ -86,5 +86,12 @@ class ProductController extends Controller
     {
         $faqs = $productService->getFaqByProductId($product_id);
         return view('admin.faq.index', compact('faqs', 'product_id'));
+    }
+
+    function forceUpdateToApp(){
+        $notification = ["title" => "Content Update Delivered!", "body" => null];
+        $data = ["title" => "Product", "body" => null];
+        $this->sendAsbroadcast($notification, $data);
+        return back()->with(['success' => 'Successfully!']) ;
     }
 }

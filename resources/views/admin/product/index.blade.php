@@ -10,6 +10,10 @@
         <a href="{{ route('admin.product.create') }}" class="btn btn-sm btn-secondary">
             <i class="bi bi-plus-square pr-2"></i> Add New Products
         </a>
+        <form method="POST" class="d-inline" action="{{ route('admin.product.force-update') }}" > 
+            @csrf
+            <button class="btn btn-sm btn-danger"><i class="bi bi-cloud-arrow-up-fill"></i> Force Update</button>
+        </form>
         <div class="bg-light mt-3 mb-5">
             <div class="row">
                 @foreach ($products as $product)
@@ -55,8 +59,8 @@
                                             Disabled
                                         @endif
                                     </span>
-                                    <form class="d-inline" action="{{ route('admin.product.change-status', $product->id) }}"
-                                        method="post">
+                                    <form class="d-inline"
+                                        action="{{ route('admin.product.change-status', $product->id) }}" method="post">
                                         @method('put') @csrf
                                         <button class="btn btn-sm p-0">
                                             @if ($product->status)

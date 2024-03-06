@@ -11,6 +11,23 @@ class CustomerRepository
         return Customer::query()->with('core')->orderByDesc('id')->paginate($per_page);
     }
 
+    static function getOnlyIndividual($per_page)
+    {
+        return Customer::individual()->with('core')->orderByDesc('id')->paginate($per_page);
+    }
+    static function getOnlyGroup($per_page)
+    {
+        return Customer::group()->with('core')->orderByDesc('id')->paginate($per_page);
+    }
+    static function getOnlyEmployee($per_page)
+    {
+        return Customer::emloyee()->with('core')->orderByDesc('id')->paginate($per_page);
+    }
+    static function getOnlyAgent($per_page)
+    {
+        return Customer::agent()->with('core')->orderByDesc('id')->paginate($per_page);
+    }
+    
     static function toggleDisabledById($id)
     {
         $customer = Customer::where('id', $id)->first();

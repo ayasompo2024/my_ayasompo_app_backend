@@ -15,9 +15,10 @@ class CustomerController extends Controller
 {
 
     use ApiResponser;
-    public function index(CustomerService $customerService)
+    public function index(Request $request, CustomerService $customerService)
     {
-        return view('admin.customers.index')->with('customers', $customerService->index(10));
+        $current_auth = $request->user();
+        return view('admin.customers.index')->with('customers', $customerService->index(10,$current_auth));
     }
     public function searchByPhone(Request $request, CustomerService $customerService)
     {

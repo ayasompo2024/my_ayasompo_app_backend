@@ -2,7 +2,7 @@
 namespace App\Services\customer;
 
 use App\Repositories\CustomerRepository;
-use Illuminate\Support\Facades\Cache;
+
 use App\Enums\AppCustomerType;
 use App\Events\CustomerRegistered;
 
@@ -10,9 +10,25 @@ class CustomerService
 {
 
     use CallAPI;
-    function index($per_page)
+    function index($per_page, $current_auth)
     {
-        return CustomerRepository::getWithPaginate($per_page);
+        $role = $current_auth->role;
+
+        if ($role == 'Root')
+            $customers = CustomerRepository::getWithPaginate($per_page);
+
+        if ($role == 'HR')
+            $customers = CustomerRepository::getOnlyEmployee($per_page);
+
+        if ($role == 'Admin')
+            $customers = CustomerRepository::getOnlyIndividual($per_page);
+
+        if ($role == 'Agent')
+            $customers = CustomerRepository::getOnlyAgent($per_page);
+        
+        if ($role == 'Corporate')
+            $customers = CustomerRepository::getOnlyGroup($per_page);
+        return $customers;
     }
     function getAllCustomerByPhone($phone)
     {

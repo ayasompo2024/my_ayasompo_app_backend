@@ -27,12 +27,21 @@
                 <a v-if="!showSelectBoxCondition" @click="showSelectBox(true)" class="btn btn-sm btn-secondary mr-2">
                     <i class="bi bi-bell-fill"></i> Select to send noti
                 </a>
-                <a class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
-                    <i class="bi bi-plus-square pr-2"></i> Group User Add
-                </a>
-                <a class="btn btn-sm btn-secondary mx-2" data-toggle="modal" data-target="#AddEmployeeUser">
-                    <i class="bi bi-plus-square pr-2"></i> Add Employee User
-                </a>
+                @if (Auth::user()->role == 'Corporate' || Auth::user()->role == 'Root')
+                    <a class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
+                        <i class="bi bi-plus-square pr-2"></i> Group User Add
+                    </a>
+                @endif
+                @if (Auth::user()->role == 'HR' || Auth::user()->role == 'Root')
+                    <a class="btn btn-sm btn-secondary mx-2" data-toggle="modal" data-target="#AddEmployeeUser">
+                        <i class="bi bi-plus-square pr-2"></i> Add Employee User
+                    </a>
+                @endif
+                @if (Auth::user()->role == 'Agent' || Auth::user()->role == 'Root')
+                    <a class="btn btn-sm btn-secondary mx-2">
+                        <i class="bi bi-plus-square pr-2"></i> Add Agent User
+                    </a>
+                @endif
             </div>
         </nav>
         @include('admin.validation-error-alert')
@@ -58,7 +67,8 @@
                             </span>
                         </td>
                         <td class="p-1" v-text="customer.customer_code"></td>
-                        <td :title="customer.core ? customer.core.customer_name : ''" v-text="customer ? customer.user_name : ''" class="p-2">
+                        <td :title="customer.core ? customer.core.customer_name : ''"
+                            v-text="customer ? customer.user_name : ''" class="p-2">
                         </td>
                         <td class="p-1" v-text="customer.customer_phoneno + ' - ' + customer.id"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
@@ -115,19 +125,21 @@
                                                 </div>
                                             </form>
                                         </li>
-                                        <li
-                                            class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                            <form :action="'customer/' + customer.id" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <div>
-                                                    <button type="submit" class="btn btn-sm px-0 ml-2">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </form>
-                                            <i class="bi bi-trash-fill mr-2"></i>
-                                        </li>
+                                        @if (Auth::user()->role == 'Root')
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
+                                                <form :action="'customer/' + customer.id" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <div>
+                                                        <button type="submit" disabled class="btn btn-sm px-0 ml-2">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                <i class="bi bi-trash-fill mr-2"></i>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

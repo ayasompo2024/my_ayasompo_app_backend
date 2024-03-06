@@ -16,21 +16,19 @@
                 <table class="table">
                     <thead class="bg-info">
                         <tr>
-                            <th class="p-2" style="min-width: 140px">No</th>
                             <th class="p-2" style="min-width: 140px">Name</th>
                             <th class="p-2" style="min-width: 200px">Email</th>
-                            <th class="p-2" style="min-width: 200px">Role</th>
+                            <th class="p-2" >Role</th>
+                            <th class="p-2">Status</th>
+                            <th class="p-2" style="min-width: 140px">Session</th>
+                            <th class="p-2" style="min-width: 140px">Logs</th>
                             <th class="p-2" style="min-width: 140px">Created</th>
-                            <th class="p-2" style="min-width: 140px">Status</th>
-                            <th class="p-2" style="min-width: 140px">Section</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $key => $item)
                             <tr style="font-size: 15px">
-                                <td class="p-1">
-                                    {{ ++$key }}
-                                </td>
+                                
                                 <td class="p-1">
                                     {{ $item->name }}
                                 </td>
@@ -39,9 +37,6 @@
                                 </td>
                                 <td class="p-1">
                                     {{ ucfirst($item->role) }}
-                                </td>
-                                <td class="p-1">
-                                    {{ $item->created_at }}
                                 </td>
                                 <td class="p-1">
                                     @if ($item->status == 1)
@@ -53,7 +48,7 @@
                                 <td class="p-1">
                                     <form action="{{ route('admin.account.disabled.toggle', $item->id) }}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm bg-ligth border">
+                                        <button type="submit" class="btn btn-sm btn-outline-info text-dark border">
                                             @if ($item->status == 1)
                                                 Make Disabled
                                             @else
@@ -61,6 +56,12 @@
                                             @endif
                                         </button>
                                     </form>
+                                </td>
+                                <td class="p-1">
+                                    <a href="logs/admin?user_id={{$item->id}}" class="btn btn-sm text-info"><i class="bi bi-arrow-right-square-fill"></i></a>
+                                </td>
+                                <td class="p-1">
+                                    {{ $item->created_at }}
                                 </td>
                             </tr>
                         @endforeach
@@ -84,7 +85,6 @@
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text"
                                     class="form-control form-control-sm @error('name') is-invalid @enderror" name="name"
@@ -100,7 +100,6 @@
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email ') }}</label>
-
                             <div class="col-md-6">
                                 <input id="email" type="email"
                                     class="form-control form-control-sm @error('email') is-invalid @enderror" name="email"
@@ -117,21 +116,21 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">Role</label>
 
                             <div class="col-md-6">
-                                <select class="form-select form-control form-control-sm" name="role">
-                                    <option selected>Admin</option>
-                                    <option>Root</option>
+                                <select class="form-select form-control form-control-sm" name="role" required>
+                                    <option>Admin</option>
+                                    <option>Agent</option>
+                                    <option>Corporate</option>
+                                    <option>HR</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
                             <div class="col-md-6">
                                 <input id="password" type="password"
                                     class="form-control form-control-sm @error('password') is-invalid @enderror"
                                     name="password" required autocomplete="new-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -143,7 +142,6 @@
                         <div class="row mb-3">
                             <label for="password-confirm"
                                 class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control form-control-sm"
                                     name="password_confirmation" required autocomplete="new-password">

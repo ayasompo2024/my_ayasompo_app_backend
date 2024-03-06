@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
-class Customer extends Authenticatable {
+class Customer extends Authenticatable
+{
     use HasFactory, HasApiTokens;
 
     protected $fillable = [
@@ -24,8 +25,27 @@ class Customer extends Authenticatable {
         "is_disabled",
         "disabled_from"
     ];
-    function core() {
+    function core()
+    {
         return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');
+    }
+
+    function scopeIndividual($query)
+    {
+        return $query->where('app_customer_type', 'INDIVIDUAL');
+    }
+    public function scopeGroup($query)
+    {
+        return $query->where('app_customer_type', "GROUP");
+    }
+
+    public function scopeEmloyee($query)
+    {
+        return $query->where('app_customer_type', "EMPLOYEE");
+    }
+    public function scopeAgent($query)
+    {
+        return $query->where('app_customer_type', "AGENT");
     }
 }
 

@@ -86,7 +86,7 @@ class CustomerService
     }
     function getProfileListByPhone($phone)
     {
-        return CustomerRepository::getAllByProvidedPhone($phone);
+        return CustomerRepository::getAllByProvidedPhone($this->removeInitialPlusNineFiveNine($phone));
     }
 
     function isExistAccountByPhone($phone)

@@ -2,7 +2,6 @@
 use App\Http\Controllers\api\app\CustomerController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::group(['prefix' => 'v1/auth/customer'], function () {
     Route::post('register', [CustomerController::class, 'register']);
     Route::post('login', [CustomerController::class, 'login']);

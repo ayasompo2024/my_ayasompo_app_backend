@@ -28,8 +28,7 @@ class StoreInquiryCaseRequest extends FormRequest
     public function rules()
     {
         return [
-
-
+            
             'reason' => ['nullable'],
             "effective_date" => ['nullable'],
             "bank_account_number" => ['nullable'],
@@ -42,10 +41,10 @@ class StoreInquiryCaseRequest extends FormRequest
             'title' => ['required'],
             'ayasompo_vehicleno' => ['nullable'],
             "ayasompo_customercode" => ['required'],
-            "ayasompo_policyno" => ['required'],
+            "ayasompo_policyno" => ['nullable'],
             "ayasompo_productcode" => ['required'],
             "ayasompo_classcode" => ['required'],
-            "ayasompo_risksequenceno" => ['required'],
+            "ayasompo_risksequenceno" => ['nullable'],
         ];
     }
     public function failedValidation(Validator $validator)

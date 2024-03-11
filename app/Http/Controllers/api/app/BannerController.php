@@ -13,8 +13,8 @@ class BannerController extends Controller
         return BannerRepository::getOnlyActive()->map(function ($banner) {
             return [
                 // 'id' => $banner->id,
-                'image' => $this->transformeToBase64($banner->image),
-                // 'image' => $banner->image,
+                // 'image' => $this->transformeToBase64($banner->image),
+                'image' => config("app.app_domain"). $banner->image,
                 'title' => $banner->title,
                 'desc' => $banner->desc,
                 'link' => $banner->link,

@@ -22,7 +22,10 @@ class Product extends Model
         "title_mm",
         "brief_description_mm",
         "sort",
-        "status"
+        "status",
+        "premium_calculator_url",
+        "class_code",
+        "product_code"
     ];
     public function properties()
     {

@@ -14,15 +14,24 @@ class LocationMapRsource extends JsonResource
     {
         $formattedOpenHour = Carbon::createFromFormat('H:i', $this->open_hour)->format('h:i A');
         $formattedCloseHour = Carbon::createFromFormat('H:i', $this->close_hour)->format('h:i A');
+        
+        $openDayAsArray = explode(",",$this->open_days);
+        $openDayAsArray[0] = " " . $openDayAsArray[0];
+        
+        $firstThreeLettterAsArray = [];
+        foreach($openDayAsArray as $openDay){
+            array_push($firstThreeLettterAsArray,substr($openDay,0,4));
+        }
+
         return [
             'id' => $this->id,
             "distance" => $this->distance($this->latitude,$this->longitude) . " Mile",
             "image" => config('app.app_domain') . $this->image,
             'name' => $this->name,
-            'phone' => $this->phone,
-            "open_days" => $formattedOpenHour,
-            "open_hour" => $formattedCloseHour,
-            "close_hour" => $this->close_hour,
+            'phone' => explode(',',$this->phone),
+            "open_days" =>  implode(',',$firstThreeLettterAsArray),
+            "open_hour" => $formattedOpenHour,
+            "close_hour" =>  $formattedCloseHour,
             "address" => $this->address,
             "latitude" => $this->latitude,
             "longitude" => $this->longitude,

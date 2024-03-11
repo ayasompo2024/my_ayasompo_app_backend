@@ -46,6 +46,30 @@
         </div>
         <div class="row mt-3">
             <div class="col-lg-4">
+                <label for="link" style="font-weight: normal"> Class Code </label>
+            </div>
+            <div class="col-lg-8">
+                <input type="text" name="class_code" class="form-control form-control-sm " />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="link" style="font-weight: normal"> Product Code </label>
+            </div>
+            <div class="col-lg-8">
+                <input type="text" name="product_code" class="form-control form-control-sm " />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="link" style="font-weight: normal"> Premium Calculator URL </label>
+            </div>
+            <div class="col-lg-8">
+                <input type="text" name="premium_calculator_url" class="form-control form-control-sm " />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
                 <label for="link" style="font-weight: normal"> Sort(Order) </label>
             </div>
             <div class="col-lg-8">

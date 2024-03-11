@@ -28,11 +28,11 @@ class RegisterCustomerToCircle
     private function sendPhoneNumberToTheCircleServer($request)
     {
         $requestBody = ["phone" => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
-        $this->writeLog("register", "Request to Circle Server", $requestBody);
+        $this->writeLog("register", "Request to Circle Server (INDIVIDUAL)", $requestBody);
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
         $data = $response->json();
-        // $this->writeLog("register", "Response from Circle Server", $data);
+        $this->writeLog("register", "Response from Circle Server (INDIVIDUAL)", $data);
     }
 
     private function getPolicyInquiry()

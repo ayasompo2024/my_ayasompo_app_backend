@@ -73,7 +73,7 @@
                                 <label for="phone"> Phone </label>
                             </div>
                             <div class="col-lg-8">
-                                <input id="name" value="{{ old('phone') }}" type="number" name="phone"
+                                <input id="name" value="{{ old('phone') }}" type="text" name="phone"
                                     autocomplete="phone" required class="form-control form-control-sm"
                                     placeholder="Enter Phone">
                                 @error('phone')

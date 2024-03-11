@@ -44,6 +44,33 @@
         </div>
         <div class="row mt-3">
             <div class="col-lg-4">
+                <label class="font-weight-normal" for="premium_calculator_url">Premium Calculator URL </label>
+            </div>
+            <div class="col-lg-8">
+                <input id="premium_calculator_url" value="{{ $product->premium_calculator_url }}" type="text" name="premium_calculator_url" autocomplete="desc"
+                    class="form-control form-control-sm" placeholder="Enter Sort Number">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="class_code" style="font-weight: normal"> Class Code </label>
+            </div>
+            <div class="col-lg-8">
+                <input id="class_code" value="{{ $product->class_code }}" type="text" name="class_code" autocomplete="class_code"
+                    class="form-control form-control-sm" placeholder="Enter Class Code">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <label for="product_code" style="font-weight: normal"> Product Code </label>
+            </div>
+            <div class="col-lg-8">
+                <input id="product_code" value="{{ $product->product_code }}" type="text" name="product_code" autocomplete="product_code"
+                    class="form-control form-control-sm" placeholder="Product code">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
                 <label class="font-weight-normal" for="link"> Sort(Order) </label>
             </div>
             <div class="col-lg-8">

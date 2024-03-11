@@ -8,13 +8,12 @@ use App\Traits\SendSms;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Illuminate\Support\Facades\Http;
+use App\Traits\WriteLogger;
 
 class AddNewEmployeeImport implements ToCollection
 {
-    /**
-     * @param Collection $collection
-     */
-    use RemoveInitialPlusNineFiveNine, SendSms;
+    use RemoveInitialPlusNineFiveNine, SendSms,WriteLogger;
     public function collection(Collection $collection)
     {
         $filterRows = [];
@@ -29,6 +28,7 @@ class AddNewEmployeeImport implements ToCollection
         }
         $this->saveToDB($filterRows);
     }
+
     public function saveToDB(array $filterRows)
     {
         foreach ($filterRows as $row) {
@@ -38,16 +38,23 @@ class AddNewEmployeeImport implements ToCollection
             $input = $row;
             $input["password"] = Hash::make($row["password"]);
             if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
-                $this->callSMSAPI($phone, $this->getContent($user_name, $password), $user_name);
+                $this->callSMSAPI($phone, $this->getContent($user_name,$phone, $password), $user_name);
                 CustomerRepository::store($input);
-                // echo "not exit";
             }else{
                 // echo "exit";
             }
         }
     }
 
-    private function getContent($username, $password)
+    private function callToCirlce($customer_phoneno){
+        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $this->writeLog("register", "Request to from Circle Server (EMPLOYEE)", $data);
+        $response = Http::withOptions(['verify' => false])->post($url,  ["phone" => $customer_phoneno]);
+        $data = $response->json();
+        $this->writeLog("register", "Response from Circle Server (EMPLOYEE)", $data);
+    }
+
+    private function getContent($username,$phone, $password)
     {
         return <<<EOT
 Hello ! $username.   
@@ -55,12 +62,11 @@ Hello ! $username.
 You have been registered successfully in MY AYASOMPO App as a EMPLOYEE user.
 
 Username : $username.
+Phone : $phone.
 Password : $password
 
 Good luck!            
 EOT;
 
     }
-
-
 }

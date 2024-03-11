@@ -47,6 +47,10 @@ class ProductRsourceForEN extends JsonResource
             'brief_description' => $this->brief_description,
             'faqs' => $faqs,
             'properties' => $propertiesArray->values()->all(),
+            
+            "premium_calculator_url" => $this->premium_calculator_url,
+            "class_code" => $this->class_code,
+            "product_code" => $this->product_code
         ];
     }
 }

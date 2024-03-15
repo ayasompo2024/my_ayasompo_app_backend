@@ -29,6 +29,10 @@ class Customer extends Authenticatable
     {
         return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');
     }
+    function employeeInfo()
+    {
+        return $this->belongsTo(EmployeeInfo::class, 'id', 'customer_id');
+    }
 
     function scopeIndividual($query)
     {

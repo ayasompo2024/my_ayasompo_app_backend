@@ -16,9 +16,7 @@ use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
@@ -32,9 +30,6 @@ Route::group(
         'middleware' => ['auth', 'log.admin.requests']
     ],
     function () {
-        Route::get('get-acc-for-test', function () {
-            return Customer::all();
-        });
         Route::resource('account', AdminAccountController::class);
         Route::post('account/disabled/toggle/{id}', [AdminAccountController::class, 'disabledToggle'])->name('account.disabled.toggle');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -42,7 +37,7 @@ Route::group(
         Route::get('logs/admin', [DashboardController::class, 'adminLogs'])->name('dashboard.logs.admin');
 
         Route::resource('product', ProductController::class);
-        Route::post('product/force/update', [ProductController::class,'forceUpdateToApp'])->name('product.force-update');
+        Route::post('product/force/update', [ProductController::class, 'forceUpdateToApp'])->name('product.force-update');
         Route::controller(ProductController::class)->prefix('product')->group(function () {
             Route::get('{product_id}/property-type/{property_type_id}', 'getPropertyByPropertyTypeIdAndProductId')->name('product.property');
             Route::get('faq/{product_id}', 'getFAQByProductId')->name('product.faq');
@@ -66,9 +61,9 @@ Route::group(
             Route::get('product-code-list/{id}/show-request-form-type', 'showRequestFormType')->name('product-code-list.show-request-form-type');
             Route::post('product-code-list/bind-with-request-form-type', 'bindWithRequestFormType')->name('product-code-list.bind-with-request-form-type');
         });
-
         Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
         Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
+
 
         Route::controller(ClaimcaseController::class)->group(function () {
             Route::get('claim-case/index', 'index')->name('claim-case.index');
@@ -81,17 +76,20 @@ Route::group(
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
-            Route::post('customer/new/employee', [CustomerController::class, 'addNewEmployeeUser'])->name('customer.new.employee');
-
             Route::controller(CustomerController::class)->group(function () {
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
                 Route::get('customer/search/by-phone', 'searchByPhone')->name('customer.search.by-phone');
                 Route::post('customer/get-customers-list-by-policy', 'getCustomersListByPolicy')->name('customer.get-customers-list-by-policy');
+
+                Route::post('customer/new/employee', 'addNewEmployeeUser')->name('customer.new.employee');
+
                 //Ajax Call
                 Route::post('customer/register/preview-customer', 'previewBeforeResgister');
                 Route::post('customer/register', 'register');
             });
         });
+
+        Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
     }
 );
 

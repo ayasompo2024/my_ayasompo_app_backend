@@ -202,6 +202,10 @@
                                     accept=".xls, .xlsx" required>
                             </div>
                         </div>
+                        <a href="{{route('admin.file.download','employee_template.xlsx')}}" class="btn btn-sm btn-danger ml-3 mb-3">
+                            Download Template &nbsp;
+                            <i class="bi bi-cloud-arrow-down-fill"></i>
+                        </a>
                         <div class="modal-footer p-2">
                             <button type="submit" class="btn btn-sm btn-secondary">
                                 Register

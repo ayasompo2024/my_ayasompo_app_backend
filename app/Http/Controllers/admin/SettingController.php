@@ -14,14 +14,23 @@ class SettingController extends Controller
         $settings = SettingRepository::getAll();
         return view('admin.settings.index', compact('settings'));
     }
-    public function update($id,Request $req)
+    public function update($id, Request $req)
     {
         $req->validate(['value' => 'required']);
         $input = ["current_value" => $req->value];
-        $status = SettingRepository::update($id,$input);
+        $status = SettingRepository::update($id, $input);
         Cache::forget('SETTING_DATA');
-        return $status ?    back()->with('success', 'Success') :
-        back()->with('fail', 'fail');
+        return $status ? back()->with('success', 'Success') :
+            back()->with('fail', 'fail');
     }
-    
+
+    function downloadFile($filename)
+    {
+        $filePath = storage_path($filename);
+        if (file_exists($filePath)) {
+            return response()->download($filePath);
+        } else {
+            return response()->json(['error' => 'File not found.'], 404);
+        }
+    }
 }

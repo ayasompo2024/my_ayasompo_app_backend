@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\EmployeeInfo;
 use App\Repositories\CustomerRepository;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendSms;
@@ -13,14 +14,23 @@ use App\Traits\WriteLogger;
 
 class AddNewEmployeeImport implements ToCollection
 {
-    use RemoveInitialPlusNineFiveNine, SendSms,WriteLogger;
+    use RemoveInitialPlusNineFiveNine, SendSms, WriteLogger;
+
     public function collection(Collection $collection)
     {
         $filterRows = [];
         foreach ($collection->skip(1) as $rows) {
             $row = [
-                "customer_phoneno" => $this->removeInitialPlusNineFiveNine($rows[1]),
+
                 "user_name" => $rows[0],
+                "code" => $rows[1],
+                "designation" => $rows[2],
+                "department" => $rows[3],
+                "email" => $rows[4],
+                "customer_phoneno" => $this->removeInitialPlusNineFiveNine($rows[5]),
+                "office_phone" => $rows[6],
+                "office_address" => $rows[7],
+
                 "app_customer_type" => "EMPLOYEE",
                 "password" => uniqid(),
             ];
@@ -32,30 +42,55 @@ class AddNewEmployeeImport implements ToCollection
     public function saveToDB(array $filterRows)
     {
         foreach ($filterRows as $row) {
-            $phone = $row["customer_phoneno"];
-            $user_name = $row["user_name"];
-            $password = $row["password"];
-            $input = $row;
-            $input["password"] = Hash::make($row["password"]);
-            if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
-                $this->callSMSAPI($phone, $this->getContent($user_name,$phone, $password), $user_name);
-                CustomerRepository::store($input);
-                $this->callToCirlce($phone);
-            }else{
-                // echo "exit";
+            if ($row["user_name"] != null) {
+                $phone = $row["customer_phoneno"];
+                $user_name = $row["user_name"];
+                $password = $row["password"];
+                $input = $row;
+                $input["password"] = Hash::make($row["password"]);
+                if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
+                    $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
+                    $createdEmployee = CustomerRepository::store($input);
+                    $this->resetPassword($phone,$password);
+                    $employeeInfo = [
+                        "customer_id" => $createdEmployee->id,
+                        "code" => $row['code'],
+                        'designation' => $row['designation'],
+                        'department' => $row['department'],
+                        'email' => $row['email'],
+                        'office_phone' => $row['office_phone'],
+                        'office_address' => $row['office_address']
+                    ];
+                    EmployeeInfo::create($employeeInfo);
+                    $this->callToCirlce($phone);
+                }
             }
         }
     }
 
-    private function callToCirlce($customer_phoneno){
-        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
-        // $this->writeLog("circle", "Request to  Circle Server (EMPLOYEE)", ["phone" => $customer_phoneno]);
-        $response = Http::withOptions(['verify' => false])->post($url,  ["phone" => $customer_phoneno]);
-        $data = $response->json();
-        $this->writeLog("circle", "Response from Circle Server (EMPLOYEE)", $data);
+    private function resetPassword($phone, $password)
+    {
+        $customers = CustomerRepository::getAllByPhone($this->removeInitialPlusNineFiveNine($phone));
+        if (!$customers)
+            return false;
+        foreach ($customers as $customer) {
+            $customer->password = Hash::make($password);
+            $customer->save();
+        }
+        return true;
     }
 
-    private function getContent($username,$phone, $password)
+
+    private function callToCirlce($customer_phoneno)
+    {
+        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        // $this->writeLog("circle", "Request to  Circle Server (EMPLOYEE)", ["phone" => $customer_phoneno]);
+        $response = Http::withOptions(['verify' => false])->post($url, ["phone" => $customer_phoneno]);
+        $data = $response->json();
+        $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data);
+    }
+
+    private function getContent($username, $phone, $password)
     {
         return <<<EOT
 Hello ! $username.   

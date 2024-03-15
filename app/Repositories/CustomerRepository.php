@@ -79,7 +79,7 @@ class CustomerRepository
 
     static function getAllByProvidedPhone($phone)
     {
-        return Customer::where('customer_phoneno', $phone)->get();
+        return Customer::with('employeeInfo')->where('customer_phoneno', $phone)->get();
     }
 
     static function getByPhoneWhereINDIVIDUAL($phone)

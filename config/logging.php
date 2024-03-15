@@ -58,9 +58,9 @@ return [
             'path' => storage_path('logs/registerdata.log'),
             'level' => 'info',
         ],
-        'circle' => [
+        'circle_server' => [
             'driver' => 'single',
-            'path' => storage_path('logs/circle.log'),
+            'path' => storage_path('logs/circle_server.log'),
             'level' => 'info',
         ],
         'inquiry' => [

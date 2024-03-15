@@ -33,7 +33,9 @@ class CustomerRsource extends JsonResource
             'email' => optional($this->core)->email,
             'address' => optional($this->core)->address,
             'policy_holder_name' => optional($this->core)->customer_name,
-            "original_phone" => optional($this->core)->customer_phoneno
+            "original_phone" => optional($this->core)->customer_phoneno,
+
+            "employee_info" => new EmployeeInfoRsource($this->employeeInfo)  
         ];
     }
 }

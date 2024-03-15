@@ -95,22 +95,23 @@ $sidebar_menus = [
         ],
     ],
     [
-        'display' => 'Customers',
+        'display' => 'App Accounts',
         'route' => 'admin.customer.index',
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-people-fill',
         'can' => ['*'],
-        'sub_menus' => null,
-    ],
-    [
-        'display' => 'Agent',
-        'route' => 'admin.customer.index',
-        'imag_path' => null,
-        'target' => false,
-        'icon' => 'bi bi-shop-window',
-        'can' => ['*'],
-        'sub_menus' => null,
+        'sub_menus' => [
+            [
+                'display' => 'Agent',
+                'route' => 'admin.customer.index',
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-shop-window',
+                'can' => ['*'],
+                'sub_menus' => null,
+            ],
+        ],
     ],
     [
         'display' => 'Messaging',
@@ -185,7 +186,7 @@ $sidebar_menus = [
                 'sub_menus' => null,
                 'can' => ['Root'],
             ],
-        ]
+        ],
     ],
     [
         'display' => 'Dev Operation',
@@ -284,15 +285,15 @@ $sidebar_menus = [
                                 <ul class="nav p-0 d-none ml-3 mr-3" id="{{ $key }}_menu">
                                     @foreach ($menu['sub_menus'] as $sub_menu)
                                         @if (in_array($current_auth->role, $sub_menu['can']) || in_array('*', $sub_menu['can']))
-                                        
-                                        <li
-                                            class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-secondary' : '' }}">
-                                            <a href="{{ route($sub_menu['route']) }}"
-                                                class="nav-link text-info pt-1 pb-0">
-                                                <i class="ml-3 {{ $sub_menu['icon'] }}"></i>
-                                                <p class="ml-1" style="font-size: 14px">{{ $sub_menu['display'] }}</p>
-                                            </a>
-                                        </li>
+                                            <li
+                                                class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-secondary' : '' }}">
+                                                <a href="{{ route($sub_menu['route']) }}"
+                                                    class="nav-link text-info pt-1 pb-0">
+                                                    <i class="ml-3 {{ $sub_menu['icon'] }}"></i>
+                                                    <p class="ml-1" style="font-size: 14px">
+                                                        {{ $sub_menu['display'] }}</p>
+                                                </a>
+                                            </li>
                                         @endif
                                     @endforeach
                                 </ul>

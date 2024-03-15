@@ -35,7 +35,8 @@ class StoreInquiryCaseRequest extends FormRequest
             "bank_name" => ['nullable'],
             "other_bank_name" => ['nullable'],
             "other_bank_address" => ['nullable'],
-
+            
+            "user_id" => ['required'],
             "inquiry_type" => ['required'],
             "customer_type" => ['required'],
             'title' => ['required'],

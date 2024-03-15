@@ -5,7 +5,7 @@ use App\Models\RequestForm;
 use App\Repositories\LogRepository;
 use App\Repositories\ProductCodeListRequestFormTypeRepo;
 use App\Traits\SendPushNotification;
-
+use Illuminate\Support\Arr;
 
 class RequestFormService
 {
@@ -44,7 +44,8 @@ class RequestFormService
             $this->log("Can not receive CaseNumber from upstream server with provided " . $case_id, 0);
             return 3;
         }
-
+        
+        $dataForinternal = Arr::except($dataForinternal, ['casetypecode', 'ayasompo_enquirychannels','ayasompo_enquiryproducttype@odata.bind','ayasompo_enquirytypes@odata.bind','ayasompo_accounthandlerlookup@odata.bind']);
         $input = array_merge($dataForinternal, $this->appDataForLara($request));
         $input["incidentid"] = $getCaseNumber[0]["incidentid"];
         $input["ayasompo_casenumber"] = $getCaseNumber[0]["ayasompo_casenumber"];

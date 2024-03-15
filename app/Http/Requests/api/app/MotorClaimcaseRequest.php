@@ -26,6 +26,7 @@ class MotorClaimcaseRequest extends FormRequest
     public function rules()
     {
         return [
+            "user_id" => ['required'],
             "contact_fullname" => ['required'],
             "contact_telephone" => ['required'],
             "driver_name" => ['required'],

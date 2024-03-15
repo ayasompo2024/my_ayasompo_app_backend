@@ -16,13 +16,7 @@ class RequestForm extends Model
 
         "inquiry_type",
         "ayasompo_caseid",
-
-        "casetypecode ",
-        "ayasompo_enquirychannels",
-        "ayasompo_enquiryproducttype",
-        "ayasompo_enquirytypes",
-        "ayasompo_accounthandlerlookup",
-
+        
         "title",
         "reason",
         "effective_date",

@@ -59,7 +59,7 @@ trait PrepareData
     function prepareDataStoreMotorCase($request)
     {
         $data = [
-            "app_customer_id" => 0,
+            "app_customer_id" => $request->user_id,
             "claim_channel" => "app",
 
             "vehicle_no" => $request->vehicle_no,

@@ -18,16 +18,17 @@ class RegisterCustomerRsource extends JsonResource
             'id' => $this->id,
             "user_name" => $this->user_name,
             "app_customer_type" => $this->app_customer_type,
+            "customer_phoneno" => $this->customer_phoneno,
             "profile_photo" => config('app.app_domain') . $this->profile_photo,
             "is_disabled" => 0,
 
+
             "risk_seqNo" => $this->risk_seqNo,
             "risk_name" => $this->risk_name,
-
             "customer_code" => $this->customer_code,
-            "customer_phoneno" => $this->customer_phoneno,
-            "customer_nrc" => $this->core->customer_nrc,
             "policy_number" => $this->policy_number,
+            
+            "customer_nrc" => $this->core->customer_nrc,
             'email' => $this->core->email,
             'address' => $this->core->address,
             'policy_holder_name' => $this->core->customer_name,

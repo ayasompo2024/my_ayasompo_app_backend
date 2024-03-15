@@ -47,6 +47,7 @@ class ClaimcaseService
             return 2;
 
         $input["accident_damaged_photos"] = serialize(collect($accidentDamagedPhotos)->pluck('url')->toArray());
+        $input["app_customer_id"]  = $request->user_id;
         $status = $this->storeNonMotorCase($input);
         return $status ? ['id' => $status->id] : false;
     }

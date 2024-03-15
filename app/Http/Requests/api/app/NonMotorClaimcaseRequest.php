@@ -24,6 +24,7 @@ class NonMotorClaimcaseRequest extends FormRequest
     public function rules()
     {
         return [
+            "user_id" => ['required'],
             "contact_fullname" => ['required'],
             "contact_telephone" => ['required'],
             "accident_date" => ['required'],

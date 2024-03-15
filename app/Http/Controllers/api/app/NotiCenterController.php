@@ -14,11 +14,11 @@ use Illuminate\Http\Request;
 class NotiCenterController extends Controller
 {
     use ApiResponser;
-    function getPromotionAndSystem(Request $request)
+    function getPromotionAndSystem($user_id,Request $request)
     {
         $message = MessagingRepository::getPromotionAndSystemNoti();
         $notiCenter = PromotionAndSystemNotiRsource::collection($message)->groupBy("noti_for");
-        $notiCenter[NotiFor::TRANSACTION->value] = $this->getTransactionNoti($request->user()->id);
+        $notiCenter[NotiFor::TRANSACTION->value] = $this->getTransactionNoti($user_id);
         return $this->successResponse("Promotion & System Noti", $notiCenter, 200);
     }
     private function getTransactionNoti($user_id)

@@ -40,6 +40,7 @@ class AddNewEmployeeImport implements ToCollection
             if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
                 $this->callSMSAPI($phone, $this->getContent($user_name,$phone, $password), $user_name);
                 CustomerRepository::store($input);
+                $this->callToCirlce($phone);
             }else{
                 // echo "exit";
             }
@@ -48,10 +49,10 @@ class AddNewEmployeeImport implements ToCollection
 
     private function callToCirlce($customer_phoneno){
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
-        $this->writeLog("register", "Request to from Circle Server (EMPLOYEE)", $data);
+        // $this->writeLog("circle", "Request to  Circle Server (EMPLOYEE)", ["phone" => $customer_phoneno]);
         $response = Http::withOptions(['verify' => false])->post($url,  ["phone" => $customer_phoneno]);
         $data = $response->json();
-        $this->writeLog("register", "Response from Circle Server (EMPLOYEE)", $data);
+        $this->writeLog("circle", "Response from Circle Server (EMPLOYEE)", $data);
     }
 
     private function getContent($username,$phone, $password)

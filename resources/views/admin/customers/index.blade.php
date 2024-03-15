@@ -132,7 +132,7 @@
                                                     @method('delete')
                                                     @csrf
                                                     <div>
-                                                        <button type="submit" disabled class="btn btn-sm px-0 ml-2">
+                                                        <button type="submit"  class="btn btn-sm px-0 ml-2">
                                                             Delete
                                                         </button>
                                                     </div>

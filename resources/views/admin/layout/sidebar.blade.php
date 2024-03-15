@@ -104,6 +104,15 @@ $sidebar_menus = [
         'sub_menus' => null,
     ],
     [
+        'display' => 'Agent',
+        'route' => 'admin.customer.index',
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'bi bi-shop-window',
+        'can' => ['*'],
+        'sub_menus' => null,
+    ],
+    [
         'display' => 'Messaging',
         'route' => 'admin.messaging.index',
         'imag_path' => null,

@@ -58,6 +58,11 @@ return [
             'path' => storage_path('logs/registerdata.log'),
             'level' => 'info',
         ],
+        'circle' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/circle.log'),
+            'level' => 'info',
+        ],
         'inquiry' => [
             'driver' => 'single',
             'path' => storage_path('logs/inquiry.log'),

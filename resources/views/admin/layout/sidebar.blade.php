@@ -4,6 +4,7 @@ $sidebar_menus = [
     [
         'display' => 'Dashboard',
         'route' => 'admin.dashboard',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-speedometer2',
@@ -13,6 +14,7 @@ $sidebar_menus = [
     [
         'display' => 'Banner',
         'route' => 'admin.banner.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-card-image',
@@ -22,6 +24,7 @@ $sidebar_menus = [
     [
         'display' => 'Products',
         'route' => 'admin.product.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-postcard-heart',
@@ -30,6 +33,7 @@ $sidebar_menus = [
             [
                 'display' => 'Property Type',
                 'route' => 'admin.property.type.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-boxes',
@@ -41,6 +45,7 @@ $sidebar_menus = [
     [
         'display' => 'Request Form(Inquery)',
         'route' => 'admin.request-form.lists',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-send-exclamation',
@@ -49,6 +54,7 @@ $sidebar_menus = [
             [
                 'display' => 'Product Code Lists',
                 'route' => 'admin.product-code-list.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-list-stars',
@@ -58,6 +64,7 @@ $sidebar_menus = [
             [
                 'display' => 'Request Form Type',
                 'route' => 'admin.request-form.type.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi-person-vcard',
@@ -69,6 +76,7 @@ $sidebar_menus = [
     [
         'display' => 'E-Claim',
         'route' => 'admin.claim-case.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-piggy-bank-fill',
@@ -77,6 +85,7 @@ $sidebar_menus = [
             [
                 'display' => 'Motor',
                 'route' => 'admin.claim-case.motor',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-car-front',
@@ -86,6 +95,7 @@ $sidebar_menus = [
             [
                 'display' => 'Non Motor',
                 'route' => 'admin.claim-case.non-motor',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-collection',
@@ -97,45 +107,50 @@ $sidebar_menus = [
     [
         'display' => 'App Accounts',
         'route' => 'admin.customer.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-people-fill',
         'can' => ['*'],
         'sub_menus' => [
             [
-                'display' => 'Corporate (Indi)',
-                'route' => 'admin.customer.index',
+                'display' => 'Customer (Cor or Indi)',
+                'route' => 'admin.customer.filter.by-type',
+                'route_param' => 'INDIVIDUAL',
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-phone-fill',
-                'can' => ['HR','Root'],
+                'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
             [
                 'display' => 'Employee',
-                'route' => 'admin.customer.index',
+                'route' => 'admin.customer.filter.by-type',
+                'route_param' => "EMPLOYEE",
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-person-vcard-fill',
-                'can' => ['HR','Root'],
+                'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
             [
                 'display' => 'Agent',
-                'route' => 'admin.customer.index',
+                'route' => 'admin.customer.filter.by-type',
+                'route_param' => "AGENT",
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-shop-window',
-                'can' => ['Agent','Root'],
+                'can' => ['Agent', 'Root'],
                 'sub_menus' => null,
             ],
             [
                 'display' => 'Group (Risk Level)',
-                'route' => 'admin.customer.index',
+                'route' => 'admin.customer.filter.by-type',
+                'route_param' => "GROUP",
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-people-fill',
-                'can' => ['HR','Root'],
+                'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
         ],
@@ -143,6 +158,7 @@ $sidebar_menus = [
     [
         'display' => 'Messaging',
         'route' => 'admin.messaging.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-bell-fill',
@@ -151,6 +167,7 @@ $sidebar_menus = [
             [
                 'display' => 'Recent Message',
                 'route' => 'admin.messaging.history',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-clock-history',
@@ -162,6 +179,7 @@ $sidebar_menus = [
     [
         'display' => 'Location Map',
         'route' => 'admin.location-map.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-geo-alt-fill',
@@ -170,6 +188,7 @@ $sidebar_menus = [
             [
                 'display' => 'Category',
                 'route' => 'admin.location-map-category.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-map-fill',
@@ -181,6 +200,7 @@ $sidebar_menus = [
     [
         'display' => 'Admin Acounts',
         'route' => 'admin.account.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-person-circle',
@@ -190,6 +210,7 @@ $sidebar_menus = [
     [
         'display' => 'LogsWatch',
         'route' => 'dev.logs.file.all',
+        'route_param' => null,
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-file-earmark-medical-fill',
@@ -198,6 +219,7 @@ $sidebar_menus = [
             [
                 'display' => 'App Logs',
                 'route' => 'dev.logs.file.all',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-file-earmark-medical-fill',
@@ -207,6 +229,7 @@ $sidebar_menus = [
             [
                 'display' => 'Admin Logs',
                 'route' => 'admin.dashboard.logs.admin',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-file-earmark-medical-fill',
@@ -218,6 +241,7 @@ $sidebar_menus = [
     [
         'display' => 'Dev Operation',
         'route' => 'dev.doc.index',
+        'route_param' => null,
         'imag_path' => null,
         'target' => true,
         'icon' => 'bi bi-code-slash',
@@ -226,6 +250,7 @@ $sidebar_menus = [
             [
                 'display' => 'Setting',
                 'route' => 'admin.settings.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-gear-fill',
@@ -235,6 +260,7 @@ $sidebar_menus = [
             [
                 'display' => 'ENV Value',
                 'route' => 'dev.show-env-value',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-columns-gap',
@@ -244,6 +270,7 @@ $sidebar_menus = [
             [
                 'display' => 'One Click Deployment',
                 'route' => 'dev.code.one-click-deploy',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-rocket',
@@ -253,6 +280,7 @@ $sidebar_menus = [
             [
                 'display' => 'Terminal',
                 'route' => 'dev.terminal',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi bi-terminal',
@@ -262,6 +290,7 @@ $sidebar_menus = [
             [
                 'display' => 'REST API',
                 'route' => 'dev.doc.index',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
                 'icon' => 'bi-filetype-doc',
@@ -271,6 +300,7 @@ $sidebar_menus = [
             [
                 'display' => 'Backup',
                 'route' => 'dev.backup.database.show_backup_file',
+                'route_param' => null,
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-database-fill-down',
@@ -294,7 +324,7 @@ $sidebar_menus = [
                             <div
                                 class="nav-link m-0 py-1 d-flex justify-content-between   menu-open {{ Request::routeIs($menu['route']) ? 'bg-secondary' : '' }}">
                                 <a @if ($menu['target'] == true) target="_blank" @endif class="text-info"
-                                    href="{{ route($menu['route']) }}">
+                                    @if ($menu['route_param']) href="{{ route($menu['route'], $menu['route_param']) }}" @else href="{{ route($menu['route']) }}" @endif>
                                     @if ($menu['imag_path'])
                                         <img src="{{ asset($menu['imag_path']) }}" alt="AYA Logo" style="height: 30px">
                                     @else
@@ -314,7 +344,7 @@ $sidebar_menus = [
                                         @if (in_array($current_auth->role, $sub_menu['can']) || in_array('*', $sub_menu['can']))
                                             <li
                                                 class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-secondary' : '' }}">
-                                                <a href="{{ route($sub_menu['route']) }}"
+                                                <a @if($sub_menu['route_param'] != null) href="{{ route($sub_menu['route'], $sub_menu['route_param']) }}"   @else href="{{ route($sub_menu['route']) }}" @endif
                                                     class="nav-link text-info pt-1 pb-0">
                                                     <i class="ml-3 {{ $sub_menu['icon'] }}"></i>
                                                     <p class="ml-1" style="font-size: 14px">

@@ -30,6 +30,9 @@ class CustomerService
             $customers = CustomerRepository::getOnlyGroup($per_page);
         return $customers;
     }
+    function filterByType($type,$per_page){
+        return CustomerRepository::filterByType($type,$per_page);
+    }
     function getAllCustomerByPhone($phone)
     {
         return CustomerRepository::searchCustomerByPhone($phone);

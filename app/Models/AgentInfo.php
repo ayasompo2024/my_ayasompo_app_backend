@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AgentInfo extends Model
 {
     use HasFactory;
-    protected $fillable = ["customer_id","license_no ","agent_type  ","expiry_date","email","achievement"];
+    protected $fillable = [
+        "customer_id",
+        "agent_name",
+        "license_no",
+        "agent_type",
+        "expired_date",
+        "email",
+        "achievement"
+    ];
 }

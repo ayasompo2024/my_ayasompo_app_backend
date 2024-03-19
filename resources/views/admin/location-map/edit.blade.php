@@ -153,7 +153,7 @@
                                 <textarea name="google_map" id="google_map" class="form-control form-control-sm" placeholder="Enter Google Map">{{ $location_map->google_map }}</textarea>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        {{-- <div class="row mt-3">
                             <div class="col-lg-4">
                                 <label for="sort"> Sort(Order) </label>
                             </div>
@@ -162,7 +162,7 @@
                                      class="form-control form-control-sm"
                                     placeholder="Enter Sort Number">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group my-3">
                             <button type="submit" class="btn bg-info btn-sm px-4 float-right">Update </button>
                         </div>

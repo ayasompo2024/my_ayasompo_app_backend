@@ -6,6 +6,9 @@ use App\Models\Customer;
 class CustomerRepository
 {
 
+    static function filterByType($type,$per_page){
+        return Customer::where("app_customer_type",$type)->orderByDesc('id')->paginate($per_page);
+    }
     static function getWithPaginate($per_page)
     {
         return Customer::query()->with('core')->orderByDesc('id')->paginate($per_page);

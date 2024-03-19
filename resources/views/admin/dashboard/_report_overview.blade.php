@@ -47,9 +47,9 @@ $report_overview = [
 @push('child-css')
     <style>
         .circle_percent {
-            font-size: 60px;
-            width: 50px;
-            height: 50px;
+            font-size: 65px;
+            width: 60px;
+            height: 60px;
             position: relative;
             background: #eee;
             border-radius: 50%;
@@ -62,8 +62,8 @@ $report_overview = [
             position: absolute;
             left: 0;
             top: 0;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             clip: rect(0 1em 1em 0.5em);
         }
 
@@ -71,8 +71,8 @@ $report_overview = [
             position: absolute;
             left: 0;
             top: 0;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: #e4a6d2;
             clip: rect(0 1em 1em 0.5em);
             transform: rotate(180deg);

@@ -18,7 +18,11 @@ class CustomerController extends Controller
     public function index(Request $request, CustomerService $customerService)
     {
         $current_auth = $request->user();
-        return view('admin.customers.index')->with('customers', $customerService->index(10,$current_auth));
+        return view('admin.customers.index')->with('customers', $customerService->index(10, $current_auth));
+    }
+    function filterByType($type,CustomerService $customerService)
+    {
+        return view('admin.customers.index')->with('customers', $customerService->filterByType($type,10));
     }
     public function searchByPhone(Request $request, CustomerService $customerService)
     {

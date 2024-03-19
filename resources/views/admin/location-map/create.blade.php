@@ -165,7 +165,7 @@
                                     placeholder="Enter Google Map"></textarea>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        {{-- <div class="row mt-3">
                             <div class="col-lg-4">
                                 <label for="sort"> Sort(Order) </label>
                             </div>
@@ -174,7 +174,7 @@
                                      class="form-control form-control-sm"
                                     placeholder="Enter Sort Number">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group my-3">
                             <button type="submit" class="btn bg-info btn-sm px-4 float-right">Create </button>
                         </div>

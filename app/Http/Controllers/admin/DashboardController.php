@@ -16,7 +16,8 @@ class DashboardController extends Controller
     {
         $count_customer = $utilityService->countTotalCustomer();
         $currentMonthChart = $utilityService->currentMonthChart();
-        return view('admin.dashboard.dashboard', compact(['count_customer', 'currentMonthChart']));
+        $userType = $utilityService->userType();
+        return view('admin.dashboard.dashboard', compact(['count_customer', 'currentMonthChart','userType']));
     }
     function logs()
     {

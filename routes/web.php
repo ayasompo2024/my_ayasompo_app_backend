@@ -77,6 +77,8 @@ Route::group(
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
             Route::controller(CustomerController::class)->group(function () {
+                Route::get('customer/filter/by-type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
+
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
                 Route::get('customer/search/by-phone', 'searchByPhone')->name('customer.search.by-phone');
                 Route::post('customer/get-customers-list-by-policy', 'getCustomersListByPolicy')->name('customer.get-customers-list-by-policy');
@@ -88,7 +90,6 @@ Route::group(
                 Route::post('customer/register', 'register');
             });
         });
-
         Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
     }
 );

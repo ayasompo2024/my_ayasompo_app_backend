@@ -27,12 +27,15 @@ class RegisterCustomerRsource extends JsonResource
             "risk_name" => $this->risk_name,
             "customer_code" => $this->customer_code,
             "policy_number" => $this->policy_number,
-            
+
             "customer_nrc" => $this->core->customer_nrc,
             'email' => $this->core->email,
             'address' => $this->core->address,
             'policy_holder_name' => $this->core->customer_name,
-            "original_phone" => $this->core->customer_phoneno
+            "original_phone" => $this->core->customer_phoneno,
+
+            "employee_info" => null,
+            "agent_info" => null,
         ];
     }
 }

@@ -15,7 +15,7 @@ class CustomerRsource extends JsonResource
     public function toArray($request)
     {
         return [
-            
+
             'id' => $this->id,
             "user_name" => $this->user_name,
             "app_customer_type" => $this->app_customer_type,
@@ -28,14 +28,15 @@ class CustomerRsource extends JsonResource
             "risk_seqNo" => $this->risk_seqNo,
             "risk_name" => $this->risk_name,
             "customer_code" => $this->customer_code,
-            
+
             "customer_nrc" => optional($this->core)->customer_nrc,
             'email' => optional($this->core)->email,
             'address' => optional($this->core)->address,
             'policy_holder_name' => optional($this->core)->customer_name,
             "original_phone" => optional($this->core)->customer_phoneno,
 
-            "employee_info" => new EmployeeInfoRsource($this->employeeInfo)  
+            "employee_info" => new EmployeeInfoRsource($this->employeeInfo),
+            "agent_info" => null
         ];
     }
 }

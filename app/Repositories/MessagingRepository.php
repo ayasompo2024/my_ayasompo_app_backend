@@ -28,6 +28,6 @@ class MessagingRepository
 
     static function getByCustomerID($per_page, $c_id)
     {
-        return Messaging::where("customer_id", $c_id)->paginate($per_page);
+        return Messaging::where("customer_id", $c_id)->orderByDesc('id')->paginate($per_page);
     }
 }

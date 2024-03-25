@@ -76,7 +76,8 @@
                                     <ul class="list-group border-0">
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                            <a :href="'messaging/unicast/show-form/' + customer.id" class="btn btn-sm">
+                                            <a :href="'/admin/messaging/unicast/show-form/' + customer.id"
+                                                class="btn btn-sm">
                                                 Send Noti
                                             </a>
                                             <i class="bi bi-bell-fill mr-2"></i>
@@ -91,7 +92,7 @@
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0  py-1 px-2 ">
-                                            <form :action="'customer/disabled/toggle/' + customer.id" method="post">
+                                            <form :action="'/admin/customer/disabled/toggle/' + customer.id" method="post">
                                                 @csrf
                                                 <div v-if="customer.is_disabled == 1" class="d-flex">
                                                     @csrf
@@ -111,21 +112,28 @@
                                                 </div>
                                             </form>
                                         </li>
-                                        @if (Auth::user()->role == 'Root')
-                                            <li
-                                                class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                                <form :action="'customer/' + customer.id" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <div>
-                                                        <button type="submit" class="btn btn-sm px-0 ml-2">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                                <i class="bi bi-trash-fill mr-2"></i>
-                                            </li>
-                                        @endif
+
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
+                                            <form :action="'admin/customer/' + customer.id" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <div>
+                                                    <button type="submit" class="btn btn-sm px-0 ml-2">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <i class="bi bi-trash-fill mr-2"></i>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
+                                            <a :href="'/admin/customer/' + customer.id + '/edit'"
+                                                class="btn btn-sm">
+                                                Edit
+                                            </a>
+                                            <i class="bi bi-pencil-square mr-2"></i>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

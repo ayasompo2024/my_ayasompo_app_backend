@@ -10,6 +10,7 @@ use App\Services\customer\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
@@ -20,9 +21,26 @@ class CustomerController extends Controller
         $current_auth = $request->user();
         return view('admin.customers.index')->with('customers', $customerService->index(10, $current_auth));
     }
-    function filterByType($type,CustomerService $customerService)
+
+    public function edit($id, CustomerService $customerService)
     {
-        return view('admin.customers.index')->with('customers', $customerService->filterByType($type,10));
+        $customer = Customer::with('employeeInfo')->find($id);
+
+        if ($customer->app_customer_type == "EMPLOYEE") {
+            return view('admin.customers.edit.emp')->with('customer', $customer);
+        }
+        return "<h1>coming Soon</h1>";
+    }
+    public function update($id, Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->update($id, $request);
+        return $status ?
+            back()->with("success", "Success") :
+            back() > with("fail", "Fail");
+    }
+    function filterByType($type, CustomerService $customerService)
+    {
+        return view('admin.customers.index')->with('customers', $customerService->filterByType($type, 10));
     }
     public function searchByPhone(Request $request, CustomerService $customerService)
     {

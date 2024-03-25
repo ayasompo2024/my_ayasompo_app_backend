@@ -5,11 +5,13 @@ use App\Repositories\CustomerRepository;
 
 use App\Enums\AppCustomerType;
 use App\Events\CustomerRegistered;
+use App\Models\Customer;
+use App\Traits\FileUpload;
 
 class CustomerService
 {
 
-    use CallAPI;
+    use CallAPI, FileUpload;
     function index($per_page, $current_auth)
     {
         $role = $current_auth->role;
@@ -25,13 +27,40 @@ class CustomerService
 
         if ($role == 'Agent')
             $customers = CustomerRepository::getOnlyAgent($per_page);
-        
+
         if ($role == 'Corporate')
             $customers = CustomerRepository::getOnlyGroup($per_page);
         return $customers;
     }
-    function filterByType($type,$per_page){
-        return CustomerRepository::filterByType($type,$per_page);
+
+    function update($id, $req)
+    {
+        $customer = Customer::with('employeeInfo')->find($id);
+        $customer->customer_phoneno = $req->customer_phoneno;
+        $customer->user_name = $req->user_name;
+
+        if ($req->profile_photo) {
+            $customer->profile_photo = $this->uploadFile($req->profile_photo, '/uploads/profile/', 'aya_sompo_');
+        }
+
+        if ($customer->app_customer_type == "EMPLOYEE") {
+            
+            $customer->employeeInfo->code = $req["code"];
+            $customer->employeeInfo->designation = $req["designation"];
+            $customer->employeeInfo->department = $req["department"];
+            $customer->employeeInfo->email = $req["email"];
+            $customer->employeeInfo->office_phone = $req["office_phone"];
+            $customer->employeeInfo->office_address = $req["office_address"];
+            $customer->employeeInfo->save();
+        }
+
+        $customer->save();
+        return $customer;
+    }
+
+    function filterByType($type, $per_page)
+    {
+        return CustomerRepository::filterByType($type, $per_page);
     }
     function getAllCustomerByPhone($phone)
     {
@@ -59,7 +88,7 @@ class CustomerService
         $isExistPhones = [];
         foreach ($risk_of_policy_lists as $risk_of_policy_list) {
             $customer = CustomerRepository::getAllByPhone("09" . $risk_of_policy_list["phone"]);
-            $isExist = !empty($customer);
+            $isExist = !empty ($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
                 'phone' => "09" . $risk_of_policy_list["phone"],

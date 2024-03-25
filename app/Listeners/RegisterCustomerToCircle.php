@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use GuzzleHttp\Promise;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Cache;
 
 
 class RegisterCustomerToCircle
@@ -22,8 +23,13 @@ class RegisterCustomerToCircle
 
     public function handle(CustomerRegistered $event)
     {
-
-//        $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
+        $res = $this->getPolicyDataByPhone($event->data["request"]['customer_phoneno']);
+        \Log::info($res);
+        if ($res['status'] == 200 && $res['data'][0]['circle_user']) {
+            \Log::info('..circle_user True..');
+            $responseStatusOfCircleRegister = $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
+            \Log::info($responseStatusOfCircleRegister);
+        }
     }
     private function sendPhoneNumberToTheCircleServer($request)
     {
@@ -33,11 +39,24 @@ class RegisterCustomerToCircle
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
         $data = $response->json();
         $this->writeLog("circle", "Response from Circle Server (INDIVIDUAL)", $data);
+        return $data;
     }
 
-    private function getPolicyInquiry()
+    private function getPolicyDataByPhone($phone)
     {
+        $url = config("app.ayasompo_base_url") . "inquiry/policydata/" . base64_encode($phone);
+        $headers = [
+            'Authorization' => 'Bearer ' . Cache::get('token_for_internal'),
+            'Accept' => 'application/json',
+        ];
+        $response = Http::withHeaders($headers)->get($url);
 
+        if ($response->successful()) {
+            return $response->json();
+        } else {
+            $statusCode = $response->status();
+            $errorMessage = $response->body();
+        }
     }
 
     private function nothing($request)

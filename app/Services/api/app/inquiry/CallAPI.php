@@ -9,7 +9,6 @@ use Log;
 
 trait CallAPI
 {
-
     private function headerValue()
     {
         return [
@@ -17,6 +16,25 @@ trait CallAPI
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ];
+    }
+
+    function getIndividualCustomerIDByPhone($phone)
+    {
+        $serviceRoot = config("app.service_root");
+        $mutedPhone = ltrim($phone, '0');
+        $url = $serviceRoot . "contacts?\$select=fullname&\$filter=telephone1 eq '%2B" . "95" . $mutedPhone . "'";
+        try {
+            $crmClient = new Client([
+                'base_uri' => $serviceRoot,
+                'headers' => $this->headerValue()
+            ]);
+            $response = $crmClient->get($url);
+            $this->writeInquiryLog('getIndividualCustomerIDByCusCode (Upstream Server Respone)', json_decode($response->getBody(), true));
+            return json_decode($response->getBody(), true)["value"];
+        } catch (RequestException $e) {
+            $this->writeInquiryLog('getIndividualCustomerIDByCusCode (Upstream Server Respone)', $e);
+            throw $e;
+        }
     }
 
     function getIndividualCustomerIDByCusCode($cusCode)
@@ -90,6 +108,26 @@ trait CallAPI
             return json_decode($response->getBody(), true)["value"];
         } catch (RequestException $e) {
             $this->writeInquiryLog('getCaseNumberByAYASCaseID (Upstream Server Respone)', $e);
+            throw $e;
+        }
+    }
+
+    function createCustomerInCRM($name, $phone)
+    {
+        $url = config("app.CRM_BASE_URL") . "api/data/v9.1/contacts";
+        try {
+            $crmClient = new Client([
+                'base_uri' => $url,
+                'headers' => $this->headerValue()
+            ]);
+            $response = $crmClient->post($url, [
+                'json' => json_encode([
+                    'lastname' => $name,
+                    'telephone1' => $phone
+                ])
+            ]);
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $e) {
             throw $e;
         }
     }

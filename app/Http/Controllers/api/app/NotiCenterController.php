@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class NotiCenterController extends Controller
 {
     use ApiResponser;
-    function getPromotionAndSystem($user_id,Request $request)
+    function getPromotionAndSystem($user_id, Request $request)
     {
         $message = MessagingRepository::getPromotionAndSystemNoti();
         $notiCenter = PromotionAndSystemNotiRsource::collection($message)->groupBy("noti_for");
@@ -25,7 +25,7 @@ class NotiCenterController extends Controller
     {
         $reqFrom = RequestFormRepository::getByAppCustomerID($user_id);
         if (count($reqFrom) == 0) {
-            return $this->addFakeIfNotExistServiceRequest($user_id);
+            return [$this->addFakeIfNotExistServiceRequest($user_id)];
         } else {
             return ServiceRequestNotiRsource::collection($reqFrom);
         }

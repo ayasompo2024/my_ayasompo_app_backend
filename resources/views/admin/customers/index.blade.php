@@ -56,7 +56,7 @@
                         <td :title="customer.core ? customer.core.customer_name : ''"
                             v-text="customer ? customer.user_name : ''" class="p-2">
                         </td>
-                        <td class="p-1" v-text="customer.customer_phoneno + ' - ' + customer.id"></td>
+                        <td class="p-1" v-text="customer.customer_phoneno"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
                         <td class="p-1">
                             <span v-if="customer.is_disabled == 1" class="badge bg-warning">
@@ -115,7 +115,7 @@
 
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                            <form :action="'admin/customer/' + customer.id" method="post">
+                                            <form :action="'/admin/customer/' + customer.id" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <div>

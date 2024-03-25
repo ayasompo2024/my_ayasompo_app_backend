@@ -41,11 +41,13 @@ class StoreInquiryCaseRequest extends FormRequest
             "customer_type" => ['required'],
             'title' => ['required'],
             'ayasompo_vehicleno' => ['nullable'],
-            "ayasompo_customercode" => ['required'],
+            "ayasompo_customercode" => ['nullable'],
             "ayasompo_policyno" => ['nullable'],
             "ayasompo_productcode" => ['required'],
             "ayasompo_classcode" => ['required'],
             "ayasompo_risksequenceno" => ['nullable'],
+            "customer_name" =>['nullable'],
+            "customer_phoneno" =>['nullable'],
         ];
     }
     public function failedValidation(Validator $validator)

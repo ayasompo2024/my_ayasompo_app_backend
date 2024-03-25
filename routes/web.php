@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
 use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
@@ -92,6 +93,7 @@ Route::group(
         });
         Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
     }
+    //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 );
 
-//Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
+Route::get('file/download/VCF/{id}', [HomeController::class, 'downloadFileAsVCF']);

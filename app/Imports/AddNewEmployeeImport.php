@@ -32,7 +32,7 @@ class AddNewEmployeeImport implements ToCollection
                 "office_address" => $rows[7],
 
                 "app_customer_type" => "EMPLOYEE",
-                "password" => uniqid(),
+                "password" => substr(uniqid(), 0, 6)
             ];
             array_push($filterRows, $row);
         }
@@ -47,11 +47,17 @@ class AddNewEmployeeImport implements ToCollection
                 $user_name = $row["user_name"];
                 $password = $row["password"];
                 $input = $row;
-                $input["password"] = Hash::make($row["password"]);
+
                 if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
-                    $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
+                    $isExistAsPolicyHolderProfile = CustomerRepository::getByPhoneWhereINDIVIDUAL($phone);
+                    if ($isExistAsPolicyHolderProfile) {
+                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "Use Already Password !"), $user_name);
+                        $input["password"] = $isExistAsPolicyHolderProfile['password'];
+                    } else {
+                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
+                        $input["password"] = Hash::make($row["password"]);
+                    }
                     $createdEmployee = CustomerRepository::store($input);
-                    $this->resetPassword($phone,$password);
                     $employeeInfo = [
                         "customer_id" => $createdEmployee->id,
                         "code" => $row['code'],
@@ -79,8 +85,6 @@ class AddNewEmployeeImport implements ToCollection
         }
         return true;
     }
-
-
     private function callToCirlce($customer_phoneno)
     {
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';

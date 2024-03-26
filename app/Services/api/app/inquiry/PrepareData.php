@@ -1,7 +1,5 @@
 <?php
 namespace App\Services\api\app\inquiry;
-
-
 trait PrepareData
 {
     function staticData()
@@ -16,6 +14,12 @@ trait PrepareData
     }
     function appDataForCRM($request)
     {
+        $customer_phoneno = null;
+        if (!empty ($request->user()))
+            $customer_phoneno = $request->user()->customer_phoneno;
+        else
+            $customer_phoneno = $request->customer_phoneno;
+            
         $cancleFormData =
             $request->reason . ","
             . $request->effective_date . ","
@@ -32,7 +36,7 @@ trait PrepareData
             "ayasompo_productcode" => $request->ayasompo_productcode,
             "ayasompo_classcode" => $request->ayasompo_classcode,
             "ayasompo_risksequenceno" => $request->ayasompo_risksequenceno,
-            "ayasompo_phonenotonotifycustomer" => $request->user()->customer_phoneno
+            "ayasompo_phonenotonotifycustomer" => $customer_phoneno
         ];
     }
     function prepareDateForInquiryCase($customerid_contact, $request)
@@ -50,7 +54,7 @@ trait PrepareData
     function appDataForLara($request)
     {
         return [
-            "app_customer_id" => $request->user()->id,
+            "app_customer_id" => $request->user_id,
             "inquiry_type" => $request->inquiry_type,
 
             "title" => $request->title,
@@ -62,7 +66,6 @@ trait PrepareData
             "other_bank_address" => $request->other_bank_address,
         ];
     }
-
 }
 
 

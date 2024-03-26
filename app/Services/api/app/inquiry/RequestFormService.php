@@ -14,7 +14,7 @@ class RequestFormService
     {
         return ProductCodeListRequestFormTypeRepo::getEndorsementFormByProductCode($product_code);
     }
-
+    
     function storeInquiryCase($request)
     {
         $customerid_contact = null;
@@ -34,7 +34,7 @@ class RequestFormService
                 $res = $this->createCustomerInCRM($request->customer_name, $request->customer_phoneno);
                 $getCRMCustomer = $this->getIndividualCustomerIDByPhone($request->customer_phoneno);
             }
-            $customerid_contact = $getCRMCustomer[0]['contactid'];
+            $customerid_contact = "/contacts(" . $getCRMCustomer[0]['contactid'] . ")";
         }
         if ($customerid_contact == null) {
             $this->log("Can not receive Customer ID from upstream server (ayasompo_customercode =" . $request->ayasompo_customercode, 0);
@@ -60,7 +60,9 @@ class RequestFormService
 
         $status = RequestForm::create($input);
         if ($status) {
-            $this->sendNoti($request->user()->device_token, $request->user()->user_name, $getCaseNumber[0]["incidentid"], $getCaseNumber[0]["ayasompo_casenumber"]);
+            // if (!empty ($request->user())) {
+            //     $this->sendNoti($request->user()->device_token, $request->user()->user_name, $getCaseNumber[0]["incidentid"], $getCaseNumber[0]["ayasompo_casenumber"]);
+            // }
             return [
                 "incidentid" => $getCaseNumber[0]["incidentid"],
                 "ayasompo_casenumber" => $getCaseNumber[0]["ayasompo_casenumber"]

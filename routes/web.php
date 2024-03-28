@@ -96,4 +96,4 @@ Route::group(
     //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 );
 
-Route::get('file/download/VCF/{id}', [HomeController::class, 'downloadFileAsVCF']);
+Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);

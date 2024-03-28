@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -28,14 +29,16 @@ class HomeController extends Controller
         return view('home');
     }
 
-    function downloadFileAsVCF($id)
+    function downloadFileAsVCF(Request $request)
     {
-        $emp = Customer::with('employeeInfo')->find($id);
-        if ($emp->app_customer_type != 'EMPLOYEE')
-            return ['message' => "Must Be EMPLOYEE User Type"];
-
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $emp->user_name . "\nTEL:" . $emp->customer_phoneno . "\nEND:VCARD\n";
-        $filename = $emp->user_name . '.vcf';
+        $vali = Validator::make($request->all(), [
+            "name" => "required",
+            "phone" => "required"
+        ]);
+        if ($vali->fails())
+            return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEND:VCARD\n";
+        $filename = $request->name . '.vcf';
         $headers = [
             'Content-Type' => 'text/vcard',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"',

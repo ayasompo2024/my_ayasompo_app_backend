@@ -14,25 +14,32 @@ class RequestFormService
     {
         return ProductCodeListRequestFormTypeRepo::getEndorsementFormByProductCode($product_code);
     }
-    
+
     function storeInquiryCase($request)
     {
         $customerid_contact = null;
         if ($request->ayasompo_customercode != null) {
             if ($request->customer_type == "I") {
                 $individual = $this->getIndividualCustomerIDByCusCode($request->ayasompo_customercode);
-                if (isset ($individual[0]))
+                if (isset($individual[0]))
                     $customerid_contact = "/contacts(" . $individual[0]["contactid"] . ")";
             } else {
                 $coorporate = $this->getCoorporateCustomerIDByCusCode($request->ayasompo_customercode);
-                if (isset ($coorporate[0]))
+                if (isset($coorporate[0]))
                     $customerid_contact = "/accounts(" . $coorporate[0]["accountid"] . ")";
             }
         } else {
-            $getCRMCustomer = $this->getIndividualCustomerIDByPhone($request->customer_phoneno);
-            if (!isset ($getCRMCustomer[0])) {
-                $res = $this->createCustomerInCRM($request->customer_name, $request->customer_phoneno);
-                $getCRMCustomer = $this->getIndividualCustomerIDByPhone($request->customer_phoneno);
+            if (!empty($request->user())) {
+                $phone = $request->user()->user_name;
+                $name = $request->user()->customer_phoneno;
+            } else {
+                $phone = $request->customer_phone;
+                $name = $request->customer_name;
+            }
+            $getCRMCustomer = $this->getIndividualCustomerIDByPhone($phone);
+            if (!isset($getCRMCustomer[0])) {
+                $res = $this->createCustomerInCRM($name, $phone);
+                $getCRMCustomer = $this->getIndividualCustomerIDByPhone($phone);
             }
             $customerid_contact = "/contacts(" . $getCRMCustomer[0]['contactid'] . ")";
         }
@@ -48,7 +55,7 @@ class RequestFormService
 
         $case_id = $dataForinternal["ayasompo_caseid"];
         $getCaseNumber = $this->getCaseNumberByAYASCaseID($case_id);
-        if (!isset ($getCaseNumber[0])) {
+        if (!isset($getCaseNumber[0])) {
             $this->log("Can not receive CaseNumber from upstream server with provided " . $case_id, 0);
             return 3;
         }

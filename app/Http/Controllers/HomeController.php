@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         $vali = Validator::make($request->all(), [
             "name" => "required",
-            "phone" => "required"
+            "phoneno" => "required"
         ]);
         if ($vali->fails())
             return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);

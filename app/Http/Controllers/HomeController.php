@@ -33,11 +33,14 @@ class HomeController extends Controller
     {
         $vali = Validator::make($request->all(), [
             "name" => "required",
-            "phoneno" => "required"
+            "phoneno" => "required",
+            "email" => "required|email",
+            'position' => "required",
         ]);
         if ($vali->fails())
             return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEND:VCARD\n";
+
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nEND:VCARD\n";
         $filename = $request->name . '.vcf';
         $headers = [
             'Content-Type' => 'text/vcard',
@@ -47,3 +50,5 @@ class HomeController extends Controller
         return $response;
     }
 }
+
+

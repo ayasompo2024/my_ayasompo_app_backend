@@ -88,10 +88,10 @@ class AddNewEmployeeImport implements ToCollection
     private function callToCirlce($customer_phoneno)
     {
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
-        // $this->writeLog("circle", "Request to  Circle Server (EMPLOYEE)", ["phone" => $customer_phoneno]);
+        $this->writeLog("circle_server", "Request to Circle Server (EMPLOYEE)", ['phone' => $customer_phoneno]);
         $response = Http::withOptions(['verify' => false])->post($url, ["phone" => $customer_phoneno]);
         $data = $response->json();
-        $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data);
+        $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data, false);
     }
 
     private function getContent($username, $phone, $password)

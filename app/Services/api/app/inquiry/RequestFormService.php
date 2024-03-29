@@ -30,11 +30,11 @@ class RequestFormService
             }
         } else {
             if (!empty($request->user())) {
-                $phone = $request->user()->user_name;
-                $name = $request->user()->customer_phoneno;
+                $name = $request->user()->user_name;
+                $phone = $request->user()->customer_phoneno;
             } else {
-                $phone = $request->customer_phone;
                 $name = $request->customer_name;
+                $phone = $request->customer_phoneno;
             }
             $getCRMCustomer = $this->getIndividualCustomerIDByPhone($phone);
             if (!isset($getCRMCustomer[0])) {

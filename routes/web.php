@@ -79,7 +79,7 @@ Route::group(
             Route::resource('customer', CustomerController::class);
             Route::controller(CustomerController::class)->group(function () {
                 Route::get('customer/filter/by-type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
-                Route::get('customer/import', [CustomerController::class, 'import'])->name('customer.import');
+                Route::get('customer1/import', [CustomerController::class, 'import'])->name('customer1.import');
 
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
                 Route::get('customer/search/by-phone', 'searchByPhone')->name('customer.search.by-phone');

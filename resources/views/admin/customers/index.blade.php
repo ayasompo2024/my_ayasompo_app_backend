@@ -31,7 +31,7 @@
                 @include('admin.customers._navi')
                 <div class="d-inline float-right">
                     <div style="display:inline">
-                        <form method="get" action={{ route('admin.customer.import') }} style="display:inline">
+                        <form method="get" action={{ route('admin.customer1.import') }} style="display:inline">
                             <button class="btn btn-sm text-white mr-2" style="background:#ce123c">Import</button>
                         </form>
                     </div>

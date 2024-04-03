@@ -49,7 +49,8 @@ class CustomerController extends Controller
     }
     function import(Request $request, CustomerService $customerService)
     {
-        return $request->all();
+        // return $request->all();
+        return "<h1>Developing</h1>";
     }
     public function searchByPhone(Request $request, CustomerService $customerService)
     {

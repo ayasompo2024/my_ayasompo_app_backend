@@ -6,12 +6,13 @@ use App\Models\Customer;
 class CustomerRepository
 {
 
-    static function filterByType($type,$per_page){
-        return Customer::where("app_customer_type",$type)->orderByDesc('id')->paginate($per_page);
+    static function filterByType($type, $per_page)
+    {
+        return Customer::where("app_customer_type", $type)->orderByDesc('id')->paginate($per_page);
     }
     static function getWithPaginate($per_page)
     {
-        return Customer::query()->with('core')->orderByDesc('id')->paginate($per_page);
+        return Customer::select('id', 'customer_code', 'customer_phoneno', 'user_name', 'app_customer_type', 'is_disabled','profile_photo')->with('employeeInfo:id,customer_id,code,designation,department')->with('core:id,app_customer_id,customer_code')->orderByDesc('id')->paginate($per_page);
     }
 
     static function getOnlyIndividual($per_page)
@@ -30,7 +31,7 @@ class CustomerRepository
     {
         return Customer::agent()->with('core')->orderByDesc('id')->paginate($per_page);
     }
-    
+
     static function toggleDisabledById($id)
     {
         $customer = Customer::where('id', $id)->first();

@@ -1,15 +1,15 @@
 @if (Auth::user()->role == 'Corporate' || Auth::user()->role == 'Root')
-    <a class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
+    <a class="btn btn-sm text-white" data-toggle="modal" data-target="#new" style="background:#ce123c">
         <i class="bi bi-plus-square pr-2"></i> Group User Add
     </a>
 @endif
 @if (Auth::user()->role == 'HR' || Auth::user()->role == 'Root')
-    <a class="btn btn-sm btn-secondary mx-2" data-toggle="modal" data-target="#AddEmployeeUser">
+    <a class="btn btn-sm mx-2 text-white" data-toggle="modal" data-target="#AddEmployeeUser" style="background:#ce123c">
         <i class="bi bi-plus-square pr-2"></i> Add Employee User
     </a>
 @endif
 @if (Auth::user()->role == 'Agent' || Auth::user()->role == 'Root')
-    <a class="btn btn-sm btn-secondary mx-2">
+    <a class="btn btn-sm text-white mx-2" style="background:#ce123c">
         <i class="bi bi-plus-square pr-2"></i> Add Agent User
     </a>
 @endif
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="modal-footer p-2">
-                    <button type="submit" class="btn btn-sm btn-secondary">
+                    <button type="submit" class="btn btn-sm btn-danger">
                         Next
                         <i class="bi bi-arrow-right-circle-fill ml-1"></i>
                     </button>
@@ -68,7 +68,7 @@
                     <i class="bi bi-cloud-arrow-down-fill"></i>
                 </a>
                 <div class="modal-footer p-2">
-                    <button type="submit" class="btn btn-sm btn-secondary">
+                    <button type="submit" class="btn btn-sm btn-danger">
                         Register
                         <i class="bi bi-arrow-right-circle-fill ml-1"></i>
                     </button>

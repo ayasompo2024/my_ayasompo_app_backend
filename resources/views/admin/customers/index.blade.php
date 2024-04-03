@@ -9,7 +9,7 @@
                     <div class="input-group mb-2 mr-sm-2">
                         <input type="number" name="phone" required class="form-control form-control-sm"
                             placeholder="Phone">
-                        <div class="input-group-prepend bg-secondary">
+                        <div class="input-group-prepend" style="background:#ce123c">
                             <button type="submit" class="btn btn-sm text-white"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
@@ -24,19 +24,33 @@
                     class="btn btn-sm btn-outline-secondary mr-2">
                     <i class="bi bi-x-circle"></i> Cancel
                 </a>
-                <a v-if="!showSelectBoxCondition" @click="showSelectBox(true)" class="btn btn-sm btn-secondary mr-2">
+                <a v-if="!showSelectBoxCondition" @click="showSelectBox(true)" class="btn btn-sm  text-white mr-2"
+                    style="background:#ce123c">
                     <i class="bi bi-bell-fill"></i> Select to send noti
                 </a>
                 @include('admin.customers._navi')
+                <div class="d-inline float-right">
+                    <div style="display:inline">
+                        <form method="get" action={{ route('admin.customer.import') }} style="display:inline">
+                            <button class="btn btn-sm text-white mr-2" style="background:#ce123c">Import</button>
+                        </form>
+                    </div>
+                    <form style="display:inline">
+                        <select style="display:inline" class="btn border">
+                            <option>Active</option>
+                            <option>Disabled</option>
+                        </select>
+                    </form>
+                </div>
             </div>
         </nav>
         @include('admin.validation-error-alert')
-        <div class="bg-white px-md-3  mb-5 pt-2">
-            <table class="table table-responsive " style="min-height: 300px">
+        <div class="bg-white  px-md-3  mb-5 pt-3 mt-3">
+            <table class="table table-responsive" style="min-height: 300px">
                 <thead>
                     <tr>
                         <th v-if="showSelectBoxCondition" class="p-2">Select</th>
-                        <th class="p-2" style="min-width: 140px">Customer Code</th>
+                        <th class="p-2" style="min-width: 140px">Code</th>
                         <th class="p-2" style="min-width: 200px">App User Name</th>
                         <th class="p-2" style="min-width: 140px">Customer Phone</th>
                         <th class="p-2" style="min-width: 180px">App Customer Type</th>
@@ -52,9 +66,17 @@
                                 <i class="bi bi-check-circle"></i>
                             </span>
                         </td>
-                        <td class="p-1" v-text="customer.customer_code"></td>
-                        <td :title="customer.core ? customer.core.customer_name : ''"
-                            v-text="customer ? customer.user_name : ''" class="p-2">
+                        <td class="p-1">
+                            <span v-if='customer.app_customer_type == "EMPLOYEE"'>
+                                <span v-text="customer.employee_info ? customer.employee_info.code : ''"></span>
+                            </span>
+                            <span v-if='customer.app_customer_type != "EMPLOYEE"'>
+                                <span v-text="customer.core ? customer.core.customer_code : ''"></span>
+                            </span>
+                        </td>
+                        <td :title="customer.core ? customer.core.customer_name : ''" class="p-2">
+                            <img :src="customer.profile_photo" width="25px" style="object-fit: cover;aspect-ratio:1/1">
+                            &nbsp; <span v-text="customer ? customer.user_name : ''"></span>
                         </td>
                         <td class="p-1" v-text="customer.customer_phoneno"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
@@ -92,7 +114,8 @@
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0  py-1 px-2 ">
-                                            <form :action="'/admin/customer/disabled/toggle/' + customer.id" method="post">
+                                            <form :action="'/admin/customer/disabled/toggle/' + customer.id"
+                                                method="post">
                                                 @csrf
                                                 <div v-if="customer.is_disabled == 1" class="d-flex">
                                                     @csrf
@@ -112,7 +135,6 @@
                                                 </div>
                                             </form>
                                         </li>
-
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
                                             <form :action="'/admin/customer/' + customer.id" method="post">
@@ -128,8 +150,7 @@
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center border-0 py-1 px-2 ">
-                                            <a :href="'/admin/customer/' + customer.id + '/edit'"
-                                                class="btn btn-sm">
+                                            <a :href="'/admin/customer/' + customer.id + '/edit'" class="btn btn-sm">
                                                 Edit
                                             </a>
                                             <i class="bi bi-pencil-square mr-2"></i>

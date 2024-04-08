@@ -86,6 +86,7 @@ Route::group(
                 Route::post('customer/get-customers-list-by-policy', 'getCustomersListByPolicy')->name('customer.get-customers-list-by-policy');
 
                 Route::post('customer/new/employee', 'addNewEmployeeUser')->name('customer.new.employee');
+                Route::post('customer/new/agent', 'addNewAgentUser')->name('customer.new.agent');
 
                 //Ajax Call
                 Route::post('customer/register/preview-customer', 'previewBeforeResgister');

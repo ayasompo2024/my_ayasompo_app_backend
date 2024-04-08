@@ -108,6 +108,12 @@ class CustomerController extends Controller
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
+
+    function addNewAgentUser(Request $request)
+    {
+        return "comming soon!";
+        // return $request->all();
+    }
 }
 
 

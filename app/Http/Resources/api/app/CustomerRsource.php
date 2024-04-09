@@ -36,16 +36,7 @@ class CustomerRsource extends JsonResource
             "original_phone" => optional($this->core)->customer_phoneno,
 
             "employee_info" => new EmployeeInfoRsource($this->employeeInfo),
-            "agent_info" => [
-                "customer_id" => 0,
-                "agent_name" => "Dummy Name",
-                "license_no" => "123",
-                "agent_type" => "Super",
-                "expired_date" => "19/03/2023",
-                "email" => "dummy@mail.com",
-                "achievement" => "Gold",
-                "agent_codes" => "123,123,2323"
-            ]
+            "agent_info" => new AgentInfoRsource($this->agentInfo)
         ];
     }
 }

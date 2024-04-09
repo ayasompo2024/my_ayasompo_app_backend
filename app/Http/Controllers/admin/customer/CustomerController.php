@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\customer;
 
 use App\Http\Controllers\Controller;
 
+use App\Imports\AddNewAgentImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AddNewEmployeeImport;
 use App\Services\customer\CustomerService;
@@ -111,8 +112,10 @@ class CustomerController extends Controller
 
     function addNewAgentUser(Request $request)
     {
-        return "comming soon!";
-        // return $request->all();
+        $status = Excel::import(new AddNewAgentImport, $request->add_agent_user_file);
+        return $status ?
+            back()->with(['success' => 'Successfully!']) :
+            back()->with(['fail' => 'Fail']);
     }
 }
 

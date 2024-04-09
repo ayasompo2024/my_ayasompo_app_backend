@@ -101,5 +101,15 @@ class CustomerRepository
             return false;
 
     }
+    static function isExistCustomerAsAgentProfile($phone)
+    {
+        $isExist = Customer::where('customer_phoneno', $phone)->where('app_customer_type', 'AGENT')->first();
+
+        if ($isExist)
+            return true;
+        else
+            return false;
+
+    }
 }
 

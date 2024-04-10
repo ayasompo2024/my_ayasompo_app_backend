@@ -30,7 +30,7 @@ class CustomerRsource extends JsonResource
             "customer_code" => $this->customer_code,
 
             "customer_nrc" => optional($this->core)->customer_nrc,
-            'email' => optional($this->core)->email,
+            'email' => $this->getEmail($this->app_customer_type),
             'address' => optional($this->core)->address,
             'policy_holder_name' => optional($this->core)->customer_name,
             "original_phone" => optional($this->core)->customer_phoneno,
@@ -38,6 +38,20 @@ class CustomerRsource extends JsonResource
             "employee_info" => new EmployeeInfoRsource($this->employeeInfo),
             "agent_info" => new AgentInfoRsource($this->agentInfo)
         ];
+    }
+
+    private function getEmail($profile_type)
+    {
+        if ($profile_type == 'INDIVIDUAL' || $profile_type == 'CORPORATE')
+            return optional($this->core)->email;
+
+        if ($profile_type == 'AGENT')
+            return optional($this->agentInfo)->email;
+
+        if ($profile_type == 'EMPLOYEE')
+            return optional($this->employeeInfo)->email;
+
+        return "";
     }
 }
 

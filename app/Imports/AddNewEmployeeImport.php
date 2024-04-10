@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Facades\Http;
 use App\Traits\WriteLogger;
-
+use Illuminate\Support\Str;
 class AddNewEmployeeImport implements ToCollection
 {
     use RemoveInitialPlusNineFiveNine, SendSms, WriteLogger;
@@ -32,7 +32,7 @@ class AddNewEmployeeImport implements ToCollection
                 "office_address" => $rows[7],
 
                 "app_customer_type" => "EMPLOYEE",
-                "password" => substr(uniqid(), 0, 6)
+                "password" => Str::random(6)
             ];
             array_push($filterRows, $row);
         }
@@ -49,10 +49,10 @@ class AddNewEmployeeImport implements ToCollection
                 $input = $row;
 
                 if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
-                    $isExistAsPolicyHolderProfile = CustomerRepository::getByPhoneWhereINDIVIDUAL($phone);
-                    if ($isExistAsPolicyHolderProfile) {
-                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "Use Already Password !"), $user_name);
-                        $input["password"] = $isExistAsPolicyHolderProfile['password'];
+                    $isExistFirstProfile = CustomerRepository::getFirstProfile($phone);
+                    if ($isExistFirstProfile) {
+                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "You can login with existing password !"), $user_name);
+                        $input["password"] = $isExistFirstProfile['password'];
                     } else {
                         $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
                         $input["password"] = Hash::make($row["password"]);

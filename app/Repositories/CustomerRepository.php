@@ -12,7 +12,7 @@ class CustomerRepository
     }
     static function getWithPaginate($per_page)
     {
-        return Customer::select('id', 'customer_code', 'customer_phoneno', 'user_name', 'app_customer_type', 'is_disabled','profile_photo')->with('employeeInfo:id,customer_id,code,designation,department')->with('core:id,app_customer_id,customer_code')->orderByDesc('id')->paginate($per_page);
+        return Customer::select('id', 'customer_code', 'customer_phoneno', 'user_name', 'app_customer_type', 'is_disabled', 'profile_photo')->with('employeeInfo:id,customer_id,code,designation,department')->with('core:id,app_customer_id,customer_code')->orderByDesc('id')->paginate($per_page);
     }
 
     static function getOnlyIndividual($per_page)
@@ -110,6 +110,11 @@ class CustomerRepository
         else
             return false;
 
+    }
+
+    static function getFirstProfile($phone)
+    {
+        return Customer::where('customer_phoneno', $phone)->first();
     }
 }
 

@@ -40,7 +40,8 @@ class HomeController extends Controller
         if ($vali->fails())
             return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
 
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nEND:VCARD\n";
+        $companyName = "Aya Sompo Insurance";
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nORG:" . $companyName . "\nEND:VCARD\n";
         $filename = $request->name . '.vcf';
         $headers = [
             'Content-Type' => 'text/vcard',
@@ -49,6 +50,35 @@ class HomeController extends Controller
         $response = Response::make($vcardContent, 200, $headers);
         return $response;
     }
+
+    function downloadFileAsVCFForAgent(Request $request)
+    {
+        $vali = Validator::make($request->all(), [
+            "name" => "required",
+            "phoneno" => "required",
+            "type" => "required",
+            "email" => "required|email",
+            "license_no" => "required",
+        ]);
+
+        if ($vali->fails()) {
+            return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
+        }
+
+        $companyName = "Aya Sompo Insurance";
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->type . "\nORG:" . $companyName . "\nEMAIL;TYPE=INTERNET:" . $request->license_no . "\nEND:VCARD\n";
+
+        $fileContent = $vcardContent;
+        $fileName = $request->input('name') . "_contact.vcf";
+
+        return Response::make($fileContent, 200, [
+            'Content-Type' => 'text/vcard',
+            'Content-Disposition' => "attachment; filename=\"$fileName\""
+        ]);
+    }
+
+    //you can login with existing password
+
 }
 
 

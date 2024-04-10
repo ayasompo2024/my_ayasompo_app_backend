@@ -18,6 +18,9 @@ use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Customer;
+use Illuminate\Support\Str;
+
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
@@ -99,3 +102,8 @@ Route::group(
 );
 
 Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
+Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
+
+Route::get('test', function () {
+    return  Str::random(6);
+});

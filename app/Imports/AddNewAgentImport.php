@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use App\Traits\WriteLogger;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Str;
 class AddNewAgentImport implements ToCollection
 {
     use RemoveInitialPlusNineFiveNine, SendSms, WriteLogger;
@@ -37,7 +37,7 @@ class AddNewAgentImport implements ToCollection
                 'expired_date' => $rows[5],
                 'email' => $rows[6],
                 'achievement' => $rows[7],
-                "password" => substr(uniqid(), 0, 6)
+                "password" => Str::random(6)
             ];
             array_push($filterRows, $row);
         }
@@ -51,11 +51,10 @@ class AddNewAgentImport implements ToCollection
 
             if ($row["user_name"] != null) {
                 if (!CustomerRepository::isExistCustomerAsAgentProfile($row["customer_phoneno"])) {
-
-                    $isExistAsPolicyHolderProfile = CustomerRepository::getByPhoneWhereINDIVIDUAL($row["customer_phoneno"]);
-                    if ($isExistAsPolicyHolderProfile) {
-                        $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], "Use Already Password !"), $row["user_name"]);
-                        $password = $isExistAsPolicyHolderProfile['password'];
+                    $isExistFirstProfile = CustomerRepository::getFirstProfile($row["customer_phoneno"]);
+                    if ($isExistFirstProfile) {
+                        $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !"), $row["user_name"]);
+                        $password = $isExistFirstProfile['password'];
                     } else {
                         $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"]), $row["user_name"]);
                         $password = Hash::make($row["password"]);
@@ -66,7 +65,7 @@ class AddNewAgentImport implements ToCollection
                         $this->storeAgentInfo($row, $createdAgentProfile['id']);
                         $this->storeAgentAccountCode($row['account_codes'], $createdAgentProfile['id']);
                     }
-                    // $this->callToCirlce($row["customer_phoneno"]);
+                    $this->callToCirlce($row["customer_phoneno"]);
                 }
             }
         }

@@ -41,7 +41,7 @@ class HomeController extends Controller
             return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
 
         $companyName = "Aya Sompo Insurance";
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nORG:" . $companyName . "\nEND:VCARD\n";
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:" . $request->name . "\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nORG:" . $companyName . "\nEND:VCARD\n";
         $filename = $request->name . '.vcf';
         $headers = [
             'Content-Type' => 'text/vcard',
@@ -66,7 +66,7 @@ class HomeController extends Controller
         }
 
         $companyName = "Aya Sompo Insurance";
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->type . "\nORG:" . $companyName . "\nEMAIL;TYPE=INTERNET:" . $request->license_no . "\nEND:VCARD\n";
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:" . $request->name . "\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->type . "\nORG:" . $companyName . "\nEMAIL;TYPE=INTERNET:" . $request->license_no . "\nEND:VCARD\n";
 
         $fileContent = $vcardContent;
         $fileName = $request->input('name') . "_contact.vcf";

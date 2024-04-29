@@ -24,7 +24,8 @@
                 </div>
                 <div class="card shadow-sm px-4 pb-4 pt-2 bg-dark ">
                     <div class="">
-                        <button @click="removeDetail()" class="float-right btn btn-sm"><i class="bi bi-x-circle-fill text-warning"></i></button>
+                        <button @click="removeDetail()" class="float-right btn btn-sm"><i
+                                class="bi bi-x-circle-fill text-warning"></i></button>
                     </div>
                     <div class="row">
                         <div class="col-md-3">Account</div>
@@ -73,21 +74,35 @@
                     <thead class="bg-info">
                         <tr>
                             <th class="p-1" style="min-width: 140px">Account</th>
-                            <th class="p-1" style="min-width: 100px">IP</th>
                             <th class="p-1" style="min-width: 200px">URL</th>
                             <th class="p-1" style="min-width: 50px">Method</th>
                             <th class="p-1" style="min-width: 50px">Date & Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr @click="showDetail(key)" v-for="(item, key) in logs" style="cursor: pointer;">
-                            <td style="font-size: 14px" v-text="item.admin.name"></td>
-                            <td style="font-size: 14px" v-text="item.ip"></td>
-                            <td style="font-size: 14px" v-text="item.url"></td>
-                            <td style="font-size: 14px" v-text="item.method"></td>
-
-                            <td style="font-size: 14px" v-text="item.created_at"></td>
-                        </tr>
+                        @foreach ($logs as $log)
+                            <tr style="cursor: pointer;">
+                                <td style="font-size: 14px">{{ $log->admin->name }}</td>
+                                <td style="font-size: 14px">{{ $log->url }}</td>
+                                <td style="font-size: 14px">
+                                    @if ($log->method == 'POST' || $log->method == 'DELETE')
+                                        <span class="badge bg-danger">{{ $log->method }}</span>
+                                    @else
+                                        <span class="badge bg-info">{{ $log->method }}</span>
+                                    @endif
+                                </td>
+                                <td style="font-size: 14px">
+                                    @php
+                                        $date = now();
+                                        if (substr($log->created_at, 0, 10) == substr($date, 0, 10)) {
+                                            echo '<span class="badge bg-success mr-2">Today</span>';
+                                            echo date('h:i:s A', strtotime($log->created_at));
+                                        } else {
+                                            echo date('Y-m-d h:i:s A', strtotime($log->created_at));
+                                        }
+                                    @endphp</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

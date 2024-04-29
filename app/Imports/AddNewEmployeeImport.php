@@ -2,7 +2,9 @@
 
 namespace App\Imports;
 
+use App\Models\Customer;
 use App\Models\EmployeeInfo;
+use App\Models\SmsPool;
 use App\Repositories\CustomerRepository;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendSms;
@@ -12,6 +14,8 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Facades\Http;
 use App\Traits\WriteLogger;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
 class AddNewEmployeeImport implements ToCollection
 {
     use RemoveInitialPlusNineFiveNine, SendSms, WriteLogger;
@@ -41,37 +45,58 @@ class AddNewEmployeeImport implements ToCollection
 
     public function saveToDB(array $filterRows)
     {
-        foreach ($filterRows as $row) {
-            if ($row["user_name"] != null) {
-                $phone = $row["customer_phoneno"];
-                $user_name = $row["user_name"];
-                $password = $row["password"];
-                $input = $row;
+        // DB::beginTransaction();
+        // try {
+            $pool = [];
+            foreach ($filterRows as $row) {
+                if ($row["user_name"] != null) {
+                    $phone = $row["customer_phoneno"];
+                    $user_name = $row["user_name"];
+                    $password = $row["password"];
+                    $input = $row;
 
-                if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
-                    $isExistFirstProfile = CustomerRepository::getFirstProfile($phone);
-                    if ($isExistFirstProfile) {
-                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "You can login with existing password !"), $user_name);
-                        $input["password"] = $isExistFirstProfile['password'];
-                    } else {
-                        $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
-                        $input["password"] = Hash::make($row["password"]);
+                    if (!CustomerRepository::isExistCustomerAsEmplyeeProfile($phone)) {
+                        $isExistFirstProfile = CustomerRepository::getFirstProfile($phone);
+                        if ($isExistFirstProfile) {
+                            array_push($pool, [
+                                'phone' => $phone,
+                                'content' => $this->getContent($user_name, $phone, "You can login with existing password !")
+                            ]);
+                            // $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "You can login with existing password !"), $user_name);
+                            $input["password"] = $isExistFirstProfile['password'];
+                        } else {
+                            array_push($pool, [
+                                'phone' => $phone,
+                                'content' => $this->getContent($user_name, $phone, $password)
+                            ]);
+                            // $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
+                            $input["password"] = Hash::make($row["password"]);
+                        }
+                        $createdEmployee = Customer::create($input);
+                        $employeeInfo = [
+                            "customer_id" => $createdEmployee->id,
+                            "code" => $row['code'],
+                            'designation' => $row['designation'],
+                            'department' => $row['department'],
+                            'email' => $row['email'],
+                            'office_phone' => $row['office_phone'],
+                            'office_address' => $row['office_address']
+                        ];
+                        EmployeeInfo::create($employeeInfo);
+                        // $this->callToCirlce($phone);
                     }
-                    $createdEmployee = CustomerRepository::store($input);
-                    $employeeInfo = [
-                        "customer_id" => $createdEmployee->id,
-                        "code" => $row['code'],
-                        'designation' => $row['designation'],
-                        'department' => $row['department'],
-                        'email' => $row['email'],
-                        'office_phone' => $row['office_phone'],
-                        'office_address' => $row['office_address']
-                    ];
-                    EmployeeInfo::create($employeeInfo);
-                    $this->callToCirlce($phone);
                 }
             }
-        }
+            foreach ($pool as $item) {
+                SmsPool::create([
+                    'phone' => $item['phone'],
+                    'content' => $item['content']
+                ]);
+            }
+        //     DB::commit();
+        // } catch (\Exception $e) {
+        //     DB::rollback();
+        // }
     }
 
     private function resetPassword($phone, $password)

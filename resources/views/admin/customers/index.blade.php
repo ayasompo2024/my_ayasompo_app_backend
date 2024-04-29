@@ -50,10 +50,12 @@
                 <thead>
                     <tr>
                         <th v-if="showSelectBoxCondition" class="p-2">Select</th>
+                        <th class="p-2" style="min-width: 180px">Created At</th>
                         <th class="p-2" style="min-width: 140px">Code</th>
                         <th class="p-2" style="min-width: 200px">App User Name</th>
                         <th class="p-2" style="min-width: 140px">Customer Phone</th>
                         <th class="p-2" style="min-width: 180px">App Customer Type</th>
+                        <th class="p-2" style="min-width: 180px">Policy Number</th>
                         <th class="p-2" style="min-width: 180px">Disabled Status</th>
                         <th class="p-2">Operating </th>
                     </tr>
@@ -65,6 +67,10 @@
                                 @click="selectCustomerId(customer.id, $event)">
                                 <i class="bi bi-check-circle"></i>
                             </span>
+                        </td>
+                        <td class="p-1">
+                            <span v-if="isToday(customer.created_at)" class="badge bg-success mr-2">Today</span>
+                            <span>@{{ formatDateTime(customer.created_at) }}</span>
                         </td>
                         <td class="p-1">
                             <span v-if='customer.app_customer_type == "EMPLOYEE"'>
@@ -80,6 +86,7 @@
                         </td>
                         <td class="p-1" v-text="customer.customer_phoneno"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
+                        <td class="p-1" v-text="customer.policy_number"> </td>
                         <td class="p-1">
                             <span v-if="customer.is_disabled == 1" class="badge bg-warning">
                                 Disabled <i class="bi bi-x-circle-fill"></i>
@@ -212,6 +219,28 @@
                 },
                 handleBeforeUnload(event) {
                     localStorage.setItem("oldSelectedCustomerId", JSON.stringify(this.selectedCustomerId));
+                },
+                isToday(dateTime) {
+                    const now = new Date();
+                    const logDate = new Date(dateTime);
+                    return now.toDateString() === logDate.toDateString();
+                },
+                formatDateTime(dateTime) {
+                    const logDate = new Date(dateTime);
+                    const options = {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    };
+                    if (this.isToday(dateTime)) {
+                        return logDate.toLocaleTimeString('en-US', options);
+                    } else {
+                        return logDate.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        }) + ' ' + logDate.toLocaleTimeString('en-US', options);
+                    }
                 }
             }
         });

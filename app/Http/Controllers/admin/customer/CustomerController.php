@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin\customer;
 use App\Http\Controllers\Controller;
 
 use App\Imports\AddNewAgentImport;
+use App\Models\AgentAccountCode;
+use App\Models\SmsPool;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AddNewEmployeeImport;
 use App\Services\customer\CustomerService;
@@ -20,18 +22,19 @@ class CustomerController extends Controller
     public function index(Request $request, CustomerService $customerService)
     {
         $current_auth = $request->user();
-        // return $customerService->index(10, $current_auth);
         return view('admin.customers.index')->with('customers', $customerService->index(10, $current_auth));
     }
 
     public function edit($id, CustomerService $customerService)
     {
-        $customer = Customer::with('employeeInfo')->find($id);
-
+        $customer = Customer::with('employeeInfo', 'agentInfo', 'accountCodes')->find($id);
         if ($customer->app_customer_type == "EMPLOYEE") {
             return view('admin.customers.edit.emp')->with('customer', $customer);
         }
-        return "<h1>coming Soon</h1>";
+        if ($customer->app_customer_type == "AGENT") {
+            return view('admin.customers.edit.agent')->with('customer', $customer);
+        }
+        return "Only Allow EMPLOYEE and AGENT Type  ";
     }
     public function update($id, Request $request, CustomerService $customerService)
     {
@@ -70,23 +73,6 @@ class CustomerController extends Controller
             ]
         );
     }
-    //Ajax Response
-    public function previewBeforeResgister(Request $request, CustomerService $customerService)
-    {
-        $status = $customerService->previewBeforeResgister($request);
-        return $status ?
-            $this->successResponse("Request Success", $status, 200) :
-            $this->errorResponse("Fail", 500);
-    }
-    //Ajax Response
-    public function register(Request $request, CustomerService $customerService)
-    {
-        $status = $customerService->register($request);
-        return $status ?
-            $this->successResponse("Request Success", $status, 200) :
-            $this->errorResponse("Fail", 500);
-
-    }
     public function toggleDisabled($id, CustomerService $customerService)
     {
         $status = $customerService->toggleDisabledById($id);
@@ -117,6 +103,80 @@ class CustomerController extends Controller
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
+
+    function updateAgent($id, Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->updateForAgent($id, $request);
+        return $status ?
+            back()->with("success", "Success") :
+            back() > with("fail", "Fail");
+    }
+
+    function deleteAgentCode($id, CustomerService $customerService)
+    {
+        $status = $customerService->deleteAgentCode($id);
+        return $status ?
+            back()->with("success", "Success") :
+            back() > with("fail", "Fail");
+    }
+    function updateAgetCode($id, Request $request, AgentAccountCode $repo)
+    {
+        $status = $repo->find($id)->update($request->only('code'));
+        return $status ?
+            back()->with("success", "Success") :
+            back() > with("fail", "Fail");
+    }
+    function newAgentCode(Request $request, AgentAccountCode $customer)
+    {
+        $request->validate(['customer_id' => "required", "code" => 'required']);
+        $input = $request->only("customer_id", 'code');
+        $status = $customer->create($input);
+        return $status ?
+            back()->with("success", "Success") :
+            back() > with("fail", "Fail");
+    }
+
+    function pool()
+    {
+        return view('admin.customers.pool')->with('pool', SmsPool::all());
+    }
+
+    //Ajax Response
+    public function previewBeforeResgister(Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->previewBeforeResgister($request);
+        return $status ?
+            $this->successResponse("Request Success", $status, 200) :
+            $this->errorResponse("Fail", 500);
+    }
+    //Ajax Response
+    public function register(Request $request, CustomerService $customerService)
+    {
+        $status = $customerService->register($request);
+        return $status ?
+            $this->successResponse("Request Success", $status, 200) :
+            $this->errorResponse("Fail", 500);
+    }
+
+    public function resolve(Request $request, CustomerService $customerService, SmsPool $smsPool)
+    {
+        if ($request->is_sended_sms != 1) {
+            $smsApiStatus = $customerService->callSMSAPI($request->phone, $request->content);
+            if ($smsApiStatus) {
+                $smsPool->find($request->id)->update(['is_sended_sms' => 1]);
+            }
+        }
+        $circleApiStatus = $customerService->callToCirlce($request->phone);
+
+        if ($request->is_sended_sms != 1 && !$circleApiStatus) {
+            return $this->errorResponse("Fail", 500);
+        } else {
+            $smsPool->destroy($request->id);
+            $data = $smsPool->all();
+            return $this->successResponse("Success", $data, 200);
+        }
+    }
+
 }
 
 

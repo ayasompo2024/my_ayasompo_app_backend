@@ -37,11 +37,11 @@ class AddNewAgentImport implements ToCollection
                 'expired_date' => $rows[5],
                 'email' => $rows[6],
                 'achievement' => $rows[7],
+                "title" =>  $rows[8],
                 "password" => Str::random(6)
             ];
             array_push($filterRows, $row);
         }
-        // dd($filterRows);
         $this->saveToDB($filterRows);
     }
 
@@ -92,6 +92,7 @@ class AddNewAgentImport implements ToCollection
             "expired_date" => $row['expired_date'],
             "email" => $row['email'],
             "achievement" => $row['achievement'],
+            "title" => $row['title'],
         ];
         AgentInfo::create($agentInfoInput);
     }

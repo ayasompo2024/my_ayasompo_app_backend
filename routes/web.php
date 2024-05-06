@@ -81,6 +81,8 @@ Route::group(
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
             Route::controller(CustomerController::class)->group(function () {
+                Route::get('pool', 'pool')->name('customer.pool');
+
                 Route::get('customer/filter/by-type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
                 Route::get('customer1/import', [CustomerController::class, 'import'])->name('customer1.import');
 
@@ -90,10 +92,16 @@ Route::group(
 
                 Route::post('customer/new/employee', 'addNewEmployeeUser')->name('customer.new.employee');
                 Route::post('customer/new/agent', 'addNewAgentUser')->name('customer.new.agent');
+                Route::put('customer/update/agent/{id}', 'updateAgent')->name('customer.update.agent');
+
+                Route::delete('customer/delete/agent/code/{id}', 'deleteAgentCode')->name('customer.delete.agent.code');
+                Route::put('customer/update/agent/code/{id}', 'updateAgetCode')->name('customer.update.agent.code');
+                Route::post('customer/new/agent/code', 'newAgentCode')->name('customer.new.agent.code');
 
                 //Ajax Call
                 Route::post('customer/register/preview-customer', 'previewBeforeResgister');
                 Route::post('customer/register', 'register');
+                Route::post('pool/resolve', 'resolve');
             });
         });
         Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
@@ -105,5 +113,5 @@ Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
 Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
 
 Route::get('test', function () {
-    return  Str::random(6);
+    return Str::random(6);
 });

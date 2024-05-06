@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\customer;
 
+use App\Traits\WriteLogger;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
@@ -9,7 +10,7 @@ use Log;
 
 trait CallAPI
 {
-
+    use WriteLogger;
     protected function getCustomersListByPolicyAPICall($policy_nuber)
     {
         $url = config("app.ayasompo_base_url") . "Customer/GetPolicyCustomer?policyno=" . $policy_nuber;
@@ -26,7 +27,7 @@ trait CallAPI
             $errorMessage = $response->body();
         }
     }
-    protected function callSMSAPI($to, $content)
+    public function callSMSAPI($to, $content)
     {
         $end_point = config('app.ayasompo_base_url') . 'sms/sendsms';
         $token = Cache::get('token_for_internal');
@@ -42,12 +43,22 @@ trait CallAPI
         ];
         $response = Http::withHeaders($headers)->post($end_point, $requestBody);
         if ($response->successful()) {
-            return $response->json();
+            return true;
+            // return $response->json();
         } else {
             $statusCode = $response->status();
             $errorMessage = $response->body();
         }
+    }
 
+    function callToCirlce($customer_phoneno)
+    {
+        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $this->writeLog("circle_server", "Request to Circle Server (EMPLOYEE)", ['phone' => $customer_phoneno]);
+        $response = Http::withOptions(['verify' => false])->post($url, ["phone" => $customer_phoneno]);
+        $data = $response->json();
+        $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data, false);
+        return $data;
     }
 
 }

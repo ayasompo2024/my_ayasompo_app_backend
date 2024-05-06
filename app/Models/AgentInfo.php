@@ -15,6 +15,7 @@ class AgentInfo extends Model
         "agent_type",
         "expired_date",
         "email",
-        "achievement"
+        "achievement",
+        "title"
     ];
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\customer;
 
+use App\Models\AgentAccountCode;
 use App\Repositories\CustomerRepository;
 
 use App\Enums\AppCustomerType;
@@ -33,6 +34,7 @@ class CustomerService
         return $customers;
     }
 
+    //Update for Emplyee user
     function update($id, $req)
     {
         $customer = Customer::with('employeeInfo')->find($id);
@@ -44,7 +46,7 @@ class CustomerService
         }
 
         if ($customer->app_customer_type == "EMPLOYEE") {
-            
+
             $customer->employeeInfo->code = $req["code"];
             $customer->employeeInfo->designation = $req["designation"];
             $customer->employeeInfo->department = $req["department"];
@@ -56,6 +58,34 @@ class CustomerService
 
         $customer->save();
         return $customer;
+    }
+
+    //Update for Agent user
+    function updateForAgent($id, $req)
+    {
+        $customer = Customer::with('agentInfo')->find($id);
+        $customer->customer_phoneno = $req->customer_phoneno;
+        $customer->user_name = $req->user_name;
+        if ($req->profile_photo) {
+            $customer->profile_photo = $this->uploadFile($req->profile_photo, '/uploads/profile/', 'aya_sompo_');
+        }
+        if ($customer->app_customer_type == "AGENT") {
+            $customer->agentInfo->agent_name = $req->agent_name;
+            $customer->agentInfo->license_no = $req->license_no;
+            $customer->agentInfo->agent_type = $req->agent_type;
+            $customer->agentInfo->expired_date = $req->expired_date;
+            $customer->agentInfo->email = $req->email;
+            $customer->agentInfo->achievement = $req->achievement;
+            $customer->agentInfo->title = $req->title;
+            $customer->agentInfo->save();
+        }
+        $customer->save();
+        return $customer;
+    }
+
+    function deleteAgentCode($id)
+    {
+        return AgentAccountCode::destroy($id);
     }
 
     function filterByType($type, $per_page)
@@ -88,7 +118,7 @@ class CustomerService
         $isExistPhones = [];
         foreach ($risk_of_policy_lists as $risk_of_policy_list) {
             $customer = CustomerRepository::getAllByPhone("09" . $risk_of_policy_list["phone"]);
-            $isExist = !empty ($customer);
+            $isExist = !empty($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
                 'phone' => "09" . $risk_of_policy_list["phone"],

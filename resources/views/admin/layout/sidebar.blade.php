@@ -153,6 +153,16 @@ $sidebar_menus = [
                 'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
+            [
+                'display' => 'SMS Pool',
+                'route' => 'admin.customer.pool',
+                'route_param' => "GROUP",
+                'imag_path' => null,
+                'target' => false,
+                'icon' => 'bi bi-database-fill-exclamation',
+                'can' => ['HR', 'Root'],
+                'sub_menus' => null,
+            ],
         ],
     ],
     [
@@ -343,7 +353,7 @@ $sidebar_menus = [
                                     @foreach ($menu['sub_menus'] as $sub_menu)
                                         @if (in_array($current_auth->role, $sub_menu['can']) || in_array('*', $sub_menu['can']))
                                             <li
-                                                class="nav-item rounded {{ Request::routeIs($sub_menu['route']) ? 'bg-secondary' : '' }}">
+                                                class="nav-item rounded">
                                                 <a @if($sub_menu['route_param'] != null) href="{{ route($sub_menu['route'], $sub_menu['route_param']) }}"   @else href="{{ route($sub_menu['route']) }}" @endif
                                                     class="nav-link text-info pt-1 pb-0">
                                                     <i class="ml-3 {{ $sub_menu['icon'] }}"></i>

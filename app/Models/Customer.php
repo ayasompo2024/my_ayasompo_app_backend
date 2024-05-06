@@ -38,6 +38,11 @@ class Customer extends Authenticatable
         return $this->belongsTo(AgentInfo::class, 'id', 'customer_id');
     }
 
+    function accountCodes()
+    {
+        return $this->hasMany(AgentAccountCode::class);
+    }
+
     function scopeIndividual($query)
     {
         return $query->where('app_customer_type', 'INDIVIDUAL');

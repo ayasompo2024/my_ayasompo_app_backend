@@ -5,7 +5,7 @@ namespace App\Imports;
 
 use App\Models\AgentAccountCode;
 use App\Models\AgentInfo;
-use Maatwebsite\Excel\Concerns\ToModel;
+use App\Models\SmsPool;
 use Illuminate\Support\Collection;
 use App\Repositories\CustomerRepository;
 use App\Traits\RemoveInitialPlusNineFiveNine;
@@ -15,6 +15,7 @@ use App\Traits\WriteLogger;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+
 class AddNewAgentImport implements ToCollection
 {
     use RemoveInitialPlusNineFiveNine, SendSms, WriteLogger;
@@ -28,7 +29,6 @@ class AddNewAgentImport implements ToCollection
         $filterRows = [];
         foreach ($collection->skip(1) as $rows) {
             $row = [
-
                 "user_name" => $rows[0],
                 "customer_phoneno" => $this->removeInitialPlusNineFiveNine($rows[1]),
                 "account_codes" => $rows[2],
@@ -37,7 +37,7 @@ class AddNewAgentImport implements ToCollection
                 'expired_date' => $rows[5],
                 'email' => $rows[6],
                 'achievement' => $rows[7],
-                "title" =>  $rows[8],
+                "title" => $rows[8],
                 "password" => Str::random(6)
             ];
             array_push($filterRows, $row);
@@ -47,16 +47,25 @@ class AddNewAgentImport implements ToCollection
 
     public function saveToDB(array $filterRows)
     {
+        $pool = [];
         foreach ($filterRows as $row) {
 
             if ($row["user_name"] != null) {
                 if (!CustomerRepository::isExistCustomerAsAgentProfile($row["customer_phoneno"])) {
                     $isExistFirstProfile = CustomerRepository::getFirstProfile($row["customer_phoneno"]);
                     if ($isExistFirstProfile) {
-                        $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !"), $row["user_name"]);
+                        array_push($pool, [
+                            'phone' => $row["customer_phoneno"],
+                            'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !")
+                        ]);
+                        // $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !"), $row["user_name"]);
                         $password = $isExistFirstProfile['password'];
                     } else {
-                        $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"]), $row["user_name"]);
+                        array_push($pool, [
+                            'phone' => $row["customer_phoneno"],
+                            'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"])
+                        ]);
+                        // $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"]), $row["user_name"]);
                         $password = Hash::make($row["password"]);
                     }
 
@@ -65,9 +74,15 @@ class AddNewAgentImport implements ToCollection
                         $this->storeAgentInfo($row, $createdAgentProfile['id']);
                         $this->storeAgentAccountCode($row['account_codes'], $createdAgentProfile['id']);
                     }
-                    $this->callToCirlce($row["customer_phoneno"]);
                 }
             }
+        }
+        foreach ($pool as $item) {
+            SmsPool::create([
+                'phone' => $item['phone'],
+                'content' => $item['content'],
+                'key' => "AGENT"
+            ]);
         }
     }
 
@@ -100,10 +115,12 @@ class AddNewAgentImport implements ToCollection
     {
         $accountCodeArray = explode(',', $accountCodeString);
         foreach ($accountCodeArray as $code) {
-            AgentAccountCode::create([
-                'customer_id' => $profile_id,
-                'code' => $code
-            ]);
+            if ($code != null) {
+                AgentAccountCode::create([
+                    'customer_id' => $profile_id,
+                    'code' => $code
+                ]);
+            }
         }
     }
     private function callToCirlce($customer_phoneno)

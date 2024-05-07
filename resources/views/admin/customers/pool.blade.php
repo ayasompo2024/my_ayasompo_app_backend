@@ -3,7 +3,7 @@
     <div class="container bg-white" id="app" style="min-height:100vh">
         <div class="p-2">
             <h5 class="p-2 rounded">
-                Need to send SMS
+                Need to send SMS <span class="badge ml-2 bg-danger"> {{count($pool)}} </span>
             </h5>
             <div class="px-2">
                 <table class="table">
@@ -13,7 +13,8 @@
                             <th class="p-1">Phone</th>
                             <th class="p-1">Type</th>
                             <th class="p-1"> Sended SMS ?</th>
-                            <th style="width:350px" class="">Invite</th>
+                            <th class="p-1"> User</th>
+                            <th class="p-1" style="width:350px" class="">Invite</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,8 +23,9 @@
                             <td class="p-1">@{{ item.phone }}</td>
                             <td class="p-1">@{{ item.key }}</td>
                             <td class="p-1">@{{ item.is_sended_sms }}</td>
-                            <td class="p-1  p-1">
-                                <button @click="sendSms(index)"   :disabled="item.is_loading || isLoading"
+                            <td class="p-1">@{{ truncateName(item.content) }}</td>
+                            <td class="p-1  p-1 ">
+                                <button @click="sendSms(index)" :disabled="item.is_loading || isLoading"
                                     class="btn btn-sm btn-danger ml-2 d-flex align-items-center" style="height:25px">
                                     Send <i class="ml-1 bi bi-send-fill"></i>
                                     <span v-if="item.is_loading" class="loader"></span>
@@ -72,6 +74,13 @@
                             this.isLoading = false;
                             console.log(error);
                         });
+                },
+                truncateName(name) {
+                    if (!name || name.length === 0) {
+                        return "";
+                    }
+                    let truncatedName = name.substring(7);
+                    return truncatedName.length > 10 ? truncatedName.substring(0, 10) + '...' : truncatedName;
                 },
             }
         });

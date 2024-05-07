@@ -153,7 +153,7 @@ $sidebar_menus = [
                 'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
-            [
+            /** [
                 'display' => 'SMS Pool',
                 'route' => 'admin.customer.pool',
                 'route_param' => "GROUP",
@@ -163,6 +163,7 @@ $sidebar_menus = [
                 'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
+            **/
         ],
     ],
     [

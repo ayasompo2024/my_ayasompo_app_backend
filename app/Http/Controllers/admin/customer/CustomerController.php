@@ -19,9 +19,12 @@ class CustomerController extends Controller
 {
 
     use ApiResponser;
-    public function index(Request $request, CustomerService $customerService)
+    public function index(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
         $current_auth = $request->user();
+        if ($smsPool->first()) {
+            return redirect("/admin/pool?GROUP");
+        }
         return view('admin.customers.index')->with('customers', $customerService->index(10, $current_auth));
     }
 

@@ -146,7 +146,7 @@
                                             <input type="text" value="09" style="width: 50px;"
                                                 class="form-control form-control-sm" />
                                             <input class="form-control form-control-sm p-0" type="number" minlength="6"
-                                                maxlength="9" :value="risk.phone" @mouseout="addPhone($event,key)"
+                                                maxlength="9" :value="risk.phone"
                                                 @keyup.enter="addPhone($event,key)" title="Please enter only numbers"
                                                 autofocus>
                                         </div>

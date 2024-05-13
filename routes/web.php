@@ -115,3 +115,10 @@ Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCF
 Route::get('test', function () {
     return Str::random(6);
 });
+
+Route::get('/oracle', function () {
+    $data = DB::connection('oracle')->select("select PRODUCT,POL_TYPE,POL_TRANSACTION_TYPE,SUM(PREMIUM) GWP,POL_AUTHORIZED_DATE,SFC_ACC_CODE
+    from VW_POLICY_AGENT_DATA_APP 
+    Where POL_TRANSACTION_TYPE !='F'
+    group by PRODUCT,POL_TRANSACTION_TYPE,POL_TYPE,POL_AUTHORIZED_DATE,SFC_ACC_CODE");
+});

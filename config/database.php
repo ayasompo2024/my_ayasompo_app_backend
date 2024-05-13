@@ -91,6 +91,19 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'oracle' => [
+            'driver' => 'oracle',
+            'host' => env('ORACLE_HOST'),
+            'port' => env('ORACLE_PORT'),
+            'database' => env('ORACLE_DATABASE'),
+            'service_name' => env('ORACLE_SERVICE_NAME'),
+            'username' => env('ORACLE_USERNAME'),
+            'password' => env('ORACLE_PASSWORD'),
+            'charset' => env('ORACLE_CHARSET', 'AL32UTF8'),
+            'prefix' => env('ORACLE_PREFIX', ''),
+            'edition' => env('ORACLE_EDITION', 'ora$base'),
+            'server_version' => env('ORACLE_SERVER_VERSION', '11g'),
+        ],
     ],
 
     /*
@@ -123,7 +136,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

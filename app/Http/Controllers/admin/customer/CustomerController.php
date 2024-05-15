@@ -67,6 +67,7 @@ class CustomerController extends Controller
     public function getCustomersListByPolicy(Request $request, CustomerService $customerService)
     {
         $request->validate(['policy_no' => "required"]);
+        // return $customerService->getCustomersListByPolicy($request->policy_no);
         return view('admin.customers.group_customer.customers_List_by_policy')->with(
             [
                 'customers' => $customerService->getCustomersListByPolicy($request->policy_no),
@@ -141,7 +142,7 @@ class CustomerController extends Controller
 
     function pool()
     {
-        return view('admin.customers.pool')->with('pool', SmsPool::all());
+        return view('admin.customers.pool')->with('pool', SmsPool::orderByDesc("id")->get());
     }
 
     //Ajax Response

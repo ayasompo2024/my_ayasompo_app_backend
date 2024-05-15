@@ -15,10 +15,10 @@
         </nav>
 
 
-        <div v-if="checkExistPhones" class="row mt-3">
+        <div v-if="checkExistPhones && !isOkAllSetp" class="row mt-3">
 
-            <div class="col-md-8 offset-md-2 p-3 bg-white rounded">
-                <h4 class="border-bottom">Preview</h4>
+            <div class="col-md-10 offset-md-1 p-3 bg-white rounded">
+                <h4 class="border-bottom">Exist As Group(Risk) User</h4>
                 <div style="display: flex;flex-wrap: wrap;gap: 10px;">
                     <div v-for="(phone, key) in checkExistPhones.phones">
                         <div class="btn btn-sm btn border mt-1">
@@ -132,53 +132,27 @@
                     <div class="mt-1">
                         <div class="d-flex">
                             <div style="width: 40%">
-                                <i class="bi bi-telephone mr-2"></i> Chose Risk
+                                <i class="bi bi-telephone mr-2"></i> Risks <span class="badge bg-info">
+                                    @{{ riskOfpolicyList.length }} </span>
                             </div>
                             <div style="width: 60%">
-                                @{{ riskOfpolicyList }}
                                 <div v-for="(risk, key) in riskOfpolicyList">
-                                    <div class="card p-1 px-2 bg-light mt-1">
+                                    <div class="card p-1 px-2 bg-light mt-2">
                                         <div><strong style="font-size: 13px;"> Risk SeqNo : @{{ risk.risk_seqNo }}, Risk
                                                 Name :
                                                 @{{ risk.risk_name }}</strong>
                                         </div>
                                         <div class="d-flex">
-                                            <input type="text" value="09" style="width: 50px;"
-                                                class="form-control form-control-sm" />
-                                            <input class="form-control form-control-sm p-0" type="number" minlength="6"
-                                                maxlength="9" :value="risk.phone"
-                                                @keyup.enter="addPhone($event,key)" title="Please enter only numbers"
-                                                autofocus>
+                                            <input class="form-control form-control-sm py-0 px-1" type="number"
+                                                minlength="6" maxlength="9" :value="risk.phone"
+                                                @keyup.enter="addPhone($event,key)" title="Please enter only numbers">
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <ul class="list-group list-group-flush">
-                                    <li v-for="(phone, key) in phoneNumberArray"
-                                        class="list-group-item p-0 m-0 bg-light rounded mt-1">
-                                        <span class="ml-1">@{{ phone }}</span>
-                                        <button @click="removePhone(key)" class="btn btn-sm  float-right"><i
-                                                class="bi bi-x-circle-fill text-danger"></i></button>
-                                    </li>
-                                </ul> --}}
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="mt-1">
-                        <div class="d-flex">
-                            <div style="width: 50%">
 
-                            </div>
-                            <div style="width: 50%" class="d-flex">
-                                <input type="text" value="09" style="width: 50px;"
-                                    class="form-control form-control-sm" />
-                                <input class="form-control form-control-sm" v-model="phone" type="number"
-                                    minlength="6" maxlength="9" title="Please enter only numbers" autofocus>
-                                <button @click="addPhone" class="btn btn-info btn-sm ml-1">
-                                    Add
-                                </button>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="mt-3 float-right">
                         <button @click="preview()" :disabled="!isRegButDisabled" class="btn btn-info btn-sm ml-2">
                             Preview
@@ -241,6 +215,217 @@
     </div>
     </div>
 @endsection
+
+@push('child-scripts')
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                const customers = @json($customers);
+                let isLoading = false;
+                let policyList = undefined;
+                let riskOfpolicyList = [];
+                let selectCustomerObj = null;
+                let phoneNumberArray = [];
+                let phone = '';
+                let checkExistPhones = '';
+                let isOkAllSetp = false;
+                return {
+                    customers,
+                    isLoading,
+                    policyList,
+                    riskOfpolicyList,
+                    selectCustomerObj,
+                    phoneNumberArray,
+                    phone,
+                    checkExistPhones,
+                    isOkAllSetp
+                };
+            },
+            methods: {
+                //1
+                selectCustomer(customer_code) {
+                    this.selectCustomerObj = this.customers.customers.find(customer => customer
+                        .customer_code === customer_code);
+                    console.table(this.selectCustomerObj);
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Are you sure?",
+                        text: this.selectCustomerObj.customer_code,
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: " Sure ",
+                        cancelButtonText: "Select Again"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.getPolicyListByCustomerCode(this.selectCustomerObj.customer_code);
+                        }
+                    });
+                },
+                // go 2 1 is confrimed
+                getPolicyListByCustomerCode(customerCode) {
+                    const headers = new Headers();
+                    headers.append('Content-Type', 'application/json');
+                    headers.append('Authorization', '{{ 'Bearer ' . Cache::get('token_for_internal') }}');
+                    this.isLoading = true;
+                    fetch(`{{ config('app.ayasompo_base_url') }}PolicyManagement/getcustlistpoliciesinvoice?customerCode=${customerCode}&policyno=${this.customers.policyno}`, {
+                            method: 'GET',
+                            headers: headers,
+                        })
+                        .then(async response => {
+                            const responseJson = await response.json();
+                            if (!response.ok) {
+                                return Swal.fire({
+                                    icon: "warning",
+                                    title: "Erro",
+                                    text: responseJson.message,
+                                    confirmButtonText: " Try Again ",
+                                })
+                            }
+                            console.log("orgi data", responseJson);
+
+                            let filterData = responseJson.find(policyList => policyList.policyNumber ==
+                                this.customers.policyno);
+                            console.log("filter", filterData);
+
+                            this.policyList = filterData
+                            for (risk of filterData.risk) {
+                                this.riskOfpolicyList.push({
+                                    'risk_seqNo': risk.seqNo,
+                                    'risk_name': risk.name,
+                                    'phone': risk.phone
+                                });
+                                console.log(risk.seqNo);
+                                console.log(risk.name);
+                            }
+                            this.isLoading = false;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            return Swal.fire({
+                                icon: "error",
+                                title: "Erro*",
+                                text: error.message,
+                                confirmButtonText: " Try Again ",
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    this.getPolicyListByCustomerCode(customerCode);
+                                }
+                            });
+                        });
+                },
+                preview() {
+                    this.isOkAllSetp = false;
+                    this.isLoading = true;
+                    console.log('selectCustomerObj');
+                    console.table(this.selectCustomerObj);
+                    console.table(this.phoneNumberArray);
+                    fetch(`{{ url('/') }}/admin/customer/register/preview-customer`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            },
+                            body: JSON.stringify({
+                                "select_customer_obj": this.selectCustomerObj,
+                                "risk_of_policy_list": this.riskOfpolicyList
+                            }),
+                        })
+                        .then(async response => {
+                            const responseJson = await response.json();
+                            if (!response.ok) {
+                                return Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Error',
+                                    text: responseJson.message,
+                                    cancelButtonText: 'Try Again',
+                                });
+                            }
+                            this.isLoading = false;
+                            this.checkExistPhones = responseJson.data;
+                            console.log("checkExistPhones", responseJson.data);
+                        })
+                        .catch(error => {
+                            return Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: error.message || 'Something went wrong',
+                                confirmButtonText: 'Try Again'
+                            });
+                        });
+                },
+                register(index) {
+                    this.isLoading = true;
+                    fetch(`{{ url('/') }}/admin/customer/register`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            },
+                            body: JSON.stringify({
+                                "select_customer_obj": this.selectCustomerObj,
+                                "risk_of_policy_list": this.riskOfpolicyList,
+                                "policy_number": this.policyList.policyNumber
+                            }),
+                        })
+                        .then(async response => {
+                            const responseJson = await response.json();
+                            this.isOkAllSetp = true;
+                            this.isLoading = false;
+                            console.log(responseJson);
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: responseJson.meatadata.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        })
+                        .catch(error => {
+                            return Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: error.message || 'Something went wrong',
+                                confirmButtonText: 'Try Again',
+                            });
+                        });
+                },
+                addPhone(target, index) {
+                    alert("addPhone");
+                    return
+                    console.log("index", index);
+                    console.log("Input value:", event.target.value);
+                    if (event.target.value < 100000 || event.target.value > 999999999) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: "Phone Number min length 6 and max length 9 ",
+                            confirmButtonText: 'Try Again',
+                        });
+                        return false
+                    } else {
+                        this.riskOfpolicyList[index].phone = event.target.value;
+                        console.table(this.riskOfpolicyList);
+                    }
+                },
+                removePhone(index) {
+                    this.phoneNumberArray.splice(index, 1);
+                },
+            },
+            computed: {
+                isRegButDisabled() {
+                    // console.log(this.riskOfpolicyList.length > 0);
+                    // return this.phoneNumberArray.length > 0;
+                    return true
+                },
+            }
+        });
+        app.mount('#app');
+    </script>
+@endpush
+
 @push('child-css')
     <style>
         .swal2-confirm {
@@ -314,210 +499,6 @@
     </style>
 @endpush
 
-@push('child-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-    <script>
-        const app = Vue.createApp({
-            data() {
-                const customers = @json($customers);
-                let isLoading = false;
-                let policyList = undefined;
-                let riskOfpolicyList = [];
-                let selectCustomerObj = null;
-                let phoneNumberArray = [];
-                let phone = '';
-                let checkExistPhones = '';
-                return {
-                    customers,
-                    isLoading,
-                    policyList,
-                    riskOfpolicyList,
-                    selectCustomerObj,
-                    phoneNumberArray,
-                    phone,
-                    checkExistPhones
-                };
-            },
-            methods: {
-                selectCustomer(customer_code) {
-                    this.selectCustomerObj = this.customers.customers.find(customer => customer
-                        .customer_code === customer_code);
-                    console.table(this.selectCustomerObj);
-                    Swal.fire({
-                        icon: "warning",
-                        title: "Are you sure?",
-                        text: this.selectCustomerObj.customer_code,
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        confirmButtonText: " Sure ",
-                        cancelButtonText: "Select Again"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            this.getPolicyListByCustomerCode(this.selectCustomerObj.customer_code);
-                        }
-                    });
-                },
-                getPolicyListByCustomerCode(customerCode) {
-                    const headers = new Headers();
-                    headers.append('Content-Type', 'application/json');
-                    headers.append('Authorization', '{{ 'Bearer ' . Cache::get('token_for_internal') }}');
-                    this.isLoading = true;
-                    fetch(`{{ config('app.ayasompo_base_url') }}PolicyManagement/getcustlistpolicies/${customerCode}`, {
-                            method: 'GET',
-                            headers: headers,
-                        })
-                        .then(async response => {
-                            const responseJson = await response.json();
-                            if (!response.ok) {
-                                return Swal.fire({
-                                    icon: "warning",
-                                    title: "Erro",
-                                    text: responseJson.message,
-                                    confirmButtonText: " Try Again ",
-                                })
-                            }
-                            this.isLoading = false;
-                            console.log(responseJson);
-                            let filterData = responseJson.find(policyList => policyList.policyNumber ==
-                                this.customers.policyno);
-                            console.log(filterData);
-                            this.policyList = filterData
-                            for (risk of filterData.risk) {
-                                this.riskOfpolicyList.push({
-                                    'risk_seqNo': risk.seqNo,
-                                    'risk_name': risk.name,
-                                    'phone': null
-                                });
-                                console.log(risk.seqNo);
-                                console.log(risk.name);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            return Swal.fire({
-                                icon: "error",
-                                title: "Erro*",
-                                text: error.message,
-                                confirmButtonText: " Try Again ",
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    this.getPolicyListByCustomerCode(customerCode);
-                                }
-                            });
-                        });
-                },
-                preview() {
-                    this.isLoading = true;
-                    console.log('selectCustomerObj');
-                    console.table(this.selectCustomerObj);
-                    console.table(this.phoneNumberArray);
-                    fetch(`{{ url('/') }}/admin/customer/register/preview-customer`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json',
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                            },
-                            body: JSON.stringify({
-                                "select_customer_obj": this.selectCustomerObj,
-                                "risk_of_policy_list": this.riskOfpolicyList
-                            }),
-                        })
-                        .then(async response => {
-                            const responseJson = await response.json();
-                            if (!response.ok) {
-                                return Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Error',
-                                    text: responseJson.message,
-                                    cancelButtonText: 'Try Again',
-                                });
-                            }
-                            this.isLoading = false;
-                            this.checkExistPhones = responseJson.data;
-                            console.log(responseJson.data);
-                        })
-                        .catch(error => {
-                            return Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: error.message || 'Something went wrong',
-                                confirmButtonText: 'Try Again',
-                            });
-                        });
-                },
-                register(index) {
-                    this.isLoading = true;
-                    fetch(`{{ url('/') }}/admin/customer/register`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json',
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                            },
-                            body: JSON.stringify({
-                                "select_customer_obj": this.selectCustomerObj,
-                                "risk_of_policy_list": this.riskOfpolicyList,
-                                "policy_number": this.policyList.policyNumber
-                            }),
-                        })
-                        .then(async response => {
-                            const responseJson = await response.json();
-                            if (!response.ok) {
-                                return Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Error',
-                                    text: responseJson.message,
-                                    cancelButtonText: 'Try Again',
-                                });
-                            }
-                            this.isLoading = false;
-                            console.log(responseJson);
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: responseJson.meatadata.message,
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        })
-                        .catch(error => {
-                            return Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: error.message || 'Something went wrong',
-                                confirmButtonText: 'Try Again',
-                            });
-                        });
-                },
-                addPhone(target, index) {
-                    console.log("index", index);
-                    console.log("Input value:", event.target.value);
-                    if (event.target.value < 100000 || event.target.value > 999999999) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: "Phone Number min length 6 and max length 9 ",
-                            confirmButtonText: 'Try Again',
-                        });
-                        return false
-                    } else {
-                        this.riskOfpolicyList[index].phone = event.target.value;
-                        console.table(this.riskOfpolicyList);
-                    }
-                },
-                removePhone(index) {
-                    this.phoneNumberArray.splice(index, 1);
-                },
-            },
-            computed: {
-                isRegButDisabled() {
-                    // console.log(this.riskOfpolicyList.length > 0);
-                    // return this.phoneNumberArray.length > 0;
-                    return true
-                },
-            }
-        });
-        app.mount('#app');
-    </script>
-@endpush
+{{-- https://uatecom.ayasompo.com/PolicyManagement/getcustlistpoliciesinvoice?customerCode=C000051354&policyno=AYA/YGN/MCP/23000155 --}}
+
+{{-- https://ecom.ayasompo.com/PolicyManagement/getcustlistpoliciesinvoice?customerCode=C000079645&policyno=AYA/NPT/AYH/23000002 --}}

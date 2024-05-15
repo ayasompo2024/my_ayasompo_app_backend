@@ -2,12 +2,15 @@
 namespace App\Services\customer;
 
 use App\Models\AgentAccountCode;
+use App\Models\SmsPool;
 use App\Repositories\CustomerRepository;
 
 use App\Enums\AppCustomerType;
 use App\Events\CustomerRegistered;
 use App\Models\Customer;
 use App\Traits\FileUpload;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class CustomerService
 {
@@ -117,11 +120,12 @@ class CustomerService
         $selectCustomerObj = $request->select_customer_obj;
         $isExistPhones = [];
         foreach ($risk_of_policy_lists as $risk_of_policy_list) {
-            $customer = CustomerRepository::getAllByPhone("09" . $risk_of_policy_list["phone"]);
+            $customer = Customer::where("app_customer_type", 'GROUP')->where("customer_phoneno", $risk_of_policy_list["phone"])->get();
+            \Log::info($customer);
             $isExist = !empty($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
-                'phone' => "09" . $risk_of_policy_list["phone"],
+                'phone' => $risk_of_policy_list["phone"],
                 'appUsers' => $customerData
             ]);
         }
@@ -135,36 +139,64 @@ class CustomerService
     function register($request)
     {
         $recordedCustomer = [];
+        $pool = [];
         foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
-            $customer = CustomerRepository::getAllByPhone($risk_of_policy_list["phone"]);
-            if (count($customer) > 0)
-                $this->callSMSAPI("09" . $risk_of_policy_list["phone"], $this->contentForExistingCustomer($request->policy_number));
-            else
-                $this->callSMSAPI("09" . $risk_of_policy_list["phone"], $this->contentForNotExistingCustomer($request->policy_number));
-            array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number));
+            if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
+                $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
+                if ($isExistFirstProfile) {
+                    array_push($pool, [
+                        'phone' => $risk_of_policy_list["phone"],
+                        'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], "You can login with existing password !")
+                    ]);
+                    $password = $isExistFirstProfile['password'];
+                    array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number, $password));
+                } else {
+                    $genegrate_password = Str::random(6);
+                    array_push($pool, [
+                        'phone' => $risk_of_policy_list["phone"],
+                        'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], $genegrate_password)
+                    ]);
+                    $password = Hash::make($genegrate_password);
+                    array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number, $password));
+                }
+            }
+        }
+        foreach ($pool as $item) {
+            SmsPool::create([
+                'phone' => $item['phone'],
+                'content' => $item['content'],
+                'key' => "GROUP"
+            ]);
+        }
+        if(!$recordedCustomer){
+            return true;
         }
         return $recordedCustomer;
+
     }
-    private function saveCustomerToDB($select_customer_obj, $risk_of_policy_list, $policy_number)
+    private function saveCustomerToDB($select_customer_obj, $risk_of_policy_list, $policy_number, $password)
     {
+        \Log::info($select_customer_obj);
         $inputForAppCustomer = [
             "customer_code" => $select_customer_obj["customer_code"],
-            "customer_phoneno" => "09" . $risk_of_policy_list["phone"],
+            "customer_phoneno" => $risk_of_policy_list["phone"],
             "risk_seqNo" => $risk_of_policy_list["risk_seqNo"],
             "risk_name" => $risk_of_policy_list["risk_name"],
             "app_customer_type" => AppCustomerType::GROUP->value,
-            "policy_number" => $policy_number
+            "policy_number" => $policy_number,
+            'password' => $password,
+            'user_name' => $risk_of_policy_list["risk_name"],
         ];
         $appCustomer = CustomerRepository::store($inputForAppCustomer);
-        $inputForCoreCustomer = [
-            'app_customer_id' => $appCustomer->id,
-            "customer_code" => $select_customer_obj["customer_code"],
-            "customer_type" => $select_customer_obj["customer_type"],
-            "customer_name" => $select_customer_obj["customer_name"],
-            "customer_phoneno" => $select_customer_obj["customer_phoneno"],
-            "customer_nrc" => $select_customer_obj["customer_nrc"],
-        ];
-        event(new CustomerRegistered($inputForCoreCustomer));
+        // $inputForCoreCustomer = [
+        //     'app_customer_id' => $appCustomer->id,
+        //     "customer_code" => $select_customer_obj["customer_code"],
+        //     "customer_type" => $select_customer_obj["customer_type"],
+        //     "customer_name" => $select_customer_obj["customer_name"],
+        //     "customer_phoneno" => $select_customer_obj["customer_phoneno"],
+        //     "customer_nrc" => $select_customer_obj["customer_nrc"],
+        // ];
+        // event(new CustomerRegistered($inputForCoreCustomer));
         return $appCustomer;
     }
 
@@ -190,6 +222,22 @@ Please verify yourself by the link.
 http://
             
 For any assistant, please reach out to our call center. +959777100555
+EOT;
+
+    }
+
+    private function getContent($username, $phone, $password)
+    {
+        return <<<EOT
+Hello ! $username.   
+
+You have been registered successfully in MY AYASOMPO App as a GROUP(Risk) user.
+
+Username : $username.
+Phone : $phone.
+Password : $password
+
+Good luck!            
 EOT;
 
     }

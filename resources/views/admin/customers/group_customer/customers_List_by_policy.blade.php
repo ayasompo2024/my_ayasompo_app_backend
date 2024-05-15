@@ -393,10 +393,9 @@
                         });
                 },
                 addPhone(target, index) {
-                    alert("addPhone");
-                    return
                     console.log("index", index);
                     console.log("Input value:", event.target.value);
+                    return this.riskOfpolicyList[index].phone = event.target.value;
                     if (event.target.value < 100000 || event.target.value > 999999999) {
                         Swal.fire({
                             icon: 'error',

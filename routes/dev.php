@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\dev\AgentQueryController;
 use App\Http\Controllers\dev\DevOperationController;
 use App\Http\Controllers\dev\DataBaseBackupController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -22,5 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logs/file/all', [DevOperationController::class, 'getLogFileList'])->name('dev.logs.file.all');
     Route::get('logs/{file}', [DevOperationController::class, 'getLogFileContent'])->name("dev.logs.file");
+
+    // Route::resource('agent-query',AgentQueryController::class);
+    Route::get('run-agent-query/{query}',[AgentQueryController::class,'runQuery']);
 });
 

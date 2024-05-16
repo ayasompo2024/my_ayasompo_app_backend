@@ -229,15 +229,16 @@ EOT;
     private function getContent($username, $phone, $password)
     {
         return <<<EOT
-Hello ! $username.   
+Dear  $username.   
+Welcome to MY AYASOMPO App!
+We're thrilled to have you on board. Explore   our features, enjoy exclusive privileges, and make the most out of your experience. Here are your login details:
 
-You have been registered successfully in MY AYASOMPO App as a GROUP(Risk) user.
-
-Username : $username.
-Phone : $phone.
+Phone no : $phone.
 Password : $password
 
-Good luck!            
+If you haven't downloaded the "My AYASOMPO" App yet, use the links below to get started:
+For Android - https://play.google.com/store/apps/details?id=com.ml.ayasompo
+For iOS - https://apps.apple.com/th/app/aya-sompo-insurance/id1404215060
 EOT;
 
     }

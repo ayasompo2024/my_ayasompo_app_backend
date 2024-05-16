@@ -10,7 +10,6 @@ use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\WriteLogger;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\CustomerRepository;
-use App\Enums\AppCustomerType;
 use App\Traits\FileUpload;
 use App\Traits\SendPushNotification;
 
@@ -115,7 +114,6 @@ class CustomerService
         ];
         DeviceTokenRepository::store($input);
     }
-    
 }
 
 

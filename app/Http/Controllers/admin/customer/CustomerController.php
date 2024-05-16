@@ -180,7 +180,6 @@ class CustomerController extends Controller
             return $this->successResponse("Success", $data, 200);
         }
     }
-
 }
 
 

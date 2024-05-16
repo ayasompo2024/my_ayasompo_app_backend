@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
@@ -18,9 +17,6 @@ use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Customer;
-use Illuminate\Support\Str;
-
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
@@ -108,17 +104,5 @@ Route::group(
     }
     //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 );
-
 Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
 Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
-
-Route::get('test', function () {
-    return Str::random(6);
-});
-
-Route::get('/oracle', function () {
-    $data = DB::connection('oracle')->select("select PRODUCT,POL_TYPE,POL_TRANSACTION_TYPE,SUM(PREMIUM) GWP,POL_AUTHORIZED_DATE,SFC_ACC_CODE
-    from VW_POLICY_AGENT_DATA_APP 
-    Where POL_TRANSACTION_TYPE !='F'
-    group by PRODUCT,POL_TRANSACTION_TYPE,POL_TYPE,POL_AUTHORIZED_DATE,SFC_ACC_CODE");
-});

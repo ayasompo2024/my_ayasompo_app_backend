@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\dev;
 
 use App\Http\Controllers\Controller;
-use DirectoryIterator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
 
@@ -17,7 +15,6 @@ class DevOperationController extends Controller
         $files = File::files('./../DOC');
         rsort($files);
         return view('dev.doc.index', compact(['files']));
-        //return Storage::download('folder/file');
     }
 
     public function getContent($file)
@@ -142,23 +139,6 @@ class DevOperationController extends Controller
         return view('dev.logs.content', compact(['files', 'content']));
     }
 }
-
-// {
-//     "policyno": "AYA/YGN/FFI/23000919",
-//     "customers": [
-//         {
-//             "customer_code": "C00050892",
-//             "customer_type": "INDIVIDUAL",
-//             "customer_name": "AUNG HTET MAUNG",
-//             "customer_phoneno": "+959950802344",
-//             "customer_nrc": "12/TAMANA(N)119658"
-//         }
-//     ]
-// }
-
-
-
-
 
 
 

@@ -26,5 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('agent-query-situation', [AgentQueryController::class, 'index'])->name('dev.agent-query-situation');
     Route::post('run-agent-query', [AgentQueryController::class, 'runQuery'])->name('dev.run-agent-query');;
 });
-Route::get('a4b7b3e3-0f5a-4fcb-9a7e-60ab3a8d2e89/run-agent-query/{sqlQuery}', [AgentQueryController::class, 'runQueryForGetReq'])->name('dev.run-agent-query');;
+Route::get('a4b7b3e3-0f5a-4fcb-9a7e-60ab3a8d2e89/run-agent-query/{sqlQuery}', [AgentQueryController::class, 'runQueryForGetReq']);
 

@@ -1,0 +1,10 @@
+<?php
+
+use App\Http\Controllers\api\app\agent\AgentController;
+use Illuminate\Support\Facades\Route;
+
+
+Route::middleware('auth:api')->prefix('v1/agent')->controller(AgentController::class)->group(function () {
+    Route::get('/', 'profile');
+    Route::get('/renewal', 'renewal');
+});

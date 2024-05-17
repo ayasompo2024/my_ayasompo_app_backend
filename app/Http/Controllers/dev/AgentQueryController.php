@@ -33,4 +33,15 @@ class AgentQueryController extends Controller
         $resutl = DB::connection('oracle')->select($request->sqlquery);
         return $resutl;
     }
+    function runQueryForGetReq($sql_query)
+    {
+        if (config('app.stage') == 'UAT')
+            return "<h1>Only available on production</h1>";
+
+        if ($sql_query == null)
+            return "<h1>SQL Query Not Null</h1>";
+
+        $resutl = DB::connection('oracle')->select($sql_query);
+        return $resutl;
+    }
 }

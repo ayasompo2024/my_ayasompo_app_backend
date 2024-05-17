@@ -231,7 +231,7 @@ EOT;
         return <<<EOT
 Dear  $username.   
 Welcome to MY AYASOMPO App!
-We're thrilled to have you on board. Explore   our features, enjoy exclusive privileges, and make the most out of your experience. Here are your login details:
+We're thrilled to have you on board. Explore our features, enjoy exclusive privileges, and make the most out of your experience. Here are your login details:
 
 Phone no : $phone.
 Password : $password

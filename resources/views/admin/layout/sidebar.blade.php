@@ -264,7 +264,7 @@ $sidebar_menus = [
                 'route_param' => null,
                 'imag_path' => null,
                 'target' => true,
-                'icon' => 'bi bi-gear-fill',
+                'icon' => 'bi bi-database-fill-gear',
                 'sub_menus' => null,
                 'can' => ['Root'],
             ],

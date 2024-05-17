@@ -9,13 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class AgentQueryController extends Controller
 {
-
     public function index(AgentQuery $agentQuery)
     {
-        $queries = $agentQuery->all();
-        return view("dev.agent-quert", compact('queries'));
+        return view("dev.agent-quert")->with(['latest_query' => $agentQuery->latest()->first()]);
     }
-
     public function store(Request $request, AgentQuery $agentQuery)
     {
         $request->validate([
@@ -25,10 +22,15 @@ class AgentQueryController extends Controller
         return $agentQuery->create($request->only("key", 'query')) ? back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
-
-    function runQuery($agentQuery)
+    function runQuery(Request $request, AgentQuery $agentQuery)
     {
-        $resutl = DB::connection('oracle')->select($agentQuery);
+        $request->validate(['sqlquery' => 'required']);
+        $agentQuery->create(['key' => 'TEST', 'query' => $request->sqlquery]);
+
+        if (config('app.stage') == 'UAT')
+            return "<h1>Only available on production</h1>";
+
+        $resutl = DB::connection('oracle')->select($request->sqlquery);
         return $resutl;
     }
 }

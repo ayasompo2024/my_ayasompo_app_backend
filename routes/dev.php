@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logs/file/all', [DevOperationController::class, 'getLogFileList'])->name('dev.logs.file.all');
     Route::get('logs/{file}', [DevOperationController::class, 'getLogFileContent'])->name("dev.logs.file");
 
-    // Route::resource('agent-query',AgentQueryController::class);
-    Route::get('run-agent-query/{query}',[AgentQueryController::class,'runQuery']);
+    Route::get('agent-query-situation', [AgentQueryController::class, 'index'])->name('dev.agent-query-situation');
+    Route::post('run-agent-query', [AgentQueryController::class, 'runQuery'])->name('dev.run-agent-query');;
 });
 

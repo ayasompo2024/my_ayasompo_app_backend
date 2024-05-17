@@ -126,7 +126,7 @@ $sidebar_menus = [
             [
                 'display' => 'Employee',
                 'route' => 'admin.customer.filter.by-type',
-                'route_param' => "EMPLOYEE",
+                'route_param' => 'EMPLOYEE',
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-person-vcard-fill',
@@ -136,7 +136,7 @@ $sidebar_menus = [
             [
                 'display' => 'Agent',
                 'route' => 'admin.customer.filter.by-type',
-                'route_param' => "AGENT",
+                'route_param' => 'AGENT',
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-shop-window',
@@ -146,7 +146,7 @@ $sidebar_menus = [
             [
                 'display' => 'Group (Risk Level)',
                 'route' => 'admin.customer.filter.by-type',
-                'route_param' => "GROUP",
+                'route_param' => 'GROUP',
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-people-fill',
@@ -259,6 +259,16 @@ $sidebar_menus = [
         'can' => ['Root'],
         'sub_menus' => [
             [
+                'display' => 'Agent Query Situation',
+                'route' => 'dev.agent-query-situation',
+                'route_param' => null,
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-gear-fill',
+                'sub_menus' => null,
+                'can' => ['Root'],
+            ],
+            [
                 'display' => 'Setting',
                 'route' => 'admin.settings.index',
                 'route_param' => null,
@@ -353,9 +363,8 @@ $sidebar_menus = [
                                 <ul class="nav p-0 d-none ml-3 mr-3" id="{{ $key }}_menu">
                                     @foreach ($menu['sub_menus'] as $sub_menu)
                                         @if (in_array($current_auth->role, $sub_menu['can']) || in_array('*', $sub_menu['can']))
-                                            <li
-                                                class="nav-item rounded">
-                                                <a @if($sub_menu['route_param'] != null) href="{{ route($sub_menu['route'], $sub_menu['route_param']) }}"   @else href="{{ route($sub_menu['route']) }}" @endif
+                                            <li class="nav-item rounded">
+                                                <a @if ($sub_menu['route_param'] != null) href="{{ route($sub_menu['route'], $sub_menu['route_param']) }}"   @else href="{{ route($sub_menu['route']) }}" @endif
                                                     class="nav-link text-info pt-1 pb-0">
                                                     <i class="ml-3 {{ $sub_menu['icon'] }}"></i>
                                                     <p class="ml-1" style="font-size: 14px">

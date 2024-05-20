@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\api\app\agent;
 
+use App\Http\Controllers\api\app\agent\filter\FilterForClaim;
+use App\Http\Controllers\api\app\agent\filter\FilterForRenewal;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Models\AgentAccountCode;
@@ -13,25 +15,34 @@ use Illuminate\Support\Facades\Http;
 
 class AgentController extends Controller
 {
-    use ApiResponser, PrepareQuery, FormatDataForResponse;
+    use ApiResponser, PrepareQuery, FilterForRenewal, FilterForClaim, FormatDataForResponse;
 
     function renewal(Request $request)
     {
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
+
         $renewal_query = $this->prepareRenewalQuery($account_code_string, $request->from_date, $request->to_date);
         $query_result = $this->runQuery($renewal_query);
-        return $this->formatForRenewal($query_result);
+
+        $renewed_filter = $this->filterRenewed($query_result);
+        $remain_filter = $this->filterRemaining($query_result);
+        return $this->formatForRenewal($renewed_filter, $remain_filter, $request->from_date, $request->to_date);
     }
     function claim(Request $request)
     {
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
+
         $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
         $query_result = $this->runQuery($claim_query);
-        return $this->formatForRenewal($query_result);
+
+        $paid = $this->paid($query_result);
+        $open = $this->open($query_result);
+        $closed = $this->closed($query_result);
+        return $this->formatForClaim($paid,$open,$closed,$request->from_date, $request->to_date);
     }
     function profile(Request $request, Customer $customer)
     {

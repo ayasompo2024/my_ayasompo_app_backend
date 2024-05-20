@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api\app\agent;
+namespace App\Http\Controllers\api\app\agent\response;
 
 use Carbon\Carbon;
 

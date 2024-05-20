@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\admin\agent\LeaderBoardController;
+use App\Http\Controllers\admin\agent\TrainingResourceController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
@@ -73,6 +75,9 @@ Route::group(
 
         Route::resource('location-map', LocationMapController::class);
         Route::resource('location-map-category', LocationMapCategoryController::class);
+        Route::resource('agent/leaderboard', LeaderBoardController::class);
+        Route::resource('agent/training-resource', TrainingResourceController::class);
+        
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);

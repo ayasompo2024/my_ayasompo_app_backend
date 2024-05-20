@@ -4,9 +4,12 @@ namespace App\Http\Controllers\api\app\agent;
 
 use App\Http\Controllers\api\app\agent\filter\FilterForClaim;
 use App\Http\Controllers\api\app\agent\filter\FilterForRenewal;
+use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
+use App\Http\Controllers\api\app\agent\response\NotiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Models\AgentAccountCode;
+use App\Models\AgentNoti;
 use App\Models\Customer;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
@@ -15,7 +18,7 @@ use Illuminate\Support\Facades\Http;
 
 class AgentController extends Controller
 {
-    use ApiResponser, PrepareQuery, FilterForRenewal, FilterForClaim, FormatDataForResponse;
+    use ApiResponser, PrepareQuery, FilterForRenewal, FilterForClaim, FormatDataForResponse, NotiResponse;
 
     function renewal(Request $request)
     {
@@ -42,7 +45,26 @@ class AgentController extends Controller
         $paid = $this->paid($query_result);
         $open = $this->open($query_result);
         $closed = $this->closed($query_result);
-        return $this->formatForClaim($paid,$open,$closed,$request->from_date, $request->to_date);
+        return $this->formatForClaim($paid, $open, $closed, $request->from_date, $request->to_date);
+    }
+    function noti(Request $request, AgentNoti $agentNoti)
+    {
+        $agent = $this->getCurrentAuthAgent($request->user());
+        $notis = $agentNoti->select('title', 'message', 'type', 'image', 'is_read', 'id')->where("customer_id", $agent->id)->get();
+        return $this->noitResponse($notis);
+    }
+    function readNoti($id, Request $request, AgentNoti $agentNoti)
+    {
+        $status = $agentNoti->find($id)->update(['is_read' => 1]);
+        return $status ? response()->json(['message' => "Success", 'status' => 200]) : response()->json(['message' => "Fail", 'status' => 200]);
+    }
+    function leaderBoard(Request $request)
+    {
+        return [
+            'title' => '',
+            'date' => '',
+            'agent' => []
+        ];
     }
     function profile(Request $request, Customer $customer)
     {

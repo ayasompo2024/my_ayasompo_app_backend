@@ -137,13 +137,11 @@ class AddNewAgentImport implements ToCollection
         return <<<EOT
 Hello ! $username.   
 
-You have been registered successfully in MY AYASOMPO App as a AGENT user.
+You have been registered successfully in MY AYASOMPO App as an AGENT user.
 
-Username : $username.
 Phone : $phone.
 Password : $password
 
-Good luck!            
 EOT;
 
     }

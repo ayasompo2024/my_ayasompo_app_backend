@@ -31,7 +31,7 @@ trait FormatDataForResponse
     }
     private function getAcceptedField($rows)
     {
-        $fields = ['policy_no', 'customer_name', 'phone_number', 'product_name', 'expiry_date','status'];
+        $fields = ['policy_no', 'customer_name', 'phone_number', 'product_name', 'expiry_date', 'status'];
         return collect($rows)
             ->map(function ($item) use ($fields) {
                 return collect($item)
@@ -42,7 +42,7 @@ trait FormatDataForResponse
             ->all();
     }
 
-    function formatForClaim($paid_rows, $open_rows, $closed_rows, $from, $to)
+    function formatForClaim($paid_rows, $open_rows, $outstanding, $closed_rows, $from, $to)
     {
         return [
             'data' => [
@@ -52,12 +52,14 @@ trait FormatDataForResponse
                     'total' => count($paid_rows) + count($open_rows) + count($closed_rows),
                     'paid' => count($paid_rows),
                     'open' => count($open_rows),
+                    'outstanding' => count($outstanding),
                     'closed' => count($closed_rows)
                 ],
                 'detail' => [
-                    'opened_claim' => [],
-                    'paid_claim' => [],
-                    'closed_claim' => []
+                    'open' => $open_rows,
+                    'paid' => $paid_rows,
+                    'outstanding' => $outstanding,
+                    'closed' => $closed_rows,
                 ]
             ]
         ];

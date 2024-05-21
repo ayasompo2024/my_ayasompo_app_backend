@@ -15,6 +15,11 @@ class CreateLeaderBoardsTable extends Migration
     {
         Schema::create('leader_boards', function (Blueprint $table) {
             $table->id();
+            $table->string('campaign_title');
+            $table->string('name');
+            $table->integer('points');
+            $table->string('phone');
+            $table->integer('customer_id')->nullable();
             $table->timestamps();
         });
     }
@@ -29,3 +34,9 @@ class CreateLeaderBoardsTable extends Migration
         Schema::dropIfExists('leader_boards');
     }
 }
+
+
+
+
+
+

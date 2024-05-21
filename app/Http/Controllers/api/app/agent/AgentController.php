@@ -5,12 +5,14 @@ namespace App\Http\Controllers\api\app\agent;
 use App\Http\Controllers\api\app\agent\filter\FilterForClaim;
 use App\Http\Controllers\api\app\agent\filter\FilterForRenewal;
 use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
+use App\Http\Controllers\api\app\agent\response\LeaderBoardResponse;
 use App\Http\Controllers\api\app\agent\response\NotiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Models\AgentAccountCode;
 use App\Models\AgentNoti;
 use App\Models\Customer;
+use App\Models\LeaderBoard;
 use App\Models\TrainingResource;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
@@ -19,7 +21,13 @@ use Illuminate\Support\Facades\Http;
 
 class AgentController extends Controller
 {
-    use ApiResponser, PrepareQuery, FilterForRenewal, FilterForClaim, FormatDataForResponse, NotiResponse;
+    use ApiResponser,
+        PrepareQuery,
+        FilterForRenewal,
+        FilterForClaim,
+        LeaderBoardResponse,
+        FormatDataForResponse,
+        NotiResponse;
 
     function renewal(Request $request)
     {
@@ -39,13 +47,14 @@ class AgentController extends Controller
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
         $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
-        
+
         $query_result = $this->runQuery($claim_query);
 
         $paid = $this->paid($query_result);
         $open = $this->open($query_result);
+        $outstanding = $this->outstanding($query_result);
         $closed = $this->closed($query_result);
-        return $this->formatForClaim($paid, $open, $closed, $request->from_date, $request->to_date);
+        return $this->formatForClaim($paid, $open, $outstanding, $closed, $request->from_date, $request->to_date);
     }
     function noti(Request $request, AgentNoti $agentNoti)
     {
@@ -60,11 +69,9 @@ class AgentController extends Controller
     }
     function leaderBoard(Request $request)
     {
-        return [
-            'title' => '',
-            'date' => '',
-            'agent' => []
-        ];
+        $agent = $this->getCurrentAuthAgent($request->user());
+        $leaders = LeaderBoard::select('campaign_title', 'name', 'points', 'phone', 'customer_id')->with('profile:id,profile_photo')->orderByDesc("points")->get();
+        return $this->leaderBoardRes($leaders, $agent);
     }
     function trainingResource(Request $request, TrainingResource $trainingResource)
     {

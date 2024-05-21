@@ -9,7 +9,14 @@ class LeaderBoard extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date',
-        'title'
+        'campaign_title',
+        'name',
+        'points',
+        'phone',
+        'customer_id'
     ];
+    function profile()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }

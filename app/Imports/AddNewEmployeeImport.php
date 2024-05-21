@@ -14,7 +14,6 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Facades\Http;
 use App\Traits\WriteLogger;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class AddNewEmployeeImport implements ToCollection
 {
@@ -119,11 +118,9 @@ Hello ! $username.
 
 You have been registered successfully in MY AYASOMPO App as a EMPLOYEE user.
 
-Username : $username.
 Phone : $phone.
 Password : $password
 
-Good luck!            
 EOT;
 
     }

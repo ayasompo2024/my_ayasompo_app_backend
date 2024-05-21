@@ -78,7 +78,6 @@ Route::group(
         Route::resource('agent/leaderboard', LeaderBoardController::class);
         Route::resource('agent/training-resource', TrainingResourceController::class);
         Route::put('agent/training-resource/status/toggle/{id}', [TrainingResourceController::class,'toggleStatus']);
-        
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);

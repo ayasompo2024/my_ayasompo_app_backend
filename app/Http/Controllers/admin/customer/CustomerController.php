@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin\customer;
 
 use App\Http\Controllers\Controller;
-
 use App\Imports\AddNewAgentImport;
 use App\Models\AgentAccountCode;
 use App\Models\SmsPool;
@@ -17,7 +16,6 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-
     use ApiResponser;
     public function index(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
@@ -27,7 +25,6 @@ class CustomerController extends Controller
         }
         return view('admin.customers.index')->with('customers', $customerService->index(10, $current_auth));
     }
-
     public function edit($id, CustomerService $customerService)
     {
         $customer = Customer::with('employeeInfo', 'agentInfo', 'accountCodes')->find($id);
@@ -91,9 +88,9 @@ class CustomerController extends Controller
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
-
     public function addNewEmployeeUser(Request $request)
     {
+        $request->validate(['add_employee_user_file' => 'required|mimes:xlsx,csv']);
         $status = Excel::import(new AddNewEmployeeImport, $request->add_employee_user_file);
         return $status ?
             back()->with(['success' => 'Successfully!']) :
@@ -102,12 +99,12 @@ class CustomerController extends Controller
 
     function addNewAgentUser(Request $request)
     {
+        $request->validate(['add_agent_user_file' => 'required|mimes:xlsx,csv']);
         $status = Excel::import(new AddNewAgentImport, $request->add_agent_user_file);
         return $status ?
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
-
     function updateAgent($id, Request $request, CustomerService $customerService)
     {
         $status = $customerService->updateForAgent($id, $request);
@@ -115,7 +112,6 @@ class CustomerController extends Controller
             back()->with("success", "Success") :
             back() > with("fail", "Fail");
     }
-
     function deleteAgentCode($id, CustomerService $customerService)
     {
         $status = $customerService->deleteAgentCode($id);
@@ -139,7 +135,6 @@ class CustomerController extends Controller
             back()->with("success", "Success") :
             back() > with("fail", "Fail");
     }
-
     function pool()
     {
         return view('admin.customers.pool')->with('pool', SmsPool::orderByDesc("id")->get());
@@ -161,7 +156,6 @@ class CustomerController extends Controller
             $this->successResponse("Request Success", $status, 200) :
             $this->errorResponse("Fail", 500);
     }
-
     public function resolve(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
         if ($request->is_sended_sms != 1) {

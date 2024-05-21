@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-lg-8">
                                 <input id="file" type="file" name="training_file" required autocomplete="title"
-                                    class="form-control form-control-sm py-0 pl-2" placeholder="Enter title">
+                                    class="btn btn-sm border p-1 w-100 inputfile" placeholder="Enter title">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -69,3 +69,21 @@
         </div>
     </div>
 @endsection
+
+@push('child-css')
+    <style>
+        input[type=file]::file-selector-button {
+            border: 0;
+            background: #ce123c;
+            padding: 5px;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            transition: background .2s ease-in-out;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background: #0d45a5;
+        }
+    </style>
+@endpush

@@ -77,6 +77,7 @@ Route::group(
         Route::resource('location-map-category', LocationMapCategoryController::class);
         Route::resource('agent/leaderboard', LeaderBoardController::class);
         Route::resource('agent/training-resource', TrainingResourceController::class);
+        Route::put('agent/training-resource/status/toggle/{id}', [TrainingResourceController::class,'toggleStatus']);
         
 
         Route::group(['namepsace' => 'customer'], function () {

@@ -9,4 +9,5 @@ Route::middleware('auth:api')->prefix('v1/agent')->controller(AgentController::c
     Route::get('/noti', 'noti');
     Route::put('/noti/read/{id}', 'readNoti');
     Route::get('/leader-board', 'leaderBoard');
+    Route::get('/training-resource', 'trainingResource');
 });

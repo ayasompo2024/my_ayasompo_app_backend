@@ -11,6 +11,7 @@ use App\Http\Resources\api\app\CustomerRsource;
 use App\Models\AgentAccountCode;
 use App\Models\AgentNoti;
 use App\Models\Customer;
+use App\Models\TrainingResource;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,6 @@ class AgentController extends Controller
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
-
         $renewal_query = $this->prepareRenewalQuery($account_code_string, $request->from_date, $request->to_date);
         $query_result = $this->runQuery($renewal_query);
 
@@ -38,8 +38,8 @@ class AgentController extends Controller
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
-
         $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
+        
         $query_result = $this->runQuery($claim_query);
 
         $paid = $this->paid($query_result);
@@ -56,7 +56,7 @@ class AgentController extends Controller
     function readNoti($id, Request $request, AgentNoti $agentNoti)
     {
         $status = $agentNoti->find($id)->update(['is_read' => 1]);
-        return $status ? response()->json(['message' => "Success", 'status' => 200]) : response()->json(['message' => "Fail", 'status' => 200]);
+        return $status ? response()->json(['message' => "Success", 'status' => 200]) : response()->json(['message' => "Fail", 'status' => 500]);
     }
     function leaderBoard(Request $request)
     {
@@ -65,6 +65,11 @@ class AgentController extends Controller
             'date' => '',
             'agent' => []
         ];
+    }
+    function trainingResource(Request $request, TrainingResource $trainingResource)
+    {
+        $tr = $trainingResource->select('title', 'file', 'description')->where("status", 1)->orderByDesc("sort")->get();
+        return $tr ? response()->json(['message' => "Success", 'status' => 200, 'data' => $tr]) : response()->json(['message' => "Fail", 'status' => 500]);
     }
     function profile(Request $request, Customer $customer)
     {

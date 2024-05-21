@@ -15,6 +15,11 @@ class CreateTrainingResourcesTable extends Migration
     {
         Schema::create('training_resources', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('file');
+            $table->text('description')->nullable();
+            $table->text('description_for_admin')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }
@@ -29,3 +34,8 @@ class CreateTrainingResourcesTable extends Migration
         Schema::dropIfExists('training_resources');
     }
 }
+
+
+
+
+

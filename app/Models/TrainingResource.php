@@ -12,6 +12,8 @@ class TrainingResource extends Model
         'title',
         'file',
         'description',
-        'sort'
+        'sort',
+        'description_for_admin',
+        'status'
     ];
 }

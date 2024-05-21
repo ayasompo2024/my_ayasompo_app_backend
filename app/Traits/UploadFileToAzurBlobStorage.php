@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Traits;
-
 use GuzzleHttp\Client;
-
 
 trait UploadFileToAzurBlobStorage
 {
@@ -35,7 +33,6 @@ trait UploadFileToAzurBlobStorage
             throw $e;
         }
     }
-
     function realUpload($httpClient, $file)
     {
         $upload_file_url = config("app.FILE_UPLOAD_BASE_URL") . "api/external/files";

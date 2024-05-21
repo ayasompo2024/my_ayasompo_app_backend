@@ -16,7 +16,7 @@ trait FilterForClaim
     {
         $collection = collect($claim_query_result);
         return $collection->filter(function ($item) {
-            return $item['status'] == 'Closed';
+            return $item['status'] == 'Close Claim';
         })->values();
     }
     function paid($claim_query_result)

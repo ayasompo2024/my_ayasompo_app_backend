@@ -23,7 +23,8 @@ class Customer extends Authenticatable
         "risk_name",
         "policy_number",
         "is_disabled",
-        "disabled_from"
+        "disabled_from",
+        'last_logined_at'
     ];
     function core()
     {

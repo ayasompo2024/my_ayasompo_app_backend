@@ -4,8 +4,6 @@ namespace App\Http\Controllers\api\internal;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\InternalAccessList;
-
 use App\Services\api\internal\AuthService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;

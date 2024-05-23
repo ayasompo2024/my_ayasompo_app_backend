@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\api\app;
 
+use App\Models\Customer;
+use App\Repositories\CustomerRepository;
 use App\Services\api\app\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
@@ -40,13 +42,14 @@ trait Auth
                 return $this->errorResponse("Account Has been disabled ", 202);
         }
         if ($status) {
+            $this->lastLoginTime($status['customer']['customer_phoneno']);
             $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);
             return $this->successResponse("Login Success", $status, 200);
         } else {
             return $this->respondUnAuthorized("Credentials Not Found");
         }
     }
-    
+
     private function registerValidation($request)
     {
         return Validator::make($request->all(), [
@@ -78,6 +81,11 @@ trait Auth
             'password' => 'required',
             "device_token" => 'nullable'
         ]);
+    }
+
+    private function lastLoginTime($phone)
+    {
+        Customer::where("customer_phoneno", $phone)->update(['last_logined_at' => now()]);
     }
 }
 

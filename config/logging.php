@@ -73,6 +73,11 @@ return [
             'path' => storage_path('logs/claim.log'),
             'level' => 'info',
         ],
+        'agent_query' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/agent_query.log'),
+            'level' => 'info',
+        ],
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],

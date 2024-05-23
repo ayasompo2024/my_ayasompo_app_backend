@@ -9,14 +9,14 @@ trait FilterForClaim
     {
         $collection = collect($claim_query_result);
         return $collection->filter(function ($item) {
-            return $item['status'] === 'Open';
+            return $item['status'] == 'Open';
         })->values();
     }
     function outstanding($claim_query_result)
     {
         $collection = collect($claim_query_result);
         return $collection->filter(function ($item) {
-            return $item['status'] === 'Outstanding';
+            return $item['status'] == 'Outstanding';
         })->values();
     }
     function closed($claim_query_result)

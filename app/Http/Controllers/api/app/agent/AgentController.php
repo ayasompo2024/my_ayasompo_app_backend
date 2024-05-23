@@ -15,6 +15,7 @@ use App\Models\Customer;
 use App\Models\LeaderBoard;
 use App\Models\TrainingResource;
 use App\Traits\api\ApiResponser;
+use App\Traits\WriteLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -27,15 +28,19 @@ class AgentController extends Controller
         FilterForClaim,
         LeaderBoardResponse,
         FormatDataForResponse,
-        NotiResponse;
+        NotiResponse,
+        WriteLogger;
 
     function renewal(Request $request)
     {
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
+
         $renewal_query = $this->prepareRenewalQuery($account_code_string, $request->from_date, $request->to_date);
+        $this->writeLog('agent_query', 'renewal_query', $renewal_query, true);
         $query_result = $this->runQuery($renewal_query);
+        $this->writeLog('agent_query', 'renewal_query_result', $query_result, false);
 
         $renewed_filter = $this->filterRenewed($query_result);
         $remain_filter = $this->filterRemaining($query_result);
@@ -46,9 +51,11 @@ class AgentController extends Controller
         $agent = $this->getCurrentAuthAgent($request->user());
         $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
         $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
-        $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
 
+        $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
+        $this->writeLog('agent_query', 'claim_query', $claim_query, true);
         $query_result = $this->runQuery($claim_query);
+        $this->writeLog('agent_query', 'claim_query_result', $query_result, false);
 
         $paid = $this->paid($query_result);
         $open = $this->open($query_result);
@@ -106,7 +113,8 @@ class AgentController extends Controller
             return $response->json();
 
         } else {
-            return DB::connection('oracle')->select($sqlquery);
+            $results = DB::connection('oracle')->select($sqlquery);
+            return json_decode(json_encode($results), true);
         }
     }
 }

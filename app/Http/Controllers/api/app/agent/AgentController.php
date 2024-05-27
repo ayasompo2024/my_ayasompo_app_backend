@@ -8,6 +8,7 @@ use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
 use App\Http\Controllers\api\app\agent\response\LeaderBoardResponse;
 use App\Http\Controllers\api\app\agent\response\NotiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\api\app\agent\AgentListResource;
 use App\Http\Resources\api\app\CustomerRsource;
 use App\Models\AgentAccountCode;
 use App\Models\AgentNoti;
@@ -89,6 +90,12 @@ class AgentController extends Controller
     {
         $current_agent = $customer->with('agentInfo')->where('customer_phoneno', $request->user()->customer_phoneno)->where('app_customer_type', 'AGENT')->first();
         return $this->successResponse("Here is current agent profile", new CustomerRsource($current_agent), 200);
+    }
+
+    function getAllAgentProfile(Request $request, Customer $customer)
+    {
+        $agents = $customer->with('agentInfo','accountCodes:customer_id,code')->where('app_customer_type', 'AGENT')->get();
+        return $this->successResponse("All Agents Profile List", AgentListResource::collection($agents), 200);
     }
     private function getAgentAccountCodeByCustomerID($profile)
     {

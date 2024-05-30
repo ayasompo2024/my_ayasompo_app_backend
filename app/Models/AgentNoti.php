@@ -9,12 +9,13 @@ class AgentNoti extends Model
 {
     use HasFactory;
 
-    protected $fillable =  [
+    protected $fillable = [
         'customer_id',
         'title',
         'message',
         'type',
         'image',
-        'is_read'
+        'is_read',
+        "noti_received_date"
     ];
 }

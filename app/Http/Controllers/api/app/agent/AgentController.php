@@ -67,7 +67,7 @@ class AgentController extends Controller
     function noti(Request $request, AgentNoti $agentNoti)
     {
         $agent = $this->getCurrentAuthAgent($request->user());
-        $notis = $agentNoti->select('title', 'message', 'type', 'image', 'is_read', 'id')->where("customer_id", $agent->id)->get();
+        $notis = $agentNoti->select('title', 'message', 'type', 'image', 'is_read', 'id','noti_received_date')->where("customer_id", $agent->id)->get();
         return $this->noitResponse($notis);
     }
     function readNoti($id, Request $request, AgentNoti $agentNoti)

@@ -48,6 +48,7 @@ class AgentController extends Controller
     }
     private function saveNoti($row)
     {
+        $row['noti_received_date'] = now();
         return AgentNoti::create($row);
     }
     private function getContent($request)

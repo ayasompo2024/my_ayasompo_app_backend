@@ -238,7 +238,7 @@ Password : $password
 
 If you haven't downloaded the "My AYASOMPO" App yet, use the links below to get started:
 For Android - https://play.google.com/store/apps/details?id=com.ml.ayasompo
-For iOS - https://apps.apple.com/th/app/aya-sompo-insurance/id1404215060
+For iOS - https://apps.apple.com/us/app/my-ayasompo/id6475663317
 EOT;
 
     }

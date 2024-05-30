@@ -150,7 +150,7 @@ $sidebar_menus = [
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-people-fill',
-                'can' => ['HR', 'Root'],
+                'can' => ['HR', 'Root','Corporate'],
                 'sub_menus' => null,
             ],
             /** [

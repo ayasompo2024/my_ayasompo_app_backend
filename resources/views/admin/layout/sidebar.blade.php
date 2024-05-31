@@ -204,7 +204,7 @@ $sidebar_menus = [
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-bell-fill',
-        'can' => ['Root'],
+        'can' => ['*'],
         'sub_menus' => [
             [
                 'display' => 'Recent Message',

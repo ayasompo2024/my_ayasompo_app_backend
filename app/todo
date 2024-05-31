@@ -1,0 +1,138 @@
+Ko @Spidey Shine 
+Backend မှာ admin user create လုပ်ပြီးတဲ့နောက်ပိုင်း
+
+forgot password ဖြစ်လို့ change password 
+role mapping အဲဒါတွေ မတွေ့လို့
+-------------------------------
+
+select * from Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215')
+{
+    "agent_name": "YANGON BRANCH",
+    "account_code": "Y-100-9007-90012",
+    "policy_date": "01-2021",
+    "receipt_date": "03-2021",
+    "all_product_gwp": "248667307.92",
+    "3m_all": "FALSE",
+    "5m_all": "FALSE",
+    "7m_all": "FALSE",
+    "motor_gwp": "0",
+    "3m_m": "TRUE",
+    "5m_m": "FALSE",
+    "7m_m": "FALSE",
+    "non_motor_gwp": "248667307.92",
+    "3m_n": "FALSE",
+    "5m_n": "FALSE",
+    "7m_n": "FALSE"
+},
+
+Bronze
+Silver
+Gold
+Platinum
+
+// Bravo! You've unlocked your first Badge.
+
+[
+    "from_date": "01-2021",
+    "to_date": "03-2021",
+    "total_sale_amount": "5,000,000",
+
+    "tier_number": 3,
+    "tier_name": "Gold (Tier III)",
+    "total_sale_humna_format": "5 Millions",
+    "is_unlocked_first_badge" : true,
+
+    "messages": [
+        [
+            "message": "You've hit the halfway mark towards your sales target. Keep up the great work!",
+            "sale_amount": 1.5,
+            "is_paint": true,
+            "tier": null,
+        ],
+        [
+            "message": "Just 0.5 Mil away from your [3 Mil] target.Just a final effort and victory is within your grasp!",
+            "sale_amount": 2.5,
+            "is_paint": true,
+            "tier": null,
+        ],
+        [
+            "message": "You've surpassed your [3 Mil] target, demonstrating unparalleled dedication and skill. Celebrate your success, you've earned it!",
+            "sale_amount": 3,
+            "is_paint": true
+            "tier": 1,
+        ],
+        [
+            "message": "Just 0.5 mil away from your [5 Mil] target.With your prowess and drive, victory is within reach. Keep forging ahead!",
+            "sale_amount": 4.5,
+            "is_paint": true
+            "tier": 1,
+        ],
+        [
+            "message": "Reaching your [5 Mil] target, showcasing your unwavering dedication and expertise. Revel in your success, you've reached new heights!",
+            "sale_amount": 5,
+            "is_paint": true
+            "tier": 2,
+        ],
+        [
+            "message": "Just 0.5 million away from your [7 Mil] target.A small push now will propel you to unparalleled success. Keep your sights set high!",
+            "sale_amount": 6.5,
+            "is_paint": true
+            "tier": 2,
+        ],
+        [
+            "message": "Congratulations on achieving your [7 Mil] target! Your dedication and hard work have paid off brilliantly. Here's to your continued success and exceeding even greater milestones!",
+            "sale_amount": 7,
+            "is_paint": false
+            "tier": 3,
+        ],
+        [
+            "message": "Just 0.5 million away from your [12 Mil] target.You're one step closer to achieving extraordinary results. Victory is on the horizon!",
+            "sale_amount": 11.5,
+            "is_paint": false
+            "tier": 3,
+        ],
+        [
+            "message": "Mission accomplished! Congratulations on scaling the summit of success! By surpassing the [12 Mil] target, you've unlocked exordinary milstones. Cheers to your remarkable victory!",
+            "sale_amount": 11.5,
+            "is_paint": false
+            "tier": 4,
+        ],
+    ],
+]   
+
+
+
+
+select * from Vw_Policy_Agent_Quarterly_App WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215')
+{
+    "agent_name": "DIRECT PORTAL",
+    "account_code": "Y-100-9007-90012",
+    "policy_date": "APR_JUN 2024",
+    "receipt_date": "APR_JUN 2024",
+    "all_product_gwp": "57000",
+    "10m_all": "FALSE",
+    "15m_all": "FALSE",
+    "30m_all": "FALSE",
+    "60m_all": "FALSE",
+    "motor_gwp": "0",
+    "10m_m": "FALSE",
+    "15m_m": "FALSE",
+    "30m_m": "FALSE",
+    "60m_m": "FALSE",
+    "non_motor_gwp": "57000",
+    "10m_n": "FALSE",
+    "15m_n": "FALSE",
+    "30m_n": "FALSE",
+    "60m_n": "FALSE"
+},
+
+
+
+
+$tier_one = 3000000
+$tier_two = 5000000
+$tier_three = 7000000
+$tier_four = 12000000
+
+
+

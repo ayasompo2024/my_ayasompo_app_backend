@@ -2,72 +2,60 @@
 
 namespace App\Http\Controllers\api\app\agent;
 
-use App\Http\Controllers\api\app\agent\filter\FilterForClaim;
-use App\Http\Controllers\api\app\agent\filter\FilterForRenewal;
+
+
 use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
 use App\Http\Controllers\api\app\agent\response\LeaderBoardResponse;
 use App\Http\Controllers\api\app\agent\response\NotiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\agent\AgentListResource;
 use App\Http\Resources\api\app\CustomerRsource;
-use App\Models\AgentAccountCode;
 use App\Models\AgentNoti;
 use App\Models\Customer;
 use App\Models\LeaderBoard;
 use App\Models\TrainingResource;
+use App\Services\api\app\agent\AgentService;
 use App\Traits\api\ApiResponser;
-use App\Traits\WriteLogger;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
+
 
 class AgentController extends Controller
 {
     use ApiResponser,
-        PrepareQuery,
-        FilterForRenewal,
-        FilterForClaim,
         LeaderBoardResponse,
         FormatDataForResponse,
-        NotiResponse,
-        WriteLogger;
+        NotiResponse;
 
-    function renewal(Request $request)
+    function renewal(Request $request, AgentService $agentService)
     {
-        $agent = $this->getCurrentAuthAgent($request->user());
-        $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
-        $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
-
-        $renewal_query = $this->prepareRenewalQuery($account_code_string, $request->from_date, $request->to_date);
-        $this->writeLog('agent_query', 'renewal_query', $renewal_query, true);
-        $query_result = $this->runQuery($renewal_query);
-        $this->writeLog('agent_query', 'renewal_query_result', $query_result, false);
-
-        $renewed_filter = $this->filterRenewed($query_result);
-        $remain_filter = $this->filterRemaining($query_result);
-        return $this->formatForRenewal($renewed_filter, $remain_filter, $request->from_date, $request->to_date);
+        $renewal = $agentService->renewal($request);
+        return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
     }
-    function claim(Request $request)
+
+    function claim(Request $request, AgentService $agentService)
     {
-        $agent = $this->getCurrentAuthAgent($request->user());
-        $agent_account_codes = $this->getAgentAccountCodeByCustomerID($agent);
-        $account_code_string = $this->agentAccountCodesAsStringFormat($agent_account_codes);
-
-        $claim_query = $this->prepareClaimQuery($account_code_string, $request->from_date, $request->to_date);
-        $this->writeLog('agent_query', 'claim_query', $claim_query, true);
-        $query_result = $this->runQuery($claim_query);
-        $this->writeLog('agent_query', 'claim_query_result', $query_result, false);
-
-        $paid = $this->paid($query_result);
-        $open = $this->open($query_result);
-        $outstanding = $this->outstanding($query_result);
-        $closed = $this->closed($query_result);
-        return $this->formatForClaim($paid, $open, $outstanding, $closed, $request->from_date, $request->to_date);
+        $claim = $agentService->claim($request);
+        return $this->formatForClaim(
+            $claim['paid'],
+            $claim['open'],
+            $claim['outstanding'],
+            $claim['closed'],
+            $request->from_date,
+            $request->to_date
+        );
     }
-    function noti(Request $request, AgentNoti $agentNoti)
+
+    function monthlySale(Request $request, AgentService $agentService)
     {
-        $agent = $this->getCurrentAuthAgent($request->user());
-        $notis = $agentNoti->select('title', 'message', 'type', 'image', 'is_read', 'id','noti_received_date')->where("customer_id", $agent->id)->get();
+        $monthlySale = $agentService->monthlySale($request);
+        return $monthlySale;
+    }
+
+    function noti(Request $request, AgentNoti $agentNoti, AgentService $agentService)
+    {
+        $agent = $agentService->getCurrentAuthAgent($request->user());
+        $notis = $agentNoti->select('title', 'message', 'type', 'image', 'is_read', 'id', 'noti_received_date')->where("customer_id", $agent->id)->get();
         return $this->noitResponse($notis);
     }
     function readNoti($id, Request $request, AgentNoti $agentNoti)
@@ -75,10 +63,10 @@ class AgentController extends Controller
         $status = $agentNoti->find($id)->update(['is_read' => 1]);
         return $status ? response()->json(['message' => "Success", 'status' => 200]) : response()->json(['message' => "Fail", 'status' => 500]);
     }
-    function leaderBoard(Request $request)
+    function leaderBoard(Request $request, AgentService $agentService, LeaderBoard $leaderBoard)
     {
-        $agent = $this->getCurrentAuthAgent($request->user());
-        $leaders = LeaderBoard::select('campaign_title', 'name', 'points', 'phone', 'customer_id')->with('profile:id,profile_photo')->orderByDesc("points")->get();
+        $agent = $agentService->getCurrentAuthAgent($request->user());
+        $leaders = $leaderBoard->select('campaign_title', 'name', 'points', 'phone', 'customer_id')->with('profile:id,profile_photo')->orderByDesc("points")->get();
         return $this->leaderBoardRes($leaders, $agent);
     }
     function trainingResource(Request $request, TrainingResource $trainingResource)
@@ -94,34 +82,7 @@ class AgentController extends Controller
 
     function getAllAgentProfile(Request $request, Customer $customer)
     {
-        $agents = $customer->with('agentInfo','accountCodes:customer_id,code')->where('app_customer_type', 'AGENT')->get();
+        $agents = $customer->with('agentInfo', 'accountCodes:customer_id,code')->where('app_customer_type', 'AGENT')->get();
         return $this->successResponse("All Agents Profile List", AgentListResource::collection($agents), 200);
-    }
-    private function getAgentAccountCodeByCustomerID($profile)
-    {
-        return AgentAccountCode::select('customer_id', 'code')->where('customer_id', $profile->id)->get();
-    }
-    private function getCurrentAuthAgent($user)
-    {
-        return Customer::select('id', 'customer_code', 'customer_phoneno', 'user_name', 'app_customer_type', 'profile_photo')->where('customer_phoneno', $user->customer_phoneno)->where('app_customer_type', 'AGENT')->first();
-    }
-    private function agentAccountCodesAsStringFormat($agent_account_code_array)
-    {
-        $collection = collect($agent_account_code_array);
-        $concatenatedCodes = $collection->pluck('code')->implode("','");
-        $concatenatedCodes = "'" . $concatenatedCodes . "'";
-        return $concatenatedCodes;
-    }
-    private function runQuery($sqlquery)
-    {
-        if (config('app.stage') == 'UAT') {
-            $url = "https://myayasompo.ayasompo.com/dev/a4b7b3e3-0f5a-4fcb-9a7e-60ab3a8d2e89/run-agent-query/" . $sqlquery;
-            $response = Http::withOptions(['verify' => false])->get($url);
-            return $response->json();
-
-        } else {
-            $results = DB::connection('oracle')->select($sqlquery);
-            return json_decode(json_encode($results), true);
-        }
     }
 }

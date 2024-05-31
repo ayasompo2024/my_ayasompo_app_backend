@@ -186,6 +186,7 @@ class CustomerService
             "policy_number" => $policy_number,
             'password' => $password,
             'user_name' => $risk_of_policy_list["risk_name"],
+            "last_logined_at" => now()
         ];
         $appCustomer = CustomerRepository::store($inputForAppCustomer);
         // $inputForCoreCustomer = [
@@ -229,7 +230,7 @@ EOT;
     private function getContent($username, $phone, $password)
     {
         return <<<EOT
-Dear  $username.   
+Dear $username,   
 Welcome to MY AYASOMPO App!
 We're thrilled to have you on board. Explore our features, enjoy exclusive privileges, and make the most out of your experience. Here are your login details:
 

@@ -214,7 +214,7 @@ $sidebar_menus = [
                 'target' => false,
                 'icon' => 'bi bi-clock-history',
                 'sub_menus' => null,
-                'can' => ['Root'],
+                'can' => ['*'],
             ],
         ],
     ],

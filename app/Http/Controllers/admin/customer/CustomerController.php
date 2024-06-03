@@ -11,6 +11,9 @@ use App\Services\customer\CustomerService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Search\CustomerSearchAspect;
+
+use Spatie\Searchable\Search;
 
 class CustomerController extends Controller
 {
@@ -51,7 +54,13 @@ class CustomerController extends Controller
     }
     public function searchByPhone(Request $request, CustomerService $customerService)
     {
-        $customers = $customerService->getAllCustomerByPhone($request->phone);
+        $term = $request->phone;
+        $customers = Customer::query()
+            ->where('customer_phoneno', 'LIKE', "%{$term}%")
+            ->orWhere('customer_code', 'LIKE', "%{$term}%")
+            ->orWhere('user_name', 'LIKE', "%{$term}%")
+            ->orWhere('policy_number', 'LIKE', "%{$term}%")
+            ->paginate();
         return view('admin.customers.index')->with('customers', $customers);
     }
     public function toggleDisabled($id, CustomerService $customerService)

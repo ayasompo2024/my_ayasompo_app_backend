@@ -13,4 +13,5 @@ Route::middleware('auth:api')->prefix('v1/agent')->controller(AgentController::c
     Route::get('/renewal', 'renewal');
     Route::get('/claim', 'claim');
     Route::get('/sales/challenge/monthly', 'monthlySale');
+    Route::get('/sales/challenge/quarterly', 'quarterlySale');
 });

@@ -52,6 +52,11 @@ class AgentController extends Controller
         return $monthlySale;
     }
 
+    function quarterlySale(Request $w, AgentService $agentService)
+    {
+        return $agentService->quarterly($w);
+    }
+
     function noti(Request $request, AgentNoti $agentNoti, AgentService $agentService)
     {
         $agent = $agentService->getCurrentAuthAgent($request->user());

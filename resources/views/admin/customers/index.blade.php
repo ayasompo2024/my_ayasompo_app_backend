@@ -7,8 +7,8 @@
             <div class="float-right">
                 <form action="{{ route('admin.customer.search.by-phone') }}" method="get">
                     <div class="input-group mb-2 mr-sm-2">
-                        <input type="number" name="phone" required class="form-control form-control-sm"
-                            placeholder="Phone">
+                        <input type="text" name="phone" required class="form-control form-control-sm"
+                            placeholder="Phone,Name,Policy,Code">
                         <div class="input-group-prepend" style="background:#ce123c">
                             <button type="submit" class="btn btn-sm text-white"><i class="bi bi-search"></i></button>
                         </div>
@@ -77,7 +77,7 @@
                                 <span v-text="customer.employee_info ? customer.employee_info.code : ''"></span>
                             </span>
                             <span v-if='customer.app_customer_type != "EMPLOYEE"'>
-                                <span v-text="customer.core ? customer.core.customer_code : ''"></span>
+                                <span v-text="customer.core ? customer.core.customer_code : customer.customer_code "></span>
                             </span>
                         </td>
                         <td :title="customer.core ? customer.core.customer_name : ''" class="p-2">

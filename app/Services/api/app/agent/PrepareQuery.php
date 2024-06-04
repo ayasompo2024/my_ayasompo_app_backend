@@ -58,4 +58,27 @@ trait PrepareQuery
         }
         return implode(',', $months);
     }
+    function prepareDashboardQuery($account_code_string, $from_date, $to_date)
+    {
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ")";
+
+        if (!$from_date && !$to_date) {
+            return $baseQuery;
+        }
+
+        if ($from_date && $to_date) {
+            $from_date = $from_date . " 00:00:00";
+            $to_date = $to_date . " 00:00:00";
+            return $baseQuery . " AND receipt_date BETWEEN " . "'" . $from_date . "'" . " AND " . "'" . $to_date . "'";
+        }
+
+        if ($from_date && !$to_date) {
+            $from_date = $from_date . " 00:00:00";
+            return $baseQuery . " AND receipt_date IN (" . "'" . $from_date . "')";
+        }
+        if (!$from_date && $to_date) {
+            $to_date = $to_date . " 00:00:00";
+            return $baseQuery . " AND receipt_date IN (" . "'" . $to_date . "')";
+        }
+    }
 }

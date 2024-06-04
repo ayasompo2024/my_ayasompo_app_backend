@@ -31,17 +31,14 @@ Gold
 Platinum
 
 // Bravo! You've unlocked your first Badge.
-
 [
     "from_date": "01-2021",
     "to_date": "03-2021",
     "total_sale_amount": "5,000,000",
-
     "tier_number": 3,
     "tier_name": "Gold (Tier III)",
     "total_sale_humna_format": "5 Millions",
-    "is_unlocked_first_badge" : true,
-
+    "is_unlocked_first_badge": true,
     "messages": [
         [
             "message": "You've hit the halfway mark towards your sales target. Keep up the great work!",
@@ -127,12 +124,93 @@ select * from Vw_Policy_Agent_Quarterly_App WHERE ACCOUNT_CODE IN ('Y-100-9007-9
 },
 
 
+---
+select * from VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215')
+
+{
+    "pol_seq_no": "00YGN2000282925",
+    "pol_cla_code": "MR",
+    "branch": "YGN",
+    "pol_policy_no": "AYA/YGN/MCG/20000803",
+    "pol_proposal_no": "PR/YGN/MCG/20000815",
+    "pol_prd_code": "MCG",
+    "pol_date": "2020-11-17 18:17:54",
+    "pol_period_from": "2020-11-17 00:00:01",
+    "pol_period_to": "2020-12-16 23:59:00",
+    "pol_authorized_date": "2020-11-17 18:17:54",
+    "pol_transaction_type": "N",
+    --
+    "class_name": "MARINE INSURANCE",
+    "product_name": "MARINE CARGO",
+    
+    "product": "MARINE",
+
+    "pol_type": "New Business",
+    "pol_sum_insured": "788240038",
+    "pol_premium": "2207072.1064",
+    "premium": "2207072.11",
+    "pol_currency": "MMK",
+    "receipt_date": "2020-11-25 00:00:00",
+    --
+    "currency_rate": "1",
+    "pol_status": "6",
+    "account_code": "Y-100-9007-90012",
+    "pol_cus_code": "C000051437",
+    "cus_code": "C000051437",
+    "customer_type": "CORPORATE",
+    "insured_name": "KYOCERA COMMUNICATION SYSTEM KINETIC MYANMAR CO.,LTD",
+    "phone_1": "0",
+    "phone_2": null,
+    "account_handler": "SOMPO BUSINESS NON-MOTOR",
+    "agent_name": "YANGON BRANCH",
+    "agent_contact_no": null,
+    "agent_email": null,
+},
+// pol_type": "Renewals",
 
 
-$tier_one = 3000000
-$tier_two = 5000000
-$tier_three = 7000000
-$tier_four = 12000000
+
+from_date
+to_date
+
+Motor -
+
+FIRE
+PROPERTY
+MARINE 
+HEALTH
+TRAVEL
+LIABILITY
+ENGINEERING
+MISCELLANEOUS
 
 
-
+{
+	total : {
+     	fromdate : Jan/2024,
+		todate : Jan/2024,
+		total : 5812800
+    },
+	productpremium : [
+        {	product : motor,
+			percent : 50%,
+			premium : 755664
+        },
+        {
+			product : fire,
+			percent : 50%,
+			premium : 87984
+        },
+        {
+            product : marine,
+			percent : 50%,
+			premium : 564654
+        },
+    ],
+	typeofBusiness : {
+     	renewal : 20000000,
+		renewalpercent : 66%,
+		newbusiness : 20000000,
+		newbusinesspercent : 34%
+    },
+}

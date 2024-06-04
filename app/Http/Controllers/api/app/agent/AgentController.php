@@ -26,13 +26,11 @@ class AgentController extends Controller
         LeaderBoardResponse,
         FormatDataForResponse,
         NotiResponse;
-
     function renewal(Request $request, AgentService $agentService)
     {
         $renewal = $agentService->renewal($request);
         return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
     }
-
     function claim(Request $request, AgentService $agentService)
     {
         $claim = $agentService->claim($request);
@@ -45,18 +43,19 @@ class AgentController extends Controller
             $request->to_date
         );
     }
-
     function monthlySale(Request $request, AgentService $agentService)
     {
         $monthlySale = $agentService->monthlySale($request);
         return $monthlySale;
     }
-
     function quarterlySale(Request $w, AgentService $agentService)
     {
         return $agentService->quarterly($w);
     }
-
+    function dashboard(Request $w, AgentService $agentService)
+    {
+        return $agentService->dashboard($w);
+    }
     function noti(Request $request, AgentNoti $agentNoti, AgentService $agentService)
     {
         $agent = $agentService->getCurrentAuthAgent($request->user());
@@ -84,7 +83,6 @@ class AgentController extends Controller
         $current_agent = $customer->with('agentInfo')->where('customer_phoneno', $request->user()->customer_phoneno)->where('app_customer_type', 'AGENT')->first();
         return $this->successResponse("Here is current agent profile", new CustomerRsource($current_agent), 200);
     }
-
     function getAllAgentProfile(Request $request, Customer $customer)
     {
         $agents = $customer->with('agentInfo', 'accountCodes:customer_id,code')->where('app_customer_type', 'AGENT')->get();

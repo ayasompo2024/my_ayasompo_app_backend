@@ -26,7 +26,9 @@ trait Pool
             $pool = SmsPool::where("key", "AGENT")->get();
 
         if ($role == 'Corporate')
-            $pool = SmsPool::where("key", "GROUP")->orWhere('key','CORPORATE')->get();
+            $pool = SmsPool::where("key", "GROUP")->orWhere('key', 'CORPORATE')->get();
+
+        $pool = $pool->groupBy('key');
         
         return view('admin.customers.pool')->with('pool', $pool);
     }
@@ -47,5 +49,6 @@ trait Pool
             $data = $smsPool->all();
             return $this->successResponse("Success", $data, 200);
         }
+        return $this->successResponse("Success", [], 200);
     }
 }

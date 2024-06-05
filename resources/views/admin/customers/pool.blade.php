@@ -3,9 +3,20 @@
     <div class="container bg-white" id="app" style="min-height:100vh">
         <div class="p-2">
             <h5 class="p-2 rounded">
-                Need to send SMS <span class="badge ml-2 bg-danger"> {{count($pool)}} </span>
+                Need to send SMS <span class="badge float-right ml-2 bg-danger"> {{ count($pool) }} </span>
             </h5>
-            <div class="px-2">
+            <div class="mx-2 mt-3">
+                <div class="row bg-light p-2  rounded">
+                    <div style="cursor:pointer" v-for="(tab,index) in tabs"
+                        :class="['col-4 d-flex justify-content-between ',
+                            { 'font-weight-bold text-danger ': selectedTab === tab }
+                        ]"
+                        @click="selectType(tab)">
+                        <span v-text="tab"></span> <strong v-text="'/'" v-if="index != 2"></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="px-2  mt-2 bg-light px-2 py-3 rounded">
                 <table class="table">
                     <thead>
                         <tr>
@@ -18,12 +29,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in items" style="font-size: 15px">
-                            <td class="p-1">@{{ index + 1 }}</td>
-                            <td class="p-1">@{{ item.phone }}</td>
-                            <td class="p-1">@{{ item.key }}</td>
-                            <td class="p-1">@{{ item.is_sended_sms }}</td>
-                            <td class="p-1">@{{ truncateName(item.content) }}</td>
+                        <tr v-for="(item, index) in current_items" style="font-size: 15px">
+                            <td class="p-1" v-text="index + 1"></td>
+                            <td class="p-1" v-text="item.phone"></td>
+                            <td class="p-1" v-text="item.key"></td>
+                            <td class="p-1" v-text="item.is_sended_sms"></td>
+                            <td class="p-1" v-text="truncateContent(item.content)"></td>
                             <td class="p-1  p-1 ">
                                 <button @click="sendSms(index)" :disabled="item.is_loading || isLoading"
                                     class="btn btn-sm btn-danger ml-2 d-flex align-items-center" style="height:25px">
@@ -43,17 +54,26 @@
         const app = SpideyShine.createApp({
             data() {
                 const items = @json($pool);
-                console.log(items);
+                const tabs = [
+                    'AGENT',
+                    'EMPLOYEE',
+                    'GROUP'
+                ];
+                console.log(items['AGENT']);
+                let selectedTab = "AGENT";
+                let current_items = items[selectedTab];
                 return {
                     items,
                     isLoading: false,
-
+                    tabs,
+                    current_items,
+                    selectedTab
                 };
             },
             methods: {
                 sendSms(index) {
-                    const item = this.items[index];
-                    this.items[index]['is_loading'] = true;
+                    const item = this.current_items[index];
+                    this.current_items[index]['is_loading'] = true;
                     this.isLoading = true;
                     fetch(`{{ url('/') }}/admin/pool/resolve`, {
                             method: 'POST',
@@ -66,8 +86,9 @@
                         })
                         .then(async response => {
                             const responseJson = await response.json();
-                            this.items = responseJson.data;
+                            //this.items = responseJson.data;
                             this.isLoading = false;
+                            this.current_items.splice(index, 1);
                             console.log(responseJson);
                         })
                         .catch(error => {
@@ -75,13 +96,19 @@
                             console.log(error);
                         });
                 },
-                truncateName(name) {
+                truncateContent(name) {
                     if (!name || name.length === 0) {
                         return "";
                     }
                     let truncatedName = name.substring(7);
                     return truncatedName.length > 10 ? truncatedName.substring(0, 10) + '...' : truncatedName;
                 },
+
+                selectType(type) {
+                    this.selectedTab = type;
+                    this.current_items = this.items[type]
+                    console.log(this.current_items);
+                }
             }
         });
         app.mount('#app');
@@ -109,6 +136,10 @@
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        .custom-border {
+            border-bottom: 1px solid red;
         }
     </style>
 @endpush

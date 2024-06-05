@@ -84,7 +84,7 @@
                             <img :src="customer.profile_photo" width="25px" style="object-fit: cover;aspect-ratio:1/1">
                             &nbsp; <span v-text="customer ? customer.user_name : ''"></span>
                         </td>
-                        <td class="p-1" v-text="customer.customer_phoneno"></td>
+                        <td class="p-1" :title="customer.id" v-text="customer.customer_phoneno"></td>
                         <td class="p-1" v-text="customer.app_customer_type"> </td>
                         <td class="p-1" v-text="customer.policy_number"> </td>
                         <td class="p-1">

@@ -150,7 +150,7 @@ $sidebar_menus = [
                 'imag_path' => null,
                 'target' => false,
                 'icon' => 'bi bi-people-fill',
-                'can' => ['HR', 'Root','Corporate'],
+                'can' => ['HR', 'Root', 'Corporate'],
                 'sub_menus' => null,
             ],
             /** [
@@ -292,6 +292,16 @@ $sidebar_menus = [
             [
                 'display' => 'Agent Query Situation',
                 'route' => 'dev.agent-query-situation',
+                'route_param' => null,
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-database-fill-gear',
+                'sub_menus' => null,
+                'can' => ['Root'],
+            ],
+            [
+                'display' => 'Mysql Query Situation',
+                'route' => 'dev.mysql-query-situation',
                 'route_param' => null,
                 'imag_path' => null,
                 'target' => true,

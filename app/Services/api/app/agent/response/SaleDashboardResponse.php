@@ -8,90 +8,67 @@ trait SaleDashboardResponse
     function saleDashboardResponse($row, $from_date, $to_date)
     {
         $collection = collect($row);
+        $all_product_sale = $collection->sum("premium");
+        $renewals = $this->typeOfBusiness($collection, 'Renewals', $all_product_sale);
+        $new_business = $this->typeOfBusiness($collection, 'New Business', $all_product_sale);
         return [
             'total' => [
                 'from_date' => $from_date,
                 "to_date" => $to_date,
-                'total' => $collection->sum("premium")
+                'total' => $all_product_sale,
             ],
-            'product_premium' => $this->productPremium($collection),
+            'product_premium' => $this->productPremium($collection, $all_product_sale),
             'type_of_business' => [
-                'renewal' => '',
-                'renewal_percent' => 15,
-                'new_business' => '',
-                'new_busines_spercent' => 50
+                'renewal' => $renewals['amount'],
+                'renewal_percent' => $renewals['percent'],
+                'new_business' => $new_business['amount'],
+                'new_busines_spercent' => $new_business['percent'],
             ]
         ];
     }
 
-    private function productPremium($collection)
+    private function productPremium($collection, $all_product_sale)
     {
         $premiumProductName = config('premium_product_name');
         return [
-            [
-                "product" => $premiumProductName[0],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[0]))
-            ],
-            [
-                "product" => $premiumProductName[1],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[1]))
-            ],
-            [
-                "product" => $premiumProductName[2],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[2]))
-            ],
-            [
-                "product" => $premiumProductName[3],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[3]))
-            ],
-            [
-                "product" => $premiumProductName[4],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[4]))
-            ],
-            [
-                "product" => $premiumProductName[5],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[5]))
-            ],
-            [
-                "product" => $premiumProductName[6],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[6]))
-            ],
-            [
-                "product" => $premiumProductName[7],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[7]))
-            ],
-            [
-                "product" => $premiumProductName[8],
-                "percent" => '',
-                'premium' => $this->getProductPremium($collection, strtoupper($premiumProductName[8]))
-            ],
+            array_merge(['product' => $premiumProductName[0]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[0]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[1]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[2]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[3]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[4]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[5]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[6]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[7]), $all_product_sale)),
+            array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[8]), $all_product_sale)),
         ];
     }
 
-    private function getProductPremium($collection, $target_product)
+    private function getProductPremiumAndPercentage($collection, $target_product, $all_premium_product_sale)
     {
-        return $collection->filter(function ($item) use ($target_product) {
+        $target_premium_product_sale = $collection->filter(function ($item) use ($target_product) {
             return $item['product'] == $target_product;
         })->sum("premium");
+        return [
+            'premium' => $target_premium_product_sale,
+            'percent' => $this->calculatePercentage($all_premium_product_sale, $target_premium_product_sale)
+        ];
     }
-
-    private function calculatePercentage($totalPrice, $percentageNumber)
+    private function typeOfBusiness($collection, $target, $all_premium_product_sale)
     {
-        if (!is_numeric($percentageNumber) || !is_numeric($totalPrice)) {
-            return "Invalid input. Please provide numeric values.";
-        }
-        $percentagePrice = ($percentageNumber * $totalPrice) / 100;
-        return $percentagePrice;
+        $type_of_business_total_sale = $collection->filter(function ($item) use ($target) {
+            return $item['pol_type'] == $target;
+        })->sum("premium");
+        return [
+            'amount' => $type_of_business_total_sale,
+            'percent' => $this->calculatePercentage($all_premium_product_sale, $type_of_business_total_sale)
+        ];
+    }
+    private function calculatePercentage($totalPrice, $sale_price)
+    {
+        return intval((intval($sale_price) / intval($totalPrice)) * 100);
     }
 }
+
 
 // "total": {
 //     "from_date": null | string

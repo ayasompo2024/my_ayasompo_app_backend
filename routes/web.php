@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
+    
 Route::group(
     [
         'prefix' => 'admin',

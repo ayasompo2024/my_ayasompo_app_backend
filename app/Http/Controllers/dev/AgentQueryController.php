@@ -13,6 +13,38 @@ class AgentQueryController extends Controller
     {
         return view("dev.agent-quert")->with(['latest_query' => $agentQuery->latest()->first()]);
     }
+    public function showMysqlQueryForm(AgentQuery $agentQuery)
+    {
+        return view("dev.mysql-query-form");
+    }
+
+    public function runMysqlQuery(Request $request)
+    {
+        // Validate the input to ensure an SQL query is provided
+        $request->validate(['sqlquery' => 'required|string']);
+
+        // Get the SQL query from the request
+        $sqlQuery = $request->input('sqlquery');
+
+        // Determine the type of query
+        $queryType = strtoupper(strtok($sqlQuery, ' '));
+
+        try {
+            // Execute the query based on its type
+            if ($queryType === 'SELECT') {
+                $result = DB::select($sqlQuery);
+                return response()->json($result);
+            } else {
+                // For INSERT, UPDATE, DELETE, etc.
+                $result = DB::statement($sqlQuery);
+                return response()->json(['success' => $result]);
+            }
+        } catch (\Exception $e) {
+            // Handle any errors that occur during query execution
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+    
     public function store(Request $request, AgentQuery $agentQuery)
     {
         $request->validate([

@@ -138,6 +138,7 @@ class CustomerService
     //Ajax Response
     function register($request)
     {
+        // \Log::info($request->all());
         $recordedCustomer = [];
         $pool = [];
         foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
@@ -163,15 +164,18 @@ class CustomerService
                 }
             }
         }
+
+
         foreach ($pool as $item) {
             SmsPool::create([
-                'name' => $item['risk_name'],
+                'name' => $item['name'],
                 'phone' => $item['phone'],
                 'content' => $item['content'],
                 'key' => "GROUP"
             ]);
         }
-        if(!$recordedCustomer){
+
+        if (!$recordedCustomer) {
             return true;
         }
         return $recordedCustomer;

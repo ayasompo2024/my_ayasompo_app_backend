@@ -338,7 +338,7 @@
                                 return Swal.fire({
                                     icon: 'warning',
                                     title: 'Error',
-                                    text: responseJson.message,
+                                    text: responseJson.meatadata.message,
                                     cancelButtonText: 'Try Again',
                                 });
                             }

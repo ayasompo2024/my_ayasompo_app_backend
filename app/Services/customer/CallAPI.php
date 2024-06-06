@@ -66,7 +66,6 @@ trait CallAPI
     {
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $this->writeLog("circle_server", "Request to Circle Server For " . $type, [
-            'date' => now(),
             'name' => $name,
             'phone' => $customer_phoneno
         ]);

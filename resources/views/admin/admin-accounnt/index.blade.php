@@ -11,44 +11,44 @@
             </div>
         </nav>
         @include('admin.validation-error-alert')
-        <div class="bg-white px-md-3 mt-2 pt-3 mt-2 " style="min-height: 50vh">
+        <div class="bg-light px-md-3 mt-2 pt-3 mt-2 " style="min-height: 50vh">
             <div class="table-responsive">
                 <table class="table">
                     <thead class="bg-info">
                         <tr>
-                            <th class="p-2" style="min-width: 140px">Name</th>
-                            <th class="p-2" style="min-width: 200px">Email</th>
-                            <th class="p-2" >Role</th>
-                            <th class="p-2">Status</th>
-                            <th class="p-2" style="min-width: 140px">Session</th>
-                            <th class="p-2" style="min-width: 140px">Logs</th>
-                            <th class="p-2" style="min-width: 140px">Created</th>
+                            <th class="p-1" style="min-width: 140px">Name</th>
+                            <th class="p-1" style="min-width: 200px">Email</th>
+                            <th class="p-1">Role</th>
+                            <th class="p-1">Status</th>
+                            <th class="p-1" style="min-width: 140px">Session</th>
+                            <th class="p-1">Logs</th>
+                            <th class="p-1" style="min-width: 140px">Created</th>
+                            <th class="p-1" style="min-width: 140px">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $key => $item)
                             <tr style="font-size: 15px">
-                                
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     {{ $item->name }}
                                 </td>
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     {{ $item->email }}
                                 </td>
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     {{ ucfirst($item->role) }}
                                 </td>
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     @if ($item->status == 1)
                                         <span class="badge bg-info">Active</span>
                                     @else
                                         <span class="badge bg-warning">Disabled</span>
                                     @endif
                                 </td>
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     <form action="{{ route('admin.account.disabled.toggle', $item->id) }}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-info text-dark border">
+                                        <button type="submit" class="btn btn-sm py-0 px-1 btn-outline-info text-dark border">
                                             @if ($item->status == 1)
                                                 Make Disabled
                                             @else
@@ -57,11 +57,17 @@
                                         </button>
                                     </form>
                                 </td>
-                                <td class="p-1">
-                                    <a href="logs/admin?user_id={{$item->id}}" class="btn btn-sm text-info"><i class="bi bi-arrow-right-square-fill"></i></a>
+                                <td class="p-0 pl-1">
+                                    <a href="logs/admin?user_id={{ $item->id }}" class="btn btn-sm text-info"><i
+                                            class="bi bi-arrow-right-square-fill"></i></a>
                                 </td>
-                                <td class="p-1">
+                                <td class="p-0 pl-1">
                                     {{ $item->created_at }}
+                                </td>
+                                <td class="py-0 pl-1">
+                                    <a class="ml-3">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

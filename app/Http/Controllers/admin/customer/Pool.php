@@ -29,26 +29,32 @@ trait Pool
             $pool = SmsPool::where("key", "GROUP")->orWhere('key', 'CORPORATE')->get();
 
         $pool = $pool->groupBy('key');
-        
+
         return view('admin.customers.pool')->with('pool', $pool);
     }
     public function resolve(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
+        \Log::info($request->all());
         if ($request->is_sended_sms != 1) {
             $smsApiStatus = $customerService->callSMSAPI($request->phone, $request->content);
             if ($smsApiStatus) {
                 $smsPool->find($request->id)->update(['is_sended_sms' => 1]);
             }
         }
-        $circleApiStatus = $customerService->callToCirlce($request->phone);
 
-        if ($request->is_sended_sms != 1 && !$circleApiStatus) {
-            return $this->errorResponse("Fail", 500);
-        } else {
+        if ($request->is_sended_sms == 1 && $request->type != 'GROUP') {
             $smsPool->destroy($request->id);
             $data = $smsPool->all();
             return $this->successResponse("Success", $data, 200);
         }
+        
+        if ($request->type == 'GROUP') {
+            $circleApiStatus = $customerService->callToCirlce($request->phone);
+            if ($request->is_sended_sms != 1 && !$circleApiStatus) {
+                return $this->errorResponse("Fail", 500);
+            }
+        }
+
         return $this->successResponse("Success", [], 200);
     }
 }

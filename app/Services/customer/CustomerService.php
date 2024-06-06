@@ -145,6 +145,7 @@ class CustomerService
                 $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
                 if ($isExistFirstProfile) {
                     array_push($pool, [
+                        'name' => $risk_of_policy_list["risk_name"],
                         'phone' => $risk_of_policy_list["phone"],
                         'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], "You can login with existing password !")
                     ]);
@@ -153,6 +154,7 @@ class CustomerService
                 } else {
                     $genegrate_password = Str::random(6);
                     array_push($pool, [
+                        'name' => $risk_of_policy_list["risk_name"],
                         'phone' => $risk_of_policy_list["phone"],
                         'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], $genegrate_password)
                     ]);
@@ -163,6 +165,7 @@ class CustomerService
         }
         foreach ($pool as $item) {
             SmsPool::create([
+                'name' => $item['risk_name'],
                 'phone' => $item['phone'],
                 'content' => $item['content'],
                 'key' => "GROUP"

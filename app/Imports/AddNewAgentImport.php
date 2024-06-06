@@ -55,6 +55,7 @@ class AddNewAgentImport implements ToCollection
                     $isExistFirstProfile = CustomerRepository::getFirstProfile($row["customer_phoneno"]);
                     if ($isExistFirstProfile) {
                         array_push($pool, [
+                            'name' => $row["user_name"],
                             'phone' => $row["customer_phoneno"],
                             'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !")
                         ]);
@@ -62,6 +63,7 @@ class AddNewAgentImport implements ToCollection
                         $password = $isExistFirstProfile['password'];
                     } else {
                         array_push($pool, [
+                            'name' => $row["user_name"],
                             'phone' => $row["customer_phoneno"],
                             'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"])
                         ]);
@@ -79,6 +81,7 @@ class AddNewAgentImport implements ToCollection
         }
         foreach ($pool as $item) {
             SmsPool::create([
+                'name' => $item['name'],
                 'phone' => $item['phone'],
                 'content' => $item['content'],
                 'key' => "AGENT"

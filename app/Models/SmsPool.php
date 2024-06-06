@@ -10,6 +10,7 @@ class SmsPool extends Model
     use HasFactory;
     protected $fillable = [
         'key',
+        'name',
         'phone',
         'content',
         'is_sended_sms',

@@ -33,7 +33,7 @@ class RegisterCustomerToCircle
     }
     private function sendPhoneNumberToTheCircleServer($request)
     {
-        $requestBody = ["phone" => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
+        $requestBody = ["name" => $request->user_name, "phone" => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
         $this->writeLog("circle", "Request to Circle Server (INDIVIDUAL)", $requestBody);
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);

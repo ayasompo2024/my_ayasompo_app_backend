@@ -55,6 +55,7 @@ class AddNewEmployeeImport implements ToCollection
                     $isExistFirstProfile = CustomerRepository::getFirstProfile($phone);
                     if ($isExistFirstProfile) {
                         array_push($pool, [
+                            'name' => $row["user_name"],
                             'phone' => $phone,
                             'content' => $this->getContent($user_name, $phone, "You can login with existing password !")
                         ]);
@@ -62,6 +63,7 @@ class AddNewEmployeeImport implements ToCollection
                         $input["password"] = $isExistFirstProfile['password'];
                     } else {
                         array_push($pool, [
+                            'name' => $row["user_name"],
                             'phone' => $phone,
                             'content' => $this->getContent($user_name, $phone, $password)
                         ]);
@@ -84,6 +86,7 @@ class AddNewEmployeeImport implements ToCollection
         }
         foreach ($pool as $item) {
             SmsPool::create([
+                'name' => $item['name'],
                 'phone' => $item['phone'],
                 'content' => $item['content'],
                 'key' => "EMPLOYEE"

@@ -21,20 +21,26 @@
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
+                            <th class="p-1">Date</th>
                             <th class="p-1">Phone</th>
                             <th class="p-1">Type</th>
                             <th class="p-1"> Sended SMS ?</th>
-                            <th class="p-1"> User</th>
+                            <th class="p-1"> Name</th>
                             <th class="p-1" style="width:350px" class="">Invite</th>
+                            <th class="p-1">Row ID</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in current_items" style="font-size: 15px">
                             <td class="p-1" v-text="index + 1"></td>
+                            <td class="p-1">
+                                <span v-if="isToday(item.created_at)" class="badge bg-success mr-2" v-text="'Today'"></span>
+                                <span v-text="formatDate(item.created_at)"></span>
+                            </td>
                             <td class="p-1" v-text="item.phone"></td>
                             <td class="p-1" v-text="item.key"></td>
                             <td class="p-1" v-text="item.is_sended_sms"></td>
-                            <td class="p-1" v-text="truncateContent(item.content)"></td>
+                            <td class="p-1" v-text="item.name"></td>
                             <td class="p-1  p-1 ">
                                 <button @click="sendSms(index)" :disabled="item.is_loading || isLoading"
                                     class="btn btn-sm btn-danger ml-2 d-flex align-items-center" style="height:25px">
@@ -42,6 +48,7 @@
                                     <span v-if="item.is_loading" class="loader"></span>
                                 </button>
                             </td>
+                            <td class="p-1" v-text="item.id"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -108,7 +115,44 @@
                     this.selectedTab = type;
                     this.current_items = this.items[type]
                     console.log(this.current_items);
-                }
+                },
+                isToday(dateTime) {
+                    const today = new Date();
+                    const date = new Date(dateTime);
+                    return date.getDate() === today.getDate() &&
+                        date.getMonth() === today.getMonth() &&
+                        date.getFullYear() === today.getFullYear();
+                },
+                formatDate(dateTime) {
+                    const date = new Date(dateTime);
+                    const today = new Date();
+
+                    // Check if date is today
+                    if (
+                        date.getDate() === today.getDate() &&
+                        date.getMonth() === today.getMonth() &&
+                        date.getFullYear() === today.getFullYear()
+                    ) {
+                        // If today, return only time portion
+                        return date.toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    } else {
+                        // If not today, return full formatted date with time
+                        const year = date.getFullYear();
+                        const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if needed
+                        const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if needed
+                        const time = date.toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        const ampm = date.toLocaleTimeString([], {
+                            hour12: true
+                        }).slice(-2); // Extract AM/PM from full time string
+                        return `${year}-${month}-${day} ${time} `;
+                    }
+                },
             }
         });
         app.mount('#app');

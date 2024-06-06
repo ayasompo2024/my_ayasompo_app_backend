@@ -51,11 +51,32 @@ trait CallAPI
         }
     }
 
+    //unuse
     function callToCirlce($customer_phoneno)
     {
         $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
         $this->writeLog("circle_server", "Request to Circle Server (EMPLOYEE)", ['phone' => $customer_phoneno]);
         $response = Http::withOptions(['verify' => false])->post($url, ["phone" => $customer_phoneno]);
+        $data = $response->json();
+        $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data, false);
+        return $data;
+    }
+
+    function callToCirlceS($customer_phoneno, $name, $type)
+    {
+        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $this->writeLog("circle_server", "Request to Circle Server For " . $type, [
+            'date' => now(),
+            'name' => $name,
+            'phone' => $customer_phoneno
+        ]);
+        $response = Http::withOptions(['verify' => false])->post(
+            $url,
+            [
+                'name' => $name,
+                "phone" => $customer_phoneno
+            ]
+        );
         $data = $response->json();
         $this->writeLog("circle_server", "Response from Circle Server (EMPLOYEE)", $data, false);
         return $data;

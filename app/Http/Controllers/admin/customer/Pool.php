@@ -7,6 +7,7 @@ use App\Services\customer\CustomerService;
 use Illuminate\Http\Request;
 use App\Models\SmsPool;
 
+
 trait Pool
 {
     function pool(Request $req)
@@ -47,9 +48,9 @@ trait Pool
             $data = $smsPool->all();
             return $this->successResponse("Success", $data, 200);
         }
-        
+
         if ($request->type == 'GROUP') {
-            $circleApiStatus = $customerService->callToCirlce($request->phone);
+            $circleApiStatus = $customerService->callToCirlceS($request->phone, $request->name, $request->type);
             if ($request->is_sended_sms != 1 && !$circleApiStatus) {
                 return $this->errorResponse("Fail", 500);
             }

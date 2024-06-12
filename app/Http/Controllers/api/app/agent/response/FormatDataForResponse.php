@@ -49,14 +49,14 @@ trait FormatDataForResponse
                 'count' => [
                     'from_date' => $from,
                     'to_date' => $to,
-                    'total' => count($paid_rows) + count($open_rows) + count($closed_rows),
+                    'total' => count($paid_rows) + count($open_rows) + count($outstanding) + count($closed_rows),
                     'paid' => count($paid_rows),
                     'open' => count($open_rows),
                     'outstanding' => count($outstanding),
                     'closed' => count($closed_rows)
                 ],
                 'detail' => [
-                    'open' => $open_rows,
+                    'open' => array_merge($open_rows, $outstanding),
                     'paid' => $paid_rows,
                     'outstanding' => $outstanding,
                     'closed' => $closed_rows,

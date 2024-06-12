@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\api\app\agent;
 
-
-
 use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
 use App\Http\Controllers\api\app\agent\response\LeaderBoardResponse;
 use App\Http\Controllers\api\app\agent\response\NotiResponse;

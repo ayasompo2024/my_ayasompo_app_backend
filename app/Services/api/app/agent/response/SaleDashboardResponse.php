@@ -1,10 +1,8 @@
 <?php
 namespace App\Services\api\app\agent\response;
 
-
 trait SaleDashboardResponse
 {
-
     function saleDashboardResponse($row, $from_date, $to_date)
     {
         $collection = collect($row);
@@ -17,13 +15,16 @@ trait SaleDashboardResponse
                 "to_date" => $to_date,
                 'total' => $all_product_sale,
             ],
-            'product_premium' => $this->productPremium($collection, $all_product_sale),
+            // 'product_premium' => $this->productPremium($collection, $all_product_sale),
             'type_of_business' => [
                 'renewal' => $renewals['amount'],
                 'renewal_percent' => $renewals['percent'],
                 'new_business' => $new_business['amount'],
                 'new_busines_spercent' => $new_business['percent'],
-            ]
+            ],
+            'detaillistcount' => 7,
+            'productlist' => $this->chartData($collection, $from_date, $to_date),
+            'target_chart_type' => 'days'
         ];
     }
 
@@ -42,7 +43,6 @@ trait SaleDashboardResponse
             array_merge(['product' => $premiumProductName[1]], $this->getProductPremiumAndPercentage($collection, strtoupper($premiumProductName[8]), $all_product_sale)),
         ];
     }
-
     private function getProductPremiumAndPercentage($collection, $target_product, $all_premium_product_sale)
     {
         $target_premium_product_sale = $collection->filter(function ($item) use ($target_product) {
@@ -50,9 +50,43 @@ trait SaleDashboardResponse
         })->sum("premium");
         return [
             'premium' => $target_premium_product_sale,
-            'percent' => $this->calculatePercentage($all_premium_product_sale, $target_premium_product_sale)
+            'percent' => 0 //$this->calculatePercentage($all_premium_product_sale, $target_premium_product_sale)
         ];
     }
+
+    private function chartData($collection, $from_date, $to_date)
+    {
+        $premiumProductName = config('premium_product_name');
+        return [
+            array_merge(
+                [
+                    'name' => $premiumProductName[0],
+                    'total_amount' => $this->getProductPremium($collection, strtoupper($premiumProductName[0])),
+                    'dataset' => $this->getDataSet($collection)
+                ]
+            ),
+        ];
+    }
+
+    private function getDataSet($collection)
+    {
+        return [
+            [
+                "xname" => "day1",
+                "yvalue" => "56454"
+            ],
+        ];
+    }
+
+
+    private function getProductPremium($collection, $target_product, )
+    {
+        $target_premium_product_sale = $collection->filter(function ($item) use ($target_product) {
+            return $item['product'] == $target_product;
+        })->sum("premium");
+        return $target_premium_product_sale;
+    }
+
     private function typeOfBusiness($collection, $target, $all_premium_product_sale)
     {
         $type_of_business_total_sale = $collection->filter(function ($item) use ($target) {
@@ -75,3 +109,59 @@ trait SaleDashboardResponse
 //     "to_date": null | string
 //     "total": integer | float
 // },
+
+/*
+
+{
+    "data":{
+        "detaillistcount": 7,
+        "productlist":[
+           {
+             "name":"motor",
+             "totalamout":"654654654",
+             "detaillist":[
+                {
+                    "xname":"day1",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day2",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day3",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day4",
+                    "yvalue":"56454"
+                }
+             ]
+           },
+           {
+             "name":"fire",
+             "totalamout":"654654654",
+             "detaillistcount": 7,
+             "detaillist":[
+                {
+                    "xname":"day1",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day2",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day3",
+                    "yvalue":"56454"
+                },
+                {
+                    "xname":"day4",
+                    "yvalue":"56454"
+                }
+             ]
+           }
+        ]
+    }
+}
+    */

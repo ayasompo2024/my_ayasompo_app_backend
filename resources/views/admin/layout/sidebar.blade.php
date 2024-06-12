@@ -173,7 +173,7 @@ $sidebar_menus = [
         'imag_path' => null,
         'target' => false,
         'icon' => 'bi bi-shop-window',
-        'can' => ['Root'],
+        'can' => ['Agent', 'Root'],
         'sub_menus' => [
             [
                 'display' => 'LeaderBoard',
@@ -183,7 +183,7 @@ $sidebar_menus = [
                 'target' => true,
                 'icon' => 'bi bi-trophy-fill',
                 'sub_menus' => null,
-                'can' => ['Root'],
+                'can' => ['Agent', 'Root'],
             ],
             [
                 'display' => 'Training Resources',
@@ -193,7 +193,7 @@ $sidebar_menus = [
                 'target' => true,
                 'icon' => 'bi bi-book-half',
                 'sub_menus' => null,
-                'can' => ['Root'],
+                'can' => ['Agent', 'Root'],
             ],
         ],
     ],

@@ -9,6 +9,7 @@ use App\Services\api\app\agent\response\SaleDashboardResponse;
 
 class AgentService
 {
+    public $collection, $from, $to;
     use Common;
     use PrepareQuery;
     use FilterForRenewal, FilterForClaim;
@@ -47,13 +48,14 @@ class AgentService
         $account_code_string = $this->getAccountCode($w->user());
         $query = $this->prepareQuarterlySaleQuery($account_code_string, $w->year);
         $result = $this->runQuery($query);
-        return $this->quarterlyResponse($result, $w->year);
+        return $this->quarterlyResponse($result,$w->year);
     }
     function dashboard($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
         $query = $this->prepareDashboardQuery($account_code_string, $req->from_date, $req->to_date);
         $result = $this->runQuery($query);
-        return $this->saleDashboardResponse($result, $req->from_date, $req->to_date);
+        $this->collection = collect($result);
+        return $this->saleDashboardResponse($req->from_date, $req->to_date);
     }
 }

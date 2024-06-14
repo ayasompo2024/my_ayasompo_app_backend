@@ -111,3 +111,7 @@ Route::group(
 );
 Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
 Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
+
+Route::get('/test', function(){
+    return "test";
+});

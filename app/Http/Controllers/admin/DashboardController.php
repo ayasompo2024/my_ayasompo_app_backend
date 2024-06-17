@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
 
-    public function index(UtilityService $utilityService)
+    public function index(Request $request, UtilityService $utilityService)
     {
         $count_customer = $utilityService->countTotalCustomer();
         $currentMonthChart = $utilityService->currentMonthChart();

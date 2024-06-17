@@ -70,7 +70,28 @@ class MessagingService
             $input["customer_id"] = $customer->id;
             return MessagingRepository::store($input);
         }
+    }
+    function multicastByPhone($request)
+    {
+        $data = ["title" => $request->title, "body" => $request->message];
+        $notification = ["title" => $request->title, "body" => $request->message];
 
+        $customer_array = explode(",", $request->phonesString);
+
+        $input = $request->only('title', 'message', 'noti_for', 'description');
+        if ($request->image)
+            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+        $input['type'] = MessagingType::MULTICAST->value;
+        $input["multicast_uid"] = uniqid();
+
+        foreach ($customer_array as $customer) {
+            $customer = CustomerRepository::getById($customer);
+            if ($customer) {
+                $this->sendAsUnicast($customer->device_token, $data, $notification);
+                $input["customer_id"] = $customer->id;
+            }
+            return MessagingRepository::store($input);
+        }
     }
     function histories($per_page)
     {

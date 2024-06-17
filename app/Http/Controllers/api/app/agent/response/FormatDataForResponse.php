@@ -44,6 +44,8 @@ trait FormatDataForResponse
 
     function formatForClaim($paid_rows, $open_rows, $outstanding, $closed_rows, $from, $to)
     {
+        $open_rows_array = $open_rows->toArray();
+        $outstanding_array = $outstanding->toArray();
         return [
             'data' => [
                 'count' => [
@@ -56,7 +58,7 @@ trait FormatDataForResponse
                     'closed' => count($closed_rows)
                 ],
                 'detail' => [
-                    'open' => array_merge($open_rows, $outstanding),
+                    'open' => array_merge($open_rows_array, $outstanding_array),
                     'paid' => $paid_rows,
                     'outstanding' => $outstanding,
                     'closed' => $closed_rows,

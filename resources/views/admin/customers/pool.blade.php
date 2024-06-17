@@ -9,7 +9,7 @@
                 <div class="row bg-light p-2  rounded">
                     <div style="cursor:pointer" v-for="(tab,index) in tabs"
                         :class="['col-4 d-flex justify-content-between ',
-                            { 'font-weight-bold text-danger ': selectedTab === tab }
+                            { 'font-weight-bold text-danger border-bottom ': selectedTab === tab }
                         ]"
                         @click="selectType(tab)">
                         <span v-text="tab"></span> <strong v-text="'/'" v-if="index != 2"></strong>

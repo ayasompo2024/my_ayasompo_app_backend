@@ -69,8 +69,8 @@
                             </span>
                         </td>
                         <td class="p-1">
-                            <span v-if="isToday(customer.created_at)" class="badge bg-success mr-2">Today</span>
-                            <span>@{{ formatDateTime(customer.created_at) }}</span>
+                            <span v-if="isToday(customer.created_at)" v-text="Today" class="badge bg-success mr-2"></span>
+                            <span v-text="formatDateTime(customer.created_at)"></span>
                         </td>
                         <td class="p-1">
                             <span v-if='customer.app_customer_type == "EMPLOYEE"'>

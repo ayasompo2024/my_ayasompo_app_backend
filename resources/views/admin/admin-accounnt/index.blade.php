@@ -11,7 +11,7 @@
             </div>
         </nav>
         @include('admin.validation-error-alert')
-        <div class="bg-light px-md-3 mt-2 pt-3 mt-2 " style="min-height: 50vh">
+        <div class="bg-light px-md-3 mt-2 pt-3 mt-4 " style="min-height: 50vh">
             <div class="table-responsive">
                 <table class="table">
                     <thead class="bg-info">
@@ -48,7 +48,8 @@
                                 <td class="p-0 pl-1">
                                     <form action="{{ route('admin.account.disabled.toggle', $item->id) }}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm py-0 px-1 btn-outline-info text-dark border">
+                                        <button type="submit"
+                                            class="btn btn-sm py-0 px-1 btn-outline-info text-dark border">
                                             @if ($item->status == 1)
                                                 Make Disabled
                                             @else
@@ -65,7 +66,7 @@
                                     {{ $item->created_at }}
                                 </td>
                                 <td class="py-0 pl-1">
-                                    <a class="ml-3">
+                                    <a href="{{ route('admin.account.edit', $item->id) }}" class="ml-3">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>
@@ -123,10 +124,9 @@
 
                             <div class="col-md-6">
                                 <select class="form-select form-control form-control-sm" name="role" required>
-                                    <option>Admin</option>
-                                    <option>Agent</option>
-                                    <option>Corporate</option>
-                                    <option>HR</option>
+                                    @foreach ($roles as $role)
+                                        <option>{{$role->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

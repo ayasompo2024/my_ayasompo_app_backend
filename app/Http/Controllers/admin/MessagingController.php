@@ -20,6 +20,10 @@ class MessagingController extends Controller
     {
         return view("admin.messaging.multicast")->with(['c_ids' => $c_ids]);
     }
+
+    public function showMulticastFormByPhones(){
+        return view("admin.messaging.multicast-by-phone");
+    }
     public function sendAsBroadcast(Request $request, MessagingService $messagingService)
     {
         $request->validate(['title' => 'required', 'message' => 'required']);
@@ -56,6 +60,17 @@ class MessagingController extends Controller
     public function getByCustomerID($c_id, MessagingService $messagingService)
     {
         return view("admin.messaging.history")->with(['histories' => $messagingService->getByCustomerID(30, $c_id)]);
+    }
+
+    public function sendMulticastByPhones(Request $request,MessagingService $messagingService){
+        $request->validate([
+            'title' => 'required',
+            'message' => 'required',
+            'phonesString' => 'required'
+        ]);
+        return $messagingService->multicastByPhone($request) ?
+            back()->with('success', 'Success') :
+            back()->with('fail', 'fail');   
     }
 }
 

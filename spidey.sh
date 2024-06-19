@@ -17,8 +17,10 @@ git fetch $REPO_URL
 # Reset the local branch to the fetched changes
 git reset --hard FETCH_HEAD
 
+git checkout -- .env
+
 # Restart your application (adjust this command to your needs)
-# Example for a Node.js application using PM2
+# Example for a Node.js application using sPM2
 # pm2 restart all
 
 echo "Hello Spidey, Deployment completed successfully."

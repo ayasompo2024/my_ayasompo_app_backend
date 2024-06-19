@@ -1,9 +1,3 @@
-Ko @Spidey Shine 
-Backend မှာ admin user create လုပ်ပြီးတဲ့နောက်ပိုင်း
-
-forgot password ဖြစ်လို့ change password 
-role mapping အဲဒါတွေ မတွေ့လို့
--------------------------------
 
 select * from Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215')
 {

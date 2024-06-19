@@ -1,44 +1,49 @@
 @extends('admin.layout.app')
 @section('content')
-    <div class="container">
+    <div class="container bg-light">
         <nav aria-label="breadcrumb m-0 p-0">
             <ol class="breadcrumb m-0 pl-0 bg-transparent">
                 <li class="breadcrumb-item active p-0 pl-4" aria-current="page">Message / Send </li>
             </ol>
         </nav>
-        <div class="card mx-md-4 px-3 py-4">
-            <form action="{{ route('admin.messaging.broadcast.send') }}" enctype="multipart/form-data" method="post">
+        {{--09787796698,123456789,09791289241, --}}
+        <div class="card shadow-none mx-md-4 px-3 pb-4 pt-2">
+            <form action="{{ route('admin.messaging.multicast.by-phones.send') }}" enctype="multipart/form-data" method="post"
+                id="multicastForm">
                 @csrf
                 <h6 class="border-bottom pb-2">
-                    <b>Send Noti To All Customres</b>
+                    <b>Multicast</b>
                     <i class="float-right bi bi-bell-fill"></i>
                 </h6>
+
+                <input type="hidden" value="{{ \App\Enums\NotiFor::TRANSACTION->value }}" name="noti_for">
                 <div class="row mt-4">
-                    <label class="col-md-4" for="title">Noti For</label>
-                    <div class="col-md-8">
-                        <select id="product_type" name="noti_for" required
-                            class="form-control form-control-sm @error('product_type') is-invalid @enderror">
-                            <option>{{ \App\Enums\NotiFor::PROMOTION->value }} </option>
-                            <option>{{ \App\Enums\NotiFor::SYSTEM->value }} </option>
-                        </select>
-                        @error('product_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                    <label class="col-md-4" for="title">Phones*</label>
+                    <div class="col-md-8" id="app">
+                        <input v-model="phone" v-focus-next type="text" class="form-control form-control-sm"
+                            name="title"  placeholder="123456789,09791289241,4044484402">
+                        <div style="display:flex; gap: 0px 4px;  flex-wrap: wrap;">
+                            <span class="badge mt-1 bg-info" v-for="(phone, index) in phones" :key="index">
+                                <span v-text="phone"></span>
+                                <i @click="deletePhone(index)" class="ml-2 bi bi-x-circle-fill"></i>
                             </span>
-                        @enderror
+                        </div>
+                        <input name="phonesString" :value="phones" type="text"
+                            class="form-control mt-2 form-control-sm" name="title" required placeholder="Title">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <label class="col-md-4" for="title">Title*</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control form-control-sm" name="title" required placeholder="Title">
+                        <input type="text" class="form-control form-control-sm" v-focus-next name="title" required
+                            placeholder="Title">
                         <small class="form-text text-muted">Required , Min Lenght 3, Max Lenght 255</small>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <label class="col-md-4" for="message">Message</label>
                     <div class="col-md-8">
-                        <textarea name="message" required class="form-control"></textarea>
+                        <textarea name="message" required v-focus-next class="form-control"></textarea>
                         <small class="form-text text-muted">Option , Max Lenght 255</small>
                     </div>
                 </div>
@@ -60,7 +65,7 @@
                 <div class="row mt-3">
                     <label class="col-md-4" for="description">Description</label>
                     <div class="col-md-8">
-                        <textarea id="editorForProperty" rows="5" style="white-space: pre-wrap;" name="description"
+                        <textarea id="editorForProperty" v-focus-next rows="5" style="white-space: pre-wrap;" name="description"
                             class="form-control form-control-sm" placeholder="Enter Descriptione" id="description" /></textarea>
                     </div>
                 </div>
@@ -68,11 +73,8 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-8">
                         <button type="submit" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#new">
-                            <i class="bi bi-broadcast-pin"></i> &nbsp; Send 
+                            <i class="bi bi-broadcast-pin"></i> &nbsp; Send
                         </button>
-                        <a class="float-right border  btn btn-sm bg-light" href="{{ route('admin.customer.index') }}">
-                            Send Individual &nbsp; <i class="bi bi-arrow-right-circle"></i>
-                        </a>
                     </div>
                 </div>
             </form>
@@ -135,6 +137,17 @@
 @endpush
 @push('child-scripts')
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('multicastForm').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === 'Tab') {
+                    event.preventDefault();
+                    const activeElement = document.activeElement;
+                    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+                        activeElement.blur();
+                    }
+                }
+            });
+        });
         jQuery(document).ready(function() {
             ImgUpload();
         });
@@ -200,5 +213,48 @@
                 $(this).parent().parent().remove();
             });
         }
+    </script>
+@endpush
+
+@push('child-scripts')
+    <script>
+        const app = SpideyShine.createApp({
+            data() {
+                return {
+                    phones: [],
+                    phone: ''
+                };
+            },
+            methods: {
+                deletePhone(index) {
+                    this.phones.splice(index, 1);
+                },
+                truncateContent(name) {
+                    if (!name || name.length === 0) {
+                        return "";
+                    }
+                    let truncatedName = name.substring(7);
+                    return truncatedName.length > 10 ? truncatedName.substring(0, 10) + '...' : truncatedName;
+                },
+            },
+            watch: {
+                phone(newValue, oldValue) {
+                    if (newValue.includes(',')) {
+                        let phonesString = newValue.split(',');
+                        phonesString.forEach(phone => {
+                            let trimmedPart = phone.trim();
+                            if (trimmedPart !== '' && trimmedPart.length < 12) {
+                                if (!this.phones.includes(trimmedPart)) {
+                                    this.phones.push(trimmedPart);
+                                }
+                                this.phone = '';
+                            }
+                        });
+                    }
+                }
+            }
+
+        });
+        app.mount('#app');
     </script>
 @endpush

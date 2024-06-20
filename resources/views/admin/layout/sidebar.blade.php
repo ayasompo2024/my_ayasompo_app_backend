@@ -3,8 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Permission;
 $current_auth = Auth::user();
 $sidebar_menus = config('menu');
-$permissions = Permission::where("role_id",$current_auth->roleInfo->id)->where('user_id', $current_auth->id)
-    ->get();
+$permissions = Permission::where("role_id",$current_auth->roleInfo->id)->get();
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="" class="brand-link tw-flex">

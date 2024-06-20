@@ -13,7 +13,10 @@ class LeaderBoard extends Model
         'name',
         'points',
         'phone',
-        'customer_id'
+        'customer_id',
+        "product_code",
+        "period_from",
+        "period_to"
     ];
     function profile()
     {

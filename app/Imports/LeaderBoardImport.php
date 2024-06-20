@@ -23,6 +23,9 @@ class LeaderBoardImport implements ToCollection
                 "name" => $rows[2],
                 'points' => $rows[3],
                 'phone' => $this->removeInitialPlusNineFiveNine($rows[4]),
+                "product_code" =>$rows[5],
+                "period_from" =>$rows[6],
+                "period_to" =>$rows[7],
             ];
             array_push($filterRows, $row);
         }
@@ -39,7 +42,10 @@ class LeaderBoardImport implements ToCollection
                     "name" => $row['name'],
                     "points" => $row['points'],
                     "phone" => $row['phone'],
-                    "customer_id" => $agent ? $agent->id : 0
+                    "customer_id" => $agent ? $agent->id : 0 ,
+                    "product_code" => $row['product_code'],
+                    "period_from"  => $row['period_from'],
+                    "period_to" => $row['period_to']
                 ]);
             }
         }

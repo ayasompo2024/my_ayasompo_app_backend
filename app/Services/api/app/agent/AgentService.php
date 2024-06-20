@@ -3,6 +3,7 @@ namespace App\Services\api\app\agent;
 
 use App\Http\Controllers\api\app\agent\filter\FilterForClaim;
 use App\Http\Controllers\api\app\agent\filter\FilterForRenewal;
+use App\Services\api\app\agent\response\LeaderBoardResponse;
 use App\Services\api\app\agent\response\MonthlySaleResponse;
 use App\Services\api\app\agent\response\QuarterlyResponse;
 use App\Services\api\app\agent\response\SaleDashboardResponse;
@@ -13,7 +14,7 @@ class AgentService
     use Common;
     use PrepareQuery;
     use FilterForRenewal, FilterForClaim;
-    use SaleTargetMessage, QuarterlyResponse, MonthlySaleResponse, SaleDashboardResponse;
+    use SaleTargetMessage, QuarterlyResponse, MonthlySaleResponse, SaleDashboardResponse, LeaderBoardResponse;
     function renewal($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
@@ -27,7 +28,7 @@ class AgentService
     function claim($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
-        $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);
+        $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);   
         $query_result = $this->runQuery($claim_query);
         return [
             'paid' => $this->paid($query_result),
@@ -48,7 +49,7 @@ class AgentService
         $account_code_string = $this->getAccountCode($w->user());
         $query = $this->prepareQuarterlySaleQuery($account_code_string, $w->year);
         $result = $this->runQuery($query);
-        return $this->quarterlyResponse($result,$w->year);
+        return $this->quarterlyResponse($result, $w->year);
     }
     function dashboard($req)
     {
@@ -57,5 +58,14 @@ class AgentService
         $result = $this->runQuery($query);
         $this->collection = collect($result);
         return $this->saleDashboardResponse($req->from_date, $req->to_date);
+    }
+    function leaderBoard($req, $leaderBoard)
+    {
+        $leaderBoard = $leaderBoard->select('campaign_title', 'name', 'points', 'phone', 'customer_id', 'product_code', 'period_from', 'period_to')->with('profile:id,profile_photo')->orderByDesc("points")->get();
+        $account_code_string = $this->getAccountCode($req->user());
+        $query = $this->prepareAgentPointQuery($account_code_string, $leaderBoard[0]);
+        $result = $this->runQuery($query);
+        $this->collection = collect($result);
+        return $this->leaderBoardRes($leaderBoard, $req->show_raw_data);
     }
 }

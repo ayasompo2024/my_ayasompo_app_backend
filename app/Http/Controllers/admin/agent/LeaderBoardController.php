@@ -42,6 +42,18 @@ class LeaderBoardController extends Controller
             LeaderBoard::query()->update(['campaign_title' => $request->campaign_title]);
             $input['campaign_title'] = $request->campaign_title;
         }
+        if ($learder->product_code != $request->product_code) {
+            LeaderBoard::query()->update(['product_code' => $request->product_code]);
+            $input['product_code'] = $request->product_code;
+        }
+        if ($learder->period_from != $request->period_from) {
+            LeaderBoard::query()->update(['period_from' => $request->period_from]);
+            $input['period_from'] = $request->period_from;
+        }
+        if ($learder->period_to != $request->period_to) {
+            LeaderBoard::query()->update(['period_to' => $request->period_to]);
+            $input['period_to'] = $request->period_to;
+        }
         if ($learder->phone != $request->phone) {
             $agentAccount = $this->getAgentProfileByPhone($request->phone);
             $input['customer_id'] = $agentAccount->id;

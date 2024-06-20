@@ -11,7 +11,14 @@
         @include('admin.validation-error-alert')
         <div class="mt-3 mb-5">
             <div class="bg-light px-3 pb-5 pt-4 ">
-                <table class="table table">
+                <h5>
+                {{$leaders[0]['campaign_title']}}
+                <span class="ml-2 text-danger">{{$leaders[0]['period_from']}} to
+                {{$leaders[0]['period_to']}}
+                 ({{$leaders[0]['product_code']}})
+                </span>
+                </h5>
+                <table class="table table mt-3">
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
@@ -104,7 +111,7 @@
                     </div>
                 </div>
                 <div class="modal-footer p-2">
-                    <a href="{{ route('admin.file.download', 'LeaderBoardTemplate2.xlsx') }}"
+                    <a href="{{ route('admin.file.download', 'LeaderBoardTemplate.xlsx') }}"
                         class="btn btn-sm btn-danger float-left">
                         Download Template &nbsp;
                         <i class="bi bi-cloud-arrow-down-fill"></i>

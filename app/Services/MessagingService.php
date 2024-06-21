@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\Customer;
 use App\Repositories\CustomerRepository;
 
 use App\Enums\MessagingType;
@@ -76,7 +77,7 @@ class MessagingService
         $data = ["title" => $request->title, "body" => $request->message];
         $notification = ["title" => $request->title, "body" => $request->message];
 
-        $customer_array = explode(",", $request->phonesString);
+        $phones = explode(",", $request->phonesString);
 
         $input = $request->only('title', 'message', 'noti_for', 'description');
         if ($request->image)
@@ -84,8 +85,8 @@ class MessagingService
         $input['type'] = MessagingType::MULTICAST->value;
         $input["multicast_uid"] = uniqid();
 
-        foreach ($customer_array as $customer) {
-            $customer = CustomerRepository::getById($customer);
+        foreach ($phones as $phone) {
+            $customer = Customer::whereNotNull("device_token")->where("customer_phoneno",$phone)->first();
             if ($customer) {
                 $this->sendAsUnicast($customer->device_token, $data, $notification);
                 $input["customer_id"] = $customer->id;

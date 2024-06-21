@@ -35,11 +35,11 @@ class IAMController extends Controller
     }
     function addPermissionToRole(Request $request, $id, Role $role, Permission $permission)
     {
-        $user_id = $request->user()->id;
-        $permission->where('role_id', $id)->where('user_id',$user_id)->delete();
+        // $user_id = $request->user()->id;
+        $permission->where('role_id', $id)->delete();
         foreach ($request->permissions as $item) {
             $permission->create([
-                'user_id' => $user_id,
+                'user_id' => 0,
                 'role_id' => $id,
                 'route' => $item,
             ]);

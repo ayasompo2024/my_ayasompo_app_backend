@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api\app\agent;
 
 use App\Http\Controllers\api\app\agent\response\FormatDataForResponse;
-use App\Http\Controllers\api\app\agent\response\LeaderBoardResponse;
 use App\Http\Controllers\api\app\agent\response\NotiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\agent\AgentListResource;
@@ -21,7 +20,6 @@ use Illuminate\Http\Request;
 class AgentController extends Controller
 {
     use ApiResponser,
-        LeaderBoardResponse,
         FormatDataForResponse,
         NotiResponse;
     function renewal(Request $request, AgentService $agentService)
@@ -67,9 +65,7 @@ class AgentController extends Controller
     }
     function leaderBoard(Request $request, AgentService $agentService, LeaderBoard $leaderBoard)
     {
-        $agent = $agentService->getCurrentAuthAgent($request->user());
-        $leaders = $leaderBoard->select('campaign_title', 'name', 'points', 'phone', 'customer_id')->with('profile:id,profile_photo')->orderByDesc("points")->get();
-        return $this->leaderBoardRes($leaders, $agent);
+        return $agentService->leaderBoard($request,$leaderBoard);
     }
     function trainingResource(Request $request, TrainingResource $trainingResource)
     {

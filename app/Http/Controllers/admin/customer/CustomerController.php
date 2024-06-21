@@ -72,11 +72,32 @@ class CustomerController extends Controller
     }
     public function destroy($id, CustomerService $customerService)
     {
+        $this->deleteSms($id);
         $status = $customerService->destroy($id);
         return $status ?
             back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
+    private function deleteSms($c_id)
+    {
+        $customer = Customer::find($c_id);
+        if (!$customer) {
+            return;
+        }
+        $smsQuery = SmsPool::where("phone", $customer->customer_phoneno);
+
+        if ($customer->app_customer_type == 'EMPLOYEE') {
+            $smsQuery->where("key", 'EMPLOYEE');
+        }
+        if ($customer->app_customer_type == 'AGENT') {
+            $smsQuery->where("key", 'AGENT');
+        }
+        if ($customer->app_customer_type == 'GROUP') {
+            $smsQuery->where("key", 'GROUP');
+        }
+        $smsQuery->delete();
+    }
+
     public function addNewEmployeeUser(Request $request)
     {
         $request->validate(['add_employee_user_file' => 'required|mimes:xlsx,csv']);

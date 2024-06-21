@@ -25,6 +25,7 @@ trait MonthlySaleResponse
                 "number" => $tier['tier_number'],
                 "target_sale_amount" => $tier['tier_target_sale_amount'],
                 "target_sale_amount_humna_format" => $tier['tier_target_sale_amount_humna_format'],
+                "tier_reach_title" => $tier['tier_reach_title'],
                 "tier_reach_message" => $tier['tier_reach_message'],
             ],
             "is_unlocked_first_badge" => $total_sale_amount > $tier_config['first_badge_amount'] ? true : false,
@@ -43,7 +44,8 @@ trait MonthlySaleResponse
                 "tier_number" => 4,
                 "tier_target_sale_amount" => number_format(12000000),
                 "tier_target_sale_amount_humna_format" => "12 Million",
-                "tier_reach_message" => "Reaching your 12 Million target,"
+                "tier_reach_title" => "Reaching your 12 Million target,",
+                "tier_reach_message" => "Congratulations on scaling the summit of success! By surpassing the 12 Mil target, you've unlocked exordinary milstones. Cheers to your remarkable victory!"
             ];
         } elseif ($totalSales >= $tiers['Gold']) {
             return [
@@ -51,7 +53,8 @@ trait MonthlySaleResponse
                 "tier_number" => 3,
                 "tier_target_sale_amount" => number_format(7000000),
                 "tier_target_sale_amount_humna_format" => "7 Million",
-                "tier_reach_message" => "Reaching your 7 Million target,"
+                "tier_reach_title" => "Reaching your 7 Million target,",
+                "tier_reach_message" => "Your dedication and hard work have paid off brilliantly. Here's to your continued success and exceeding even greater milestones!,"
             ];
         } elseif ($totalSales >= $tiers['Silver']) {
             return [
@@ -59,7 +62,8 @@ trait MonthlySaleResponse
                 "tier_number" => 2,
                 "tier_target_sale_amount" => number_format(5000000),
                 "tier_target_sale_amount_humna_format" => "5 Million",
-                "tier_reach_message" => "Reaching your 5 Million target,"
+                "tier_reach_title" => "Reaching your 5 Million target,",
+                "tier_reach_message" => "Showcasing your unwavering dedication and expertise. Revel in your success, you've reached new heights!."
             ];
         } elseif ($totalSales >= $tiers['Bronze']) {
             return [
@@ -67,15 +71,17 @@ trait MonthlySaleResponse
                 "tier_number" => 1,
                 "tier_target_sale_amount" => number_format(3000000),
                 "tier_target_sale_amount_humna_format" => "3 Million",
-                "tier_reach_message" => "Reaching your 3 Million target,"
+                "tier_reach_title" => "Reaching your 3 Million target,",
+                "tier_reach_message" => "Demonstrating unparalleled dedication and skill. Celebrate your success, you've earned it!,"
             ];
         } else {
             return [
-                "tier_name" => "Not in Tiers",
+                "tier_name" => "Not in tiers",
                 "tier_number" => 0,
                 "tier_target_sale_amount" => "0",
                 "tier_target_sale_amount_humna_format" => $this->geTotalSaleHumnaFormatForMonth(1000000),
-                "tier_reach_message" => "Unlocked First Badge (3 Million)"
+                "tier_reach_title" => "Not in tiers ",
+                "tier_reach_message" => "Unlocked First Badge (3 Million),"
             ];
         }
     }

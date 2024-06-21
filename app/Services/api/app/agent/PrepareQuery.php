@@ -14,7 +14,13 @@ trait PrepareQuery
 
         if ($to == null)
             $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
-        return "SELECT * FROM VW_POLICY_AGENT_RENEWAL_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND to_char(POL_AUTHORIZED_DATE, 'MON-YY') in ('" . $from . "','" . $to . "')";
+
+        $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
+        $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
+
+        $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
+        $toFormattedDate = $toDate->format('Y-m-d H:i:s');
+        return "SELECT * FROM VW_POLICY_AGENT_RENEWAL_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND expiry_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
     }
 
     function prepareClaimQuery($account_code_string, $from, $to)
@@ -25,7 +31,13 @@ trait PrepareQuery
 
         if ($to == null)
             $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND to_char(POL_AUTHORIZED_DATE, 'MON-YY') in ('" . $from . "','" . $to . "')";
+
+        $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
+        $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
+
+        $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
+        $toFormattedDate = $toDate->format('Y-m-d H:i:s');
+        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND intimate_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
     }
 
     function prepareMonthlySaleQuery($account_code_string, $from, $to)
@@ -80,5 +92,9 @@ trait PrepareQuery
             $to_date = $to_date . " 00:00:00";
             return $baseQuery . " AND receipt_date IN (" . "'" . $to_date . "')";
         }
+    }
+    function prepareAgentPointQuery($account_code_string, $leaderBoard)
+    {
+        return "SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND pol_prd_code = '" . $leaderBoard->product_code . "' AND pol_period_from >= '" . $leaderBoard->period_from . " 00:00:00' AND pol_period_to <= '" . $leaderBoard->period_to . " 00:00:00'";
     }
 }

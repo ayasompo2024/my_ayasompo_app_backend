@@ -23,7 +23,8 @@ class AgentInfoRsource extends JsonResource
             'expired_date' => $this->expired_date,
             'email' => $this->email,
             'achievement' => $this->achievement,
-            'agent_codes' => "123,123,2323"
+            'agent_codes' => "123,123,2323",
+            "title" => $this->title
         ];
     }
 }

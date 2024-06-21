@@ -18,14 +18,44 @@
                                 <label for="campaign_title"> Campaign Title </label>
                             </div>
                             <div class="col-lg-8">
-                                <input  id="campaign_title" value="{{ $leader->campaign_title }}" type="text"
+                                <input id="campaign_title" value="{{ $leader->campaign_title }}" type="text"
                                     name="campaign_title" required class="form-control form-control-sm"
                                     placeholder="Enter title">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-4">
-                                <label for="name"> Name </label>
+                                <label for="product_code"> Product Code </label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input id="product_code" value="{{ $leader->product_code }}" type="text"
+                                    name="product_code" required class="form-control form-control-sm"
+                                    placeholder="Enter title">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-4">
+                                <label for="period_from"> Period From </label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input id="period_from" value="{{ $leader->period_from }}" type="text" name="period_from"
+                                    required class="form-control form-control-sm"
+                                    placeholder="foramt must be 2024-01-01">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-4">
+                                <label for="period_to"> Period To </label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input id="period_to" value="{{ $leader->period_to }}" type="text" name="period_to"
+                                    required class="form-control form-control-sm"
+                                    placeholder="foramt must be 2024-01-01">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-4">
+                                <label for="name"> Agent Name </label>
                             </div>
                             <div class="col-lg-8">
                                 <input id="title" value="{{ $leader->name }}" type="text" name="name" required"

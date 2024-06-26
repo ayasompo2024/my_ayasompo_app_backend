@@ -129,23 +129,60 @@ trait SaleDashboardResponse
         $from = Carbon::parse($from_date);
         $to = Carbon::parse($to_date);
 
-        if ($from->isSameMonth($to))
-            return $this->dataSetByDayOfMonth($from);
+        $dayCount = $from->diffInDays($to) + 1; // Including the end date
+
+        if ($dayCount <= 7) {
+            return $this->dataSetByDay($from, $to);
+        }
+
+        if ($from->isSameMonth($to)) {
+            $weeks = $this->dataSetByWeek($from);
+            foreach ($weeks as $weekData) {
+                $weekData['x_label'] . ': ' . $weekData['y_value'] . "\n";
+            }
+            return $weeks;
+        }
 
         if ($from->isSameYear($to))
             return $this->dataSetByMonthOfYear($from);
 
-        return "return will all years datas";
+        $dataSet = $this->dataSetByYear($from, $to);
+        return $dataSet;
     }
-
-    private function dataSetByDayOfMonth($from)
+    private function dataSetByDay($from, $to)
     {
-        return collect(range(1, $from->daysInMonth))->map(function ($day) use ($from) {
+        return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from) {
+            $date = $from->copy()->addDays($day);
             return [
-                'x_label' => $from->copy()->day($day)->toDateString(),
-                'y_value' => $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString() . ' 00:00:00')
+                'x_label' => $date->toDateString(),
+                'y_value' => $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00')
             ];
         });
+    }
+
+    function dataSetByWeek($from)
+    {
+        $daysInMonth = $from->daysInMonth;
+        $weeks = [];
+        $weekRanges = [
+            [1, 7],
+            [8, 13],
+            [14, 20],
+            [21, 27],
+            [28, $daysInMonth]
+        ];
+
+        foreach ($weekRanges as $days) {
+            $totalYValue = collect(range($days[0], $days[1]))->reduce(function ($carry, $day) use ($from) {
+                return $carry + $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString() . ' 00:00:00');
+            }, 0);
+
+            $weeks[] = [
+                'x_label' => $days[1],
+                'y_value' => $totalYValue
+            ];
+        }
+        return $weeks;
     }
 
     private function dataSetByMonthOfYear($from_date)
@@ -161,6 +198,25 @@ trait SaleDashboardResponse
             );
         }
         return $months;
+    }
+
+    private function dataSetByYear($from, $to)
+    {
+        $years = collect(range($from->year, $to->year))->map(function ($year) {
+            $startOfYear = Carbon::create($year, 1, 1);
+            $endOfYear = Carbon::create($year, 12, 31);
+            $totalYValue = collect(range(0, $startOfYear->diffInDays($endOfYear)))->reduce(function ($carry, $day) use ($startOfYear) {
+                $date = $startOfYear->copy()->addDays($day);
+                return $carry + $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00');
+            }, 0);
+
+            return [
+                'x_label' => $year,
+                'y_value' => $totalYValue
+            ];
+        });
+
+        return $years;
     }
     private function getProductPremiumByMonth($collection, $target_month)
     {

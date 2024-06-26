@@ -43,36 +43,36 @@ trait MonthlySaleResponse
                 "tier_name" => "Platinum (Tier IV)",
                 "tier_number" => 4,
                 "tier_target_sale_amount" => number_format(12000000),
-                "tier_target_sale_amount_humna_format" => "12 Million",
-                "tier_reach_title" => "Reaching your 12 Million target,",
-                "tier_reach_message" => "Congratulations on scaling the summit of success! By surpassing the 12 Mil target, you've unlocked exordinary milstones. Cheers to your remarkable victory!"
+                "tier_target_sale_amount_humna_format" => "12 Millionss",
+                "tier_reach_title" => "12 Millions",
+                "tier_reach_message" => "Congratulations! You've reached your 12 Mil target."
             ];
         } elseif ($totalSales >= $tiers['Gold']) {
             return [
                 "tier_name" => "Gold (Tier III)",
                 "tier_number" => 3,
                 "tier_target_sale_amount" => number_format(7000000),
-                "tier_target_sale_amount_humna_format" => "7 Million",
-                "tier_reach_title" => "Reaching your 7 Million target,",
-                "tier_reach_message" => "Your dedication and hard work have paid off brilliantly. Here's to your continued success and exceeding even greater milestones!,"
+                "tier_target_sale_amount_humna_format" => "7 Millions",
+                "tier_reach_title" => "7 Millions,",
+                "tier_reach_message" => "Congratulations! You've reached your 7 Mil target"
             ];
         } elseif ($totalSales >= $tiers['Silver']) {
             return [
                 "tier_name" => "Silver (Tier II)",
                 "tier_number" => 2,
                 "tier_target_sale_amount" => number_format(5000000),
-                "tier_target_sale_amount_humna_format" => "5 Million",
-                "tier_reach_title" => "Reaching your 5 Million target,",
-                "tier_reach_message" => "Showcasing your unwavering dedication and expertise. Revel in your success, you've reached new heights!."
+                "tier_target_sale_amount_humna_format" => "5 Millions",
+                "tier_reach_title" => "5 Millions",
+                "tier_reach_message" => "Congratulations! You've reached your 5 Mil target."
             ];
         } elseif ($totalSales >= $tiers['Bronze']) {
             return [
                 "tier_name" => "Bronze (Tier I) ",
                 "tier_number" => 1,
                 "tier_target_sale_amount" => number_format(3000000),
-                "tier_target_sale_amount_humna_format" => "3 Million",
-                "tier_reach_title" => "Reaching your 3 Million target,",
-                "tier_reach_message" => "Demonstrating unparalleled dedication and skill. Celebrate your success, you've earned it!,"
+                "tier_target_sale_amount_humna_format" => "3 Millions",
+                "tier_reach_title" => "3 Millions",
+                "tier_reach_message" => "Congratulations! You've reached your 3 Mil target."
             ];
         } else {
             return [

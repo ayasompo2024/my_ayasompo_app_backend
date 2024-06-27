@@ -7,6 +7,7 @@ use App\Services\api\app\agent\response\LeaderBoardResponse;
 use App\Services\api\app\agent\response\MonthlySaleResponse;
 use App\Services\api\app\agent\response\QuarterlyResponse;
 use App\Services\api\app\agent\response\SaleDashboardResponse;
+use Carbon\Carbon;
 
 class AgentService
 {
@@ -28,7 +29,7 @@ class AgentService
     function claim($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
-        $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);   
+        $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);
         $query_result = $this->runQuery($claim_query);
         return [
             'paid' => $this->paid($query_result),
@@ -53,11 +54,23 @@ class AgentService
     }
     function dashboard($req)
     {
+        $currentDate = Carbon::now();
+        $from = $req->from_date;
+        $to = $req->to_date;
+        if ($from == null && $to == null) {
+            $from = $currentDate->copy()->startOfYear()->format('Y-m-d 00:00:00');
+            $to = $currentDate->copy()->endOfYear()->format('Y-m-d 00:00:00');
+        }
+        if ($from != null && $to == null) {
+            $to = $currentDate->copy()->endOfYear()->format('Y-m-d 00:00:00');
+        }
+        $from = substr($from, 0, 10);
+        $to = substr($to, 0, 10);
         $account_code_string = $this->getAccountCode($req->user());
-        $query = $this->prepareDashboardQuery($account_code_string, $req->from_date, $req->to_date);
+        $query = $this->prepareDashboardQuery($account_code_string, $from, $to);
         $result = $this->runQuery($query);
         $this->collection = collect($result);
-        return $this->saleDashboardResponse($req->from_date, $req->to_date);
+        return $this->saleDashboardResponse($from, $to);
     }
     function leaderBoard($req, $leaderBoard)
     {

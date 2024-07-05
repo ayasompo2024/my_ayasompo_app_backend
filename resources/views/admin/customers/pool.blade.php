@@ -22,11 +22,12 @@
                         <tr>
                             <th class="p-1">#</th>
                             <th class="p-1">Date</th>
+                            {{-- <th class="p-1">Type</th> --}}
                             <th class="p-1">Phone</th>
-                            <th class="p-1">Type</th>
-                            <th class="p-1"> Sended SMS ?</th>
                             <th class="p-1"> Name</th>
-                            <th class="p-1" style="width:350px" class="">Invite</th>
+                            <th class="p-1">Policy Number</th>
+                            <th class="p-1"> Sended SMS ?</th>
+                            <th class="p-1">Invite</th>
                             <th class="p-1">Row ID</th>
                         </tr>
                     </thead>
@@ -37,10 +38,11 @@
                                 <span v-if="isToday(item.created_at)" class="badge bg-success mr-2" v-text="'Today'"></span>
                                 <span v-text="formatDate(item.created_at)"></span>
                             </td>
+                            {{-- <td class="p-1" v-text="item.key"></td> --}}
                             <td class="p-1" v-text="item.phone"></td>
-                            <td class="p-1" v-text="item.key"></td>
-                            <td class="p-1" v-text="item.is_sended_sms"></td>
                             <td class="p-1" v-text="item.name"></td>
+                            <td class="p-1" v-text="item.policy_number"></td>
+                            <td class="p-1" v-text="item.is_sended_sms"></td>
                             <td class="p-1  p-1 ">
                                 <button @click="sendSms(index)" :disabled="item.is_loading || isLoading"
                                     class="btn btn-sm btn-danger ml-2 d-flex align-items-center" style="height:25px">

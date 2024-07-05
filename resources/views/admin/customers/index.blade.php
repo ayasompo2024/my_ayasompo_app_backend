@@ -69,7 +69,7 @@
                             </span>
                         </td>
                         <td class="p-1">
-                            <span v-if="isToday(customer.created_at)" v-text="Today" class="badge bg-success mr-2"></span>
+                            <span v-if="isToday(customer.created_at)" v-text="'Today'" class="badge bg-success mr-2"></span>
                             <span v-text="formatDateTime(customer.created_at)"></span>
                         </td>
                         <td class="p-1">
@@ -98,7 +98,8 @@
                         <td class="p-1">
                             <div class="dropdown show">
                                 <a class="btn btn-sm btn-light dropdown-toggle py-0" href="#" role="button"
-                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

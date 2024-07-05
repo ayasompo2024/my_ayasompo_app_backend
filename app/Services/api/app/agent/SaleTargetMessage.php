@@ -81,32 +81,32 @@ trait SaleTargetMessage
 
     private function messagDeterminator($messages, $total_sale_amount)
     {
-        if ($total_sale_amount >= 1500000) {
+        // if ($total_sale_amount >= 1500000) {
+        //     $messages[0]["is_reach"] = true;
+        // }
+        if ($total_sale_amount >= 2500000) {
             $messages[0]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 2500000) {
+        if ($total_sale_amount >= 3000000) {
             $messages[1]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 3000000) {
+        if ($total_sale_amount >= 4500000) {
             $messages[2]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 4500000) {
+        if ($total_sale_amount >= 5000000) {
             $messages[3]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 5000000) {
+        if ($total_sale_amount >= 6500000) {
             $messages[4]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 6500000) {
+        if ($total_sale_amount >= 7000000) {
             $messages[5]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 7000000) {
+        if ($total_sale_amount >= 11500000) {
             $messages[6]["is_reach"] = true;
         }
-        if ($total_sale_amount >= 15000000) {
-            $messages[7]["is_reach"] = true;
-        }
         if ($total_sale_amount >= 12000000) {
-            $messages[8]["is_reach"] = true;
+            $messages[7]["is_reach"] = true;
         }
         return array_map(function ($item) {
             unset($item['sale_amount']);

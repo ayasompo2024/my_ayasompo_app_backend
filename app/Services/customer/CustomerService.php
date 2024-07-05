@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Traits\FileUpload;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class CustomerService
 {
@@ -139,51 +140,72 @@ class CustomerService
     function register($request)
     {
         // \Log::info($request->all());
-        $recordedCustomer = [];
-        $pool = [];
-        foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
-            if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
-                $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
-                if ($isExistFirstProfile) {
-                    array_push($pool, [
-                        'name' => $risk_of_policy_list["risk_name"],
-                        'phone' => $risk_of_policy_list["phone"],
-                        'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], "You can login with existing password !")
-                    ]);
-                    $password = $isExistFirstProfile['password'];
-                    array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number, $password));
-                } else {
-                    $genegrate_password = Str::random(6);
-                    array_push($pool, [
-                        'name' => $risk_of_policy_list["risk_name"],
-                        'phone' => $risk_of_policy_list["phone"],
-                        'content' => $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], $genegrate_password)
-                    ]);
-                    $password = Hash::make($genegrate_password);
-                    array_push($recordedCustomer, $this->saveCustomerToDB($request->select_customer_obj, $risk_of_policy_list, $request->policy_number, $password));
+        DB::beginTransaction();
+        try {
+            foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
+                if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
+                    $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
+                    if ($isExistFirstProfile) {
+                        SmsPool::create(
+                            $this->inputFroSmsPool(
+                                $risk_of_policy_list["risk_name"],
+                                $risk_of_policy_list["phone"],
+                                $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], "You can login with existing password !"),
+                                $request->policy_number
+                            )
+                        );
+                        $password = $isExistFirstProfile['password'];
+                        Customer::create(
+                            $this->inputForCustomer(
+                                $request->select_customer_obj,
+                                $risk_of_policy_list,
+                                $request->policy_number,
+                                $password
+                            )
+                        );
+                    } else {
+                        $generate_password = Str::random(6);
+                        SmsPool::create(
+                            $this->inputFroSmsPool(
+                                $risk_of_policy_list["risk_name"],
+                                $risk_of_policy_list["phone"],
+                                $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], $generate_password),
+                                $request->policy_number
+                            )
+                        );
+                        $password = Hash::make($generate_password);
+                        Customer::create(
+                            $this->inputForCustomer(
+                                $request->select_customer_obj,
+                                $risk_of_policy_list,
+                                $request->policy_number,
+                                $password
+                            )
+                        );
+                    }
                 }
             }
-        }
-
-
-        foreach ($pool as $item) {
-            SmsPool::create([
-                'name' => $item['name'],
-                'phone' => $item['phone'],
-                'content' => $item['content'],
-                'key' => "GROUP"
-            ]);
-        }
-
-        if (!$recordedCustomer) {
+            DB::commit();
             return true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $e->getMessage();
+            // throw $e;
         }
-        return $recordedCustomer;
-
     }
-    private function saveCustomerToDB($select_customer_obj, $risk_of_policy_list, $policy_number, $password)
+
+    private function inputFroSmsPool($name, $phone, $content, $policy_number)
     {
-        \Log::info($select_customer_obj);
+        return [
+            "name" => $name,
+            "phone" => $phone,
+            "content" => $content,
+            "policy_number" => $policy_number,
+            "key" => "GROUP"
+        ];
+    }
+    private function inputForCustomer($select_customer_obj, $risk_of_policy_list, $policy_number, $password)
+    {
         $inputForAppCustomer = [
             "customer_code" => $select_customer_obj["customer_code"],
             "customer_phoneno" => $risk_of_policy_list["phone"],
@@ -195,7 +217,8 @@ class CustomerService
             'user_name' => $risk_of_policy_list["risk_name"],
             "last_logined_at" => now()
         ];
-        $appCustomer = CustomerRepository::store($inputForAppCustomer);
+        return $inputForAppCustomer;
+        // $appCustomer = CustomerRepository::store($inputForAppCustomer);
         // $inputForCoreCustomer = [
         //     'app_customer_id' => $appCustomer->id,
         //     "customer_code" => $select_customer_obj["customer_code"],
@@ -205,7 +228,7 @@ class CustomerService
         //     "customer_nrc" => $select_customer_obj["customer_nrc"],
         // ];
         // event(new CustomerRegistered($inputForCoreCustomer));
-        return $appCustomer;
+        // return $appCustomer;
     }
 
 

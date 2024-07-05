@@ -16,6 +16,7 @@ class SmsPool extends Model
         'is_sended_sms',
         'is_login',
         'is_sended_to_circle',
-        'circle_response'
+        'circle_response',
+        'policy_number'
     ];
 }

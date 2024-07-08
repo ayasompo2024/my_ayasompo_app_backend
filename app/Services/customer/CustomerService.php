@@ -139,10 +139,12 @@ class CustomerService
     //Ajax Response
     function register($request)
     {
+        set_time_limit(300); //
         // \Log::info($request->all());
         DB::beginTransaction();
         try {
-            foreach ($request->risk_of_policy_list as $risk_of_policy_list) {
+            foreach ($request->risk_of_policy_list as $index => $risk_of_policy_list) {
+                \Log::info("index" ,$risk_of_policy_list);
                 if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
                     $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
                     if ($isExistFirstProfile) {

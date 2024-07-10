@@ -163,9 +163,8 @@
     </style>
 @endpush
 @push('child-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script>
-        const app = Vue.createApp({
+        const app = SpideyShine.createApp({
             data() {
                 const claimCases = @json($unserializeData);
                 const currentSelectObj = '';
@@ -179,7 +178,6 @@
             methods: {
                 showDetail(index) {
                     this.currentSelectObj = this.claimCases[index];
-                    console.log(this.currentSelectObj);
                 },
                 removeDetail() {
                     this.currentSelectObj = '';

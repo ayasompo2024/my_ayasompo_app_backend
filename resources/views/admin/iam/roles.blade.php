@@ -15,7 +15,6 @@
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
-                            {{-- <th class="p-1">Belong</th> --}}
                             <th class="p-1">Name</th>
                             <th class="p-1">Permission</th>
                         </tr>
@@ -24,13 +23,6 @@
                         @foreach ($roles as $index => $item)
                             <tr>
                                 <td class="p-1">{{ ++$index }}</td>
-                                {{-- <td class="p-1">
-                                    @if ($item->admin)
-                                        {{ $item->admin->name }}
-                                    @else
-                                        <small class="badge bg-white text-danger">---</small>
-                                    @endif
-                                </td> --}}
                                 <td class="p-1">{{ $item->name }}</td>
                                 <td class="p-1">
                                     <a type="button" href="{{ route('admin.iam.roles.permisssions', $item->id) }}"

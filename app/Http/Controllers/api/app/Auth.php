@@ -36,13 +36,13 @@ trait Auth
         $validator = $this->loginValidation($request);
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
+
         $status = $customerService->login($request);
         if ($status) {
             if ($status["customer"] == null)
                 return $this->errorResponse("Account Has been disabled ", 202);
-        }
-        if ($status) {
-            $this->lastLoginTime($status['customer']['customer_phoneno']);
+
+            $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
             $this->sendWelcomeNoti($request->device_token, $status["customer"]["user_name"]);
             return $this->successResponse("Login Success", $status, 200);
         } else {
@@ -83,9 +83,14 @@ trait Auth
         ]);
     }
 
-    private function lastLoginTime($phone)
+    private function lastLoginTime($phone, $device_token)
     {
-        Customer::where("customer_phoneno", $phone)->update(['last_logined_at' => now()]);
+        Customer::where("customer_phoneno", $phone)->update(
+            [
+                'last_logined_at' => now(),
+                'device_token' => $device_token
+            ]
+        );
     }
 }
 

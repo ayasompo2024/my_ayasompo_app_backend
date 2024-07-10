@@ -68,7 +68,6 @@
                     'EMPLOYEE',
                     'GROUP'
                 ];
-                console.log(items['AGENT']);
                 let selectedTab = "AGENT";
                 let current_items = items[selectedTab];
                 return {
@@ -95,14 +94,11 @@
                         })
                         .then(async response => {
                             const responseJson = await response.json();
-                            //this.items = responseJson.data;
                             this.isLoading = false;
                             this.current_items.splice(index, 1);
-                            console.log(responseJson);
                         })
                         .catch(error => {
                             this.isLoading = false;
-                            console.log(error);
                         });
                 },
                 truncateContent(name) {
@@ -116,7 +112,6 @@
                 selectType(type) {
                     this.selectedTab = type;
                     this.current_items = this.items[type]
-                    console.log(this.current_items);
                 },
                 isToday(dateTime) {
                     const today = new Date();
@@ -128,30 +123,26 @@
                 formatDate(dateTime) {
                     const date = new Date(dateTime);
                     const today = new Date();
-
-                    // Check if date is today
                     if (
                         date.getDate() === today.getDate() &&
                         date.getMonth() === today.getMonth() &&
                         date.getFullYear() === today.getFullYear()
                     ) {
-                        // If today, return only time portion
                         return date.toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit'
                         });
                     } else {
-                        // If not today, return full formatted date with time
                         const year = date.getFullYear();
-                        const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if needed
-                        const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if needed
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const day = String(date.getDate()).padStart(2, '0');
                         const time = date.toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit'
                         });
                         const ampm = date.toLocaleTimeString([], {
                             hour12: true
-                        }).slice(-2); // Extract AM/PM from full time string
+                        }).slice(-2);
                         return `${year}-${month}-${day} ${time} `;
                     }
                 },

@@ -144,7 +144,7 @@ class CustomerService
         DB::beginTransaction();
         try {
             foreach ($request->risk_of_policy_list as $index => $risk_of_policy_list) {
-                \Log::info("index" ,$risk_of_policy_list);
+                \Log::info("index", $risk_of_policy_list);
                 if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
                     $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
                     if ($isExistFirstProfile) {
@@ -156,13 +156,13 @@ class CustomerService
                                 $request->policy_number
                             )
                         );
-                        $password = $isExistFirstProfile['password'];
                         Customer::create(
                             $this->inputForCustomer(
                                 $request->select_customer_obj,
                                 $risk_of_policy_list,
                                 $request->policy_number,
-                                $password
+                                $isExistFirstProfile['password'],
+                                $isExistFirstProfile['device_token']
                             )
                         );
                     } else {
@@ -181,7 +181,8 @@ class CustomerService
                                 $request->select_customer_obj,
                                 $risk_of_policy_list,
                                 $request->policy_number,
-                                $password
+                                $password,
+                                null
                             )
                         );
                     }
@@ -191,6 +192,7 @@ class CustomerService
             return true;
         } catch (\Exception $e) {
             DB::rollBack();
+            \Log::info($e);
             return $e->getMessage();
             // throw $e;
         }
@@ -206,7 +208,7 @@ class CustomerService
             "key" => "GROUP"
         ];
     }
-    private function inputForCustomer($select_customer_obj, $risk_of_policy_list, $policy_number, $password)
+    private function inputForCustomer($select_customer_obj, $risk_of_policy_list, $policy_number, $password, $device_token)
     {
         $inputForAppCustomer = [
             "customer_code" => $select_customer_obj["customer_code"],
@@ -217,20 +219,9 @@ class CustomerService
             "policy_number" => $policy_number,
             'password' => $password,
             'user_name' => $risk_of_policy_list["risk_name"],
-            "last_logined_at" => now()
+            "device_token" => $device_token
         ];
         return $inputForAppCustomer;
-        // $appCustomer = CustomerRepository::store($inputForAppCustomer);
-        // $inputForCoreCustomer = [
-        //     'app_customer_id' => $appCustomer->id,
-        //     "customer_code" => $select_customer_obj["customer_code"],
-        //     "customer_type" => $select_customer_obj["customer_type"],
-        //     "customer_name" => $select_customer_obj["customer_name"],
-        //     "customer_phoneno" => $select_customer_obj["customer_phoneno"],
-        //     "customer_nrc" => $select_customer_obj["customer_nrc"],
-        // ];
-        // event(new CustomerRegistered($inputForCoreCustomer));
-        // return $appCustomer;
     }
 
 

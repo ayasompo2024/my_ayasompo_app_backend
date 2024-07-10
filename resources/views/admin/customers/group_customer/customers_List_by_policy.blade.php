@@ -16,20 +16,22 @@
 
 
         <div v-if="checkExistPhones && !isOkAllSetp" class="row mt-3">
-
             <div class="col-md-10 offset-md-1 p-3 bg-white rounded">
                 <h4 class="border-bottom">Exist As Group(Risk) User</h4>
                 <div style="display: flex;flex-wrap: wrap;gap: 10px;">
                     <div v-for="(phone, key) in checkExistPhones.phones">
-                        <div class="btn btn-sm btn border mt-1">
+                        <div v-if="phone.appUsers.length > 0" class="btn btn-sm btn-danger border mt-1">
                             @{{ phone.phone }}
-                            <span class="badge bg-secondary ml-2">@{{ phone.appUsers.length }}</span>
+                            <span class="badge bg-secondary text-white ml-2">@{{ phone.appUsers.length }}</span>
+                        </div>
+                        <div v-if="phone.appUsers.length <= 0" class="btn btn-sm  border mt-1">
+                            @{{ phone.phone }}
+                            <span class="badge bg-danger text-white ml-2">@{{ phone.appUsers.length }}</span>
                         </div>
                     </div>
                 </div>
                 <button @click="register()" class="btn btn-sm bg-info mt-2">Add Now</button>
-                <a href="{{ route('admin.customer.index') }}"
-                    class="btn btn-sm text-info btn-outline-secondary mt-2  ml-3">Cancle</a>
+                <a @click="cancel()" class="btn btn-sm text-info btn-outline-secondary mt-2  ml-3">Cancle</a>
             </div>
         </div>
 
@@ -48,7 +50,7 @@
             </section>
         </div>
 
-        <div v-if="policyList" class="row mt-3">
+        <div v-if="policyList && !checkExistPhones" class="row mt-3">
             <div class="col-md-10 offset-md-1 p-2 bg-white">
                 <div class="card-body rounded hover-scale bg-light">
                     <div class="d-flex">
@@ -78,7 +80,6 @@
                                 type="text" readonly>
                         </div>
                     </div>
-
                     <div class="d-flex mt-1">
                         <div style="width: 40%">
                             <i class="bi bi-telephone mr-2"></i> Customer Phone No
@@ -129,40 +130,39 @@
                                 readonly>
                         </div>
                     </div>
-                    <div class="mt-1">
-                        <div class="d-flex">
-                            <div style="width: 40%">
+                    <div class="mt-3 float-right">
+                        <button @click="preview()" :disabled="!isRegButDisabled" class="btn btn-info btn-sm ml-2">
+                            Preview
+                        </button>
+                    </div>
+                    <br>
+                    <div class="mt-2">
+                        <div>
+                            <div>
                                 <i class="bi bi-telephone mr-2"></i> Risks <span class="badge bg-info">
                                     @{{ riskOfpolicyList.length }} </span>
                             </div>
-                            <div style="width: 60%">
-                                <div v-for="(risk, key) in riskOfpolicyList">
-                                    <div class="card p-1 px-2 bg-light mt-2">
+                            <div class="d-flex flex-wrap mt-2">
+                                <div v-for="(risk, key) in riskOfpolicyList" class="mx-2">
+                                    <div class="card p-1 px-2 bg-light">
                                         <div><strong style="font-size: 13px;"> Risk SeqNo : @{{ risk.risk_seqNo }}, Risk
                                                 Name :
                                                 @{{ risk.risk_name }}</strong>
                                         </div>
-                                        <div class="d-flex">
-                                            <input class="form-control form-control-sm py-0 px-1" type="number"
-                                                minlength="6" maxlength="9" :value="risk.phone"
-                                                @keyup.enter="addPhone($event,key)" title="Please enter only numbers">
-                                        </div>
+                                        <input class="form-control form-control-sm py-0 px-1" type="number"
+                                            minlength="6" maxlength="9" :value="risk.phone"
+                                            @keyup.enter="addPhone($event,key)" title="Please enter only numbers">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-3 float-right">
-                        <button @click="preview()" :disabled="!isRegButDisabled" class="btn btn-info btn-sm ml-2">
-                            Preview
-                        </button>
-                    </div>
                 </div>
+                <br>
+                <br>
             </div>
         </div>
-
-
         <div v-if="!policyList" class="mt-3 px-2 px-md-3 py-3">
             <h6> Policy No : @{{ customers.policyno }} </h6>
             <div class="row mt-4">
@@ -217,9 +217,8 @@
 @endsection
 
 @push('child-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script>
-        const app = Vue.createApp({
+        const app = SpideyShine.createApp({
             data() {
                 const customers = @json($customers);
                 let isLoading = false;
@@ -243,11 +242,9 @@
                 };
             },
             methods: {
-                //1
                 selectCustomer(customer_code) {
                     this.selectCustomerObj = this.customers.customers.find(customer => customer
                         .customer_code === customer_code);
-                    console.table(this.selectCustomerObj);
                     Swal.fire({
                         icon: "warning",
                         title: "Are you sure?",
@@ -262,7 +259,6 @@
                         }
                     });
                 },
-                // go 2 1 is confrimed
                 getPolicyListByCustomerCode(customerCode) {
                     const headers = new Headers();
                     headers.append('Content-Type', 'application/json');
@@ -282,12 +278,8 @@
                                     confirmButtonText: " Try Again ",
                                 })
                             }
-                            console.log("orgi data", responseJson);
-
                             let filterData = responseJson.find(policyList => policyList.policyNumber ==
                                 this.customers.policyno);
-                            console.log("filter", filterData);
-
                             this.policyList = filterData
                             for (risk of filterData.risk) {
                                 this.riskOfpolicyList.push({
@@ -295,13 +287,10 @@
                                     'risk_name': risk.name,
                                     'phone': risk.phone
                                 });
-                                console.log(risk.seqNo);
-                                console.log(risk.name);
                             }
                             this.isLoading = false;
                         })
                         .catch(error => {
-                            console.error('Error:', error);
                             return Swal.fire({
                                 icon: "error",
                                 title: "Erro*",
@@ -317,9 +306,6 @@
                 preview() {
                     this.isOkAllSetp = false;
                     this.isLoading = true;
-                    console.log('selectCustomerObj');
-                    console.table(this.selectCustomerObj);
-                    console.table(this.phoneNumberArray);
                     fetch(`{{ url('/') }}/admin/customer/register/preview-customer`, {
                             method: 'POST',
                             headers: {
@@ -344,7 +330,6 @@
                             }
                             this.isLoading = false;
                             this.checkExistPhones = responseJson.data;
-                            console.log("checkExistPhones", responseJson.data);
                         })
                         .catch(error => {
                             return Swal.fire({
@@ -374,7 +359,7 @@
                             const responseJson = await response.json();
                             this.isOkAllSetp = true;
                             this.isLoading = false;
-                            console.log(responseJson);
+                            this.checkExistPhones = ''
                             Swal.fire({
                                 position: "top-end",
                                 icon: "success",
@@ -393,8 +378,6 @@
                         });
                 },
                 addPhone(target, index) {
-                    console.log("index", index);
-                    console.log("Input value:", event.target.value);
                     return this.riskOfpolicyList[index].phone = event.target.value;
                     if (event.target.value < 100000 || event.target.value > 999999999) {
                         Swal.fire({
@@ -406,17 +389,17 @@
                         return false
                     } else {
                         this.riskOfpolicyList[index].phone = event.target.value;
-                        console.table(this.riskOfpolicyList);
                     }
                 },
                 removePhone(index) {
                     this.phoneNumberArray.splice(index, 1);
                 },
+                cancel() {
+                    this.checkExistPhones = ''
+                }
             },
             computed: {
                 isRegButDisabled() {
-                    // console.log(this.riskOfpolicyList.length > 0);
-                    // return this.phoneNumberArray.length > 0;
                     return true
                 },
             }
@@ -497,7 +480,3 @@
         }
     </style>
 @endpush
-
-{{-- https://uatecom.ayasompo.com/PolicyManagement/getcustlistpoliciesinvoice?customerCode=C000051354&policyno=AYA/YGN/MCP/23000155 --}}
-
-{{-- https://ecom.ayasompo.com/PolicyManagement/getcustlistpoliciesinvoice?customerCode=C000079645&policyno=AYA/NPT/AYH/23000002 --}}

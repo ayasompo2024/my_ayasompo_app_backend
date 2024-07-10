@@ -67,9 +67,9 @@ class RequestFormService
 
         $status = RequestForm::create($input);
         if ($status) {
-            // if (!empty ($request->user())) {
-            //     $this->sendNoti($request->user()->device_token, $request->user()->user_name, $getCaseNumber[0]["incidentid"], $getCaseNumber[0]["ayasompo_casenumber"]);
-            // }
+            if (!empty ($request->user())) {
+                $this->sendNoti($request->user()->device_token, $request->user()->user_name, $getCaseNumber[0]["incidentid"], $getCaseNumber[0]["ayasompo_casenumber"]);
+            }
             return [
                 "incidentid" => $getCaseNumber[0]["incidentid"],
                 "ayasompo_casenumber" => $getCaseNumber[0]["ayasompo_casenumber"]

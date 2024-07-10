@@ -1,7 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container">
-
         <nav aria-label="breadcrumb m-0 p-0">
             <ol class="breadcrumb m-0 pl-0 bg-transparent">
                 <li class="breadcrumb-item active p-0 pl-3" aria-current="page">Customer / {{ $customer->user_name }} / Edit
@@ -16,7 +15,8 @@
                         <span class="float-right"> Edit </span>
                         <a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-square"></i></a>
                     </h5>
-                    <form class="mt-4" method="post" action="{{ route("admin.customer.update",$customer->id) }}" enctype="multipart/form-data">
+                    <form class="mt-4" method="post" action="{{ route('admin.customer.update', $customer->id) }}"
+                        enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="row mt-3">
@@ -45,8 +45,9 @@
                                 <label for="customer_phoneno" style="font-weight: normal"> Phone Number </label>
                             </div>
                             <div class="col-lg-8">
-                                <input value="{{ $customer->customer_phoneno }}" type="number" name="customer_phoneno" required
-                                    class="form-control form-control-sm" placeholder="Enter Phone " id="customer_phoneno">
+                                <input value="{{ $customer->customer_phoneno }}" type="number" name="customer_phoneno"
+                                    required class="form-control form-control-sm" placeholder="Enter Phone "
+                                    id="customer_phoneno">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -82,9 +83,9 @@
                                 <label for="department" style="font-weight: normal"> Department </label>
                             </div>
                             <div class="col-lg-8">
-                                <input value="{{ $customer->employeeInfo['department'] }}" type="text" name="department" required
-                                    class="form-control form-control-sm" placeholder="Enter Department " id="department"
-                                    autocomplete="department">
+                                <input value="{{ $customer->employeeInfo['department'] }}" type="text" name="department"
+                                    required class="form-control form-control-sm" placeholder="Enter Department "
+                                    id="department" autocomplete="department">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -92,9 +93,9 @@
                                 <label for="email" style="font-weight: normal"> Email </label>
                             </div>
                             <div class="col-lg-8">
-                                <input value="{{ $customer->employeeInfo['email'] }}" type="email" name="email" required
-                                    class="form-control form-control-sm" placeholder="Enter Email " id="email"
-                                    autocomplete="email">
+                                <input value="{{ $customer->employeeInfo['email'] }}" type="email" name="email"
+                                    required class="form-control form-control-sm" placeholder="Enter Email "
+                                    id="email" autocomplete="email">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -150,19 +151,3 @@
         }
     </script>
 @endpush
-
-
-
-{{-- 
-
-    
-"employee_info": {
-    "code": "007",
-    "designation": "Director",
-    "department": "Innovation lab",
-    "email": "aghtetmg@gmail.mm",
-    "office_phone": "95-1-9010941, 9010942\n95-1-9010943, 9010944",
-    "office_address": "No. 245, Corner of Maha Bandula Road \nand 46th Street, Botahtaung Township,\nYangon, Myanmar",
-}    
-    
- --}}

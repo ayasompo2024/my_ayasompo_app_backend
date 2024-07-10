@@ -20,7 +20,6 @@
                 <div v-if="selectedTab == 'GROUP'" class="d-flex justify-content-between">
                     <div>
                         <span v-if="policy_number">Policy Number : @{{ policy_number }}</span>
-                        &nbsp;<button v-if="policy_number" class="btn py-0 px-1 bg-danger">Send All </button>
                     </div>
                     <div class="">
                         <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
@@ -41,10 +40,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <div v-if="policy_number">
-                                &nbsp;<button v-if="policy_number" class="btn py-0 px-1 bg-danger">Send All </button>
-                            </div>
+                        <tr v-if="policy_number" style="font-size: 15px">
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1">
+                                <button @click="sendSelectRow()"  v-if="policy_number" class="btn btn-sm btn-danger ml-2 d-flex align-items-center"
+                                    style="height:25px">
+                                    Send All
+                                </button>   
+                            </td>
                         </tr>
                         <tr v-for="(item, index) in current_items" style="font-size: 15px">
                             <td class="p-1" v-text="index + 1"></td>
@@ -104,6 +112,9 @@
                 }
             },
             methods: {
+                sendSelectRow(){
+                    alert("မရသေးပါဘူးခင်ဗျာ")
+                },
                 sendSms(index) {
                     const item = this.current_items[index];
                     this.current_items[index]['is_loading'] = true;

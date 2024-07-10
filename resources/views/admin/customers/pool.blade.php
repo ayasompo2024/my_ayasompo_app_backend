@@ -50,8 +50,7 @@
                                     <div class="progress-bar" :style="{ width: `${progressPercentage}%` }"></div>
                                 </div>
                             </td>
-                            <td colspan="3" class="p-1 d-flex  ">
-
+                            <td colspan="3" class="p-1 d-flex ">
                                 <button @click="sendSelectRow()" v-if="policy_number"
                                     class="btn btn-sm btn-danger  d-flex justify-content-center align-items-center"
                                     style="height:25px">
@@ -115,7 +114,6 @@
                     current_items,
                     selectedTab,
                     policy_number: '',
-
                     isLoading: false,
                     isPaused: false,
                     progress: 0,
@@ -148,7 +146,6 @@
                         this.isLoading = false;
                         return;
                     }
-
                     if (!this.isPaused) {
                         const item = this.itemQueue.shift();
                         this.sendSms(item, this.current_items.indexOf(item)).then(() => {
@@ -186,14 +183,6 @@
                         this.processQueue();
                     }
                 },
-                truncateContent(name) {
-                    if (!name || name.length === 0) {
-                        return "";
-                    }
-                    let truncatedName = name.substring(7);
-                    return truncatedName.length > 10 ? truncatedName.substring(0, 10) + '...' : truncatedName;
-                },
-
                 selectType(type) {
                     this.selectedTab = type;
                     this.current_items = this.items[type]

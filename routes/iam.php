@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\admin\iam\IAMController;
-use App\Http\Controllers\admin\MessagingController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {

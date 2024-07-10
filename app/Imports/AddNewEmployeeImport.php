@@ -59,15 +59,14 @@ class AddNewEmployeeImport implements ToCollection
                             'phone' => $phone,
                             'content' => $this->getContent($user_name, $phone, "You can login with existing password !")
                         ]);
-                        // $this->callSMSAPI($phone, $this->getContent($user_name, $phone, "You can login with existing password !"), $user_name);
                         $input["password"] = $isExistFirstProfile['password'];
+                        $input['device_token'] = $isExistFirstProfile['device_token'];
                     } else {
                         array_push($pool, [
                             'name' => $row["user_name"],
                             'phone' => $phone,
                             'content' => $this->getContent($user_name, $phone, $password)
                         ]);
-                        // $this->callSMSAPI($phone, $this->getContent($user_name, $phone, $password), $user_name);
                         $input["password"] = Hash::make($row["password"]);
                     }
                     $createdEmployee = Customer::create($input);

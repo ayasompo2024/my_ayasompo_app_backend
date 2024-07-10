@@ -20,12 +20,10 @@
                         <th class="p-1" style="min-width: 100px">Case ID *</th>
                         <th class="p-1" style="min-width: 300px">Incident ID</th>
                         <th class="p-1" style="min-width: 200px">Case Number</t h>
-                            {{-- <th style="min-width: 200px">Customer ID Contact</th> --}}
                         <th class="p-1" style="min-width: 200px">Policy No</th>
                         <th class="p-1" style="min-width: 200px">Customer Code</th>
                         <th class="p-1" style="min-width: 200px">Product & Class Code</th>
                         <th class="p-1" style="min-width: 200px">Risk Sequence No</th>
-                        {{-- <th  class="p-1" style="min-width: 200px">Vehicle no</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +35,6 @@
                             <td title="{{ $requestForm->customer->customer_phoneno ?? '' }}" class="p-1"
                                 style="font-size: 15px">
                                 {{ $requestForm->customer->user_name ?? '' }}
-                                {{-- <small>{{ $requestForm->customer->id ?? '' }}</small> --}}
                                 @if (!is_null($requestForm->customer))
                                     <a href="{{ route('admin.messaging.unicast.show-form', $requestForm->customer->id) }}"
                                         class="ml-1" style="font-size: 15px"><i
@@ -48,31 +45,23 @@
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->title }} </td>
                             <td class="p-1" style="font-size: 15px">
                                 @if ($requestForm->inquiry_status == 'Success')
-                                    <span class="badge bg-success">{{ $requestForm->inquiry_status }}</span>    
+                                    <span class="badge bg-success">{{ $requestForm->inquiry_status }}</span>
                                 @elseif($requestForm->inquiry_status == 'Follow Up')
-                                    <span class="badge bg-info">{{ $requestForm->inquiry_status }}</span>    
+                                    <span class="badge bg-info">{{ $requestForm->inquiry_status }}</span>
                                 @elseif($requestForm->inquiry_status == 'Cancel')
-                                    <span class="badge bg-warning">{{ $requestForm->inquiry_status }}</span>      
+                                    <span class="badge bg-warning">{{ $requestForm->inquiry_status }}</span>
                                 @else
-                                    <span class="badge bg-danger">{{ $requestForm->inquiry_status }}</span>      
+                                    <span class="badge bg-danger">{{ $requestForm->inquiry_status }}</span>
                                 @endif
                             </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_caseid }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->incidentid }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_casenumber }} </td>
-                            {{-- <td class="p-1" style="font-size: 15px"> {{ $requestForm->customerid_contact }} </td> --}}
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_policyno }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_customercode }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_productcode }} /
                                 {{ $requestForm->ayasompo_classcode }} </td>
                             <td class="p-1" style="font-size: 15px"> {{ $requestForm->ayasompo_risksequenceno }} </td>
-                            {{-- <td class="p-1" style="font-size: 15px"td> {{ $requestForm->ayasompo_vehicleno }} </td> --}}
-                            {{--  <td> {{ $requestForm->reason }} </td>
-                            <td style="font-size: 15px"> {{ $requestForm->effective_date }} </td>
-                            <td style="font-size: 15px"> {{ $requestForm->bank_account_number }} </td>
-                            <td style="font-size: 15px"> {{ $requestForm->bank_name }} </td>
-                            <td style="font-size: 15px"> {{ $requestForm->other_bank_name }} </td>
-                            <td style="font-size: 15px"> {{ $requestForm->other_bank_address }} </td> --}}
                         </tr>
                     @endforeach
                 </tbody>

@@ -17,4 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/history', [MessagingController::class, 'history'])->name('admin.messaging.history');
     Route::get('/history/get-by-customer-id/{customerID}', [MessagingController::class, 'getByCustomerID'])->name('admin.messaging.history.get-by-customer-id');
+
+    Route::get('/history/agent', [MessagingController::class, 'getAgentNotiList'])->name('admin.messaging.agent-history');
+    Route::get('/agent-noti-form', [MessagingController::class, 'showAgentNotiForm'])->name('admin.messaging.agent-noti-form');
+    Route::post('/send-campaign-noti', [MessagingController::class, 'sendCampaignNoti'])->name('admin.messaging.send-campaign-noti');
+    //Route::post('/history/agent', [MessagingController::class, 'sendAgentNoti'])->name('admin.messaging.history');
 });

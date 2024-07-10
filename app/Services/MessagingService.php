@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\AgentNoti;
 use App\Models\Customer;
 use App\Repositories\CustomerRepository;
 
@@ -9,6 +10,7 @@ use App\Repositories\MessagingRepository;
 use App\Traits\SendPushNotification;
 
 use App\Traits\FileUpload;
+use phpseclib3\System\SSH\Agent;
 
 class MessagingService
 {
@@ -86,7 +88,7 @@ class MessagingService
         $input["multicast_uid"] = uniqid();
 
         foreach ($phones as $phone) {
-            $customer = Customer::whereNotNull("device_token")->where("customer_phoneno",$phone)->first();
+            $customer = Customer::whereNotNull("device_token")->where("customer_phoneno", $phone)->first();
             if ($customer) {
                 $this->sendAsUnicast($customer->device_token, $data, $notification);
                 $input["customer_id"] = $customer->id;
@@ -101,6 +103,24 @@ class MessagingService
     function getByCustomerID($per_page, $id)
     {
         return MessagingRepository::getByCustomerID($per_page, $id);
+    }
+
+    function sendCampaignNoti($request)
+    {
+        $data = ["title" => $request->title, "body" => $request->message];
+        $notification = ["title" => $request->title, "body" => $request->message];
+        $input = $request->only('title', 'message', 'description');
+        if ($request->image)
+            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+
+        $customers = Customer::select("id", "device_token")->where("app_customer_type", "AGENT")->get();
+        foreach ($customers as $customer) {
+            $this->sendAsUnicast($customer->device_token, $data, $notification);
+            $input["customer_id"] = $customer->id;
+            $input["type"] = "campaign_promotion";
+            $input["noti_received_date"] = now();
+            AgentNoti::create($input);
+        }
     }
 }
 

@@ -1,74 +1,67 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container">
+        <br>
+        <div class="border rounded bg-light  mx-md-4 px-3 py-4">
+            <form action="{{ route('admin.messaging.send-campaign-noti') }}" enctype="multipart/form-data" method="post">
+                @csrf
+                <h6 class="border-bottom pb-2">
+                    <b>Send Campaign Noti</b>
+                    <i class="float-right bi bi-bell-fill"></i>
+                </h6>
 
-        <div class="bg-light px-md-3 mt-md-3 mt-2 mb-5">
-
-        
-            @include('admin.validation-error-alert')
-
-            <div class="row mt-2">
-                <div class="col-md-12 px-md-5 rounded mb-5">
-
-                    <h5 class="mt-4 pb-2 border-bottom">
-                        <span class="float-right"> Add Location Map Category</span>
-                        <a href="{{ url()->previous() }}"><i class="bi bi-arrow-left-square"></i></a>
-                    </h5>
-
-                    <form class="mt-4" method="POST" action="{{ route('admin.location-map-category.store') }}"
-                        enctype="multipart/form-data" onkeydown="return event.key != 'Enter'">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <label for="images">Image</label>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="upload__box">
-                                    <div class="upload__img-wrap"></div>
-                                    <div class="upload__btn-box">
-                                        <label class="btn btn-sm shadow-sm bg-secondary">
-                                            <i class="bi bi-image"></i> Add Photo
-                                            <input type="file" required name="image" data-max_length="20" accept="image/*"
-                                                class="upload__inputfile">
-                                            @error('image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-lg-4">
-                                <label for="name"> Name </label>
-                            </div>
-                            <div class="col-lg-8">
-                                <input id="name" value="{{ old('name') }}" type="text" name="name"
-                                    autocomplete="name" required class="form-control form-control-sm" placeholder="Enter Title">
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-lg-4">
-                                <label for="sort"> Sort(Order) </label>
-                            </div>
-                            <div class="col-lg-8">
-                                <input id="sort"  value="1" type="number" name="sort"
-                                     class="form-control form-control-sm"
-                                    placeholder="Enter Sort Number">
-                            </div>
-                        </div>
-                        <div class="form-group my-3">
-                            <button type="submit" class="btn bg-info btn-sm px-4 float-right">Create </button>
-                        </div>
-                        <br /><br />
-                    </form>
+                <div class="row mt-4">
+                    <label class="col-md-4" for="title">Title*</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control form-control-sm" name="title" required
+                            placeholder="Title">
+                        <small class="form-text text-muted">Required , Min Lenght 3, Max Lenght 255</small>
+                    </div>
                 </div>
-            </div>
+                <div class="row mt-3">
+                    <label class="col-md-4" for="message">Message</label>
+                    <div class="col-md-8">
+                        <textarea name="message" required class="form-control"></textarea>
+                        <small class="form-text text-muted">Option , Max Lenght 255</small>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <label class="col-md-4">Photo</label>
+                    <div class="col-md-8">
+                        <div class="upload__box">
+                            <div class="upload__img-wrap"></div>
+                            <div class="upload__btn-box">
+                                <label class="btn btn-sm shadow-sm bg-danger">
+                                    <i class="bi bi-image"></i> Add Photo
+                                    <input type="file" type="hidden" name="image" data-max_length="1" accept="image/*"
+                                        class="upload__inputfile">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <label class="col-md-4" for="description">Description</label>
+                    <div class="col-md-8">
+                        <textarea id="editorForProperty" rows="5" style="white-space: pre-wrap;" name="description"
+                            class="form-control form-control-sm" placeholder="Enter Descriptione" id="description" /></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#new">
+                             &nbsp; Send <i class="bi bi-send-fill"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </form>
         </div>
+        <br>
     </div>
 @endsection
+
 @push('child-css')
     <style>
         .upload__inputfile {
@@ -122,8 +115,6 @@
         }
     </style>
 @endpush
-
-
 @push('child-scripts')
     <script>
         jQuery(document).ready(function() {

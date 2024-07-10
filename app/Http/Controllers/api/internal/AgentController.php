@@ -32,7 +32,7 @@ class AgentController extends Controller
     }
     private function getAgentProfileByPhone($phone)
     {
-        return Customer::select('id', 'customer_phoneno', 'app_customer_type', 'user_name', 'device_token')->where('customer_phoneno', $phone)->where('app_customer_type', 'AGENT')->first();
+        return Customer::select('id', 'customer_phoneno', 'app_customer_type', 'user_name', 'device_token')->where('customer_phoneno', $phone)->first();
     }
     private function validationForSendAgentNoti($request)
     {

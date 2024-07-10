@@ -17,12 +17,20 @@
                 </div>
             </div>
             <div class="px-2  mt-2 bg-light px-2 py-3 rounded">
+                <div v-if="selectedTab == 'GROUP'" class="d-flex justify-content-between">
+                    <div>
+                        <span v-if="policy_number">Policy Number : @{{ policy_number }}</span>
+                    </div>
+                    <div class="">
+                        <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
+                            type="form-control bg-light form-control-sm">
+                    </div>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
                             <th class="p-1">Date</th>
-                            {{-- <th class="p-1">Type</th> --}}
                             <th class="p-1">Phone</th>
                             <th class="p-1"> Name</th>
                             <th class="p-1">Policy Number</th>
@@ -32,13 +40,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr v-if="policy_number" style="font-size: 15px">
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1"></td>
+                            <td class="p-1">
+                                <button @click="sendSelectRow()"  v-if="policy_number" class="btn btn-sm btn-danger ml-2 d-flex align-items-center"
+                                    style="height:25px">
+                                    Send All
+                                </button>   
+                            </td>
+                        </tr>
                         <tr v-for="(item, index) in current_items" style="font-size: 15px">
                             <td class="p-1" v-text="index + 1"></td>
                             <td class="p-1">
                                 <span v-if="isToday(item.created_at)" class="badge bg-success mr-2" v-text="'Today'"></span>
                                 <span v-text="formatDate(item.created_at)"></span>
                             </td>
-                            {{-- <td class="p-1" v-text="item.key"></td> --}}
                             <td class="p-1" v-text="item.phone"></td>
                             <td class="p-1" v-text="item.name"></td>
                             <td class="p-1" v-text="item.policy_number"></td>
@@ -63,12 +84,12 @@
         const app = SpideyShine.createApp({
             data() {
                 const items = @json($pool);
+                console.log(items);
                 const tabs = [
                     'AGENT',
                     'EMPLOYEE',
                     'GROUP'
                 ];
-                console.log(items['AGENT']);
                 let selectedTab = "AGENT";
                 let current_items = items[selectedTab];
                 return {
@@ -76,10 +97,24 @@
                     isLoading: false,
                     tabs,
                     current_items,
-                    selectedTab
+                    selectedTab,
+                    policy_number: ''
                 };
             },
+            watch: {
+                policy_number(newVal, oldVal) {
+                    /*
+                    this.current_items = this.items.GROUP.filter(item => item.policy_number.includes(this
+                        .policy_number));
+                        */
+                    this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                        .policy_number);
+                }
+            },
             methods: {
+                sendSelectRow(){
+                    alert("မရသေးပါဘူးခင်ဗျာ")
+                },
                 sendSms(index) {
                     const item = this.current_items[index];
                     this.current_items[index]['is_loading'] = true;
@@ -95,14 +130,11 @@
                         })
                         .then(async response => {
                             const responseJson = await response.json();
-                            //this.items = responseJson.data;
                             this.isLoading = false;
                             this.current_items.splice(index, 1);
-                            console.log(responseJson);
                         })
                         .catch(error => {
                             this.isLoading = false;
-                            console.log(error);
                         });
                 },
                 truncateContent(name) {
@@ -116,7 +148,6 @@
                 selectType(type) {
                     this.selectedTab = type;
                     this.current_items = this.items[type]
-                    console.log(this.current_items);
                 },
                 isToday(dateTime) {
                     const today = new Date();
@@ -128,30 +159,26 @@
                 formatDate(dateTime) {
                     const date = new Date(dateTime);
                     const today = new Date();
-
-                    // Check if date is today
                     if (
                         date.getDate() === today.getDate() &&
                         date.getMonth() === today.getMonth() &&
                         date.getFullYear() === today.getFullYear()
                     ) {
-                        // If today, return only time portion
                         return date.toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit'
                         });
                     } else {
-                        // If not today, return full formatted date with time
                         const year = date.getFullYear();
-                        const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if needed
-                        const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if needed
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const day = String(date.getDate()).padStart(2, '0');
                         const time = date.toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit'
                         });
                         const ampm = date.toLocaleTimeString([], {
                             hour12: true
-                        }).slice(-2); // Extract AM/PM from full time string
+                        }).slice(-2);
                         return `${year}-${month}-${day} ${time} `;
                     }
                 },

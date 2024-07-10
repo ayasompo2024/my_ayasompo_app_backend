@@ -195,6 +195,16 @@ return [
                 'sub_menus' => null,
                 'can' => ['Agent', 'Root'],
             ],
+            [
+                'display' => 'Agent Noti',
+                'route' => 'admin.messaging.agent-history',
+                'route_param' => null,
+                'imag_path' => null,
+                'target' => true,
+                'icon' => 'bi bi-bell-fill',
+                'sub_menus' => null,
+                'can' => ['Agent', 'Root'],
+            ],
         ],
     ],
     [

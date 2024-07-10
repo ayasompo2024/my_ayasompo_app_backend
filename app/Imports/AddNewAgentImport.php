@@ -59,19 +59,19 @@ class AddNewAgentImport implements ToCollection
                             'phone' => $row["customer_phoneno"],
                             'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !")
                         ]);
-                        // $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], "You can login with existing password !"), $row["user_name"]);
                         $password = $isExistFirstProfile['password'];
+                        $device_token = $isExistFirstProfile['device_token'];
                     } else {
                         array_push($pool, [
                             'name' => $row["user_name"],
                             'phone' => $row["customer_phoneno"],
                             'content' => $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"])
                         ]);
-                        // $this->callSMSAPI($row["customer_phoneno"], $this->getContent($row["user_name"], $row["customer_phoneno"], $row["password"]), $row["user_name"]);
                         $password = Hash::make($row["password"]);
+                        $device_token = null;
                     }
 
-                    $createdAgentProfile = CustomerRepository::store($this->inputFroCustomerModel($row, $password));
+                    $createdAgentProfile = CustomerRepository::store($this->inputFroCustomerModel($row, $password, $device_token));
                     if ($createdAgentProfile) {
                         $this->storeAgentInfo($row, $createdAgentProfile['id']);
                         $this->storeAgentAccountCode($row['account_codes'], $createdAgentProfile['id']);
@@ -89,14 +89,15 @@ class AddNewAgentImport implements ToCollection
         }
     }
 
-    private function inputFroCustomerModel($row, $password)
+    private function inputFroCustomerModel($row, $password, $device_token)
     {
         return [
             'customer_code' => $row['agent_license'],
             'customer_phoneno' => $row['customer_phoneno'],
             'user_name' => $row['user_name'],
             'app_customer_type' => 'AGENT',
-            'password' => $password
+            'password' => $password,
+            'device_token' => $device_token
         ];
     }
 

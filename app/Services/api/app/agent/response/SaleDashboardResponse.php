@@ -17,7 +17,6 @@ trait SaleDashboardResponse
                 "to_date" => $to_date,
                 'total' => $all_product_sale,
             ],
-            // 'product_premium' => $this->productPremium($collection, $all_product_sale),
             'type_of_business' => [
                 'renewal' => $renewals['amount'],
                 'renewal_percent' => $renewals['percent'],
@@ -26,7 +25,7 @@ trait SaleDashboardResponse
             ],
             'detaillistcount' => 7,
             'productlist' => $this->chartData($from_date, $to_date),
-            'raw_data' => $this->collection
+
         ];
     }
     private function typeOfBusiness($target, $all_premium_product_sale)
@@ -39,15 +38,6 @@ trait SaleDashboardResponse
             'percent' => $this->calculatePercentage($all_premium_product_sale, $type_of_business_total_sale)
         ];
     }
-    private function calculatePercentage($totalPrice, $sale_price)
-    {
-        $totalPrice = intval($totalPrice);
-        $sale_price = intval($sale_price);
-        if ($totalPrice === 0) {
-            return 0;
-        }
-        return intval(($sale_price / $totalPrice) * 100);
-    }
     private function chartData($from_date, $to_date)
     {
         $premiumProductName = config('premium_product_name');
@@ -56,63 +46,63 @@ trait SaleDashboardResponse
                 [
                     'name' => $premiumProductName[0],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[0])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[0]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[1],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[1])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[1]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[2],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[2])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[2]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[3],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[3])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[3]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[4],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[4])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[4]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[5],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[5])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[5]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[6],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[6])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[6]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[7],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[7])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[7]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[8],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[8])),
-                    'dataset' => $this->getDataSet($from_date, $to_date)
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[8]))
                 ]
             ),
         ];
@@ -124,7 +114,7 @@ trait SaleDashboardResponse
         })->sum("premium");
         return $target_premium_product_sale;
     }
-    private function getDataSet($from_date, $to_date)
+    private function getDataSet($from_date, $to_date, $target_product)
     {
         $from = Carbon::parse($from_date);
         $to = Carbon::parse($to_date);
@@ -132,11 +122,11 @@ trait SaleDashboardResponse
         $dayCount = $from->diffInDays($to) + 1; // Including the end date
 
         if ($dayCount <= 7) {
-            return $this->dataSetByDay($from, $to);
+            return $this->dataSetByDay($from, $to, $target_product);
         }
 
         if ($from->isSameMonth($to)) {
-            $weeks = $this->dataSetByWeek($from);
+            $weeks = $this->dataSetByWeek($from, $target_product);
             foreach ($weeks as $weekData) {
                 $weekData['x_label'] . ': ' . $weekData['y_value'] . "\n";
             }
@@ -144,23 +134,25 @@ trait SaleDashboardResponse
         }
 
         if ($from->isSameYear($to))
-            return $this->dataSetByMonthOfYear($from);
+            return $this->dataSetByMonthOfYear($from, $target_product);
 
-        $dataSet = $this->dataSetByYear($from, $to);
-        return $dataSet;
+        return $this->dataSetByYear($from, $to, $target_product);
     }
-    private function dataSetByDay($from, $to)
+
+    // 01-07 day
+    private function dataSetByDay($from, $to, $target_product)
     {
-        return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from) {
+        return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from, $target_product) {
             $date = $from->copy()->addDays($day);
             return [
-                'x_label' => $date->toDateString(),
-                'y_value' => $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00')
+                'x_label' => $date->format('d'),
+                'y_value' => $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product)
             ];
         });
     }
 
-    function dataSetByWeek($from)
+    //5 week in one month
+    function dataSetByWeek($from, $target_product)
     {
         $daysInMonth = $from->daysInMonth;
         $weeks = [];
@@ -171,10 +163,9 @@ trait SaleDashboardResponse
             [21, 27],
             [28, $daysInMonth]
         ];
-
         foreach ($weekRanges as $days) {
-            $totalYValue = collect(range($days[0], $days[1]))->reduce(function ($carry, $day) use ($from) {
-                return $carry + $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString() . ' 00:00:00');
+            $totalYValue = collect(range($days[0], $days[1]))->reduce(function ($carry, $day) use ($from, $target_product) {
+                return $carry + $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString() . ' 00:00:00', $target_product);
             }, 0);
 
             $weeks[] = [
@@ -185,29 +176,31 @@ trait SaleDashboardResponse
         return $weeks;
     }
 
-    private function dataSetByMonthOfYear($from_date)
+    //01-012 months
+    private function dataSetByMonthOfYear($from_date, $target_product)
     {
         $year = $from_date->year;
         $months = new Collection();
         for ($month = 1; $month <= 12; $month++) {
             $months->push(
                 [
-                    'x_label' => Carbon::create($year, $month, 1)->format('M'),
-                    'y_value' => $this->getProductPremiumByReceiptMonth(Carbon::create($year, $month, 1)->format('Y-m'))
+                    'x_label' => Carbon::create($year, $month, 1)->format('m'),
+                    'y_value' => $this->getProductPremiumByReceiptMonth(Carbon::create($year, $month, 1)->format('Y-m'), $target_product)
                 ]
             );
         }
         return $months;
     }
 
-    private function dataSetByYear($from, $to)
+    //2021 - 2024 select all year
+    private function dataSetByYear($from, $to, $target_product)
     {
-        $years = collect(range($from->year, $to->year))->map(function ($year) {
+        $years = collect(range($from->year, $to->year))->map(function ($year) use ($target_product) {
             $startOfYear = Carbon::create($year, 1, 1);
             $endOfYear = Carbon::create($year, 12, 31);
-            $totalYValue = collect(range(0, $startOfYear->diffInDays($endOfYear)))->reduce(function ($carry, $day) use ($startOfYear) {
+            $totalYValue = collect(range(0, $startOfYear->diffInDays($endOfYear)))->reduce(function ($carry, $day) use ($startOfYear, $target_product) {
                 $date = $startOfYear->copy()->addDays($day);
-                return $carry + $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00');
+                return $carry + $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product);
             }, 0);
 
             return [
@@ -218,28 +211,35 @@ trait SaleDashboardResponse
 
         return $years;
     }
+    private function getProductPremiumByReceiptDate($receipt_date, $target_product)
+    {
+        $target_premium_product_sale = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
+            return $item['receipt_date'] == $receipt_date && $item['product'] == $target_product;
+        })->sum("premium");
+        return $target_premium_product_sale;
+    }
+    private function getProductPremiumByReceiptMonth($month, $target_product)
+    {
+        $target_premium_product_sale = $this->collection->filter(function ($item) use ($month, $target_product) {
+            return Carbon::parse($item['receipt_date'])->format('Y-m') == $month && $item['product'] == $target_product;
+        })->sum("premium");
+        return $target_premium_product_sale;
+    }
+    private function calculatePercentage($totalPrice, $sale_price)
+    {
+        $totalPrice = intval($totalPrice);
+        $sale_price = intval($sale_price);
+        if ($totalPrice === 0) {
+            return 0;
+        }
+        return intval(($sale_price / $totalPrice) * 100);
+    }
     private function getProductPremiumByMonth($collection, $target_month)
     {
         return $collection->filter(function ($item) use ($target_month) {
             return Carbon::parse($item['receipt_date'])->format('Y-m') === $target_month;
         })->sum("premium");
     }
-
-    private function getProductPremiumByReceiptDate($receipt_date)
-    {
-        $target_premium_product_sale = $this->collection->filter(function ($item) use ($receipt_date) {
-            return $item['receipt_date'] == $receipt_date;
-        })->sum("premium");
-        return $target_premium_product_sale;
-    }
-    private function getProductPremiumByReceiptMonth($month)
-    {
-        $target_premium_product_sale = $this->collection->filter(function ($item) use ($month) {
-            return Carbon::parse($item['receipt_date'])->format('Y-m') == $month;
-        })->sum("premium");
-        return $target_premium_product_sale;
-    }
-
     private function productPremium($collection, $all_product_sale)
     {
         $premiumProductName = config('premium_product_name');

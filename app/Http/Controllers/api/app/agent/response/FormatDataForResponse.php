@@ -54,13 +54,13 @@ trait FormatDataForResponse
                     'total' => count($paid_rows) + count($open_rows) + count($outstanding) + count($closed_rows),
                     'paid' => count($paid_rows),
                     'open' => count($open_rows),
-                    'outstanding' => count($outstanding),
+                    'outstanding' => count($outstanding) + count($open_rows),
                     'closed' => count($closed_rows)
                 ],
                 'detail' => [
-                    'open' => array_merge($open_rows_array, $outstanding_array),
+                    'open' => $open_rows_array,
                     'paid' => $paid_rows,
-                    'outstanding' => $outstanding,
+                    'outstanding' => array_merge($open_rows_array, $outstanding_array),
                     'closed' => $closed_rows,
                 ]
             ]

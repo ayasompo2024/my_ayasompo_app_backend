@@ -1,20 +1,16 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container" id="app">
-
         <nav class="pt-3">
             Claim Case / Motor
             <a class="float-left" href="{{ url()->previous() }}"><i class="m-3 bi bi-arrow-left-square"></i></a>
         </nav>
-
         <div class="bg-light px-md-3 mt-4 mb-5">
-
             <div v-show="currentSelectObj == ''">
                 <table class="table table-responsive mt-2 table-striped table-hover">
                     <thead>
                         <tr>
                             <th style="min-width: 200px">Created At</th>
-                            {{-- <th style="min-width: 200px">App Customer Name</th> --}}
                             <th style="min-width: 100px;font-size:14px">Vehicle No</th>
                             <th style="min-width: 200px;font-size:14px">Driver Name</th>
                             <th style="min-width: 200px;font-size:14px">Contact Fullname</th>
@@ -33,7 +29,6 @@
                     <tbody>
                         <tr @click="showDetail(key)" v-for="(item, key) in claimCases" style="cursor: pointer;">
                             <td style="font-size: 15px">@{{ formatDateTime(item.created_at) }}</td>
-                            {{-- <td style="font-size: 15px">@{{ item.id }}</td> --}}
                             <td style="font-size: 15px">@{{ item.vehicle_no }} </td>
                             <td style="font-size: 15px">@{{ item.driver_name }}</td>
                             <td style="font-size: 15px">@{{ item.contact_fullname }}</td>
@@ -222,9 +217,8 @@
 @endpush
 
 @push('child-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script>
-        const app = Vue.createApp({
+        const app = SpideyShine.createApp({
             data() {
                 const claimCases = @json($unserializeData);
                 const currentSelectObj = '';
@@ -238,7 +232,6 @@
             methods: {
                 showDetail(index) {
                     this.currentSelectObj = this.claimCases[index];
-                    console.log(this.currentSelectObj);
                 },
                 removeDetail() {
                     this.currentSelectObj = '';
@@ -258,9 +251,8 @@
                         hour: 'numeric',
                         minute: 'numeric',
                         second: 'numeric',
-                        hour12: true // Use 12-hour clock with am/pm
+                        hour12: true
                     });
-
                     return formattedDateTime;
                 },
             }

@@ -42,16 +42,12 @@ class CustomerService
     function login($request)
     {
         $this->writeLog("login", "Login Request Data", $request->all());
-        $formatPhoneNumber = $this->removeInitialPlusNineFiveNine($request->customer_phoneno);
-        $customer = CustomerRepository::getByPhone($formatPhoneNumber);
+        $customer = CustomerRepository::getByPhone($this->removeInitialPlusNineFiveNine($request->customer_phoneno));
         if (empty($customer) || !Hash::check($request->password, $customer->password))
             return false;
         $this->logOutOldDevice($customer->device_token);
-        $token = $customer->createToken('app_api_token')->accessToken;
-        $customer->device_token = $request->device_token;
-        $customer->save();
         return [
-            "token" => $customer->is_disabled ? null : $token,
+            "token" => $customer->is_disabled ? null : $customer->createToken('app_api_token')->accessToken,
             "customer" => $customer->is_disabled ? null : new CustomerRsource($customer)
         ];
     }

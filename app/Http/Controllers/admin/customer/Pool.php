@@ -59,7 +59,7 @@ trait Pool
                 return $this->successResponse("Success", $data, 200);
             }
         }
-        
+
         return $this->successResponse("Success", [], 200);
     }
 }

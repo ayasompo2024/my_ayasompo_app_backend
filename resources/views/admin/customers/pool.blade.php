@@ -19,7 +19,9 @@
             <div class="px-2  mt-2 bg-light px-2 py-3 rounded">
                 <div v-if="selectedTab == 'GROUP'" class="d-flex justify-content-between">
                     <div>
-                        <span v-if="policy_number">Policy Number : @{{ policy_number }}</span>
+                        <span v-if="policy_number">
+                            Policy Number : @{{ policy_number }} <span
+                                class="badge bg-danger">@{{ current_items.length }}</span> </span>
                     </div>
                     <div class="">
                         <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
@@ -35,23 +37,31 @@
                             <th class="p-1"> Name</th>
                             <th class="p-1">Policy Number</th>
                             <th class="p-1"> Sended SMS ?</th>
-                            <th class="p-1">Invite</th>
+                            <th class="p-1 text-right pr-3">Invite&nbsp;</th>
                             <th class="p-1">Row ID</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-if="policy_number" style="font-size: 15px">
-                            <td class="p-1"></td>
-                            <td class="p-1"></td>
-                            <td class="p-1"></td>
-                            <td class="p-1"></td>
-                            <td class="p-1"></td>
-                            <td class="p-1"></td>
-                            <td class="p-1">
-                                <button @click="sendSelectRow()"  v-if="policy_number" class="btn btn-sm btn-danger ml-2 d-flex align-items-center"
+                            <td colspan="6" class="p-1 ">
+                                <div class="progress-container border">
+                                    <span class="progress-text text-info">@{{ progress }} /
+                                        @{{ totalItems }}</span>
+                                    <div class="progress-bar" :style="{ width: `${progressPercentage}%` }"></div>
+                                </div>
+                            </td>
+                            <td colspan="3" class="p-1 d-flex  ">
+
+                                <button @click="sendSelectRow()" v-if="policy_number"
+                                    class="btn btn-sm btn-danger  d-flex justify-content-center align-items-center"
                                     style="height:25px">
                                     Send All
-                                </button>   
+                                </button>
+                                <button @click="togglePause()"
+                                    class="btn btn-sm btn-warning text-white ml-2 d-flex align-items-center"
+                                    style="height:25px">
+                                    @{{ isPaused ? 'Resume' : 'Pause' }}
+                                </button>
                             </td>
                         </tr>
                         <tr v-for="(item, index) in current_items" style="font-size: 15px">
@@ -64,12 +74,19 @@
                             <td class="p-1" v-text="item.name"></td>
                             <td class="p-1" v-text="item.policy_number"></td>
                             <td class="p-1" v-text="item.is_sended_sms"></td>
-                            <td class="p-1  p-1 ">
-                                <button @click="sendSms(index)" :disabled="item.is_loading || isLoading"
-                                    class="btn btn-sm btn-danger ml-2 d-flex align-items-center" style="height:25px">
-                                    Send <i class="ml-1 bi bi-send-fill"></i>
-                                    <span v-if="item.is_loading" class="loader"></span>
-                                </button>
+                            <td class="p-1  ">
+                                <div class="d-flex justify-content-between">
+                                    <button @click="sendSms(item,index)" :disabled="item.is_loading || isLoading"
+                                        class="btn btn-sm btn-danger d-flex align-items-center" style="height:25px">
+                                        <span>Send <i class=" bi bi-send-fill"></i></span>
+                                    </button>
+                                    <div>
+                                        <span v-if="item.is_loading" class="loader2"></span>
+                                    </div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </td>
                             <td class="p-1" v-text="item.id"></td>
                         </tr>
@@ -94,32 +111,57 @@
                 let current_items = items[selectedTab];
                 return {
                     items,
-                    isLoading: false,
                     tabs,
                     current_items,
                     selectedTab,
-                    policy_number: ''
+                    policy_number: '',
+
+                    isLoading: false,
+                    isPaused: false,
+                    progress: 0,
+                    totalItems: 0,
+                    itemQueue: [],
                 };
             },
             watch: {
                 policy_number(newVal, oldVal) {
-                    /*
-                    this.current_items = this.items.GROUP.filter(item => item.policy_number.includes(this
-                        .policy_number));
-                        */
                     this.current_items = this.items.GROUP.filter(item => item.policy_number == this
-                        .policy_number);
+                        .policy_number.trim());
+                }
+            },
+            computed: {
+                progressPercentage() {
+                    return (this.progress / this.totalItems) * 100;
                 }
             },
             methods: {
-                sendSelectRow(){
-                    alert("မရသေးပါဘူးခင်ဗျာ")
-                },
-                sendSms(index) {
-                    const item = this.current_items[index];
-                    this.current_items[index]['is_loading'] = true;
+                sendSelectRow() {
+                    this.totalItems = this.current_items.length;
+                    this.progress = 0;
                     this.isLoading = true;
-                    fetch(`{{ url('/') }}/admin/pool/resolve`, {
+                    this.isPaused = false;
+                    this.itemQueue = [...this.current_items];
+                    this.processQueue();
+                },
+                processQueue() {
+                    if (this.itemQueue.length === 0) {
+                        this.isLoading = false;
+                        return;
+                    }
+
+                    if (!this.isPaused) {
+                        const item = this.itemQueue.shift();
+                        this.sendSms(item, this.current_items.indexOf(item)).then(() => {
+                            this.processQueue();
+                        });
+                    } else {
+                        setTimeout(this.processQueue, 100);
+                    }
+                },
+                async sendSms(item, index) {
+                    this.current_items[index]['is_loading'] = true;
+                    try {
+                        const response = await fetch(`{{ url('/') }}/admin/pool/resolve`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -127,15 +169,22 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                             },
                             body: JSON.stringify(item),
-                        })
-                        .then(async response => {
-                            const responseJson = await response.json();
-                            this.isLoading = false;
-                            this.current_items.splice(index, 1);
-                        })
-                        .catch(error => {
-                            this.isLoading = false;
                         });
+                        const responseJson = await response.json();
+                        const currentIndex = this.current_items.findIndex(i => i === item);
+                        if (currentIndex !== -1) {
+                            this.current_items.splice(currentIndex, 1);
+                        }
+                        this.progress += 1;
+                    } catch (error) {
+                        console.log(error);
+                    }
+                },
+                togglePause() {
+                    this.isPaused = !this.isPaused;
+                    if (!this.isPaused) {
+                        this.processQueue();
+                    }
                 },
                 truncateContent(name) {
                     if (!name || name.length === 0) {
@@ -190,7 +239,7 @@
 
 @push('child-css')
     <style>
-        .loader {
+        .loader2 {
             width: 25px;
             height: 25px;
             border: 3px solid red;
@@ -213,6 +262,30 @@
 
         .custom-border {
             border-bottom: 1px solid red;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 24px;
+            background-color: #DC3545;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 0;
+            left: 0;
+            line-height: 24px;
+            color: #fff;
+            font-weight: bold;
         }
     </style>
 @endpush

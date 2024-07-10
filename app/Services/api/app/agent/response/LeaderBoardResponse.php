@@ -18,11 +18,9 @@ trait LeaderBoardResponse
 }
 
 /*
-"pol_period_from": "2023-07-01 00:00:00",
-"pol_period_to": "2023-10-01 00:00:00",
+"receipt_date": "2023-07-01 00:00:00",
 "pol_prd_code": "MUH",
  premium / 1000
-
 {
     "class_name": "MOTOR INSURANCE",
     "product_name": "COMPREHENSIVE DUAL PURPOSE CAR (USD)",
@@ -59,5 +57,3 @@ trait LeaderBoardResponse
     "receipt_date": "2023-07-17 00:00:00"
 }
 */
-// SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215') AND pol_prd_code = 'MUH' AND pol_period_from >= '2023-07-01 00:00:00' AND pol_period_to <= '2023-10-01 00:00:00'
-// SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN ('Y-100-9007-90012','Y-103-1003-10215') AND pol_prd_code = 'MUH' AND pol_period_from >= '2023-07-01 00:00:00' AND pol_period_to <= '2023-07-01 00:00:00'

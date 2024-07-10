@@ -17,12 +17,21 @@
                 </div>
             </div>
             <div class="px-2  mt-2 bg-light px-2 py-3 rounded">
+                <div v-if="selectedTab == 'GROUP'" class="d-flex justify-content-between">
+                    <div>
+                        <span v-if="policy_number">Policy Number : @{{ policy_number }}</span>
+                        &nbsp;<button v-if="policy_number" class="btn py-0 px-1 bg-danger">Send All </button>
+                    </div>
+                    <div class="">
+                        <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
+                            type="form-control bg-light form-control-sm">
+                    </div>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
                             <th class="p-1">Date</th>
-                            {{-- <th class="p-1">Type</th> --}}
                             <th class="p-1">Phone</th>
                             <th class="p-1"> Name</th>
                             <th class="p-1">Policy Number</th>
@@ -32,13 +41,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <div v-if="policy_number">
+                                &nbsp;<button v-if="policy_number" class="btn py-0 px-1 bg-danger">Send All </button>
+                            </div>
+                        </tr>
                         <tr v-for="(item, index) in current_items" style="font-size: 15px">
                             <td class="p-1" v-text="index + 1"></td>
                             <td class="p-1">
                                 <span v-if="isToday(item.created_at)" class="badge bg-success mr-2" v-text="'Today'"></span>
                                 <span v-text="formatDate(item.created_at)"></span>
                             </td>
-                            {{-- <td class="p-1" v-text="item.key"></td> --}}
                             <td class="p-1" v-text="item.phone"></td>
                             <td class="p-1" v-text="item.name"></td>
                             <td class="p-1" v-text="item.policy_number"></td>
@@ -63,6 +76,7 @@
         const app = SpideyShine.createApp({
             data() {
                 const items = @json($pool);
+                console.log(items);
                 const tabs = [
                     'AGENT',
                     'EMPLOYEE',
@@ -75,8 +89,19 @@
                     isLoading: false,
                     tabs,
                     current_items,
-                    selectedTab
+                    selectedTab,
+                    policy_number: ''
                 };
+            },
+            watch: {
+                policy_number(newVal, oldVal) {
+                    /*
+                    this.current_items = this.items.GROUP.filter(item => item.policy_number.includes(this
+                        .policy_number));
+                        */
+                    this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                        .policy_number);
+                }
             },
             methods: {
                 sendSms(index) {

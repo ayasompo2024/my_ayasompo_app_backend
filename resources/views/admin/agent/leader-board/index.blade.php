@@ -11,13 +11,16 @@
         @include('admin.validation-error-alert')
         <div class="mt-3 mb-5">
             <div class="bg-light px-3 pb-5 pt-4 ">
-                <h5>
-                {{$leaders[0]['campaign_title']}}
-                <span class="ml-2 text-danger">{{$leaders[0]['period_from']}} to
-                {{$leaders[0]['period_to']}}
-                 ({{$leaders[0]['product_code']}})
-                </span>
+                @if(!empty($leaders) && isset($leaders[0]))
+                    <h5>
+                    {{$leaders[0]['campaign_title']}}
+                        <span class="ml-2 text-danger">
+                        {{$leaders[0]['period_from']}} to
+                        {{$leaders[0]['period_to']}}
+                        ({{$leaders[0]['product_code']}})
+                    </span>
                 </h5>
+                @endif
                 <table class="table table mt-3">
                     <thead>
                         <tr>

@@ -72,6 +72,7 @@ trait SendPushNotification
             $body,
             $deviceToken
         );
+        \Log::info($curlCommand);
         exec($curlCommand, $output, $statusCode);
         \Log::info($output);
         \Log::info($statusCode);

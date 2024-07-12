@@ -7,6 +7,7 @@ use App\Services\api\app\agent\response\LeaderBoardResponse;
 use App\Services\api\app\agent\response\MonthlySaleResponse;
 use App\Services\api\app\agent\response\QuarterlyResponse;
 use App\Services\api\app\agent\response\SaleDashboardResponse;
+use App\Traits\WriteLogger;
 use Carbon\Carbon;
 
 class AgentService
@@ -15,11 +16,12 @@ class AgentService
     use Common;
     use PrepareQuery;
     use FilterForRenewal, FilterForClaim;
-    use SaleTargetMessage, QuarterlyResponse, MonthlySaleResponse, SaleDashboardResponse, LeaderBoardResponse;
+    use SaleTargetMessage, QuarterlyResponse, MonthlySaleResponse, SaleDashboardResponse, LeaderBoardResponse,WriteLogger;
     function renewal($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
         $renewal_query = $this->prepareRenewalQuery($account_code_string, $req->from_date, $req->to_date);
+        $this->writeLog("agent_query","renewal",$renewal_query,true);
         $query_result = $this->runQuery($renewal_query);
         return [
             "renewed" => $this->filterRenewed($query_result),
@@ -30,6 +32,7 @@ class AgentService
     {
         $account_code_string = $this->getAccountCode($req->user());
         $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);
+        $this->writeLog("agent_query","claim",$claim_query,true);
         $query_result = $this->runQuery($claim_query);
         return [
             'paid' => $this->paid($query_result),
@@ -42,6 +45,7 @@ class AgentService
     {
         $account_code_string = $this->getAccountCode($req->user());
         $query = $this->prepareMonthlySaleQuery($account_code_string, $req->from_date, $req->to_date);
+        $this->writeLog("agent_query","monthlySale",$query,true);
         $result = $this->runQuery($query);
         return $this->monthlySaleResponse($result, $req);
     }
@@ -49,6 +53,7 @@ class AgentService
     {
         $account_code_string = $this->getAccountCode($w->user());
         $query = $this->prepareQuarterlySaleQuery($account_code_string, $w->year);
+        $this->writeLog("agent_query","quarterly",$query,true);
         $result = $this->runQuery($query);
         return $this->quarterlyResponse($result, $w->year);
     }
@@ -68,6 +73,7 @@ class AgentService
         $to = substr($to, 0, 10);
         $account_code_string = $this->getAccountCode($req->user());
         $query = $this->prepareDashboardQuery($account_code_string, $from, $to);
+        $this->writeLog("agent_query","dashboard",$query,true);
         $result = $this->runQuery($query);
         $this->collection = collect($result);
         return $this->saleDashboardResponse($from, $to);

@@ -13,6 +13,7 @@ class CustomerService
     public function sendClaimNoti($inputFromInternal)
     {
         $customer = Customer::query()->whereCustomer_phoneno($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
+        \Log::info($customer);
         $notification = ["title" => $inputFromInternal->message, "body" => "Claim No : " . $inputFromInternal->claim_no . ", Customer Code : " . $inputFromInternal->customer_code];
         $this->sendAsUnicast($customer->device_token, $notification, $notification);
         return $inputFromInternal->all();
@@ -20,6 +21,7 @@ class CustomerService
     public function sendInquiryNoti($inputFromInternal)
     {
         $customer = Customer::query()->whereCustomer_phoneno($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
+        \Log::info($customer);
         $notification = [
             "title" => $inputFromInternal->case_title,
             "body" => $inputFromInternal->message,

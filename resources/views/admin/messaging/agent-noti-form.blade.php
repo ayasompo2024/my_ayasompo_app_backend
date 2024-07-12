@@ -22,7 +22,6 @@
                     <label class="col-md-4" for="message">Message</label>
                     <div class="col-md-8">
                         <textarea name="message" required class="form-control"></textarea>
-                        <small class="form-text text-muted">Option , Max Lenght 255</small>
                     </div>
                 </div>
                 <div class="row mt-3">

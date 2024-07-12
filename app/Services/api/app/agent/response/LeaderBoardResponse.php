@@ -10,7 +10,7 @@ trait LeaderBoardResponse
         $premium = $this->collection->sum("premium");
         return [
             'campaign_title' => $learders[0]['campaign_title'],
-            'current_point' => $premium ? ($premium / 1000) : 0,
+            'current_point' => $premium ? intval($premium / 1000) : 0,
             'learder_agents' => LeaderBoardResource::collection($learders),
             'show_raw_data' => !empty($show_raw) ? $this->collection : null
         ];

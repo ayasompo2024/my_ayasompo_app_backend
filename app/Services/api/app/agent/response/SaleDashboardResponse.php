@@ -107,6 +107,7 @@ trait SaleDashboardResponse
             ),
         ];
     }
+
     private function getProductPremium($target_product)
     {
         $target_premium_product_sale = $this->collection->filter(function ($item) use ($target_product) {
@@ -121,10 +122,12 @@ trait SaleDashboardResponse
 
         $dayCount = $from->diffInDays($to) + 1; // Including the end date
 
+        // 01-07 day
         if ($dayCount <= 7) {
             return $this->dataSetByDay($from, $to, $target_product);
         }
 
+        //5 week in one month
         if ($from->isSameMonth($to)) {
             $weeks = $this->dataSetByWeek($from, $target_product);
             foreach ($weeks as $weekData) {
@@ -133,9 +136,11 @@ trait SaleDashboardResponse
             return $weeks;
         }
 
+        //01-12 months
         if ($from->isSameYear($to))
             return $this->dataSetByMonthOfYear($from, $target_product);
 
+        //2020 - 2024 select all years            
         return $this->dataSetByYear($from, $to, $target_product);
     }
 
@@ -144,9 +149,12 @@ trait SaleDashboardResponse
     {
         return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from, $target_product) {
             $date = $from->copy()->addDays($day);
+            $y_value = $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product);
             return [
                 'x_label' => $date->format('d'),
-                'y_value' => $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product)
+                'y_value' => $y_value > 12000000 ? 12000000 : $y_value,
+                "real_y_value" => $y_value,
+                "chart_type" => "7 day count"
             ];
         });
     }
@@ -170,29 +178,34 @@ trait SaleDashboardResponse
 
             $weeks[] = [
                 'x_label' => $days[1],
-                'y_value' => $totalYValue
+                'y_value' => $totalYValue > 12000000 ? 12000000 : $totalYValue,
+                'real_y_value' => $totalYValue,
+                "chart_type" => "5 week in same  month"
             ];
         }
         return $weeks;
     }
 
-    //01-012 months
+    //01-12 months
     private function dataSetByMonthOfYear($from_date, $target_product)
     {
         $year = $from_date->year;
         $months = new Collection();
         for ($month = 1; $month <= 12; $month++) {
+            $y_value = $this->getProductPremiumByReceiptMonth(Carbon::create($year, $month, 1)->format('Y-m'), $target_product);
             $months->push(
                 [
                     'x_label' => Carbon::create($year, $month, 1)->format('m'),
-                    'y_value' => $this->getProductPremiumByReceiptMonth(Carbon::create($year, $month, 1)->format('Y-m'), $target_product)
+                    'y_value' => $y_value > 12000000 ? 12000000 : $y_value,
+                    "real_y_value" => $y_value,
+                    "chart_type" => "01-12 months"
                 ]
             );
         }
         return $months;
     }
 
-    //2021 - 2024 select all year
+    //2020 - 2024 select all years
     private function dataSetByYear($from, $to, $target_product)
     {
         $years = collect(range($from->year, $to->year))->map(function ($year) use ($target_product) {
@@ -205,7 +218,9 @@ trait SaleDashboardResponse
 
             return [
                 'x_label' => $year,
-                'y_value' => $totalYValue
+                'y_value' => $totalYValue > 12000000 ? 12000000 : $totalYValue,
+                "real_y_value" => $totalYValue,
+                "chart_type" => "2020 - 2024 select all years"
             ];
         });
 

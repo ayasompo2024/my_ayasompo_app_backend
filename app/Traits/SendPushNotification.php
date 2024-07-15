@@ -50,12 +50,9 @@ trait SendPushNotification
     {
         $bundleId = 'com.my.ayasompo';
         $jwt = $this->jwtEncode($this->getHeader(), $this->getPalyload(), $this->getPrivateKey());
-
         $title = "MY AYASOMPO";
         $subtitle = $notification["title"];
         $body = $notification["body"];
-
-
         $curlCommand = sprintf(
             'curl -v \
             --header "Authorization: Bearer %s" \
@@ -72,9 +69,8 @@ trait SendPushNotification
             $body,
             $deviceToken
         );
-        \Log::info($curlCommand);
         exec($curlCommand, $output, $statusCode);
-        \Log::info($output);
+        \Log::info("ios noti output=>", $output);
         \Log::info($statusCode);
     }
 

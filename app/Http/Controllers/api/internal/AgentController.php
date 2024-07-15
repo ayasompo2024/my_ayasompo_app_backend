@@ -21,19 +21,20 @@ class AgentController extends Controller
         if ($validator->fails())
             return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
 
-        $agent_profile = $this->getAgentProfileByPhone($this->removeInitialPlusNineFiveNine($request->phone));
-        $request['customer_id'] = $agent_profile->id;
-        $content = $this->getContent($request);
-        $this->sendAsUnicast($agent_profile->device_token, $content, $content);
-        $status = $this->saveNoti($request->only('customer_id', 'title', 'message', 'type'));
-        return $status ?
-            $this->successResponse("Your request has been processed (Agent Noti)", [], 200) :
-            $this->errorResponse("Fail", 500);
+        $agent_profile = Customer::where("app_customer_type", "AGENT")->where('customer_phoneno', $this->removeInitialPlusNineFiveNine($request->phone))->first();
+        if ($agent_profile) {
+            $request['customer_id'] = $agent_profile->id;
+            $content = $this->getContent($request);
+            $this->sendAsUnicast($agent_profile->device_token, $content, $content);
+            $status = $this->saveNoti($request->only('customer_id', 'title', 'message', 'type'));
+            return $status ?
+                $this->successResponse("Your request has been processed (Agent Noti)", [], 200) :
+                $this->errorResponse("Fail", 500);
+        } else {
+            return $this->errorResponse("Agent profile not found", 500);
+        }
     }
-    private function getAgentProfileByPhone($phone)
-    {
-        return Customer::select('id', 'customer_phoneno', 'app_customer_type', 'user_name', 'device_token')->where('customer_phoneno', $phone)->first();
-    }
+
     private function validationForSendAgentNoti($request)
     {
         return Validator::make($request->all(), [

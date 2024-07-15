@@ -11,6 +11,8 @@ trait SaleDashboardResponse
         $all_product_sale = $this->collection->sum("premium");
         $renewals = $this->typeOfBusiness('Renewals', $all_product_sale);
         $new_business = $this->typeOfBusiness('New Business', $all_product_sale);
+        $additional = $this->typeOfBusiness("Additional", $all_product_sale);
+        $refund = $this->typeOfBusiness("Refund", $all_product_sale);
         return [
             'total' => [
                 'from_date' => $from_date,
@@ -18,14 +20,19 @@ trait SaleDashboardResponse
                 'total' => $all_product_sale,
             ],
             'type_of_business' => [
-                'renewal' => $renewals['amount'],
-                'renewal_percent' => $renewals['percent'],
+                'renewal' => ($renewals['amount'] + $additional['amount']) - $refund["amount"],
+                'renewal_percent' => ($renewals['percent'] + $additional['percent']) - $refund['percent'],
                 'new_business' => $new_business['amount'],
                 'new_busines_spercent' => $new_business['percent'],
+                "obj_for_debugging" => [
+                    'new_business' => $new_business,
+                    'renewals' => $renewals,
+                    'additional' => $additional,
+                    'refund' => $refund
+                ]
             ],
             'detaillistcount' => 7,
             'productlist' => $this->chartData($from_date, $to_date),
-
         ];
     }
     private function typeOfBusiness($target, $all_premium_product_sale)

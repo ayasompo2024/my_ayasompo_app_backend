@@ -7,7 +7,7 @@ return [
     "Marine",
     "Health",
     "Miscellaneous",
-    "Taavel",
+    "Travel",
     "Engineering",
     "Liability",
 ];

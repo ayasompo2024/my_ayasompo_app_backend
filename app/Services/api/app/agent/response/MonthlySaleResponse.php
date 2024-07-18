@@ -76,11 +76,11 @@ trait MonthlySaleResponse
             ];
         } else {
             return [
-                "tier_name" => "Not in tiers",
+                "tier_name" => "Not in Tiers",
                 "tier_number" => 0,
                 "tier_target_sale_amount" => "0",
                 "tier_target_sale_amount_humna_format" => $this->geTotalSaleHumnaFormatForMonth(1000000),
-                "tier_reach_title" => "Not in tiers ",
+                "tier_reach_title" => "Not in Tiers ",
                 "tier_reach_message" => "Unlocked First Badge (3 Million),"
             ];
         }

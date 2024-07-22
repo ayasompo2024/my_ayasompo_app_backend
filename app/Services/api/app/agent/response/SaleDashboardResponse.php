@@ -4,6 +4,11 @@ namespace App\Services\api\app\agent\response;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
+/*
+    Disclaimer 
+    အချိန်မရလို့ အမြန်ရေးထာပါ performance optimization အတွက် ဦးစားပေးမထားပါ
+*/
+
 trait SaleDashboardResponse
 {
     function saleDashboardResponse($from_date, $to_date)
@@ -117,10 +122,14 @@ trait SaleDashboardResponse
 
     private function getProductPremium($target_product)
     {
-        $target_premium_product_sale = $this->collection->filter(function ($item) use ($target_product) {
+        $filterRow = $this->collection->filter(function ($item) use ($target_product) {
             return $item['product'] == $target_product;
+        });
+        $totalSale = $filterRow->sum("premium");
+        $refund = $filterRow->filter(function ($item) {
+            return $item['pol_type'] == 'Refund';
         })->sum("premium");
-        return $target_premium_product_sale;
+        return $totalSale - $refund;
     }
     private function getDataSet($from_date, $to_date, $target_product)
     {
@@ -235,17 +244,25 @@ trait SaleDashboardResponse
     }
     private function getProductPremiumByReceiptDate($receipt_date, $target_product)
     {
-        $target_premium_product_sale = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
+        $filterRow = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
             return $item['receipt_date'] == $receipt_date && $item['product'] == $target_product;
+        });
+        $totalSale = $filterRow->sum("premium");
+        $refund = $filterRow->filter(function ($item) {
+            return $item['pol_type'] == 'Refund';
         })->sum("premium");
-        return $target_premium_product_sale;
+        return $totalSale - $refund;
     }
     private function getProductPremiumByReceiptMonth($month, $target_product)
     {
-        $target_premium_product_sale = $this->collection->filter(function ($item) use ($month, $target_product) {
+        $filterRow = $this->collection->filter(function ($item) use ($month, $target_product) {
             return Carbon::parse($item['receipt_date'])->format('Y-m') == $month && $item['product'] == $target_product;
-        })->sum("premium");
-        return $target_premium_product_sale;
+        });
+        $totalSale = $filterRow->sum("premium");
+        $refund = $filterRow->filter(function ($item) {
+            return $item['pol_type'] == 'Refund';
+        })->sum("sum");
+        return $totalSale - $refund;
     }
     private function calculatePercentage($totalPrice, $sale_price)
     {

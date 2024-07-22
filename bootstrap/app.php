@@ -15,8 +15,6 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-// $app->loadEnvironmentFrom('.env_production');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +41,7 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-
+// $app->loadEnvironmentFrom('.env_production');
 /*
 |--------------------------------------------------------------------------
 | Return The Application

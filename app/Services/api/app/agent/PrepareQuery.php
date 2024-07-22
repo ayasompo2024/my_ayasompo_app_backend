@@ -98,3 +98,4 @@ trait PrepareQuery
         return "SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND pol_prd_code = '" . $leaderBoard->product_code . "' AND receipt_date BETWEEN '" . $leaderBoard->period_from . " 00:00:00' AND '" . $leaderBoard->period_to . " 23:59:59'";
     }
 }
+

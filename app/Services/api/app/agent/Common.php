@@ -32,6 +32,7 @@ trait Common
     }
     function runQuery($sqlquery)
     {
+        set_time_limit(300); //
         if (config('app.stage') == 'UAT') {
             $url = "https://myayasompo.ayasompo.com/dev/a4b7b3e3-0f5a-4fcb-9a7e-60ab3a8d2e89/run-agent-query/" . $sqlquery;
             $response = Http::withOptions(['verify' => false])->get($url);

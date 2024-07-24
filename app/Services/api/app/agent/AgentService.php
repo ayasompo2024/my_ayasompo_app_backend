@@ -12,8 +12,8 @@ use Carbon\Carbon;
 
 class AgentService
 {
-    
-    public $collection, $from, $to;
+
+    public $collection, $from, $to, $query;
     use Common;
     use PrepareQuery;
     use FilterForRenewal, FilterForClaim;
@@ -74,8 +74,9 @@ class AgentService
         $to = substr($to, 0, 10);
         $account_code_string = $this->getAccountCode($req->user());
         $query = $this->prepareDashboardQuery($account_code_string, $from, $to);
-        $this->writeLog("agent_query", "dashboard", $query, true);
+        $this->writeLog("agent_query", "dashboard", $query, false);
         $result = $this->runQuery($query);
+        $this->query = $query;
         $this->collection = collect($result);
         return $this->saleDashboardResponse($from, $to);
     }

@@ -10,12 +10,10 @@ trait SaleDashboardResponse
     function saleDashboardResponse($from_date, $to_date)
     {
         $all_product_sale = $this->collection->sum("premium");
-
         $renewals = $this->typeOfBusiness('Renewals', $all_product_sale);
         $new_business = $this->typeOfBusiness('New Business', $all_product_sale);
         $additional = $this->typeOfBusiness("Additional", $all_product_sale);
         $refund = $this->typeOfBusiness("Refund", $all_product_sale);
-
         return [
             'total' => [
                 'from_date' => $from_date,
@@ -27,17 +25,15 @@ trait SaleDashboardResponse
                 'renewal_percent' => ($renewals['percent'] + $additional['percent']) - abs($refund['percent']),
                 'new_business' => $new_business['amount'],
                 'new_busines_spercent' => $new_business['percent'],
-                "obj_for_debugging" => [
-                    'new_business' => $new_business,
-                    'renewals' => $renewals,
-                    'additional' => $additional,
-                    'refund' => $refund
-                ]
+                // "obj_for_debugging" => [
+                //     'new_business' => $new_business,
+                //     'renewals' => $renewals,
+                //     'additional' => $additional,
+                //     'refund' => $refund
+                // ]
             ],
             'detaillistcount' => 7,
             'productlist' => $this->chartData($from_date, $to_date),
-            //'query' => $this->query, // no need  in mobile
-            //'raw_data' => $this->collection // no need in mobile
         ];
     }
     private function typeOfBusiness($target, $all_premium_product_sale)
@@ -59,7 +55,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[0],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[0])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[0])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[0]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[0]))
                 ]
             ),
             array_merge(
@@ -67,7 +63,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[1],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[1])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[1])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[1]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[1]))
                 ]
             ),
             array_merge(
@@ -75,7 +71,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[2],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[2])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[2])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[2]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[2]))
                 ]
             ),
             array_merge(
@@ -83,7 +79,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[3],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[3])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[3])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[3]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[3]))
                 ]
             ),
             array_merge(
@@ -91,7 +87,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[4],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[4])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[4])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[4]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[4]))
                 ]
             ),
             array_merge(
@@ -99,7 +95,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[5],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[5])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[5])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[5]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[5]))
                 ]
             ),
             array_merge(
@@ -107,7 +103,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[6],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[6])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[6])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[6]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[6]))
                 ]
             ),
             array_merge(
@@ -115,7 +111,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[7],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[7])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[7])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[7]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[7]))
                 ]
             ),
             array_merge(
@@ -123,7 +119,7 @@ trait SaleDashboardResponse
                     'name' => $premiumProductName[8],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[8])),
                     'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[8])),
-                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[8]))
+                    //'real_data' => $this->fiterByType(strtoupper($premiumProductName[8]))
                 ]
             ),
         ];
@@ -135,9 +131,9 @@ trait SaleDashboardResponse
             return $item['product'] == $target_product;
         });
         $totalSale = $filterRow->sum("premium");
-        $refund = $filterRow->filter(function ($item) {
-            return $item['pol_type'] == 'Refund';
-        })->sum("premium");
+        // $refund = $filterRow->filter(function ($item) {
+        //     return $item['pol_type'] == 'Refund';
+        // })->sum("premium");
         return $totalSale; //- $refund;
     }
     private function getDataSet($from_date, $to_date, $target_product)
@@ -145,14 +141,14 @@ trait SaleDashboardResponse
         $from = Carbon::parse($from_date);
         $to = Carbon::parse($to_date);
 
-        $dayCount = $from->diffInDays($to) + 1; // Including the end date
+        $dayCount = $from->diffInDays($to) + 1;
 
-        // 01-07 day //Done
+        // 01-07 day 
         if ($dayCount <= 7) {
             return $this->dataSetByDay($from, $to, $target_product);
         }
 
-        //5 week in one month //Done
+        //5 week in one month 
         if ($from->isSameMonth($to)) {
             $weeks = $this->dataSetByWeek($from, $target_product);
             foreach ($weeks as $weekData) {
@@ -161,14 +157,14 @@ trait SaleDashboardResponse
             return $weeks;
         }
 
-        //Selected Month // Done
+        //Selected Month 
         if ($from->isSameYear($to))
             return $this->dataSetByMonthOfYear($from, $to, $target_product);
 
         return $this->dataSetByYear($from, $to, $target_product);
     }
 
-    // 01-07 day //Done
+    // 01-07 day
     private function dataSetByDay($from, $to, $target_product)
     {
         return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from, $target_product) {
@@ -183,7 +179,7 @@ trait SaleDashboardResponse
         });
     }
 
-    //5 week in one month //Done
+    //5 week in one month 
     function dataSetByWeek($from, $target_product)
     {
         $daysInMonth = $from->daysInMonth;
@@ -210,7 +206,7 @@ trait SaleDashboardResponse
         return $weeks;
     }
 
-    //months Range //done
+    //months Range 
     private function dataSetByMonthOfYear($from_date, $to_date, $target_product)
     {
         $year = $from_date->year;
@@ -256,26 +252,24 @@ trait SaleDashboardResponse
     }
     private function getProductPremiumByReceiptDate($receipt_date, $target_product)
     {
-
         $filterRow = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
             return Carbon::parse($item['receipt_date'])->format('Y-m-d') == $receipt_date && $item['product'] == $target_product;
         });
         $totalSale = $filterRow->sum("premium");
-        $refund = $filterRow->filter(function ($item) {
-            return $item['pol_type'] == 'Refund';
-        })->sum("premium");
+        // $refund = $filterRow->filter(function ($item) {
+        //     return $item['pol_type'] == 'Refund';
+        // })->sum("premium");
         return $totalSale; //- abs($refund);
     }
     private function getProductPremiumByReceiptMonth($month, $target_product)
     {
-        \Log::info($month);
         $filterRow = $this->collection->filter(function ($item) use ($month, $target_product) {
             return Carbon::parse($item['receipt_date'])->format('Y-m') == $month && $item['product'] == $target_product;
         });
         $totalSale = $filterRow->sum("premium");
-        $refund = $filterRow->filter(function ($item) {
-            return $item['pol_type'] == 'Refund';
-        })->sum("premium");
+        // $refund = $filterRow->filter(function ($item) {
+        //     return $item['pol_type'] == 'Refund';
+        // })->sum("premium");
         return $totalSale;// - abs($refund);
     }
     private function calculatePercentage($totalPrice, $sale_price)

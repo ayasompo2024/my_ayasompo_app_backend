@@ -8,10 +8,11 @@ use App\Repositories\SettingRepository;
 
 trait SendPushNotification
 {
-    protected function sendAsUnicast($token, $notification, $data)
+    protected function sendAsUnicast($token, $notification, $data, $type = 'other')
     {
         $url = config('app.fcm_url');
         $serverKey = config('app.fcm_key');
+        $data['type'] = $type;
         Http::withHeaders([
             'Authorization' => "key={$serverKey}",
             'Content-Type' => 'application/json'
@@ -26,11 +27,12 @@ trait SendPushNotification
             );
         $this->sendAsUnicastFroIOS($token, $notification, $data);
     }
-    protected function sendAsbroadcast($notification, $data)
+    protected function sendAsbroadcast($notification, $data, $type = 'other')
     {
         if (SettingRepository::getByKey("IS_OPEN_NOTI")[0]["current_value"] == 1) {
             $url = config('app.fcm_url');
             $serverKey = config('app.fcm_key');
+            $data['type'] = $type;
             Http::withHeaders([
                 'Authorization' => "key={$serverKey}",
                 'Content-Type' => 'application/json'

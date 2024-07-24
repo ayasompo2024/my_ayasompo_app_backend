@@ -25,7 +25,7 @@ class AgentController extends Controller
         if ($agent_profile) {
             $request['customer_id'] = $agent_profile->id;
             $content = $this->getContent($request);
-            $this->sendAsUnicast($agent_profile->device_token, $content, $content);
+            $this->sendAsUnicast($agent_profile->device_token, $content, $content, 'agent');
             $status = $this->saveNoti($request->only('customer_id', 'title', 'message', 'type'));
             return $status ?
                 $this->successResponse("Your request has been processed (Agent Noti)", [], 200) :

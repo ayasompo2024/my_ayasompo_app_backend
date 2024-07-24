@@ -4,10 +4,6 @@ namespace App\Services\api\app\agent\response;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-/*
-    Disclaimer 
-    အချိန်မရလို့ အမြန်ရေးထာပါ performance optimization အတွက် ဦးစားပေးမထားပါ
-*/
 
 trait SaleDashboardResponse
 {
@@ -38,6 +34,8 @@ trait SaleDashboardResponse
             ],
             'detaillistcount' => 7,
             'productlist' => $this->chartData($from_date, $to_date),
+            'query' => $this->query, // no need  in mobile
+            'raw_data' => $this->collection // no need in mobile
         ];
     }
     private function typeOfBusiness($target, $all_premium_product_sale)
@@ -58,63 +56,72 @@ trait SaleDashboardResponse
                 [
                     'name' => $premiumProductName[0],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[0])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[0]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[0])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[0]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[1],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[1])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[1]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[1])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[1]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[2],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[2])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[2]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[2])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[2]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[3],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[3])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[3]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[3])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[3]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[4],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[4])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[4]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[4])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[4]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[5],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[5])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[5]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[5])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[5]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[6],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[6])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[6]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[6])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[6]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[7],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[7])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[7]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[7])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[7]))
                 ]
             ),
             array_merge(
                 [
                     'name' => $premiumProductName[8],
                     'total_amount' => $this->getProductPremium(strtoupper($premiumProductName[8])),
-                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[8]))
+                    'dataset' => $this->getDataSet($from_date, $to_date, strtoupper($premiumProductName[8])),
+                    'real_data' => $this->fiterByType(strtoupper($premiumProductName[8]))
                 ]
             ),
         ];
@@ -138,12 +145,12 @@ trait SaleDashboardResponse
 
         $dayCount = $from->diffInDays($to) + 1; // Including the end date
 
-        // 01-07 day
+        // 01-07 day //Done
         if ($dayCount <= 7) {
             return $this->dataSetByDay($from, $to, $target_product);
         }
 
-        //5 week in one month
+        //5 week in one month //Done
         if ($from->isSameMonth($to)) {
             $weeks = $this->dataSetByWeek($from, $target_product);
             foreach ($weeks as $weekData) {
@@ -152,20 +159,19 @@ trait SaleDashboardResponse
             return $weeks;
         }
 
-        //01-12 months
+        //Selected Month // Done
         if ($from->isSameYear($to))
-            return $this->dataSetByMonthOfYear($from, $target_product);
+            return $this->dataSetByMonthOfYear($from, $to, $target_product);
 
-        //2020 - 2024 select all years            
         return $this->dataSetByYear($from, $to, $target_product);
     }
 
-    // 01-07 day
+    // 01-07 day //Done
     private function dataSetByDay($from, $to, $target_product)
     {
         return collect(range(0, $from->diffInDays($to)))->map(function ($day) use ($from, $target_product) {
             $date = $from->copy()->addDays($day);
-            $y_value = $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product);
+            $y_value = $this->getProductPremiumByReceiptDate($date->toDateString(), $target_product);
             return [
                 'x_label' => $date->format('d'),
                 'y_value' => $y_value > 12000000 ? 12000000 : $y_value,
@@ -175,7 +181,7 @@ trait SaleDashboardResponse
         });
     }
 
-    //5 week in one month
+    //5 week in one month //Done
     function dataSetByWeek($from, $target_product)
     {
         $daysInMonth = $from->daysInMonth;
@@ -189,7 +195,7 @@ trait SaleDashboardResponse
         ];
         foreach ($weekRanges as $days) {
             $totalYValue = collect(range($days[0], $days[1]))->reduce(function ($carry, $day) use ($from, $target_product) {
-                return $carry + $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString() . ' 00:00:00', $target_product);
+                return $carry + $this->getProductPremiumByReceiptDate($from->copy()->day($day)->toDateString(), $target_product);
             }, 0);
 
             $weeks[] = [
@@ -202,22 +208,26 @@ trait SaleDashboardResponse
         return $weeks;
     }
 
-    //01-12 months
-    private function dataSetByMonthOfYear($from_date, $target_product)
+    //months Range //done
+    private function dataSetByMonthOfYear($from_date, $to_date, $target_product)
     {
         $year = $from_date->year;
+        $start_month = $from_date->month;
+        $end_month = $to_date->month;
         $months = new Collection();
-        for ($month = 1; $month <= 12; $month++) {
+
+        for ($month = $start_month; $month <= $end_month; $month++) {
             $y_value = $this->getProductPremiumByReceiptMonth(Carbon::create($year, $month, 1)->format('Y-m'), $target_product);
             $months->push(
                 [
                     'x_label' => Carbon::create($year, $month, 1)->format('m'),
                     'y_value' => $y_value > 12000000 ? 12000000 : $y_value,
                     "real_y_value" => $y_value,
-                    "chart_type" => "01-12 months"
+                    "chart_type" => "Selected months"
                 ]
             );
         }
+
         return $months;
     }
 
@@ -229,7 +239,7 @@ trait SaleDashboardResponse
             $endOfYear = Carbon::create($year, 12, 31);
             $totalYValue = collect(range(0, $startOfYear->diffInDays($endOfYear)))->reduce(function ($carry, $day) use ($startOfYear, $target_product) {
                 $date = $startOfYear->copy()->addDays($day);
-                return $carry + $this->getProductPremiumByReceiptDate($date->toDateString() . ' 00:00:00', $target_product);
+                return $carry + $this->getProductPremiumByReceiptDate($date->toDateString(), $target_product);
             }, 0);
 
             return [
@@ -244,8 +254,9 @@ trait SaleDashboardResponse
     }
     private function getProductPremiumByReceiptDate($receipt_date, $target_product)
     {
+        \Log::info($receipt_date);
         $filterRow = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
-            return $item['receipt_date'] == $receipt_date && $item['product'] == $target_product;
+            return Carbon::parse($item['receipt_date'])->format('Y-m-d') == $receipt_date && $item['product'] == $target_product;
         });
         $totalSale = $filterRow->sum("premium");
         $refund = $filterRow->filter(function ($item) {
@@ -255,13 +266,14 @@ trait SaleDashboardResponse
     }
     private function getProductPremiumByReceiptMonth($month, $target_product)
     {
+        \Log::info($month);
         $filterRow = $this->collection->filter(function ($item) use ($month, $target_product) {
             return Carbon::parse($item['receipt_date'])->format('Y-m') == $month && $item['product'] == $target_product;
         });
         $totalSale = $filterRow->sum("premium");
         $refund = $filterRow->filter(function ($item) {
             return $item['pol_type'] == 'Refund';
-        })->sum("sum");
+        })->sum("premium");
         return $totalSale - $refund;
     }
     private function calculatePercentage($totalPrice, $sale_price)
@@ -303,5 +315,20 @@ trait SaleDashboardResponse
             'premium' => $target_premium_product_sale,
             'percent' => $this->calculatePercentage($all_premium_product_sale, $target_premium_product_sale)
         ];
+    }
+
+    private function fiterByType($type)
+    {
+        $t = $this->collection->filter(function ($item) use ($type) {
+            return $item['product'] == $type;
+        });
+        return [
+            'count' => $t->count(),
+            'raw' => $t
+        ];
+        // $refund = $this->collection->filter(function ($item) use ($type) {
+        //     return $item['product'] == $type && $item['pol_type'] == 'Refund';
+        // })->sum("premium");
+        // return $t + $refund;
     }
 }

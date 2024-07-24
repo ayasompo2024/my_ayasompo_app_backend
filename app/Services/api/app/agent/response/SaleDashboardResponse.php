@@ -10,10 +10,12 @@ trait SaleDashboardResponse
     function saleDashboardResponse($from_date, $to_date)
     {
         $all_product_sale = $this->collection->sum("premium");
+
         $renewals = $this->typeOfBusiness('Renewals', $all_product_sale);
         $new_business = $this->typeOfBusiness('New Business', $all_product_sale);
         $additional = $this->typeOfBusiness("Additional", $all_product_sale);
         $refund = $this->typeOfBusiness("Refund", $all_product_sale);
+
         return [
             'total' => [
                 'from_date' => $from_date,
@@ -21,8 +23,8 @@ trait SaleDashboardResponse
                 'total' => $all_product_sale,
             ],
             'type_of_business' => [
-                'renewal' => ($renewals['amount'] + $additional['amount']) - $refund["amount"],
-                'renewal_percent' => ($renewals['percent'] + $additional['percent']) - $refund['percent'],
+                'renewal' => ($renewals['amount'] + $additional['amount']) - abs($refund["amount"]),
+                'renewal_percent' => ($renewals['percent'] + $additional['percent']) - abs($refund['percent']),
                 'new_business' => $new_business['amount'],
                 'new_busines_spercent' => $new_business['percent'],
                 "obj_for_debugging" => [
@@ -34,8 +36,8 @@ trait SaleDashboardResponse
             ],
             'detaillistcount' => 7,
             'productlist' => $this->chartData($from_date, $to_date),
-            'query' => $this->query, // no need  in mobile
-            'raw_data' => $this->collection // no need in mobile
+            //'query' => $this->query, // no need  in mobile
+            //'raw_data' => $this->collection // no need in mobile
         ];
     }
     private function typeOfBusiness($target, $all_premium_product_sale)
@@ -136,7 +138,7 @@ trait SaleDashboardResponse
         $refund = $filterRow->filter(function ($item) {
             return $item['pol_type'] == 'Refund';
         })->sum("premium");
-        return $totalSale - $refund;
+        return $totalSale; //- $refund;
     }
     private function getDataSet($from_date, $to_date, $target_product)
     {
@@ -254,7 +256,7 @@ trait SaleDashboardResponse
     }
     private function getProductPremiumByReceiptDate($receipt_date, $target_product)
     {
-        \Log::info($receipt_date);
+
         $filterRow = $this->collection->filter(function ($item) use ($receipt_date, $target_product) {
             return Carbon::parse($item['receipt_date'])->format('Y-m-d') == $receipt_date && $item['product'] == $target_product;
         });
@@ -262,7 +264,7 @@ trait SaleDashboardResponse
         $refund = $filterRow->filter(function ($item) {
             return $item['pol_type'] == 'Refund';
         })->sum("premium");
-        return $totalSale - $refund;
+        return $totalSale; //- abs($refund);
     }
     private function getProductPremiumByReceiptMonth($month, $target_product)
     {
@@ -274,7 +276,7 @@ trait SaleDashboardResponse
         $refund = $filterRow->filter(function ($item) {
             return $item['pol_type'] == 'Refund';
         })->sum("premium");
-        return $totalSale - $refund;
+        return $totalSale;// - abs($refund);
     }
     private function calculatePercentage($totalPrice, $sale_price)
     {

@@ -71,7 +71,7 @@ class MessagingService
             $customer = CustomerRepository::getById($customer);
             $this->sendAsUnicast($customer->device_token, $data, $notification);
             $input["customer_id"] = $customer->id;
-            return MessagingRepository::store($input);
+            MessagingRepository::store($input);
         }
     }
     function multicastByPhone($request)

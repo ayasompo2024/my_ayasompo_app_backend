@@ -52,7 +52,7 @@
 
         <div v-if="policyList && !checkExistPhones" class="row mt-3">
             <div class="col-md-10 offset-md-1 p-2 bg-white">
-                <div class="card-body rounded hover-scale bg-light">
+                <div class="card-body rounded  bg-light">
                     <div class="d-flex">
                         <div style="width: 40%">
                             <i class="bi bi-person-circle mr-2"></i> Customer Code

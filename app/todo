@@ -227,3 +227,22 @@ and STATUS in ( 'Cancel','No Claim','Reject' ) and ACCOUNT_CODE in (  'Y-100-500
 
 select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24' 
 and STATUS in ( 'Open','Outstanding' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
+
+
+Close
+from MAY-21 to MAY-24 = 218
+MAY-24 = 8
+--------------------------------
+
+
+Outstanding
+from MAY-21 to MAY-24 = 8
+MAY-24 = 5
+-----------
+
+Paid 
+from MAY-21 to MAY-24 = 1168
+MAY-24 = 20
+------------------------
+
+

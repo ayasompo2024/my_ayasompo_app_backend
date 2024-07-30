@@ -6,21 +6,49 @@ use Carbon\Carbon;
 
 trait RenewalQuery
 {
-    function paidQuery($account_code_string, $from, $to)
+    function remainingQuery($account_code_string, $from, $to)
     {
-        return "select * from VW_POLICY_AGENT_CLAIM_APP WHERE  PAID_STATUS = 'PAID' and ACCOUNT_CODE in ('Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' ) and to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24' ";
-        $currentDate = Carbon::now();
-        if ($from == null)
-            $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_RENEWAL_REMAINING WHERE  ACCOUNT_CODE IN (" . $account_code_string . ")";
 
-        if ($to == null)
-            $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+        if ($from == null) {
+            $from = Carbon::now()->format('Y-m-d H:i:s');
+        } else {
+            $from = Carbon::createFromFormat('M-Y', $from)->startOfMonth();
+        }
 
-        $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
-        $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
+        $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
+        $formattedFromDate = strtoupper($fromDate->format('M-y'));
+        if ($to == null) {
+            return $baseQuery . " AND TO_CHAR(period_to, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
 
-        $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
-        $toFormattedDate = $toDate->format('Y-m-d H:i:s');
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND intimate_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
+        $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
+        if ($fromDate == $toDate) {
+            return $baseQuery . " AND TO_CHAR(period_to, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
+
+        return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(period_to, 'MON-YY')");
+    }
+    function renewedQuery($account_code_string, $from, $to)
+    {
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_RENEWAL_RENEWED WHERE  ACCOUNT_CODE IN (" . $account_code_string . ")";
+        if ($from == null) {
+            $from = Carbon::now()->format('Y-m-d H:i:s');
+        } else {
+            $from = Carbon::createFromFormat('M-Y', $from)->startOfMonth();
+        }
+
+        $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
+        $formattedFromDate = strtoupper($fromDate->format('M-y'));
+        if ($to == null) {
+            return $baseQuery . " AND TO_CHAR(PERIOD_FROM, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
+
+        $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
+        if ($fromDate == $toDate) {
+            return $baseQuery . " AND TO_CHAR(PERIOD_FROM, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
+
+        return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(PERIOD_FROM, 'MON-YY')");
     }
 }

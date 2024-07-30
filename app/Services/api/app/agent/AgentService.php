@@ -18,23 +18,36 @@ class AgentService
     use PrepareQuery;
     use FilterForRenewal, FilterForClaim;
     use SaleTargetMessage, QuarterlyResponse, MonthlySaleResponse, SaleDashboardResponse, LeaderBoardResponse, WriteLogger;
+    use ClaimQuery;
     function renewal($req)
     {
-        $account_code_string = $this->getAccountCode($req->user());
-        $renewal_query = $this->prepareRenewalQuery($account_code_string, $req->from_date, $req->to_date);
-        $this->writeLog("agent_query", "renewal", $renewal_query, true);
-        $query_result = $this->runQuery($renewal_query);
-        return [
-            "renewed" => $this->filterRenewed($query_result),
-            "remain" => $this->filterRemaining($query_result)
-        ];
+        // $account_code_string = $this->getAccountCode($req->user());
+        // $renewal_query = $this->prepareRenewalQuery($account_code_string, $req->from_date, $req->to_date);
+        // $this->writeLog("agent_query", "renewal", $renewal_query, true);
+        // $query_result = $this->runQuery($renewal_query);
+        // return [
+        //     "renewed" => $this->filterRenewed($query_result),
+        //     "remain" => $this->filterRemaining($query_result)
+        // ];
     }
     function claim($req)
     {
         $account_code_string = $this->getAccountCode($req->user());
-        $claim_query = $this->prepareClaimQuery($account_code_string, $req->from_date, $req->to_date);
-        $this->writeLog("agent_query", "claim", $claim_query, true);
-        $query_result = $this->runQuery($claim_query);
+    
+        $close_query = $this->closeQuery($account_code_string, $req->from_date, $req->to_date);
+        $close_result = $this->runQuery($close_query);
+    
+        $outstanding_query = $this->outstandingQuery($account_code_string, $req->from_date, $req->to_date);
+        $outstanding_result = $this->runQuery($outstanding_query);
+        return $outstanding_result;
+
+        $paid_query = $this->paidQuery($account_code_string, $req->from_date, $req->to_date);
+        $paid_result = $this->runQuery($paid_query);
+        
+        
+        return $close_query;
+        return $outstanding_result;
+
         return [
             'paid' => $this->paid($query_result),
             'open' => $this->open($query_result),

@@ -6,39 +6,39 @@ use Carbon\Carbon;
 
 trait PrepareQuery
 {
-    function prepareRenewalQuery($account_code_string, $from, $to)
-    {
-        $currentDate = Carbon::now();
-        if ($from == null)
-            $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+    // function prepareRenewalQuery($account_code_string, $from, $to)
+    // {
+    //     $currentDate = Carbon::now();
+    //     if ($from == null)
+    //         $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
 
-        if ($to == null)
-            $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+    //     if ($to == null)
+    //         $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
 
-        $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
-        $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
+    //     $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
+    //     $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
 
-        $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
-        $toFormattedDate = $toDate->format('Y-m-d H:i:s');
-        return "SELECT * FROM VW_POLICY_AGENT_RENEWAL_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND expiry_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
-    }
+    //     $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
+    //     $toFormattedDate = $toDate->format('Y-m-d H:i:s');
+    //     return "SELECT * FROM VW_POLICY_AGENT_RENEWAL_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND expiry_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
+    // }
 
-    function prepareClaimQuery($account_code_string, $from, $to)
-    {
-        $currentDate = Carbon::now();
-        if ($from == null)
-            $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+    // function prepareClaimQuery($account_code_string, $from, $to)
+    // {
+    //     $currentDate = Carbon::now();
+    //     if ($from == null)
+    //         $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
 
-        if ($to == null)
-            $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+    //     if ($to == null)
+    //         $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
 
-        $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
-        $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
+    //     $fromDate = Carbon::createFromFormat('M-y', $from); // Create Carbon instances from the given strings
+    //     $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
 
-        $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
-        $toFormattedDate = $toDate->format('Y-m-d H:i:s');
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND intimate_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
-    }
+    //     $fromFormattedDate = $fromDate->format('Y-m-01 00:00:00');
+    //     $toFormattedDate = $toDate->format('Y-m-d H:i:s');
+    //     return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND intimate_date BETWEEN " . "'" . $fromFormattedDate . "'" . " AND " . "'" . $toFormattedDate . "'";
+    // }
 
     function prepareMonthlySaleQuery($account_code_string, $from, $to)
     {

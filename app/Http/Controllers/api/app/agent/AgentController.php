@@ -24,12 +24,13 @@ class AgentController extends Controller
         NotiResponse;
     function renewal(Request $request, AgentService $agentService)
     {
-        $renewal = $agentService->renewal($request);
-        return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
+        // $renewal = $agentService->renewal($request);
+        // return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
     }
     function claim(Request $request, AgentService $agentService)
     {
         $claim = $agentService->claim($request);
+        return $claim;
         return $this->formatForClaim(
             $claim['paid'],
             $claim['open'],

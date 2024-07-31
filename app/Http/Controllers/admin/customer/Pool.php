@@ -18,16 +18,16 @@ trait Pool
             $pool = SmsPool::all();
 
         if ($role == 'HR')
-            $pool = SmsPool::where("key", "EMPLOYEE")->get();
+            $pool = SmsPool::where('was_deleted', 0)->where("key", "EMPLOYEE")->get();
 
         if ($role == 'Admin')
-            $pool = SmsPool::where("key", "EMPLOYEE")->get();
+            $pool = SmsPool::where('was_deleted', 0)->where("key", "EMPLOYEE")->get();
 
         if ($role == 'Agent')
             $pool = SmsPool::where("key", "AGENT")->get();
 
         if ($role == 'Corporate')
-            $pool = SmsPool::where("key", "GROUP")->orWhere('key', 'CORPORATE')->get();
+            $pool = SmsPool::where('was_deleted', 0)->where("key", "GROUP")->orWhere('key', 'CORPORATE')->get();
 
         $pool = $pool->groupBy('key');
 
@@ -35,14 +35,21 @@ trait Pool
     }
     public function resolve(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
-        if ($request->is_sended_sms != 1) {
+        if ($request->actionType == 'all' && $request->selectedTab == 'GROUP') {
             $smsApiStatus = $customerService->callSMSAPI($request->phone, $request->content);
             if ($smsApiStatus) {
                 $smsPool->find($request->id)->update(['is_sended_sms' => 1]);
             }
+        } else {
+            if ($request->is_sended_sms != 1) {
+                $smsApiStatus = $customerService->callSMSAPI($request->phone, $request->content);
+                if ($smsApiStatus) {
+                    $smsPool->find($request->id)->update(['is_sended_sms' => 1]);
+                }
+            }
         }
         if ($request->is_sended_sms == 1 && $request->key != 'GROUP') {
-            $smsPool->destroy($request->id);
+            $smsPool->find($request->id)->update(['was_deleted' => 1]);
             $data = $smsPool->all();
             return $this->successResponse("Success", $data, 200);
         }
@@ -51,7 +58,7 @@ trait Pool
             if ($request->is_sended_sms != 1 && !$circleApiStatus) {
                 return $this->errorResponse("Fail", 500);
             } else {
-                $smsPool->destroy($request->id);
+                $smsPool->find($request->id)->update(['was_deleted' => 1]);
                 $data = $smsPool->all();
                 return $this->successResponse("Success", $data, 200);
             }

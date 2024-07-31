@@ -16,7 +16,6 @@ use App\Traits\api\ApiResponser;
 
 use Illuminate\Http\Request;
 
-
 class AgentController extends Controller
 {
     use ApiResponser,
@@ -25,14 +24,15 @@ class AgentController extends Controller
     function renewal(Request $request, AgentService $agentService)
     {
         $renewal = $agentService->renewal($request);
-        return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
+        return $renewal;
+        // return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
     }
     function claim(Request $request, AgentService $agentService)
     {
         $claim = $agentService->claim($request);
         return $this->formatForClaim(
             $claim['paid'],
-            $claim['open'],
+            $claim['outstanding'],
             $claim['outstanding'],
             $claim['closed'],
             $request->from_date,

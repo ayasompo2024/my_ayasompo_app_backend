@@ -22,13 +22,28 @@
                         <span v-if="policy_number">
                             Policy Number : @{{ policy_number }} <span
                                 class="badge bg-danger">@{{ current_items.length }}</span> </span>
+                        <div class="form-check">
+                            <input v-model="actionType" class="form-check-input" type="radio" value="onlyZero"
+                                name="actionType" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                မပို့ရသေးသောစရင်းပဲ ပို့မယ်
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input v-model="actionType" class="form-check-input" type="radio" value="all"
+                                name="actionType" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                အကုန်ပို့မယ််
+                            </label>
+                        </div>
+                        {{-- @{{ actionType }} --}}
                     </div>
                     <div class="">
                         <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
                             type="form-control bg-light form-control-sm">
                     </div>
                 </div>
-                <table class="table">
+                <table class="table mt-2">
                     <thead>
                         <tr>
                             <th class="p-1">#</th>
@@ -108,6 +123,7 @@
                 ];
                 let selectedTab = "AGENT";
                 let current_items = items[selectedTab];
+
                 return {
                     items,
                     tabs,
@@ -119,6 +135,7 @@
                     progress: 0,
                     totalItems: 0,
                     itemQueue: [],
+                    actionType: 'onlyZero'
                 };
             },
             watch: {
@@ -157,6 +174,9 @@
                 },
                 async sendSms(item, index) {
                     this.current_items[index]['is_loading'] = true;
+                    item["actionType"] = this.actionType;
+                    item["selectedTab"] = this.selectedTab;
+                    console.log(item);
                     try {
                         const response = await fetch(`{{ url('/') }}/admin/pool/resolve`, {
                             method: 'POST',

@@ -44,24 +44,23 @@ trait FormatDataForResponse
 
     function formatForClaim($paid_rows, $open_rows, $outstanding, $closed_rows, $from, $to)
     {
-        $open_rows_array = $open_rows->toArray();
-        $outstanding_array = $outstanding->toArray();
         return [
             'data' => [
                 'count' => [
                     'from_date' => $from,
                     'to_date' => $to,
-                    'total' => count($paid_rows) + count($open_rows) + count($outstanding) + count($closed_rows),
+                    'total' => count($paid_rows) + count($outstanding) + count($closed_rows),
+
                     'paid' => count($paid_rows),
-                    'open' => count($open_rows),
-                    'outstanding' => count($outstanding) + count($open_rows),
-                    'closed' => count($closed_rows)
+                    'closed' => count($closed_rows),
+                    'outstanding' => count($outstanding),
+                    'open' => count($outstanding),
                 ],
                 'detail' => [
-                    'open' => $open_rows_array,
                     'paid' => $paid_rows,
-                    'outstanding' => array_merge($open_rows_array, $outstanding_array),
                     'closed' => $closed_rows,
+                    'outstanding' => $outstanding,
+                    'open' => $outstanding,
                 ]
             ]
         ];

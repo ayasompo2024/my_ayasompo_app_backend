@@ -35,7 +35,10 @@ class CustomerController extends Controller
         if ($customer->app_customer_type == "AGENT") {
             return view('admin.customers.edit.agent')->with('customer', $customer);
         }
-        return "Only Allow EMPLOYEE and AGENT Type  ";
+        if ($customer->app_customer_type == "GROUP") {
+            return view('admin.customers.edit.group')->with('customer', $customer);
+        }
+        return "Only Allow EMPLOYEE ,AGENT and GROUP Type";
     }
     public function update($id, Request $request, CustomerService $customerService)
     {

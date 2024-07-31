@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    
+
 Route::group(
     [
         'prefix' => 'admin',
@@ -77,7 +77,7 @@ Route::group(
         Route::resource('location-map-category', LocationMapCategoryController::class);
         Route::resource('agent/leaderboard', LeaderBoardController::class);
         Route::resource('agent/training-resource', TrainingResourceController::class);
-        Route::put('agent/training-resource/status/toggle/{id}', [TrainingResourceController::class,'toggleStatus']);
+        Route::put('agent/training-resource/status/toggle/{id}', [TrainingResourceController::class, 'toggleStatus']);
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
@@ -112,6 +112,10 @@ Route::group(
 Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
 Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
 
-Route::get('/test', function(){
+Route::get('/test', function () {
     return "test";
 });
+
+
+
+Route::get('g',[HomeController::class,'g']);

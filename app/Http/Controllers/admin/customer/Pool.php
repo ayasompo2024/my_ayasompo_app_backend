@@ -53,6 +53,7 @@ trait Pool
             $data = $smsPool->all();
             return $this->successResponse("Success", $data, 200);
         }
+        //Call Circle
         if ($request->key == 'GROUP') {
             $circleApiStatus = $customerService->callToCirlceS($request->phone, $request->name, $request->key);
             if ($request->is_sended_sms != 1 && !$circleApiStatus) {

@@ -19,24 +19,26 @@
             <div class="px-2  mt-2 bg-light px-2 py-3 rounded">
                 <div v-if="selectedTab == 'GROUP'" class="d-flex justify-content-between">
                     <div>
-                        <span v-if="policy_number">
-                            Policy Number : @{{ policy_number }} <span
-                                class="badge bg-danger">@{{ current_items.length }}</span> </span>
-                        <div class="form-check">
-                            <input v-model="actionType" class="form-check-input" type="radio" value="onlyZero"
-                                name="actionType" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                မပို့ရသေးသောစရင်းပဲ ပို့မယ်
-                            </label>
+                        <div v-if="policy_number != ''">
+                            <span v-if="policy_number">
+                                Policy Number : @{{ policy_number }} <span
+                                    class="badge bg-danger">@{{ current_items.length }}</span> </span>
+                            <div class="form-check">
+                                <input v-model="actionType" class="form-check-input" type="radio" value="onlyZero"
+                                    name="actionType" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    No Sms
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input v-model="actionType" class="form-check-input" type="radio" value="all"
+                                    name="actionType" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    All
+                                </label>
+                            </div>
+                            {{-- @{{ actionType }} --}}
                         </div>
-                        <div class="form-check">
-                            <input v-model="actionType" class="form-check-input" type="radio" value="all"
-                                name="actionType" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                အကုန်ပို့မယ််
-                            </label>
-                        </div>
-                        {{-- @{{ actionType }} --}}
                     </div>
                     <div class="">
                         <input v-model="policy_number" placeholder="Enter Policy Number" class="mb-2"
@@ -139,9 +141,25 @@
                 };
             },
             watch: {
+                actionType(newVal, oldVal) {
+                    if (this.policy_number != '') {
+                        if (this.actionType == 'all') {
+                            this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                                .policy_number.trim());
+                        } else {
+                            this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                                .policy_number.trim() && item.is_sended_sms == 0);
+                        }
+                    }
+                },
                 policy_number(newVal, oldVal) {
-                    this.current_items = this.items.GROUP.filter(item => item.policy_number == this
-                        .policy_number.trim());
+                    if (this.actionType == 'all') {
+                        this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                            .policy_number.trim());
+                    } else {
+                        this.current_items = this.items.GROUP.filter(item => item.policy_number == this
+                            .policy_number.trim() && item.is_sended_sms == 0);
+                    }
                 }
             },
             computed: {
@@ -176,7 +194,6 @@
                     this.current_items[index]['is_loading'] = true;
                     item["actionType"] = this.actionType;
                     item["selectedTab"] = this.selectedTab;
-                    console.log(item);
                     try {
                         const response = await fetch(`{{ url('/') }}/admin/pool/resolve`, {
                             method: 'POST',

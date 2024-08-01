@@ -24,8 +24,7 @@ class AgentController extends Controller
     function renewal(Request $request, AgentService $agentService)
     {
         $renewal = $agentService->renewal($request);
-        return $renewal;
-        // return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date);
+        return $this->formatForRenewal($renewal['renewed'], $renewal['remain'], $request->from_date, $request->to_date,$renewal['query']);
     }
     function claim(Request $request, AgentService $agentService)
     {

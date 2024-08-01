@@ -79,10 +79,34 @@ class HomeController extends Controller
         ]);
     }
 
-    //you can login with existing password
+    function test(Request $request)
+    {
+        
+        $validated = $request->validate([
+            'nums' => 'required|array',
+            'target' => 'required|integer',
+        ]);
+
+        $nums = $validated['nums'];
+        $target = $validated['target'];
+        $indexMap = [];
+        foreach ($nums as $index => $num) {
+            $complement = $target - $num;
+
+            if (isset($indexMap[$complement])) {
+                return response()->json([
+                    'index1' => $indexMap[$complement],
+                    'index2' => $index,
+                ]);
+            }
+            $indexMap[$num] = $index;
+        }
+        return response()->json(['error' => 'No solution found'], 404);
+    }
 
     function g()
     {
+        return "";
         $data = [
             [
                 'customer_phoneno' => '09961111192',

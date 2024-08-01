@@ -81,16 +81,25 @@ trait ClaimQuery
     private function queryForDateRange($fromDate, $toDate, $baseQuery, $field)
     {
         $startYear = $fromDate->year;
-        $startMonthFromStartYear = $fromDate->month;
+
+        if ($fromDate->month == 5 || $fromDate->month == 7 || $fromDate->month == 10) {
+            $startMonthFromStartYear = $fromDate->month - 1;
+        } else {
+            $startMonthFromStartYear = $fromDate->month;
+        }
 
         $endYear = $toDate->year;
+        if ($toDate->month == 5 || $toDate->month == 7 || $toDate->month == 10) {
+            $endMonthOfFromEndYear = $toDate->month - 1;
+        } else {
+            $endMonthOfFromEndYear = $toDate->month;
+        }
 
-        $endMonthOfFromEndYear = $toDate->month;
         $allYears = [];
         for ($year = $fromDate->year; $year <= $toDate->year; $year++) {
             $allYears[] = $year;
         }
-
+        
         $removedFirstAndLastestAllYears = array_slice($allYears, 1, -1);
 
         $fistYearsAndMonth = $this->getMonthsInYearRange($startYear, $startMonthFromStartYear, 12);

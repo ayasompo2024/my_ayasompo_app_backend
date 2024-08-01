@@ -10,35 +10,49 @@ trait ClaimQuery
     {
         $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
 
-        if (!$from && !$to)
-            return $baseQuery;
+        
+        //return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
 
-        if ($from && $to == null)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
+        if ($from == null) {
+            $from = Carbon::now()->format('Y-m-d H:i:s');
+        } else {
+            $from = Carbon::createFromFormat('M-Y', $from)->startOfMonth();
+        }
 
-        if ($from == $to)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
+        $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
+        $formattedFromDate = strtoupper($fromDate->format('M-y'));
+        if ($to == null) {
+            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
 
-        $date = $this->getDateFormat($from, $to);
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '" . $date["from"] . "' AND intimate_date <= DATE '" . $date['to'] . "' AND STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
+        if ($fromDate == $toDate) {
+            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
+        //return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(intimate_date, 'MON-YY')");
     }
 
     function outstandingQuery($account_code_string, $from, $to)
     {
         $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
 
-        if (!$from && !$to)
-            return $baseQuery;
+        if ($from == null) {
+            $from = Carbon::now()->format('Y-m-d H:i:s');
+        } else {
+            $from = Carbon::createFromFormat('M-Y', $from)->startOfMonth();
+        }
 
-        if ($from && $to == null)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
+        $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
+        $formattedFromDate = strtoupper($fromDate->format('M-y'));
+        if ($to == null) {
+            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
 
-        if ($from == $to)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
-
-        $date = $this->getDateFormat($from, $to);
-
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '" . $date["from"] . "' AND intimate_date <= DATE '" . $date['to'] . "' AND STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
+        if ($fromDate == $toDate) {
+            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+        }
+        //return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(intimate_date, 'MON-YY')");
     }
 
     function paidQuery($account_code_string, $from, $to)
@@ -64,7 +78,7 @@ trait ClaimQuery
 
         $mutedfromDate = Carbon::createFromFormat('M-Y', $originalFromDate)->startOfMonth();
         $mutedtoDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
-        return $this->queryForDateRange($mutedfromDate, $mutedtoDate, $baseQuery, "to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY')");
+        //return $this->queryForDateRange($mutedfromDate, $mutedtoDate, $baseQuery, "to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY')");
     }
 
     private function queryForDateRange($fromDate, $toDate, $baseQuery, $field)
@@ -72,14 +86,14 @@ trait ClaimQuery
         $startYear = $fromDate->year;
 
         if ($fromDate->month == 5 || $fromDate->month == 7 || $fromDate->month == 10) {
-            $startMonthFromStartYear = $fromDate->month;
+            $startMonthFromStartYear = $fromDate->month - 1;
         } else {
             $startMonthFromStartYear = $fromDate->month;
         }
 
         $endYear = $toDate->year;
         if ($toDate->month == 5 || $toDate->month == 7 || $toDate->month == 10) {
-            $endMonthOfFromEndYear = $toDate->month;
+            $endMonthOfFromEndYear = $toDate->month - 1;
         } else {
             $endMonthOfFromEndYear = $toDate->month;
         }
@@ -118,7 +132,8 @@ trait ClaimQuery
 
         return $baseQuery . " AND " . $field . " in " . $allYearsAsString;
     }
-    
+
+
     private function getMonthsInYearRange($year, $start_month, $end_month)
     {
         $months = [];
@@ -147,18 +162,23 @@ trait ClaimQuery
         return $months;
     }
 
-    function getDateFormatForClaim($from, $to)
+    function getDateFormat($from, $to)
     {
         $fromDate = Carbon::createFromFormat('M-y', $from)->startOfMonth();
         $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
 
+        $fromDate->year = $this->adjustYear($fromDate->year);
+        $toDate->year = $this->adjustYear($toDate->year);
         return [
-            "from" => strtoupper($fromDate->format('d-M-y')),
-            "to" => strtoupper($toDate->format('d-M-y'))
+            "from" => $fromDate->format('Y-m-d'),
+            "to" => $toDate->format('Y-m-d')
         ];
     }
+    function adjustYear($year)
+    {
+        return $year >= 0 && $year <= 99 ? $year + 2000 : $year;
+    }
 }
-
 
 
 /*
@@ -212,9 +232,4 @@ Claim
 "open": 13
 
 //True => SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE INTIMATE_DATE >= DATE '2021-05-01' AND INTIMATE_DATE <= DATE '2024-05-30'  AND STATUS IN ('Open', 'Outstanding') AND ACCOUNT_CODE IN ('Y-100-5002-53539', 'M-700-5002-53539', 'N-500-5002-53539')
-
-{
-    "from": "2021-06-01",
-    "to": "2024-06-30"
-}
 */

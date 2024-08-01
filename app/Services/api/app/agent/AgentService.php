@@ -29,9 +29,14 @@ class AgentService
 
         $renewed_query = $this->renewedQuery($account_code_string, $req->from_date, $req->to_date);
         $renewed_result = $this->runQuery($renewed_query);
+
         return [
-            "renewed" => $remaining_result,
-            "remain" => $renewed_result
+            "renewed" => $renewed_result,
+            "remain" => $remaining_result,
+            "query" => [
+                'renewed_query' => $renewed_query,
+                'remaining_query' => $remaining_query
+            ]
         ];
     }
     function claim($req)
@@ -46,8 +51,12 @@ class AgentService
 
         $paid_query = $this->paidQuery($account_code_string, $req->from_date, $req->to_date);
         $paid_result = $this->runQuery($paid_query);
-
         return [
+            'query' => [
+                "close_query" => $close_query,
+                "outstanding_query" => $outstanding_query,
+                "paid_query" => $paid_query
+            ],
             "count" => [
                 "paid" => count($paid_result),
                 "close" => count($close_result),

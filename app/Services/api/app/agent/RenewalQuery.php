@@ -10,8 +10,15 @@ trait RenewalQuery
     {
         $baseQuery = "SELECT * FROM VW_POLICY_AGENT_RENEWAL_REMAINING WHERE  ACCOUNT_CODE IN (" . $account_code_string . ")";
 
+        if ($from && $to == null) {
+            return $baseQuery . " AND TO_CHAR(period_to, 'MON-YY') = '" . $from . "'";
+        }
+        if ($from == $to) {
+            return $baseQuery . " AND TO_CHAR(period_to, 'MON-YY') = '" . $from . "'";
+        }
+
         if ($from == null) {
-            $from = Carbon::now()->format('Y-m-d H:i:s');
+            $from = Carbon::now()->startOfMonth();
         } else {
             $from = Carbon::createFromFormat('M-Y', $from)->startOfMonth();
         }
@@ -32,6 +39,14 @@ trait RenewalQuery
     function renewedQuery($account_code_string, $from, $to)
     {
         $baseQuery = "SELECT * FROM VW_POLICY_AGENT_RENEWAL_RENEWED WHERE  ACCOUNT_CODE IN (" . $account_code_string . ")";
+
+        if ($from && $to == null) {
+            return $baseQuery . " AND TO_CHAR(PERIOD_FROM, 'MON-YY') = '" . $from . "'";
+        }
+        if ($from == $to) {
+            return $baseQuery . " AND TO_CHAR(PERIOD_FROM, 'MON-YY') = '" . $from . "'";
+        }
+
         if ($from == null) {
             $from = Carbon::now()->format('Y-m-d H:i:s');
         } else {

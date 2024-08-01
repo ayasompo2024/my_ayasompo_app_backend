@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 trait FormatDataForResponse
 {
-    function formatForRenewal($renewed_filter, $remain_filter, $from, $to)
+    function formatForRenewal($renewed, $remain, $from, $to, $query)
     {
         $currentDate = Carbon::now();
         if ($from == null)
@@ -19,12 +19,13 @@ trait FormatDataForResponse
                 'count' => [
                     'from_date' => $from,
                     'to_date' => $to,
-                    'renewed' => count($renewed_filter),
-                    'remaining' => count($remain_filter)
+                    'renewed' => count($renewed),
+                    'remaining' => count($remain)
                 ],
+                "query" => $query,
                 'detail' => [
-                    'renewed' => $this->getAcceptedField($renewed_filter),
-                    'remaining' => $this->getAcceptedField($remain_filter)
+                    'renewed' => $renewed,//$this->getAcceptedField($renewed_filter),
+                    'remaining' => $remain //$this->getAcceptedField($remain_filter)
                 ]
             ]
         ];

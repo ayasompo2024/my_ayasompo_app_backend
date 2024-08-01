@@ -117,5 +117,4 @@ Route::get('/test', function () {
 });
 
 
-
 Route::get('g',[HomeController::class,'g']);

@@ -19,13 +19,13 @@ trait FormatDataForResponse
                 'count' => [
                     'from_date' => $from,
                     'to_date' => $to,
-                    'renewed' => count($renewed),
-                    'remaining' => count($remain)
+                    'renewed' => $renewed ? count($renewed) : null,
+                    'remaining' => $remain ? count($remain) : null
                 ],
                 "query" => $query,
                 'detail' => [
-                    'renewed' => $renewed,//$this->getAcceptedField($renewed_filter),
-                    'remaining' => $remain //$this->getAcceptedField($remain_filter)
+                    'renewed' => $renewed ? $this->getAcceptedField($renewed) : [],
+                    'remaining' => $remain ? $this->getAcceptedField($remain) : []
                 ]
             ]
         ];

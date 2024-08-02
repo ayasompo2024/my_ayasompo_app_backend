@@ -34,8 +34,8 @@ class AgentService
             "renewed" => $renewed_result,
             "remain" => $remaining_result,
             "query" => [
-                'renewed_query' => $renewed_query,
-                'remaining_query' => $remaining_query
+                'remaining_query' => $remaining_query,
+                'renewed_query' => $renewed_query
             ]
         ];
     }
@@ -45,12 +45,13 @@ class AgentService
 
         $close_query = $this->closeQuery($account_code_string, $req->from_date, $req->to_date);
         $close_result = $this->runQuery($close_query);
-
+    
         $outstanding_query = $this->outstandingQuery($account_code_string, $req->from_date, $req->to_date);
         $outstanding_result = $this->runQuery($outstanding_query);
 
         $paid_query = $this->paidQuery($account_code_string, $req->from_date, $req->to_date);
         $paid_result = $this->runQuery($paid_query);
+        
         return [
             'query' => [
                 "close_query" => $close_query,

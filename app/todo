@@ -210,62 +210,10 @@ MISCELLANEOUS
 }
 
 
-
-
-( Paid )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24' 
-and PAID_STATUS = 'PAID' and ACCOUNT_CODE in ('Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
-
-
-( Close ) 
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-JUN-24' 
-and STATUS in ( 'Cancel','No Claim','Reject' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
-
-
-( Outstanding )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24' 
-and STATUS in ( 'Open','Outstanding' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
-
-
-Close
-from MAY-21 to MAY-24 = 218
-MAY-24 = 8
---------------------------------
-
-
-Outstanding
-from MAY-21 to MAY-24 = 8
-MAY-24 = 5
------------
-
-Paid 
-from MAY-21 to MAY-24 = 1168
-MAY-24 = 20
-------------------------
+//Cliam Vie
 
 
 
 
---------------------------------------------
-Claim
-"from_date": "JUN-24",
-"to_date": null,
-"total": 33,
-"paid": 26,
-"closed": 2,
-"outstanding": 5,
-"open": 5
-
-"JUL-24",
-"to_date": null,
-"total": 32,
-"paid": 17,
-"closed": 2,
-"outstanding": 13,
-"open": 13
---------------------------------------------
-
-
-        
 
 

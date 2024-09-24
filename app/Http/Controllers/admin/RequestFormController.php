@@ -8,27 +8,17 @@ use Illuminate\Http\Request;
 
 class RequestFormController extends Controller
 {
-
     public function index(RequestFormService $requestFormService)
     {
-        return view("admin.request-form.lists")->with('requestForms', $requestFormService->getWithPaginate(30));
+        return view('admin.request-form.lists')->with('requestForms', $requestFormService->getWithPaginate(30));
     }
 
+    public function store(Request $request) {}
 
-    public function store(Request $request)
-    {
-
-    }
-
-
-    public function show($id)
-    {
-
-    }
+    public function show($id) {}
 
     public function storeRequestFormType(Request $request)
     {
         return $request->all();
     }
-
 }

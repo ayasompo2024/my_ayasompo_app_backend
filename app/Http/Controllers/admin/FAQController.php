@@ -9,22 +9,21 @@ use Illuminate\Http\Request;
 
 class FAQController extends Controller
 {
-
-
     public function new($product_id)
     {
-        return view("admin.faq.create", compact('product_id'));
+        return view('admin.faq.create', compact('product_id'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            "title" => "nullable",
-            "desc" => "required",
-            "product_id" => "required|integer|min:1",
+            'title' => 'nullable',
+            'desc' => 'required',
+            'product_id' => 'required|integer|min:1',
         ]);
-        $input = $request->only("title", "desc", "title_mm", "desc_mm", "product_id");
+        $input = $request->only('title', 'desc', 'title_mm', 'desc_mm', 'product_id');
         $status = FAQRepository::store($input);
+
         return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }
 
@@ -48,23 +47,23 @@ class FAQController extends Controller
     public function edit($id, FAQService $fAQService)
     {
 
-        return view("admin.faq.edit")->with('faq', $fAQService->getById($id));
+        return view('admin.faq.edit')->with('faq', $fAQService->getById($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id, FAQService $fAQService)
     {
         $request->validate([
-            "title" => "nullable",
-            "desc" => "required",
+            'title' => 'nullable',
+            'desc' => 'required',
         ]);
         $status = $fAQService->update($id, $request);
+
         return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }
 
@@ -77,6 +76,7 @@ class FAQController extends Controller
     public function destroy($id, FAQService $fAQService)
     {
         $status = $fAQService->destroyById($id);
+
         return $status ? redirect()->back()->with('success', 'Success') : redirect()->back()->with('fail', 'fail');
     }
 }

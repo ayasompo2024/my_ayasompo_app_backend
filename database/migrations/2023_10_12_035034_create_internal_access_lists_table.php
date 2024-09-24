@@ -15,8 +15,8 @@ class CreateInternalAccessListsTable extends Migration
     {
         Schema::create('internal_access_lists', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("password");
+            $table->string('name');
+            $table->string('password');
             $table->string('access_id', 100)->unique();
             $table->timestamp('expires_at');
             $table->text('scopes')->nullable();

@@ -15,13 +15,13 @@ class CreateAgentInfosTable extends Migration
     {
         Schema::create('agent_infos', function (Blueprint $table) {
             $table->id();
-            $table->integer("customer_id");
-            $table->string("agent_name")->nullable();
-            $table->string("license_no")->nullable();
-            $table->string("agent_type")->nullable();
-            $table->string("expired_date")->nullable();
-            $table->string("email")->nullable();
-            $table->string("achievement")->nullable();
+            $table->integer('customer_id');
+            $table->string('agent_name')->nullable();
+            $table->string('license_no')->nullable();
+            $table->string('agent_type')->nullable();
+            $table->string('expired_date')->nullable();
+            $table->string('email')->nullable();
+            $table->string('achievement')->nullable();
             $table->timestamps();
         });
     }

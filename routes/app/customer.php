@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\api\app\CustomerController;
 use Illuminate\Support\Facades\Route;
 

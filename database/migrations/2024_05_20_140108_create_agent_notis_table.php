@@ -15,11 +15,11 @@ class CreateAgentNotisTable extends Migration
     {
         Schema::create('agent_notis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("customer_id");
-            $table->string("title");
-            $table->text("message");
-            $table->enum("type", ['sales_target', 'renewal', 'campaign_promotion', 'customer_birthday']);
-            $table->text("image")->nullable();
+            $table->bigInteger('customer_id');
+            $table->string('title');
+            $table->text('message');
+            $table->enum('type', ['sales_target', 'renewal', 'campaign_promotion', 'customer_birthday']);
+            $table->text('image')->nullable();
             $table->integer('is_read')->default(0);
             $table->timestamps();
         });
@@ -35,9 +35,3 @@ class CreateAgentNotisTable extends Migration
         Schema::dropIfExists('agent_notis');
     }
 }
-
-
-
-
-
-

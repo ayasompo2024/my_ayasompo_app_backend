@@ -15,7 +15,6 @@ class CreateCampaignNotisTable extends Migration
     {
         Schema::create('campaign_notis', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->timestamps();
         });
     }

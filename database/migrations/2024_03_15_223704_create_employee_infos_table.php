@@ -15,13 +15,13 @@ class CreateEmployeeInfosTable extends Migration
     {
         Schema::create('employee_infos', function (Blueprint $table) {
             $table->id();
-            $table->integer("customer_id");
-            $table->string("code");
-            $table->string("designation");
-            $table->string("department");
-            $table->string("email");
-            $table->string("office_phone");
-            $table->string("office_address");
+            $table->integer('customer_id');
+            $table->string('code');
+            $table->string('designation');
+            $table->string('department');
+            $table->string('email');
+            $table->string('office_phone');
+            $table->string('office_address');
             $table->timestamps();
         });
     }

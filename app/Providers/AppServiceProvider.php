@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Helpers\QueryBuilderHelper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
-use Dotenv\Dotenv;
-
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerQueryBuilderMacros();
         // $stage = env('STAGE', 'production'); // default to 'production' if STAGE is not set
         // $stage = strtolower($stage); // Convert to lowercase to handle case-insensitivity
 
@@ -39,5 +40,28 @@ class AppServiceProvider extends ServiceProvider
         // if (file_exists(base_path($envFile))) {
         //     Dotenv::createImmutable(base_path(), $envFile)->load();
         // }
+    }
+
+    private function registerQueryBuilderMacros()
+    {
+        Builder::macro('sortingQuery', function () {
+            return QueryBuilderHelper::sortingQuery($this);
+        });
+
+        Builder::macro('searchQuery', function () {
+            return QueryBuilderHelper::searchQuery($this);
+        });
+
+        Builder::macro('paginationQuery', function () {
+            return QueryBuilderHelper::paginationQuery($this);
+        });
+
+        Builder::macro('filterQuery', function () {
+            return QueryBuilderHelper::filterQuery($this);
+        });
+
+        Builder::macro('filterDateQuery', function () {
+            return QueryBuilderHelper::filterDateQuery($this);
+        });
     }
 }

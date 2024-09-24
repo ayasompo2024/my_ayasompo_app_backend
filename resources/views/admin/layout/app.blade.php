@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>AYA Sompo </title>
+    
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @include('admin.layout.head')
     @stack('child-css')
 </head>

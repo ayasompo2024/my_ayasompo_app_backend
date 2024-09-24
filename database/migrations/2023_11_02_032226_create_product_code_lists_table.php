@@ -15,10 +15,10 @@ class CreateProductCodeListsTable extends Migration
     {
         Schema::create('product_code_lists', function (Blueprint $table) {
             $table->id();
-            $table->string("class_code");
-            $table->string("class_description");
-            $table->string("product_code");
-            $table->string("product_description");
+            $table->string('class_code');
+            $table->string('class_description');
+            $table->string('product_code');
+            $table->string('product_description');
             $table->timestamps();
         });
     }

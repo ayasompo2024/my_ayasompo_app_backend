@@ -1,10 +1,15 @@
 <?php
+
+use App\Http\Controllers\admin\AdminAccountController;
 use App\Http\Controllers\admin\agent\LeaderBoardController;
 use App\Http\Controllers\admin\agent\TrainingResourceController;
 use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\admin\ClaimcaseController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FAQController;
+use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
+use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\admin\ProductCodeListController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\PropertyController;
@@ -12,16 +17,12 @@ use App\Http\Controllers\admin\PropertyTypeController;
 use App\Http\Controllers\admin\RequestFormController;
 use App\Http\Controllers\admin\RequestFormTypeController;
 use App\Http\Controllers\admin\SettingController;
-use App\Http\Controllers\admin\AdminAccountController;
-use App\Http\Controllers\admin\ClaimcaseController;
-use App\Http\Controllers\admin\locationmap\LocationMapCategoryController;
-use App\Http\Controllers\admin\locationmap\LocationMapController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'showLoginForm'])->name('65aa0088d4d28ec2ed4748bc8');
-Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name("65aa0088d4d28ec2ed4748bc8");
+Route::post('65aa0088d4d28ec2ed4748bc8', [LoginController::class, 'login'])->name('65aa0088d4d28ec2ed4748bc8');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(
@@ -29,7 +30,7 @@ Route::group(
         'prefix' => 'admin',
         'namspace' => 'admin',
         'as' => 'admin.',
-        'middleware' => ['auth', 'log.admin.requests']
+        'middleware' => ['auth', 'log.admin.requests'],
     ],
     function () {
         Route::resource('account', AdminAccountController::class);
@@ -55,7 +56,7 @@ Route::group(
         Route::resource('faq', FAQController::class);
         Route::get('faq/new/{product_id}', [FAQController::class, 'new'])->name('faq.new');
 
-        Route::resource('property-type', PropertyTypeController::class, ['names' => 'property.type',]);
+        Route::resource('property-type', PropertyTypeController::class, ['names' => 'property.type']);
 
         Route::resource('product-code-list', ProductCodeListController::class);
         Route::controller(ProductCodeListController::class)->group(function () {
@@ -65,7 +66,6 @@ Route::group(
         });
         Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
         Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
-
 
         Route::controller(ClaimcaseController::class)->group(function () {
             Route::get('claim-case/index', 'index')->name('claim-case.index');
@@ -82,9 +82,10 @@ Route::group(
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
             Route::controller(CustomerController::class)->group(function () {
+                Route::get('/{id}', [CustomerController::class, 'show'])->name('customer.show');
                 Route::get('pool', 'pool')->name('customer.pool');
 
-                Route::get('customer/filter/by-type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
+                Route::get('customer/type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
                 Route::get('customer1/import', [CustomerController::class, 'import'])->name('customer1.import');
 
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
@@ -105,6 +106,7 @@ Route::group(
                 Route::post('pool/resolve', 'resolve');
             });
         });
+
         Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
     }
     //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
@@ -113,8 +115,7 @@ Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
 Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCFForAgent']);
 
 Route::get('/test', function () {
-    return "test";
+    return 'test';
 });
 
-
-Route::get('g',[HomeController::class,'g']);
+//Route::get('g',[HomeController::class,'g']);

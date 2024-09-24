@@ -15,8 +15,8 @@ class CreateAgentAccountCodesTable extends Migration
     {
         Schema::create('agent_account_codes', function (Blueprint $table) {
             $table->id();
-            $table->integer("customer_id");
-            $table->string("code");
+            $table->integer('customer_id');
+            $table->string('code');
             $table->timestamps();
         });
     }

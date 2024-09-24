@@ -31,57 +31,59 @@ class HomeController extends Controller
         return view('home');
     }
 
-    function downloadFileAsVCF(Request $request)
+    public function downloadFileAsVCF(Request $request)
     {
         $vali = Validator::make($request->all(), [
-            "name" => "required",
-            "phoneno" => "required",
-            "email" => "required|email",
-            'position' => "required",
+            'name' => 'required',
+            'phoneno' => 'required',
+            'email' => 'required|email',
+            'position' => 'required',
         ]);
-        if ($vali->fails())
-            return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
+        if ($vali->fails()) {
+            return response()->json(['message' => 'Validation Errors', 'errors' => $vali->errors()], 422);
+        }
 
-        $companyName = "Aya Sompo Insurance";
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:" . $request->name . "\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->position . "\nORG:" . $companyName . "\nEND:VCARD\n";
-        $filename = $request->name . '.vcf';
+        $companyName = 'Aya Sompo Insurance';
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:".$request->name."\nFN:".$request->name."\nTEL:".$request->phoneno."\nEMAIL:".$request->email."\nTITLE:".$request->position."\nORG:".$companyName."\nEND:VCARD\n";
+        $filename = $request->name.'.vcf';
         $headers = [
             'Content-Type' => 'text/vcard',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
         ];
         $response = Response::make($vcardContent, 200, $headers);
+
         return $response;
     }
 
-    function downloadFileAsVCFForAgent(Request $request)
+    public function downloadFileAsVCFForAgent(Request $request)
     {
         $vali = Validator::make($request->all(), [
-            "name" => "required",
-            "phoneno" => "required",
-            "type" => "required",
-            "email" => "required|email",
-            "license_no" => "required",
+            'name' => 'required',
+            'phoneno' => 'required',
+            'type' => 'required',
+            'email' => 'required|email',
+            'license_no' => 'required',
         ]);
 
         if ($vali->fails()) {
-            return response()->json(['message' => "Validation Errors", 'errors' => $vali->errors()], 422);
+            return response()->json(['message' => 'Validation Errors', 'errors' => $vali->errors()], 422);
         }
 
-        $companyName = "Aya Sompo Insurance";
-        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:" . $request->name . "\nFN:" . $request->name . "\nTEL:" . $request->phoneno . "\nEMAIL:" . $request->email . "\nTITLE:" . $request->type . "\nORG:" . $companyName . "\nEMAIL;TYPE=INTERNET:" . $request->license_no . "\nEND:VCARD\n";
+        $companyName = 'Aya Sompo Insurance';
+        $vcardContent = "BEGIN:VCARD\nVERSION:3.0\nN:".$request->name."\nFN:".$request->name."\nTEL:".$request->phoneno."\nEMAIL:".$request->email."\nTITLE:".$request->type."\nORG:".$companyName."\nEMAIL;TYPE=INTERNET:".$request->license_no."\nEND:VCARD\n";
 
         $fileContent = $vcardContent;
-        $fileName = $request->input('name') . "_contact.vcf";
+        $fileName = $request->input('name').'_contact.vcf';
 
         return Response::make($fileContent, 200, [
             'Content-Type' => 'text/vcard',
-            'Content-Disposition' => "attachment; filename=\"$fileName\""
+            'Content-Disposition' => "attachment; filename=\"$fileName\"",
         ]);
     }
 
-    function test(Request $request)
+    public function test(Request $request)
     {
-        
+
         $validated = $request->validate([
             'nums' => 'required|array',
             'target' => 'required|integer',
@@ -101,10 +103,11 @@ class HomeController extends Controller
             }
             $indexMap[$num] = $index;
         }
+
         return response()->json(['error' => 'No solution found'], 404);
     }
 
-    function g()
+    public function g()
     {
         $data = [
             [
@@ -114,7 +117,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166169',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
             [
                 'customer_phoneno' => '09256914335',
@@ -123,7 +126,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166177',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
             [
                 'customer_phoneno' => '09266661910',
@@ -132,7 +135,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166178',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
             [
                 'customer_phoneno' => '09965180169',
@@ -141,7 +144,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166193',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
             [
                 'customer_phoneno' => '09976549526',
@@ -150,7 +153,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166194',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
             [
                 'customer_phoneno' => '09944909800',
@@ -159,7 +162,7 @@ class HomeController extends Controller
                 'risk_seqNo' => '00YGN2401166203',
                 'policy_number' => 'AYA/YGN/AYH/24000196',
                 'customer_code' => 'C000096335',
-                "has" => false,
+                'has' => false,
             ],
         ];
         $cu = [];
@@ -178,36 +181,38 @@ class HomeController extends Controller
         foreach ($pool as $p) {
             SmsPool::create($p);
         }
+
         return [
             'cu' => $cu,
-            'pool' => $pool
+            'pool' => $pool,
         ];
     }
 
     private function inputForCustomer($c, $password)
     {
         $inputForAppCustomer = [
-            "customer_phoneno" => $c['customer_phoneno'],
+            'customer_phoneno' => $c['customer_phoneno'],
             'user_name' => $c['user_name'],
             'password' => $password,
 
-            "customer_code" => $c['customer_code'],
-            "risk_seqNo" => $c['risk_seqNo'],
-            "risk_name" => $c['risk_name'],
-            "app_customer_type" => 'GROUP',
-            "policy_number" => $c['policy_number'],
+            'customer_code' => $c['customer_code'],
+            'risk_seqNo' => $c['risk_seqNo'],
+            'risk_name' => $c['risk_name'],
+            'app_customer_type' => 'GROUP',
+            'policy_number' => $c['policy_number'],
         ];
+
         return $inputForAppCustomer;
     }
 
     private function inputFroSmsPool($name, $phone, $content, $policy_number)
     {
         return [
-            "name" => $name,
-            "phone" => $phone,
-            "content" => $content,
-            "policy_number" => $policy_number,
-            "key" => "GROUP"
+            'name' => $name,
+            'phone' => $phone,
+            'content' => $content,
+            'policy_number' => $policy_number,
+            'key' => 'GROUP',
         ];
     }
 
@@ -227,7 +232,4 @@ For iOS - https://apps.apple.com/us/app/my-ayasompo/id6475663317
 EOT;
 
     }
-
 }
-
-

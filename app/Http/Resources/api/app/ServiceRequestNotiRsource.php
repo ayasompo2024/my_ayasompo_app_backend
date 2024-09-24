@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources\api\app;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\Enums\NotiFor;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ServiceRequestNotiRsource extends JsonResource
 {
@@ -25,20 +25,12 @@ class ServiceRequestNotiRsource extends JsonResource
             'image_url' => null,
             'created_at' => $this->created_at->diffForHumans(),
             'caseid' => $this->ayasompo_caseid,
-            "ayasompo_risksequenceno" => $this->ayasompo_risksequenceno,
-            "ayasompo_policyno" => $this->ayasompo_policyno,
-            "ayasompo_casenumber" => $this->ayasompo_casenumber,
-            "incidentid" => $this->incidentid,
-            "inquiry_status" => $this->inquiry_status,
-            "is_read" => $this->is_read
+            'ayasompo_risksequenceno' => $this->ayasompo_risksequenceno,
+            'ayasompo_policyno' => $this->ayasompo_policyno,
+            'ayasompo_casenumber' => $this->ayasompo_casenumber,
+            'incidentid' => $this->incidentid,
+            'inquiry_status' => $this->inquiry_status,
+            'is_read' => $this->is_read,
         ];
     }
 }
-
-
-
-
-
-
-
-

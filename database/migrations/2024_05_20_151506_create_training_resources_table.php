@@ -34,8 +34,3 @@ class CreateTrainingResourcesTable extends Migration
         Schema::dropIfExists('training_resources');
     }
 }
-
-
-
-
-

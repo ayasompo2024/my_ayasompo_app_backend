@@ -15,11 +15,11 @@ class CreateLogAdminRequestsTable extends Migration
     {
         Schema::create('log_admin_requests', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id");
-            $table->string("ip");
-            $table->string("url");
-            $table->string("method");
-            $table->longText("req_data");
+            $table->integer('user_id');
+            $table->string('ip');
+            $table->string('url');
+            $table->string('method');
+            $table->longText('req_data');
             $table->timestamps();
         });
     }
@@ -34,5 +34,3 @@ class CreateLogAdminRequestsTable extends Migration
         Schema::dropIfExists('log_admin_requests');
     }
 }
-
-

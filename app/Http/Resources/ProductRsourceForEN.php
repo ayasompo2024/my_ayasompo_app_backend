@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductRsourceForEN extends JsonResource
 {
-
     public function toArray($request)
     {
         $groupedProperties = $this->properties->groupBy(function ($property) {
@@ -40,18 +39,17 @@ class ProductRsourceForEN extends JsonResource
             'order' => $this->sort,
             'id' => $this->id,
             'product_type' => $this->product_type,
-            'thumbnail' => config('app.app_domain') . $this->thumbnail,
+            'thumbnail' => config('app.app_domain').$this->thumbnail,
 
             'name' => $this->name,
             'title' => $this->title,
             'brief_description' => $this->brief_description,
             'faqs' => $faqs,
             'properties' => $propertiesArray->values()->all(),
-            
-            "premium_calculator_url" => $this->premium_calculator_url,
-            "class_code" => $this->class_code,
-            "product_code" => $this->product_code
+
+            'premium_calculator_url' => $this->premium_calculator_url,
+            'class_code' => $this->class_code,
+            'product_code' => $this->product_code,
         ];
     }
 }
-

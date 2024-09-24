@@ -15,8 +15,8 @@ class CreateAgentQueriesTable extends Migration
     {
         Schema::create('agent_queries', function (Blueprint $table) {
             $table->id();
-            $table->string("key");
-            $table->text("query");
+            $table->string('key');
+            $table->text('query');
             $table->timestamps();
         });
     }

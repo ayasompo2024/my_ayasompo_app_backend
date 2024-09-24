@@ -15,13 +15,13 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->string("trace_id")->nullable();
-            $table->string("datetime")->nullable();
-            $table->string("customer_id")->nullable();
-            $table->string("type")->nullable();
-            $table->string("value")->nullable();
-            $table->string("message")->nullable();
-            $table->string("log_code")->nullable();
+            $table->string('trace_id')->nullable();
+            $table->string('datetime')->nullable();
+            $table->string('customer_id')->nullable();
+            $table->string('type')->nullable();
+            $table->string('value')->nullable();
+            $table->string('message')->nullable();
+            $table->string('log_code')->nullable();
             $table->timestamps();
         });
     }
@@ -36,7 +36,3 @@ class CreateLogsTable extends Migration
         Schema::dropIfExists('logs');
     }
 }
-
-
-
-

@@ -15,20 +15,20 @@ class AgentListResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => $this->id,
-            "customer_phoneno" => $this->customer_phoneno,
-            "user_name" => $this->user_name,
-            "profile_photo" => $this->profile_photo,
-            "agent_info" => [
-                "agent_name" => $this->agentInfo->agent_name,
-                "license_no" => $this->agentInfo->license_no,
-                "agent_type" => $this->agentInfo->agent_type,
-                "expired_date" => $this->agentInfo->expired_date,
-                "email" => $this->agentInfo->email,
-                "achievement" => $this->agentInfo->achievement,
-                "title" => $this->agentInfo->title,
+            'id' => $this->id,
+            'customer_phoneno' => $this->customer_phoneno,
+            'user_name' => $this->user_name,
+            'profile_photo' => $this->profile_photo,
+            'agent_info' => [
+                'agent_name' => $this->agentInfo->agent_name,
+                'license_no' => $this->agentInfo->license_no,
+                'agent_type' => $this->agentInfo->agent_type,
+                'expired_date' => $this->agentInfo->expired_date,
+                'email' => $this->agentInfo->email,
+                'achievement' => $this->agentInfo->achievement,
+                'title' => $this->agentInfo->title,
             ],
-            'account_codes' => $this->accountCodes ? AccountCodesResource::collection($this->accountCodes) : []
+            'account_codes' => $this->accountCodes ? AccountCodesResource::collection($this->accountCodes) : [],
         ];
     }
 }

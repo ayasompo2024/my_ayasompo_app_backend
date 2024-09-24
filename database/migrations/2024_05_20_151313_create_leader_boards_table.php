@@ -34,9 +34,3 @@ class CreateLeaderBoardsTable extends Migration
         Schema::dropIfExists('leader_boards');
     }
 }
-
-
-
-
-
-

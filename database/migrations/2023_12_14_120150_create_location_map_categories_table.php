@@ -15,9 +15,9 @@ class CreateLocationMapCategoriesTable extends Migration
     {
         Schema::create('location_map_categories', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("image");
-            $table->tinyInteger("sort")->default(1);
+            $table->string('name');
+            $table->string('image');
+            $table->tinyInteger('sort')->default(1);
             $table->timestamps();
         });
     }

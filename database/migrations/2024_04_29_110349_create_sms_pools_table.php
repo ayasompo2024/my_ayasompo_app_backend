@@ -16,7 +16,7 @@ class CreateSmsPoolsTable extends Migration
         Schema::create('sms_pools', function (Blueprint $table) {
             $table->id();
             $table->string('phone');
-            $table->string("password");
+            $table->string('password');
             $table->integer('is_sended_sms')->default(0);
             $table->integer('is_login')->default(0);
             $table->integer('is_sended_to_circle')->default(0);

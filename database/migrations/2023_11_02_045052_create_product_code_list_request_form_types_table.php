@@ -15,9 +15,9 @@ class CreateProductCodeListRequestFormTypesTable extends Migration
     {
         Schema::create('product_code_list_request_form_types', function (Blueprint $table) {
             $table->id();
-            $table->string("product_code_list_id");
-            $table->string("request_form_type_id");
-            $table->string("product_code")->nullable();
+            $table->string('product_code_list_id');
+            $table->string('request_form_type_id');
+            $table->string('product_code')->nullable();
             $table->timestamps();
         });
     }

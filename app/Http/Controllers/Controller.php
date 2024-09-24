@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     protected function isIncludeFields($request, $fields_string)
     {
-        $fields_array = explode(",", $fields_string);
-        $field_and_rule = array();
+        $fields_array = explode(',', $fields_string);
+        $field_and_rule = [];
         foreach ($fields_array as $field) {
-            $field_and_rule[$field] = "required";
+            $field_and_rule[$field] = 'required';
         }
+
         return Validator::make($request->all(), $field_and_rule);
     }
 }

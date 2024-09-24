@@ -3,7 +3,6 @@
 use App\Http\Controllers\api\internal\AgentController;
 use App\Http\Controllers\api\internal\AuthController;
 use App\Http\Controllers\api\internal\CustomerController;
-
 use Illuminate\Support\Facades\Route;
 
 Route::post('v1/get-token', [AuthController::class, 'generateInterAccessToken']);

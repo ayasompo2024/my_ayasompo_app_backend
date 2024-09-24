@@ -15,10 +15,10 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string("product_id");
-            $table->string("property_type_id");
-            $table->text("title")->nullable();
-            $table->text("desc");
+            $table->string('product_id');
+            $table->string('property_type_id');
+            $table->text('title')->nullable();
+            $table->text('desc');
             $table->timestamps();
         });
     }

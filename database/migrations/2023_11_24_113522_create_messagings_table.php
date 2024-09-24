@@ -15,11 +15,11 @@ class CreateMessagingsTable extends Migration
     {
         Schema::create('messagings', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->text("message");
-            $table->string("type");
-            $table->string("customer_id")->nullable();
-            $table->text("image_url")->nullable();
+            $table->string('title');
+            $table->text('message');
+            $table->string('type');
+            $table->string('customer_id')->nullable();
+            $table->text('image_url')->nullable();
             $table->timestamps();
         });
     }
@@ -34,8 +34,3 @@ class CreateMessagingsTable extends Migration
         Schema::dropIfExists('messagings');
     }
 }
-
-
-
-
-

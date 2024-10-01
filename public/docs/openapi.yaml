@@ -29,7 +29,7 @@ paths:
                       order: 1
                       id: 11
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b606b38ee.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b606b38ee.png'
                       name: 'AYA Go (Domestic)'
                       title: 'TRAVEL INSURANCE'
                       brief_description: 'Explore Myanmar knowing you’re fully protected with AYA Go Travel Insurance. Savour every moment and be in the present with insurance coverage that provides you protection from accidents and mishaps that may arise during your travels.'
@@ -43,7 +43,7 @@ paths:
                       order: 2
                       id: 14
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b64303993.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b64303993.png'
                       name: 'AYA Joy (Overseas)'
                       title: 'TRAVEL INSURANCE'
                       brief_description: 'Accidents while traveling around the world; Bodily injury; Provides protection for the disabled. AYA Joy Travel Insurance also reimburses expenses incurred during travel incidents.'
@@ -57,7 +57,7 @@ paths:
                       order: 3
                       id: 12
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b65f2ad0d.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b65f2ad0d.png'
                       name: 'Motor Vehicle'
                       title: INSURANCE
                       brief_description: "Motor Vehicle Insurance provides a full range of protection features that keep up with your needs.\nThis plan covers not only your car, but anyone who is traveling with you.\nNow, you can enjoy your ride knowing you’re fully protected."
@@ -71,7 +71,7 @@ paths:
                       order: 4
                       id: 15
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b67969f90.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b67969f90.png'
                       name: 'Personal Accident'
                       title: INSURANCE
                       brief_description: 'Protects individual against unexpected loss caused by injury, total permanent disabilities and death due to accident.'
@@ -85,7 +85,7 @@ paths:
                       order: 5
                       id: 16
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
                       name: 'AYA Health'
                       title: INSURANCE
                       brief_description: 'As your health is your most valuable asset, we offer comprehensive health insurance solutions. Start your journey towards better health with AYA Health insurance plans which are crafted to suit your lifestyle and needs.'
@@ -99,7 +99,7 @@ paths:
                       order: 6
                       id: 17
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8936cded.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8936cded.png'
                       name: Fire
                       title: INSURANCE
                       brief_description: 'Fire Insurance protects your business and property when there is a risk of damage due to fire or natural disaster. It is vital for protection against loss or damage caused by fire, explosions and other risks.'
@@ -113,7 +113,7 @@ paths:
                       order: 7
                       id: 18
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8b156e6a.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8b156e6a.png'
                       name: 'Industrial All Risk (IAR)'
                       title: INSURANCE
                       brief_description: "Protect your premises from sudden and unforeseen loss by\nany perils other than by exclusions."
@@ -127,7 +127,7 @@ paths:
                       order: 8
                       id: 19
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8c6ab012.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8c6ab012.png'
                       name: "Contractor's, Erection All Risks (CAR, EAR)"
                       title: INSURANCE
                       brief_description: 'Protect any damage that occurs during the construction process.'
@@ -141,7 +141,7 @@ paths:
                       order: 9
                       id: 20
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8e561737.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8e561737.png'
                       name: 'Marine Cargo'
                       title: INSURANCE
                       brief_description: 'Protect cargoes and machineries against financial losses resulting from unforeseen incidents.'
@@ -155,7 +155,7 @@ paths:
                       order: 10
                       id: 21
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8f9ac765.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8f9ac765.png'
                       name: 'Inland Transit'
                       title: INSURANCE
                       brief_description: 'Protect from unexcepted loss of goods during transportation within the country.'
@@ -169,7 +169,7 @@ paths:
                       order: 1
                       id: 11
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b606b38ee.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b606b38ee.png'
                       name: 'AYA Go (ပြည်တွင်း)'
                       title: 'ခရီးသွား အာမခံ'
                       brief_description: 'AYA Go ခရီးသွားအာမခံဖြင့် မြန်မာနိုင်ငံအနှံ့ကို စူးစမ်းရှာဖွေလိုက်ပါ။ သင်၏ခရီးစဉ်အတွင်း ဖြစ်ပေါ်လာနိုင်သည့် မတော်တဆမှုများနှင့် မတော်တဆမှုများမှ ကာကွယ်ပေးသည့် အာမခံထားရှိခြင်းဖြင့် ပျော်ရွှင်သော ခရီးစဥ်တစ်ခုကို ဖန်တီးလိုက်ပါ။'
@@ -183,7 +183,7 @@ paths:
                       order: 2
                       id: 14
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b64303993.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b64303993.png'
                       name: 'AYA Joy (ပြည်ပ)'
                       title: ခရီးသွားအာမခံ
                       brief_description: 'ကမ္ဘာအနှံ့ ခရီးသွားစဉ်အတွင်း ကြုံတွေ့ရသော မတော်တဆမှု၊ ကိုယ်ခန္ဓာဒဏ်ရာ ရရှိမှု၊ မသန်စွမ်းမှုတို့အတွက် အကာအကွယ်ပေးပါသည်။ AYA Joy ခရီးသွားအာမခံသည် ခရီးစဉ်အတွင်း အဆင်မပြေမှုများကြောင့် ဖြစ်ပေါ်လာသော ကုန်ကျစရိတ်များကိုလည်း ပြန်လည်ပေးပါသည်။'
@@ -197,7 +197,7 @@ paths:
                       order: 3
                       id: 12
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b65f2ad0d.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b65f2ad0d.png'
                       name: မော်တော်ယာဉ်
                       title: အာမခံ
                       brief_description: "မော်တော်ယာဉ်အာမခံသည် သင်၏လိုအပ်ချက်များနှင့် လိုက်လျောညီထွေရှိစေရန် အကာအကွယ် အပြည့်အစုံ ပေးထားခြင်း ဖြစ်ပါသည်။၊\nဤအာမခံသည် သင်၏မော်တော်ယာဉ်သာမက သင်နှင့်အတူလိုက်ပါစီးနင်းသူများအတွက်ပါ အကာအကွယ်ပေးထားပါသည်။\nထို့ကြောင့် သင်၏မော်တော်ယာဉ်ကို အကာအကွယ်အပြည့်အစုံဖြင့် လုံခြုံစိတ်ချစွာ မောင်းနှင်နိုင်ပါပြီ။"
@@ -211,7 +211,7 @@ paths:
                       order: 4
                       id: 15
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b67969f90.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b67969f90.png'
                       name: ကိုယ်အင်္ဂါထိခိုက်မှု
                       title: အာမခံ
                       brief_description: 'ထိခိုက်သေဆုံးအန္တရာယ်အတွက် ဆုံးရှုံးမှုကို ကာကွယ်ဖို့ ကိုယ်အင်္ဂါထိခိုက်မှုအာမခံထားကြပါစို့'
@@ -225,7 +225,7 @@ paths:
                       order: 5
                       id: 16
                       product_type: INDIVIDUAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
                       name: 'AYA Health'
                       title: ကျန်းမာရေးအာမခံ
                       brief_description: 'သင့်ကျန်းမာရေးသည် တန်ဖိုးအရှိဆုံးအရာဖြစ်သောကြောင့် AYASOMPO အနေဖြင့် ကျန်းမာရေးအာမခံ အကာအကွယ်များကို ဝန်ဆောင်မှုပေးလျက်ရှိပါသည်။ သင့်ဘဝနေထိုင်မှုပုံစံနှင့် လိုအပ်ချက်များနှင့်အညီ ဖန်တီးထားပြီး ပြီးပြည့်စုံသည့် AYA Health အာမခံအစီအစဉ်များဖြင့် ပိုမိုကောင်းမွန်သော အနာဂတ်ရရှိအောင် သင်၏ခရီးကို အခုဘဲ စတင်လိုက်ပါ။'
@@ -239,7 +239,7 @@ paths:
                       order: 6
                       id: 17
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8936cded.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8936cded.png'
                       name: မီး
                       title: အာမခံ
                       brief_description: 'မီးဘေးအန္တရာယ်သည် နေရာတိုင်းတွင် ရှိသည်ဖြစ်ရာ လူကြီးမင်း၏အိုးအိမ်တိုက်တာများကို မီးအာမခံထား၍ ကာကွယ်ရန် လိုအပ်ပါသည်။  ထို့ကြောင့် မီးနှင့် မီး‌ဘေးဆိုင်ရာဆုံးရှုံးမှုများမှ ကာကွယ်ရန် မီးအာမခံထားရှိရန် အလွန်အရေးကြီးပါသည်။'
@@ -253,7 +253,7 @@ paths:
                       order: 7
                       id: 18
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8b156e6a.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8b156e6a.png'
                       name: စက်မှုလုပ်ငန်းသုံးအလုံးစုံအန္တရာယ်
                       title: အာမခံ
                       brief_description: 'သင့်အဆောက်အအုံအတွက် ပိုမိုပြည့်စုံသော အကာအကွယ်များဖြင့် အလုပ်ခွင်နှင့် ပတ်ဝန်းကျင်တွင် ဆိုးကျိုးများကြောင့် ရုတ်တရက်နှင့် ကြိုတင်မမြင်နိုင်သော ဆုံးရှုံးမှုများအတွက် စက်မှုလုပ်ငန်းအလုံးစုံအန္တရာယ်အာမခံနှင့် ကာကွယ်လိုက်ပါ။'
@@ -267,7 +267,7 @@ paths:
                       order: 8
                       id: 19
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8c6ab012.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8c6ab012.png'
                       name: 'ကန်ထရိုက်တာအလုံးစုံ / တည်ဆောက်မှုအလုံးစုံ'
                       title: အာမခံ
                       brief_description: 'ကန်ထရိုက်တာတည်ဆောက်တပ်ဆင်အလုံးစုံအာမခံသည် သင်၏ဆောက်လုပ်ရေးနှင့် စက်ပစ္စည်းတပ်ဆင်ခြင်း ပရောဂျက်များ လုပ်ဆောင်စဉ် ဖြစ်ပေါ်လာသော အန္တရာယ်များကို အကာအကွယ်ပေးပါသည်။'
@@ -281,7 +281,7 @@ paths:
                       order: 9
                       id: 20
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8e561737.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8e561737.png'
                       name: ရေကြောင်းကုန်စည်
                       title: အာမခံ
                       brief_description: 'ပင်လယ်ရေကြောင်းဖြင့် ပြည်တွင်း ပြည်ပသို့ပေးပို့သော ပို့ကုန်၊ သွင်းကုန်များသယ်ယူပို့ဆောင်ရာတွင် ဖြစ်ပေါ်လာနိုင်သော မမျှော်လင့်ထားသည့် ပျက်စီးဆုံးရှုံးမှုများအတွက် အကာအကွယ်ပေးပါသည်။ အာမခံထားသည့်ကုန်ပစ္စည်းများ သယ်ယူတင်ဆောင်ရာခရီးစဉ်အတွင်း မတော်တဆထိခိုက်ခြင်း၊ မီးလောင်ခြင်းနှင့် ကုန်ပစ္စည်းများ ပျက်စီးဆုံးရှုံးခြင်းများအတွက် အကျုံးဝင်ပါသည်။'
@@ -295,7 +295,7 @@ paths:
                       order: 10
                       id: 21
                       product_type: COMMERCIAL
-                      thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8f9ac765.png'
+                      thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8f9ac765.png'
                       name: ကုန်လမ်းသယ်ယူပို့ဆောင်ရေး
                       title: အာမခံ
                       brief_description: 'မြန်မာနိုင်ငံတွင်း ကုန်စည်သယ်ယူပို့ဆောင်ရာတွင် ဖြစ်ပေါ်လာနိုင်သော မမျှော်လင့်ထားသည့် ပျက်စီးဆုံးရှုံးမှုများအတွက် အကာအကွယ်ပေးပါသည်။'
@@ -320,7 +320,7 @@ paths:
                         order: 1
                         id: 11
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b606b38ee.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b606b38ee.png'
                         name: 'AYA Go (Domestic)'
                         title: 'TRAVEL INSURANCE'
                         brief_description: 'Explore Myanmar knowing you’re fully protected with AYA Go Travel Insurance. Savour every moment and be in the present with insurance coverage that provides you protection from accidents and mishaps that may arise during your travels.'
@@ -334,7 +334,7 @@ paths:
                         order: 2
                         id: 14
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b64303993.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b64303993.png'
                         name: 'AYA Joy (Overseas)'
                         title: 'TRAVEL INSURANCE'
                         brief_description: 'Accidents while traveling around the world; Bodily injury; Provides protection for the disabled. AYA Joy Travel Insurance also reimburses expenses incurred during travel incidents.'
@@ -348,7 +348,7 @@ paths:
                         order: 3
                         id: 12
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b65f2ad0d.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b65f2ad0d.png'
                         name: 'Motor Vehicle'
                         title: INSURANCE
                         brief_description: "Motor Vehicle Insurance provides a full range of protection features that keep up with your needs.\nThis plan covers not only your car, but anyone who is traveling with you.\nNow, you can enjoy your ride knowing you’re fully protected."
@@ -362,7 +362,7 @@ paths:
                         order: 4
                         id: 15
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b67969f90.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b67969f90.png'
                         name: 'Personal Accident'
                         title: INSURANCE
                         brief_description: 'Protects individual against unexpected loss caused by injury, total permanent disabilities and death due to accident.'
@@ -376,7 +376,7 @@ paths:
                         order: 5
                         id: 16
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
                         name: 'AYA Health'
                         title: INSURANCE
                         brief_description: 'As your health is your most valuable asset, we offer comprehensive health insurance solutions. Start your journey towards better health with AYA Health insurance plans which are crafted to suit your lifestyle and needs.'
@@ -390,7 +390,7 @@ paths:
                         order: 6
                         id: 17
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8936cded.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8936cded.png'
                         name: Fire
                         title: INSURANCE
                         brief_description: 'Fire Insurance protects your business and property when there is a risk of damage due to fire or natural disaster. It is vital for protection against loss or damage caused by fire, explosions and other risks.'
@@ -404,7 +404,7 @@ paths:
                         order: 7
                         id: 18
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8b156e6a.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8b156e6a.png'
                         name: 'Industrial All Risk (IAR)'
                         title: INSURANCE
                         brief_description: "Protect your premises from sudden and unforeseen loss by\nany perils other than by exclusions."
@@ -418,7 +418,7 @@ paths:
                         order: 8
                         id: 19
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8c6ab012.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8c6ab012.png'
                         name: "Contractor's, Erection All Risks (CAR, EAR)"
                         title: INSURANCE
                         brief_description: 'Protect any damage that occurs during the construction process.'
@@ -432,7 +432,7 @@ paths:
                         order: 9
                         id: 20
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8e561737.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8e561737.png'
                         name: 'Marine Cargo'
                         title: INSURANCE
                         brief_description: 'Protect cargoes and machineries against financial losses resulting from unforeseen incidents.'
@@ -446,7 +446,7 @@ paths:
                         order: 10
                         id: 21
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8f9ac765.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8f9ac765.png'
                         name: 'Inland Transit'
                         title: INSURANCE
                         brief_description: 'Protect from unexcepted loss of goods during transportation within the country.'
@@ -460,7 +460,7 @@ paths:
                         order: 1
                         id: 11
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b606b38ee.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b606b38ee.png'
                         name: 'AYA Go (ပြည်တွင်း)'
                         title: 'ခရီးသွား အာမခံ'
                         brief_description: 'AYA Go ခရီးသွားအာမခံဖြင့် မြန်မာနိုင်ငံအနှံ့ကို စူးစမ်းရှာဖွေလိုက်ပါ။ သင်၏ခရီးစဉ်အတွင်း ဖြစ်ပေါ်လာနိုင်သည့် မတော်တဆမှုများနှင့် မတော်တဆမှုများမှ ကာကွယ်ပေးသည့် အာမခံထားရှိခြင်းဖြင့် ပျော်ရွှင်သော ခရီးစဥ်တစ်ခုကို ဖန်တီးလိုက်ပါ။'
@@ -474,7 +474,7 @@ paths:
                         order: 2
                         id: 14
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b64303993.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b64303993.png'
                         name: 'AYA Joy (ပြည်ပ)'
                         title: ခရီးသွားအာမခံ
                         brief_description: 'ကမ္ဘာအနှံ့ ခရီးသွားစဉ်အတွင်း ကြုံတွေ့ရသော မတော်တဆမှု၊ ကိုယ်ခန္ဓာဒဏ်ရာ ရရှိမှု၊ မသန်စွမ်းမှုတို့အတွက် အကာအကွယ်ပေးပါသည်။ AYA Joy ခရီးသွားအာမခံသည် ခရီးစဉ်အတွင်း အဆင်မပြေမှုများကြောင့် ဖြစ်ပေါ်လာသော ကုန်ကျစရိတ်များကိုလည်း ပြန်လည်ပေးပါသည်။'
@@ -488,7 +488,7 @@ paths:
                         order: 3
                         id: 12
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b65f2ad0d.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b65f2ad0d.png'
                         name: မော်တော်ယာဉ်
                         title: အာမခံ
                         brief_description: "မော်တော်ယာဉ်အာမခံသည် သင်၏လိုအပ်ချက်များနှင့် လိုက်လျောညီထွေရှိစေရန် အကာအကွယ် အပြည့်အစုံ ပေးထားခြင်း ဖြစ်ပါသည်။၊\nဤအာမခံသည် သင်၏မော်တော်ယာဉ်သာမက သင်နှင့်အတူလိုက်ပါစီးနင်းသူများအတွက်ပါ အကာအကွယ်ပေးထားပါသည်။\nထို့ကြောင့် သင်၏မော်တော်ယာဉ်ကို အကာအကွယ်အပြည့်အစုံဖြင့် လုံခြုံစိတ်ချစွာ မောင်းနှင်နိုင်ပါပြီ။"
@@ -502,7 +502,7 @@ paths:
                         order: 4
                         id: 15
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b67969f90.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b67969f90.png'
                         name: ကိုယ်အင်္ဂါထိခိုက်မှု
                         title: အာမခံ
                         brief_description: 'ထိခိုက်သေဆုံးအန္တရာယ်အတွက် ဆုံးရှုံးမှုကို ကာကွယ်ဖို့ ကိုယ်အင်္ဂါထိခိုက်မှုအာမခံထားကြပါစို့'
@@ -516,7 +516,7 @@ paths:
                         order: 5
                         id: 16
                         product_type: INDIVIDUAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/thumbnail/aya_sompo65377c9c61ebe.png'
                         name: 'AYA Health'
                         title: ကျန်းမာရေးအာမခံ
                         brief_description: 'သင့်ကျန်းမာရေးသည် တန်ဖိုးအရှိဆုံးအရာဖြစ်သောကြောင့် AYASOMPO အနေဖြင့် ကျန်းမာရေးအာမခံ အကာအကွယ်များကို ဝန်ဆောင်မှုပေးလျက်ရှိပါသည်။ သင့်ဘဝနေထိုင်မှုပုံစံနှင့် လိုအပ်ချက်များနှင့်အညီ ဖန်တီးထားပြီး ပြီးပြည့်စုံသည့် AYA Health အာမခံအစီအစဉ်များဖြင့် ပိုမိုကောင်းမွန်သော အနာဂတ်ရရှိအောင် သင်၏ခရီးကို အခုဘဲ စတင်လိုက်ပါ။'
@@ -530,7 +530,7 @@ paths:
                         order: 6
                         id: 17
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8936cded.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8936cded.png'
                         name: မီး
                         title: အာမခံ
                         brief_description: 'မီးဘေးအန္တရာယ်သည် နေရာတိုင်းတွင် ရှိသည်ဖြစ်ရာ လူကြီးမင်း၏အိုးအိမ်တိုက်တာများကို မီးအာမခံထား၍ ကာကွယ်ရန် လိုအပ်ပါသည်။  ထို့ကြောင့် မီးနှင့် မီး‌ဘေးဆိုင်ရာဆုံးရှုံးမှုများမှ ကာကွယ်ရန် မီးအာမခံထားရှိရန် အလွန်အရေးကြီးပါသည်။'
@@ -544,7 +544,7 @@ paths:
                         order: 7
                         id: 18
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8b156e6a.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8b156e6a.png'
                         name: စက်မှုလုပ်ငန်းသုံးအလုံးစုံအန္တရာယ်
                         title: အာမခံ
                         brief_description: 'သင့်အဆောက်အအုံအတွက် ပိုမိုပြည့်စုံသော အကာအကွယ်များဖြင့် အလုပ်ခွင်နှင့် ပတ်ဝန်းကျင်တွင် ဆိုးကျိုးများကြောင့် ရုတ်တရက်နှင့် ကြိုတင်မမြင်နိုင်သော ဆုံးရှုံးမှုများအတွက် စက်မှုလုပ်ငန်းအလုံးစုံအန္တရာယ်အာမခံနှင့် ကာကွယ်လိုက်ပါ။'
@@ -558,7 +558,7 @@ paths:
                         order: 8
                         id: 19
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8c6ab012.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8c6ab012.png'
                         name: 'ကန်ထရိုက်တာအလုံးစုံ / တည်ဆောက်မှုအလုံးစုံ'
                         title: အာမခံ
                         brief_description: 'ကန်ထရိုက်တာတည်ဆောက်တပ်ဆင်အလုံးစုံအာမခံသည် သင်၏ဆောက်လုပ်ရေးနှင့် စက်ပစ္စည်းတပ်ဆင်ခြင်း ပရောဂျက်များ လုပ်ဆောင်စဉ် ဖြစ်ပေါ်လာသော အန္တရာယ်များကို အကာအကွယ်ပေးပါသည်။'
@@ -572,7 +572,7 @@ paths:
                         order: 9
                         id: 20
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8e561737.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8e561737.png'
                         name: ရေကြောင်းကုန်စည်
                         title: အာမခံ
                         brief_description: 'ပင်လယ်ရေကြောင်းဖြင့် ပြည်တွင်း ပြည်ပသို့ပေးပို့သော ပို့ကုန်၊ သွင်းကုန်များသယ်ယူပို့ဆောင်ရာတွင် ဖြစ်ပေါ်လာနိုင်သော မမျှော်လင့်ထားသည့် ပျက်စီးဆုံးရှုံးမှုများအတွက် အကာအကွယ်ပေးပါသည်။ အာမခံထားသည့်ကုန်ပစ္စည်းများ သယ်ယူတင်ဆောင်ရာခရီးစဉ်အတွင်း မတော်တဆထိခိုက်ခြင်း၊ မီးလောင်ခြင်းနှင့် ကုန်ပစ္စည်းများ ပျက်စီးဆုံးရှုံးခြင်းများအတွက် အကျုံးဝင်ပါသည်။'
@@ -586,7 +586,7 @@ paths:
                         order: 10
                         id: 21
                         product_type: COMMERCIAL
-                        thumbnail: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b8f9ac765.png'
+                        thumbnail: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b8f9ac765.png'
                         name: ကုန်လမ်းသယ်ယူပို့ဆောင်ရေး
                         title: အာမခံ
                         brief_description: 'မြန်မာနိုင်ငံတွင်း ကုန်စည်သယ်ယူပို့ဆောင်ရာတွင် ဖြစ်ပေါ်လာနိုင်သော မမျှော်လင့်ထားသည့် ပျက်စီးဆုံးရှုံးမှုများအတွက် အကာအကွယ်ပေးပါသည်။'
@@ -612,7 +612,7 @@ paths:
                           example: INDIVIDUAL
                         thumbnail:
                           type: string
-                          example: 'https://uatecom.ayasompo.com:5007/uploads/banner/aya_sompo65b3b606b38ee.png'
+                          example: 'https://myayasompo.ayasompo.com/uploads/banner/aya_sompo65b3b606b38ee.png'
                         name:
                           type: string
                           example: 'AYA Go (Domestic)'
@@ -776,19 +776,19 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: rerum
+                  example: omnis
                 inquiry_type:
                   type: string
                   description: ''
-                  example: iste
+                  example: consequatur
                 customer_type:
                   type: string
                   description: ''
-                  example: dolor
+                  example: itaque
                 title:
                   type: string
                   description: ''
-                  example: voluptatum
+                  example: vel
                 ayasompo_vehicleno:
                   type: string
                   description: ''
@@ -804,11 +804,11 @@ paths:
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: qui
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: iste
+                  example: similique
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
@@ -882,19 +882,19 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: consequatur
+                  example: nihil
                 inquiry_type:
                   type: string
                   description: ''
-                  example: ut
+                  example: neque
                 customer_type:
                   type: string
                   description: ''
-                  example: non
+                  example: accusantium
                 title:
                   type: string
                   description: ''
-                  example: unde
+                  example: sint
                 ayasompo_vehicleno:
                   type: string
                   description: ''
@@ -910,11 +910,11 @@ paths:
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: repellat
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: esse
+                  example: voluptas
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
@@ -950,7 +950,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the read.'
-        example: enim
+        example: quo
         required: true
         schema:
           type: string
@@ -973,75 +973,75 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: molestias
+                  example: aspernatur
                 contact_fullname:
                   type: string
                   description: ''
-                  example: officia
+                  example: velit
                 contact_telephone:
                   type: string
                   description: ''
-                  example: ut
+                  example: facere
                 driver_name:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: modi
                 policy_no:
                   type: string
                   description: ''
-                  example: sed
+                  example: delectus
                 accident_location:
                   type: string
                   description: ''
-                  example: totam
+                  example: accusantium
                 accident_date:
                   type: string
                   description: ''
-                  example: praesentium
+                  example: sit
                 accident_time:
                   type: string
                   description: ''
-                  example: non
+                  example: quod
                 accident_description:
                   type: string
                   description: ''
-                  example: totam
+                  example: dignissimos
                 accident_damaged_portion:
                   type: string
                   description: ''
-                  example: sed
+                  example: quod
                 vehicle_no:
                   type: string
                   description: ''
-                  example: perspiciatis
+                  example: excepturi
                 risk_seq_no:
                   type: string
                   description: ''
-                  example: dolor
+                  example: quas
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: repellendus
+                  example: autem
                 signature_image:
                   type: string
                   description: ''
-                  example: veniam
+                  example: voluptatum
                 customer_code:
                   type: string
                   description: ''
-                  example: dolores
+                  example: et
                 product_code:
                   type: string
                   description: ''
-                  example: sapiente
+                  example: veritatis
                 class_code:
                   type: string
                   description: ''
-                  example: quasi
+                  example: eligendi
                 customer_type:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: id
               required:
                 - user_id
                 - contact_fullname
@@ -1081,35 +1081,35 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: quae
+                  example: voluptatem
                 contact_fullname:
                   type: string
                   description: ''
-                  example: ratione
+                  example: eum
                 contact_telephone:
                   type: string
                   description: ''
-                  example: recusandae
+                  example: voluptas
                 accident_date:
                   type: string
                   description: ''
-                  example: sit
+                  example: officia
                 accident_time:
                   type: string
                   description: ''
-                  example: voluptatibus
+                  example: dolore
                 accident_description:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: placeat
                 policy_or_risk_name:
                   type: string
                   description: ''
-                  example: voluptatum
+                  example: voluptas
                 nrc_no:
                   type: string
                   description: ''
-                  example: deserunt
+                  example: ut
                 passport_no:
                   type: string
                   description: ''
@@ -1117,15 +1117,15 @@ paths:
                 product_type:
                   type: string
                   description: ''
-                  example: saepe
+                  example: commodi
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: natus
                 signature_image:
                   type: string
                   description: ''
-                  example: tempora
+                  example: aut
               required:
                 - user_id
                 - contact_fullname
@@ -1146,18 +1146,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -1166,7 +1166,7 @@ paths:
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: tenetur
+        example: eveniet
         required: true
         schema:
           type: string
@@ -1177,18 +1177,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -1210,35 +1210,35 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: quae
+                  example: autem
                 nrc:
                   type: string
                   description: ''
-                  example: quidem
+                  example: voluptatem
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-30T20:51:50'
+                  example: '2024-10-01T11:11:13'
                 mobile_number:
                   type: string
                   description: ''
-                  example: qui
+                  example: quas
                 email:
                   type: string
                   description: ''
-                  example: wglover@example.net
+                  example: leilani.rippin@example.com
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: sint
+                  example: aut
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: aliquid
+                  example: quia
                 tag_name:
                   type: string
                   description: ''
-                  example: aut
+                  example: quasi
               required:
                 - full_name
                 - nrc
@@ -1256,18 +1256,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -1289,7 +1289,7 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '2605'
+                  example: '9586'
                   enum:
                     - ' 97'
                     - '98'
@@ -3993,42 +3993,42 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: numquam
                 nrc:
                   type: string
                   description: ''
-                  example: et
+                  example: reprehenderit
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-30T20:51:50'
+                  example: '2024-10-01T11:11:13'
                 mobile_number:
                   type: string
                   description: ''
-                  example: autem
+                  example: omnis
                 email:
                   type: string
                   description: ''
-                  example: grohan@example.org
+                  example: jonathan.parker@example.com
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: aut
+                  example: maxime
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: optio
+                  example: odio
                 tag_name:
                   type: string
                   description: ''
-                  example: cupiditate
+                  example: sint
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the go joy.'
-        example: perferendis
+        example: est
         required: true
         schema:
           type: string
@@ -4071,7 +4071,7 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: reiciendis
+                  example: omnis
               required:
                 - phone
       security: []
@@ -4094,11 +4094,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: ut
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: '](.Ig)SE'
+                  example: '@UR-:Wpmvfk+&s`d>S'
               required:
                 - phone
                 - password
@@ -4110,18 +4110,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4132,18 +4132,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4184,18 +4184,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4206,18 +4206,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4228,18 +4228,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4269,18 +4269,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4291,18 +4291,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4313,18 +4313,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4335,18 +4335,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4357,18 +4357,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4379,18 +4379,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4401,18 +4401,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4433,18 +4433,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -4467,7 +4467,7 @@ paths:
                 is_disabled:
                   type: number
                   description: ''
-                  example: 128243721.18868
+                  example: 33.0
                 profile_photo:
                   type: string
                   format: binary
@@ -4475,7 +4475,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: '6780'
+                  example: '209'
                   enum:
                     - '97'
                     - '98'
@@ -7179,19 +7179,19 @@ paths:
                 customer_code:
                   type: string
                   description: ''
-                  example: explicabo
+                  example: enim
                 customer_phoneno:
                   type: string
                   description: ''
-                  example: ducimus
+                  example: explicabo
                 user_name:
                   type: string
                   description: ''
-                  example: illum
+                  example: aut
                 app_customer_type:
                   type: string
                   description: ''
-                  example: GROUP
+                  example: INDIVIDUAL
                   enum:
                     - INDIVIDUAL
                     - GROUP
@@ -7199,15 +7199,15 @@ paths:
                 risk_seqNo:
                   type: string
                   description: ''
-                  example: quibusdam
+                  example: neque
                 risk_name:
                   type: string
                   description: ''
-                  example: repellat
+                  example: nihil
                 policy_number:
                   type: string
                   description: ''
-                  example: ullam
+                  example: ab
                 disabled_from:
                   type: string
                   description: ''
@@ -7238,18 +7238,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -7269,18 +7269,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -7289,7 +7289,7 @@ paths:
         in: path
         name: type
         description: ''
-        example: nihil
+        example: minima
         required: true
         schema:
           type: string
@@ -7300,18 +7300,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -7320,7 +7320,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the detail.'
-        example: omnis
+        example: dolores
         required: true
         schema:
           type: string
@@ -7343,15 +7343,15 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: aut
+                  example: eius
                 message:
                   type: string
                   description: ''
-                  example: placeat
+                  example: ut
                 type:
                   type: string
                   description: ''
-                  example: Multicast
+                  example: Broadcast
                   enum:
                     - Broadcast
                     - Unicast
@@ -7359,7 +7359,7 @@ paths:
                 description:
                   type: string
                   description: ''
-                  example: 'Delectus aperiam tempore rerum dolorem voluptate rerum voluptatem.'
+                  example: 'Quae ea repellat reprehenderit voluptatem iste illum.'
                 image_url:
                   type: string
                   format: binary
@@ -7375,7 +7375,7 @@ paths:
                 customers:
                   type: string
                   description: ''
-                  example: culpa
+                  example: magni
               required:
                 - title
                 - message
@@ -7390,18 +7390,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -7412,18 +7412,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Server Error'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -7445,7 +7445,7 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '2314'
+                  example: '193'
                   enum:
                     - ' 97'
                     - '98'
@@ -10149,39 +10149,39 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: ea
+                  example: at
                 nrc:
                   type: string
                   description: ''
-                  example: iure
+                  example: rerum
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-30T20:51:50'
+                  example: '2024-10-01T11:11:13'
                 mobile_number:
                   type: string
                   description: ''
-                  example: eum
+                  example: eaque
                 email:
                   type: string
                   description: ''
-                  example: lang.bryana@example.org
+                  example: leuschke.jedidiah@example.net
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: debitis
+                  example: qui
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: labore
+                  example: tempora
                 tag_name:
                   type: string
                   description: ''
-                  example: accusantium
+                  example: quidem
                 status:
                   type: string
                   description: ''
-                  example: DISABLE
+                  example: DELETED
                   enum:
                     - ACTIVE
                     - DISABLE
@@ -10201,7 +10201,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the gojoy.'
-        example: molestias
+        example: atque
         required: true
         schema:
           type: string
@@ -10728,15 +10728,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quod
+                  example: voluptas
                 title:
                   type: string
                   description: ''
-                  example: cupiditate
+                  example: exercitationem
                 product_type:
                   type: string
                   description: ''
-                  example: facere
+                  example: accusantium
                 brief_description:
                   type: string
                   description: ''
@@ -10744,7 +10744,7 @@ paths:
                 thumbnail:
                   type: string
                   description: 'Must not be greater than 5128 characters.'
-                  example: jqtjhdzqonqjdkjbtzqfh
+                  example: jobrbnwkkgfjrxiphqyouhef
               required:
                 - name
                 - title
@@ -10766,7 +10766,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: unde
+        example: consequatur
         required: true
         schema:
           type: string
@@ -10785,7 +10785,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: corrupti
+        example: quidem
         required: true
         schema:
           type: string
@@ -10990,7 +10990,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: reprehenderit
+        example: quia
         required: true
         schema:
           type: string
@@ -11065,7 +11065,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: impedit
+        example: architecto
         required: true
         schema:
           type: string
@@ -11084,7 +11084,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: nostrum
+        example: atque
         required: true
         schema:
           type: string
@@ -11103,7 +11103,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: aspernatur
+        example: quis
         required: true
         schema:
           type: string

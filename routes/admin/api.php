@@ -4,13 +4,21 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\api\admin\AuthController;
 use App\Http\Controllers\api\admin\BannerController;
 use App\Http\Controllers\api\admin\CustomerController;
+use App\Http\Controllers\api\admin\GoJoyController;
+use App\Http\Controllers\api\admin\NotificationController;
 use App\Http\Controllers\api\admin\ProductController;
 use App\Http\Controllers\api\admin\PropertyTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('v1/login', [AuthController::class, 'login']);
-        
+
 Route::prefix('v1')->group(function () {
+
+    Route::middleware('auth:api_admin')->group(function () {
+
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/', [UserController::class, 'index']);
+        });
 
         Route::group(['prefix' => 'customer'], function () {
             Route::post('/{id}', [CustomerController::class, 'update']);
@@ -19,13 +27,16 @@ Route::prefix('v1')->group(function () {
             Route::get('/count/{type}', [CustomerController::class, 'count']);
             Route::get('/detail/{id}', [CustomerController::class, 'show']);
         });
-    Route::middleware('auth:api_admin')->group(function () {
 
-    });
+        Route::group(['prefix' => 'messaging'], function () {
+            Route::post('/', [NotificationController::class, 'store']);
+        });
 
-    Route::middleware('auth:api_admin')->group(function () {
-        Route::group(['prefix' => 'user'], function () {
-            Route::get('/', [UserController::class, 'index']);
+        Route::group(['prefix' => 'gojoy'], function () {
+            Route::get('/', [GoJoyController::class, 'index']);
+            Route::get('/{id}', [GoJoyController::class, 'show']);
+            Route::put('/{id}', [GoJoyController::class, 'update']);
+            Route::delete('/{id}', [GoJoyController::class, 'destroy']);
         });
     });
 

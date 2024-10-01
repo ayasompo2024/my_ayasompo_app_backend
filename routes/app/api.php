@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\app\AppGoJoyController;
 use App\Http\Controllers\api\app\BannerController;
 use App\Http\Controllers\api\app\ClaimcaseController;
 use App\Http\Controllers\api\app\LocationMapController;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
+    Route::get('message', action: [NotiCenterController::class, 'sendNotificatioin']);
     Route::get('products', [ProductController::class, 'getActive']);
     Route::get('banners', [BannerController::class, 'getActive']);
     Route::get('banners/splash', [BannerController::class, 'getSplashActive']);
@@ -25,5 +27,12 @@ Route::prefix('v1')->group(function () {
         Route::post('claim-case/non-motor', [ClaimcaseController::class, 'nonMotorCase']);
 
         Route::get('noti/get-promotion-and-system/{user_id}', [NotiCenterController::class, 'getPromotionAndSystem']);
+
+        Route::group(['prefix' => 'go-joy'], function () {
+            Route::get('/', [AppGoJoyController::class, 'index']);
+            Route::post('/', [AppGoJoyController::class, 'store']);
+            Route::get('/{id}', action: [AppGoJoyController::class, 'show']);
+            Route::put('/{id}', [AppGoJoyController::class, 'update']);
+        });
     });
 });

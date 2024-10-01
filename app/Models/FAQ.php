@@ -11,20 +11,22 @@ use Illuminate\Support\Facades\Log;
 class FAQ extends Model
 {
     use HasFactory, SendPushNotification;
+
     protected $table = 'faqs';
 
     protected $fillable = [
-        "title",
-        "desc",
-        "title_mm",
-        "desc_mm",
-        "product_id",
+        'title',
+        'desc',
+        'title_mm',
+        'desc_mm',
+        'product_id',
     ];
 
-    function product()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
+
     protected static function boot()
     {
         parent::boot();
@@ -41,10 +43,11 @@ class FAQ extends Model
             $faq->sendFcmNoti();
         });
     }
+
     private function sendFcmNoti()
     {
-        $notification = ["title" => "Product Announcement!", "body" => null];
-        $data = ["title" => "Product", "body" => null];
+        $notification = ['title' => 'Product Announcement!', 'body' => null];
+        $data = ['title' => 'Product', 'body' => null];
         $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');
     }

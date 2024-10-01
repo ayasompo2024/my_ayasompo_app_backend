@@ -6,45 +6,52 @@ use Carbon\Carbon;
 
 trait ClaimQuery
 {
-    function closeQuery($account_code_string, $from, $to)
+    public function closeQuery($account_code_string, $from, $to)
     {
-        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (".$account_code_string.')';
 
-        if (!$from && !$to)
+        if (! $from && ! $to) {
             return $baseQuery;
+        }
 
-        if ($from && $to == null)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
+        if ($from && $to == null) {
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$from."'";
+        }
 
-        if ($from == $to)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
-
-        $date = $this->getDateFormat($from, $to);
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '" . $date["from"] . "' AND intimate_date <= DATE '" . $date['to'] . "' AND STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
-    }
-
-    function outstandingQuery($account_code_string, $from, $to)
-    {
-        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
-
-        if (!$from && !$to)
-            return $baseQuery;
-
-        if ($from && $to == null)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
-
-        if ($from == $to)
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $from . "'";
+        if ($from == $to) {
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$from."'";
+        }
 
         $date = $this->getDateFormat($from, $to);
 
-        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '" . $date["from"] . "' AND intimate_date <= DATE '" . $date['to'] . "' AND STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '".$date['from']."' AND intimate_date <= DATE '".$date['to']."' AND STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (".$account_code_string.')';
     }
 
-    function paidQuery($account_code_string, $from, $to)
+    public function outstandingQuery($account_code_string, $from, $to)
+    {
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (".$account_code_string.')';
+
+        if (! $from && ! $to) {
+            return $baseQuery;
+        }
+
+        if ($from && $to == null) {
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$from."'";
+        }
+
+        if ($from == $to) {
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$from."'";
+        }
+
+        $date = $this->getDateFormat($from, $to);
+
+        return "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE intimate_date >= DATE '".$date['from']."' AND intimate_date <= DATE '".$date['to']."' AND STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (".$account_code_string.')';
+    }
+
+    public function paidQuery($account_code_string, $from, $to)
     {
         $originalFromDate = $from;
-        $baseQuery = "select * from VW_POLICY_AGENT_CLAIM_APP WHERE  PAID_STATUS = 'PAID' and ACCOUNT_CODE in (" . $account_code_string . " )";
+        $baseQuery = "select * from VW_POLICY_AGENT_CLAIM_APP WHERE  PAID_STATUS = 'PAID' and ACCOUNT_CODE in (".$account_code_string.' )';
 
         if ($from == null) {
             $from = Carbon::now()->format('M-d');
@@ -54,16 +61,17 @@ trait ClaimQuery
         $formattedFromDate = strtoupper($fromDate->format('M-d'));
 
         if ($to == null) {
-            return $baseQuery . "and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('" . $formattedFromDate . "')";
+            return $baseQuery."and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('".$formattedFromDate."')";
         }
 
         $toDate = Carbon::createFromFormat('M-d', $to);
         if ($fromDate == $toDate) {
-            return $baseQuery . "and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('" . $formattedFromDate . "')";
+            return $baseQuery."and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('".$formattedFromDate."')";
         }
 
         $mutedfromDate = Carbon::createFromFormat('M-Y', $originalFromDate)->startOfMonth();
         $mutedtoDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
+
         return $this->queryForDateRange($mutedfromDate, $mutedtoDate, $baseQuery, "to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY')");
     }
 
@@ -94,12 +102,12 @@ trait ClaimQuery
         $fistYearsAndMonth = $this->getMonthsInYearRange($startYear, $startMonthFromStartYear, 12);
 
         $fistYearsAndMonth = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $fistYearsAndMonth);
 
         $lastestYearsAndMonth = $this->getMonthsUntilEndMonth($endYear, $endMonthOfFromEndYear);
         $lastestYearsAndMonth = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $lastestYearsAndMonth);
 
         $middleYears = [];
@@ -110,15 +118,15 @@ trait ClaimQuery
 
         $flatMiddleYears = array_merge(...$middleYears);
         $flatMiddleYears = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $flatMiddleYears);
         $flatAllYears = array_merge($fistYearsAndMonth, $flatMiddleYears, $lastestYearsAndMonth);
 
-        $allYearsAsString = "(" . implode(",", $flatAllYears) . ")";
+        $allYearsAsString = '('.implode(',', $flatAllYears).')';
 
-        return $baseQuery . " AND " . $field . " in " . $allYearsAsString;
+        return $baseQuery.' AND '.$field.' in '.$allYearsAsString;
     }
-    
+
     private function getMonthsInYearRange($year, $start_month, $end_month)
     {
         $months = [];
@@ -132,8 +140,10 @@ trait ClaimQuery
                 }
             }
         }
+
         return $months;
     }
+
     private function getMonthsUntilEndMonth($year, $end_month)
     {
         $months = [];
@@ -144,36 +154,35 @@ trait ClaimQuery
                 $months[] = strtoupper($date->format('M-y'));
             }
         }
+
         return $months;
     }
 
-    function getDateFormatForClaim($from, $to)
+    public function getDateFormatForClaim($from, $to)
     {
         $fromDate = Carbon::createFromFormat('M-y', $from)->startOfMonth();
         $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
 
         return [
-            "from" => strtoupper($fromDate->format('d-M-y')),
-            "to" => strtoupper($toDate->format('d-M-y'))
+            'from' => strtoupper($fromDate->format('d-M-y')),
+            'to' => strtoupper($toDate->format('d-M-y')),
         ];
     }
 }
 
-
-
 /*
 ( Paid )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24' 
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24'
 and PAID_STATUS = 'PAID' and ACCOUNT_CODE in ('Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
-( Close ) 
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-JUN-24' 
+( Close )
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-JUN-24'
 and STATUS in ( 'Cancel','No Claim','Reject' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
 ( Outstanding )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24' 
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24'
 and STATUS in ( 'Open','Outstanding' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
@@ -188,7 +197,7 @@ from MAY-21 to MAY-24 = 8
 MAY-24 = 5
 -----------
 
-Paid 
+Paid
 from MAY-21 to MAY-24 = 1168
 MAY-24 = 20
 ------------------------

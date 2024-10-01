@@ -16,21 +16,13 @@ class EmployeeInfoRsource extends JsonResource
     {
         return [
             'id' => $this->id,
-            "customer_id" => $this->customer_id,
-            "code" => $this->code,
-            "designation" => $this->designation,
-            "department" => $this->department,
-            "email" => $this->email,
-            "office_phone" => $this->office_phone,
-            "office_address" => $this->office_address,
+            'customer_id' => $this->customer_id,
+            'code' => $this->code,
+            'designation' => $this->designation,
+            'department' => $this->department,
+            'email' => $this->email,
+            'office_phone' => $this->office_phone,
+            'office_address' => $this->office_address,
         ];
     }
 }
-
-
-
-
-
-
-
-

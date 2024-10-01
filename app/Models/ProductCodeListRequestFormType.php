@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCodeListRequestFormType extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        "product_code_list_id",
-        "request_form_type_id",
-        "product_code"
+        'product_code_list_id',
+        'request_form_type_id',
+        'product_code',
     ];
 
     public function requestRormType()
@@ -19,5 +20,3 @@ class ProductCodeListRequestFormType extends Model
         return $this->belongsTo(RequestFormType::class, 'request_form_type_id', 'id');
     }
 }
-
-

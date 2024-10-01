@@ -1,21 +1,20 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\PropertyTypeRepository;
 
-
-
 class PropertyTypService
 {
-
-    function getAll()
+    public function getAll()
     {
         return PropertyTypeRepository::getAll();
     }
 
     public function store($request)
     {
-        $input = $request->only("name",'name_mm');
+        $input = $request->only('name', 'name_mm');
+
         return PropertyTypeRepository::store($input);
     }
 
@@ -32,9 +31,10 @@ class PropertyTypService
     public function update($id, $request)
     {
         $input = [
-            "name" => $request->name,
-            'name_mm' => $request->name_mm
+            'name' => $request->name,
+            'name_mm' => $request->name_mm,
         ];
+
         return PropertyTypeRepository::updateById($id, $input);
 
     }

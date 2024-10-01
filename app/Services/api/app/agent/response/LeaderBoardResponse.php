@@ -1,18 +1,20 @@
 <?php
+
 namespace App\Services\api\app\agent\response;
 
 use App\Http\Resources\api\app\agent\LeaderBoardResource;
 
 trait LeaderBoardResponse
 {
-    function leaderBoardRes($learders, $show_raw)
+    public function leaderBoardRes($learders, $show_raw)
     {
-        $premium = $this->collection->sum("premium");
+        $premium = $this->collection->sum('premium');
+
         return [
             'campaign_title' => $learders[0]['campaign_title'],
             'current_point' => $premium ? intval($premium / 1000) : 0,
             'learder_agents' => LeaderBoardResource::collection($learders),
-            'show_raw_data' => !empty($show_raw) ? $this->collection : null
+            'show_raw_data' => ! empty($show_raw) ? $this->collection : null,
         ];
     }
 }

@@ -1,54 +1,63 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Banner;
 
 class BannerRepository
 {
+    public static function getHome()
+    {
+        return Banner::where('for', 'Home')->orderBy('sort')->get();
+    }
 
-    static function getHome()
+    public static function getSplash()
     {
-        return Banner::where("for", "Home")->orderBy('sort')->get();
+        return Banner::where('for', 'Splash')->orderBy('sort')->get();
     }
-    static function getSplash()
+
+    public static function getSplashFirst()
     {
-        return Banner::where("for", "Splash")->orderBy('sort')->get();
+        return Banner::where('for', 'Splash')->orderBy('sort')->first();
     }
-    static function getSplashFirst()
-    {
-        return Banner::where("for", "Splash")->orderBy('sort')->first();
-    }
-    static function getAll()
+
+    public static function getAll()
     {
         return Banner::orderBy('sort')->get();
     }
-    static function getOnlyActive()
+
+    public static function getOnlyActive()
     {
-        return Banner::query()->where("status", 1)->orderByDesc('sort')->get();
+        return Banner::query()->where('status', 1)->orderByDesc('sort')->get();
     }
-    static function store(array $input)
+
+    public static function store(array $input)
     {
         return Banner::create($input);
     }
-    static function getById($id)
+
+    public static function getById($id)
     {
         return Banner::find($id);
     }
-    static function destroyById($id)
+
+    public static function destroyById($id)
     {
         return Banner::destroy($id);
     }
 
-    static function changeStatus($product_id)
+    public static function changeStatus($product_id)
     {
         $banner = Banner::where('id', $product_id)->first();
-        if (!$banner)
+        if (! $banner) {
             return false;
-        return $banner->update(['status' => !$banner->status]);
+        }
+
+        return $banner->update(['status' => ! $banner->status]);
     }
-    static function update($id, $input)
+
+    public static function update($id, $input)
     {
         return Banner::find($id)->update($input);
     }
-
 }

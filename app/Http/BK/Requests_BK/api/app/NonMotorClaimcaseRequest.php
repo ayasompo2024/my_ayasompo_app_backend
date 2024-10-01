@@ -24,24 +24,23 @@ class NonMotorClaimcaseRequest extends FormRequest
     public function rules()
     {
         return [
-            "user_id" => ['required'],
-            "contact_fullname" => ['required'],
-            "contact_telephone" => ['required'],
-            "accident_date" => ['required'],
-            "accident_time" => ['required'],
-            "accident_description" => ['required'],
+            'user_id' => ['required'],
+            'contact_fullname' => ['required'],
+            'contact_telephone' => ['required'],
+            'accident_date' => ['required'],
+            'accident_time' => ['required'],
+            'accident_description' => ['required'],
 
-            "policy_or_risk_name" => ['required'],
+            'policy_or_risk_name' => ['required'],
 
-            "nrc_no" => ['required'],
-            "passport_no" => ['nullable'],
+            'nrc_no' => ['required'],
+            'passport_no' => ['nullable'],
 
-            "product_type" => ['required'],
+            'product_type' => ['required'],
 
-            "accident_damaged_photos" => ['required'],
-            "accident_damaged_photos*" => ['required', 'array', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
-            "signature_image" => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
+            'accident_damaged_photos' => ['required'],
+            'accident_damaged_photos*' => ['required', 'array', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
+            'signature_image' => ['required', 'mimes:png,jpg,jpeg,PNG,JPG,JPEG'],
         ];
     }
 }
-

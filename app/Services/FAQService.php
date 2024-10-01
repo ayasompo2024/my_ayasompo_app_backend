@@ -1,12 +1,12 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\FAQRepository;
 
 class FAQService
 {
-
-    function getAll()
+    public function getAll()
     {
         // return FAQRepository::getAll();
     }
@@ -29,7 +29,8 @@ class FAQService
 
     public function update($id, $request)
     {
-        $input = $request->only("title", "desc", "title_mm", "desc_mm");
+        $input = $request->only('title', 'desc', 'title_mm', 'desc_mm');
+
         return FAQRepository::update($id, $input);
 
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SmsPool extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'key',
         'name',
@@ -18,6 +19,6 @@ class SmsPool extends Model
         'is_sended_to_circle',
         'circle_response',
         'policy_number',
-        'was_deleted'
+        'was_deleted',
     ];
 }

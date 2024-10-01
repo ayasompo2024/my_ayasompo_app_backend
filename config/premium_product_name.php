@@ -1,13 +1,13 @@
 <?php
 
 return [
-    "Motor",
-    "Fire",
-    "Property",
-    "Marine",
-    "Health",
-    "Miscellaneous",
-    "Travel",
-    "Engineering",
-    "Liability",
+    'Motor',
+    'Fire',
+    'Property',
+    'Marine',
+    'Health',
+    'Miscellaneous',
+    'Travel',
+    'Engineering',
+    'Liability',
 ];

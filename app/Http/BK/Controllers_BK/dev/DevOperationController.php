@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\dev;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class DevOperationController extends Controller
 {
@@ -14,6 +14,7 @@ class DevOperationController extends Controller
     {
         $files = File::files('./../DOC');
         rsort($files);
+
         return view('dev.doc.index', compact(['files']));
     }
 
@@ -21,7 +22,8 @@ class DevOperationController extends Controller
     {
         $files = File::files('./../DOC');
         rsort($files);
-        $content = File::get('./../DOC/' . $file);
+        $content = File::get('./../DOC/'.$file);
+
         return view('dev.doc.content', compact(['files', 'content']));
     }
 
@@ -30,19 +32,20 @@ class DevOperationController extends Controller
         return view('dev.show-deploy-ui');
     }
 
-    function OneClickDeploy()
+    public function OneClickDeploy()
     {
         $output = '';
         $consoleResult = [];
-        if (!chdir('..')) {
-            $consoleResult[] = "Error changing directory";
+        if (! chdir('..')) {
+            $consoleResult[] = 'Error changing directory';
+
             return $consoleResult;
         }
         getcwd();
-        shell_exec("cd storage/logs && rm laravel.log");
+        shell_exec('cd storage/logs && rm laravel.log');
 
-        exec("git add . ", $output, $returnCode);
-        $commitMessage = "Auto commit message on " . date('Y-m-d H:i:s');
+        exec('git add . ', $output, $returnCode);
+        $commitMessage = 'Auto commit message on '.date('Y-m-d H:i:s');
         $escapedCommitMessage = escapeshellarg($commitMessage);
         exec("git commit -m $escapedCommitMessage", $output, $returnCode);
         array_push($consoleResult, $output);
@@ -50,7 +53,7 @@ class DevOperationController extends Controller
         // exec("git fetch", $output, $returnCode);
         // array_push($consoleResult, $output);
 
-        exec("git pull --force", $output, $returnCode);
+        exec('git pull --force', $output, $returnCode);
         array_push($consoleResult, $output);
 
         return $consoleResult;
@@ -65,106 +68,86 @@ class DevOperationController extends Controller
     public function command(Request $req)
     {
         $validator = Validator::make($req->all(), [
-            "command" => "required",
+            'command' => 'required',
         ]);
-        if ($validator->fails())
-            return $this->respondValidationErrors("Validation Error", $validator->errors(), 400);
+        if ($validator->fails()) {
+            return $this->respondValidationErrors('Validation Error', $validator->errors(), 400);
+        }
         $output = '';
-        if (!chdir('..')) {
-            $consoleResult[] = "Error changing directory";
+        if (! chdir('..')) {
+            $consoleResult[] = 'Error changing directory';
+
             return $consoleResult;
         }
         getcwd();
         exec($req->command, $output, $returnCode);
+
         return $output;
     }
 
-    function showeEnvValue()
+    public function showeEnvValue()
     {
         $stage = config('app.stage');
         $csharp_server_token_ = Cache::get('token_for_internal');
         $crm_token = Cache::get('CRM_API_Token');
-        $send_sms_url = config('app.ayasompo_base_url') . 'sms/sendsms';
-        $create_inquiry_case_url = config("app.CRM_BASE_URL") . "api/data/v9.1/incidents";
+        $send_sms_url = config('app.ayasompo_base_url').'sms/sendsms';
+        $create_inquiry_case_url = config('app.CRM_BASE_URL').'api/data/v9.1/incidents';
 
-        $serviceRoot = config("app.service_root");
-        $cusCode = "X0000";
-        $get_individual_customer_id_by_cus_code_api_url = $serviceRoot . "contacts?\$select=fullname&\$filter=ayasompo_customercode eq '" . $cusCode . "'";
-        $get_coorporate_customer_id_by_cus_code_api_url = $url = $serviceRoot . "accounts?\$select=name&\$filter=ayasompo_code eq '" . $cusCode . "'";
+        $serviceRoot = config('app.service_root');
+        $cusCode = 'X0000';
+        $get_individual_customer_id_by_cus_code_api_url = $serviceRoot."contacts?\$select=fullname&\$filter=ayasompo_customercode eq '".$cusCode."'";
+        $get_coorporate_customer_id_by_cus_code_api_url = $url = $serviceRoot."accounts?\$select=name&\$filter=ayasompo_code eq '".$cusCode."'";
 
-        $case_id = "X032323";
-        $get_case_number_by_ayas_case_id = config("app.CRM_BASE_URL") . "api/data/v9.1/incidents?\$select=incidentid,ayasompo_casenumber&\$filter=ayasompo_caseid eq '" . $case_id . "'";
+        $case_id = 'X032323';
+        $get_case_number_by_ayas_case_id = config('app.CRM_BASE_URL')."api/data/v9.1/incidents?\$select=incidentid,ayasompo_casenumber&\$filter=ayasompo_caseid eq '".$case_id."'";
 
         $crm_enquiry_product_type = config('app.enquiry_product_type');
         $crm_enquiry_types = config('app.enquiry_type');
         $crm_account_handler = config('app.account_handler');
 
-        $create_motor_case_api_url = config("app.CREATE_CLAIM_CASE_BASE_URL") . "api/external/claimprocess/claimcase/motor";
-        $create_non_motor_case_api_url = config("app.CREATE_CLAIM_CASE_BASE_URL") . "api/external/claimprocess/claimcase/non-motor";
-        $upload_file_url = config("app.FILE_UPLOAD_BASE_URL") . "api/external/files";
+        $create_motor_case_api_url = config('app.CREATE_CLAIM_CASE_BASE_URL').'api/external/claimprocess/claimcase/motor';
+        $create_non_motor_case_api_url = config('app.CREATE_CLAIM_CASE_BASE_URL').'api/external/claimprocess/claimcase/non-motor';
+        $upload_file_url = config('app.FILE_UPLOAD_BASE_URL').'api/external/files';
 
-        $syasompo_base_url  = config('app.ayasompo_base_url');
+        $syasompo_base_url = config('app.ayasompo_base_url');
 
         $env_values = [
-            "stage" => $stage,
-            "csharp_server_token_" => $csharp_server_token_,
-            "crm_token" => $crm_token,
-            "send_sms_url" => $send_sms_url,
-            "create_inquiry_case_url" => $create_inquiry_case_url,
-            "serviceRoot" => $serviceRoot,
-            "get_individual_customer_id_by_cus_code_api_url" => $get_individual_customer_id_by_cus_code_api_url,
-            "get_coorporate_customer_id_by_cus_code_api_url" => $get_coorporate_customer_id_by_cus_code_api_url,
-            "get_case_number_by_ayas_case_id" => $get_case_number_by_ayas_case_id,
-            "crm_enquiry_product_type" => $crm_enquiry_product_type,
-            "crm_enquiry_types" => $crm_enquiry_types,
-            "crm_account_handler" => $crm_account_handler,
-            "create_motor_case_api_url" => $create_motor_case_api_url,
-            "create_non_motor_case_api_url" => $create_non_motor_case_api_url,
-            "upload_file_url" => $upload_file_url,
+            'stage' => $stage,
+            'csharp_server_token_' => $csharp_server_token_,
+            'crm_token' => $crm_token,
+            'send_sms_url' => $send_sms_url,
+            'create_inquiry_case_url' => $create_inquiry_case_url,
+            'serviceRoot' => $serviceRoot,
+            'get_individual_customer_id_by_cus_code_api_url' => $get_individual_customer_id_by_cus_code_api_url,
+            'get_coorporate_customer_id_by_cus_code_api_url' => $get_coorporate_customer_id_by_cus_code_api_url,
+            'get_case_number_by_ayas_case_id' => $get_case_number_by_ayas_case_id,
+            'crm_enquiry_product_type' => $crm_enquiry_product_type,
+            'crm_enquiry_types' => $crm_enquiry_types,
+            'crm_account_handler' => $crm_account_handler,
+            'create_motor_case_api_url' => $create_motor_case_api_url,
+            'create_non_motor_case_api_url' => $create_non_motor_case_api_url,
+            'upload_file_url' => $upload_file_url,
             'syasompo_base_url' => $syasompo_base_url,
-            'crm_base_url' => config('app.CRM_BASE_URL')
+            'crm_base_url' => config('app.CRM_BASE_URL'),
         ];
+
         return view('dev.show-env-value-ui')->with(['env_values' => $env_values]);
     }
 
-    function getLogFileList(){
+    public function getLogFileList()
+    {
         $files = File::files('./../storage/logs');
         rsort($files);
-        return view('dev.logs.index', compact(['files']));   
+
+        return view('dev.logs.index', compact(['files']));
     }
-    function getLogFileContent($file){
+
+    public function getLogFileContent($file)
+    {
         $files = File::files('./../storage/logs');
         rsort($files);
-        $content = File::get('./../storage/logs/' . $file);
+        $content = File::get('./../storage/logs/'.$file);
+
         return view('dev.logs.content', compact(['files', 'content']));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

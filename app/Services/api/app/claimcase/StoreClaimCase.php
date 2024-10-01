@@ -1,12 +1,11 @@
 <?php
+
 namespace App\Services\api\app\claimcase;
 
 use App\Repositories\ClaimcaseRepository;
 
-
 trait StoreClaimCase
 {
-
     private function storeMotorCase($input)
     {
         return ClaimcaseRepository::createMotorCase($input);
@@ -17,5 +16,3 @@ trait StoreClaimCase
         return ClaimcaseRepository::createNonMotorCase($input);
     }
 }
-
-

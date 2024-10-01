@@ -2,16 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-use App\Repositories\ProductCodeListRequestFormTypeRepo;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Client;
-use League\OAuth1\Client\Credentials\TokenCredentials;
-use Log;
 use Google_Client;
-
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\ServiceProvider;
+use Log;
 
 class TokenProvider extends ServiceProvider
 {
@@ -23,23 +20,23 @@ class TokenProvider extends ServiceProvider
 
     private function GetCRMAPIToken()
     {
-        $tenantID = config("app.tenant_id");
+        $tenantID = config('app.tenant_id');
         try {
             // if (false) {
-            if (!Cache::has('CRM_API_Token')) {
+            if (! Cache::has('CRM_API_Token')) {
                 $tokenURL = "https://login.microsoftonline.com/$tenantID/oauth2/token";
-                $client = new Client();
+                $client = new Client;
                 $response = $client->post($tokenURL, [
                     'form_params' => [
                         'grant_type' => 'client_credentials',
-                        'client_id' => config("app.client_id"),
-                        'client_secret' => config("app.client_secret"),
-                        'resource' => config("app.resource_url"),
+                        'client_id' => config('app.client_id'),
+                        'client_secret' => config('app.client_secret'),
+                        'resource' => config('app.resource_url'),
                     ],
                 ]);
                 $tokenData = json_decode($response->getBody(), true);
-                $cacheExpireIn = intval($tokenData["expires_in"]) - 300;
-                Cache::put('CRM_API_Token', $tokenData["access_token"], $cacheExpireIn);
+                $cacheExpireIn = intval($tokenData['expires_in']) - 300;
+                Cache::put('CRM_API_Token', $tokenData['access_token'], $cacheExpireIn);
             }
         } catch (RequestException $e) {
             Log::error($e->getMessage());
@@ -51,7 +48,7 @@ class TokenProvider extends ServiceProvider
     {
         try {
             // if (false) {
-            if (!Cache::has('token_for_internal')) {
+            if (! Cache::has('token_for_internal')) {
                 $auth_route = config('app.auth_route');
                 $user_name = config('app.user_name');
                 $password = config('app.password');

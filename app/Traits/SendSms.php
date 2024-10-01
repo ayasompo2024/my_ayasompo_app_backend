@@ -7,18 +7,18 @@ use Illuminate\Support\Facades\Http;
 
 trait SendSms
 {
-    public function callSMSAPI($to, $content, $username = "Spidey Shine", $claimNo = "")
+    public function callSMSAPI($to, $content, $username = 'Spidey Shine', $claimNo = '')
     {
-        $end_point = config('app.ayasompo_base_url') . 'sms/sendsms';
+        $end_point = config('app.ayasompo_base_url').'sms/sendsms';
         $token = Cache::get('token_for_internal');
         $requestBody = [
             'phoneNumber' => $to,
             'message' => $content,
-            "username" => $username,
-            "claimNo" => $claimNo
+            'username' => $username,
+            'claimNo' => $claimNo,
         ];
         $headers = [
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer '.$token,
             'Accept' => 'application/json',
         ];
         $response = Http::withHeaders($headers)->post($end_point, $requestBody);
@@ -30,19 +30,23 @@ trait SendSms
         }
 
     }
-    function generateOTPCode()
+
+    public function generateOTPCode()
     {
         return substr(random_int(1234, 9999), 0, 4);
     }
-    function getOTPContent($code)
+
+    public function getOTPContent($code)
     {
-        return 'Your OTP for DOMAIN is ' . $code . '. It is valid for next 15 minutes. Please do not share it to anyone. Thanks for using Gegomm!';
+        return 'Your OTP for DOMAIN is '.$code.'. It is valid for next 15 minutes. Please do not share it to anyone. Thanks for using Gegomm!';
     }
-    function removeInitialZero($phone)
+
+    public function removeInitialZero($phone)
     {
         if ($phone[0] == '0') {
-            return '+95' . substr($phone, 1);
+            return '+95'.substr($phone, 1);
         }
-        return '+95' . $phone;
+
+        return '+95'.$phone;
     }
 }

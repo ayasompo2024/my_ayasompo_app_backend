@@ -1,24 +1,23 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\RequestFormTypeRepository;
 
-
 class RequestFormTypeService
 {
-
-    function store($request)
+    public function store($request)
     {
-        return RequestFormTypeRepository::store($request->only("type"));
+        return RequestFormTypeRepository::store($request->only('type'));
     }
-    function getAll()
+
+    public function getAll()
     {
         return RequestFormTypeRepository::getAll();
     }
-    function getByID($id)
+
+    public function getByID($id)
     {
         return RequestFormTypeRepository::getByID($id);
     }
 }
-
-

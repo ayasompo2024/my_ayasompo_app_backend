@@ -8,12 +8,13 @@ use Laravel\Passport\HasApiTokens;
 
 class InternalAccessList extends Authenticatable
 {
-    use HasFactory, HasApiTokens;
+    use HasApiTokens, HasFactory;
+
     protected $fillable = [
-        "name",
-        "password",
-        "access_id",
-        "expires_at",
-        "scopes",
+        'name',
+        'password',
+        'access_id',
+        'expires_at',
+        'scopes',
     ];
 }

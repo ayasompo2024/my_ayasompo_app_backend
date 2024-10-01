@@ -1,45 +1,50 @@
 <?php
+
 namespace App\Services\customer;
 
+use App\Enums\AppCustomerType;
 use App\Models\AgentAccountCode;
+use App\Models\Customer;
 use App\Models\SmsPool;
 use App\Repositories\CustomerRepository;
-
-use App\Enums\AppCustomerType;
-use App\Events\CustomerRegistered;
-use App\Models\Customer;
 use App\Traits\FileUpload;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class CustomerService
 {
-
     use CallAPI, FileUpload;
-    function index($per_page, $current_auth)
+
+    public function index($per_page, $current_auth)
     {
         $role = $current_auth->role;
 
-        if ($role == 'Root')
+        if ($role == 'Root') {
             $customers = CustomerRepository::getWithPaginate($per_page);
+        }
 
-        if ($role == 'HR')
+        if ($role == 'HR') {
             $customers = CustomerRepository::getOnlyEmployee($per_page);
+        }
 
-        if ($role == 'Admin')
+        if ($role == 'Admin') {
             $customers = CustomerRepository::getOnlyIndividual($per_page);
+        }
 
-        if ($role == 'Agent')
+        if ($role == 'Agent') {
             $customers = CustomerRepository::getOnlyAgent($per_page);
+        }
 
-        if ($role == 'Corporate')
+        if ($role == 'Corporate') {
             $customers = CustomerRepository::getOnlyGroup($per_page);
+        }
+
         return $customers;
     }
 
     //Update for Emplyee user
-    function update($id, $req)
+    public function update($id, $req)
     {
         $customer = Customer::with('employeeInfo')->find($id);
         $customer->customer_phoneno = $req->customer_phoneno;
@@ -49,23 +54,24 @@ class CustomerService
             $customer->profile_photo = $this->uploadFile($req->profile_photo, '/uploads/profile/', 'aya_sompo_');
         }
 
-        if ($customer->app_customer_type == "EMPLOYEE") {
+        if ($customer->app_customer_type == 'EMPLOYEE') {
 
-            $customer->employeeInfo->code = $req["code"];
-            $customer->employeeInfo->designation = $req["designation"];
-            $customer->employeeInfo->department = $req["department"];
-            $customer->employeeInfo->email = $req["email"];
-            $customer->employeeInfo->office_phone = $req["office_phone"];
-            $customer->employeeInfo->office_address = $req["office_address"];
+            $customer->employeeInfo->code = $req['code'];
+            $customer->employeeInfo->designation = $req['designation'];
+            $customer->employeeInfo->department = $req['department'];
+            $customer->employeeInfo->email = $req['email'];
+            $customer->employeeInfo->office_phone = $req['office_phone'];
+            $customer->employeeInfo->office_address = $req['office_address'];
             $customer->employeeInfo->save();
         }
 
         $customer->save();
+
         return $customer;
     }
 
     //Update for Agent user
-    function updateForAgent($id, $req)
+    public function updateForAgent($id, $req)
     {
         $customer = Customer::with('agentInfo')->find($id);
         $customer->customer_phoneno = $req->customer_phoneno;
@@ -73,7 +79,7 @@ class CustomerService
         if ($req->profile_photo) {
             $customer->profile_photo = $this->uploadFile($req->profile_photo, '/uploads/profile/', 'aya_sompo_');
         }
-        if ($customer->app_customer_type == "AGENT") {
+        if ($customer->app_customer_type == 'AGENT') {
             $customer->agentInfo->agent_name = $req->agent_name;
             $customer->agentInfo->license_no = $req->license_no;
             $customer->agentInfo->agent_type = $req->agent_type;
@@ -84,75 +90,80 @@ class CustomerService
             $customer->agentInfo->save();
         }
         $customer->save();
+
         return $customer;
     }
 
-    function deleteAgentCode($id)
+    public function deleteAgentCode($id)
     {
         return AgentAccountCode::destroy($id);
     }
 
-    function filterByType($type, $per_page)
+    public function filterByType($type, $per_page)
     {
         return CustomerRepository::filterByType($type, $per_page);
     }
-    function getAllCustomerByPhone($phone)
+
+    public function getAllCustomerByPhone($phone)
     {
         return CustomerRepository::searchCustomerByPhone($phone);
     }
-    function getCustomersListByPolicy($policy_no)
+
+    public function getCustomersListByPolicy($policy_no)
     {
         return $this->getCustomersListByPolicyAPICall($policy_no);
     }
 
-    function toggleDisabledById($id)
+    public function toggleDisabledById($id)
     {
         return CustomerRepository::toggleDisabledById($id);
     }
-    function destroy($id)
+
+    public function destroy($id)
     {
         return CustomerRepository::destroy($id);
     }
 
     //Ajax Response
-    function previewBeforeResgister($request)
+    public function previewBeforeResgister($request)
     {
         $risk_of_policy_lists = $request->risk_of_policy_list;
         $selectCustomerObj = $request->select_customer_obj;
         $isExistPhones = [];
         foreach ($risk_of_policy_lists as $risk_of_policy_list) {
-            $customer = Customer::where("app_customer_type", 'GROUP')->where("customer_phoneno", $risk_of_policy_list["phone"])->get();
+            $customer = Customer::where('app_customer_type', 'GROUP')->where('customer_phoneno', $risk_of_policy_list['phone'])->get();
             \Log::info($customer);
-            $isExist = !empty($customer);
+            $isExist = ! empty($customer);
             $customerData = $isExist ? $customer->toArray() : null;
             array_push($isExistPhones, [
-                'phone' => $risk_of_policy_list["phone"],
-                'appUsers' => $customerData
+                'phone' => $risk_of_policy_list['phone'],
+                'appUsers' => $customerData,
             ]);
         }
+
         return [
             'selectCustomerObj' => $selectCustomerObj,
-            'phones' => $isExistPhones
+            'phones' => $isExistPhones,
         ];
     }
 
     //Ajax Response
-    function register($request)
+    public function register($request)
     {
         set_time_limit(300); //
         // \Log::info($request->all());
         DB::beginTransaction();
         try {
             foreach ($request->risk_of_policy_list as $index => $risk_of_policy_list) {
-                \Log::info("index", $risk_of_policy_list);
-                if (!CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list["phone"])) {
-                    $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list["phone"]);
+                \Log::info('index', $risk_of_policy_list);
+                if (! CustomerRepository::isExistCustomerAsRiskProfile($risk_of_policy_list['phone'])) {
+                    $isExistFirstProfile = CustomerRepository::getFirstProfile($risk_of_policy_list['phone']);
                     if ($isExistFirstProfile) {
                         SmsPool::create(
                             $this->inputFroSmsPool(
-                                $risk_of_policy_list["risk_name"],
-                                $risk_of_policy_list["phone"],
-                                $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], "You can login with existing password !"),
+                                $risk_of_policy_list['risk_name'],
+                                $risk_of_policy_list['phone'],
+                                $this->getContent($risk_of_policy_list['risk_name'], $risk_of_policy_list['phone'], 'You can login with existing password !'),
                                 $request->policy_number
                             )
                         );
@@ -169,9 +180,9 @@ class CustomerService
                         $generate_password = Str::random(6);
                         SmsPool::create(
                             $this->inputFroSmsPool(
-                                $risk_of_policy_list["risk_name"],
-                                $risk_of_policy_list["phone"],
-                                $this->getContent($risk_of_policy_list["risk_name"], $risk_of_policy_list["phone"], $generate_password),
+                                $risk_of_policy_list['risk_name'],
+                                $risk_of_policy_list['phone'],
+                                $this->getContent($risk_of_policy_list['risk_name'], $risk_of_policy_list['phone'], $generate_password),
                                 $request->policy_number
                             )
                         );
@@ -189,10 +200,12 @@ class CustomerService
                 }
             }
             DB::commit();
+
             return true;
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::info($e);
+
             return $e->getMessage();
             // throw $e;
         }
@@ -201,30 +214,30 @@ class CustomerService
     private function inputFroSmsPool($name, $phone, $content, $policy_number)
     {
         return [
-            "name" => $name,
-            "phone" => $phone,
-            "content" => $content,
-            "policy_number" => $policy_number,
-            "key" => "GROUP"
+            'name' => $name,
+            'phone' => $phone,
+            'content' => $content,
+            'policy_number' => $policy_number,
+            'key' => 'GROUP',
         ];
     }
+
     private function inputForCustomer($select_customer_obj, $risk_of_policy_list, $policy_number, $password, $device_token)
     {
         $inputForAppCustomer = [
-            "customer_code" => $select_customer_obj["customer_code"],
-            "customer_phoneno" => $risk_of_policy_list["phone"],
-            "risk_seqNo" => $risk_of_policy_list["risk_seqNo"],
-            "risk_name" => $risk_of_policy_list["risk_name"],
-            "app_customer_type" => AppCustomerType::GROUP->value,
-            "policy_number" => $policy_number,
+            'customer_code' => $select_customer_obj['customer_code'],
+            'customer_phoneno' => $risk_of_policy_list['phone'],
+            'risk_seqNo' => $risk_of_policy_list['risk_seqNo'],
+            'risk_name' => $risk_of_policy_list['risk_name'],
+            'app_customer_type' => AppCustomerType::GROUP->value,
+            'policy_number' => $policy_number,
             'password' => $password,
-            'user_name' => $risk_of_policy_list["risk_name"],
-            "device_token" => $device_token
+            'user_name' => $risk_of_policy_list['risk_name'],
+            'device_token' => $device_token,
         ];
+
         return $inputForAppCustomer;
     }
-
-
 
     private function contentForExistingCustomer($policy_number)
     {
@@ -237,6 +250,7 @@ For any assistant, please reach out to our call center. +959777100555
 EOT;
 
     }
+
     private function contentForNotExistingCustomer($policy_number)
     {
         return <<<EOT
@@ -267,4 +281,3 @@ EOT;
 
     }
 }
-

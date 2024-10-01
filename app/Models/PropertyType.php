@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class PropertyType extends Model
 {
     use HasFactory, SendPushNotification;
+
     protected $fillable = ['name', 'name_mm'];
 
     protected static function boot()
@@ -25,12 +26,12 @@ class PropertyType extends Model
             $propertyType->sendFcmNoti();
         });
     }
+
     private function sendFcmNoti()
     {
-        $notification = ["title" => "Product Announcement!", "body" => null];
-        $data = ["title" => "Product", "body" => null];
+        $notification = ['title' => 'Product Announcement!', 'body' => null];
+        $data = ['title' => 'Product', 'body' => null];
         $this->sendAsbroadcast($notification, $data);
         Cache::forget('getWithPropertyAndFAQ');
     }
-
 }

@@ -10,14 +10,9 @@ class ProductCodeList extends Model
     use HasFactory;
 
     protected $fillable = [
-        "class_code",
-        "class_description",
-        "product_code",
-        "product_description",
+        'class_code',
+        'class_description',
+        'product_code',
+        'product_description',
     ];
 }
-
-
-
-
-

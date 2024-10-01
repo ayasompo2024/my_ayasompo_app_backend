@@ -6,27 +6,31 @@ use Carbon\Carbon;
 
 trait PrepareQuery
 {
-    function prepareMonthlySaleQuery($account_code_string, $from, $to)
+    public function prepareMonthlySaleQuery($account_code_string, $from, $to)
     {
         if ($from != null && $to != null) {
-            return "SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND receipt_date BETWEEN " . "'" . $from . "'" . " AND " . "'" . $to . "'";
+            return 'SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN ('.$account_code_string.') AND receipt_date BETWEEN '."'".$from."'".' AND '."'".$to."'";
         }
         if ($from != null && $to == null) {
-            return "SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND receipt_date BETWEEN " . "'" . $from . "'" . " AND " . "'" . $from . "'";
+            return 'SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN ('.$account_code_string.') AND receipt_date BETWEEN '."'".$from."'".' AND '."'".$from."'";
         }
-        return "SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN (" . $account_code_string . ")";
+
+        return 'SELECT * FROM Vw_Policy_Agent_Monthly_App WHERE ACCOUNT_CODE IN ('.$account_code_string.')';
     }
 
-    function prepareQuarterlySaleQuery($account_code_string, $year)
+    public function prepareQuarterlySaleQuery($account_code_string, $year)
     {
         $currentYear = date('Y');
 
-        if ($year == null)
+        if ($year == null) {
             $year = $currentYear;
+        }
 
         $allMonthAsString = $this->getAllMonthAsString($year);
-        return "SELECT * FROM Vw_Policy_Agent_Quarterly_App WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND receipt_date IN (" . $allMonthAsString . ")";
+
+        return 'SELECT * FROM Vw_Policy_Agent_Quarterly_App WHERE ACCOUNT_CODE IN ('.$account_code_string.') AND receipt_date IN ('.$allMonthAsString.')';
     }
+
     private function getAllMonthAsString($year)
     {
         $months = [];
@@ -34,16 +38,20 @@ trait PrepareQuery
             $formatted_month = sprintf("'%02d-%d'", $i, $year);
             $months[] = $formatted_month;
         }
+
         return implode(',', $months);
     }
-    function prepareDashboardQuery($account_code_string, $from_date, $to_date)
+
+    public function prepareDashboardQuery($account_code_string, $from_date, $to_date)
     {
-        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $baseQuery = 'SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN ('.$account_code_string.')';
         if ($from_date && $to_date) {
             $baseQuery .= $this->determineBaseOnDate($from_date, $to_date);
         }
+
         return $baseQuery;
     }
+
     private function determineBaseOnDate($from_date, $to_date)
     {
         $from = Carbon::parse($from_date);
@@ -55,13 +63,15 @@ trait PrepareQuery
         if ($dayCount <= 7) {
             $fromFormatted = $from->format('Y-m-d'); // e.g., 2024-05-01
             $toFormatted = $to->format('Y-m-d');     // e.g., 2024-05-07
-            return " AND RECEIPT_DATE BETWEEN TO_DATE('" . $fromFormatted . "', 'YYYY-MM-DD') AND TO_DATE('" . $toFormatted . "', 'YYYY-MM-DD')";
+
+            return " AND RECEIPT_DATE BETWEEN TO_DATE('".$fromFormatted."', 'YYYY-MM-DD') AND TO_DATE('".$toFormatted."', 'YYYY-MM-DD')";
         }
 
         //For One Month
         if ($from->isSameMonth($to) && $from->isSameYear($to)) {
             $monthYear = $from->format('M-y'); // e.g., May-24
-            return " AND to_char(RECEIPT_DATE, 'MON-YY') = '" . strtoupper($monthYear) . "'";
+
+            return " AND to_char(RECEIPT_DATE, 'MON-YY') = '".strtoupper($monthYear)."'";
         }
 
         // Month Range
@@ -71,7 +81,8 @@ trait PrepareQuery
                 $monthsYears[] = strtoupper($date->format('M-y'));
             }
             $monthsYearsString = implode("','", $monthsYears);
-            return " AND to_char(RECEIPT_DATE, 'MON-YY') IN ('" . $monthsYearsString . "')";
+
+            return " AND to_char(RECEIPT_DATE, 'MON-YY') IN ('".$monthsYearsString."')";
         }
 
         //Years Range
@@ -80,12 +91,13 @@ trait PrepareQuery
             $years[] = strtoupper($date->format('Y')); // e.g., 2021, 2022
         }
         $yearsString = implode("','", $years);
-        return " AND to_char(RECEIPT_DATE, 'YYYY') IN ('" . $yearsString . "')";
+
+        return " AND to_char(RECEIPT_DATE, 'YYYY') IN ('".$yearsString."')";
     }
 
-    function prepareAgentPointQuery($account_code_string, $leaderBoard)
+    public function prepareAgentPointQuery($account_code_string, $leaderBoard)
     {
-        return "SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN (" . $account_code_string . ") AND pol_prd_code = '" . $leaderBoard->product_code . "' AND receipt_date BETWEEN '" . $leaderBoard->period_from . " 00:00:00' AND '" . $leaderBoard->period_to . " 23:59:59'";
+        return 'SELECT * FROM VW_POLICY_AGENT_SALE_APP WHERE ACCOUNT_CODE IN ('.$account_code_string.") AND pol_prd_code = '".$leaderBoard->product_code."' AND receipt_date BETWEEN '".$leaderBoard->period_from." 00:00:00' AND '".$leaderBoard->period_to." 23:59:59'";
     }
 }
 

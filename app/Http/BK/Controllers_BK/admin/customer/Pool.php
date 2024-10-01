@@ -2,37 +2,41 @@
 
 namespace App\Http\Controllers\admin\customer;
 
-use App\Repositories\CustomerRepository;
+use App\Models\SmsPool;
 use App\Services\customer\CustomerService;
 use Illuminate\Http\Request;
-use App\Models\SmsPool;
-
 
 trait Pool
 {
-    function pool(Request $req)
+    public function pool(Request $req)
     {
         $role = $req->user()->role;
 
-        if ($role == 'Root')
+        if ($role == 'Root') {
             $pool = SmsPool::all();
+        }
 
-        if ($role == 'HR')
-            $pool = SmsPool::where('was_deleted', 0)->where("key", "EMPLOYEE")->get();
+        if ($role == 'HR') {
+            $pool = SmsPool::where('was_deleted', 0)->where('key', 'EMPLOYEE')->get();
+        }
 
-        if ($role == 'Admin')
-            $pool = SmsPool::where('was_deleted', 0)->where("key", "EMPLOYEE")->get();
+        if ($role == 'Admin') {
+            $pool = SmsPool::where('was_deleted', 0)->where('key', 'EMPLOYEE')->get();
+        }
 
-        if ($role == 'Agent')
-            $pool = SmsPool::where("key", "AGENT")->get();
+        if ($role == 'Agent') {
+            $pool = SmsPool::where('key', 'AGENT')->get();
+        }
 
-        if ($role == 'Corporate')
-            $pool = SmsPool::where('was_deleted', 0)->where("key", "GROUP")->orWhere('key', 'CORPORATE')->get();
+        if ($role == 'Corporate') {
+            $pool = SmsPool::where('was_deleted', 0)->where('key', 'GROUP')->orWhere('key', 'CORPORATE')->get();
+        }
 
         $pool = $pool->groupBy('key');
 
         return view('admin.customers.pool')->with('pool', $pool);
     }
+
     public function resolve(Request $request, CustomerService $customerService, SmsPool $smsPool)
     {
         if ($request->actionType == 'all' && $request->selectedTab == 'GROUP') {
@@ -51,19 +55,22 @@ trait Pool
         if ($request->is_sended_sms == 1 && $request->key != 'GROUP') {
             $smsPool->find($request->id)->update(['was_deleted' => 1]);
             $data = $smsPool->all();
-            return $this->successResponse("Success", $data, 200);
+
+            return $this->successResponse('Success', $data, 200);
         }
         //Call Circle
         if ($request->key == 'GROUP') {
             $circleApiStatus = $customerService->callToCirlceS($request->phone, $request->name, $request->key);
-            if ($request->is_sended_sms != 1 && !$circleApiStatus) {
-                return $this->errorResponse("Fail", 500);
+            if ($request->is_sended_sms != 1 && ! $circleApiStatus) {
+                return $this->errorResponse('Fail', 500);
             } else {
                 $smsPool->find($request->id)->update(['was_deleted' => 1]);
                 $data = $smsPool->all();
-                return $this->successResponse("Success", $data, 200);
+
+                return $this->successResponse('Success', $data, 200);
             }
         }
-        return $this->successResponse("Success", [], 200);
+
+        return $this->successResponse('Success', [], 200);
     }
 }

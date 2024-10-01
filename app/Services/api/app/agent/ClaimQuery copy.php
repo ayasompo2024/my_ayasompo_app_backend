@@ -6,11 +6,10 @@ use Carbon\Carbon;
 
 trait ClaimQuery
 {
-    function closeQuery($account_code_string, $from, $to)
+    public function closeQuery($account_code_string, $from, $to)
     {
-        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Cancel','No Claim','Reject') AND ACCOUNT_CODE IN (".$account_code_string.')';
 
-        
         //return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
 
         if ($from == null) {
@@ -22,19 +21,19 @@ trait ClaimQuery
         $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
         $formattedFromDate = strtoupper($fromDate->format('M-y'));
         if ($to == null) {
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$formattedFromDate."'";
         }
 
         $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
         if ($fromDate == $toDate) {
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$formattedFromDate."'";
         }
         //return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(intimate_date, 'MON-YY')");
     }
 
-    function outstandingQuery($account_code_string, $from, $to)
+    public function outstandingQuery($account_code_string, $from, $to)
     {
-        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (" . $account_code_string . ")";
+        $baseQuery = "SELECT * FROM VW_POLICY_AGENT_CLAIM_APP WHERE STATUS IN ('Open','Outstanding') AND ACCOUNT_CODE IN (".$account_code_string.')';
 
         if ($from == null) {
             $from = Carbon::now()->format('Y-m-d H:i:s');
@@ -45,20 +44,20 @@ trait ClaimQuery
         $fromDate = Carbon::createFromFormat('Y-m-d H:i:s', $from);
         $formattedFromDate = strtoupper($fromDate->format('M-y'));
         if ($to == null) {
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$formattedFromDate."'";
         }
 
         $toDate = $from = Carbon::createFromFormat('M-Y', $to)->startOfMonth();
         if ($fromDate == $toDate) {
-            return $baseQuery . " AND TO_CHAR(intimate_date, 'MON-YY') = '" . $formattedFromDate . "'";
+            return $baseQuery." AND TO_CHAR(intimate_date, 'MON-YY') = '".$formattedFromDate."'";
         }
         //return $this->queryForDateRange($fromDate, $toDate, $baseQuery, "TO_CHAR(intimate_date, 'MON-YY')");
     }
 
-    function paidQuery($account_code_string, $from, $to)
+    public function paidQuery($account_code_string, $from, $to)
     {
         $originalFromDate = $from;
-        $baseQuery = "select * from VW_POLICY_AGENT_CLAIM_APP WHERE  PAID_STATUS = 'PAID' and ACCOUNT_CODE in (" . $account_code_string . " )";
+        $baseQuery = "select * from VW_POLICY_AGENT_CLAIM_APP WHERE  PAID_STATUS = 'PAID' and ACCOUNT_CODE in (".$account_code_string.' )';
 
         if ($from == null) {
             $from = Carbon::now()->format('M-d');
@@ -68,12 +67,12 @@ trait ClaimQuery
         $formattedFromDate = strtoupper($fromDate->format('M-d'));
 
         if ($to == null) {
-            return $baseQuery . "and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('" . $formattedFromDate . "')";
+            return $baseQuery."and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('".$formattedFromDate."')";
         }
 
         $toDate = Carbon::createFromFormat('M-d', $to);
         if ($fromDate == $toDate) {
-            return $baseQuery . "and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('" . $formattedFromDate . "')";
+            return $baseQuery."and to_char(to_Date(PAID_DATE,'DD-MON-YY'),'MON-YY') in ('".$formattedFromDate."')";
         }
 
         $mutedfromDate = Carbon::createFromFormat('M-Y', $originalFromDate)->startOfMonth();
@@ -108,12 +107,12 @@ trait ClaimQuery
         $fistYearsAndMonth = $this->getMonthsInYearRange($startYear, $startMonthFromStartYear, 12);
 
         $fistYearsAndMonth = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $fistYearsAndMonth);
 
         $lastestYearsAndMonth = $this->getMonthsUntilEndMonth($endYear, $endMonthOfFromEndYear);
         $lastestYearsAndMonth = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $lastestYearsAndMonth);
 
         $middleYears = [];
@@ -124,15 +123,14 @@ trait ClaimQuery
 
         $flatMiddleYears = array_merge(...$middleYears);
         $flatMiddleYears = array_map(function ($month) {
-            return "'" . $month . "'";
+            return "'".$month."'";
         }, $flatMiddleYears);
         $flatAllYears = array_merge($fistYearsAndMonth, $flatMiddleYears, $lastestYearsAndMonth);
 
-        $allYearsAsString = "(" . implode(",", $flatAllYears) . ")";
+        $allYearsAsString = '('.implode(',', $flatAllYears).')';
 
-        return $baseQuery . " AND " . $field . " in " . $allYearsAsString;
+        return $baseQuery.' AND '.$field.' in '.$allYearsAsString;
     }
-
 
     private function getMonthsInYearRange($year, $start_month, $end_month)
     {
@@ -147,8 +145,10 @@ trait ClaimQuery
                 }
             }
         }
+
         return $months;
     }
+
     private function getMonthsUntilEndMonth($year, $end_month)
     {
         $months = [];
@@ -159,41 +159,43 @@ trait ClaimQuery
                 $months[] = strtoupper($date->format('M-y'));
             }
         }
+
         return $months;
     }
 
-    function getDateFormat($from, $to)
+    public function getDateFormat($from, $to)
     {
         $fromDate = Carbon::createFromFormat('M-y', $from)->startOfMonth();
         $toDate = Carbon::createFromFormat('M-y', $to)->endOfMonth();
 
         $fromDate->year = $this->adjustYear($fromDate->year);
         $toDate->year = $this->adjustYear($toDate->year);
+
         return [
-            "from" => $fromDate->format('Y-m-d'),
-            "to" => $toDate->format('Y-m-d')
+            'from' => $fromDate->format('Y-m-d'),
+            'to' => $toDate->format('Y-m-d'),
         ];
     }
-    function adjustYear($year)
+
+    public function adjustYear($year)
     {
         return $year >= 0 && $year <= 99 ? $year + 2000 : $year;
     }
 }
 
-
 /*
 ( Paid )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24' 
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(PAID_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(PAID_DATE,'dd-MON-yy') <= '30-JUN-24'
 and PAID_STATUS = 'PAID' and ACCOUNT_CODE in ('Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
-( Close ) 
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-JUN-24' 
+( Close )
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-JUN-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-JUN-24'
 and STATUS in ( 'Cancel','No Claim','Reject' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
 ( Outstanding )
-select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24' 
+select * from VW_POLICY_AGENT_CLAIM_APP WHERE to_Date(INTIMATE_DATE,'dd-MON-yy') >= '01-MAY-24' and to_date(INTIMATE_DATE,'dd-MON-yy') <= '30-MAY-24'
 and STATUS in ( 'Open','Outstanding' ) and ACCOUNT_CODE in (  'Y-100-5002-53539','M-700-5002-53539','N-500-5002-53539' );
 
 
@@ -208,7 +210,7 @@ from MAY-21 to MAY-24 = 8
 MAY-24 = 5
 -----------
 
-Paid 
+Paid
 from MAY-21 to MAY-24 = 1168
 MAY-24 = 20
 ------------------------

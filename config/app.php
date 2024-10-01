@@ -21,22 +21,22 @@ return [
     'service_root' => env('ServiceRoot'),
 
     //upload file url
-    'FILE_UPLOAD_BASE_URL' => env("FILE_UPLOAD_BASE_URL"),
+    'FILE_UPLOAD_BASE_URL' => env('FILE_UPLOAD_BASE_URL'),
 
     //Create Motor Case Base URL
-    'CREATE_CLAIM_CASE_BASE_URL' => env("CREATE_CLAIM_CASE_BASE_URL"),
+    'CREATE_CLAIM_CASE_BASE_URL' => env('CREATE_CLAIM_CASE_BASE_URL'),
 
-    'ayasompo_base_url' => env("AyasompoBaseURL"),
+    'ayasompo_base_url' => env('AyasompoBaseURL'),
 
-    'CRM_BASE_URL' => env("CRM_BASE_URL"),
+    'CRM_BASE_URL' => env('CRM_BASE_URL'),
 
     'fcm_key' => env('FCM_SERVER_KEY'),
     'fcm_url' => env('FCM_URL'),
 
-    'stage' => env("STAGE"),
-    'WRITE_LOG' => env("WRITE_LOG"),
+    'stage' => env('STAGE'),
+    'WRITE_LOG' => env('WRITE_LOG'),
 
-    'CIRCE_SERVER_BASE_URL' => "https://mycircle.ayasompo.com/",
+    'CIRCE_SERVER_BASE_URL' => 'https://mycircle.ayasompo.com/',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,7 @@ return [
 
     'providers' => [
 
-            /*
+        /*
              * Laravel Framework Service Providers...
              */
         Illuminate\Auth\AuthServiceProvider::class,
@@ -198,16 +198,16 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-            /*
+        /*
              * Package Service Providers...
              */
 
-            /*
+        /*
              * Application Service Providers...
              */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-            // App\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TokenProvider::class,

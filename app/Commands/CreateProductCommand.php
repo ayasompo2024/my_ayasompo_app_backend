@@ -5,6 +5,7 @@ namespace App\Commands;
 class CreateProductCommand
 {
     private $name;
+
     private $price;
 
     public function __construct($name, $price)
@@ -22,5 +23,4 @@ class CreateProductCommand
     {
         return $this->price;
     }
-    
 }

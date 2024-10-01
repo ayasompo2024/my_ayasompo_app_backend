@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; // Make sure to import the correct Request class
 
-
 class LoginController extends Controller
 {
     /*
@@ -24,7 +23,9 @@ class LoginController extends Controller
     use AuthenticatesUsers {
         credentials as traitCredentials;
     }
+
     protected $maxAttempts = 3;
+
     protected $decayMinutes = 30;
 
     /**
@@ -43,6 +44,7 @@ class LoginController extends Controller
 
         return $credentials;
     }
+
     /**
      * Create a new controller instance.
      *

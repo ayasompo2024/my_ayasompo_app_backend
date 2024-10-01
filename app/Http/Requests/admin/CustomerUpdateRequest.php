@@ -4,7 +4,7 @@ namespace App\Http\Requests\admin;
 
 use App\Enums\AppCustomerType;
 use App\Helpers\Enum;
-use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CustomerUpdateRequest extends FormRequest
@@ -26,7 +26,7 @@ class CustomerUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = implode(',', User::all()->pluck('id')->toArray());
+        $userId = implode(',', array: Customer::all()->pluck('id')->toArray());
         $appCustomerType = implode(',', (new Enum(AppCustomerType::class))->values());
 
         return [

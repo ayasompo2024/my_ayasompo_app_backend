@@ -2,7 +2,7 @@ export const env = 1;
 
 export const baseURL = [
     "http://localhost:8000",
-    "myayasompo.ayasompo.com"
+    "https://myayasompo.ayasompo.com"
 ][env];
 
 export const prefix = [
@@ -18,4 +18,18 @@ export const endpoints = {
     defaultImagePath: `${baseURL}/uploads/profile/user.jpg`,
     user: "user",
     imagePath: `${baseURL}/uploads/profile`,
+    notification: "messaging",
+    gojoy: "gojoy"
 }
+
+export const messageType = [
+    { name: "Multicast", code: "Multicast" },
+    { name: "Unicast", code: "Unicast" },
+    { name: "Broadcast", code: "Broadcast" },
+];
+
+export const notiFor = [
+    { name: "Promotions", code: "Promotions" },
+    { name: "Transactions", code: "Transactions" },
+    { name: "System", code: "System" },
+];

@@ -22,6 +22,16 @@ return [
         'can' => ['Root'],
     ],
     [
+        'display' => 'GoJoy',
+        'route' => 'admin.gojoy.index',
+        'route_param' => null,
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'pi pi-heart',
+        'sub_menus' => null,
+        'can' => ['Root'],
+    ],
+    [
         'display' => 'Products',
         'route' => 'admin.product.index',
         'route_param' => null,
@@ -153,7 +163,7 @@ return [
                 'can' => ['HR', 'Root', 'Corporate'],
                 'sub_menus' => null,
             ],
-            /** [
+        /** [
                 'display' => 'SMS Pool',
                 'route' => 'admin.customer.pool',
                 'route_param' => "GROUP",
@@ -163,7 +173,7 @@ return [
                 'can' => ['HR', 'Root'],
                 'sub_menus' => null,
             ],
-            **/
+         **/
         ],
     ],
     [
@@ -278,7 +288,7 @@ return [
                 'sub_menus' => null,
                 'can' => ['Root'],
             ],
-        ]
+        ],
     ],
     [
         'display' => 'LogsWatch',

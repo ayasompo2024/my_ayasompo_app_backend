@@ -82,9 +82,11 @@ class MessagingController extends Controller
             'phonesString' => 'required',
         ]);
 
-        return $messagingService->multicastByPhone($request) ?
-            back()->with('success', 'Success') :
-            back()->with('fail', 'fail');
+        return $messagingService->multicastByPhone($request);
+
+        // return $messagingService->multicastByPhone($request) ?
+        //     back()->with('success', 'Success') :
+        //     back()->with('fail', 'fail');
     }
 
     public function getAgentNotiList(Request $request)

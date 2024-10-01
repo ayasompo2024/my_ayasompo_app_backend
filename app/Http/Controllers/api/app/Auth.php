@@ -38,11 +38,13 @@ trait Auth
     public function login(Request $request, CustomerService $customerService)
     {
         $validator = $this->loginValidation($request);
+
         if ($validator->fails()) {
             return $this->respondValidationErrors('Validation Error', $validator->errors(), 400);
         }
 
         $status = $customerService->login($request);
+
         if ($status) {
             if ($status['customer'] == null) {
                 return $this->errorResponse('Account Has been disabled ', 202);

@@ -1,22 +1,22 @@
 import { useCallback, useEffect, useState } from "react"
 
-export const AgentCustomerDetail =({ dataSource }) => {
+export const AgentCustomerDetail = ({ dataSource }) => {
 
     const [agent, setAgent] = useState(null);
 
     const mount = useCallback(async () => {
-        if(dataSource) {
+        if (dataSource) {
             setAgent(dataSource);
         }
-    },[dataSource]);
+    }, [dataSource]);
 
     useEffect(() => {
         mount();
     }, [mount]);
 
-    return(
+    return (
         <>
-            { agent && (
+            {agent && (
                 <div className="row">
                     <div className="col-12 col-md-6 col-lg-6">
                         <div className="row">
@@ -33,7 +33,7 @@ export const AgentCustomerDetail =({ dataSource }) => {
                             <span className="col-12 col-md-4 col-lg-4 normal-text"> Email </span>
                             <span className="col-12 col-md-8 col-lg-8 normal-text"> {agent.email} </span>
                         </div>
-                        
+
                         <div className="row">
                             <span className="col-12 col-md-4 col-lg-4 normal-text"> License No. </span>
                             <span className="col-12 col-md-8 col-lg-8 normal-text"> {agent.license_no} </span>

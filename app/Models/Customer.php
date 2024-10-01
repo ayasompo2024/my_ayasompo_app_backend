@@ -29,7 +29,6 @@ class Customer extends Authenticatable
     ];
 
     protected $hidden = [
-        'password',
     ];
 
     public function core()

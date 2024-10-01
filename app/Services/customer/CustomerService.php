@@ -167,6 +167,7 @@ class CustomerService
                                 $request->policy_number
                             )
                         );
+
                         Customer::create(
                             $this->inputForCustomer(
                                 $request->select_customer_obj,
@@ -187,6 +188,7 @@ class CustomerService
                             )
                         );
                         $password = Hash::make($generate_password);
+
                         Customer::create(
                             $this->inputForCustomer(
                                 $request->select_customer_obj,
@@ -234,6 +236,7 @@ class CustomerService
             'password' => $password,
             'user_name' => $risk_of_policy_list['risk_name'],
             'device_token' => $device_token,
+            'user_id' => auth()->id(),
         ];
 
         return $inputForAppCustomer;

@@ -2,8 +2,8 @@
 
 namespace App\Search;
 
-use Spatie\Searchable\SearchAspect;
 use App\Models\Customer;
+use Spatie\Searchable\SearchAspect;
 
 class CustomerSearchAspect extends SearchAspect
 {

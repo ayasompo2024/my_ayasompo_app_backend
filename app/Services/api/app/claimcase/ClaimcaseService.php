@@ -1,54 +1,60 @@
 <?php
+
 namespace App\Services\api\app\claimcase;
 
 use App\Traits\UploadFileToAzurBlobStorage;
-use Log;
 
 class ClaimcaseService
 {
-    use UploadFileToAzurBlobStorage, PrepareData, CallAPI, StoreClaimCase;
+    use CallAPI, PrepareData, StoreClaimCase, UploadFileToAzurBlobStorage;
 
-    function motorCase($request)
+    public function motorCase($request)
     {
         $input = $this->prepareDataForMotorClaimAPI($request);
 
         $accidentDamagedPhotos = $this->uploadPhotoToAzure($request->accident_damaged_photos);
         $signatureImage = $this->uploadPhotoToAzure($request->signature_image, false);
-        if (empty($accidentDamagedPhotos) || empty($signatureImage))
+        if (empty($accidentDamagedPhotos) || empty($signatureImage)) {
             return 1;
+        }
 
-        $input["signature_image"] = $signatureImage[0]["url"];
+        $input['signature_image'] = $signatureImage[0]['url'];
         $urlArry = collect($accidentDamagedPhotos)->pluck('url')->toArray();
-        $input["accident_damaged_photos"] = $urlArry;
+        $input['accident_damaged_photos'] = $urlArry;
 
         $createMotorClaimCase = $this->CallMotorCaseAPI($input);
-        if (!$createMotorClaimCase)
+        if (! $createMotorClaimCase) {
             return 2;
+        }
 
         $dataForMotorStore = $this->prepareDataStoreMotorCase($request);
-        $dataForMotorStore["signature_image"] = $signatureImage[0]["url"];
-        $dataForMotorStore["accident_damaged_photos"] = serialize($urlArry);
+        $dataForMotorStore['signature_image'] = $signatureImage[0]['url'];
+        $dataForMotorStore['accident_damaged_photos'] = serialize($urlArry);
 
         $status = $this->storeMotorCase($dataForMotorStore);
+
         return $status ? ['id' => $status->id] : false;
     }
 
-    function nonMotorCase($request)
+    public function nonMotorCase($request)
     {
         $accidentDamagedPhotos = $this->uploadPhotoToAzure($request->accident_damaged_photos);
         $signatureImage = $this->uploadPhotoToAzure($request->signature_image, false);
-        if (empty($accidentDamagedPhotos) || empty($signatureImage))
+        if (empty($accidentDamagedPhotos) || empty($signatureImage)) {
             return 1;
+        }
 
-        $input = $this->prepareDataForNonMotorClaimAPI($request, collect($accidentDamagedPhotos)->pluck('url')->toArray(), $signatureImage[0]["url"]);
+        $input = $this->prepareDataForNonMotorClaimAPI($request, collect($accidentDamagedPhotos)->pluck('url')->toArray(), $signatureImage[0]['url']);
 
         $createNonMotorClaimCase = $this->CallNonMotorCaseAPI($input);
-        if (!$createNonMotorClaimCase)
+        if (! $createNonMotorClaimCase) {
             return 2;
+        }
 
-        $input["accident_damaged_photos"] = serialize(collect($accidentDamagedPhotos)->pluck('url')->toArray());
-        $input["app_customer_id"]  = $request->user_id;
+        $input['accident_damaged_photos'] = serialize(collect($accidentDamagedPhotos)->pluck('url')->toArray());
+        $input['app_customer_id'] = $request->user_id;
         $status = $this->storeNonMotorCase($input);
+
         return $status ? ['id' => $status->id] : false;
     }
 }

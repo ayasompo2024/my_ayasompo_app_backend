@@ -2,51 +2,49 @@
 
 namespace App\Listeners;
 
+use App\Events\CustomerRegistered;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\WriteLogger;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use App\Events\CustomerRegistered;
-use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
-use GuzzleHttp\Promise;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Facades\Http;
 
 class RegisterCustomerToCircle
 {
-    use WriteLogger, RemoveInitialPlusNineFiveNine;
-    public function __construct()
-    {
-    }
+    use RemoveInitialPlusNineFiveNine, WriteLogger;
+
+    public function __construct() {}
 
     public function handle(CustomerRegistered $event)
     {
-        $res = $this->getPolicyDataByPhone($event->data["request"]['customer_phoneno']);
+        $res = $this->getPolicyDataByPhone($event->data['request']['customer_phoneno']);
         \Log::info($res);
         if ($res['status'] == 200 && $res['data'][0]['circle_user']) {
             \Log::info('..circle_user True..');
-            $responseStatusOfCircleRegister = $this->sendPhoneNumberToTheCircleServer($event->data["request"]);
+            $responseStatusOfCircleRegister = $this->sendPhoneNumberToTheCircleServer($event->data['request']);
             \Log::info($responseStatusOfCircleRegister);
         }
     }
+
     private function sendPhoneNumberToTheCircleServer($request)
     {
-        $requestBody = ["name" => $request->user_name, "phone" => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
-        $this->writeLog("circle", "Request to Circle Server (INDIVIDUAL)", $requestBody);
-        $url = config('app.CIRCE_SERVER_BASE_URL') . 'api/register';
+        $requestBody = ['name' => $request->user_name, 'phone' => $this->removeInitialPlusNineFiveNine($request->customer_phoneno)];
+        $this->writeLog('circle', 'Request to Circle Server (INDIVIDUAL)', $requestBody);
+        $url = config('app.CIRCE_SERVER_BASE_URL').'api/register';
         $response = Http::withOptions(['verify' => false])->post($url, $requestBody);
         $data = $response->json();
-        $this->writeLog("circle", "Response from Circle Server (INDIVIDUAL)", $data);
+        $this->writeLog('circle', 'Response from Circle Server (INDIVIDUAL)', $data);
+
         return $data;
     }
 
     private function getPolicyDataByPhone($phone)
     {
-        $url = config("app.ayasompo_base_url") . "inquiry/policydata/" . base64_encode($phone);
+        $url = config('app.ayasompo_base_url').'inquiry/policydata/'.base64_encode($phone);
         $headers = [
-            'Authorization' => 'Bearer ' . Cache::get('token_for_internal'),
+            'Authorization' => 'Bearer '.Cache::get('token_for_internal'),
             'Accept' => 'application/json',
         ];
         $response = Http::withHeaders($headers)->get($url);
@@ -62,15 +60,15 @@ class RegisterCustomerToCircle
     private function nothing($request)
     {
         $requestBody = [
-            "phone" => $request->customer_phoneno
+            'phone' => $request->customer_phoneno,
         ];
         // \Log::info($request->customer_phoneno);
         $headers = [
             'Accept' => 'application/json',
         ];
-        $end_point = "";
+        $end_point = '';
 
-        $client = new Client();
+        $client = new Client;
 
         // Create a promise for the asynchronous request
         $promise = $client->postAsync($end_point, ['headers' => $headers, 'json' => $requestBody]);
@@ -83,12 +81,12 @@ class RegisterCustomerToCircle
                     return $response->getBody()->getContents();
                 } else {
                     // Handle other status codes if needed
-                    return "Unexpected status code: " . $response->getStatusCode();
+                    return 'Unexpected status code: '.$response->getStatusCode();
                 }
             },
             function (RequestException $exception) {
                 // Request failed
-                return "Failed request: " . $exception->getMessage();
+                return 'Failed request: '.$exception->getMessage();
             }
         );
 

@@ -6,33 +6,38 @@ use Carbon\Carbon;
 
 trait FormatDataForResponse
 {
-    function formatForRenewal($renewed, $remain, $from, $to, $query)
+    public function formatForRenewal($renewed, $remain, $from, $to, $query)
     {
         $currentDate = Carbon::now();
-        if ($from == null)
-            $from = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+        if ($from == null) {
+            $from = strtoupper($currentDate->format('M')).'-'.$currentDate->format('y');
+        }
 
-        if ($to == null)
-            $to = strtoupper($currentDate->format('M')) . '-' . $currentDate->format('y');
+        if ($to == null) {
+            $to = strtoupper($currentDate->format('M')).'-'.$currentDate->format('y');
+        }
+
         return [
             'data' => [
                 'count' => [
                     'from_date' => $from,
                     'to_date' => $to,
                     'renewed' => $renewed ? count($renewed) : null,
-                    'remaining' => $remain ? count($remain) : null
+                    'remaining' => $remain ? count($remain) : null,
                 ],
-                "query" => $query,
+                'query' => $query,
                 'detail' => [
                     'renewed' => $renewed ? $this->getAcceptedField($renewed) : [],
-                    'remaining' => $remain ? $this->getAcceptedField($remain) : []
-                ]
-            ]
+                    'remaining' => $remain ? $this->getAcceptedField($remain) : [],
+                ],
+            ],
         ];
     }
+
     private function getAcceptedField($rows)
     {
         $fields = ['policy_no', 'customer_name', 'phone_number', 'product_name', 'expiry_date', 'status'];
+
         return collect($rows)
             ->map(function ($item) use ($fields) {
                 return collect($item)
@@ -43,7 +48,7 @@ trait FormatDataForResponse
             ->all();
     }
 
-    function formatForClaim($paid_rows, $open_rows, $outstanding, $closed_rows, $from, $to)
+    public function formatForClaim($paid_rows, $open_rows, $outstanding, $closed_rows, $from, $to)
     {
         return [
             'data' => [
@@ -62,10 +67,8 @@ trait FormatDataForResponse
                     'closed' => $closed_rows,
                     'outstanding' => $outstanding,
                     'open' => $outstanding,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }
-
-

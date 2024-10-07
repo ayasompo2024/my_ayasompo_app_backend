@@ -1,46 +1,47 @@
 <?php
+
 namespace App\Services;
 
+use App\Enums\MessagingType;
 use App\Models\AgentNoti;
 use App\Models\Customer;
 use App\Repositories\CustomerRepository;
-
-use App\Enums\MessagingType;
 use App\Repositories\MessagingRepository;
-use App\Traits\SendPushNotification;
-
 use App\Traits\FileUpload;
-use phpseclib3\System\SSH\Agent;
+use App\Traits\SendPushNotification;
 
 class MessagingService
 {
-    use SendPushNotification;
     use FileUpload;
-    function unicast($request)
+    use SendPushNotification;
+
+    public function unicast($request)
     {
         $customer = CustomerRepository::getById($request->customer_id);
-        $data = ["title" => $request->title, "body" => $request->message];
-        $notification = ["title" => $request->title, "body" => $request->message];
+        $data = ['title' => $request->title, 'body' => $request->message];
+        $notification = ['title' => $request->title, 'body' => $request->message];
         $this->sendAsUnicast($customer->device_token, $data, $notification);
         $input = $request->only('title', 'message', 'type', 'customer_id');
         $input['type'] = MessagingType::UNICAST->value;
+
         return MessagingRepository::store($input);
     }
 
-    function broadcast($request)
+    public function broadcast($request)
     {
 
         $input = $request->only('title', 'message', 'noti_for', 'description');
-        if ($request->image)
-            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+        if ($request->image) {
+            $input['image_url'] = $this->uploadFile($request->file('image'), '/uploads/noti/', 'ayasompo');
+        }
         $input['type'] = MessagingType::BROADCAST->value;
 
         $messaging = MessagingRepository::store($input);
 
         $data = [
-            "title" => "noti",
-            "body" => [
-                "id" => $messaging->id,
+            'title' => 'noti',
+            'body' => [
+                'id' => $messaging->id,
                 // "noti_for" => $messaging->noti_for,
                 // "title" => $messaging->title,
                 // "message" => $messaging->message,
@@ -48,79 +49,87 @@ class MessagingService
                 // "description" => $messaging->description,
                 // "image_url" => $messaging->image_url,
                 // "created_at" => $messaging->created_at
-            ]
+            ],
         ];
-        $notification = ["title" => $request->title, "body" => $request->message];
+        $notification = ['title' => $request->title, 'body' => $request->message];
         $this->sendAsbroadcast($notification, $data);
+
         return $messaging;
     }
-    function multicast($request)
-    {
-        $data = ["title" => $request->title, "body" => $request->message];
-        $notification = ["title" => $request->title, "body" => $request->message];
 
-        $customer_array = explode(",", $request->customer_ids);
+    public function multicast($request)
+    {
+        $data = ['title' => $request->title, 'body' => $request->message];
+        $notification = ['title' => $request->title, 'body' => $request->message];
+
+        $customer_array = explode(',', $request->customer_ids);
 
         $input = $request->only('title', 'message', 'noti_for', 'description');
-        if ($request->image)
-            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+        if ($request->image) {
+            $input['image_url'] = $this->uploadFile($request->file('image'), '/uploads/noti/', 'ayasompo');
+        }
         $input['type'] = MessagingType::MULTICAST->value;
-        $input["multicast_uid"] = uniqid();
+        $input['multicast_uid'] = uniqid();
 
         foreach ($customer_array as $customer) {
             $customer = CustomerRepository::getById($customer);
             $this->sendAsUnicast($customer->device_token, $data, $notification);
-            $input["customer_id"] = $customer->id;
+            $input['customer_id'] = $customer->id;
             MessagingRepository::store($input);
         }
     }
-    function multicastByPhone($request)
-    {
-        $data = ["title" => $request->title, "body" => $request->message];
-        $notification = ["title" => $request->title, "body" => $request->message];
 
-        $phones = explode(",", $request->phonesString);
+    public function multicastByPhone($request)
+    {
+        $data = ['title' => $request->title, 'body' => $request->message];
+        $notification = ['title' => $request->title, 'body' => $request->message];
+
+        $phones = explode(',', $request->phonesString);
 
         $input = $request->only('title', 'message', 'noti_for', 'description');
-        if ($request->image)
-            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+        if ($request->image) {
+            $input['image_url'] = $this->uploadFile($request->file('image'), '/uploads/noti/', 'ayasompo');
+        }
         $input['type'] = MessagingType::MULTICAST->value;
-        $input["multicast_uid"] = uniqid();
+        $input['multicast_uid'] = uniqid();
 
         foreach ($phones as $phone) {
-            $customer = Customer::whereNotNull("device_token")->where("customer_phoneno", $phone)->first();
+            $customer = Customer::whereNotNull('device_token')->where('customer_phoneno', $phone)->first();
             if ($customer) {
                 $this->sendAsUnicast($customer->device_token, $data, $notification);
-                $input["customer_id"] = $customer->id;
+                $input['customer_id'] = $customer->id;
             }
+
             return MessagingRepository::store($input);
         }
     }
-    function histories($per_page)
+
+    public function histories($per_page)
     {
         return MessagingRepository::getWithPaginate($per_page);
     }
-    function getByCustomerID($per_page, $id)
+
+    public function getByCustomerID($per_page, $id)
     {
         return MessagingRepository::getByCustomerID($per_page, $id);
     }
 
-    function sendCampaignNoti($request)
+    public function sendCampaignNoti($request)
     {
-        $data = ["title" => $request->title, "body" => $request->message];
-        $notification = ["title" => $request->title, "body" => $request->message];
+        $data = ['title' => $request->title, 'body' => $request->message];
+        $notification = ['title' => $request->title, 'body' => $request->message];
         $input = $request->only('title', 'message', 'description');
-        if ($request->image)
-            $input['image_url'] = $this->uploadFile($request->file("image"), '/uploads/noti/', 'ayasompo');
+        if ($request->image) {
+            $input['image_url'] = $this->uploadFile($request->file('image'), '/uploads/noti/', 'ayasompo');
+        }
 
-        $customers = Customer::select("id", "device_token")->where("app_customer_type", "AGENT")->get();
+        $customers = Customer::select('id', 'device_token')->where('app_customer_type', 'AGENT')->get();
         foreach ($customers as $customer) {
             $this->sendAsUnicast($customer->device_token, $data, $notification);
-            $input["customer_id"] = $customer->id;
-            $input["type"] = "campaign_promotion";
-            $input["noti_received_date"] = now();
+            $input['customer_id'] = $customer->id;
+            $input['type'] = 'campaign_promotion';
+            $input['noti_received_date'] = now();
             AgentNoti::create($input);
         }
     }
 }
-

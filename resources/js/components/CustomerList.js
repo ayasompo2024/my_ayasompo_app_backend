@@ -6,20 +6,36 @@ import { Paginator } from 'primereact/paginator';
 import { Chip } from 'primereact/chip';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
+import { Dialog } from 'primereact/dialog';
 import { Image } from 'primereact/image';
 import ReactDOM from 'react-dom/client';
 import { delReqeust, getRequest, updateRequest } from '../helpers/axios';
-import { baseURL, endpoints } from '../constants';
+import { baseURL, endpoints, notiFor } from '../constants';
 import { Calendar } from 'primereact/calendar';
 import { Tooltip } from 'primereact/tooltip';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
+import { payloadHandler } from '../helpers/utilities';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { notificationService } from '../services/notificationService';
 import moment from 'moment';
 
 export default function CustomerList() {
 
     const [loading, setLoading] = useState(false);
     const [customers, setCustomers] = useState([]);
+    const [selectedRows, setSelectedRows] = useState([]);
+    const [visible, setVisible] = useState(false);
+    const [selectedNotiFor, setSelectedNotiFor] = useState("");
+    const [sendNotiPayload, setSendNotiPayload] = useState({
+        title: "",
+        message: "",
+        photo: "",
+        description: "",
+        type: "Multicast",
+        noti_for: "",
+        customers: ""
+    })
     const [selectedStatus, setSelectedStatus] = useState({
         label: "ACTIVE", code: 0
     });
@@ -56,6 +72,37 @@ export default function CustomerList() {
         toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
     }
 
+    /** Send Notification */
+    const sendNotification = async () => {
+        setLoading(true);
+        const selectedCustomer = selectedRows.map(row => {
+            return {
+                user_id: row.id,
+                device_token: row.device_token
+            }
+        })
+
+        const formData = new FormData();
+
+        formData.append("title", sendNotiPayload.title);
+        formData.append("description", sendNotiPayload.description);
+        formData.append("message", sendNotiPayload.message);
+        formData.append("noti_for", sendNotiPayload.noti_for);
+        formData.append("photo", sendNotiPayload.photo);
+        formData.append("customers", JSON.stringify(selectedCustomer));
+        formData.append("type", sendNotiPayload.type);
+        formData.append("method", "PUT");
+
+        const result = await notificationService.send(formData);
+
+        if(result.status !== 201) {
+            toast.current.show({ severity: 'warn', summary: 'Rejected', detail: result.message, life: 3000 });
+        }
+
+        setLoading(false);
+        setVisible(false);
+    }
+
     /** Delete Customer Account */
     const deleteRecordConfirm = (id) => {
         confirmDialog({
@@ -78,6 +125,25 @@ export default function CustomerList() {
             reject
         });
     };
+
+    /** Check multiple users are selected for send notification. */
+    const checkNotificationUser = async () => {
+
+        if (selectedRows.length === 0) {
+            confirmDialog({
+                message: "Please selected customer to send notification.",
+                header: "Custmers are not selected",
+                icon: "pi pi-info-circle",
+                position: "bottom-right",
+                acceptClassName: "p-button-danger",
+            });
+
+            return;
+        }
+
+        setVisible(!visible);
+        return;
+    }
 
     /** Disable || Enable Customer Account */
     const disableRecordConfirm = async (content) => {
@@ -104,6 +170,7 @@ export default function CustomerList() {
         });
     }
 
+    /** Paginate Page Change */
     const onPageChange = async (event) => {
         setLoading(true);
         const updatePaginate = { ...paginateOptions };
@@ -125,6 +192,7 @@ export default function CustomerList() {
         setLoading(false);
     };
 
+    /** Search Customer Account */
     const searchCustomer = async () => {
         setLoading(true);
         const result = await getRequest(`${endpoints.customer}/${customerType.current}`, paginateOptions);
@@ -143,6 +211,7 @@ export default function CustomerList() {
         setLoading(false);
     }
 
+    /** Reset Paginate */
     const reset = async () => {
         const updatePaginate = { ...paginateOptions };
         updatePaginate.search = "";
@@ -150,6 +219,7 @@ export default function CustomerList() {
         initLoading();
     }
 
+    /** Choose Date Filter */
     const chooseDateHandler = async (e) => {
         setLoading(true);
 
@@ -173,6 +243,7 @@ export default function CustomerList() {
         setLoading(false);
     }
 
+    /** Customer Filter By Status */
     const onStatusChangeHandler = async (e) => {
         setLoading(true);
         setSelectedStatus(e);
@@ -197,6 +268,7 @@ export default function CustomerList() {
         setLoading(false);
     }
 
+    /** Loading Initialize Data */
     const initLoading = useCallback(async () => {
         setLoading(true);
         const result = await getRequest(`${endpoints.customer}/${customerType.current}`, paginateOptions);
@@ -292,18 +364,36 @@ export default function CustomerList() {
                             disabled={loading}
                         />
                     </div>
-                    <small id="customer-calender-help">
-                        Choose Created Date
-                    </small>
+                    <small> Choose Customer Status </small>
                 </div>
             </div>
 
             <div className='col-12 col-md-12 col-lg-12 mt-3'>
                 <DataTable
+                    header={() => {
+                        return (
+                            <div className=''>
+                                <Button
+                                    style={{ borderRadius: "5px" }}
+                                    className="p-button-danger"
+                                    size="small"
+                                    icon="pi pi-bell"
+                                    label='Send Notification'
+                                    loading={loading}
+                                    disabled={loading}
+                                    onClick={() => checkNotificationUser()}
+                                />
+                            </div>
+                        )
+                    }}
                     value={customers}
                     scrollable
                     scrollHeight="500px"
+                    selectionMode={'checkbox'}
+                    selection={selectedRows}
+                    onSelectionChange={(e) => { setSelectedRows(e.value) }}
                 >
+                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                     {columns.map((col, index) => {
                         return (
                             <Column
@@ -382,6 +472,139 @@ export default function CustomerList() {
 
             <Toast ref={toast} />
             <ConfirmDialog />
+
+            <Dialog
+                header={() => {
+                    return (
+                        <div className='w-full d-flex flex-row align-items-center justify-content-between'>
+                            <label> Send Notification </label>
+                            <span> Total - {selectedRows.length}</span>
+                        </div>
+                    )
+                }}
+                visible={visible}
+                style={{ width: '50vw' }}
+                onHide={() => { if (!visible) return; setVisible(false); }}
+            >
+                <div className='row'>
+                    <div className="col-12 mt-3">
+                        <div className='w-full flex flex-row'>
+                            <label htmlFor='title'> Title* </label>
+                            <div className="p-inputgroup">
+                                <InputText
+                                    className="w-full p-inputtext-sm"
+                                    id="title"
+                                    placeholder="Enter title"
+                                    value={sendNotiPayload.title}
+                                    disabled={loading}
+                                    onChange={(e) => {
+                                        payloadHandler(sendNotiPayload, e.target.value, 'title', (updatePayload) => {
+                                            setSendNotiPayload(updatePayload);
+                                        });
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <div className='w-full flex flex-row'>
+                            <label htmlFor='message'> Message* </label>
+                            <div className="p-inputgroup">
+                                <InputText
+                                    className="w-full p-inputtext-sm"
+                                    id="message"
+                                    placeholder="Enter Message"
+                                    value={sendNotiPayload.message}
+                                    disabled={loading}
+                                    onChange={(e) => {
+                                        payloadHandler(sendNotiPayload, e.target.value, 'message', (updatePayload) => {
+                                            setSendNotiPayload(updatePayload);
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <small> Max Length 255 </small>
+                        </div>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <div className='w-full flex flex-row'>
+                            <label htmlFor='photo'> Photo </label>
+                            <div className="p-inputgroup">
+                                <InputText
+                                    type='file'
+                                    className="w-full p-inputtext-sm"
+                                    id="photo"
+                                    placeholder="Choose photo"
+                                    value={sendNotiPayload.photo}
+                                    disabled={loading}
+                                    onChange={(e) => {
+                                        payloadHandler(sendNotiPayload, e.target.files[0], 'image_url', (updatePayload) => {
+                                            setSendNotiPayload(updatePayload);
+                                        });
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <div className='w-full flex flex-row'>
+                            <label htmlFor='description'> Description </label>
+                            <div className="p-inputgroup">
+                                <InputTextarea
+                                    className="w-full p-inputtextarea-sm"
+                                    id="description"
+                                    rows={5}
+                                    placeholder="Enter Description"
+                                    value={sendNotiPayload.description}
+                                    disabled={loading}
+                                    onChange={(e) => {
+                                        payloadHandler(sendNotiPayload, e.target.value, 'description', (updatePayload) => {
+                                            setSendNotiPayload(updatePayload);
+                                        });
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='col-12 mt-3'>
+                        <div className='w-full flex flex-row'>
+                            <div className="p-inputgroup">
+                                <Dropdown
+                                    className="w-full"
+                                    onChange={(e) => payloadHandler(sendNotiPayload, e.target.value['code'], "noti_for", (updatePayload) => {
+                                        setSelectedNotiFor(e.target.value)
+                                        setSendNotiPayload(updatePayload);
+                                    })}
+                                    options={notiFor}
+                                    value={selectedNotiFor}
+                                    optionLabel="name"
+                                    placeholder="Choose Notification For"
+                                    disabled={loading}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <div className='w-full d-flex flex-row justify-content-end'>
+                            <Button
+                                style={{ borderRadius: '5px' }}
+                                className="p-button-danger"
+                                size="small"
+                                icon="pi pi-bell"
+                                label='Send'
+                                loading={loading}
+                                disabled={loading}
+                                onClick={() => sendNotification()}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </Dialog>
         </div>
 
     );

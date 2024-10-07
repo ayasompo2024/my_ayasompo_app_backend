@@ -1,17 +1,18 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
 class Customer extends Authenticatable
 {
-    use HasFactory, HasApiTokens;
+    use HasApiTokens, HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'customer_code',
         'customer_phoneno',
         'user_name',
@@ -19,47 +20,54 @@ class Customer extends Authenticatable
         'password',
         'device_token',
         'profile_photo',
-        "risk_seqNo",
-        "risk_name",
-        "policy_number",
-        "is_disabled",
-        "disabled_from",
-        'last_logined_at'
+        'risk_seqNo',
+        'risk_name',
+        'policy_number',
+        'is_disabled',
+        'disabled_from',
+        'last_logined_at',
     ];
-    function core()
+
+    protected $hidden = [
+    ];
+
+    public function core()
     {
         return $this->belongsTo(CoreCustomer::class, 'id', 'app_customer_id');
     }
-    function employeeInfo()
+
+    public function employeeInfo()
     {
         return $this->belongsTo(EmployeeInfo::class, 'id', 'customer_id');
     }
-    function agentInfo()
+
+    public function agentInfo()
     {
         return $this->belongsTo(AgentInfo::class, 'id', 'customer_id');
     }
 
-    function accountCodes()
+    public function accountCodes()
     {
         return $this->hasMany(AgentAccountCode::class);
     }
 
-    function scopeIndividual($query)
+    public function scopeIndividual($query)
     {
         return $query->where('app_customer_type', 'INDIVIDUAL');
     }
+
     public function scopeGroup($query)
     {
-        return $query->where('app_customer_type', "GROUP");
+        return $query->where('app_customer_type', 'GROUP');
     }
 
     public function scopeEmloyee($query)
     {
-        return $query->where('app_customer_type', "EMPLOYEE");
+        return $query->where('app_customer_type', 'EMPLOYEE');
     }
+
     public function scopeAgent($query)
     {
-        return $query->where('app_customer_type', "AGENT");
+        return $query->where('app_customer_type', 'AGENT');
     }
 }
-

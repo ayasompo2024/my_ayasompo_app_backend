@@ -1,39 +1,38 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\FAQ;
 
-
 class FAQRepository
 {
-    static function getAll()
+    public static function getAll()
     {
         return FAQ::all();
     }
 
-    static function store(array $input)
+    public static function store(array $input)
     {
         return FAQ::create($input);
     }
 
-    static function delete(int $id)
+    public static function delete(int $id)
     {
         return FAQ::destroy($id);
     }
-    static function getByProductId(int $product_id)
+
+    public static function getByProductId(int $product_id)
     {
-        return FAQ::query()->where("product_id", $product_id)->get();
+        return FAQ::query()->where('product_id', $product_id)->get();
     }
 
-    static function getById(int $id)
+    public static function getById(int $id)
     {
         return FAQ::find($id);
     }
 
-    static function update(int $id, $input)
+    public static function update(int $id, $input)
     {
         return FAQ::find($id)->update($input);
     }
-
-
 }

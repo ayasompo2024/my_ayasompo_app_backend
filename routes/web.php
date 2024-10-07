@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminAccountController;
+use App\Http\Controllers\admin\AdminGoJoyController;
 use App\Http\Controllers\admin\agent\LeaderBoardController;
 use App\Http\Controllers\admin\agent\TrainingResourceController;
 use App\Http\Controllers\admin\BannerController;
@@ -33,6 +34,11 @@ Route::group(
         'middleware' => ['auth', 'log.admin.requests'],
     ],
     function () {
+        Route::group(['prefix' => 'gojoy'], function () {
+            Route::get('/', [AdminGoJoyController::class, 'index'])->name('gojoy.index');
+            Route::get('/{id}', [AdminGoJoyController::class, 'show'])->name('gojoy.show');
+        });
+
         Route::resource('account', AdminAccountController::class);
         Route::post('account/disabled/toggle/{id}', [AdminAccountController::class, 'disabledToggle'])->name('account.disabled.toggle');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -64,6 +70,7 @@ Route::group(
             Route::get('product-code-list/{id}/show-request-form-type', 'showRequestFormType')->name('product-code-list.show-request-form-type');
             Route::post('product-code-list/bind-with-request-form-type', 'bindWithRequestFormType')->name('product-code-list.bind-with-request-form-type');
         });
+
         Route::get('request-form', [RequestFormController::class, 'index'])->name('request-form.lists');
         Route::resource('request-form/type', RequestFormTypeController::class, ['names' => 'request-form.type']);
 
@@ -81,11 +88,13 @@ Route::group(
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
+
             Route::controller(CustomerController::class)->group(function () {
-                Route::get('/{id}', [CustomerController::class, 'show'])->name('customer.show');
                 Route::get('pool', 'pool')->name('customer.pool');
 
                 Route::get('customer/type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
+                Route::get('/{id}', [CustomerController::class, 'show'])->name('customer.show');
+
                 Route::get('customer1/import', [CustomerController::class, 'import'])->name('customer1.import');
 
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');
@@ -109,6 +118,7 @@ Route::group(
 
         Route::get('file/download/{filename}', [SettingController::class, 'downloadFile'])->name('file.download');
     }
+
     //Route::get('product-code-list/now', [ProductCodeListController::class, 'stoer2']);
 );
 Route::get('file/download/VCF', [HomeController::class, 'downloadFileAsVCF']);
@@ -117,5 +127,4 @@ Route::get('file/download/VCF/agent', [HomeController::class, 'downloadFileAsVCF
 Route::get('/test', function () {
     return 'test';
 });
-
 //Route::get('g',[HomeController::class,'g']);

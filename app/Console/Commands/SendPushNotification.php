@@ -16,12 +16,12 @@ class SendPushNotification extends Command
         $keyId = 'B4CRAJNUT5';
         $teamId = 'BJA4J3WHA6';
         $bundleId = 'com.my.ayasompo';
-        $privateKeyPath = __DIR__ . '/AuthKey_B4CRAJNUT5.p8';
-        
-        $now = time();
-        $expiry = $now + 60 * 60; 
+        $privateKeyPath = __DIR__.'/AuthKey_B4CRAJNUT5.p8';
 
-        $header = ['alg' => 'ES256','kid' => $keyId];
+        $now = time();
+        $expiry = $now + 60 * 60;
+
+        $header = ['alg' => 'ES256', 'kid' => $keyId];
 
         $payload = [
             'iss' => $teamId,
@@ -56,7 +56,7 @@ class SendPushNotification extends Command
         exec($curlCommand, $output, $statusCode);
 
         // Display the result
-        $this->info("cURL Output:\n" . implode("\n", $output));
+        $this->info("cURL Output:\n".implode("\n", $output));
         $this->info("Status Code: $statusCode");
     }
 

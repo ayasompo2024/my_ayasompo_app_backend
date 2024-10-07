@@ -15,20 +15,9 @@ class TrainingResponse extends JsonResource
     public function toArray($request)
     {
         return [
-            "title" => $this->title,
-            "file" => $this->file,
-            "description" => $this->description,
+            'title' => $this->title,
+            'file' => $this->file,
+            'description' => $this->description,
         ];
     }
 }
-
-
-
-
-
-
-
-
-
-
-

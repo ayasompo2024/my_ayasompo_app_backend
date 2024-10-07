@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AgentAccountCode extends Model
 {
     use HasFactory;
-    protected $fillable = ["customer_id","code"];
+
+    protected $fillable = ['customer_id', 'code'];
 }

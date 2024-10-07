@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class LocationMapCategory extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        "name",
-        "image",
-        "sort"
+        'name',
+        'image',
+        'sort',
     ];
 }

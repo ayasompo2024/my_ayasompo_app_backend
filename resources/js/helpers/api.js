@@ -60,3 +60,4 @@ export const delRequest = async (path) => {
         return httpErrorHandler(error);
     }  
 }
+

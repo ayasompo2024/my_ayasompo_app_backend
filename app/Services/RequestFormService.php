@@ -1,9 +1,8 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\RequestFormRepository;
-
-
 
 class RequestFormService
 {
@@ -11,5 +10,4 @@ class RequestFormService
     {
         return RequestFormRepository::getWithPaginate($perPage);
     }
-
 }

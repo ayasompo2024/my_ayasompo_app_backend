@@ -1,0 +1,166 @@
+* {
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-y {
+        width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    &::-webkit-scrollbar:horizontal {
+        display: none;
+    }
+}
+
+.w-full {
+    width: 100%;
+}
+
+.count-icon {
+    font-size: 50px !important;
+
+}
+
+.card-count-info {
+    background-color: #17a2b8 !important;
+    color: #fff;
+    height: 130px;
+}
+
+.card-count-success {
+    background-color: #198754 !important;
+    color: #fff;
+    height: 130px;
+}
+
+.card-count-danger {
+    background-color: #dc3545 !important;
+    color: #fff;
+    height: 130px;
+}
+
+.card-count-warning {
+    background-color: #ffc107 !important;
+    color: #fff;
+    height: 130px;
+}
+
+.count-number {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.count-number>span {
+    font-size: 30px;
+}
+
+.count-number>small {
+    font-weight: 600;
+}
+
+.card-label {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.p-calendar,
+.p-inputtext-sm,
+.p-button-sm,
+.p-inputgroup-addon,
+.p-dropdown {
+    height: 35px;
+}
+
+.p-inputgroup-addon {
+    background: none!important;
+}
+
+.p-button-icon-only {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.p-chip {
+    font-size: small;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    padding: 5px;
+}
+
+.p-inputtext {
+    padding: 5px;
+}
+
+.thumb-image > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%!important;
+}
+
+.calender-box > input {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.calender-box > .p-button-icon-only {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.tooltip-btn {
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.p-tooltip-text {
+    font-size: small;
+}
+
+
+.p-card .p-card-title {
+    margin: 0px;
+}
+
+.label-text {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.normal-text {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.normal-text:last-child {
+    font-weight: 500;
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.p-image > img {
+    border-radius: 50%;
+}

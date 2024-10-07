@@ -1,0 +1,2586 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "https:\/\/myayasompo.ayasompo.com"
+        }
+    ],
+    "info": {
+        "name": "MYAYASOMPO API Documentation",
+        "_postman_id": "3c8fa712-03ba-49f1-8c33-08ad3158f3c9",
+        "description": "This api documentation included mobile api, admin dashboard api",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/app\/v1\/products",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/products",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/products"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"isSuccess\":true,\"message\":\"Products\",\"data\":[{\"language\":\"EN\",\"order\":1,\"id\":11,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b606b38ee.png\",\"name\":\"AYA Go (Domestic)\",\"title\":\"TRAVEL INSURANCE\",\"brief_description\":\"Explore Myanmar knowing you\\u2019re fully protected with AYA Go Travel Insurance. Savour every moment and be in the present with insurance coverage that provides you protection from accidents and mishaps that may arise during your travels.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"class_code\":\"TI\",\"product_code\":\"TSD\"},{\"language\":\"EN\",\"order\":2,\"id\":14,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b64303993.png\",\"name\":\"AYA Joy (Overseas)\",\"title\":\"TRAVEL INSURANCE\",\"brief_description\":\"Accidents while traveling around the world; Bodily injury; Provides protection for the disabled. AYA Joy Travel Insurance also reimburses expenses incurred during travel incidents.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"class_code\":\"TI\",\"product_code\":\"TSO\"},{\"language\":\"EN\",\"order\":3,\"id\":12,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b65f2ad0d.png\",\"name\":\"Motor Vehicle\",\"title\":\"INSURANCE\",\"brief_description\":\"Motor Vehicle Insurance provides a full range of protection features that keep up with your needs.\\nThis plan covers not only your car, but anyone who is traveling with you.\\nNow, you can enjoy your ride knowing you\\u2019re fully protected.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MT\",\"product_code\":\"MNP\"},{\"language\":\"EN\",\"order\":4,\"id\":15,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b67969f90.png\",\"name\":\"Personal Accident\",\"title\":\"INSURANCE\",\"brief_description\":\"Protects individual against unexpected loss caused by injury, total permanent disabilities and death due to accident.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MS\",\"product_code\":\"MPA\"},{\"language\":\"EN\",\"order\":5,\"id\":16,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/thumbnail\\\/aya_sompo65377c9c61ebe.png\",\"name\":\"AYA Health\",\"title\":\"INSURANCE\",\"brief_description\":\"As your health is your most valuable asset, we offer comprehensive health insurance solutions. Start your journey towards better health with AYA Health insurance plans which are crafted to suit your lifestyle and needs.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/aya-health?_gl=1*1h4tc05*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDE3NC42MC4wLjA.&_ga=2.202897689.949424295.1710478959-2088631017.1710405614\",\"class_code\":\"LF\",\"product_code\":\"AYH\"},{\"language\":\"EN\",\"order\":6,\"id\":17,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8936cded.png\",\"name\":\"Fire\",\"title\":\"INSURANCE\",\"brief_description\":\"Fire Insurance protects your business and property when there is a risk of damage due to fire or natural disaster. It is vital for protection against loss or damage caused by fire, explosions and other risks.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/fire?_gl=1*1ml3eu0*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDI4NS42MC4wLjA.&_ga=2.22983091.949424295.1710478959-2088631017.1710405614\",\"class_code\":\"FI\",\"product_code\":\"FFI\"},{\"language\":\"EN\",\"order\":7,\"id\":18,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8b156e6a.png\",\"name\":\"Industrial All Risk (IAR)\",\"title\":\"INSURANCE\",\"brief_description\":\"Protect your premises from sudden and unforeseen loss by\\nany perils other than by exclusions.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"PTY\",\"product_code\":\"PIA\"},{\"language\":\"EN\",\"order\":8,\"id\":19,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8c6ab012.png\",\"name\":\"Contractor's, Erection All Risks (CAR, EAR)\",\"title\":\"INSURANCE\",\"brief_description\":\"Protect any damage that occurs during the construction process.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"ENGG\",\"product_code\":\"ECA\"},{\"language\":\"EN\",\"order\":9,\"id\":20,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8e561737.png\",\"name\":\"Marine Cargo\",\"title\":\"INSURANCE\",\"brief_description\":\"Protect cargoes and machineries against financial losses resulting from unforeseen incidents.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MR\",\"product_code\":\"MCG\"},{\"language\":\"EN\",\"order\":10,\"id\":21,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8f9ac765.png\",\"name\":\"Inland Transit\",\"title\":\"INSURANCE\",\"brief_description\":\"Protect from unexcepted loss of goods during transportation within the country.\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MR\",\"product_code\":\"MIT\"},{\"language\":\"MM\",\"order\":1,\"id\":11,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b606b38ee.png\",\"name\":\"AYA Go (\\u1015\\u103c\\u100a\\u103a\\u1010\\u103d\\u1004\\u103a\\u1038)\",\"title\":\"\\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038 \\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"AYA Go \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1016\\u103c\\u1004\\u1037\\u103a \\u1019\\u103c\\u1014\\u103a\\u1019\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u1004\\u1036\\u1021\\u1014\\u103e\\u1036\\u1037\\u1000\\u102d\\u102f \\u1005\\u1030\\u1038\\u1005\\u1019\\u103a\\u1038\\u101b\\u103e\\u102c\\u1016\\u103d\\u1031\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b \\u101e\\u1004\\u103a\\u104f\\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u100a\\u1037\\u103a \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1019\\u103e \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u101e\\u100a\\u1037\\u103a \\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101b\\u103e\\u102d\\u1001\\u103c\\u1004\\u103a\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u103b\\u1031\\u102c\\u103a\\u101b\\u103d\\u103e\\u1004\\u103a\\u101e\\u1031\\u102c \\u1001\\u101b\\u102e\\u1038\\u1005\\u1025\\u103a\\u1010\\u1005\\u103a\\u1001\\u102f\\u1000\\u102d\\u102f \\u1016\\u1014\\u103a\\u1010\\u102e\\u1038\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"class_code\":\"TI\",\"product_code\":\"TSD\"},{\"language\":\"MM\",\"order\":2,\"id\":14,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b64303993.png\",\"name\":\"AYA Joy (\\u1015\\u103c\\u100a\\u103a\\u1015)\",\"title\":\"\\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1000\\u1019\\u1039\\u1018\\u102c\\u1021\\u1014\\u103e\\u1036\\u1037 \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1000\\u103c\\u102f\\u1036\\u1010\\u103d\\u1031\\u1037\\u101b\\u101e\\u1031\\u102c \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u104a \\u1000\\u102d\\u102f\\u101a\\u103a\\u1001\\u1014\\u1039\\u1013\\u102c\\u1012\\u100f\\u103a\\u101b\\u102c \\u101b\\u101b\\u103e\\u102d\\u1019\\u103e\\u102f\\u104a \\u1019\\u101e\\u1014\\u103a\\u1005\\u103d\\u1019\\u103a\\u1038\\u1019\\u103e\\u102f\\u1010\\u102d\\u102f\\u1037\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b AYA Joy \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1021\\u1006\\u1004\\u103a\\u1019\\u1015\\u103c\\u1031\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u101e\\u1031\\u102c \\u1000\\u102f\\u1014\\u103a\\u1000\\u103b\\u1005\\u101b\\u102d\\u1010\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f\\u101c\\u100a\\u103a\\u1038 \\u1015\\u103c\\u1014\\u103a\\u101c\\u100a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"class_code\":\"TI\",\"product_code\":\"TSO\"},{\"language\":\"MM\",\"order\":3,\"id\":12,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b65f2ad0d.png\",\"name\":\"\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1001\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u101c\\u102d\\u102f\\u1000\\u103a\\u101c\\u103b\\u1031\\u102c\\u100a\\u102e\\u1011\\u103d\\u1031\\u101b\\u103e\\u102d\\u1005\\u1031\\u101b\\u1014\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a \\u1021\\u1015\\u103c\\u100a\\u1037\\u103a\\u1021\\u1005\\u102f\\u1036 \\u1015\\u1031\\u1038\\u1011\\u102c\\u1038\\u1001\\u103c\\u1004\\u103a\\u1038 \\u1016\\u103c\\u1005\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\\u104a\\n\\u1024\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u101e\\u102c\\u1019\\u1000 \\u101e\\u1004\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a\\u1021\\u1010\\u1030\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u1005\\u102e\\u1038\\u1014\\u1004\\u103a\\u1038\\u101e\\u1030\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a\\u1015\\u102b \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1011\\u102c\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\\n\\u1011\\u102d\\u102f\\u1037\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u101e\\u1004\\u103a\\u104f\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u1000\\u102d\\u102f \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1021\\u1015\\u103c\\u100a\\u1037\\u103a\\u1021\\u1005\\u102f\\u1036\\u1016\\u103c\\u1004\\u1037\\u103a \\u101c\\u102f\\u1036\\u1001\\u103c\\u102f\\u1036\\u1005\\u102d\\u1010\\u103a\\u1001\\u103b\\u1005\\u103d\\u102c \\u1019\\u1031\\u102c\\u1004\\u103a\\u1038\\u1014\\u103e\\u1004\\u103a\\u1014\\u102d\\u102f\\u1004\\u103a\\u1015\\u102b\\u1015\\u103c\\u102e\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MT\",\"product_code\":\"MNP\"},{\"language\":\"MM\",\"order\":4,\"id\":15,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b67969f90.png\",\"name\":\"\\u1000\\u102d\\u102f\\u101a\\u103a\\u1021\\u1004\\u103a\\u1039\\u1002\\u102b\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1019\\u103e\\u102f\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u101e\\u1031\\u1006\\u102f\\u1036\\u1038\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1021\\u1010\\u103d\\u1000\\u103a \\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1000\\u102d\\u102f \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u1016\\u102d\\u102f\\u1037 \\u1000\\u102d\\u102f\\u101a\\u103a\\u1021\\u1004\\u103a\\u1039\\u1002\\u102b\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1019\\u103e\\u102f\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u1000\\u103c\\u1015\\u102b\\u1005\\u102d\\u102f\\u1037\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MS\",\"product_code\":\"MPA\"},{\"language\":\"MM\",\"order\":5,\"id\":16,\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/thumbnail\\\/aya_sompo65377c9c61ebe.png\",\"name\":\"AYA Health\",\"title\":\"\\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u101e\\u1004\\u1037\\u103a\\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u101e\\u100a\\u103a \\u1010\\u1014\\u103a\\u1016\\u102d\\u102f\\u1038\\u1021\\u101b\\u103e\\u102d\\u1006\\u102f\\u1036\\u1038\\u1021\\u101b\\u102c\\u1016\\u103c\\u1005\\u103a\\u101e\\u1031\\u102c\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a AYASOMPO \\u1021\\u1014\\u1031\\u1016\\u103c\\u1004\\u1037\\u103a \\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036 \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u101d\\u1014\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u1019\\u103e\\u102f\\u1015\\u1031\\u1038\\u101c\\u103b\\u1000\\u103a\\u101b\\u103e\\u102d\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b \\u101e\\u1004\\u1037\\u103a\\u1018\\u101d\\u1014\\u1031\\u1011\\u102d\\u102f\\u1004\\u103a\\u1019\\u103e\\u102f\\u1015\\u102f\\u1036\\u1005\\u1036\\u1014\\u103e\\u1004\\u1037\\u103a \\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1001\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a\\u1021\\u100a\\u102e \\u1016\\u1014\\u103a\\u1010\\u102e\\u1038\\u1011\\u102c\\u1038\\u1015\\u103c\\u102e\\u1038 \\u1015\\u103c\\u102e\\u1038\\u1015\\u103c\\u100a\\u1037\\u103a\\u1005\\u102f\\u1036\\u101e\\u100a\\u1037\\u103a AYA Health \\u1021\\u102c\\u1019\\u1001\\u1036\\u1021\\u1005\\u102e\\u1021\\u1005\\u1009\\u103a\\u1019\\u103b\\u102c\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u102d\\u102f\\u1019\\u102d\\u102f\\u1000\\u1031\\u102c\\u1004\\u103a\\u1038\\u1019\\u103d\\u1014\\u103a\\u101e\\u1031\\u102c \\u1021\\u1014\\u102c\\u1002\\u1010\\u103a\\u101b\\u101b\\u103e\\u102d\\u1021\\u1031\\u102c\\u1004\\u103a \\u101e\\u1004\\u103a\\u104f\\u1001\\u101b\\u102e\\u1038\\u1000\\u102d\\u102f \\u1021\\u1001\\u102f\\u1018\\u1032 \\u1005\\u1010\\u1004\\u103a\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/aya-health?_gl=1*1h4tc05*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDE3NC42MC4wLjA.&_ga=2.202897689.949424295.1710478959-2088631017.1710405614\",\"class_code\":\"LF\",\"product_code\":\"AYH\"},{\"language\":\"MM\",\"order\":6,\"id\":17,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8936cded.png\",\"name\":\"\\u1019\\u102e\\u1038\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1019\\u102e\\u1038\\u1018\\u1031\\u1038\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u101e\\u100a\\u103a \\u1014\\u1031\\u101b\\u102c\\u1010\\u102d\\u102f\\u1004\\u103a\\u1038\\u1010\\u103d\\u1004\\u103a \\u101b\\u103e\\u102d\\u101e\\u100a\\u103a\\u1016\\u103c\\u1005\\u103a\\u101b\\u102c \\u101c\\u1030\\u1000\\u103c\\u102e\\u1038\\u1019\\u1004\\u103a\\u1038\\u104f\\u1021\\u102d\\u102f\\u1038\\u1021\\u102d\\u1019\\u103a\\u1010\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u1019\\u102e\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u104d \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101b\\u1014\\u103a \\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b  \\u1011\\u102d\\u102f\\u1037\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u1019\\u102e\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1019\\u102e\\u1038\\u200c\\u1018\\u1031\\u1038\\u1006\\u102d\\u102f\\u1004\\u103a\\u101b\\u102c\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1019\\u103e \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101b\\u1014\\u103a \\u1019\\u102e\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101b\\u103e\\u102d\\u101b\\u1014\\u103a \\u1021\\u101c\\u103d\\u1014\\u103a\\u1021\\u101b\\u1031\\u1038\\u1000\\u103c\\u102e\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/fire?_gl=1*1ml3eu0*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDI4NS42MC4wLjA.&_ga=2.22983091.949424295.1710478959-2088631017.1710405614\",\"class_code\":\"FI\",\"product_code\":\"FFI\"},{\"language\":\"MM\",\"order\":7,\"id\":18,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8b156e6a.png\",\"name\":\"\\u1005\\u1000\\u103a\\u1019\\u103e\\u102f\\u101c\\u102f\\u1015\\u103a\\u1004\\u1014\\u103a\\u1038\\u101e\\u102f\\u1036\\u1038\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u101e\\u1004\\u1037\\u103a\\u1021\\u1006\\u1031\\u102c\\u1000\\u103a\\u1021\\u1021\\u102f\\u1036\\u1021\\u1010\\u103d\\u1000\\u103a \\u1015\\u102d\\u102f\\u1019\\u102d\\u102f\\u1015\\u103c\\u100a\\u1037\\u103a\\u1005\\u102f\\u1036\\u101e\\u1031\\u102c \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1021\\u101c\\u102f\\u1015\\u103a\\u1001\\u103d\\u1004\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a \\u1015\\u1010\\u103a\\u101d\\u1014\\u103a\\u1038\\u1000\\u103b\\u1004\\u103a\\u1010\\u103d\\u1004\\u103a \\u1006\\u102d\\u102f\\u1038\\u1000\\u103b\\u102d\\u102f\\u1038\\u1019\\u103b\\u102c\\u1038\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u101b\\u102f\\u1010\\u103a\\u1010\\u101b\\u1000\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u103c\\u102d\\u102f\\u1010\\u1004\\u103a\\u1019\\u1019\\u103c\\u1004\\u103a\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1005\\u1000\\u103a\\u1019\\u103e\\u102f\\u101c\\u102f\\u1015\\u103a\\u1004\\u1014\\u103a\\u1038\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1021\\u102c\\u1019\\u1001\\u1036\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"PTY\",\"product_code\":\"PIA\"},{\"language\":\"MM\",\"order\":8,\"id\":19,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8c6ab012.png\",\"name\":\"\\u1000\\u1014\\u103a\\u1011\\u101b\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036 \\\/ \\u1010\\u100a\\u103a\\u1006\\u1031\\u102c\\u1000\\u103a\\u1019\\u103e\\u102f\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1000\\u1014\\u103a\\u1011\\u101b\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1010\\u100a\\u103a\\u1006\\u1031\\u102c\\u1000\\u103a\\u1010\\u1015\\u103a\\u1006\\u1004\\u103a\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u1006\\u1031\\u102c\\u1000\\u103a\\u101c\\u102f\\u1015\\u103a\\u101b\\u1031\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1005\\u1000\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1010\\u1015\\u103a\\u1006\\u1004\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038 \\u1015\\u101b\\u1031\\u102c\\u1002\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038 \\u101c\\u102f\\u1015\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u1005\\u1009\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u101e\\u1031\\u102c \\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"ENGG\",\"product_code\":\"ECA\"},{\"language\":\"MM\",\"order\":9,\"id\":20,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8e561737.png\",\"name\":\"\\u101b\\u1031\\u1000\\u103c\\u1031\\u102c\\u1004\\u103a\\u1038\\u1000\\u102f\\u1014\\u103a\\u1005\\u100a\\u103a\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1015\\u1004\\u103a\\u101c\\u101a\\u103a\\u101b\\u1031\\u1000\\u103c\\u1031\\u102c\\u1004\\u103a\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u103c\\u100a\\u103a\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1015\\u103c\\u100a\\u103a\\u1015\\u101e\\u102d\\u102f\\u1037\\u1015\\u1031\\u1038\\u1015\\u102d\\u102f\\u1037\\u101e\\u1031\\u102c \\u1015\\u102d\\u102f\\u1037\\u1000\\u102f\\u1014\\u103a\\u104a \\u101e\\u103d\\u1004\\u103a\\u1038\\u1000\\u102f\\u1014\\u103a\\u1019\\u103b\\u102c\\u1038\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1010\\u103d\\u1004\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1019\\u1019\\u103b\\u103e\\u1031\\u102c\\u103a\\u101c\\u1004\\u1037\\u103a\\u1011\\u102c\\u1038\\u101e\\u100a\\u1037\\u103a \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b \\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101e\\u100a\\u103a\\u1037\\u1000\\u102f\\u1014\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038 \\u101e\\u101a\\u103a\\u101a\\u1030\\u1010\\u1004\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038\\u104a \\u1019\\u102e\\u1038\\u101c\\u1031\\u102c\\u1004\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u102f\\u1014\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038 \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1001\\u103c\\u1004\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u103b\\u102f\\u1036\\u1038\\u101d\\u1004\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MR\",\"product_code\":\"MCG\"},{\"language\":\"MM\",\"order\":10,\"id\":21,\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"https:\\\/\\\/myayasompo.ayasompo.com\\\/uploads\\\/banner\\\/aya_sompo65b3b8f9ac765.png\",\"name\":\"\\u1000\\u102f\\u1014\\u103a\\u101c\\u1019\\u103a\\u1038\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u1031\\u1038\",\"title\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"brief_description\":\"\\u1019\\u103c\\u1014\\u103a\\u1019\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u1004\\u1036\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1000\\u102f\\u1014\\u103a\\u1005\\u100a\\u103a\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1010\\u103d\\u1004\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1019\\u1019\\u103b\\u103e\\u1031\\u102c\\u103a\\u101c\\u1004\\u1037\\u103a\\u1011\\u102c\\u1038\\u101e\\u100a\\u1037\\u103a \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"faqs\":[],\"properties\":[],\"premium_calculator_url\":\"\",\"class_code\":\"MR\",\"product_code\":\"MIT\"}],\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/banners",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/banners",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/banners"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "[]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/banners\/splash",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/banners\/splash",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/banners\/splash"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/location-maps",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/location-maps",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/location-maps"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 400,
+                            "body": "{\"metadata\":{\"isSuccess\":false,\"message\":\"Validation Error\",\"statusCode\":400},\"errors\":{\"latitude\":[\"The latitude field is required.\"],\"longitude\":[\"The longitude field is required.\"]}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/app\/v1\/request-form\/store-guest-inquiry-case",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/request-form\/store-guest-inquiry-case",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/request-form\/store-guest-inquiry-case"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"omnis\",\"inquiry_type\":\"consequatur\",\"customer_type\":\"itaque\",\"title\":\"vel\",\"ayasompo_productcode\":\"qui\",\"ayasompo_classcode\":\"similique\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/request-form\/get-endorsement-form",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/request-form\/get-endorsement-form",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/request-form\/get-endorsement-form"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/request-form\/store-inquiry-case",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/request-form\/store-inquiry-case",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/request-form\/store-inquiry-case"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"nihil\",\"inquiry_type\":\"neque\",\"customer_type\":\"accusantium\",\"title\":\"sint\",\"ayasompo_productcode\":\"repellat\",\"ayasompo_classcode\":\"voluptas\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PUT api\/app\/v1\/request-form\/read\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/request-form\/read\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/request-form\/read\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quo",
+                                    "description": "The ID of the read."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/claim-case\/motor",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/claim-case\/motor",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/claim-case\/motor"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"aspernatur\",\"contact_fullname\":\"velit\",\"contact_telephone\":\"facere\",\"driver_name\":\"modi\",\"policy_no\":\"delectus\",\"accident_location\":\"accusantium\",\"accident_date\":\"sit\",\"accident_time\":\"quod\",\"accident_description\":\"dignissimos\",\"accident_damaged_portion\":\"quod\",\"vehicle_no\":\"excepturi\",\"risk_seq_no\":\"quas\",\"accident_damaged_photos\":\"autem\",\"signature_image\":\"voluptatum\",\"customer_code\":\"et\",\"product_code\":\"veritatis\",\"class_code\":\"eligendi\",\"customer_type\":\"id\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/claim-case\/non-motor",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/claim-case\/non-motor",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/claim-case\/non-motor"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"voluptatem\",\"contact_fullname\":\"eum\",\"contact_telephone\":\"voluptas\",\"accident_date\":\"officia\",\"accident_time\":\"dolore\",\"accident_description\":\"placeat\",\"policy_or_risk_name\":\"voluptas\",\"nrc_no\":\"ut\",\"product_type\":\"commodi\",\"accident_damaged_photos\":\"natus\",\"signature_image\":\"aut\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/app\/v1\/noti\/get-promotion-and-system\/{user_id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/noti\/get-promotion-and-system\/:user_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/noti\/get-promotion-and-system\/:user_id",
+                            "variable": [
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "eveniet",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/go-joy",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/go-joy",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/go-joy"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/app\/v1\/go-joy",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/go-joy",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/go-joy"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"full_name\":\"autem\",\"nrc\":\"voluptatem\",\"dob\":\"2024-10-01T11:11:13\",\"mobile_number\":\"quas\",\"email\":\"leilani.rippin@example.com\",\"beneficiary_name\":\"aut\",\"beneficiary_contact\":\"quia\",\"tag_name\":\"quasi\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/app\/v1\/go-joy\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/go-joy\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/go-joy\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "est",
+                                    "description": "The ID of the go joy."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/app\/v1\/go-joy\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/go-joy\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/go-joy\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sit",
+                                    "description": "The ID of the go joy."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"customer_id\":\"9586\",\"full_name\":\"numquam\",\"nrc\":\"reprehenderit\",\"dob\":\"2024-10-01T11:11:13\",\"mobile_number\":\"omnis\",\"email\":\"jonathan.parker@example.com\",\"beneficiary_name\":\"maxime\",\"beneficiary_contact\":\"odio\",\"tag_name\":\"sint\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/auth\/customer\/register",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/auth\/customer\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/auth\/customer\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/auth\/customer\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/auth\/customer\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/auth\/customer\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/customer\/is-exist ",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/is-exist ",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/is-exist "
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"phone\":\"omnis\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/customer\/reset-password ",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/reset-password ",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/reset-password "
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"phone\":\"ut\",\"password\":\"@UR-:Wpmvfk+&s`d>S\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/app\/v1\/customer\/profile",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/profile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/profile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/customer\/profile\/list",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/profile\/list",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/profile\/list"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/app\/v1\/customer\/update\/profile-photo",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/update\/profile-photo",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/update\/profile-photo"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/customer\/update\/password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/update\/password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/update\/password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/app\/v1\/customer\/disabled",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/customer\/disabled",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/customer\/disabled"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/list",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/list",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/list"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/noti",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/noti",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/noti"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/app\/v1\/agent\/noti\/read\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/noti\/read\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/noti\/read\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the read."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/leader-board",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/leader-board",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/leader-board"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/training-resource",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/training-resource",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/training-resource"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/renewal",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/renewal",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/renewal"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/claim",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/claim",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/claim"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/sales\/challenge\/monthly",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/sales\/challenge\/monthly",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/sales\/challenge\/monthly"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/sales\/challenge\/quarterly",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/sales\/challenge\/quarterly",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/sales\/challenge\/quarterly"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/app\/v1\/agent\/sales\/dashboard",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/app\/v1\/agent\/sales\/dashboard",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/app\/v1\/agent\/sales\/dashboard"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/customer\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/customer\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/customer\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "97",
+                                    "description": "The ID of the customer."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "is_disabled",
+                                    "value": 33,
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "user_id",
+                                    "value": "209",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "customer_code",
+                                    "value": "enim",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "customer_phoneno",
+                                    "value": "explicabo",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "user_name",
+                                    "value": "aut",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "app_customer_type",
+                                    "value": "INDIVIDUAL",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "risk_seqNo",
+                                    "value": "neque",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "risk_name",
+                                    "value": "nihil",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "policy_number",
+                                    "value": "ab",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "profile_photo",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/admin\/v1\/customer\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/customer\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/customer\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "97",
+                                    "description": "The ID of the customer."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/customer\/{type}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/customer\/:type",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/customer\/:type",
+                            "variable": [
+                                {
+                                    "id": "type",
+                                    "key": "type",
+                                    "value": "97",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/admin\/v1\/customer\/count\/{type}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/customer\/count\/:type",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/customer\/count\/:type",
+                            "variable": [
+                                {
+                                    "id": "type",
+                                    "key": "type",
+                                    "value": "minima",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/admin\/v1\/customer\/detail\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/customer\/detail\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/customer\/detail\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolores",
+                                    "description": "The ID of the detail."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/messaging",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/messaging",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/messaging"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "eius",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "ut",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "Broadcast",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Quae ea repellat reprehenderit voluptatem iste illum.",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "noti_for",
+                                    "value": "Promotions",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "customers",
+                                    "value": "magni",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "image_url",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/gojoy",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/gojoy",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/gojoy"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/admin\/v1\/gojoy\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/gojoy\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/gojoy\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "atque",
+                                    "description": "The ID of the gojoy."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/admin\/v1\/gojoy\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/gojoy\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/gojoy\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "fugiat",
+                                    "description": "The ID of the gojoy."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"customer_id\":\"193\",\"full_name\":\"at\",\"nrc\":\"rerum\",\"dob\":\"2024-10-01T11:11:13\",\"mobile_number\":\"eaque\",\"email\":\"leuschke.jedidiah@example.net\",\"beneficiary_name\":\"qui\",\"beneficiary_contact\":\"tempora\",\"tag_name\":\"quidem\",\"status\":\"DELETED\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/admin\/v1\/gojoy\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/gojoy\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/gojoy\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sit",
+                                    "description": "The ID of the gojoy."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/products",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/products",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/products"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"meatadata\":{\"isSuccess\":true,\"statusCode\":200,\"message\":\"Products and Properties\"},\"data\":[[{\"id\":11,\"name\":\"AYA Go (Domestic)\",\"name_mm\":\"AYA Go (\\u1015\\u103c\\u100a\\u103a\\u1010\\u103d\\u1004\\u103a\\u1038)\",\"title\":\"TRAVEL INSURANCE\",\"title_mm\":\"\\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038 \\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b606b38ee.png\",\"brief_description\":\"Explore Myanmar knowing you\\u2019re fully protected with AYA Go Travel Insurance. Savour every moment and be in the present with insurance coverage that provides you protection from accidents and mishaps that may arise during your travels.\",\"brief_description_mm\":\"AYA Go \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1016\\u103c\\u1004\\u1037\\u103a \\u1019\\u103c\\u1014\\u103a\\u1019\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u1004\\u1036\\u1021\\u1014\\u103e\\u1036\\u1037\\u1000\\u102d\\u102f \\u1005\\u1030\\u1038\\u1005\\u1019\\u103a\\u1038\\u101b\\u103e\\u102c\\u1016\\u103d\\u1031\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b \\u101e\\u1004\\u103a\\u104f\\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u100a\\u1037\\u103a \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1019\\u103e \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u101e\\u100a\\u1037\\u103a \\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101b\\u103e\\u102d\\u1001\\u103c\\u1004\\u103a\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u103b\\u1031\\u102c\\u103a\\u101b\\u103d\\u103e\\u1004\\u103a\\u101e\\u1031\\u102c \\u1001\\u101b\\u102e\\u1038\\u1005\\u1025\\u103a\\u1010\\u1005\\u103a\\u1001\\u102f\\u1000\\u102d\\u102f \\u1016\\u1014\\u103a\\u1010\\u102e\\u1038\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"product_code\":\"TSD\",\"class_code\":\"TI\",\"sort\":1,\"status\":\"1\",\"created_at\":\"2023-10-24T05:00:35.000000Z\",\"updated_at\":\"2024-05-27T12:48:56.000000Z\"},{\"id\":14,\"name\":\"AYA Joy (Overseas)\",\"name_mm\":\"AYA Joy (\\u1015\\u103c\\u100a\\u103a\\u1015)\",\"title\":\"TRAVEL INSURANCE\",\"title_mm\":\"\\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b64303993.png\",\"brief_description\":\"Accidents while traveling around the world; Bodily injury; Provides protection for the disabled. AYA Joy Travel Insurance also reimburses expenses incurred during travel incidents.\",\"brief_description_mm\":\"\\u1000\\u1019\\u1039\\u1018\\u102c\\u1021\\u1014\\u103e\\u1036\\u1037 \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1000\\u103c\\u102f\\u1036\\u1010\\u103d\\u1031\\u1037\\u101b\\u101e\\u1031\\u102c \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1019\\u103e\\u102f\\u104a \\u1000\\u102d\\u102f\\u101a\\u103a\\u1001\\u1014\\u1039\\u1013\\u102c\\u1012\\u100f\\u103a\\u101b\\u102c \\u101b\\u101b\\u103e\\u102d\\u1019\\u103e\\u102f\\u104a \\u1019\\u101e\\u1014\\u103a\\u1005\\u103d\\u1019\\u103a\\u1038\\u1019\\u103e\\u102f\\u1010\\u102d\\u102f\\u1037\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b AYA Joy \\u1001\\u101b\\u102e\\u1038\\u101e\\u103d\\u102c\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1021\\u1006\\u1004\\u103a\\u1019\\u1015\\u103c\\u1031\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u101e\\u1031\\u102c \\u1000\\u102f\\u1014\\u103a\\u1000\\u103b\\u1005\\u101b\\u102d\\u1010\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f\\u101c\\u100a\\u103a\\u1038 \\u1015\\u103c\\u1014\\u103a\\u101c\\u100a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"premium_calculator_url\":\"https:\\\/\\\/itravel.ayasompo.com\\\/newtravel\\\/index?client=ayasapp&phone=\",\"product_code\":\"TSO\",\"class_code\":\"TI\",\"sort\":2,\"status\":\"1\",\"created_at\":\"2023-10-24T08:06:52.000000Z\",\"updated_at\":\"2024-03-15T11:34:39.000000Z\"},{\"id\":12,\"name\":\"Motor Vehicle\",\"name_mm\":\"\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b65f2ad0d.png\",\"brief_description\":\"Motor Vehicle Insurance provides a full range of protection features that keep up with your needs.\\nThis plan covers not only your car, but anyone who is traveling with you.\\nNow, you can enjoy your ride knowing you\\u2019re fully protected.\",\"brief_description_mm\":\"\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1001\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u101c\\u102d\\u102f\\u1000\\u103a\\u101c\\u103b\\u1031\\u102c\\u100a\\u102e\\u1011\\u103d\\u1031\\u101b\\u103e\\u102d\\u1005\\u1031\\u101b\\u1014\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a \\u1021\\u1015\\u103c\\u100a\\u1037\\u103a\\u1021\\u1005\\u102f\\u1036 \\u1015\\u1031\\u1038\\u1011\\u102c\\u1038\\u1001\\u103c\\u1004\\u103a\\u1038 \\u1016\\u103c\\u1005\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\\u104a\\n\\u1024\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u101e\\u102c\\u1019\\u1000 \\u101e\\u1004\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a\\u1021\\u1010\\u1030\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u1005\\u102e\\u1038\\u1014\\u1004\\u103a\\u1038\\u101e\\u1030\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a\\u1015\\u102b \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1011\\u102c\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\\n\\u1011\\u102d\\u102f\\u1037\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u101e\\u1004\\u103a\\u104f\\u1019\\u1031\\u102c\\u103a\\u1010\\u1031\\u102c\\u103a\\u101a\\u102c\\u1009\\u103a\\u1000\\u102d\\u102f \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1021\\u1015\\u103c\\u100a\\u1037\\u103a\\u1021\\u1005\\u102f\\u1036\\u1016\\u103c\\u1004\\u1037\\u103a \\u101c\\u102f\\u1036\\u1001\\u103c\\u102f\\u1036\\u1005\\u102d\\u1010\\u103a\\u1001\\u103b\\u1005\\u103d\\u102c \\u1019\\u1031\\u102c\\u1004\\u103a\\u1038\\u1014\\u103e\\u1004\\u103a\\u1014\\u102d\\u102f\\u1004\\u103a\\u1015\\u102b\\u1015\\u103c\\u102e\\u104b\",\"premium_calculator_url\":\"\",\"product_code\":\"MNP\",\"class_code\":\"MT\",\"sort\":3,\"status\":\"1\",\"created_at\":\"2023-10-24T05:30:46.000000Z\",\"updated_at\":\"2024-03-15T11:38:06.000000Z\"},{\"id\":15,\"name\":\"Personal Accident\",\"name_mm\":\"\\u1000\\u102d\\u102f\\u101a\\u103a\\u1021\\u1004\\u103a\\u1039\\u1002\\u102b\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1019\\u103e\\u102f\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b67969f90.png\",\"brief_description\":\"Protects individual against unexpected loss caused by injury, total permanent disabilities and death due to accident.\",\"brief_description_mm\":\"\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u101e\\u1031\\u1006\\u102f\\u1036\\u1038\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1021\\u1010\\u103d\\u1000\\u103a \\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1000\\u102d\\u102f \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u1016\\u102d\\u102f\\u1037 \\u1000\\u102d\\u102f\\u101a\\u103a\\u1021\\u1004\\u103a\\u1039\\u1002\\u102b\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1019\\u103e\\u102f\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u1000\\u103c\\u1015\\u102b\\u1005\\u102d\\u102f\\u1037\",\"premium_calculator_url\":\"\",\"product_code\":\"MPA\",\"class_code\":\"MS\",\"sort\":4,\"status\":\"1\",\"created_at\":\"2023-10-24T08:13:15.000000Z\",\"updated_at\":\"2024-03-15T11:38:33.000000Z\"},{\"id\":16,\"name\":\"AYA Health\",\"name_mm\":\"AYA Health\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"INDIVIDUAL\",\"thumbnail\":\"\\\/uploads\\\/thumbnail\\\/aya_sompo65377c9c61ebe.png\",\"brief_description\":\"As your health is your most valuable asset, we offer comprehensive health insurance solutions. Start your journey towards better health with AYA Health insurance plans which are crafted to suit your lifestyle and needs.\",\"brief_description_mm\":\"\\u101e\\u1004\\u1037\\u103a\\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u101e\\u100a\\u103a \\u1010\\u1014\\u103a\\u1016\\u102d\\u102f\\u1038\\u1021\\u101b\\u103e\\u102d\\u1006\\u102f\\u1036\\u1038\\u1021\\u101b\\u102c\\u1016\\u103c\\u1005\\u103a\\u101e\\u1031\\u102c\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a AYASOMPO \\u1021\\u1014\\u1031\\u1016\\u103c\\u1004\\u1037\\u103a \\u1000\\u103b\\u1014\\u103a\\u1038\\u1019\\u102c\\u101b\\u1031\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036 \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u101d\\u1014\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u1019\\u103e\\u102f\\u1015\\u1031\\u1038\\u101c\\u103b\\u1000\\u103a\\u101b\\u103e\\u102d\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b \\u101e\\u1004\\u1037\\u103a\\u1018\\u101d\\u1014\\u1031\\u1011\\u102d\\u102f\\u1004\\u103a\\u1019\\u103e\\u102f\\u1015\\u102f\\u1036\\u1005\\u1036\\u1014\\u103e\\u1004\\u1037\\u103a \\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1001\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a\\u1021\\u100a\\u102e \\u1016\\u1014\\u103a\\u1010\\u102e\\u1038\\u1011\\u102c\\u1038\\u1015\\u103c\\u102e\\u1038 \\u1015\\u103c\\u102e\\u1038\\u1015\\u103c\\u100a\\u1037\\u103a\\u1005\\u102f\\u1036\\u101e\\u100a\\u1037\\u103a AYA Health \\u1021\\u102c\\u1019\\u1001\\u1036\\u1021\\u1005\\u102e\\u1021\\u1005\\u1009\\u103a\\u1019\\u103b\\u102c\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u102d\\u102f\\u1019\\u102d\\u102f\\u1000\\u1031\\u102c\\u1004\\u103a\\u1038\\u1019\\u103d\\u1014\\u103a\\u101e\\u1031\\u102c \\u1021\\u1014\\u102c\\u1002\\u1010\\u103a\\u101b\\u101b\\u103e\\u102d\\u1021\\u1031\\u102c\\u1004\\u103a \\u101e\\u1004\\u103a\\u104f\\u1001\\u101b\\u102e\\u1038\\u1000\\u102d\\u102f \\u1021\\u1001\\u102f\\u1018\\u1032 \\u1005\\u1010\\u1004\\u103a\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/aya-health?_gl=1*1h4tc05*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDE3NC42MC4wLjA.&_ga=2.202897689.949424295.1710478959-2088631017.1710405614\",\"product_code\":\"AYH\",\"class_code\":\"LF\",\"sort\":5,\"status\":\"1\",\"created_at\":\"2023-10-24T08:13:16.000000Z\",\"updated_at\":\"2024-03-15T11:40:19.000000Z\"},{\"id\":17,\"name\":\"Fire\",\"name_mm\":\"\\u1019\\u102e\\u1038\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b8936cded.png\",\"brief_description\":\"Fire Insurance protects your business and property when there is a risk of damage due to fire or natural disaster. It is vital for protection against loss or damage caused by fire, explosions and other risks.\",\"brief_description_mm\":\"\\u1019\\u102e\\u1038\\u1018\\u1031\\u1038\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u101e\\u100a\\u103a \\u1014\\u1031\\u101b\\u102c\\u1010\\u102d\\u102f\\u1004\\u103a\\u1038\\u1010\\u103d\\u1004\\u103a \\u101b\\u103e\\u102d\\u101e\\u100a\\u103a\\u1016\\u103c\\u1005\\u103a\\u101b\\u102c \\u101c\\u1030\\u1000\\u103c\\u102e\\u1038\\u1019\\u1004\\u103a\\u1038\\u104f\\u1021\\u102d\\u102f\\u1038\\u1021\\u102d\\u1019\\u103a\\u1010\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u1019\\u102e\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u104d \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101b\\u1014\\u103a \\u101c\\u102d\\u102f\\u1021\\u1015\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b  \\u1011\\u102d\\u102f\\u1037\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u1019\\u102e\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1019\\u102e\\u1038\\u200c\\u1018\\u1031\\u1038\\u1006\\u102d\\u102f\\u1004\\u103a\\u101b\\u102c\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1019\\u103e \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101b\\u1014\\u103a \\u1019\\u102e\\u1038\\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101b\\u103e\\u102d\\u101b\\u1014\\u103a \\u1021\\u101c\\u103d\\u1014\\u103a\\u1021\\u101b\\u1031\\u1038\\u1000\\u103c\\u102e\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"premium_calculator_url\":\"https:\\\/\\\/premiumcalculator.ayasompo.com\\\/fire?_gl=1*1ml3eu0*_gcl_au*MjA5NDE1MzguMTcxMDQ3ODk1NQ..*_ga*MjA4ODYzMTAxNy4xNzEwNDA1NjE0*_ga_EW93R8S1KM*MTcxMDQ3ODk1NS4xLjEuMTcxMDQ4MDI4NS42MC4wLjA.&_ga=2.22983091.949424295.1710478959-2088631017.1710405614\",\"product_code\":\"FFI\",\"class_code\":\"FI\",\"sort\":6,\"status\":\"1\",\"created_at\":\"2023-10-24T08:27:59.000000Z\",\"updated_at\":\"2024-03-15T11:41:42.000000Z\"},{\"id\":18,\"name\":\"Industrial All Risk (IAR)\",\"name_mm\":\"\\u1005\\u1000\\u103a\\u1019\\u103e\\u102f\\u101c\\u102f\\u1015\\u103a\\u1004\\u1014\\u103a\\u1038\\u101e\\u102f\\u1036\\u1038\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b8b156e6a.png\",\"brief_description\":\"Protect your premises from sudden and unforeseen loss by\\nany perils other than by exclusions.\",\"brief_description_mm\":\"\\u101e\\u1004\\u1037\\u103a\\u1021\\u1006\\u1031\\u102c\\u1000\\u103a\\u1021\\u1021\\u102f\\u1036\\u1021\\u1010\\u103d\\u1000\\u103a \\u1015\\u102d\\u102f\\u1019\\u102d\\u102f\\u1015\\u103c\\u100a\\u1037\\u103a\\u1005\\u102f\\u1036\\u101e\\u1031\\u102c \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1021\\u101c\\u102f\\u1015\\u103a\\u1001\\u103d\\u1004\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a \\u1015\\u1010\\u103a\\u101d\\u1014\\u103a\\u1038\\u1000\\u103b\\u1004\\u103a\\u1010\\u103d\\u1004\\u103a \\u1006\\u102d\\u102f\\u1038\\u1000\\u103b\\u102d\\u102f\\u1038\\u1019\\u103b\\u102c\\u1038\\u1000\\u103c\\u1031\\u102c\\u1004\\u1037\\u103a \\u101b\\u102f\\u1010\\u103a\\u1010\\u101b\\u1000\\u103a\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u103c\\u102d\\u102f\\u1010\\u1004\\u103a\\u1019\\u1019\\u103c\\u1004\\u103a\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1005\\u1000\\u103a\\u1019\\u103e\\u102f\\u101c\\u102f\\u1015\\u103a\\u1004\\u1014\\u103a\\u1038\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1021\\u102c\\u1019\\u1001\\u1036\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u102c\\u1000\\u103d\\u101a\\u103a\\u101c\\u102d\\u102f\\u1000\\u103a\\u1015\\u102b\\u104b\",\"premium_calculator_url\":\"\",\"product_code\":\"PIA\",\"class_code\":\"PTY\",\"sort\":7,\"status\":\"1\",\"created_at\":\"2023-10-24T09:32:51.000000Z\",\"updated_at\":\"2024-03-15T11:42:36.000000Z\"},{\"id\":19,\"name\":\"Contractor's, Erection All Risks (CAR, EAR)\",\"name_mm\":\"\\u1000\\u1014\\u103a\\u1011\\u101b\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036 \\\/ \\u1010\\u100a\\u103a\\u1006\\u1031\\u102c\\u1000\\u103a\\u1019\\u103e\\u102f\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b8c6ab012.png\",\"brief_description\":\"Protect any damage that occurs during the construction process.\",\"brief_description_mm\":\"\\u1000\\u1014\\u103a\\u1011\\u101b\\u102d\\u102f\\u1000\\u103a\\u1010\\u102c\\u1010\\u100a\\u103a\\u1006\\u1031\\u102c\\u1000\\u103a\\u1010\\u1015\\u103a\\u1006\\u1004\\u103a\\u1021\\u101c\\u102f\\u1036\\u1038\\u1005\\u102f\\u1036\\u1021\\u102c\\u1019\\u1001\\u1036\\u101e\\u100a\\u103a \\u101e\\u1004\\u103a\\u104f\\u1006\\u1031\\u102c\\u1000\\u103a\\u101c\\u102f\\u1015\\u103a\\u101b\\u1031\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1005\\u1000\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1010\\u1015\\u103a\\u1006\\u1004\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038 \\u1015\\u101b\\u1031\\u102c\\u1002\\u103b\\u1000\\u103a\\u1019\\u103b\\u102c\\u1038 \\u101c\\u102f\\u1015\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u1005\\u1009\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u101e\\u1031\\u102c \\u1021\\u1014\\u1039\\u1010\\u101b\\u102c\\u101a\\u103a\\u1019\\u103b\\u102c\\u1038\\u1000\\u102d\\u102f \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"premium_calculator_url\":\"\",\"product_code\":\"ECA\",\"class_code\":\"ENGG\",\"sort\":8,\"status\":\"1\",\"created_at\":\"2023-10-24T09:54:24.000000Z\",\"updated_at\":\"2024-03-15T11:45:43.000000Z\"},{\"id\":20,\"name\":\"Marine Cargo\",\"name_mm\":\"\\u101b\\u1031\\u1000\\u103c\\u1031\\u102c\\u1004\\u103a\\u1038\\u1000\\u102f\\u1014\\u103a\\u1005\\u100a\\u103a\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b8e561737.png\",\"brief_description\":\"Protect cargoes and machineries against financial losses resulting from unforeseen incidents.\",\"brief_description_mm\":\"\\u1015\\u1004\\u103a\\u101c\\u101a\\u103a\\u101b\\u1031\\u1000\\u103c\\u1031\\u102c\\u1004\\u103a\\u1038\\u1016\\u103c\\u1004\\u1037\\u103a \\u1015\\u103c\\u100a\\u103a\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1015\\u103c\\u100a\\u103a\\u1015\\u101e\\u102d\\u102f\\u1037\\u1015\\u1031\\u1038\\u1015\\u102d\\u102f\\u1037\\u101e\\u1031\\u102c \\u1015\\u102d\\u102f\\u1037\\u1000\\u102f\\u1014\\u103a\\u104a \\u101e\\u103d\\u1004\\u103a\\u1038\\u1000\\u102f\\u1014\\u103a\\u1019\\u103b\\u102c\\u1038\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1010\\u103d\\u1004\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1019\\u1019\\u103b\\u103e\\u1031\\u102c\\u103a\\u101c\\u1004\\u1037\\u103a\\u1011\\u102c\\u1038\\u101e\\u100a\\u1037\\u103a \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b \\u1021\\u102c\\u1019\\u1001\\u1036\\u1011\\u102c\\u1038\\u101e\\u100a\\u103a\\u1037\\u1000\\u102f\\u1014\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038 \\u101e\\u101a\\u103a\\u101a\\u1030\\u1010\\u1004\\u103a\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1001\\u101b\\u102e\\u1038\\u1005\\u1009\\u103a\\u1021\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1019\\u1010\\u1031\\u102c\\u103a\\u1010\\u1006\\u1011\\u102d\\u1001\\u102d\\u102f\\u1000\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038\\u104a \\u1019\\u102e\\u1038\\u101c\\u1031\\u102c\\u1004\\u103a\\u1001\\u103c\\u1004\\u103a\\u1038\\u1014\\u103e\\u1004\\u1037\\u103a \\u1000\\u102f\\u1014\\u103a\\u1015\\u1005\\u1039\\u1005\\u100a\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038 \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1001\\u103c\\u1004\\u103a\\u1038\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u103b\\u102f\\u1036\\u1038\\u101d\\u1004\\u103a\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"premium_calculator_url\":\"\",\"product_code\":\"MCG\",\"class_code\":\"MR\",\"sort\":9,\"status\":\"1\",\"created_at\":\"2023-10-24T10:06:28.000000Z\",\"updated_at\":\"2024-03-15T11:46:23.000000Z\"},{\"id\":21,\"name\":\"Inland Transit\",\"name_mm\":\"\\u1000\\u102f\\u1014\\u103a\\u101c\\u1019\\u103a\\u1038\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u1031\\u1038\",\"title\":\"INSURANCE\",\"title_mm\":\"\\u1021\\u102c\\u1019\\u1001\\u1036\",\"product_type\":\"COMMERCIAL\",\"thumbnail\":\"\\\/uploads\\\/banner\\\/aya_sompo65b3b8f9ac765.png\",\"brief_description\":\"Protect from unexcepted loss of goods during transportation within the country.\",\"brief_description_mm\":\"\\u1019\\u103c\\u1014\\u103a\\u1019\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u1004\\u1036\\u1010\\u103d\\u1004\\u103a\\u1038 \\u1000\\u102f\\u1014\\u103a\\u1005\\u100a\\u103a\\u101e\\u101a\\u103a\\u101a\\u1030\\u1015\\u102d\\u102f\\u1037\\u1006\\u1031\\u102c\\u1004\\u103a\\u101b\\u102c\\u1010\\u103d\\u1004\\u103a \\u1016\\u103c\\u1005\\u103a\\u1015\\u1031\\u102b\\u103a\\u101c\\u102c\\u1014\\u102d\\u102f\\u1004\\u103a\\u101e\\u1031\\u102c \\u1019\\u1019\\u103b\\u103e\\u1031\\u102c\\u103a\\u101c\\u1004\\u1037\\u103a\\u1011\\u102c\\u1038\\u101e\\u100a\\u1037\\u103a \\u1015\\u103b\\u1000\\u103a\\u1005\\u102e\\u1038\\u1006\\u102f\\u1036\\u1038\\u101b\\u103e\\u102f\\u1036\\u1038\\u1019\\u103e\\u102f\\u1019\\u103b\\u102c\\u1038\\u1021\\u1010\\u103d\\u1000\\u103a \\u1021\\u1000\\u102c\\u1021\\u1000\\u103d\\u101a\\u103a\\u1015\\u1031\\u1038\\u1015\\u102b\\u101e\\u100a\\u103a\\u104b\",\"premium_calculator_url\":\"\",\"product_code\":\"MIT\",\"class_code\":\"MR\",\"sort\":10,\"status\":\"1\",\"created_at\":\"2023-10-24T10:07:07.000000Z\",\"updated_at\":\"2024-03-15T11:47:03.000000Z\"}],[{\"id\":1,\"name\":\"Coverage\",\"name_mm\":\"Coverage\",\"created_at\":\"2023-10-06T09:36:36.000000Z\",\"updated_at\":\"2024-03-06T11:11:04.000000Z\"},{\"id\":2,\"name\":\"Benefits\",\"name_mm\":\"Benefits\",\"created_at\":\"2023-10-06T09:36:47.000000Z\",\"updated_at\":\"2024-03-06T11:11:10.000000Z\"},{\"id\":3,\"name\":\"Eligibility\",\"name_mm\":\"Eligibility\",\"created_at\":\"2023-10-06T09:37:41.000000Z\",\"updated_at\":\"2024-03-06T11:11:17.000000Z\"},{\"id\":6,\"name\":\"Promotion\",\"name_mm\":\"Promotion\",\"created_at\":\"2023-10-11T08:29:39.000000Z\",\"updated_at\":\"2024-03-06T11:11:22.000000Z\"},{\"id\":9,\"name\":\"Additional Coverage\",\"name_mm\":\"Additional Coverage\",\"created_at\":\"2023-10-24T04:51:38.000000Z\",\"updated_at\":\"2024-03-06T11:11:29.000000Z\"},{\"id\":10,\"name\":\"Product Highlight\",\"name_mm\":\"Product Highlight\",\"created_at\":\"2023-10-24T05:14:05.000000Z\",\"updated_at\":\"2024-03-06T11:11:35.000000Z\"},{\"id\":11,\"name\":\"Exclusion\",\"name_mm\":\"Exclusion\",\"created_at\":\"2023-10-24T05:14:18.000000Z\",\"updated_at\":\"2024-03-06T11:11:41.000000Z\"},{\"id\":15,\"name\":\"FAQ\",\"name_mm\":\"FAQ\",\"created_at\":\"2024-01-18T14:27:58.000000Z\",\"updated_at\":\"2024-03-06T11:11:48.000000Z\"},{\"id\":16,\"name\":\"Premium Calculator\",\"name_mm\":\"Premium Calculator\",\"created_at\":\"2024-01-22T10:46:10.000000Z\",\"updated_at\":\"2024-03-06T11:11:53.000000Z\"},{\"id\":17,\"name\":\"Contact Us\",\"name_mm\":\"Contact Us\",\"created_at\":\"2024-01-22T10:47:45.000000Z\",\"updated_at\":\"2024-06-20T10:26:09.000000Z\"}]]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/products\/add",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/products\/add",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/products\/add"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"voluptas\",\"title\":\"exercitationem\",\"product_type\":\"accusantium\",\"thumbnail\":\"jobrbnwkkgfjrxiphqyouhef\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PUT api\/admin\/v1\/products\/change-status\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/products\/change-status\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/products\/change-status\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the change status."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/admin\/v1\/products\/delete\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/products\/delete\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/products\/delete\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quidem",
+                                    "description": "The ID of the delete."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/properties",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/properties",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/properties"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "54"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"meatadata\":{\"isSuccess\":true,\"statusCode\":200,\"message\":\"Properties\"},\"data\":[{\"id\":1,\"name\":\"Coverage\",\"name_mm\":\"Coverage\",\"created_at\":\"2023-10-06T09:36:36.000000Z\",\"updated_at\":\"2024-03-06T11:11:04.000000Z\"},{\"id\":2,\"name\":\"Benefits\",\"name_mm\":\"Benefits\",\"created_at\":\"2023-10-06T09:36:47.000000Z\",\"updated_at\":\"2024-03-06T11:11:10.000000Z\"},{\"id\":3,\"name\":\"Eligibility\",\"name_mm\":\"Eligibility\",\"created_at\":\"2023-10-06T09:37:41.000000Z\",\"updated_at\":\"2024-03-06T11:11:17.000000Z\"},{\"id\":6,\"name\":\"Promotion\",\"name_mm\":\"Promotion\",\"created_at\":\"2023-10-11T08:29:39.000000Z\",\"updated_at\":\"2024-03-06T11:11:22.000000Z\"},{\"id\":9,\"name\":\"Additional Coverage\",\"name_mm\":\"Additional Coverage\",\"created_at\":\"2023-10-24T04:51:38.000000Z\",\"updated_at\":\"2024-03-06T11:11:29.000000Z\"},{\"id\":10,\"name\":\"Product Highlight\",\"name_mm\":\"Product Highlight\",\"created_at\":\"2023-10-24T05:14:05.000000Z\",\"updated_at\":\"2024-03-06T11:11:35.000000Z\"},{\"id\":11,\"name\":\"Exclusion\",\"name_mm\":\"Exclusion\",\"created_at\":\"2023-10-24T05:14:18.000000Z\",\"updated_at\":\"2024-03-06T11:11:41.000000Z\"},{\"id\":15,\"name\":\"FAQ\",\"name_mm\":\"FAQ\",\"created_at\":\"2024-01-18T14:27:58.000000Z\",\"updated_at\":\"2024-03-06T11:11:48.000000Z\"},{\"id\":16,\"name\":\"Premium Calculator\",\"name_mm\":\"Premium Calculator\",\"created_at\":\"2024-01-22T10:46:10.000000Z\",\"updated_at\":\"2024-03-06T11:11:53.000000Z\"},{\"id\":17,\"name\":\"Contact Us\",\"name_mm\":\"Contact Us\",\"created_at\":\"2024-01-22T10:47:45.000000Z\",\"updated_at\":\"2024-06-20T10:26:09.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/properties\/add",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/properties\/add",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/properties\/add"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/admin\/v1\/properties\/update\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/properties\/update\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/properties\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": "The ID of the update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/admin\/v1\/banners",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/banners",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/banners"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "53"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"meatadata\":{\"isSuccess\":true,\"statusCode\":200,\"message\":\"Banners\"},\"data\":{\"home\":[],\"splash\":[]}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/admin\/v1\/banners\/store",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/banners\/store",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/banners\/store"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PUT api\/admin\/v1\/banners\/change-status\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/banners\/change-status\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/banners\/change-status\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "architecto",
+                                    "description": "The ID of the change status."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/admin\/v1\/banners\/update\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/banners\/update\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/banners\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "atque",
+                                    "description": "The ID of the update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/admin\/v1\/banners\/delete\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/v1\/banners\/delete\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/v1\/banners\/delete\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quis",
+                                    "description": "The ID of the delete."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

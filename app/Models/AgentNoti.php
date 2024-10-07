@@ -16,6 +16,6 @@ class AgentNoti extends Model
         'type',
         'image',
         'is_read',
-        "noti_received_date"
+        'noti_received_date',
     ];
 }

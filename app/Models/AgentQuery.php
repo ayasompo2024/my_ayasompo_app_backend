@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AgentQuery extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'key',
-        'query'
+        'query',
     ];
 }

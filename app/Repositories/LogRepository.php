@@ -1,25 +1,20 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Log;
 
-
-
 class LogRepository
 {
-    static function getWithPaginate($perpage)
+    public static function getWithPaginate($perpage)
     {
         return Log::query()->orderByDesc('id')->paginate($perpage);
     }
 
-    static function store(array $input)
+    public static function store(array $input)
     {
         return Log::create($input);
     }
 
-    static function getById(int $id)
-    {
-
-    }
-
+    public static function getById(int $id) {}
 }

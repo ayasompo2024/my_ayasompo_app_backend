@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\api\internal;
 
 use App\Models\Customer;
@@ -8,32 +9,36 @@ use App\Traits\SendPushNotification;
 
 class CustomerService
 {
-    use SendPushNotification, RemoveInitialPlusNineFiveNine;
+    use RemoveInitialPlusNineFiveNine, SendPushNotification;
+
     public function sendClaimNoti($inputFromInternal)
     {
         $customer = Customer::query()->whereCustomer_phoneno($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
-        $notification = ["title" => $inputFromInternal->message, "body" => "Claim No : " . $inputFromInternal->claim_no . ", Customer Code : " . $inputFromInternal->customer_code];
+        $notification = ['title' => $inputFromInternal->message, 'body' => 'Claim No : '.$inputFromInternal->claim_no.', Customer Code : '.$inputFromInternal->customer_code];
         $this->sendAsUnicast($customer->device_token, $notification, $notification);
+
         return $inputFromInternal->all();
     }
+
     public function sendInquiryNoti($inputFromInternal)
     {
-        $customer = Customer::query()->where("customer_phoneno", $this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
+        $customer = Customer::query()->where('customer_phoneno', $this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
         $notification = [
-            "title" => $inputFromInternal->case_title,
-            "body" => $inputFromInternal->message,
+            'title' => $inputFromInternal->case_title,
+            'body' => $inputFromInternal->message,
         ];
         $this->sendAsUnicast($customer->device_token, $notification, $notification);
         $this->updateRequestformStatus($inputFromInternal);
+
         return $inputFromInternal->all();
     }
+
     private function updateRequestformStatus($request)
     {
         $input = [
-            "inquiry_status" => $request->status,
-            "is_read" => 0
+            'inquiry_status' => $request->status,
+            'is_read' => 0,
         ];
         RequestFormRepository::updateStatusByCaseID($request->case_id, $input);
     }
 }
-

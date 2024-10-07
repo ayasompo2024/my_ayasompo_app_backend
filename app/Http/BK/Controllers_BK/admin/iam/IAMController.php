@@ -9,31 +9,35 @@ use Illuminate\Http\Request;
 
 class IAMController extends Controller
 {
-    function roles(Role $role)
+    public function roles(Role $role)
     {
-        return view('admin.iam.roles')->with(['roles' => $role->with('admin')->orderByDesc("id")->get()]);
+        return view('admin.iam.roles')->with(['roles' => $role->with('admin')->orderByDesc('id')->get()]);
     }
-    function newRole(Request $request, Role $role)
+
+    public function newRole(Request $request, Role $role)
     {
         $request->validate([
             'name' => 'required|unique:roles,name',
         ]);
-        $role->create($request->only("name"));
-        return back()->with("success", "Success");
+        $role->create($request->only('name'));
+
+        return back()->with('success', 'Success');
     }
 
-    function showPermission($id, Role $role, Permission $permission)
+    public function showPermission($id, Role $role, Permission $permission)
     {
-        $old_permissions = $permission->where("role_id", $id)->get();
+        $old_permissions = $permission->where('role_id', $id)->get();
+
         return view('admin.iam.permission')->with(
             [
                 'permissions' => config('menu'),
-                "role" => $role->find($id),
-                'old_permissions' => $old_permissions
+                'role' => $role->find($id),
+                'old_permissions' => $old_permissions,
             ]
         );
     }
-    function addPermissionToRole(Request $request, $id, Role $role, Permission $permission)
+
+    public function addPermissionToRole(Request $request, $id, Role $role, Permission $permission)
     {
         // $user_id = $request->user()->id;
         $permission->where('role_id', $id)->delete();
@@ -44,7 +48,7 @@ class IAMController extends Controller
                 'route' => $item,
             ]);
         }
+
         return redirect()->route('admin.iam.roles')->with('success', 'Success');
     }
-
 }

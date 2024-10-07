@@ -1,17 +1,21 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Models\Permission;
+
 $current_auth = Auth::user();
 $sidebar_menus = config('menu');
+$token = $current_auth->createToken('admin_api')->accessToken;
 $permissions = Permission::where("role_id",$current_auth->roleInfo->id)->get();
 ?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <span id="token" style="display: hidden;"> {{$token}} </span>
     <a href="" class="brand-link tw-flex">
         <h6 class="font-weight-bold d-inline mt-1 ml-3">
             {{ $current_auth->name }}({{ $current_auth->role }})
         </h6>
     </a>
-    <div class="sidebar ">
+    <div class="sidebar">
         <nav class="mt-3">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" data-accordion="false">
                 @foreach ($sidebar_menus as $key => $menu)
@@ -70,10 +74,14 @@ $permissions = Permission::where("role_id",$current_auth->roleInfo->id)->get();
 
 </aside>
 
+@end
 <script>
     function showSubMenu(id) {
         var elementToToggle = document.getElementById(id);
-        console.log(elementToToggle);
         elementToToggle.classList.toggle('d-none');
     }
+
+    const token = document.getElementById("token").innerHTML;
+    localStorage.setItem("TOKEN", token);
+    document.getElementById('token').remove();
 </script>

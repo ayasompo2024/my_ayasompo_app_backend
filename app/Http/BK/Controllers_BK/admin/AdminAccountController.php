@@ -4,25 +4,26 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class AdminAccountController extends Controller
 {
-
     public function index(Role $role)
     {
         $users = User::paginate(30);
-        $roles = $role->orderByDesc("id")->get();
-        return view('admin.admin-accounnt.index')->with('users', $users)->with('roles',$roles);
+        $roles = $role->orderByDesc('id')->get();
+
+        return view('admin.admin-accounnt.index')->with('users', $users)->with('roles', $roles);
     }
 
-    public function edit($id, User $user,Role $role)
+    public function edit($id, User $user, Role $role)
     {
-        $roles = $role->orderByDesc("id")->get();
-        return view('admin.admin-accounnt.edit')->with(['account' => $user->find($id),'roles'=> $roles]);
+        $roles = $role->orderByDesc('id')->get();
+
+        return view('admin.admin-accounnt.edit')->with(['account' => $user->find($id), 'roles' => $roles]);
     }
 
     public function update($id, Request $request)
@@ -46,18 +47,21 @@ class AdminAccountController extends Controller
             'email' => $validatedData['email'],
             'password' => isset($validatedData['password']) ? bcrypt($validatedData['password']) : $user->password,
         ]);
+
         return redirect()->route('admin.account.index')->with('success', 'User updated successfully.');
     }
 
-    function disabledToggle($id)
+    public function disabledToggle($id)
     {
         $user = User::find($id);
         $user->update([
-            'status' => !$user->status
+            'status' => ! $user->status,
         ]);
+
         return $user ? back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -67,9 +71,11 @@ class AdminAccountController extends Controller
             'role' => ['required', 'string', 'max:255'],
         ]);
         $user = $this->create($request);
+
         return $user ? back()->with(['success' => 'Successfully!']) :
             back()->with(['fail' => 'Fail']);
     }
+
     private function create($request)
     {
         return User::create([

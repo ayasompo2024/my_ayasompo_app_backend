@@ -2,9 +2,13 @@
 @section('content')
 <div class="container bg-white" id="app">
     <div class="row">
-        <div class="col-12">
-            <h4> {{ $type }} </h4>
-        </div>
+
+        @if($type)
+            <div class="col-12">
+                <h4> {{ $type }} </h4>
+            </div>
+        @endif
+
 
         @if($type !== "INDIVIDUAL")
             <div class="col-12 mt-3">
@@ -18,5 +22,3 @@
     <div id="customer-list"></div>
 </div>
 @endsection
-
-

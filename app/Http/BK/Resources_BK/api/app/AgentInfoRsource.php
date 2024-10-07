@@ -16,18 +16,15 @@ class AgentInfoRsource extends JsonResource
     {
         return [
             'id' => $this->id,
-            "customer_id" => $this->customer_id,
-            "agent_name" => $this->agent_name,
+            'customer_id' => $this->customer_id,
+            'agent_name' => $this->agent_name,
             'license_no' => $this->license_no,
             'agent_type' => $this->agent_type,
             'expired_date' => $this->expired_date,
             'email' => $this->email,
             'achievement' => $this->achievement,
-            'agent_codes' => "123,123,2323",
-            "title" => $this->title
+            'agent_codes' => '123,123,2323',
+            'title' => $this->title,
         ];
     }
 }
-
-
-

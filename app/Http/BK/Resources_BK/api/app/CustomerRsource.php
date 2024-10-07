@@ -17,47 +17,42 @@ class CustomerRsource extends JsonResource
         return [
 
             'id' => $this->id,
-            "user_name" => $this->user_name,
-            "app_customer_type" => $this->app_customer_type,
-            "profile_photo" => config('app.app_domain') . $this->profile_photo,
+            'user_name' => $this->user_name,
+            'app_customer_type' => $this->app_customer_type,
+            'profile_photo' => config('app.app_domain').$this->profile_photo,
             'is_disabled' => $this->is_disabled,
-            "customer_phoneno" => $this->customer_phoneno,
+            'customer_phoneno' => $this->customer_phoneno,
 
+            'policy_number' => $this->policy_number,
+            'risk_seqNo' => $this->risk_seqNo,
+            'risk_name' => $this->risk_name,
+            'customer_code' => $this->customer_code,
 
-            "policy_number" => $this->policy_number,
-            "risk_seqNo" => $this->risk_seqNo,
-            "risk_name" => $this->risk_name,
-            "customer_code" => $this->customer_code,
-
-            "customer_nrc" => optional($this->core)->customer_nrc,
+            'customer_nrc' => optional($this->core)->customer_nrc,
             'email' => $this->getEmail($this->app_customer_type),
             'address' => optional($this->core)->address,
             'policy_holder_name' => optional($this->core)->customer_name,
-            "original_phone" => optional($this->core)->customer_phoneno,
+            'original_phone' => optional($this->core)->customer_phoneno,
 
-            "employee_info" => new EmployeeInfoRsource($this->employeeInfo),
-            "agent_info" => new AgentInfoRsource($this->agentInfo)
+            'employee_info' => new EmployeeInfoRsource($this->employeeInfo),
+            'agent_info' => new AgentInfoRsource($this->agentInfo),
         ];
     }
 
     private function getEmail($profile_type)
     {
-        if ($profile_type == 'INDIVIDUAL' || $profile_type == 'CORPORATE')
+        if ($profile_type == 'INDIVIDUAL' || $profile_type == 'CORPORATE') {
             return optional($this->core)->email;
+        }
 
-        if ($profile_type == 'AGENT')
+        if ($profile_type == 'AGENT') {
             return optional($this->agentInfo)->email;
+        }
 
-        if ($profile_type == 'EMPLOYEE')
+        if ($profile_type == 'EMPLOYEE') {
             return optional($this->employeeInfo)->email;
+        }
 
-        return "";
+        return '';
     }
 }
-
-
-
-
-
-
-

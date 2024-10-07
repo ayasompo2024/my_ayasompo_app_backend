@@ -70,6 +70,15 @@ export const delReqeust = async (path) => {
     }
 }
 
+export const putRequest = async (path, payload) => {
+    try {
+        const result = await axios.put(path, payload);
+        return httpResponseHandler(result);
+    } catch (error) {
+        return httpErrorResponseHandler(error.response);
+    }
+}
+
 export const updateRequest = async (path, payload) => {
     try {
         const result = await axios.post(path, payload, {
@@ -78,9 +87,27 @@ export const updateRequest = async (path, payload) => {
             }
           });
 
-          console.log(result);
         return httpResponseHandler(result);
     } catch (error) {
         return httpErrorResponseHandler(error.response);
+    }
+}
+
+/**
+ * Http post method request for updating process include mutiple files or file
+ * @param {*} path 
+ * @param {*} payload 
+ * @returns 
+ */
+export const formDataRequest = async (path, payload) => {
+    try {
+        const result = await axios.post(path, payload, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        return httpResponseHandler(result);
+    } catch (error) {
+        return httpErrorHandler(error.response);
     }
 }

@@ -88,11 +88,13 @@ Route::group(
 
         Route::group(['namepsace' => 'customer'], function () {
             Route::resource('customer', CustomerController::class);
+
             Route::controller(CustomerController::class)->group(function () {
-                Route::get('/{id}', [CustomerController::class, 'show'])->name('customer.show');
                 Route::get('pool', 'pool')->name('customer.pool');
 
                 Route::get('customer/type/{type}', [CustomerController::class, 'filterByType'])->name('customer.filter.by-type');
+                Route::get('/{id}', [CustomerController::class, 'show'])->name('customer.show');
+
                 Route::get('customer1/import', [CustomerController::class, 'import'])->name('customer1.import');
 
                 Route::post('customer/disabled/toggle/{id}', 'toggleDisabled')->name('customer.disabled.toggle');

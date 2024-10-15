@@ -5,6 +5,7 @@ use App\Models\Permission;
 $current_auth = Auth::user();
 $sidebar_menus = config('menu');
 $token = $current_auth->createToken('admin_api')->accessToken;
+
 $permissions = Permission::where("role_id",$current_auth->roleInfo->id)->get();
 ?>
 

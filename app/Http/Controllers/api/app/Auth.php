@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\app;
 
 use App\Models\Customer;
 use App\Services\api\app\CustomerService;
+use App\Services\FirebaseService;
 use App\Traits\api\ApiResponser;
 use App\Traits\SendPushNotification;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ trait Auth
 {
     use ApiResponser, SendPushNotification;
 
-    public function register(Request $request, CustomerService $customerService)
+    public function register(Request $request, CustomerService $customerService, FirebaseService $firebase)
     {
         $validator = $this->registerValidation($request);
         if ($validator->fails()) {
@@ -22,20 +23,18 @@ trait Auth
         }
 
         $status = $customerService->register($request);
-        $status ? $this->sendWelcomeNoti($request->device_token, $request->user_name) : '';
 
-        return $status ? $this->successResponse('Register Success', $status, 201) :
-            $this->errorResponse('Register Fail');
+        if ($status) {
+            $notification = ['title' => 'Hello, ' . $request->user_name . ", let's connect here.", 'body' => null];
+            $data = ['title' => 'Register Success', 'body' => null];
+            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+            return $this->successResponse('Register Success', $status, 201);
+        } else {
+            return $this->errorResponse('Register Fail');
+        }
     }
 
-    private function sendWelcomeNoti($token, $user_name)
-    {
-        $notification = ['title' => 'Hello, '.$user_name.", let's connect here.", 'body' => null];
-        $data = ['title' => 'Register Success', 'body' => null];
-        $this->sendAsUnicast($token, $notification, $data);
-    }
-
-    public function login(Request $request, CustomerService $customerService)
+    public function login(Request $request, CustomerService $customerService, FirebaseService $firebase)
     {
         $validator = $this->loginValidation($request);
 
@@ -51,8 +50,9 @@ trait Auth
             }
 
             $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
-            $this->sendWelcomeNoti($request->device_token, $status['customer']['user_name']);
-
+            $notification = ['title' => 'Hello, ' . $status['customer']['user_name'] . ", let's connect here.", 'body' => null];
+            $data = ['title' => 'Register Success', 'body' => null];
+            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
             return $this->successResponse('Login Success', $status, 200);
         } else {
             return $this->respondUnAuthorized('Credentials Not Found');

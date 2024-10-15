@@ -4,6 +4,7 @@ namespace App\Services\api\internal;
 
 use App\Models\Customer;
 use App\Repositories\RequestFormRepository;
+use App\Services\FirebaseService;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
 
@@ -11,12 +12,14 @@ class CustomerService
 {
     use RemoveInitialPlusNineFiveNine, SendPushNotification;
 
-    public function sendClaimNoti($inputFromInternal)
+    public function sendClaimNoti($inputFromInternal, FirebaseService $firebase)
     {
         $customer = Customer::query()->whereCustomer_phoneno($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
         $notification = ['title' => $inputFromInternal->message, 'body' => 'Claim No : '.$inputFromInternal->claim_no.', Customer Code : '.$inputFromInternal->customer_code];
-        $this->sendAsUnicast($customer->device_token, $notification, $notification);
 
+        $firebase->sendNotification($customer->device_token, $notification['title'], $notification['body'], $notification);
+
+        //$this->sendAsUnicast($customer->device_token, $notification, $notification);
         return $inputFromInternal->all();
     }
 

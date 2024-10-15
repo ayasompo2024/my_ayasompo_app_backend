@@ -5,18 +5,21 @@ namespace App\Http\Controllers\api\internal;
 use App\Http\Controllers\Controller;
 use App\Models\AgentNoti;
 use App\Models\Customer;
+use App\Services\FirebaseService;
 use App\Traits\api\ApiResponser;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Log;
 
 class AgentController extends Controller
 {
     use ApiResponser, RemoveInitialPlusNineFiveNine, SendPushNotification;
 
-    public function sendNoti(Request $request)
+    public function sendNoti(Request $request, FirebaseService $firebase)
     {
         $validator = $this->validationForSendAgentNoti($request);
         if ($validator->fails()) {
@@ -27,7 +30,14 @@ class AgentController extends Controller
         if ($agent_profile) {
             $request['customer_id'] = $agent_profile->id;
             $content = $this->getContent($request);
-            $this->sendAsUnicast($agent_profile->device_token, $content, $content, 'agent');
+
+            try {
+                $firebase->sendNotification($agent_profile->device_token, $content['title'], $content['body'], $content);
+            } catch (Exception $e) {
+                Log::info($e);
+            }
+
+            // $this->sendAsUnicast($agent_profile->device_token, $content, $content, 'agent');
             $status = $this->saveNoti($request->only('customer_id', 'title', 'message', 'type'));
 
             return $status ?

@@ -25,9 +25,10 @@ trait Auth
         $status = $customerService->register($request);
 
         if ($status) {
-            $notification = ['title' => 'Hello, ' . $request->user_name . ", let's connect here.", 'body' => null];
+            $notification = ['title' => 'Hello, '.$request->user_name.", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
             $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+
             return $this->successResponse('Register Success', $status, 201);
         } else {
             return $this->errorResponse('Register Fail');
@@ -50,9 +51,10 @@ trait Auth
             }
 
             $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
-            $notification = ['title' => 'Hello, ' . $status['customer']['user_name'] . ", let's connect here.", 'body' => null];
+            $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
             $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+
             return $this->successResponse('Login Success', $status, 200);
         } else {
             return $this->respondUnAuthorized('Credentials Not Found');

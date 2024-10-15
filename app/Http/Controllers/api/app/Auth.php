@@ -51,9 +51,11 @@ trait Auth
             }
 
             $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
+
             $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
-            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+
+            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
 
             return $this->successResponse('Login Success', $status, 200);
         } else {

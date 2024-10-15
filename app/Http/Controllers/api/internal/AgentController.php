@@ -27,12 +27,13 @@ class AgentController extends Controller
         }
 
         $agent_profile = Customer::where('app_customer_type', 'AGENT')->where('customer_phoneno', $this->removeInitialPlusNineFiveNine($request->phone))->first();
+
         if ($agent_profile) {
             $request['customer_id'] = $agent_profile->id;
             $content = $this->getContent($request);
 
             try {
-                $firebase->sendNotification($agent_profile->device_token, $content['title'], $content['body'], $content);
+                $firebase->sendNotification($agent_profile->device_token, $content['title'], $content['body'], null, $content);
             } catch (Exception $e) {
                 Log::info($e);
             }

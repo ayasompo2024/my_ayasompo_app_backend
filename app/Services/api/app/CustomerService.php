@@ -8,6 +8,7 @@ use App\Http\Resources\api\app\RegisterCustomerRsource;
 use App\Repositories\CustomerRepository;
 use App\Repositories\DeviceTokenRepository;
 use App\Traits\FileUpload;
+use App\Traits\Firebase;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
 use App\Traits\WriteLogger;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomerService
 {
-    use FileUpload, RemoveInitialPlusNineFiveNine, SendPushNotification, WriteLogger;
+    use FileUpload, Firebase, RemoveInitialPlusNineFiveNine, SendPushNotification, WriteLogger;
 
     public function register($request)
     {
@@ -47,7 +48,11 @@ class CustomerService
         if (empty($customer) || ! Hash::check($request->password, $customer->password)) {
             return false;
         }
-        $this->logOutOldDevice($customer->device_token);
+        $notification = ['title' => 'Security Alert', 'body' => "You've been logged out !"];
+        $data = ['title' => 'LOG_OUT_NOW', 'body' => null];
+
+        $this->sendNotification($customer->device_token, $notification['title'], $notification['body'], null, $data);
+        // $this->logOutOldDevice($customer->device_token);
 
         return [
             'token' => $customer->is_disabled ? null : $customer->createToken('app_api_token')->accessToken,
@@ -55,12 +60,12 @@ class CustomerService
         ];
     }
 
-    private function logOutOldDevice($token)
-    {
-        $notification = ['title' => 'Security Alert', 'body' => "You've been logged out !"];
-        $data = ['title' => 'LOG_OUT_NOW', 'body' => null];
-        $this->sendAsUnicast($token, $notification, $data);
-    }
+    // private function logOutOldDevice($token, $re)
+    // {
+    //     $notification = ['title' => 'Security Alert', 'body' => "You've been logged out !"];
+    //     $data = ['title' => 'LOG_OUT_NOW', 'body' => null];
+    //     $this->sendAsUnicast($token, $notification, $data);
+    // }
 
     public function disabledProfile($user_id)
     {

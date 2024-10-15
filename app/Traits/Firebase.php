@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Traits;
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;
 
-class FirebaseService
+trait Firebase
 {
     protected $messaging;
 
@@ -42,7 +42,7 @@ class FirebaseService
 
             return true;
         } catch (\Exception $e) {
-            throw $e;
+            return false;
         }
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
-<div class="container bg-white" id="app">
+<div class="container-fluid bg-white" id="app">
     <div class="row">
 
         @if($type)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\internal;
 
 use App\Http\Controllers\Controller;
 use App\Services\api\internal\CustomerService;
+use App\Services\FirebaseService;
 use App\Traits\api\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,14 +14,14 @@ class CustomerController extends Controller
 {
     use ApiResponser;
 
-    public function sendClaimNoti(Request $request, CustomerService $customerService)
+    public function sendClaimNoti(Request $request, CustomerService $customerService, FirebaseService $firebase)
     {
         $validator = $this->validationForSendClaimNoti($request);
         if ($validator->fails()) {
             return $this->respondValidationErrors('Validation Error', $validator->errors(), 400);
         }
 
-        $status = $customerService->sendClaimNoti($request);
+        $status = $customerService->sendClaimNoti($request, $firebase);
 
         return $status ?
             $this->successResponse('Your request has been processed (Claim Noti)', $status, 200) :

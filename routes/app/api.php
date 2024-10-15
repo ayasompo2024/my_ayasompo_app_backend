@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
-    Route::get('message', action: [NotiCenterController::class, 'sendNotificatioin']);
+    Route::get('message', [NotiCenterController::class, 'sendNotificatioin']);
     Route::get('products', [ProductController::class, 'getActive']);
     Route::get('banners', [BannerController::class, 'getActive']);
     Route::get('banners/splash', [BannerController::class, 'getSplashActive']);
@@ -31,7 +31,7 @@ Route::prefix('v1')->group(function () {
         Route::group(['prefix' => 'go-joy'], function () {
             Route::get('/', [AppGoJoyController::class, 'index']);
             Route::post('/', [AppGoJoyController::class, 'store']);
-            Route::get('/{id}', action: [AppGoJoyController::class, 'show']);
+            Route::get('/{id}', [AppGoJoyController::class, 'show']);
             Route::put('/{id}', [AppGoJoyController::class, 'update']);
         });
     });

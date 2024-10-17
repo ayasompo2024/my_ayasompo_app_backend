@@ -95,7 +95,7 @@ export default function CustomerList() {
 
         const result = await notificationService.send(formData);
 
-        if(result.status !== 201) {
+        if (result.status !== 201) {
             toast.current.show({ severity: 'warn', summary: 'Rejected', detail: result.message, life: 3000 });
         }
 

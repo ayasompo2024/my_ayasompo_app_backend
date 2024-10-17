@@ -61,6 +61,15 @@ export const getRequest = async (path, params) => {
     }
 }
 
+export const postRequest = async (path, payload) => {
+    try {
+        const result = await axios.post(path, payload);
+        return httpResponseHandler(result);
+    } catch (error) {
+        return httpErrorResponseHandler(error.response);
+    }
+}
+
 export const delReqeust = async (path) => {
     try {
         const result = await axios.delete(path);

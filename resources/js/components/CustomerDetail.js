@@ -15,8 +15,8 @@ import { EmployeeCustomerDetail } from "./EmployeeCustomerDetail";
 import { AgentCustomerDetail } from "./AgentCustomerDetail";
 import { CustomerAccountCode } from "./CustomerAccountCode";
 import { Toast } from 'primereact/toast';
+import { CustomerResetPassword } from "./CustomerResetPassword";
 import moment from "moment";
-import { CustomerSendNotification } from "./CustomerSendNotification";
 
 export const CustomerDetail = () => {
 
@@ -315,12 +315,18 @@ export const CustomerDetail = () => {
                                                 />
                                             </TabPanel>
                                         )}
-
+{/* 
                                         {customer && (
                                             <TabPanel header="Send Notification">
                                                 <CustomerSendNotification
                                                     dataSource={customer.agent_info}
                                                 />
+                                            </TabPanel>
+                                        )} */}
+
+                                        {customer && (
+                                            <TabPanel header="Reset Password">
+                                                <CustomerResetPassword dataSource={customer}/>
                                             </TabPanel>
                                         )}
                                     </TabView>

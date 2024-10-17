@@ -28,7 +28,6 @@ trait Firebase
      */
     public function sendNotification($token, $title, $body, $imageUrl = null, $data = [])
     {
-
         $message = CloudMessage::withTarget('token', $token)
             ->withNotification([
                 'title' => $title,
@@ -42,7 +41,7 @@ trait Firebase
 
             return true;
         } catch (\Exception $e) {
-            return false;
+            throw $e;
         }
     }
 }

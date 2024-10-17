@@ -246,7 +246,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: omnis
+        example: ex
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -255,7 +255,7 @@ endpoints:
         name: inquiry_type
         description: ''
         required: true
-        example: consequatur
+        example: voluptate
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -264,7 +264,7 @@ endpoints:
         name: customer_type
         description: ''
         required: true
-        example: itaque
+        example: rerum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -273,7 +273,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: vel
+        example: cum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -309,7 +309,7 @@ endpoints:
         name: ayasompo_productcode
         description: ''
         required: true
-        example: qui
+        example: saepe
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -318,7 +318,7 @@ endpoints:
         name: ayasompo_classcode
         description: ''
         required: true
-        example: similique
+        example: dolore
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -351,12 +351,12 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      user_id: omnis
-      inquiry_type: consequatur
-      customer_type: itaque
-      title: vel
-      ayasompo_productcode: qui
-      ayasompo_classcode: similique
+      user_id: ex
+      inquiry_type: voluptate
+      customer_type: rerum
+      title: cum
+      ayasompo_productcode: saepe
+      ayasompo_classcode: dolore
     fileParameters: []
     responses: []
     responseFields: []
@@ -474,7 +474,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: nihil
+        example: quisquam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -483,7 +483,7 @@ endpoints:
         name: inquiry_type
         description: ''
         required: true
-        example: neque
+        example: enim
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -492,7 +492,7 @@ endpoints:
         name: customer_type
         description: ''
         required: true
-        example: accusantium
+        example: sit
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -501,7 +501,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: sint
+        example: repudiandae
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -537,7 +537,7 @@ endpoints:
         name: ayasompo_productcode
         description: ''
         required: true
-        example: repellat
+        example: esse
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -546,7 +546,7 @@ endpoints:
         name: ayasompo_classcode
         description: ''
         required: true
-        example: voluptas
+        example: animi
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -579,12 +579,12 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      user_id: nihil
-      inquiry_type: neque
-      customer_type: accusantium
-      title: sint
-      ayasompo_productcode: repellat
-      ayasompo_classcode: voluptas
+      user_id: quisquam
+      inquiry_type: enim
+      customer_type: sit
+      title: repudiandae
+      ayasompo_productcode: esse
+      ayasompo_classcode: animi
     fileParameters: []
     responses: []
     responseFields: []
@@ -614,13 +614,13 @@ endpoints:
         name: id
         description: 'The ID of the read.'
         required: true
-        example: quo
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: quo
+      id: voluptatem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -658,7 +658,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: aspernatur
+        example: quasi
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -667,7 +667,7 @@ endpoints:
         name: contact_fullname
         description: ''
         required: true
-        example: velit
+        example: doloremque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -676,7 +676,7 @@ endpoints:
         name: contact_telephone
         description: ''
         required: true
-        example: facere
+        example: earum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -685,7 +685,7 @@ endpoints:
         name: driver_name
         description: ''
         required: true
-        example: modi
+        example: dignissimos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -694,7 +694,7 @@ endpoints:
         name: policy_no
         description: ''
         required: true
-        example: delectus
+        example: in
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -703,7 +703,7 @@ endpoints:
         name: accident_location
         description: ''
         required: true
-        example: accusantium
+        example: aut
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -712,7 +712,7 @@ endpoints:
         name: accident_date
         description: ''
         required: true
-        example: sit
+        example: rem
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -721,7 +721,7 @@ endpoints:
         name: accident_time
         description: ''
         required: true
-        example: quod
+        example: eos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -730,7 +730,7 @@ endpoints:
         name: accident_description
         description: ''
         required: true
-        example: dignissimos
+        example: consectetur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -739,7 +739,7 @@ endpoints:
         name: accident_damaged_portion
         description: ''
         required: true
-        example: quod
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -748,7 +748,7 @@ endpoints:
         name: vehicle_no
         description: ''
         required: true
-        example: excepturi
+        example: nobis
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -757,7 +757,7 @@ endpoints:
         name: risk_seq_no
         description: ''
         required: true
-        example: quas
+        example: doloremque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -766,7 +766,7 @@ endpoints:
         name: accident_damaged_photos
         description: ''
         required: true
-        example: autem
+        example: nostrum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -775,7 +775,7 @@ endpoints:
         name: signature_image
         description: ''
         required: true
-        example: voluptatum
+        example: aliquam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -784,7 +784,7 @@ endpoints:
         name: customer_code
         description: ''
         required: true
-        example: et
+        example: iure
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -793,7 +793,7 @@ endpoints:
         name: product_code
         description: ''
         required: true
-        example: veritatis
+        example: porro
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -802,7 +802,7 @@ endpoints:
         name: class_code
         description: ''
         required: true
-        example: eligendi
+        example: reprehenderit
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -811,30 +811,30 @@ endpoints:
         name: customer_type
         description: ''
         required: true
-        example: id
+        example: veritatis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      user_id: aspernatur
-      contact_fullname: velit
-      contact_telephone: facere
-      driver_name: modi
-      policy_no: delectus
-      accident_location: accusantium
-      accident_date: sit
-      accident_time: quod
-      accident_description: dignissimos
-      accident_damaged_portion: quod
-      vehicle_no: excepturi
-      risk_seq_no: quas
-      accident_damaged_photos: autem
-      signature_image: voluptatum
-      customer_code: et
-      product_code: veritatis
-      class_code: eligendi
-      customer_type: id
+      user_id: quasi
+      contact_fullname: doloremque
+      contact_telephone: earum
+      driver_name: dignissimos
+      policy_no: in
+      accident_location: aut
+      accident_date: rem
+      accident_time: eos
+      accident_description: consectetur
+      accident_damaged_portion: consequatur
+      vehicle_no: nobis
+      risk_seq_no: doloremque
+      accident_damaged_photos: nostrum
+      signature_image: aliquam
+      customer_code: iure
+      product_code: porro
+      class_code: reprehenderit
+      customer_type: veritatis
     fileParameters: []
     responses: []
     responseFields: []
@@ -868,7 +868,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: voluptatem
+        example: quos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -877,7 +877,7 @@ endpoints:
         name: contact_fullname
         description: ''
         required: true
-        example: eum
+        example: eos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -886,7 +886,7 @@ endpoints:
         name: contact_telephone
         description: ''
         required: true
-        example: voluptas
+        example: magni
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -895,7 +895,7 @@ endpoints:
         name: accident_date
         description: ''
         required: true
-        example: officia
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -904,7 +904,7 @@ endpoints:
         name: accident_time
         description: ''
         required: true
-        example: dolore
+        example: ipsam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -913,7 +913,7 @@ endpoints:
         name: accident_description
         description: ''
         required: true
-        example: placeat
+        example: sit
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -922,7 +922,7 @@ endpoints:
         name: policy_or_risk_name
         description: ''
         required: true
-        example: voluptas
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -931,7 +931,7 @@ endpoints:
         name: nrc_no
         description: ''
         required: true
-        example: ut
+        example: omnis
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -949,7 +949,7 @@ endpoints:
         name: product_type
         description: ''
         required: true
-        example: commodi
+        example: dolor
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -958,7 +958,7 @@ endpoints:
         name: accident_damaged_photos
         description: ''
         required: true
-        example: natus
+        example: dolores
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -967,23 +967,23 @@ endpoints:
         name: signature_image
         description: ''
         required: true
-        example: aut
+        example: qui
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      user_id: voluptatem
-      contact_fullname: eum
-      contact_telephone: voluptas
-      accident_date: officia
-      accident_time: dolore
-      accident_description: placeat
-      policy_or_risk_name: voluptas
-      nrc_no: ut
-      product_type: commodi
-      accident_damaged_photos: natus
-      signature_image: aut
+      user_id: quos
+      contact_fullname: eos
+      contact_telephone: magni
+      accident_date: voluptatem
+      accident_time: ipsam
+      accident_description: sit
+      policy_or_risk_name: et
+      nrc_no: omnis
+      product_type: dolor
+      accident_damaged_photos: dolores
+      signature_image: qui
     fileParameters: []
     responses: []
     responseFields: []
@@ -1013,13 +1013,13 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: eveniet
+        example: nulla
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      user_id: eveniet
+      user_id: nulla
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1027,11 +1027,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1069,11 +1066,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1111,7 +1105,7 @@ endpoints:
         name: full_name
         description: ''
         required: true
-        example: autem
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1120,7 +1114,7 @@ endpoints:
         name: nrc
         description: ''
         required: true
-        example: voluptatem
+        example: vel
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1129,7 +1123,7 @@ endpoints:
         name: dob
         description: 'Must be a valid date.'
         required: true
-        example: '2024-10-01T11:11:13'
+        example: '2024-10-17T16:17:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1138,7 +1132,7 @@ endpoints:
         name: mobile_number
         description: ''
         required: true
-        example: quas
+        example: facilis
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1147,7 +1141,7 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: leilani.rippin@example.com
+        example: lueilwitz.lyda@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1156,7 +1150,7 @@ endpoints:
         name: beneficiary_name
         description: ''
         required: true
-        example: aut
+        example: omnis
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1165,7 +1159,7 @@ endpoints:
         name: beneficiary_contact
         description: ''
         required: true
-        example: quia
+        example: laborum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1174,20 +1168,20 @@ endpoints:
         name: tag_name
         description: ''
         required: true
-        example: quasi
+        example: mollitia
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      full_name: autem
-      nrc: voluptatem
-      dob: '2024-10-01T11:11:13'
-      mobile_number: quas
-      email: leilani.rippin@example.com
-      beneficiary_name: aut
-      beneficiary_contact: quia
-      tag_name: quasi
+      full_name: et
+      nrc: vel
+      dob: '2024-10-17T16:17:28'
+      mobile_number: facilis
+      email: lueilwitz.lyda@example.org
+      beneficiary_name: omnis
+      beneficiary_contact: laborum
+      tag_name: mollitia
     fileParameters: []
     responses: []
     responseFields: []
@@ -1217,13 +1211,13 @@ endpoints:
         name: id
         description: 'The ID of the go joy.'
         required: true
-        example: est
+        example: sunt
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: est
+      id: sunt
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1231,11 +1225,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1269,13 +1260,13 @@ endpoints:
         name: id
         description: 'The ID of the go joy.'
         required: true
-        example: sit
+        example: provident
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: sit
+      id: provident
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1283,7 +1274,7 @@ endpoints:
         name: customer_id
         description: ''
         required: false
-        example: '9586'
+        example: '6165'
         type: string
         enumValues:
           - ' 97'
@@ -3985,13 +3976,298 @@ endpoints:
           - '9876'
           - '9877'
           - '9878'
+          - '15433'
+          - '15434'
+          - '15435'
+          - '15436'
+          - '15437'
+          - '15438'
+          - '15439'
+          - '15440'
+          - '15441'
+          - '15442'
+          - '15443'
+          - '15444'
+          - '15445'
+          - '15446'
+          - '15447'
+          - '15448'
+          - '15449'
+          - '15450'
+          - '15451'
+          - '15452'
+          - '15453'
+          - '15454'
+          - '15455'
+          - '15456'
+          - '15457'
+          - '15458'
+          - '15459'
+          - '15460'
+          - '15461'
+          - '15462'
+          - '15463'
+          - '15464'
+          - '15465'
+          - '15466'
+          - '15467'
+          - '15468'
+          - '15469'
+          - '15470'
+          - '15471'
+          - '15472'
+          - '15473'
+          - '15474'
+          - '15475'
+          - '15476'
+          - '15477'
+          - '15478'
+          - '15479'
+          - '15480'
+          - '15481'
+          - '15482'
+          - '15483'
+          - '15484'
+          - '15485'
+          - '15486'
+          - '15487'
+          - '15488'
+          - '15489'
+          - '15490'
+          - '15491'
+          - '15492'
+          - '15493'
+          - '15494'
+          - '15495'
+          - '15496'
+          - '15497'
+          - '15498'
+          - '15499'
+          - '15500'
+          - '15501'
+          - '15502'
+          - '15503'
+          - '15504'
+          - '15505'
+          - '15506'
+          - '15507'
+          - '15508'
+          - '15509'
+          - '15510'
+          - '15511'
+          - '15512'
+          - '15513'
+          - '15514'
+          - '15515'
+          - '15516'
+          - '15517'
+          - '15518'
+          - '15519'
+          - '15520'
+          - '15521'
+          - '15522'
+          - '15523'
+          - '15524'
+          - '15525'
+          - '15526'
+          - '15527'
+          - '15528'
+          - '15529'
+          - '15530'
+          - '15531'
+          - '15532'
+          - '15533'
+          - '15534'
+          - '15535'
+          - '15536'
+          - '15537'
+          - '15538'
+          - '15539'
+          - '15540'
+          - '15541'
+          - '15542'
+          - '15543'
+          - '15544'
+          - '15545'
+          - '15546'
+          - '15547'
+          - '15548'
+          - '15549'
+          - '15550'
+          - '15551'
+          - '15552'
+          - '15553'
+          - '15554'
+          - '15555'
+          - '15556'
+          - '15557'
+          - '15558'
+          - '15559'
+          - '15560'
+          - '15561'
+          - '15562'
+          - '15563'
+          - '15564'
+          - '15565'
+          - '15566'
+          - '15567'
+          - '15568'
+          - '15569'
+          - '15570'
+          - '15571'
+          - '15572'
+          - '15573'
+          - '15574'
+          - '15575'
+          - '15576'
+          - '15577'
+          - '15578'
+          - '15579'
+          - '15580'
+          - '15581'
+          - '15582'
+          - '15583'
+          - '15584'
+          - '15585'
+          - '15586'
+          - '15587'
+          - '15588'
+          - '15589'
+          - '15590'
+          - '15591'
+          - '15592'
+          - '15593'
+          - '15594'
+          - '15595'
+          - '15596'
+          - '15597'
+          - '15598'
+          - '15599'
+          - '15600'
+          - '15601'
+          - '15602'
+          - '15603'
+          - '15604'
+          - '15605'
+          - '15606'
+          - '15607'
+          - '15608'
+          - '15609'
+          - '15610'
+          - '15611'
+          - '15612'
+          - '15613'
+          - '15614'
+          - '15615'
+          - '15616'
+          - '15617'
+          - '15618'
+          - '15619'
+          - '15620'
+          - '15621'
+          - '15622'
+          - '15623'
+          - '15624'
+          - '15625'
+          - '15626'
+          - '15627'
+          - '15628'
+          - '15629'
+          - '15630'
+          - '15631'
+          - '15632'
+          - '15633'
+          - '15634'
+          - '15635'
+          - '15636'
+          - '15637'
+          - '15638'
+          - '15639'
+          - '15640'
+          - '15641'
+          - '15642'
+          - '15643'
+          - '15644'
+          - '15645'
+          - '15646'
+          - '15647'
+          - '15648'
+          - '15649'
+          - '15650'
+          - '15651'
+          - '15652'
+          - '15653'
+          - '15654'
+          - '15655'
+          - '15656'
+          - '15657'
+          - '15658'
+          - '15659'
+          - '15660'
+          - '15661'
+          - '15662'
+          - '15663'
+          - '15664'
+          - '15665'
+          - '15666'
+          - '15667'
+          - '15668'
+          - '15669'
+          - '15670'
+          - '15671'
+          - '15672'
+          - '15673'
+          - '15674'
+          - '15675'
+          - '15676'
+          - '15677'
+          - '15678'
+          - '15679'
+          - '15680'
+          - '15681'
+          - '15682'
+          - '15683'
+          - '15684'
+          - '15685'
+          - '15686'
+          - '15687'
+          - '15688'
+          - '15689'
+          - '15690'
+          - '15691'
+          - '15692'
+          - '15693'
+          - '15694'
+          - '15695'
+          - '15696'
+          - '15697'
+          - '15698'
+          - '15699'
+          - '15700'
+          - '15701'
+          - '15702'
+          - '15703'
+          - '15704'
+          - '15705'
+          - '15706'
+          - '15707'
+          - '15708'
+          - '15709'
+          - '15710'
+          - '15711'
+          - '15712'
+          - '15713'
+          - '15714'
+          - '15715'
+          - '15716'
+          - '15717'
         exampleWasSpecified: false
         custom: []
       full_name:
         name: full_name
         description: ''
         required: false
-        example: numquam
+        example: incidunt
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4000,7 +4276,7 @@ endpoints:
         name: nrc
         description: ''
         required: false
-        example: reprehenderit
+        example: amet
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4009,7 +4285,7 @@ endpoints:
         name: dob
         description: 'Must be a valid date.'
         required: false
-        example: '2024-10-01T11:11:13'
+        example: '2024-10-17T16:17:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4018,7 +4294,7 @@ endpoints:
         name: mobile_number
         description: ''
         required: false
-        example: omnis
+        example: optio
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4027,7 +4303,7 @@ endpoints:
         name: email
         description: ''
         required: false
-        example: jonathan.parker@example.com
+        example: kali95@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4036,7 +4312,7 @@ endpoints:
         name: beneficiary_name
         description: ''
         required: false
-        example: maxime
+        example: iste
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4045,7 +4321,7 @@ endpoints:
         name: beneficiary_contact
         description: ''
         required: false
-        example: odio
+        example: aut
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4054,21 +4330,21 @@ endpoints:
         name: tag_name
         description: ''
         required: false
-        example: sint
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      customer_id: '9586'
-      full_name: numquam
-      nrc: reprehenderit
-      dob: '2024-10-01T11:11:13'
-      mobile_number: omnis
-      email: jonathan.parker@example.com
-      beneficiary_name: maxime
-      beneficiary_contact: odio
-      tag_name: sint
+      customer_id: '6165'
+      full_name: incidunt
+      nrc: amet
+      dob: '2024-10-17T16:17:28'
+      mobile_number: optio
+      email: kali95@example.com
+      beneficiary_name: iste
+      beneficiary_contact: aut
+      tag_name: voluptatem
     fileParameters: []
     responses: []
     responseFields: []
@@ -4162,13 +4438,13 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: omnis
+        example: asperiores
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      phone: omnis
+      phone: asperiores
     fileParameters: []
     responses: []
     responseFields: []
@@ -4202,7 +4478,7 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: ut
+        example: autem
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -4211,14 +4487,14 @@ endpoints:
         name: password
         description: 'Must be at least 6 characters.'
         required: true
-        example: '@UR-:Wpmvfk+&s`d>S'
+        example: Cfy06ZD5$<VS
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      phone: ut
-      password: '@UR-:Wpmvfk+&s`d>S'
+      phone: autem
+      password: Cfy06ZD5$<VS
     fileParameters: []
     responses: []
     responseFields: []
@@ -4252,11 +4528,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4294,11 +4567,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4426,11 +4696,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4468,11 +4735,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4510,11 +4774,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4592,11 +4853,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4634,11 +4892,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4676,11 +4931,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4718,11 +4970,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4760,11 +5009,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4802,11 +5048,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4844,11 +5087,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4916,11 +5156,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4968,7 +5205,7 @@ endpoints:
         name: is_disabled
         description: ''
         required: false
-        example: 33.0
+        example: 78.9
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -4986,7 +5223,7 @@ endpoints:
         name: user_id
         description: ''
         required: false
-        example: '209'
+        example: '1962'
         type: string
         enumValues:
           - '97'
@@ -7688,13 +7925,298 @@ endpoints:
           - '9876'
           - '9877'
           - '9878'
+          - '15433'
+          - '15434'
+          - '15435'
+          - '15436'
+          - '15437'
+          - '15438'
+          - '15439'
+          - '15440'
+          - '15441'
+          - '15442'
+          - '15443'
+          - '15444'
+          - '15445'
+          - '15446'
+          - '15447'
+          - '15448'
+          - '15449'
+          - '15450'
+          - '15451'
+          - '15452'
+          - '15453'
+          - '15454'
+          - '15455'
+          - '15456'
+          - '15457'
+          - '15458'
+          - '15459'
+          - '15460'
+          - '15461'
+          - '15462'
+          - '15463'
+          - '15464'
+          - '15465'
+          - '15466'
+          - '15467'
+          - '15468'
+          - '15469'
+          - '15470'
+          - '15471'
+          - '15472'
+          - '15473'
+          - '15474'
+          - '15475'
+          - '15476'
+          - '15477'
+          - '15478'
+          - '15479'
+          - '15480'
+          - '15481'
+          - '15482'
+          - '15483'
+          - '15484'
+          - '15485'
+          - '15486'
+          - '15487'
+          - '15488'
+          - '15489'
+          - '15490'
+          - '15491'
+          - '15492'
+          - '15493'
+          - '15494'
+          - '15495'
+          - '15496'
+          - '15497'
+          - '15498'
+          - '15499'
+          - '15500'
+          - '15501'
+          - '15502'
+          - '15503'
+          - '15504'
+          - '15505'
+          - '15506'
+          - '15507'
+          - '15508'
+          - '15509'
+          - '15510'
+          - '15511'
+          - '15512'
+          - '15513'
+          - '15514'
+          - '15515'
+          - '15516'
+          - '15517'
+          - '15518'
+          - '15519'
+          - '15520'
+          - '15521'
+          - '15522'
+          - '15523'
+          - '15524'
+          - '15525'
+          - '15526'
+          - '15527'
+          - '15528'
+          - '15529'
+          - '15530'
+          - '15531'
+          - '15532'
+          - '15533'
+          - '15534'
+          - '15535'
+          - '15536'
+          - '15537'
+          - '15538'
+          - '15539'
+          - '15540'
+          - '15541'
+          - '15542'
+          - '15543'
+          - '15544'
+          - '15545'
+          - '15546'
+          - '15547'
+          - '15548'
+          - '15549'
+          - '15550'
+          - '15551'
+          - '15552'
+          - '15553'
+          - '15554'
+          - '15555'
+          - '15556'
+          - '15557'
+          - '15558'
+          - '15559'
+          - '15560'
+          - '15561'
+          - '15562'
+          - '15563'
+          - '15564'
+          - '15565'
+          - '15566'
+          - '15567'
+          - '15568'
+          - '15569'
+          - '15570'
+          - '15571'
+          - '15572'
+          - '15573'
+          - '15574'
+          - '15575'
+          - '15576'
+          - '15577'
+          - '15578'
+          - '15579'
+          - '15580'
+          - '15581'
+          - '15582'
+          - '15583'
+          - '15584'
+          - '15585'
+          - '15586'
+          - '15587'
+          - '15588'
+          - '15589'
+          - '15590'
+          - '15591'
+          - '15592'
+          - '15593'
+          - '15594'
+          - '15595'
+          - '15596'
+          - '15597'
+          - '15598'
+          - '15599'
+          - '15600'
+          - '15601'
+          - '15602'
+          - '15603'
+          - '15604'
+          - '15605'
+          - '15606'
+          - '15607'
+          - '15608'
+          - '15609'
+          - '15610'
+          - '15611'
+          - '15612'
+          - '15613'
+          - '15614'
+          - '15615'
+          - '15616'
+          - '15617'
+          - '15618'
+          - '15619'
+          - '15620'
+          - '15621'
+          - '15622'
+          - '15623'
+          - '15624'
+          - '15625'
+          - '15626'
+          - '15627'
+          - '15628'
+          - '15629'
+          - '15630'
+          - '15631'
+          - '15632'
+          - '15633'
+          - '15634'
+          - '15635'
+          - '15636'
+          - '15637'
+          - '15638'
+          - '15639'
+          - '15640'
+          - '15641'
+          - '15642'
+          - '15643'
+          - '15644'
+          - '15645'
+          - '15646'
+          - '15647'
+          - '15648'
+          - '15649'
+          - '15650'
+          - '15651'
+          - '15652'
+          - '15653'
+          - '15654'
+          - '15655'
+          - '15656'
+          - '15657'
+          - '15658'
+          - '15659'
+          - '15660'
+          - '15661'
+          - '15662'
+          - '15663'
+          - '15664'
+          - '15665'
+          - '15666'
+          - '15667'
+          - '15668'
+          - '15669'
+          - '15670'
+          - '15671'
+          - '15672'
+          - '15673'
+          - '15674'
+          - '15675'
+          - '15676'
+          - '15677'
+          - '15678'
+          - '15679'
+          - '15680'
+          - '15681'
+          - '15682'
+          - '15683'
+          - '15684'
+          - '15685'
+          - '15686'
+          - '15687'
+          - '15688'
+          - '15689'
+          - '15690'
+          - '15691'
+          - '15692'
+          - '15693'
+          - '15694'
+          - '15695'
+          - '15696'
+          - '15697'
+          - '15698'
+          - '15699'
+          - '15700'
+          - '15701'
+          - '15702'
+          - '15703'
+          - '15704'
+          - '15705'
+          - '15706'
+          - '15707'
+          - '15708'
+          - '15709'
+          - '15710'
+          - '15711'
+          - '15712'
+          - '15713'
+          - '15714'
+          - '15715'
+          - '15716'
+          - '15717'
         exampleWasSpecified: false
         custom: []
       customer_code:
         name: customer_code
         description: ''
         required: false
-        example: enim
+        example: blanditiis
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7703,7 +8225,7 @@ endpoints:
         name: customer_phoneno
         description: ''
         required: false
-        example: explicabo
+        example: iusto
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7712,7 +8234,7 @@ endpoints:
         name: user_name
         description: ''
         required: false
-        example: aut
+        example: delectus
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7721,7 +8243,7 @@ endpoints:
         name: app_customer_type
         description: ''
         required: false
-        example: INDIVIDUAL
+        example: GROUP
         type: string
         enumValues:
           - INDIVIDUAL
@@ -7733,7 +8255,7 @@ endpoints:
         name: risk_seqNo
         description: ''
         required: false
-        example: neque
+        example: molestiae
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7742,7 +8264,7 @@ endpoints:
         name: risk_name
         description: ''
         required: false
-        example: nihil
+        example: molestiae
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7751,7 +8273,7 @@ endpoints:
         name: policy_number
         description: ''
         required: false
-        example: ab
+        example: in
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -7766,15 +8288,15 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      is_disabled: 33.0
-      user_id: '209'
-      customer_code: enim
-      customer_phoneno: explicabo
-      user_name: aut
-      app_customer_type: INDIVIDUAL
-      risk_seqNo: neque
-      risk_name: nihil
-      policy_number: ab
+      is_disabled: 78.9
+      user_id: '1962'
+      customer_code: blanditiis
+      customer_phoneno: iusto
+      user_name: delectus
+      app_customer_type: GROUP
+      risk_seqNo: molestiae
+      risk_name: molestiae
+      policy_number: in
     fileParameters:
       profile_photo: null
     responses: []
@@ -7859,11 +8381,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -7897,13 +8416,13 @@ endpoints:
         name: type
         description: ''
         required: true
-        example: minima
+        example: dolorem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      type: minima
+      type: dolorem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -7911,11 +8430,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -7949,13 +8465,13 @@ endpoints:
         name: id
         description: 'The ID of the detail.'
         required: true
-        example: dolores
+        example: eum
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: dolores
+      id: eum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -7963,11 +8479,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -8005,7 +8518,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: eius
+        example: nihil
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8014,7 +8527,7 @@ endpoints:
         name: message
         description: ''
         required: true
-        example: ut
+        example: ratione
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8023,7 +8536,7 @@ endpoints:
         name: type
         description: ''
         required: true
-        example: Broadcast
+        example: Unicast
         type: string
         enumValues:
           - Broadcast
@@ -8035,7 +8548,7 @@ endpoints:
         name: description
         description: ''
         required: false
-        example: 'Quae ea repellat reprehenderit voluptatem iste illum.'
+        example: 'Ratione nesciunt quam dolor voluptatem consequatur incidunt nisi.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -8053,7 +8566,7 @@ endpoints:
         name: noti_for
         description: ''
         required: true
-        example: Promotions
+        example: Transactions
         type: string
         enumValues:
           - Promotions
@@ -8065,18 +8578,18 @@ endpoints:
         name: customers
         description: ''
         required: true
-        example: magni
+        example: impedit
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: eius
-      message: ut
-      type: Broadcast
-      description: 'Quae ea repellat reprehenderit voluptatem iste illum.'
-      noti_for: Promotions
-      customers: magni
+      title: nihil
+      message: ratione
+      type: Unicast
+      description: 'Ratione nesciunt quam dolor voluptatem consequatur incidunt nisi.'
+      noti_for: Transactions
+      customers: impedit
     fileParameters:
       image_url: null
     responses: []
@@ -8111,11 +8624,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -8149,13 +8659,13 @@ endpoints:
         name: id
         description: 'The ID of the gojoy.'
         required: true
-        example: atque
+        example: est
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: atque
+      id: est
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -8163,11 +8673,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -8201,13 +8708,13 @@ endpoints:
         name: id
         description: 'The ID of the gojoy.'
         required: true
-        example: fugiat
+        example: placeat
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: fugiat
+      id: placeat
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -8215,10 +8722,184 @@ endpoints:
         name: customer_id
         description: ''
         required: false
-        example: '193'
+        example: ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
         type: string
         enumValues:
-          - ' 97'
+          - ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
+        exampleWasSpecified: false
+        custom: []
+      full_name:
+        name: full_name
+        description: ''
+        required: false
+        example: nihil
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nrc:
+        name: nrc
+        description: ''
+        required: false
+        example: dolorem
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      dob:
+        name: dob
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-10-17T16:17:28'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      mobile_number:
+        name: mobile_number
+        description: ''
+        required: false
+        example: magnam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: darrell31@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      beneficiary_name:
+        name: beneficiary_name
+        description: ''
+        required: false
+        example: inventore
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      beneficiary_contact:
+        name: beneficiary_contact
+        description: ''
+        required: false
+        example: minima
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      tag_name:
+        name: tag_name
+        description: ''
+        required: false
+        example: eius
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: false
+        example: ACTIVE
+        type: string
+        enumValues:
+          - ACTIVE
+          - DISABLE
+          - DELETED
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      customer_id: ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
+      full_name: nihil
+      nrc: dolorem
+      dob: '2024-10-17T16:17:28'
+      mobile_number: magnam
+      email: darrell31@example.net
+      beneficiary_name: inventore
+      beneficiary_contact: minima
+      tag_name: eius
+      status: ACTIVE
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/v1/gojoy/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the gojoy.'
+        required: true
+        example: velit
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: velit
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/v1/reset-password/customer
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      customer_id:
+        name: customer_id
+        description: ''
+        required: true
+        example: '2110'
+        type: string
+        enumValues:
+          - '97'
           - '98'
           - '99'
           - '101'
@@ -10917,103 +11598,295 @@ endpoints:
           - '9876'
           - '9877'
           - '9878'
-        exampleWasSpecified: false
-        custom: []
-      full_name:
-        name: full_name
-        description: ''
-        required: false
-        example: at
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nrc:
-        name: nrc
-        description: ''
-        required: false
-        example: rerum
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      dob:
-        name: dob
-        description: 'Must be a valid date.'
-        required: false
-        example: '2024-10-01T11:11:13'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      mobile_number:
-        name: mobile_number
-        description: ''
-        required: false
-        example: eaque
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      email:
-        name: email
-        description: ''
-        required: false
-        example: leuschke.jedidiah@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      beneficiary_name:
-        name: beneficiary_name
-        description: ''
-        required: false
-        example: qui
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      beneficiary_contact:
-        name: beneficiary_contact
-        description: ''
-        required: false
-        example: tempora
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      tag_name:
-        name: tag_name
-        description: ''
-        required: false
-        example: quidem
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      status:
-        name: status
-        description: ''
-        required: false
-        example: DELETED
-        type: string
-        enumValues:
-          - ACTIVE
-          - DISABLE
-          - DELETED
+          - '15433'
+          - '15434'
+          - '15435'
+          - '15436'
+          - '15437'
+          - '15438'
+          - '15439'
+          - '15440'
+          - '15441'
+          - '15442'
+          - '15443'
+          - '15444'
+          - '15445'
+          - '15446'
+          - '15447'
+          - '15448'
+          - '15449'
+          - '15450'
+          - '15451'
+          - '15452'
+          - '15453'
+          - '15454'
+          - '15455'
+          - '15456'
+          - '15457'
+          - '15458'
+          - '15459'
+          - '15460'
+          - '15461'
+          - '15462'
+          - '15463'
+          - '15464'
+          - '15465'
+          - '15466'
+          - '15467'
+          - '15468'
+          - '15469'
+          - '15470'
+          - '15471'
+          - '15472'
+          - '15473'
+          - '15474'
+          - '15475'
+          - '15476'
+          - '15477'
+          - '15478'
+          - '15479'
+          - '15480'
+          - '15481'
+          - '15482'
+          - '15483'
+          - '15484'
+          - '15485'
+          - '15486'
+          - '15487'
+          - '15488'
+          - '15489'
+          - '15490'
+          - '15491'
+          - '15492'
+          - '15493'
+          - '15494'
+          - '15495'
+          - '15496'
+          - '15497'
+          - '15498'
+          - '15499'
+          - '15500'
+          - '15501'
+          - '15502'
+          - '15503'
+          - '15504'
+          - '15505'
+          - '15506'
+          - '15507'
+          - '15508'
+          - '15509'
+          - '15510'
+          - '15511'
+          - '15512'
+          - '15513'
+          - '15514'
+          - '15515'
+          - '15516'
+          - '15517'
+          - '15518'
+          - '15519'
+          - '15520'
+          - '15521'
+          - '15522'
+          - '15523'
+          - '15524'
+          - '15525'
+          - '15526'
+          - '15527'
+          - '15528'
+          - '15529'
+          - '15530'
+          - '15531'
+          - '15532'
+          - '15533'
+          - '15534'
+          - '15535'
+          - '15536'
+          - '15537'
+          - '15538'
+          - '15539'
+          - '15540'
+          - '15541'
+          - '15542'
+          - '15543'
+          - '15544'
+          - '15545'
+          - '15546'
+          - '15547'
+          - '15548'
+          - '15549'
+          - '15550'
+          - '15551'
+          - '15552'
+          - '15553'
+          - '15554'
+          - '15555'
+          - '15556'
+          - '15557'
+          - '15558'
+          - '15559'
+          - '15560'
+          - '15561'
+          - '15562'
+          - '15563'
+          - '15564'
+          - '15565'
+          - '15566'
+          - '15567'
+          - '15568'
+          - '15569'
+          - '15570'
+          - '15571'
+          - '15572'
+          - '15573'
+          - '15574'
+          - '15575'
+          - '15576'
+          - '15577'
+          - '15578'
+          - '15579'
+          - '15580'
+          - '15581'
+          - '15582'
+          - '15583'
+          - '15584'
+          - '15585'
+          - '15586'
+          - '15587'
+          - '15588'
+          - '15589'
+          - '15590'
+          - '15591'
+          - '15592'
+          - '15593'
+          - '15594'
+          - '15595'
+          - '15596'
+          - '15597'
+          - '15598'
+          - '15599'
+          - '15600'
+          - '15601'
+          - '15602'
+          - '15603'
+          - '15604'
+          - '15605'
+          - '15606'
+          - '15607'
+          - '15608'
+          - '15609'
+          - '15610'
+          - '15611'
+          - '15612'
+          - '15613'
+          - '15614'
+          - '15615'
+          - '15616'
+          - '15617'
+          - '15618'
+          - '15619'
+          - '15620'
+          - '15621'
+          - '15622'
+          - '15623'
+          - '15624'
+          - '15625'
+          - '15626'
+          - '15627'
+          - '15628'
+          - '15629'
+          - '15630'
+          - '15631'
+          - '15632'
+          - '15633'
+          - '15634'
+          - '15635'
+          - '15636'
+          - '15637'
+          - '15638'
+          - '15639'
+          - '15640'
+          - '15641'
+          - '15642'
+          - '15643'
+          - '15644'
+          - '15645'
+          - '15646'
+          - '15647'
+          - '15648'
+          - '15649'
+          - '15650'
+          - '15651'
+          - '15652'
+          - '15653'
+          - '15654'
+          - '15655'
+          - '15656'
+          - '15657'
+          - '15658'
+          - '15659'
+          - '15660'
+          - '15661'
+          - '15662'
+          - '15663'
+          - '15664'
+          - '15665'
+          - '15666'
+          - '15667'
+          - '15668'
+          - '15669'
+          - '15670'
+          - '15671'
+          - '15672'
+          - '15673'
+          - '15674'
+          - '15675'
+          - '15676'
+          - '15677'
+          - '15678'
+          - '15679'
+          - '15680'
+          - '15681'
+          - '15682'
+          - '15683'
+          - '15684'
+          - '15685'
+          - '15686'
+          - '15687'
+          - '15688'
+          - '15689'
+          - '15690'
+          - '15691'
+          - '15692'
+          - '15693'
+          - '15694'
+          - '15695'
+          - '15696'
+          - '15697'
+          - '15698'
+          - '15699'
+          - '15700'
+          - '15701'
+          - '15702'
+          - '15703'
+          - '15704'
+          - '15705'
+          - '15706'
+          - '15707'
+          - '15708'
+          - '15709'
+          - '15710'
+          - '15711'
+          - '15712'
+          - '15713'
+          - '15714'
+          - '15715'
+          - '15716'
+          - '15717'
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      customer_id: '193'
-      full_name: at
-      nrc: rerum
-      dob: '2024-10-01T11:11:13'
-      mobile_number: eaque
-      email: leuschke.jedidiah@example.net
-      beneficiary_name: qui
-      beneficiary_contact: tempora
-      tag_name: quidem
-      status: DELETED
+      customer_id: '2110'
     fileParameters: []
     responses: []
     responseFields: []
@@ -11024,8 +11897,8 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/admin/v1/gojoy/{id}'
+      - GET
+    uri: 'api/admin/v1/reset-password/customer/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -11041,21 +11914,30 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the gojoy.'
+        description: 'The ID of the customer.'
         required: true
-        example: sit
-        type: string
+        example: 97
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: sit
+      id: 97
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -11128,7 +12010,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: voluptas
+        example: hic
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11137,7 +12019,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: exercitationem
+        example: porro
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11146,7 +12028,7 @@ endpoints:
         name: product_type
         description: ''
         required: true
-        example: accusantium
+        example: nemo
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -11164,16 +12046,16 @@ endpoints:
         name: thumbnail
         description: 'Must not be greater than 5128 characters.'
         required: true
-        example: jobrbnwkkgfjrxiphqyouhef
+        example: wqkahmwcbo
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: voluptas
-      title: exercitationem
-      product_type: accusantium
-      thumbnail: jobrbnwkkgfjrxiphqyouhef
+      name: hic
+      title: porro
+      product_type: nemo
+      thumbnail: wqkahmwcbo
     fileParameters: []
     responses: []
     responseFields: []
@@ -11203,13 +12085,13 @@ endpoints:
         name: id
         description: 'The ID of the change status.'
         required: true
-        example: consequatur
+        example: aliquam
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: consequatur
+      id: aliquam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -11243,13 +12125,13 @@ endpoints:
         name: id
         description: 'The ID of the delete.'
         required: true
-        example: quidem
+        example: porro
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: quidem
+      id: porro
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -11354,13 +12236,13 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: quia
+        example: nobis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: nobis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -11465,13 +12347,13 @@ endpoints:
         name: id
         description: 'The ID of the change status.'
         required: true
-        example: architecto
+        example: qui
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: qui
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -11505,13 +12387,13 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: atque
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: atque
+      id: voluptatem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -11545,13 +12427,13 @@ endpoints:
         name: id
         description: 'The ID of the delete.'
         required: true
-        example: quis
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: quis
+      id: et
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Services\api\app\CustomerService;
 use App\Services\FirebaseService;
 use App\Traits\api\ApiResponser;
+use App\Traits\Firebase;
 use App\Traits\SendPushNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,7 +14,7 @@ use Illuminate\Validation\Rule;
 
 trait Auth
 {
-    use ApiResponser, SendPushNotification;
+    use ApiResponser, Firebase, SendPushNotification;
 
     public function register(Request $request, CustomerService $customerService, FirebaseService $firebase)
     {
@@ -35,7 +36,7 @@ trait Auth
         }
     }
 
-    public function login(Request $request, CustomerService $customerService, FirebaseService $firebase)
+    public function login(Request $request, CustomerService $customerService)
     {
         $validator = $this->loginValidation($request);
 
@@ -50,12 +51,12 @@ trait Auth
                 return $this->errorResponse('Account Has been disabled ', 202);
             }
 
-            $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
+            // $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
 
             $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
 
-            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
+            $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
 
             return $this->successResponse('Login Success', $status, 200);
         } else {

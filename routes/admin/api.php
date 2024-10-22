@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\api\admin\AdminResetPasswordController;
 use App\Http\Controllers\api\admin\AuthController;
 use App\Http\Controllers\api\admin\BannerController;
 use App\Http\Controllers\api\admin\CustomerController;
@@ -38,6 +39,12 @@ Route::prefix('v1')->group(function () {
             Route::put('/{id}', [GoJoyController::class, 'update']);
             Route::delete('/{id}', [GoJoyController::class, 'destroy']);
         });
+
+        Route::group(['prefix' => 'reset-password'], function () {
+            Route::post('/customer', [AdminResetPasswordController::class, 'customerResetPassword']);
+            Route::post('/customer/{id}/send-sms', [AdminResetPasswordController::class, 'sendResetPassword']);
+            Route::get('/customer/{id}', [AdminResetPasswordController::class, 'index']);
+        });
     });
 
     //Route::middleware('auth:api_admin')->prefix('v1')->group(function () {
@@ -55,4 +62,5 @@ Route::prefix('v1')->group(function () {
     Route::put('banners/change-status/{id}', [BannerController::class, 'changeStatus']);
     Route::post('banners/update/{id}', [BannerController::class, 'update']);
     Route::delete('banners/delete/{id}', [BannerController::class, 'delete']);
+
 });

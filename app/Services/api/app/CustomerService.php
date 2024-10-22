@@ -51,7 +51,7 @@ class CustomerService
         $notification = ['title' => 'Security Alert', 'body' => "You've been logged out !"];
         $data = ['title' => 'LOG_OUT_NOW', 'body' => null];
 
-        $this->sendNotification($customer->device_token, $notification['title'], $notification['body'], null, $data);
+        // $this->sendNotification($customer->device_token, $notification['title'], $notification['body'], null, $data);
         // $this->logOutOldDevice($customer->device_token);
 
         return [

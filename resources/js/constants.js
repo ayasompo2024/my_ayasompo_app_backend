@@ -1,4 +1,4 @@
-export const env = 1;
+export const env = 0;
 
 export const baseURL = [
     "http://localhost:8000",
@@ -15,6 +15,7 @@ export const endpoints = {
     customerCount: "customer/count",
     customerDetail: "customer/detail",
     customerUpdate: 'customer/update',
+    resetPassword: "reset-password/customer",
     defaultImagePath: `${baseURL}/uploads/profile/user.jpg`,
     user: "user",
     imagePath: `${baseURL}/uploads/profile`,
@@ -33,3 +34,8 @@ export const notiFor = [
     { name: "Transactions", code: "Transactions" },
     { name: "System", code: "System" },
 ];
+
+/** Operation Action  */
+export const rejectToast = (toast) => {
+    toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+}

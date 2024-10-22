@@ -5,7 +5,6 @@ export const EmployeeCustomerDetail =({ dataSource }) => {
     const [employee, setEmployee] = useState(null);
 
     const mount = useCallback(async () => {
-        console.log(dataSource);
         if(dataSource) {
             setEmployee(dataSource);
         }

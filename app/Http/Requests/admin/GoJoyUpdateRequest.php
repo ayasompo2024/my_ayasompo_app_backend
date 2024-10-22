@@ -26,7 +26,7 @@ class GoJoyUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $customerIds = implode(',', array: Customer::all()->pluck('id')->toArray());
+        $customerIds = implode('', Customer::all()->pluck('id')->toArray());
         $generalStatus = implode(',', (new Enum(GeneralStatusEnum::class))->values());
 
         return [

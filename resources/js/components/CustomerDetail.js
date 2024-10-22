@@ -15,8 +15,8 @@ import { EmployeeCustomerDetail } from "./EmployeeCustomerDetail";
 import { AgentCustomerDetail } from "./AgentCustomerDetail";
 import { CustomerAccountCode } from "./CustomerAccountCode";
 import { Toast } from 'primereact/toast';
+import { CustomerResetPassword } from "./CustomerResetPassword";
 import moment from "moment";
-import { CustomerSendNotification } from "./CustomerSendNotification";
 
 export const CustomerDetail = () => {
 
@@ -266,6 +266,17 @@ export const CustomerDetail = () => {
                                     </div>
                                 )}
 
+                                {users.length > 0 && (
+                                    <div className="col-12 col-md-12 col-lg-12 mt-3">
+                                        <div className="d-flex flex-column">
+                                            <label className="label-text"> Device Token </label>
+                                            <code>
+                                                {payload.device_token}
+                                            </code>
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="col-12 mt-3">
                                     <div className="d-flex flex-row justify-content-end align-items-center">
                                         <Button
@@ -315,12 +326,18 @@ export const CustomerDetail = () => {
                                                 />
                                             </TabPanel>
                                         )}
-
+                                        {/* 
                                         {customer && (
                                             <TabPanel header="Send Notification">
                                                 <CustomerSendNotification
                                                     dataSource={customer.agent_info}
                                                 />
+                                            </TabPanel>
+                                        )} */}
+
+                                        {customer && (
+                                            <TabPanel header="Reset Password">
+                                                <CustomerResetPassword dataSource={customer} />
                                             </TabPanel>
                                         )}
                                     </TabView>

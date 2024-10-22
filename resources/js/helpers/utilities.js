@@ -4,7 +4,10 @@ export const dateFormat = [
 
 export const statusOptions = [
   { value: "0", label: "Active", severity: "success" },
-  { value: "1", label: "Disable", severity: "danger" }
+  { value: "1", label: "Disable", severity: "danger" },
+  { value: "EXPIRED", label: "EXPIRED", severity: "warn" },
+  { value: "SUCCESS", label: "SUCCESS", severity: "success" },
+  { value: "FAIL", label: "FAIL", severity: "danger" }
 ];
 
 /**

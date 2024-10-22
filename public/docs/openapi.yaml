@@ -776,19 +776,19 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: ex
+                  example: corporis
                 inquiry_type:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: impedit
                 customer_type:
                   type: string
                   description: ''
-                  example: rerum
+                  example: corporis
                 title:
                   type: string
                   description: ''
-                  example: cum
+                  example: qui
                 ayasompo_vehicleno:
                   type: string
                   description: ''
@@ -804,11 +804,11 @@ paths:
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: saepe
+                  example: cum
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: dolore
+                  example: fugit
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
@@ -882,19 +882,19 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: qui
                 inquiry_type:
                   type: string
                   description: ''
-                  example: enim
+                  example: debitis
                 customer_type:
                   type: string
                   description: ''
-                  example: sit
+                  example: aut
                 title:
                   type: string
                   description: ''
-                  example: repudiandae
+                  example: nihil
                 ayasompo_vehicleno:
                   type: string
                   description: ''
@@ -910,11 +910,11 @@ paths:
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: esse
+                  example: ut
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: animi
+                  example: excepturi
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
@@ -950,7 +950,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the read.'
-        example: voluptatem
+        example: ipsum
         required: true
         schema:
           type: string
@@ -973,23 +973,23 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: quasi
+                  example: eligendi
                 contact_fullname:
                   type: string
                   description: ''
-                  example: doloremque
+                  example: dolore
                 contact_telephone:
                   type: string
                   description: ''
-                  example: earum
+                  example: quia
                 driver_name:
                   type: string
                   description: ''
-                  example: dignissimos
+                  example: occaecati
                 policy_no:
                   type: string
                   description: ''
-                  example: in
+                  example: animi
                 accident_location:
                   type: string
                   description: ''
@@ -997,15 +997,15 @@ paths:
                 accident_date:
                   type: string
                   description: ''
-                  example: rem
+                  example: suscipit
                 accident_time:
                   type: string
                   description: ''
-                  example: eos
+                  example: fugit
                 accident_description:
                   type: string
                   description: ''
-                  example: consectetur
+                  example: animi
                 accident_damaged_portion:
                   type: string
                   description: ''
@@ -1013,35 +1013,35 @@ paths:
                 vehicle_no:
                   type: string
                   description: ''
-                  example: nobis
+                  example: laborum
                 risk_seq_no:
                   type: string
                   description: ''
-                  example: doloremque
+                  example: mollitia
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: nostrum
+                  example: commodi
                 signature_image:
                   type: string
                   description: ''
-                  example: aliquam
+                  example: illum
                 customer_code:
                   type: string
                   description: ''
-                  example: iure
+                  example: asperiores
                 product_code:
                   type: string
                   description: ''
-                  example: porro
+                  example: quas
                 class_code:
                   type: string
                   description: ''
-                  example: reprehenderit
+                  example: voluptas
                 customer_type:
                   type: string
                   description: ''
-                  example: veritatis
+                  example: at
               required:
                 - user_id
                 - contact_fullname
@@ -1081,15 +1081,15 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: quos
+                  example: aliquam
                 contact_fullname:
                   type: string
                   description: ''
-                  example: eos
+                  example: quod
                 contact_telephone:
                   type: string
                   description: ''
-                  example: magni
+                  example: fugiat
                 accident_date:
                   type: string
                   description: ''
@@ -1097,19 +1097,19 @@ paths:
                 accident_time:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: maxime
                 accident_description:
                   type: string
                   description: ''
-                  example: sit
+                  example: tenetur
                 policy_or_risk_name:
                   type: string
                   description: ''
-                  example: et
+                  example: vero
                 nrc_no:
                   type: string
                   description: ''
-                  example: omnis
+                  example: molestias
                 passport_no:
                   type: string
                   description: ''
@@ -1117,15 +1117,15 @@ paths:
                 product_type:
                   type: string
                   description: ''
-                  example: dolor
+                  example: aut
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: dolores
+                  example: repudiandae
                 signature_image:
                   type: string
                   description: ''
-                  example: qui
+                  example: porro
               required:
                 - user_id
                 - contact_fullname
@@ -1166,7 +1166,7 @@ paths:
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: nulla
+        example: ut
         required: true
         schema:
           type: string
@@ -1210,35 +1210,35 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: et
+                  example: voluptas
                 nrc:
                   type: string
                   description: ''
-                  example: vel
+                  example: doloribus
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-17T16:17:28'
+                  example: '2024-10-22T15:13:48'
                 mobile_number:
                   type: string
                   description: ''
-                  example: facilis
+                  example: ut
                 email:
                   type: string
                   description: ''
-                  example: lueilwitz.lyda@example.org
+                  example: coralie85@example.net
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: omnis
+                  example: alias
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: laborum
+                  example: nihil
                 tag_name:
                   type: string
                   description: ''
-                  example: mollitia
+                  example: ea
               required:
                 - full_name
                 - nrc
@@ -1289,7 +1289,7 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '6165'
+                  example: '2063'
                   enum:
                     - ' 97'
                     - '98'
@@ -4278,42 +4278,42 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: incidunt
+                  example: quasi
                 nrc:
                   type: string
                   description: ''
-                  example: amet
+                  example: temporibus
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-17T16:17:28'
+                  example: '2024-10-22T15:13:48'
                 mobile_number:
                   type: string
                   description: ''
-                  example: optio
+                  example: totam
                 email:
                   type: string
                   description: ''
-                  example: kali95@example.com
+                  example: metz.nolan@example.org
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: iste
+                  example: est
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: aut
+                  example: et
                 tag_name:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: at
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the go joy.'
-        example: sunt
+        example: amet
         required: true
         schema:
           type: string
@@ -4356,7 +4356,7 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: asperiores
+                  example: ab
               required:
                 - phone
       security: []
@@ -4379,11 +4379,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: autem
+                  example: fugit
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: Cfy06ZD5$<VS
+                  example: aI8NN!yD/l~IYj8L
               required:
                 - phone
                 - password
@@ -4752,7 +4752,7 @@ paths:
                 is_disabled:
                   type: number
                   description: ''
-                  example: 78.9
+                  example: 10847532.0
                 profile_photo:
                   type: string
                   format: binary
@@ -4760,7 +4760,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: '1962'
+                  example: '9687'
                   enum:
                     - '97'
                     - '98'
@@ -7749,19 +7749,19 @@ paths:
                 customer_code:
                   type: string
                   description: ''
-                  example: blanditiis
+                  example: numquam
                 customer_phoneno:
                   type: string
                   description: ''
-                  example: iusto
+                  example: labore
                 user_name:
                   type: string
                   description: ''
-                  example: delectus
+                  example: dolores
                 app_customer_type:
                   type: string
                   description: ''
-                  example: GROUP
+                  example: CORPORATE
                   enum:
                     - INDIVIDUAL
                     - GROUP
@@ -7769,15 +7769,15 @@ paths:
                 risk_seqNo:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: accusamus
                 risk_name:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: quo
                 policy_number:
                   type: string
                   description: ''
-                  example: in
+                  example: molestiae
                 disabled_from:
                   type: string
                   description: ''
@@ -7859,7 +7859,7 @@ paths:
         in: path
         name: type
         description: ''
-        example: dolorem
+        example: sint
         required: true
         schema:
           type: string
@@ -7890,7 +7890,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the detail.'
-        example: eum
+        example: est
         required: true
         schema:
           type: string
@@ -7913,11 +7913,11 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: nihil
+                  example: quis
                 message:
                   type: string
                   description: ''
-                  example: ratione
+                  example: ipsum
                 type:
                   type: string
                   description: ''
@@ -7929,7 +7929,7 @@ paths:
                 description:
                   type: string
                   description: ''
-                  example: 'Ratione nesciunt quam dolor voluptatem consequatur incidunt nisi.'
+                  example: 'Mollitia non nisi nemo et minus rerum.'
                 image_url:
                   type: string
                   format: binary
@@ -7945,7 +7945,7 @@ paths:
                 customers:
                   type: string
                   description: ''
-                  example: impedit
+                  example: unde
               required:
                 - title
                 - message
@@ -8021,35 +8021,35 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: nihil
+                  example: quia
                 nrc:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: nostrum
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-17T16:17:28'
+                  example: '2024-10-22T15:13:48'
                 mobile_number:
                   type: string
                   description: ''
-                  example: magnam
+                  example: impedit
                 email:
                   type: string
                   description: ''
-                  example: darrell31@example.net
+                  example: theresia86@example.org
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: inventore
+                  example: omnis
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: minima
+                  example: voluptas
                 tag_name:
                   type: string
                   description: ''
-                  example: eius
+                  example: doloremque
                 status:
                   type: string
                   description: ''
@@ -8073,7 +8073,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the gojoy.'
-        example: est
+        example: officia
         required: true
         schema:
           type: string
@@ -8096,7 +8096,7 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '2110'
+                  example: '8763'
                   enum:
                     - '97'
                     - '98'
@@ -11085,6 +11085,25 @@ paths:
               required:
                 - customer_id
       security: []
+  '/api/admin/v1/reset-password/customer/{id}/send-sms':
+    post:
+      summary: ''
+      operationId: postApiAdminV1ResetPasswordCustomerIdSendSms
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the customer.'
+        example: 97
+        required: true
+        schema:
+          type: integer
   '/api/admin/v1/reset-password/customer/{id}':
     get:
       summary: ''
@@ -11639,15 +11658,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: hic
+                  example: et
                 title:
                   type: string
                   description: ''
-                  example: porro
+                  example: rem
                 product_type:
                   type: string
                   description: ''
-                  example: nemo
+                  example: eaque
                 brief_description:
                   type: string
                   description: ''
@@ -11655,7 +11674,7 @@ paths:
                 thumbnail:
                   type: string
                   description: 'Must not be greater than 5128 characters.'
-                  example: wqkahmwcbo
+                  example: vl
               required:
                 - name
                 - title
@@ -11677,7 +11696,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: aliquam
+        example: quia
         required: true
         schema:
           type: string
@@ -11696,7 +11715,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: porro
+        example: ad
         required: true
         schema:
           type: string
@@ -11901,7 +11920,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: nobis
+        example: neque
         required: true
         schema:
           type: string
@@ -11976,7 +11995,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: qui
+        example: dolor
         required: true
         schema:
           type: string
@@ -11995,7 +12014,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: voluptatem
+        example: sed
         required: true
         schema:
           type: string
@@ -12014,7 +12033,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: et
+        example: ipsam
         required: true
         schema:
           type: string

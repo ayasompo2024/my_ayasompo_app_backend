@@ -61,9 +61,12 @@ export const CustomerResetPassword = ({ dataSource }) => {
                             to send SMS by manually at reset password table.
                         </p>
                         <Button
+                            size="small"
                             severity="danger"
                             label="Reset Password"
+                            className="p-button-danger"
                             icon="pi pi-reset"
+                            style={{borderRadius: "5px"}}
                             loading={loading}
                             onClick={() => confirmDialogHandler()}
                         />

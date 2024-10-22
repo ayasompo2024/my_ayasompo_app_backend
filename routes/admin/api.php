@@ -42,6 +42,7 @@ Route::prefix('v1')->group(function () {
 
         Route::group(['prefix' => 'reset-password'], function () {
             Route::post('/customer', [AdminResetPasswordController::class, 'customerResetPassword']);
+            Route::post('/customer/{id}/send-sms', [AdminResetPasswordController::class, 'sendResetPassword']);
             Route::get('/customer/{id}', [AdminResetPasswordController::class, 'index']);
         });
     });

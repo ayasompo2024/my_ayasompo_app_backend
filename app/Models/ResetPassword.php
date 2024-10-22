@@ -13,6 +13,6 @@ class ResetPassword extends Model
     protected $table = 'reset_passwords';
 
     protected $fillable = [
-        'customer_id', 'phone_no', 'customer_type', 'password', 'hash_password', 'sms_status',
+        'customer_id', 'phone_no', 'customer_name', 'customer_type', 'password', 'hash_password', 'sms_status',
     ];
 }

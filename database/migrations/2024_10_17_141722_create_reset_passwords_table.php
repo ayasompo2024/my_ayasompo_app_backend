@@ -17,6 +17,7 @@ class CreateResetPasswordsTable extends Migration
             $table->id();
             $table->bigInteger('customer_id')->unsigned();
             $table->string('phone_no');
+            $table->string('customer_name');
             $table->string('customer_type');
             $table->string('password');
             $table->string('hash_password');

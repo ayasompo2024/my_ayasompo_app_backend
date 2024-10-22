@@ -266,6 +266,17 @@ export const CustomerDetail = () => {
                                     </div>
                                 )}
 
+                                {users.length > 0 && (
+                                    <div className="col-12 col-md-12 col-lg-12 mt-3">
+                                        <div className="d-flex flex-column">
+                                            <label className="label-text"> Device Token </label>
+                                            <code>
+                                                {payload.device_token}
+                                            </code>
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="col-12 mt-3">
                                     <div className="d-flex flex-row justify-content-end align-items-center">
                                         <Button
@@ -315,7 +326,7 @@ export const CustomerDetail = () => {
                                                 />
                                             </TabPanel>
                                         )}
-{/* 
+                                        {/* 
                                         {customer && (
                                             <TabPanel header="Send Notification">
                                                 <CustomerSendNotification
@@ -326,7 +337,7 @@ export const CustomerDetail = () => {
 
                                         {customer && (
                                             <TabPanel header="Reset Password">
-                                                <CustomerResetPassword dataSource={customer}/>
+                                                <CustomerResetPassword dataSource={customer} />
                                             </TabPanel>
                                         )}
                                     </TabView>

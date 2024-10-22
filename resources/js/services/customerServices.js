@@ -11,5 +11,10 @@ export const customerServices = {
     resetPasswordIndex: async(id, params) => {
         const result = await getRequest(`${endpoints.resetPassword}/${id}`, params);
         return result;
+    },
+
+    sendResetPassword: async(id) => {
+        const result = await postRequest(`${endpoints.resetPassword}/${id}/send-sms`, null);
+        return result;
     }
 }

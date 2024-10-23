@@ -51,7 +51,7 @@ trait Auth
                 return $this->errorResponse('Account Has been disabled ', 202);
             }
 
-            // $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
+            $this->lastLoginTime($status['customer']['customer_phoneno'], $request->device_token);
 
             $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];

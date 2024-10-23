@@ -56,7 +56,7 @@ trait Auth
             $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
 
-            $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
+            // $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
 
             return $this->successResponse('Login Success', $status, 200);
         } else {

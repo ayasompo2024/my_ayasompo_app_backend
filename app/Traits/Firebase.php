@@ -36,12 +36,8 @@ trait Firebase
             ])
             ->withData($data); // Optional custom data
 
-        try {
-            $this->messaging->send($message);
+        $this->messaging->send($message);
 
-            return true;
-        } catch (\Exception $e) {
-            throw $e;
-        }
+        return true;
     }
 }

@@ -28,7 +28,8 @@ trait Auth
         if ($status) {
             $notification = ['title' => 'Hello, '.$request->user_name.", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
-            $firebase->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+
+            $this->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
 
             return $this->successResponse('Register Success', $status, 201);
         } else {
@@ -56,7 +57,7 @@ trait Auth
             $notification = ['title' => 'Hello, '.$status['customer']['user_name'].", let's connect here.", 'body' => null];
             $data = ['title' => 'Register Success', 'body' => null];
 
-            // $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
+            $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
 
             return $this->successResponse('Login Success', $status, 200);
         } else {
@@ -82,7 +83,6 @@ trait Auth
             'email' => 'nullable|string',
             'address' => 'nullable|string',
             'customer_nrc' => 'required|string',
-
             'user_name' => 'required|max:255',
             'password' => 'required|string|min:6|confirmed',
             'device_token' => 'required',

@@ -43,7 +43,6 @@ trait Firebase
             $this->messaging->send($message);
             return true;
         } catch (Exception $e) {
-            dd($e);
             return false;
         }
     }

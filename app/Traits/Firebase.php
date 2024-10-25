@@ -2,8 +2,10 @@
 
 namespace App\Traits;
 
+use Exception;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;
+use Log;
 
 trait Firebase
 {
@@ -36,8 +38,12 @@ trait Firebase
             ])
             ->withData($data); // Optional custom data
 
-        $this->messaging->send($message);
-
-        return true;
+        try {
+            $this->messaging->send($message);
+            return true;
+        } catch (Exception $e) {
+            Log::info($e);
+            return false;
+        }
     }
 }

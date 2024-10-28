@@ -117,6 +117,6 @@ export const formDataRequest = async (path, payload) => {
           });
         return httpResponseHandler(result);
     } catch (error) {
-        return httpErrorHandler(error.response);
+        return httpErrorResponseHandler(error.response);
     }
 }

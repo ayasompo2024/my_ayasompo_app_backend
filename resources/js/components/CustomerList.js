@@ -88,7 +88,7 @@ export default function CustomerList() {
         formData.append("description", sendNotiPayload.description);
         formData.append("message", sendNotiPayload.message);
         formData.append("noti_for", sendNotiPayload.noti_for);
-        formData.append("photo", sendNotiPayload.photo);
+        formData.append("image_url", sendNotiPayload.image_url);
         formData.append("customers", JSON.stringify(selectedCustomer));
         formData.append("type", sendNotiPayload.type);
         formData.append("method", "PUT");
@@ -537,7 +537,6 @@ export default function CustomerList() {
                                     className="w-full p-inputtext-sm"
                                     id="photo"
                                     placeholder="Choose photo"
-                                    value={sendNotiPayload.photo}
                                     disabled={loading}
                                     onChange={(e) => {
                                         payloadHandler(sendNotiPayload, e.target.files[0], 'image_url', (updatePayload) => {

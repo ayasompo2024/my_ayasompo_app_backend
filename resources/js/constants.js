@@ -1,4 +1,4 @@
-export const env = 0;
+export const env = 1;
 
 export const baseURL = [
     "http://localhost:8000",

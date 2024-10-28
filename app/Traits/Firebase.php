@@ -43,8 +43,7 @@ trait Firebase
 
             return true;
         } catch (Exception $e) {
-            dd($e);
-
+            Log::info($e);
             return false;
         }
     }

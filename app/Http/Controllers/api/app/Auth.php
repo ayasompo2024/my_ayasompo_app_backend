@@ -30,6 +30,7 @@ trait Auth
             $data = ['title' => 'Register Success', 'body' => null];
 
             $this->sendNotification($request->device_token, $notification['title'], $notification['body'], $data);
+            $this->sendAsUnicastFroIOS($request->device_token, $notification, $data);
 
             return $this->successResponse('Register Success', $status, 201);
         } else {
@@ -58,7 +59,8 @@ trait Auth
             $data = ['title' => 'Register Success', 'body' => null];
 
             $this->sendNotification($request->device_token, $notification['title'], $notification['body'], null, $data);
-            // $this->sendAsUnicast($request->device_token, $notification, $data);
+            $this->sendAsUnicastFroIOS($request->device_token, $notification, $data);
+
             return $this->successResponse('Login Success', $status, 200);
         } else {
             return $this->respondUnAuthorized('Credentials Not Found');

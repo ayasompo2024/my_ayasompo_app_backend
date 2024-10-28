@@ -101,7 +101,7 @@ For Android - https://play.google.com/store/apps/details?id=com.ml.ayasompo
 For iOS - https://apps.apple.com/us/app/my-ayasompo/id6475663317";
 
             $requestBody = [
-                'phoneNumber' => '09421038123',
+                'phoneNumber' => $phoneNumber,
                 'message' => $content,
                 'username' => $username,
             ];

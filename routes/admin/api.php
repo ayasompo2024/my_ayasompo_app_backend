@@ -23,10 +23,13 @@ Route::prefix('v1')->group(function () {
 
         Route::group(['prefix' => 'customer'], function () {
             Route::post('/{id}', [CustomerController::class, 'update']);
-            Route::delete('/{id}', [CustomerController::class, 'destroy']);
+            Route::put('/core/{id}', [CustomerController::class, 'updateCoreInfo']);
+            Route::put('/employee/{id}', [CustomerController::class, 'updateEmployeeInfo']);
+            Route::put('/agent/{id}', [CustomerController::class, 'updateAgentInfo']);
             Route::get('/{type}', [CustomerController::class, 'index']);
             Route::get('/count/{type}', [CustomerController::class, 'count']);
             Route::get('/detail/{id}', [CustomerController::class, 'show']);
+            Route::delete('/{id}', [CustomerController::class, 'destroy']);
         });
 
         Route::group(['prefix' => 'messaging'], function () {

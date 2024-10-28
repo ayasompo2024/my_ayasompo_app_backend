@@ -17,6 +17,7 @@ import { CustomerAccountCode } from "./CustomerAccountCode";
 import { Toast } from 'primereact/toast';
 import { CustomerResetPassword } from "./CustomerResetPassword";
 import moment from "moment";
+import { InputTextarea } from "primereact/inputtextarea";
 
 export const CustomerDetail = () => {
 
@@ -181,7 +182,7 @@ export const CustomerDetail = () => {
                                         <InputText
                                             placeholder="Enter Customer Code"
                                             value={payload.customer_code ?? ""}
-                                            disabled={loading}
+                                            disabled={true}
                                             onChange={(e) => payloadHandler(payload, e.target.value, "customer_code", (updatePayload) => {
                                                 setPayload(updatePayload);
                                             })}
@@ -195,7 +196,7 @@ export const CustomerDetail = () => {
                                         <InputText
                                             placeholder="Enter Customer Phone Number"
                                             value={payload.customer_phoneno ?? ""}
-                                            disabled={loading}
+                                            disabled={true}
                                             onChange={(e) => payloadHandler(payload, e.target.value, "customer_phoneno", (updatePayload) => {
                                                 setPayload(updatePayload);
                                             })}
@@ -209,7 +210,8 @@ export const CustomerDetail = () => {
                                         <InputText
                                             placeholder="Enter Policy Number"
                                             value={payload.policy_number ?? ""}
-                                            disabled={loading}
+                                            disabled={true}
+                                            readOnly={true}
                                             onChange={(e) => payloadHandler(payload, e.target.value, "policy_number", (updatePayload) => {
                                                 setPayload(updatePayload);
                                             })}
@@ -223,7 +225,8 @@ export const CustomerDetail = () => {
                                         <InputText
                                             placeholder="Enter Risk Seq No."
                                             value={payload.risk_seqNo ?? ""}
-                                            disabled={loading}
+                                            disabled={true}
+                                            readOnly={true}
                                             onChange={(e) => payloadHandler(payload, e.target.value, "risk_seqNo", (updatePayload) => {
                                                 setPayload(updatePayload);
                                             })}
@@ -237,7 +240,8 @@ export const CustomerDetail = () => {
                                         <InputText
                                             placeholder="Enter Risk Name"
                                             value={payload.risk_name ?? ""}
-                                            disabled={loading}
+                                            disabled={true}
+                                            readOnly={true}
                                             onChange={(e) => payloadHandler(payload, e.target.value, "risk_name", (updatePayload) => {
                                                 setPayload(updatePayload);
                                             })}
@@ -269,10 +273,12 @@ export const CustomerDetail = () => {
                                 {users.length > 0 && (
                                     <div className="col-12 col-md-12 col-lg-12 mt-3">
                                         <div className="d-flex flex-column">
-                                            <label className="label-text"> Device Token </label>
-                                            <code>
-                                                {payload.device_token}
-                                            </code>
+                                            <label className="label-text"> Device Token</label>
+                                            <InputTextarea
+                                                placeholder="Enter Risk Name"
+                                                value={payload.device_token ?? ""}
+                                                disabled={loading}
+                                            />
                                         </div>
                                     </div>
                                 )}

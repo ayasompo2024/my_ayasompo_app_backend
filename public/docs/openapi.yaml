@@ -753,74 +753,92 @@ paths:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 effective_date:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 bank_account_number:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 bank_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 other_bank_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 other_bank_address:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 user_id:
                   type: string
                   description: ''
-                  example: corporis
+                  example: blanditiis
+                  nullable: false
                 inquiry_type:
                   type: string
                   description: ''
-                  example: impedit
+                  example: aut
+                  nullable: false
                 customer_type:
                   type: string
                   description: ''
-                  example: corporis
+                  example: tenetur
+                  nullable: false
                 title:
                   type: string
                   description: ''
-                  example: qui
+                  example: et
+                  nullable: false
                 ayasompo_vehicleno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_customercode:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_policyno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: cum
+                  example: ipsa
+                  nullable: false
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: fugit
+                  example: ex
+                  nullable: false
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 customer_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 customer_phoneno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
               required:
                 - user_id
                 - inquiry_type
@@ -859,74 +877,92 @@ paths:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 effective_date:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 bank_account_number:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 bank_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 other_bank_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 other_bank_address:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 user_id:
                   type: string
                   description: ''
-                  example: qui
+                  example: rerum
+                  nullable: false
                 inquiry_type:
                   type: string
                   description: ''
-                  example: debitis
+                  example: dolor
+                  nullable: false
                 customer_type:
                   type: string
                   description: ''
-                  example: aut
+                  example: voluptatum
+                  nullable: false
                 title:
                   type: string
                   description: ''
-                  example: nihil
+                  example: amet
+                  nullable: false
                 ayasompo_vehicleno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_customercode:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_policyno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 ayasompo_productcode:
                   type: string
                   description: ''
-                  example: ut
+                  example: dicta
+                  nullable: false
                 ayasompo_classcode:
                   type: string
                   description: ''
-                  example: excepturi
+                  example: veniam
+                  nullable: false
                 ayasompo_risksequenceno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 customer_name:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 customer_phoneno:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
               required:
                 - user_id
                 - inquiry_type
@@ -950,7 +986,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the read.'
-        example: ipsum
+        example: qui
         required: true
         schema:
           type: string
@@ -973,75 +1009,93 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: eligendi
+                  example: debitis
+                  nullable: false
                 contact_fullname:
                   type: string
                   description: ''
-                  example: dolore
+                  example: et
+                  nullable: false
                 contact_telephone:
                   type: string
                   description: ''
-                  example: quia
+                  example: sit
+                  nullable: false
                 driver_name:
                   type: string
                   description: ''
-                  example: occaecati
+                  example: quis
+                  nullable: false
                 policy_no:
                   type: string
                   description: ''
-                  example: animi
+                  example: beatae
+                  nullable: false
                 accident_location:
                   type: string
                   description: ''
-                  example: aut
+                  example: tempora
+                  nullable: false
                 accident_date:
                   type: string
                   description: ''
-                  example: suscipit
+                  example: rerum
+                  nullable: false
                 accident_time:
                   type: string
                   description: ''
-                  example: fugit
+                  example: nam
+                  nullable: false
                 accident_description:
                   type: string
                   description: ''
-                  example: animi
+                  example: qui
+                  nullable: false
                 accident_damaged_portion:
                   type: string
                   description: ''
-                  example: consequatur
+                  example: pariatur
+                  nullable: false
                 vehicle_no:
                   type: string
                   description: ''
-                  example: laborum
+                  example: aliquam
+                  nullable: false
                 risk_seq_no:
                   type: string
                   description: ''
-                  example: mollitia
+                  example: veniam
+                  nullable: false
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: commodi
+                  example: fugiat
+                  nullable: false
                 signature_image:
                   type: string
                   description: ''
-                  example: illum
+                  example: veritatis
+                  nullable: false
                 customer_code:
                   type: string
                   description: ''
-                  example: asperiores
+                  example: tenetur
+                  nullable: false
                 product_code:
                   type: string
                   description: ''
-                  example: quas
+                  example: consequatur
+                  nullable: false
                 class_code:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: aliquid
+                  nullable: false
                 customer_type:
                   type: string
                   description: ''
-                  example: at
+                  example: autem
+                  nullable: false
               required:
                 - user_id
                 - contact_fullname
@@ -1081,51 +1135,63 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: aliquam
+                  example: iure
+                  nullable: false
                 contact_fullname:
                   type: string
                   description: ''
-                  example: quod
+                  example: rem
+                  nullable: false
                 contact_telephone:
                   type: string
                   description: ''
-                  example: fugiat
+                  example: deleniti
+                  nullable: false
                 accident_date:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: molestias
+                  nullable: false
                 accident_time:
                   type: string
                   description: ''
-                  example: maxime
+                  example: dicta
+                  nullable: false
                 accident_description:
                   type: string
                   description: ''
-                  example: tenetur
+                  example: cupiditate
+                  nullable: false
                 policy_or_risk_name:
                   type: string
                   description: ''
-                  example: vero
+                  example: magni
+                  nullable: false
                 nrc_no:
                   type: string
                   description: ''
-                  example: molestias
+                  example: dolores
+                  nullable: false
                 passport_no:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 product_type:
                   type: string
                   description: ''
-                  example: aut
+                  example: aperiam
+                  nullable: false
                 accident_damaged_photos:
                   type: string
                   description: ''
-                  example: repudiandae
+                  example: et
+                  nullable: false
                 signature_image:
                   type: string
                   description: ''
-                  example: porro
+                  example: animi
+                  nullable: false
               required:
                 - user_id
                 - contact_fullname
@@ -1166,7 +1232,7 @@ paths:
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: ut
+        example: quas
         required: true
         schema:
           type: string
@@ -1210,35 +1276,43 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: distinctio
+                  nullable: false
                 nrc:
                   type: string
                   description: ''
-                  example: doloribus
+                  example: a
+                  nullable: false
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-22T15:13:48'
+                  example: '2024-10-28T15:48:37'
+                  nullable: false
                 mobile_number:
                   type: string
                   description: ''
-                  example: ut
+                  example: in
+                  nullable: false
                 email:
                   type: string
                   description: ''
-                  example: coralie85@example.net
+                  example: bianka81@example.com
+                  nullable: false
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: alias
+                  example: aut
+                  nullable: false
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: nihil
+                  example: voluptas
+                  nullable: false
                 tag_name:
                   type: string
                   description: ''
-                  example: ea
+                  example: sint
+                  nullable: false
               required:
                 - full_name
                 - nrc
@@ -1289,7 +1363,8 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '2063'
+                  example: '4310'
+                  nullable: true
                   enum:
                     - ' 97'
                     - '98'
@@ -4278,42 +4353,50 @@ paths:
                 full_name:
                   type: string
                   description: ''
-                  example: quasi
+                  example: ratione
+                  nullable: true
                 nrc:
                   type: string
                   description: ''
-                  example: temporibus
+                  example: libero
+                  nullable: true
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-22T15:13:48'
+                  example: '2024-10-28T15:48:37'
+                  nullable: true
                 mobile_number:
                   type: string
                   description: ''
-                  example: totam
+                  example: quia
+                  nullable: true
                 email:
                   type: string
                   description: ''
-                  example: metz.nolan@example.org
+                  example: orville13@example.com
+                  nullable: true
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: est
+                  example: possimus
+                  nullable: true
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: et
+                  example: pariatur
+                  nullable: true
                 tag_name:
                   type: string
                   description: ''
-                  example: at
+                  example: est
+                  nullable: true
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the go joy.'
-        example: amet
+        example: consectetur
         required: true
         schema:
           type: string
@@ -4356,7 +4439,8 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: ab
+                  example: dolorem
+                  nullable: false
               required:
                 - phone
       security: []
@@ -4379,11 +4463,13 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: fugit
+                  example: assumenda
+                  nullable: false
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: aI8NN!yD/l~IYj8L
+                  example: '!Rq<+W=9QOD7lH'
+                  nullable: false
               required:
                 - phone
                 - password
@@ -4752,15 +4838,18 @@ paths:
                 is_disabled:
                   type: number
                   description: ''
-                  example: 10847532.0
+                  example: 356509.02955281
+                  nullable: true
                 profile_photo:
                   type: string
                   format: binary
                   description: 'Must be a file.'
+                  nullable: true
                 user_id:
                   type: string
                   description: ''
-                  example: '9687'
+                  example: '8789'
+                  nullable: true
                   enum:
                     - '97'
                     - '98'
@@ -7749,19 +7838,23 @@ paths:
                 customer_code:
                   type: string
                   description: ''
-                  example: numquam
+                  example: harum
+                  nullable: true
                 customer_phoneno:
                   type: string
                   description: ''
-                  example: labore
+                  example: qui
+                  nullable: true
                 user_name:
                   type: string
                   description: ''
-                  example: dolores
+                  example: quasi
+                  nullable: true
                 app_customer_type:
                   type: string
                   description: ''
-                  example: CORPORATE
+                  example: INDIVIDUAL
+                  nullable: true
                   enum:
                     - INDIVIDUAL
                     - GROUP
@@ -7769,19 +7862,23 @@ paths:
                 risk_seqNo:
                   type: string
                   description: ''
-                  example: accusamus
+                  example: et
+                  nullable: true
                 risk_name:
                   type: string
                   description: ''
-                  example: quo
+                  example: dolorum
+                  nullable: true
                 policy_number:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: delectus
+                  nullable: true
                 disabled_from:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
       security: []
     delete:
       summary: ''
@@ -7801,6 +7898,199 @@ paths:
         required: true
         schema:
           type: integer
+  '/api/admin/v1/customer/core/{id}':
+    put:
+      summary: ''
+      operationId: putApiAdminV1CustomerCoreId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_customer_id:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                customer_code:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                customer_type:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                customer_name:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                customer_phoneno:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                customer_nrc:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                email:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                address:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the core.'
+        example: ab
+        required: true
+        schema:
+          type: string
+  '/api/admin/v1/customer/employee/{id}':
+    put:
+      summary: ''
+      operationId: putApiAdminV1CustomerEmployeeId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                code:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                designation:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                department:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                email:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                office_phone:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                office_address:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the employee.'
+        example: ex
+        required: true
+        schema:
+          type: string
+  '/api/admin/v1/customer/agent/{id}':
+    put:
+      summary: ''
+      operationId: putApiAdminV1CustomerAgentId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                agent_name:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                license_no:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                agent_type:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                expired_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-10-28T15:48:38'
+                  nullable: true
+                email:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                achievement:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+                title:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the agent.'
+        example: deleniti
+        required: true
+        schema:
+          type: string
   '/api/admin/v1/customer/{type}':
     get:
       summary: ''
@@ -7859,7 +8149,7 @@ paths:
         in: path
         name: type
         description: ''
-        example: sint
+        example: molestias
         required: true
         schema:
           type: string
@@ -7890,7 +8180,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the detail.'
-        example: est
+        example: eligendi
         required: true
         schema:
           type: string
@@ -7913,15 +8203,18 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: quis
+                  example: tempore
+                  nullable: false
                 message:
                   type: string
                   description: ''
-                  example: ipsum
+                  example: quis
+                  nullable: false
                 type:
                   type: string
                   description: ''
-                  example: Unicast
+                  example: Broadcast
+                  nullable: false
                   enum:
                     - Broadcast
                     - Unicast
@@ -7929,15 +8222,18 @@ paths:
                 description:
                   type: string
                   description: ''
-                  example: 'Mollitia non nisi nemo et minus rerum.'
+                  example: 'Aut aut libero animi vel perspiciatis.'
+                  nullable: true
                 image_url:
                   type: string
                   format: binary
                   description: 'Must be a file.'
+                  nullable: true
                 noti_for:
                   type: string
                   description: ''
-                  example: Transactions
+                  example: Promotions
+                  nullable: false
                   enum:
                     - Promotions
                     - Transactions
@@ -7945,7 +8241,8 @@ paths:
                 customers:
                   type: string
                   description: ''
-                  example: unde
+                  example: quia
+                  nullable: false
               required:
                 - title
                 - message
@@ -8016,44 +8313,54 @@ paths:
                   type: string
                   description: ''
                   example: ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
+                  nullable: true
                   enum:
                     - ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
                 full_name:
                   type: string
                   description: ''
-                  example: quia
+                  example: non
+                  nullable: true
                 nrc:
                   type: string
                   description: ''
-                  example: nostrum
+                  example: magnam
+                  nullable: true
                 dob:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-10-22T15:13:48'
+                  example: '2024-10-28T15:48:38'
+                  nullable: true
                 mobile_number:
                   type: string
                   description: ''
-                  example: impedit
+                  example: labore
+                  nullable: true
                 email:
                   type: string
                   description: ''
-                  example: theresia86@example.org
+                  example: gavin.jakubowski@example.net
+                  nullable: true
                 beneficiary_name:
                   type: string
                   description: ''
-                  example: omnis
+                  example: veniam
+                  nullable: true
                 beneficiary_contact:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: enim
+                  nullable: true
                 tag_name:
                   type: string
                   description: ''
-                  example: doloremque
+                  example: nam
+                  nullable: true
                 status:
                   type: string
                   description: ''
                   example: ACTIVE
+                  nullable: true
                   enum:
                     - ACTIVE
                     - DISABLE
@@ -8073,7 +8380,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the gojoy.'
-        example: officia
+        example: itaque
         required: true
         schema:
           type: string
@@ -8096,7 +8403,8 @@ paths:
                 customer_id:
                   type: string
                   description: ''
-                  example: '8763'
+                  example: '6832'
+                  nullable: false
                   enum:
                     - '97'
                     - '98'
@@ -11658,23 +11966,28 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: et
+                  example: ducimus
+                  nullable: false
                 title:
                   type: string
                   description: ''
-                  example: rem
+                  example: cum
+                  nullable: false
                 product_type:
                   type: string
                   description: ''
-                  example: eaque
+                  example: aperiam
+                  nullable: false
                 brief_description:
                   type: string
                   description: ''
                   example: null
+                  nullable: true
                 thumbnail:
                   type: string
                   description: 'Must not be greater than 5128 characters.'
-                  example: vl
+                  example: weutnvyduknukypcxiixaesyb
+                  nullable: false
               required:
                 - name
                 - title
@@ -11696,7 +12009,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: quia
+        example: deserunt
         required: true
         schema:
           type: string
@@ -11715,7 +12028,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: ad
+        example: non
         required: true
         schema:
           type: string
@@ -11920,7 +12233,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: neque
+        example: repellendus
         required: true
         schema:
           type: string
@@ -11995,7 +12308,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the change status.'
-        example: dolor
+        example: exercitationem
         required: true
         schema:
           type: string
@@ -12014,7 +12327,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: sed
+        example: repudiandae
         required: true
         schema:
           type: string
@@ -12033,7 +12346,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the delete.'
-        example: ipsam
+        example: omnis
         required: true
         schema:
           type: string

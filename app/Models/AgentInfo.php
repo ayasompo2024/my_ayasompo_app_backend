@@ -19,4 +19,8 @@ class AgentInfo extends Model
         'achievement',
         'title',
     ];
+
+    protected $casts = [
+        'expired_date' => 'date',
+    ];
 }

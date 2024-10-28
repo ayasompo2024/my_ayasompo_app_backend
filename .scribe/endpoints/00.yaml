@@ -194,6 +194,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       effective_date:
         name: effective_date
@@ -203,6 +204,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       bank_account_number:
         name: bank_account_number
@@ -212,6 +214,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       bank_name:
         name: bank_name
@@ -221,6 +224,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       other_bank_name:
         name: other_bank_name
@@ -230,6 +234,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       other_bank_address:
         name: other_bank_address
@@ -239,42 +244,47 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       user_id:
         name: user_id
         description: ''
         required: true
-        example: corporis
+        example: blanditiis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       inquiry_type:
         name: inquiry_type
         description: ''
         required: true
-        example: impedit
+        example: aut
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       customer_type:
         name: customer_type
         description: ''
         required: true
-        example: corporis
+        example: tenetur
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       title:
         name: title
         description: ''
         required: true
-        example: qui
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_vehicleno:
         name: ayasompo_vehicleno
@@ -284,6 +294,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_customercode:
         name: ayasompo_customercode
@@ -293,6 +304,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_policyno:
         name: ayasompo_policyno
@@ -302,24 +314,27 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_productcode:
         name: ayasompo_productcode
         description: ''
         required: true
-        example: cum
+        example: ipsa
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_classcode:
         name: ayasompo_classcode
         description: ''
         required: true
-        example: fugit
+        example: ex
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_risksequenceno:
         name: ayasompo_risksequenceno
@@ -329,6 +344,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_name:
         name: customer_name
@@ -338,6 +354,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_phoneno:
         name: customer_phoneno
@@ -347,14 +364,15 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
     cleanBodyParameters:
-      user_id: corporis
-      inquiry_type: impedit
-      customer_type: corporis
-      title: qui
-      ayasompo_productcode: cum
-      ayasompo_classcode: fugit
+      user_id: blanditiis
+      inquiry_type: aut
+      customer_type: tenetur
+      title: et
+      ayasompo_productcode: ipsa
+      ayasompo_classcode: ex
     fileParameters: []
     responses: []
     responseFields: []
@@ -422,6 +440,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       effective_date:
         name: effective_date
@@ -431,6 +450,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       bank_account_number:
         name: bank_account_number
@@ -440,6 +460,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       bank_name:
         name: bank_name
@@ -449,6 +470,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       other_bank_name:
         name: other_bank_name
@@ -458,6 +480,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       other_bank_address:
         name: other_bank_address
@@ -467,42 +490,47 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       user_id:
         name: user_id
         description: ''
         required: true
-        example: qui
+        example: rerum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       inquiry_type:
         name: inquiry_type
         description: ''
         required: true
-        example: debitis
+        example: dolor
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       customer_type:
         name: customer_type
         description: ''
         required: true
-        example: aut
+        example: voluptatum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       title:
         name: title
         description: ''
         required: true
-        example: nihil
+        example: amet
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_vehicleno:
         name: ayasompo_vehicleno
@@ -512,6 +540,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_customercode:
         name: ayasompo_customercode
@@ -521,6 +550,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_policyno:
         name: ayasompo_policyno
@@ -530,24 +560,27 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       ayasompo_productcode:
         name: ayasompo_productcode
         description: ''
         required: true
-        example: ut
+        example: dicta
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_classcode:
         name: ayasompo_classcode
         description: ''
         required: true
-        example: excepturi
+        example: veniam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       ayasompo_risksequenceno:
         name: ayasompo_risksequenceno
@@ -557,6 +590,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_name:
         name: customer_name
@@ -566,6 +600,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_phoneno:
         name: customer_phoneno
@@ -575,14 +610,15 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
     cleanBodyParameters:
-      user_id: qui
-      inquiry_type: debitis
-      customer_type: aut
-      title: nihil
-      ayasompo_productcode: ut
-      ayasompo_classcode: excepturi
+      user_id: rerum
+      inquiry_type: dolor
+      customer_type: voluptatum
+      title: amet
+      ayasompo_productcode: dicta
+      ayasompo_classcode: veniam
     fileParameters: []
     responses: []
     responseFields: []
@@ -612,13 +648,14 @@ endpoints:
         name: id
         description: 'The ID of the read.'
         required: true
-        example: ipsum
+        example: qui
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: ipsum
+      id: qui
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -656,183 +693,201 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: eligendi
+        example: debitis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       contact_fullname:
         name: contact_fullname
         description: ''
         required: true
-        example: dolore
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       contact_telephone:
         name: contact_telephone
         description: ''
         required: true
-        example: quia
+        example: sit
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       driver_name:
         name: driver_name
         description: ''
         required: true
-        example: occaecati
+        example: quis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       policy_no:
         name: policy_no
         description: ''
         required: true
-        example: animi
+        example: beatae
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_location:
         name: accident_location
         description: ''
         required: true
-        example: aut
+        example: tempora
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_date:
         name: accident_date
         description: ''
         required: true
-        example: suscipit
+        example: rerum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_time:
         name: accident_time
         description: ''
         required: true
-        example: fugit
+        example: nam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_description:
         name: accident_description
         description: ''
         required: true
-        example: animi
+        example: qui
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_damaged_portion:
         name: accident_damaged_portion
+        description: ''
+        required: true
+        example: pariatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      vehicle_no:
+        name: vehicle_no
+        description: ''
+        required: true
+        example: aliquam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      risk_seq_no:
+        name: risk_seq_no
+        description: ''
+        required: true
+        example: veniam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      accident_damaged_photos:
+        name: accident_damaged_photos
+        description: ''
+        required: true
+        example: fugiat
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      signature_image:
+        name: signature_image
+        description: ''
+        required: true
+        example: veritatis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      customer_code:
+        name: customer_code
+        description: ''
+        required: true
+        example: tenetur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      product_code:
+        name: product_code
         description: ''
         required: true
         example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
-        custom: []
-      vehicle_no:
-        name: vehicle_no
-        description: ''
-        required: true
-        example: laborum
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      risk_seq_no:
-        name: risk_seq_no
-        description: ''
-        required: true
-        example: mollitia
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      accident_damaged_photos:
-        name: accident_damaged_photos
-        description: ''
-        required: true
-        example: commodi
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      signature_image:
-        name: signature_image
-        description: ''
-        required: true
-        example: illum
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      customer_code:
-        name: customer_code
-        description: ''
-        required: true
-        example: asperiores
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      product_code:
-        name: product_code
-        description: ''
-        required: true
-        example: quas
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
+        nullable: false
         custom: []
       class_code:
         name: class_code
         description: ''
         required: true
-        example: voluptas
+        example: aliquid
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       customer_type:
         name: customer_type
         description: ''
         required: true
-        example: at
+        example: autem
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      user_id: eligendi
-      contact_fullname: dolore
-      contact_telephone: quia
-      driver_name: occaecati
-      policy_no: animi
-      accident_location: aut
-      accident_date: suscipit
-      accident_time: fugit
-      accident_description: animi
-      accident_damaged_portion: consequatur
-      vehicle_no: laborum
-      risk_seq_no: mollitia
-      accident_damaged_photos: commodi
-      signature_image: illum
-      customer_code: asperiores
-      product_code: quas
-      class_code: voluptas
-      customer_type: at
+      user_id: debitis
+      contact_fullname: et
+      contact_telephone: sit
+      driver_name: quis
+      policy_no: beatae
+      accident_location: tempora
+      accident_date: rerum
+      accident_time: nam
+      accident_description: qui
+      accident_damaged_portion: pariatur
+      vehicle_no: aliquam
+      risk_seq_no: veniam
+      accident_damaged_photos: fugiat
+      signature_image: veritatis
+      customer_code: tenetur
+      product_code: consequatur
+      class_code: aliquid
+      customer_type: autem
     fileParameters: []
     responses: []
     responseFields: []
@@ -866,73 +921,81 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: aliquam
+        example: iure
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       contact_fullname:
         name: contact_fullname
         description: ''
         required: true
-        example: quod
+        example: rem
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       contact_telephone:
         name: contact_telephone
         description: ''
         required: true
-        example: fugiat
+        example: deleniti
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_date:
         name: accident_date
-        description: ''
-        required: true
-        example: voluptatem
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      accident_time:
-        name: accident_time
-        description: ''
-        required: true
-        example: maxime
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      accident_description:
-        name: accident_description
-        description: ''
-        required: true
-        example: tenetur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      policy_or_risk_name:
-        name: policy_or_risk_name
-        description: ''
-        required: true
-        example: vero
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nrc_no:
-        name: nrc_no
         description: ''
         required: true
         example: molestias
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
+        custom: []
+      accident_time:
+        name: accident_time
+        description: ''
+        required: true
+        example: dicta
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      accident_description:
+        name: accident_description
+        description: ''
+        required: true
+        example: cupiditate
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      policy_or_risk_name:
+        name: policy_or_risk_name
+        description: ''
+        required: true
+        example: magni
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nrc_no:
+        name: nrc_no
+        description: ''
+        required: true
+        example: dolores
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
         custom: []
       passport_no:
         name: passport_no
@@ -942,46 +1005,50 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       product_type:
         name: product_type
         description: ''
         required: true
-        example: aut
+        example: aperiam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       accident_damaged_photos:
         name: accident_damaged_photos
         description: ''
         required: true
-        example: repudiandae
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       signature_image:
         name: signature_image
         description: ''
         required: true
-        example: porro
+        example: animi
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      user_id: aliquam
-      contact_fullname: quod
-      contact_telephone: fugiat
-      accident_date: voluptatem
-      accident_time: maxime
-      accident_description: tenetur
-      policy_or_risk_name: vero
-      nrc_no: molestias
-      product_type: aut
-      accident_damaged_photos: repudiandae
-      signature_image: porro
+      user_id: iure
+      contact_fullname: rem
+      contact_telephone: deleniti
+      accident_date: molestias
+      accident_time: dicta
+      accident_description: cupiditate
+      policy_or_risk_name: magni
+      nrc_no: dolores
+      product_type: aperiam
+      accident_damaged_photos: et
+      signature_image: animi
     fileParameters: []
     responses: []
     responseFields: []
@@ -1011,13 +1078,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: ut
+        example: quas
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: ut
+      user_id: quas
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1103,83 +1171,91 @@ endpoints:
         name: full_name
         description: ''
         required: true
-        example: voluptas
+        example: distinctio
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       nrc:
         name: nrc
         description: ''
         required: true
-        example: doloribus
+        example: a
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       dob:
         name: dob
         description: 'Must be a valid date.'
         required: true
-        example: '2024-10-22T15:13:48'
+        example: '2024-10-28T15:48:37'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       mobile_number:
         name: mobile_number
         description: ''
         required: true
-        example: ut
+        example: in
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       email:
         name: email
         description: ''
         required: true
-        example: coralie85@example.net
+        example: bianka81@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       beneficiary_name:
         name: beneficiary_name
         description: ''
         required: true
-        example: alias
+        example: aut
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       beneficiary_contact:
         name: beneficiary_contact
         description: ''
         required: true
-        example: nihil
+        example: voluptas
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       tag_name:
         name: tag_name
         description: ''
         required: true
-        example: ea
+        example: sint
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      full_name: voluptas
-      nrc: doloribus
-      dob: '2024-10-22T15:13:48'
-      mobile_number: ut
-      email: coralie85@example.net
-      beneficiary_name: alias
-      beneficiary_contact: nihil
-      tag_name: ea
+      full_name: distinctio
+      nrc: a
+      dob: '2024-10-28T15:48:37'
+      mobile_number: in
+      email: bianka81@example.com
+      beneficiary_name: aut
+      beneficiary_contact: voluptas
+      tag_name: sint
     fileParameters: []
     responses: []
     responseFields: []
@@ -1209,13 +1285,14 @@ endpoints:
         name: id
         description: 'The ID of the go joy.'
         required: true
-        example: amet
+        example: consectetur
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: amet
+      id: consectetur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1258,13 +1335,14 @@ endpoints:
         name: id
         description: 'The ID of the go joy.'
         required: true
-        example: placeat
+        example: sed
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: placeat
+      id: sed
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1272,7 +1350,7 @@ endpoints:
         name: customer_id
         description: ''
         required: false
-        example: '2063'
+        example: '4310'
         type: string
         enumValues:
           - ' 97'
@@ -4260,89 +4338,98 @@ endpoints:
           - '15716'
           - '15717'
         exampleWasSpecified: false
+        nullable: true
         custom: []
       full_name:
         name: full_name
         description: ''
         required: false
-        example: quasi
+        example: ratione
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       nrc:
         name: nrc
         description: ''
         required: false
-        example: temporibus
+        example: libero
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       dob:
         name: dob
         description: 'Must be a valid date.'
         required: false
-        example: '2024-10-22T15:13:48'
+        example: '2024-10-28T15:48:37'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       mobile_number:
         name: mobile_number
         description: ''
         required: false
-        example: totam
+        example: quia
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       email:
         name: email
         description: ''
         required: false
-        example: metz.nolan@example.org
+        example: orville13@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       beneficiary_name:
         name: beneficiary_name
+        description: ''
+        required: false
+        example: possimus
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      beneficiary_contact:
+        name: beneficiary_contact
+        description: ''
+        required: false
+        example: pariatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      tag_name:
+        name: tag_name
         description: ''
         required: false
         example: est
         type: string
         enumValues: []
         exampleWasSpecified: false
-        custom: []
-      beneficiary_contact:
-        name: beneficiary_contact
-        description: ''
-        required: false
-        example: et
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      tag_name:
-        name: tag_name
-        description: ''
-        required: false
-        example: at
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
+        nullable: true
         custom: []
     cleanBodyParameters:
-      customer_id: '2063'
-      full_name: quasi
-      nrc: temporibus
-      dob: '2024-10-22T15:13:48'
-      mobile_number: totam
-      email: metz.nolan@example.org
-      beneficiary_name: est
-      beneficiary_contact: et
-      tag_name: at
+      customer_id: '4310'
+      full_name: ratione
+      nrc: libero
+      dob: '2024-10-28T15:48:37'
+      mobile_number: quia
+      email: orville13@example.com
+      beneficiary_name: possimus
+      beneficiary_contact: pariatur
+      tag_name: est
     fileParameters: []
     responses: []
     responseFields: []
@@ -4436,13 +4523,14 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: ab
+        example: dolorem
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      phone: ab
+      phone: dolorem
     fileParameters: []
     responses: []
     responseFields: []
@@ -4476,23 +4564,25 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: fugit
+        example: assumenda
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       password:
         name: password
         description: 'Must be at least 6 characters.'
         required: true
-        example: aI8NN!yD/l~IYj8L
+        example: '!Rq<+W=9QOD7lH'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      phone: fugit
-      password: aI8NN!yD/l~IYj8L
+      phone: assumenda
+      password: '!Rq<+W=9QOD7lH'
     fileParameters: []
     responses: []
     responseFields: []
@@ -4811,6 +4901,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
       id: 1
@@ -5193,6 +5284,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
       id: 97
@@ -5203,10 +5295,11 @@ endpoints:
         name: is_disabled
         description: ''
         required: false
-        example: 10847532.0
+        example: 356509.02955281
         type: number
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       profile_photo:
         name: profile_photo
@@ -5216,12 +5309,13 @@ endpoints:
         type: file
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       user_id:
         name: user_id
         description: ''
         required: false
-        example: '9687'
+        example: '8789'
         type: string
         enumValues:
           - '97'
@@ -8209,72 +8303,80 @@ endpoints:
           - '15716'
           - '15717'
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_code:
         name: customer_code
         description: ''
         required: false
-        example: numquam
+        example: harum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       customer_phoneno:
         name: customer_phoneno
         description: ''
         required: false
-        example: labore
+        example: qui
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       user_name:
         name: user_name
         description: ''
         required: false
-        example: dolores
+        example: quasi
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       app_customer_type:
         name: app_customer_type
         description: ''
         required: false
-        example: CORPORATE
+        example: INDIVIDUAL
         type: string
         enumValues:
           - INDIVIDUAL
           - GROUP
           - CORPORATE
         exampleWasSpecified: false
+        nullable: true
         custom: []
       risk_seqNo:
         name: risk_seqNo
         description: ''
         required: false
-        example: accusamus
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       risk_name:
         name: risk_name
         description: ''
         required: false
-        example: quo
+        example: dolorum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       policy_number:
         name: policy_number
         description: ''
         required: false
-        example: molestiae
+        example: delectus
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       disabled_from:
         name: disabled_from
@@ -8284,17 +8386,18 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
     cleanBodyParameters:
-      is_disabled: 10847532.0
-      user_id: '9687'
-      customer_code: numquam
-      customer_phoneno: labore
-      user_name: dolores
-      app_customer_type: CORPORATE
-      risk_seqNo: accusamus
-      risk_name: quo
-      policy_number: molestiae
+      is_disabled: 356509.02955281
+      user_id: '8789'
+      customer_code: harum
+      customer_phoneno: qui
+      user_name: quasi
+      app_customer_type: INDIVIDUAL
+      risk_seqNo: et
+      risk_name: dolorum
+      policy_number: delectus
     fileParameters:
       profile_photo: null
     responses: []
@@ -8306,8 +8409,8 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/admin/v1/customer/{id}'
+      - PUT
+    uri: 'api/admin/v1/customer/core/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -8323,19 +8426,333 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the customer.'
+        description: 'The ID of the core.'
         required: true
-        example: 97
-        type: integer
+        example: ab
+        type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: 97
+      id: ab
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      app_customer_id:
+        name: app_customer_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      customer_code:
+        name: customer_code
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      customer_type:
+        name: customer_type
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      customer_name:
+        name: customer_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      customer_phoneno:
+        name: customer_phoneno
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      customer_nrc:
+        name: customer_nrc
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      address:
+        name: address
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/admin/v1/customer/employee/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
+        required: true
+        example: ex
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: ex
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      customer_id:
+        name: customer_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      code:
+        name: code
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      designation:
+        name: designation
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      department:
+        name: department
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      office_phone:
+        name: office_phone
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      office_address:
+        name: office_address
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/admin/v1/customer/agent/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the agent.'
+        required: true
+        example: deleniti
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: deleniti
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      customer_id:
+        name: customer_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      agent_name:
+        name: agent_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      license_no:
+        name: license_no
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      agent_type:
+        name: agent_type
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      expired_date:
+        name: expired_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-10-28T15:48:38'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      achievement:
+        name: achievement
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      title:
+        name: title
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      expired_date: '2024-10-28T15:48:38'
     fileParameters: []
     responses: []
     responseFields: []
@@ -8369,6 +8786,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
       type: 97
@@ -8414,13 +8832,14 @@ endpoints:
         name: type
         description: ''
         required: true
-        example: sint
+        example: molestias
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      type: sint
+      type: molestias
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -8463,13 +8882,14 @@ endpoints:
         name: id
         description: 'The ID of the detail.'
         required: true
-        example: est
+        example: eligendi
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: est
+      id: eligendi
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -8485,6 +8905,47 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/v1/customer/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 97
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 97
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -8516,40 +8977,44 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: quis
+        example: tempore
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       message:
         name: message
         description: ''
         required: true
-        example: ipsum
+        example: quis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       type:
         name: type
         description: ''
         required: true
-        example: Unicast
+        example: Broadcast
         type: string
         enumValues:
           - Broadcast
           - Unicast
           - Multicast
         exampleWasSpecified: false
+        nullable: false
         custom: []
       description:
         name: description
         description: ''
         required: false
-        example: 'Mollitia non nisi nemo et minus rerum.'
+        example: 'Aut aut libero animi vel perspiciatis.'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       image_url:
         name: image_url
@@ -8559,35 +9024,38 @@ endpoints:
         type: file
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       noti_for:
         name: noti_for
         description: ''
         required: true
-        example: Transactions
+        example: Promotions
         type: string
         enumValues:
           - Promotions
           - Transactions
           - System
         exampleWasSpecified: false
+        nullable: false
         custom: []
       customers:
         name: customers
         description: ''
         required: true
-        example: unde
+        example: quia
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      title: quis
-      message: ipsum
-      type: Unicast
-      description: 'Mollitia non nisi nemo et minus rerum.'
-      noti_for: Transactions
-      customers: unde
+      title: tempore
+      message: quis
+      type: Broadcast
+      description: 'Aut aut libero animi vel perspiciatis.'
+      noti_for: Promotions
+      customers: quia
     fileParameters:
       image_url: null
     responses: []
@@ -8657,13 +9125,14 @@ endpoints:
         name: id
         description: 'The ID of the gojoy.'
         required: true
-        example: officia
+        example: itaque
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: officia
+      id: itaque
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -8706,13 +9175,14 @@ endpoints:
         name: id
         description: 'The ID of the gojoy.'
         required: true
-        example: quia
+        example: vel
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: vel
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -8725,78 +9195,87 @@ endpoints:
         enumValues:
           - ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
         exampleWasSpecified: false
+        nullable: true
         custom: []
       full_name:
         name: full_name
         description: ''
         required: false
-        example: quia
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       nrc:
         name: nrc
         description: ''
         required: false
-        example: nostrum
+        example: magnam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       dob:
         name: dob
         description: 'Must be a valid date.'
         required: false
-        example: '2024-10-22T15:13:48'
+        example: '2024-10-28T15:48:38'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       mobile_number:
         name: mobile_number
         description: ''
         required: false
-        example: impedit
+        example: labore
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       email:
         name: email
         description: ''
         required: false
-        example: theresia86@example.org
+        example: gavin.jakubowski@example.net
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       beneficiary_name:
         name: beneficiary_name
         description: ''
         required: false
-        example: omnis
+        example: veniam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       beneficiary_contact:
         name: beneficiary_contact
         description: ''
         required: false
-        example: voluptas
+        example: enim
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       tag_name:
         name: tag_name
         description: ''
         required: false
-        example: doloremque
+        example: nam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       status:
         name: status
@@ -8809,17 +9288,18 @@ endpoints:
           - DISABLE
           - DELETED
         exampleWasSpecified: false
+        nullable: true
         custom: []
     cleanBodyParameters:
       customer_id: ' 979899101102108109126128129130131132134135136138139140141142143144145151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272273274275276277278279280281282283284285286287288289290291292293294295296297298299300301302303304305306307308309310311312313314315316317318319320321322323324325326327328329330331332333334335336337338339340341342343344345346347348349350351352353354355356357358359360361362363364365366367368369370371372373374375376377378379380381382383384385386387388389390391392393394395396397398399400401402403404405406407408409410411412413414415416417418419420421422423424425426427428429430431432433434435436437438439440441442443444445446447448449450451453454455456457459460461465466467468469470471472473474479480481482483486488489491498499500501502503504505506507508509510511512513514515516517518519520522523524526527528529530531532535536537538539540541542543544545546547548549551781782783791792793794796800802803804805806807808809810109510961097109811011103165416551736173717381739174017411742174317441745174617471748174917501751175217531754175517561757175817591760176117691770177117721773177417751780178117821783178417851786178717881789179017911793179417951796179817991800180118021803180418051806180718081809181018111812181318141815181618171818181918201821182218241825182618271828183018311832183318351836183718381839184018411842184318441845184618471848185018511852185418551856185718581859186018611863186418661867186818691870187118721873187418761880188218831884188518871889189018921893189418951896189718981899190119021903190419051907190819101911191219131914191519161917191819191920192219231925192619271928192919301931193219331934193519361937193819391940194119421943194419451946194719481950195119521953195419551956195719581959196019611962196419651966196719681969197019711972197319741975197619771978197919801981198219831984198519861987198819891992199319951997199819992000200120022003200620082009201020112012201320142015201720192021202320252026202720282029203020312032203320342035203620372038203920402041204220432044204520462047204820492050205120522053205420552056205720582059206020612062206320682069207020722073207420772078208020812083208420862087208920902091209220932094209520962097209820992100210321042105210621072108210921102111211221132114211521162117211821192120212121222123212421252126212721282129213021332134213521362137213821392140214121432144214521462148215021512152215321542155215621572158216021612162216321642165216621672168217121722173217421752176217821792180218221832184218521862187218821892190219121932194219521972198219922002201220222032204220522062207220822092210221122122213221422152217222322312238224022412242224322442245224622472248225022512252225322542255225622582261226222632264226522682269227022712272227322742275228322892290229122922293230023012302230323042305230623072308230923102311231423152316231723182319232023212323232423252326232723282329233023312332233323342335233623372338233923402341234223432344234523462347234823492350235823592360236723682369237023712372237323742375237623772378237923802381238223832385238623872388239423952396239723982399240024012402240324042405240624072408240924102411241224132416241724182419242024212422242324242430243124322433243424352436243724382439244024482449245024512452245324542455245624622463246424652466246724682469247024712472247424752476247724782479248024812482248324842485248624872488248924902491249224932494249624972503250425052519252025212522252325242525252625272528252925302531253225332534254025412542254725492550255125522553255425552556255725582559256025612562256325652566256725682569257025712572257325742575257625772579258025812582258325842585258625872588258925902591259225932594259525962597259825992600260126022603260426052606260726082609261026112612262826292633263426352636263726422643264426452646264726482649265526592660266126702671267226732674267626772678267926802681268226832684268526862687268826892690269126922693269626972698269927002701270227032704270527062707270827092710271227132714271527162717271827192720272127222723272427252726272727282729273034523453345434553456345734583469347034713472347334743475347634773478347934803481348234833484348634873489349034923493349434953497349935003502350435053506350735083509351035114244424542464247424842494250425142524253425442554256425742584259426042614262426342644265426642674268426942704271427242734274427542764277427842794280428142824283428442854286428742884289429042914292429342944295429642974298429943004301430243034304430543064307430843094310431143124313431443154316431743184319432043214322432343244325432643274328432943304331433243334334433543364337433843394340525958145815581658175818581958205821582258235826582758285829583058315832583358345835583658375838583958405841584258435844584558465847584858495850585158525853585458555856585758585859586058615862586358645865586658675868586958705871587258735874587558765877587858795880588158825883588458855886588758885889589058915892589358945895589658975898589959005901590259035904590559065907590859095910591159125913591459155916591759185919592059215922592359245925592659275928592959305931593259335934593559365937593859395940594159425943594459455946594759485949595059515952595359545955595659575958595959605961596259635964596559665967596859695970597159725973597459755976597759785979598059815982598359845985598659875988598959905991599259935994599559965997599859996000600160026003600460056006600760086009601060116012601360146015601660176018601960206021602260236024602560266027602860296030603160326033603460356036603760386039604060416042604360446045604660476048604960506051605260536054605560566057605860596060606160626063606460656066606760686069607060716072607360746075607660776078607960806081608260836084608560866087608860896090609160926093609460956096609760986099610061016102610361046105610661076108610961106111611261136114611561166117611861196120612161226123612461256126612761286129613061316132613361346135613661376138613961406141614261436144614561466147614861496150615161526153615461556156615761586159616061616162616361646165616661676168616961706171617261736174617561766177617861796180618161826183618461856186618761886189619061916192619361946195619661976198619962006201620262036204620562066207620862096210621162126213621462156216621762186219622062216222622362246225622662276228622962306231623262336234623562366237623862396240624162426243624462456246624762486249625062516252625362546255625662576258625962606261626262636264626562666267626862696270627162726273627462756276627762786279628062816282628362846285628662876288628962906291629262936294629567686769677067716772677367746775677667776778677967806781678267836784678567866787678867896790679167926793679467956796679767986799680068016802680368046805680668076808680968106811681268136814681568166817681868196820682168226823682468256826682768296830683168326833683468356836683768386839684068416842684368446845684668476848684968506851685268536854685568566857685868596860686168626863686468656866686768686869687068716872687368746875687668776878687968806881688268836884688568876888688968906891689268936894689568966897689868996900690169026904690569066908690969106911691269136914691569166917691869196920692169226923692469256926692769286929693069316932693369346935693669376938693969406941694269436944694569466947694869496950695169526953695469556956695769586959696069616962696369646965696669676968696969706971697269736974697569766977697869796980698169826983698469856986698769886989699069916992699369946995699669976998699970007001700270037004700570067007700870097010701170127013701470157016701770187019702070217022702370247025702670277028702970307031703270337034703570367037703870397040704170427043704470457046704770487049705070517052705370547055705670577058705970607061706270637064706570667067706870697070707170727073707470757076707770787079708070817082708370847085708670877088708970907091709270937094709570967097709870997100710171027103710471057106710771087109711071117112711371147115711771187119712071217123712571267127712871297130713171327133713471357136713771387139714071417142714371447145714671477148714971507151715271537154715571577158715971607161716271637164716571667167716871697170717171727173717471757176717771787179718071817182718371847185718671877188718971907191719271937194719571967197719871997200720172027203720472057206720772087209721072117212721372147215721672177218721972207221722272237224722572267227722872297230723572368699870087018702870387498750875187528753875487558756875787588759876087618762876387648765876687678768876987708771877287738774877587778778877987808781878287838784878587868787878887898790879287978801880688138823882488268831883288348840884688508851885288538854885688578861886388668878888888958904890889108923892789298932894189438950895289538955895889628963896689748979898089838984898689888997899890069007900990169018902190289029903090479052905390589063906490669072908090839084908990939104910591199126913191379146915691599164917791819183919992029209921392249233923592429243926792709272927392749276928292869288929092999300930193059306930893119312931593189329933193329334933993409341934293449345934693479354935993629363936593669367937293759398940894189419942594269427943094439445944694509454945594569469947094719484948794979498950495089511951795259529953095319532953395349535953695379538953995409541954295439544954595469547954895499550955195529553955495569557956495659566956795689569957095719572957395749575957695779578957995809581958295839585958695879588958995909591959295939594959595969597960096019602960396049605960696089611961296139614961596169617961996209621962296259626962796299630963296359636963796389639964196429643964496459646964796499650965196529653965496559660966396659667966996719672967396749675967696779678967996809681968296849687969397039704970797109712971497189719972197239724972597279730973197329733973497359736973797389752975397549755975697579758975997609761976297639764976597669767976897699770977297739776977797799780978197829784978597879788978997909791979397949795979697979798980298039804980598069807980898099810981198129813981498159816981798189819982098219822983398389839984098539854986698739874987698779878154331543415435154361543715438154391544015441154421544315444154451544615447154481544915450154511545215453154541545515456154571545815459154601546115462154631546415465154661546715468154691547015471154721547315474154751547615477154781547915480154811548215483154841548515486154871548815489154901549115492154931549415495154961549715498154991550015501155021550315504155051550615507155081550915510155111551215513155141551515516155171551815519155201552115522155231552415525155261552715528155291553015531155321553315534155351553615537155381553915540155411554215543155441554515546155471554815549155501555115552155531555415555155561555715558155591556015561155621556315564155651556615567155681556915570155711557215573155741557515576155771557815579155801558115582155831558415585155861558715588155891559015591155921559315594155951559615597155981559915600156011560215603156041560515606156071560815609156101561115612156131561415615156161561715618156191562015621156221562315624156251562615627156281562915630156311563215633156341563515636156371563815639156401564115642156431564415645156461564715648156491565015651156521565315654156551565615657156581565915660156611566215663156641566515666156671566815669156701567115672156731567415675156761567715678156791568015681156821568315684156851568615687156881568915690156911569215693156941569515696156971569815699157001570115702157031570415705157061570715708157091571015711157121571315714157151571615717'
-      full_name: quia
-      nrc: nostrum
-      dob: '2024-10-22T15:13:48'
-      mobile_number: impedit
-      email: theresia86@example.org
-      beneficiary_name: omnis
-      beneficiary_contact: voluptas
-      tag_name: doloremque
+      full_name: non
+      nrc: magnam
+      dob: '2024-10-28T15:48:38'
+      mobile_number: labore
+      email: gavin.jakubowski@example.net
+      beneficiary_name: veniam
+      beneficiary_contact: enim
+      tag_name: nam
       status: ACTIVE
     fileParameters: []
     responses: []
@@ -8850,13 +9330,14 @@ endpoints:
         name: id
         description: 'The ID of the gojoy.'
         required: true
-        example: tenetur
+        example: maxime
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: tenetur
+      id: maxime
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -8894,7 +9375,7 @@ endpoints:
         name: customer_id
         description: ''
         required: true
-        example: '8763'
+        example: '6832'
         type: string
         enumValues:
           - '97'
@@ -11882,9 +12363,10 @@ endpoints:
           - '15716'
           - '15717'
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      customer_id: '8763'
+      customer_id: '6832'
     fileParameters: []
     responses: []
     responseFields: []
@@ -11918,6 +12400,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
       id: 97
@@ -11958,6 +12441,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
       id: 97
@@ -12048,28 +12532,31 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: et
+        example: ducimus
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       title:
         name: title
         description: ''
         required: true
-        example: rem
+        example: cum
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       product_type:
         name: product_type
         description: ''
         required: true
-        example: eaque
+        example: aperiam
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       brief_description:
         name: brief_description
@@ -12079,21 +12566,23 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: true
         custom: []
       thumbnail:
         name: thumbnail
         description: 'Must not be greater than 5128 characters.'
         required: true
-        example: vl
+        example: weutnvyduknukypcxiixaesyb
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
-      name: et
-      title: rem
-      product_type: eaque
-      thumbnail: vl
+      name: ducimus
+      title: cum
+      product_type: aperiam
+      thumbnail: weutnvyduknukypcxiixaesyb
     fileParameters: []
     responses: []
     responseFields: []
@@ -12123,13 +12612,14 @@ endpoints:
         name: id
         description: 'The ID of the change status.'
         required: true
-        example: quia
+        example: deserunt
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: deserunt
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -12163,13 +12653,14 @@ endpoints:
         name: id
         description: 'The ID of the delete.'
         required: true
-        example: ad
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: ad
+      id: non
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -12274,13 +12765,14 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: neque
+        example: repellendus
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: neque
+      id: repellendus
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -12385,13 +12877,14 @@ endpoints:
         name: id
         description: 'The ID of the change status.'
         required: true
-        example: dolor
+        example: exercitationem
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: dolor
+      id: exercitationem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -12425,13 +12918,14 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: sed
+        example: repudiandae
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: sed
+      id: repudiandae
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -12465,13 +12959,14 @@ endpoints:
         name: id
         description: 'The ID of the delete.'
         required: true
-        example: ipsam
+        example: omnis
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      id: ipsam
+      id: omnis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

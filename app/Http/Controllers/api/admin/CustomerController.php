@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\api\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\AgentUpdateReqeust;
+use App\Http\Requests\admin\CoreCustomerUpdateReqeust;
 use App\Http\Requests\admin\CustomerUpdateRequest;
+use App\Http\Requests\admin\EmployeeUpdateReqeust;
+use App\Models\AgentInfo;
+use App\Models\CoreCustomer;
 use App\Models\Customer;
+use App\Models\EmployeeInfo;
 use App\Traits\api\ApiResponser;
 use App\Traits\FileUpload;
 use Exception;
@@ -123,15 +129,69 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        try {
-            DB::beginTransaction();
+        DB::beginTransaction();
 
+        try {
             $customer = Customer::findOrFail($id);
             $customer->delete();
 
             DB::commit();
 
             return $this->successResponse('Customer record is deleted successfully', $customer);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateCoreInfo(CoreCustomerUpdateReqeust $request, $id)
+    {
+        $payload = collect($request->validated());
+        DB::beginTransaction();
+
+        try {
+
+            $coreCustomer = CoreCustomer::findOrFail($id);
+            $coreCustomer->update($payload->toArray());
+
+            DB::commit();
+
+            return $this->successResponse('Core Customer record is updated successfully', $coreCustomer);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateEmployeeInfo(EmployeeUpdateReqeust $request, $id)
+    {
+        $payload = collect($request->validated());
+        DB::beginTransaction();
+
+        try {
+
+            $employee = EmployeeInfo::findOrFail($id);
+            $employee->update($payload->toArray());
+
+            DB::commit();
+
+            return $this->successResponse('Employee Customer record is updated successfully', $employee);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateAgentInfo(AgentUpdateReqeust $request, $id)
+    {
+        $payload = collect($request->validated());
+        DB::beginTransaction();
+
+        try {
+
+            $agent = AgentInfo::findOrFail($id);
+            $agent->update($payload->toArray());
+
+            DB::commit();
+
+            return $this->successResponse('Agent Customer record is updated successfully', $agent);
         } catch (Exception $e) {
             throw $e;
         }

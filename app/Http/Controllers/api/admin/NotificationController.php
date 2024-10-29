@@ -44,7 +44,10 @@ class NotificationController extends Controller
                         'type' => $payload['noti_for'],
                     ]);
 
-                    $this->sendAsUnicastFroIOS($payload['device_token'], $payload, [
+                    $this->sendAsUnicastFroIOS($payload['device_token'], [
+                        'title' => $payload['title'],
+                        'body' => $payload['message'],
+                    ], [
                         'type' => $payload['noti_for'],
                     ]);
                     $payload['status'] = 'SUCCESS';

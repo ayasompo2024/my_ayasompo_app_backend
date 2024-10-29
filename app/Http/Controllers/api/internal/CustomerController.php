@@ -21,7 +21,7 @@ class CustomerController extends Controller
             return $this->respondValidationErrors('Validation Error', $validator->errors(), 400);
         }
 
-        $status = $customerService->sendClaimNoti($request, $firebase);
+        $status = $customerService->sendClaimNoti($request);
 
         return $status ?
             $this->successResponse('Your request has been processed (Claim Noti)', $status, 200) :

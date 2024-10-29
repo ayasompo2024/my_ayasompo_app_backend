@@ -7,6 +7,7 @@ use App\Models\AgentNoti;
 use App\Models\Customer;
 use App\Services\FirebaseService;
 use App\Traits\api\ApiResponser;
+use App\Traits\Firebase;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
 use Exception;
@@ -17,7 +18,7 @@ use Log;
 
 class AgentController extends Controller
 {
-    use ApiResponser, RemoveInitialPlusNineFiveNine, SendPushNotification;
+    use ApiResponser, Firebase, RemoveInitialPlusNineFiveNine, SendPushNotification;
 
     public function sendNoti(Request $request, FirebaseService $firebase)
     {
@@ -33,12 +34,12 @@ class AgentController extends Controller
             $content = $this->getContent($request);
 
             try {
-                $firebase->sendNotification($agent_profile->device_token, $content['title'], $content['body'], null, $content);
+                $this->sendNotification($agent_profile->device_token, $content['title'], $content['body'], null, $content);
+                $this->sendAsUnicastFroIOS($agent_profile->device_token, $content, $content);
             } catch (Exception $e) {
                 Log::info($e);
             }
 
-            // $this->sendAsUnicast($agent_profile->device_token, $content, $content, 'agent');
             $status = $this->saveNoti($request->only('customer_id', 'title', 'message', 'type'));
 
             return $status ?

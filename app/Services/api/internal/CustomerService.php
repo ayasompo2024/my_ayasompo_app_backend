@@ -4,22 +4,22 @@ namespace App\Services\api\internal;
 
 use App\Models\Customer;
 use App\Repositories\RequestFormRepository;
-use App\Services\FirebaseService;
+use App\Traits\Firebase;
 use App\Traits\RemoveInitialPlusNineFiveNine;
 use App\Traits\SendPushNotification;
 
 class CustomerService
 {
-    use RemoveInitialPlusNineFiveNine, SendPushNotification;
+    use Firebase, RemoveInitialPlusNineFiveNine, SendPushNotification;
 
-    public function sendClaimNoti($inputFromInternal, FirebaseService $firebase)
+    public function sendClaimNoti($inputFromInternal)
     {
         $customer = Customer::query()->whereCustomer_phoneno($this->removeInitialPlusNineFiveNine($inputFromInternal->customer_phoneno))->first();
         $notification = ['title' => $inputFromInternal->message, 'body' => 'Claim No : '.$inputFromInternal->claim_no.', Customer Code : '.$inputFromInternal->customer_code];
 
-        $firebase->sendNotification($customer->device_token, $notification['title'], $notification['body'], $notification);
+        $this->sendNotification($customer->device_token, $notification['title'], $notification['body'], null, []);
+        $this->sendAsUnicastFroIOS($customer->device_token, $notification, $notification);
 
-        //$this->sendAsUnicast($customer->device_token, $notification, $notification);
         return $inputFromInternal->all();
     }
 
@@ -30,7 +30,8 @@ class CustomerService
             'title' => $inputFromInternal->case_title,
             'body' => $inputFromInternal->message,
         ];
-        $this->sendAsUnicast($customer->device_token, $notification, $notification);
+        $this->sendNotification($customer->device_token, $notification['title'], $notification['body'], null, $notification);
+        $this->sendAsUnicastFroIOS($customer->device_token, $notification, $notification);
         $this->updateRequestformStatus($inputFromInternal);
 
         return $inputFromInternal->all();

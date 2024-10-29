@@ -6,9 +6,11 @@ use App\Enums\NotiFor;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\api\app\PromotionAndSystemNotiRsource;
 use App\Http\Resources\api\app\ServiceRequestNotiRsource;
+use App\Models\Messaging;
 use App\Repositories\MessagingRepository;
 use App\Repositories\RequestFormRepository;
 use App\Traits\api\ApiResponser;
+use Exception;
 use Illuminate\Http\Request;
 
 class NotiCenterController extends Controller
@@ -17,11 +19,18 @@ class NotiCenterController extends Controller
 
     public function getPromotionAndSystem($user_id, Request $request)
     {
-        $message = MessagingRepository::getPromotionAndSystemNoti();
-        $notiCenter = PromotionAndSystemNotiRsource::collection($message)->groupBy('noti_for');
-        $notiCenter[NotiFor::TRANSACTION->value] = $this->getTransactionNoti($user_id);
+        try {
+            $messages = Messaging::where(["customer_id" => $user_id])->get()->groupBy("noti_for");
+            return $this->successResponse('Promotion & System Noti', $messages, 200);
+        } catch(Exception $e) {
+            throw $e;
+        }
 
-        return $this->successResponse('Promotion & System Noti', $notiCenter, 200);
+        // $message = MessagingRepository::getPromotionAndSystemNoti();
+        // $notiCenter = PromotionAndSystemNotiRsource::collection($message)->groupBy('noti_for');
+        // $notiCenter[NotiFor::TRANSACTION->value] = $this->getTransactionNoti($user_id);
+
+        // return $this->successResponse('Promotion & System Noti', $notiCenter, 200);
     }
 
     private function getTransactionNoti($user_id)

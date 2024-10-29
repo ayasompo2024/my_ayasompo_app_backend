@@ -10,6 +10,7 @@ use App\Models\Messaging;
 use App\Repositories\MessagingRepository;
 use App\Repositories\RequestFormRepository;
 use App\Traits\api\ApiResponser;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class NotiCenterController extends Controller
                 'System' => [],
             ];
 
+            $oneMonthsAgo = Carbon::now()->subMonths(1);
             $notifications = Messaging::where(['customer_id' => $user_id])
+                ->whereBetween('created_at', [$oneMonthsAgo, now()])
                 ->orderByDesc('created_at')
                 ->paginationQuery()
                 ->groupBy('noti_for')

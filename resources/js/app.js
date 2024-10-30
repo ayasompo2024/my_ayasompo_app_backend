@@ -9,3 +9,4 @@ require('./components/CustomerList');
 require('./components/CustomerDetail');
 require('./components/GojoyList');
 require('./components/GojoyDetail');
+require('./components/TermAndConditionList');

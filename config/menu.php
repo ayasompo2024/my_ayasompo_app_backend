@@ -32,6 +32,16 @@ return [
         'can' => ['Root'],
     ],
     [
+        'display' => 'Term And Conditions',
+        'route' => 'admin.term-and-conditions.index',
+        'route_param' => null,
+        'imag_path' => null,
+        'target' => false,
+        'icon' => 'bi-filetype-doc',
+        'sub_menus' => null,
+        'can' => ['Root'],
+    ],
+    [
         'display' => 'Products',
         'route' => 'admin.product.index',
         'route_param' => null,

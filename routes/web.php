@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminAccountController;
 use App\Http\Controllers\admin\AdminGoJoyController;
+use App\Http\Controllers\admin\AdminTermAndConditionController;
 use App\Http\Controllers\admin\agent\LeaderBoardController;
 use App\Http\Controllers\admin\agent\TrainingResourceController;
 use App\Http\Controllers\admin\BannerController;
@@ -37,6 +38,11 @@ Route::group(
         Route::group(['prefix' => 'gojoy'], function () {
             Route::get('/', [AdminGoJoyController::class, 'index'])->name('gojoy.index');
             Route::get('/{id}', [AdminGoJoyController::class, 'show'])->name('gojoy.show');
+        });
+
+        Route::group(['prefix' => 'term-and-conditions'], function () {
+            Route::get('/', [AdminTermAndConditionController::class, 'index'])->name('term-and-conditions.index');
+            Route::get('/{id}', [AdminTermAndConditionController::class, 'show'])->name('term-and-conditions.show');
         });
 
         Route::resource('account', AdminAccountController::class);

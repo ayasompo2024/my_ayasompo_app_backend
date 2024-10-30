@@ -9,6 +9,7 @@ use App\Http\Controllers\api\admin\GoJoyController;
 use App\Http\Controllers\api\admin\NotificationController;
 use App\Http\Controllers\api\admin\ProductController;
 use App\Http\Controllers\api\admin\PropertyTypeController;
+use App\Http\Controllers\api\admin\TermAndConditionController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('v1/login', [AuthController::class, 'login']);
@@ -41,6 +42,13 @@ Route::prefix('v1')->group(function () {
             Route::get('/{id}', [GoJoyController::class, 'show']);
             Route::put('/{id}', [GoJoyController::class, 'update']);
             Route::delete('/{id}', [GoJoyController::class, 'destroy']);
+        });
+
+        Route::group(['prefix' => 'term-and-condition'], function () {
+            Route::get('/', [TermAndConditionController::class, 'index']);
+            Route::get('/{id}', [TermAndConditionController::class, 'show']);
+            Route::put('/{id}', [TermAndConditionController::class, 'update']);
+            Route::delete('/{id}', [TermAndConditionController::class, 'destroy']);
         });
 
         Route::group(['prefix' => 'reset-password'], function () {

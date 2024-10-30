@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\app\AppGoJoyController;
+use App\Http\Controllers\api\app\AppTermAndCondition;
 use App\Http\Controllers\api\app\BannerController;
 use App\Http\Controllers\api\app\ClaimcaseController;
 use App\Http\Controllers\api\app\LocationMapController;
@@ -33,6 +34,10 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [AppGoJoyController::class, 'store']);
             Route::get('/{id}', [AppGoJoyController::class, 'show']);
             Route::put('/{id}', [AppGoJoyController::class, 'update']);
+        });
+
+        Route::group(['prefix' => 'term-and-condition'], function () {
+            Route::get('/', [AppTermAndCondition::class, 'index']);
         });
     });
 });

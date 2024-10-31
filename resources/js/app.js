@@ -10,3 +10,5 @@ require('./components/CustomerDetail');
 require('./components/GojoyList');
 require('./components/GojoyDetail');
 require('./components/TermAndConditionList');
+require('./components/TermAndConditionCreate');
+require('./components/TermAndConditionUpdate');

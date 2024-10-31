@@ -9,7 +9,9 @@ import { baseURL, endpoints } from '../constants';
 import { Tooltip } from 'primereact/tooltip';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
+import { termAndConditionServices } from '../services/termAndConditionServices';
 import moment from 'moment';
+import { Button } from 'primereact/button';
 
 export default function TermAndConditionList() {
 
@@ -17,12 +19,12 @@ export default function TermAndConditionList() {
     const [termAndConditions, setTermAndConditions] = useState([]);
 
     const toast = useRef(null);
-    const customerType = useRef(window.location.pathname.split("/")[4]);
 
     const columns = [
-        { field: 'updated_at', header: 'Updated At', show: true, with: "200px", frozen: false },
         { field: 'title', header: 'Title', show: true, with: "180px", frozen: false },
         { field: 'status', header: 'Status', show: true, with: "180px", frozen: false },
+        { field: 'created_at', header: 'Created At', show: true, with: "200px", frozen: false },
+        { field: 'updated_at', header: 'Updated At', show: true, with: "200px", frozen: false },
         { field: "operation", header: "Operation", show: true, frozen: true, alignFrozen: "right" }
     ];
 
@@ -41,10 +43,10 @@ export default function TermAndConditionList() {
             acceptClassName: "p-button-danger",
             accept: async () => {
                 setLoading(true);
-                const result = await delReqeust(`${endpoints.customer}/${id}`);
+                const result = await termAndConditionServices.destroy(id);
                 if (result.status === 201 || result.status === 200) {
                     toast.current.show({ severity: 'success', summary: 'Confirmed', detail: "Record is successfully deleted", life: 3000 });
-                    await reset();
+                    await initLoading();
                 } else {
                     toast.current.show({ severity: 'error', summary: 'Error', detail: "Somethings was wrong!", life: 3000 })
                 }
@@ -64,12 +66,13 @@ export default function TermAndConditionList() {
             acceptClassName: "p-button-danger",
             accept: async () => {
                 setLoading(true);
-                const result = await updateRequest(`${endpoints.customer}/${content.id}`, {
-                    is_disabled: Number(content.is_disabled) === 1 ? 0 : 1
-                });
+                const result = await termAndConditionServices.update({
+                    status: content.status === 'ACTIVE' ? "DISABLE" : "ACTIVE"
+                }, content.id);
+
                 if (result.status === 201 || result.status === 200) {
                     toast.current.show({ severity: 'success', summary: 'Confirmed', detail: "Record is updated successfully", life: 3000 });
-                    await reset();
+                    await initLoading();
                 } else {
                     toast.current.show({ severity: 'error', summary: 'Error', detail: "Somethings was wrong!", life: 3000 })
                 }
@@ -82,17 +85,9 @@ export default function TermAndConditionList() {
     /** Loading Initialize Data */
     const initLoading = useCallback(async () => {
         setLoading(true);
-        const result = await getRequest(`${endpoints.customer}/${customerType.current}`, paginateOptions);
-
+        const result = await termAndConditionServices.index();
         if (result.status === 201 || result.status === 200) {
-            const updatePaginate = { ...paginateOptions };
-            updatePaginate.page = result.data.current_page;
-            updatePaginate.per_page = result.data.per_page;
-
-            setPaginageOption(updatePaginate);
-            setTermAndConditions(result.data.data);
-
-            totalRecord.current = result.data.total;
+            setTermAndConditions(result.data);
         }
         setLoading(false);
     }, []);
@@ -104,19 +99,28 @@ export default function TermAndConditionList() {
     return (
         <div className="row">
             <div className='col-12 col-md-12 col-lg-12 mt-3'>
+                <div className='d-flex flex-row justify-content-end align-items-center'>
+                    <Button
+                        style={{ borderRadius: "5px" }}
+                        label='Create'
+                        size='small'
+                        severity='danger'
+                        onClick={() => window.location.replace(`${baseURL}/admin/${endpoints.termAndCondition}/create`)}
+                    />
+                </div>
+            </div>
+
+            <div className='col-12 col-md-12 col-lg-12 mt-3'>
                 <DataTable
+                    key={"id"}
                     value={termAndConditions ?? []}
                     scrollable
                     scrollHeight="500px"
-                    selectionMode={'checkbox'}
-                    selection={selectedRows}
-                    onSelectionChange={(e) => { setSelectedRows(e.value) }}
                 >
-                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                     {columns.map((col, index) => {
                         return (
                             <Column
-                                key={`customer_list_${col.field}_${index}`}
+                                key={`term_and_condition_list_${col.field}_${index}`}
                                 field={col.field}
                                 header={col.header}
                                 frozen={col.frozen ?? false}
@@ -124,31 +128,26 @@ export default function TermAndConditionList() {
                                 style={col.with ? { minWidth: `${col.with}` } : ""}
                                 body={(content) => {
                                     switch (col.field) {
+                                        case "status":
+                                            return (
+                                                <Chip
+                                                    label={content[col.field] === 'ACTIVE' ? 'ACTIVE' : 'DISABLE'}
+                                                    className={content[col.field] === 'ACTIVE' ? 'bg-success' : 'bg-danger'}
+                                                    icon="pi pi-wave-pulse"
+                                                />
+                                            )
                                         case "created_at":
                                             return (
                                                 <span> {moment(content[col.field]).format("MM/DD/YYYY hh:mm:ss A")} </span>
                                             );
-                                        case "user_name":
+                                        case "updated_at":
                                             return (
-                                                <div className='flex flex-row align-items-center justify-content-center'>
-                                                    <Image
-                                                        className='thumb-image'
-                                                        src={content['profile_photo'] ?? `${baseURL}/${endpoints.defaultImagePath}`}
-                                                        zoomSrc={content['profile_photo'] ?? `${baseURL}/${endpoints.defaultImagePath}`}
-                                                        alt={content[col.field]}
-                                                        preview
-                                                    />
-                                                    <span style={{ marginLeft: "5px" }}>{content[col.field]} </span>
-                                                </div>
+                                                <span> {moment(content[col.field]).format("MM/DD/YYYY hh:mm:ss A")} </span>
                                             );
-                                        case "is_disabled":
+                                        case "deleted_at":
                                             return (
-                                                <Chip
-                                                    label={content[col.field] === Number(0) ? 'ACTIVE' : 'DISABLE'}
-                                                    className={content[col.field] === Number(0) ? 'bg-success' : 'bg-danger'}
-                                                    icon="pi pi-wave-pulse"
-                                                />
-                                            )
+                                                <span> {moment(content[col.field]).format("MM/DD/YYYY hh:mm:ss A")} </span>
+                                            );
                                         case "operation":
                                             return (
                                                 <div className='btn-group'>
@@ -162,7 +161,7 @@ export default function TermAndConditionList() {
                                                         <i className='pi pi-ban' style={{ color: "#FFC107" }}></i>
                                                     </div>
 
-                                                    <div className='tooltip-btn' onClick={() => window.location.replace(`${baseURL}/admin/${endpoints.customer}/${content.id}`)}>
+                                                    <div className='tooltip-btn' onClick={() => window.location.replace(`${baseURL}/admin/${endpoints.termAndCondition}/${content.id}`)}>
                                                         <Tooltip target=".pi-file-edit" content="Edit" position="top" event="hover" />
                                                         <i className='pi pi-file-edit' style={{ color: "#17A2B8" }}></i>
                                                     </div>

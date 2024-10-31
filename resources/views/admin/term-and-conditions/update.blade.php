@@ -1,0 +1,8 @@
+@extends('admin.layout.app')
+@section('content')
+<div class="container-fluid bg-white">
+    <div id="term-and-condition-update"></div>
+</div>
+@endsection
+
+

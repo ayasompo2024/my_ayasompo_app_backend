@@ -26,6 +26,7 @@ class TermAndConditionUpdateRequest extends FormRequest
         return [
             'title' => 'nullable | string',
             'content' => 'nullable | string',
+            'status' => 'nullable | string',
         ];
     }
 }

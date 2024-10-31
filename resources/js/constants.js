@@ -1,4 +1,4 @@
-export const env = 1;
+export const env = 0;
 
 export const baseURL = [
     "http://localhost:8000",
@@ -23,7 +23,8 @@ export const endpoints = {
     user: "user",
     imagePath: `${baseURL}/uploads/profile`,
     notification: "messaging",
-    gojoy: "gojoy"
+    gojoy: "gojoy",
+    termAndCondition: "term-and-conditions"
 }
 
 export const messageType = [

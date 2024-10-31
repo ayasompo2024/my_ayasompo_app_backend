@@ -44,7 +44,8 @@ Route::prefix('v1')->group(function () {
             Route::delete('/{id}', [GoJoyController::class, 'destroy']);
         });
 
-        Route::group(['prefix' => 'term-and-condition'], function () {
+        Route::group(['prefix' => 'term-and-conditions'], function () {
+            Route::post('/', [TermAndConditionController::class, 'store']);
             Route::get('/', [TermAndConditionController::class, 'index']);
             Route::get('/{id}', [TermAndConditionController::class, 'show']);
             Route::put('/{id}', [TermAndConditionController::class, 'update']);

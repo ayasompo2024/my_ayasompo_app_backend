@@ -18,6 +18,7 @@ Route::prefix('v1')->group(function () {
     Route::get('banners/splash', [BannerController::class, 'getSplashActive']);
     Route::get('location-maps', [LocationMapController::class, 'getActive']);
     Route::post('request-form/store-guest-inquiry-case', [RequestFormController::class, 'storeInquiryCase']);
+    Route::get('term-and-condition', [AppTermAndCondition::class, 'index']);
 
     Route::middleware('auth:api')->group(function () {
         Route::post('request-form/get-endorsement-form', [RequestFormController::class, 'getEndorsementForm']);
@@ -34,10 +35,6 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [AppGoJoyController::class, 'store']);
             Route::get('/{id}', [AppGoJoyController::class, 'show']);
             Route::put('/{id}', [AppGoJoyController::class, 'update']);
-        });
-
-        Route::group(['prefix' => 'term-and-condition'], function () {
-            Route::get('/', [AppTermAndCondition::class, 'index']);
         });
     });
 });

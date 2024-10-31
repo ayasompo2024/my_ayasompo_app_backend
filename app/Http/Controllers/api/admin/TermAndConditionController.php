@@ -39,10 +39,11 @@ class TermAndConditionController extends Controller
         DB::beginTransaction();
 
         try {
-            $termAndCondition = TermAndCondition::store($payload->toArray());
+            $payload['status'] = 'ACTIVE';
+            $termAndCondition = TermAndCondition::create($payload->toArray());
             DB::commit();
 
-            return $this->successResponse('Term and condition record is create successfully', $termAndCondition);
+            return $this->successResponse('Term and condition record is created successfully', $termAndCondition);
         } catch (Exception $e) {
             DB::rollBack();
             throw $e;

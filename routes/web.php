@@ -42,7 +42,8 @@ Route::group(
 
         Route::group(['prefix' => 'term-and-conditions'], function () {
             Route::get('/', [AdminTermAndConditionController::class, 'index'])->name('term-and-conditions.index');
-            Route::get('/{id}', [AdminTermAndConditionController::class, 'show'])->name('term-and-conditions.show');
+            Route::get('/create', [AdminTermAndConditionController::class, 'store'])->name('term-and-conditions.create');
+            Route::get('/{id}', [AdminTermAndConditionController::class, 'update'])->name('term-and-conditions.update');
         });
 
         Route::resource('account', AdminAccountController::class);

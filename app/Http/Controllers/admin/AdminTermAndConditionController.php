@@ -15,4 +15,14 @@ class AdminTermAndConditionController extends Controller
     {
         return view('admin.term-and-conditions.show');
     }
+
+    public function store()
+    {
+        return view('admin.term-and-conditions.create');
+    }
+
+    public function update()
+    {
+        return view('admin.term-and-conditions.update');
+    }
 }
